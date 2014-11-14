@@ -11,7 +11,7 @@
 *
 *Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 *
-*Version: 6.1.2
+*Version: 6.1.3
 -----------------------*/
 // Checks to see if page is larger than window, otherwise runs watch();
 if ((window == top) && ($(window).height()<$(document).height())) {
@@ -46,7 +46,7 @@ function CheckIt() {
 
 // Checks to see if person donates, to disable the message asking for donation later.
 if (window.location.href.indexOf('http://scrolltotopbutton.com/donationcompleted') != -1) {
-	chrome.extension.sendRequest({greeting: "donated"});
+	chrome.runtime.sendMessage({greeting: "donated"});
 }
 
 // Main function, sets up the button
@@ -62,7 +62,7 @@ function STTB() {
     }
 
     // Asks background.html for [LocalStorage] settings from Options Page and assigns them to variables
-    chrome.extension.sendRequest({greeting: "settings"}, function(response) {
+    chrome.runtime.sendMessage({greeting: "settings"}, function(response) {
         var speed = parseInt(response.speed);
         var speed2 = parseInt(response.speed2);
         var distance = parseInt(response.distance);
