@@ -1,17 +1,21 @@
 /*-----------------------
 * Scroll to Top Button
 * by Cody Sherman, http://codysherman.com/
+*
+* Brought back to life by PoziWorld
 * 
 * Copyright (c) 2011 Cody Sherman
+* Copyright (c) 2014 PoziWorld
 * Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
 *
 * Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top!
 *
 * http://scrolltotopbutton.com
 *
-*Source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
+* Original source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
+* Forked source code at: http://github.com/PoziWorld/Scroll-to-Top-Button-Extension
 *
-*Version: 6.1.3
+*Version: 6.1.4
 -----------------------*/
 // Checks to see if page is larger than window, otherwise runs watch();
 if ((window == top) && ($(window).height()<$(document).height())) {

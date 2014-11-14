@@ -1,8 +1,10 @@
 {
   "manifest_version": 2,
   "name": "Scroll To Top Button",
-  "version": "6.1.3",
+  "version": "6.1.4",
   "description": "Adds a scroll to top or bottom button.",
+  "author": "PoziWorld",
+  "homepage_url": "https://github.com/PoziWorld/Scroll-to-Top-Button-Extension",
   "icons": {"16": "icons/Icon-16.png",
       "32": "icons/Icon-32.png",
       "48": "icons/Icon-48.png",
