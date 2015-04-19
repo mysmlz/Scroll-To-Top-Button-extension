@@ -1,10 +1,10 @@
 Scroll to Top Button
-by Cody Sherman, http://codysherman.com/
+by Cody Sherman (versions < 6.1.3), http://codysherman.com/
 
 Brought back to life by PoziWorld
  
-Copyright (c) 2011 Cody Sherman
-Copyright (c) 2014 PoziWorld
+Copyright (c) 2011 Cody Sherman (versions < 6.1.3)
+Copyright (c) 2014-2015 PoziWorld
 Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
 
 Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top in no time!
@@ -17,3 +17,5 @@ http://scrolltotopbutton.com/
 
 Original source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 Forked source code at: http://github.com/PoziWorld/Scroll-to-Top-Button-Extension
+
+Some icons are from [Gentleface Mono Icon Set](http://gentleface.com/free_icon_set.html), Gentleface, [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/).

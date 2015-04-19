@@ -239,32 +239,32 @@ function restore_options() {
 }
 
 function textChange(){
-	if(localStorage["stbb"]=="flip"){
-        	$("#textChange").html("Flip Distance:");
-		$("#textChange").show();
-		$("#distance").show();
-		$(".appearance").show();
-		$(".down").show();
-	}
-	else if(localStorage["stbb"]=="dual"){
-		$("#textChange").hide();
-		$("#distance").hide();
-		$(".appearance").show();
-		$(".down").show();
-	}
-	else if(localStorage["stbb"]=="keys"){
-		$("#textChange").hide();
-		$("#distance").hide();
-		$(".appearance").hide();
-		$(".down").show();
-	}
+  if(localStorage["stbb"]=="flip"){
+    $("#textChange").html("Flip Distance:");
+    $("#textChange").show();
+    $("#distance").show();
+    $(".appearance").show();
+    $(".down").show();
+  }
+  else if(localStorage["stbb"]=="dual"){
+    $("#textChange").hide();
+    $("#distance").hide();
+    $(".appearance").show();
+    $(".down").show();
+  }
+  else if(localStorage["stbb"]=="keys"){
+    $("#textChange").hide();
+    $("#distance").hide();
+    $(".appearance").hide();
+    $(".down").show();
+  }
         else{
-		$("#textChange").html("Appear Distance:");
-		$("#textChange").show();
-		$("#distance").show();
-		$(".appearance").show();
-		$(".down").hide();
-	}
+    $("#textChange").html("Appear Distance:");
+    $("#textChange").show();
+    $("#distance").show();
+    $(".appearance").show();
+    $(".down").hide();
+  }
 }
 
 if (localStorage["latest"]!="2"){
@@ -272,6 +272,9 @@ if (localStorage["latest"]!="2"){
 }
 
 $(function() {
+  if ( boolConstUseOptionsUi )
+    document.body.classList.add( 'newUi' );
+
   restore_options();
   textChange();
 

@@ -10,7 +10,7 @@
 * 
 * Version: 3.1, 29/07/2010
 *
-* Modified for Scroll to Top Button by Cody Sherman
+* Modified for Scroll to Top Button by Cody Sherman (versions < 6.1.3)
 * http://scrolltotopbutton.com/
 * http://codysherman.com/
 *
@@ -29,12 +29,12 @@ function DOWN(speed,ease){
     $.fn.extend({
         scrollToTop:function(options){
 
-            var defaults={speed:"slow",ease:"jswing",start:0}
+            var defaults={speed:"slow",ease:"jswing",start:0};
 
             var options=$.extend(defaults,options);
 
             return this.each(function(){
-        
+
                 var o=options;var scrollDiv=$(this);
 
                 $(this).hide().removeAttr("href").css("cursor","pointer");
@@ -44,46 +44,46 @@ function DOWN(speed,ease){
                     if($(window).scrollTop()>=o.flipDistance){
                         $("#STTBimg").rotate({animateTo:0});
                         o.direction="up";
-                    };
+                    }
 
                     if($(window).scrollTop()<"200"){
                         $("#STTBimg").rotate({animateTo:-180});
                         o.direction="down";
-                    };
-                };
+                    }
+                }
 
                 // Checks whether button should be visable at page load
                 if($(window).scrollTop()>=o.start){
-                    $(this).fadeIn("slow");
+                    $(this).show();
                 }
-                
+
                 // Checks whether button should be visable/flipped on scroll
                 $(window).scroll(function(){
                     if($(window).scrollTop()>=o.start){
-                        $(scrollDiv).fadeIn("slow");
+                        $(scrollDiv).show();
                     }else{
-                        $(scrollDiv).fadeOut("slow");
+                        $(scrollDiv).hide();
                     }
 
                     if(o.stbb=="flip"){
                         if($(window).scrollTop()>=o.flipDistance){
                             $("#STTBimg").rotate({animateTo:0});
                             o.direction="up";
-                        };
+                        }
 
                         if($(window).scrollTop()<o.flipDistance){
                             $("#STTBimg").rotate({animateTo:-180});
                             o.direction="down";
-                        };
-                    };
+                        }
+                    }
                 });
 
                 inProgress="no";
-            
+
                 //Rules specific to the button when it is bi-directional
                 if((o.stbb=="flip") || (o.stbb=="dual")){
                     scrollDiv.click(function(event){
-                    
+
                         // Stops the scrolling if button is clicked a second time.
                         if(inProgress=="yes"){
                             $("html, body").stop();
@@ -103,7 +103,7 @@ function DOWN(speed,ease){
                                 $(this).fadeTo("medium", o.transparency);
                             }
                         }
-                    
+
                         else if(o.direction=="down"){
                             inProgress="yes";
                             speed=o.speed;

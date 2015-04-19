@@ -1,24 +1,74 @@
 {
-  "manifest_version": 2,
-  "name": "Scroll To Top Button",
-  "version": "6.1.5.1",
-  "description": "Adds a scroll to top or bottom button.",
-  "author": "PoziWorld",
-  "homepage_url": "https://github.com/PoziWorld/Scroll-to-Top-Button-Extension",
-  "icons": {"16": "icons/Icon-16.png",
-      "32": "icons/Icon-32.png",
-      "48": "icons/Icon-48.png",
-      "64": "icons/Icon-64.png",
-      "128": "icons/Icon-128.png"},
-  "options_page": "options.html",
-  "background": {"page": "background.html"},
-  "content_scripts": [
-    { "matches": ["<all_urls>"], "js": ["libraries/jquery.js", "libraries/jquery.easing.js", "libraries/jQueryRotate.js", "jquery.scroll.pack.js", "content_script.js", "libraries/shortcut.js"] }
-  ],
-  "permissions": [
-    "tabs", "contextMenus"
-  ],
-  "web_accessible_resources": [
-    "arrows/*.png"
-  ]
+    "manifest_version"        : 2
+  , "name"                    : "__MSG_extensionName__"
+  , "version"                 : "6.2.0"
+  , "description"             : "__MSG_extensionDescription__"
+  , "author"                  : "PoziWorld"
+  , "homepage_url"            : "https://github.com/PoziWorld/Scroll-to-Top-Button-Extension"
+  , "default_locale"          : "en_US"
+
+  , "icons"                   : {
+        "16"                  : "icons/Icon-16.png"
+      , "32"                  : "icons/Icon-32.png"
+      , "48"                  : "icons/Icon-48.png"
+      , "64"                  : "icons/Icon-64.png"
+      , "128"                 : "icons/Icon-128.png"
+    }
+
+  , "options_page"            : "options.html"
+  , "options_ui"              : {
+        "page"                : "options.html"
+      , "chrome_style"        : false
+    }
+
+  , "background"                : {
+        "persistent"            : false
+      , "scripts"               : [
+            "global/js/bowser.js"
+          , "global/js/const.js"
+          , "global/js/log.js"
+          , "global/js/global.js"
+          , "global/js/background.js"
+          , "global/js/punycode.min.js"
+        ]
+    }
+
+  , "content_scripts"         : [
+      {
+          "matches"           : [ "<all_urls>" ]
+        , "js"                : [
+              "libraries/jquery.js"
+            , "libraries/jquery.easing.js"
+            , "libraries/jQueryRotate.js"
+            , "jquery.scroll.pack.js"
+            , "global/js/bowser.js"
+            , "global/js/const.js"
+            , "global/js/log.js"
+            , "global/js/global.js"
+            , "global/js/punycode.min.js"
+            , "content-script/js/content-script.js"
+            , "content_script.js"
+            , "libraries/shortcut.js"
+          ]
+      }
+    ]
+
+  , "permissions"             : [
+        "tabs"
+      , "contextMenus"
+      , "storage"
+    ]
+
+  , "browser_action"          : {
+        "default_icon"        : {
+            "19"              : "global/img/sttb-icon-19.png"
+          , "38"              : "global/img/sttb-icon-38.png"
+        }
+      , "default_title"       : "__MSG_extensionName__"
+      , "default_popup"       : "browser-action/index.html"
+    }
+
+  , "web_accessible_resources": [
+        "arrows/*.png"
+    ]
 }

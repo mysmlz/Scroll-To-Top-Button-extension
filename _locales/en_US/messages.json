@@ -1,0 +1,49 @@
+{
+  "lang": {
+    "message": "en"
+  }
+  ,
+  "extensionName": {
+    "message": "Scroll To Top Button"
+  }
+  ,
+  "extensionDescription": {
+    "message": "Adds a scroll to top or bottom button."
+  }
+  ,
+  "optionsPageTitle": {
+    "message": "Options | Scroll To Top Button"
+  }
+    ,
+    "optionsTitle": {
+      "message": "Scroll To Top Button Options"
+    }
+  ,
+  "close": {
+    "message": "Close"
+  }
+  ,
+  "browserActionPageTitle": {
+    "message": "Active tab settings | Scroll To Top Button"
+  }
+    ,
+    "browserActionTitle": {
+      "message": "Active tab settings"
+    }
+    ,
+    "browserActionSttbEnabled": {
+      "message": "Enable STTB"
+    }
+    ,
+    "browserActionSttbDisabledUrl": {
+      "message": "Disable STTB for this URL"
+    }
+    ,
+    "browserActionSttbDisabledDomain": {
+      "message": "Disable STTB for this domain"
+    }
+    ,
+    "browserActionReloadActiveTab": {
+      "message": "Reload tab"
+    }
+}

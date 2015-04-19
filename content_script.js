@@ -1,11 +1,11 @@
 /*-----------------------
 * Scroll to Top Button
-* by Cody Sherman, http://codysherman.com/
+* by Cody Sherman (versions < 6.1.3), http://codysherman.com/
 *
 * Brought back to life by PoziWorld
 * 
-* Copyright (c) 2011 Cody Sherman
-* Copyright (c) 2014 PoziWorld
+* Copyright (c) 2011 Cody Sherman (versions < 6.1.3)
+* Copyright (c) 2014-2015 PoziWorld
 * Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
 *
 * Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top!
@@ -19,7 +19,7 @@
 -----------------------*/
 // Checks to see if page is larger than window, otherwise runs watch();
 if ((window == top) && ($(window).height()<$(document).height())) {
-    CheckIt();
+    ContentScript.init();
 }
 else {
     watch();
@@ -31,26 +31,6 @@ function watch(){
         STTB();
         $(window).unbind('scroll');
     });
-}
-
-// CheckIt() is a blacklist of websites that use frames and don't scroll as expected
-function CheckIt() {
-    var blockedUrlArray=['mail.google.com/','docs.google.com/','docs0.google.com/','google.com/calendar','spreadsheets.google.com/','spreadsheets0.google.com/'];
-    var urlArrayMatch;
-    $.each( blockedUrlArray, function(i, urlString){
-        if (window.location.href.indexOf( urlString ) != -1) {
-            urlArrayMatch=true;
-            return true; // break out of loop if match found
-        }
-    })
-    if( ! urlArrayMatch ){
-        STTB();
-    }
-}
-
-// Checks to see if person donates, to disable the message asking for donation later.
-if (window.location.href.indexOf('http://scrolltotopbutton.com/donationcompleted') != -1) {
-	chrome.runtime.sendMessage({greeting: "donated"});
 }
 
 // Main function, sets up the button
@@ -65,7 +45,7 @@ function STTB() {
         })
     }
 
-    // Asks background.html for [LocalStorage] settings from Options Page and assigns them to variables
+    // Asks Background for [LocalStorage] settings from Options Page and assigns them to variables
     chrome.runtime.sendMessage({greeting: "settings"}, function(response) {
         var speed = parseInt(response.speed);
         var speed2 = parseInt(response.speed2);
@@ -88,152 +68,154 @@ function STTB() {
         }
 
         // Creates the button image on the page
-        $("body").prepend('<img id=STTBimg />');
+        $("body").prepend('<img id="STTBimg" />');
         if(stbb=="flip"){
             $("#STTBimg").rotate(-180);
-        };
-        STTBimg.style.opacity = transparency;
-        STTBimg.src=imgURL;
-        STTBimg.style.position = 'fixed';
-        STTBimg.style.width = size;
-        STTBimg.style.height = 'auto';
-        STTBimg.style.display = 'none';
-        STTBimg.style.zIndex = 2147483647;
-        STTBimg.style.border = '0px';
-        STTBimg.style.padding = '0px';
+        }
+        var $sttbImg = document.getElementById( 'STTBimg' );
+        $sttbImg.style.opacity = transparency;
+        $sttbImg.src=imgURL;
+        $sttbImg.style.position = 'fixed';
+        $sttbImg.style.width = size;
+        $sttbImg.style.height = 'auto';
+        $sttbImg.style.display = 'none';
+        $sttbImg.style.zIndex = 2147483647;
+        $sttbImg.style.border = '0px';
+        $sttbImg.style.padding = '0px';
         if (location == "TR") {
-            STTBimg.style.top = '20px';
-            STTBimg.style.right = '20px';
-            STTBimg.style.margin = '0px 0px 0px 0px';
+            $sttbImg.style.top = '20px';
+            $sttbImg.style.right = '20px';
+            $sttbImg.style.margin = '0px 0px 0px 0px';
         }
         else if (location == "TL") {
-            STTBimg.style.top = '20px';
-            STTBimg.style.left = '20px';
-            STTBimg.style.margin = '0px 0px 0px 0px';
-	    }
+            $sttbImg.style.top = '20px';
+            $sttbImg.style.left = '20px';
+            $sttbImg.style.margin = '0px 0px 0px 0px';
+        }
         else if ((location == "BR") && (stbb != "dual")) {
-            STTBimg.style.bottom = '20px';
-            STTBimg.style.right = '20px';
-            STTBimg.style.margin = '0px 0px 0px 0px';
-	    }
+            $sttbImg.style.bottom = '20px';
+            $sttbImg.style.right = '20px';
+            $sttbImg.style.margin = '0px 0px 0px 0px';
+        }
         else if ((location == "BR") && (stbb == "dual")) {
             adjust=parseInt(size) / 2 + 22;
             adjusted=adjust + "px";
-            STTBimg.style.bottom = adjusted;
-            STTBimg.style.right = '20px';
-            STTBimg.style.margin = '0px 0px 0px 0px';
+            $sttbImg.style.bottom = adjusted;
+            $sttbImg.style.right = '20px';
+            $sttbImg.style.margin = '0px 0px 0px 0px';
         }
         else if ((location == "BL") && (stbb != "dual")) {
-            STTBimg.style.bottom = '20px';
-            STTBimg.style.left = '20px';
-            STTBimg.style.margin = '0px 0px 0px 0px';
-	    }
+            $sttbImg.style.bottom = '20px';
+            $sttbImg.style.left = '20px';
+            $sttbImg.style.margin = '0px 0px 0px 0px';
+        }
         else if ((location == "BL") && (stbb == "dual")) {
             adjust=parseInt(size) / 2 + 22;
             adjusted=adjust + "px";
-            STTBimg.style.bottom = adjusted;
-            STTBimg.style.left = '20px';
-            STTBimg.style.margin = '0px 0px 0px 0px';
-	    }
+            $sttbImg.style.bottom = adjusted;
+            $sttbImg.style.left = '20px';
+            $sttbImg.style.margin = '0px 0px 0px 0px';
+        }
         else if (location == "CR") {
             adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-            STTBimg.style.right = '20px';
-            STTBimg.style.top = '50%';
-            STTBimg.style.margin = adjust;
-	    }
+            $sttbImg.style.right = '20px';
+            $sttbImg.style.top = '50%';
+            $sttbImg.style.margin = adjust;
+        }
         else if (location == "CL") {
             adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-            STTBimg.style.left = '20px';
-            STTBimg.style.top = '50%';
-            STTBimg.style.margin = adjust;
-	    }
+            $sttbImg.style.left = '20px';
+            $sttbImg.style.top = '50%';
+            $sttbImg.style.margin = adjust;
+        }
         else if (location == "TC") {
             adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-            STTBimg.style.top = '20px';
-            STTBimg.style.right = '50%';
-            STTBimg.style.margin = adjust;
+            $sttbImg.style.top = '20px';
+            $sttbImg.style.right = '50%';
+            $sttbImg.style.margin = adjust;
         }
         else if ((location == "BC") && (stbb != "dual")) {
             adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-            STTBimg.style.bottom = '20px';
-            STTBimg.style.right = '50%';
-            STTBimg.style.margin = adjust;
-	    }
+            $sttbImg.style.bottom = '20px';
+            $sttbImg.style.right = '50%';
+            $sttbImg.style.margin = adjust;
+        }
         else if ((location == "BC") && (stbb == "dual")) {
             adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
             adjust2=parseInt(size) / 2 + 22;
             adjusted=adjust2 + "px";
-            STTBimg.style.bottom = adjusted;
-            STTBimg.style.right = '50%';
-            STTBimg.style.margin = adjust;
-	    }
+            $sttbImg.style.bottom = adjusted;
+            $sttbImg.style.right = '50%';
+            $sttbImg.style.margin = adjust;
+        }
 
         if(stbb=="dual"){
-            $("body").prepend('<img id=STTBimg2 />');
+            $("body").prepend('<img id="STTBimg2" />');
             $("#STTBimg2").rotate(-180);
-            STTBimg2.style.opacity = transparency;
-            STTBimg2.src=imgURL;
-            STTBimg2.style.position = 'fixed';
-            STTBimg2.style.width = size;
-            STTBimg2.style.height = 'auto';
-            STTBimg2.style.display = 'none';
-            STTBimg2.style.zIndex = 2147483647;
-            STTBimg2.style.border = '0px';
-            STTBimg2.style.padding = '0px';
+            var $sttbImg2 = document.getElementById( 'STTBimg2' );
+            $sttbImg2.style.opacity = transparency;
+            $sttbImg2.src=imgURL;
+            $sttbImg2.style.position = 'fixed';
+            $sttbImg2.style.width = size;
+            $sttbImg2.style.height = 'auto';
+            $sttbImg2.style.display = 'none';
+            $sttbImg2.style.zIndex = 2147483647;
+            $sttbImg2.style.border = '0px';
+            $sttbImg2.style.padding = '0px';
             if (location == "TR") {
                 adjust=parseInt(size) / 2 + 22;
                 adjusted=adjust + "px";
-                STTBimg2.style.top = adjusted;
-                STTBimg2.style.right = '20px';
-                STTBimg2.style.margin = '0px 0px 0px 0px';
+                $sttbImg2.style.top = adjusted;
+                $sttbImg2.style.right = '20px';
+                $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "TL") {
                 adjust=parseInt(size) / 2 + 22;
                 adjusted=adjust + "px";
-                STTBimg2.style.top = adjusted;
-                STTBimg2.style.left = '20px';
-                STTBimg2.style.margin = '0px 0px 0px 0px';
+                $sttbImg2.style.top = adjusted;
+                $sttbImg2.style.left = '20px';
+                $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "BR") {
-                STTBimg2.style.bottom = '20px';
-                STTBimg2.style.right = '20px';
-                STTBimg2.style.margin = '0px 0px 0px 0px';
+                $sttbImg2.style.bottom = '20px';
+                $sttbImg2.style.right = '20px';
+                $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "BL") {
-                STTBimg2.style.bottom = '20px';
-                STTBimg2.style.left = '20px';
-                STTBimg2.style.margin = '0px 0px 0px 0px';
+                $sttbImg2.style.bottom = '20px';
+                $sttbImg2.style.left = '20px';
+                $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "CR") {
                 adjust=2 + "px 0px 0px 0px";
-                STTBimg2.style.right = '20px';
-                STTBimg2.style.top = '50%';
-                STTBimg2.style.margin = adjust;
+                $sttbImg2.style.right = '20px';
+                $sttbImg2.style.top = '50%';
+                $sttbImg2.style.margin = adjust;
             }
             else if (location == "CL") {
                 adjust=2 + "px 0px 0px 0px";
-                STTBimg2.style.left = '20px';
-                STTBimg2.style.top = '50%';
-                STTBimg2.style.margin = adjust;
+                $sttbImg2.style.left = '20px';
+                $sttbImg2.style.top = '50%';
+                $sttbImg2.style.margin = adjust;
             }
             else if (location == "TC") {
                 adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
-                STTBimg2.style.top = '20px';
-                STTBimg2.style.right = '50%';
-                STTBimg2.style.margin = adjust;
+                $sttbImg2.style.top = '20px';
+                $sttbImg2.style.right = '50%';
+                $sttbImg2.style.margin = adjust;
             }
             else if (location == "BC") {
                 adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                STTBimg2.style.bottom = '20px';
-                STTBimg2.style.right = '50%';
-                STTBimg2.style.margin = adjust;
+                $sttbImg2.style.bottom = '20px';
+                $sttbImg2.style.right = '50%';
+                $sttbImg2.style.margin = adjust;
             }
         }
 
         // Sets the appear distance to 0 for modes where button is always present
         if((stbb=="flip") || (stbb=="dual")){
             distance=0;
-        };
+        }
 
         // Creates CSS so that the button is not present on printed pages
         if (stbb != "keys"){
@@ -325,4 +307,4 @@ function STTB() {
             'disable_in_input':true
         });
     });
-};
+}
