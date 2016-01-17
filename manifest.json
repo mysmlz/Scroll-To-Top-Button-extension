@@ -30,6 +30,7 @@
           , "global/js/global.js"
           , "global/js/background.js"
           , "global/js/punycode.min.js"
+          , "global/js/context-menu.js"
         ]
     }
 

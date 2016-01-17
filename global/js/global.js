@@ -15,6 +15,8 @@
       convertArrToObj()
       returnIndexOfSubitemContaining()
       createTabOrUpdate()
+      checkForRuntimeError()
+      openOptionsPage()
     On Load
       Initialize
 
@@ -161,13 +163,92 @@ var Global                        = {
     if ( ~~strUrl.indexOf( Global.strOptionsUiUrlPrefix ) ) {
       chrome.tabs.query( objUrl, function( objTabs ) {
         if ( objTabs.length )
-          chrome.tabs.update( objTabs[0].id, { active: true } );
+          chrome.tabs.update( objTabs[ 0 ].id, { active: true } );
         else
           chrome.tabs.create( objUrl );
       } );
     }
     else
       chrome.tabs.create( objUrl );
+  }
+  ,
+
+  /**
+   * Runtime sets an error variable when some call failed.
+   *
+   * @type    method
+   * @param   funcCallback
+   *            Do when runtime error is not set.
+   * @param   funcErrorCallback
+   *            Optional. Callback on error.
+   * @param   objErrorLogDetails
+   *            Optional. Data to be passed on error.
+   * @param   boolTrackError
+   *            Optional. Whether to track error if user participates in UEIP.
+   * @return  boolean
+   **/
+  checkForRuntimeError : function(
+      funcCallback
+    , funcErrorCallback
+    , objErrorLogDetails
+    , boolTrackError
+  ) {
+    if ( chrome.runtime.lastError ) {
+      if ( typeof objErrorLogDetails !== 'object' ) {
+        objErrorLogDetails = {};
+      }
+
+      var strErrorMessage = chrome.runtime.lastError.message;
+
+      if ( typeof strErrorMessage === 'string' ) {
+        objErrorLogDetails.strErrorMessage = strErrorMessage;
+      }
+
+      Log.add(
+          strLog + strLogError
+        , objErrorLogDetails
+        , boolTrackError || true
+      );
+
+      if ( typeof funcErrorCallback === 'function' ) {
+        funcErrorCallback();
+      }
+    }
+    else if ( typeof funcCallback === 'function' ) {
+      funcCallback();
+    }
+  }
+  ,
+
+  /**
+   * Opens Options page.
+   *
+   * @type    method
+   * @param   strCaller
+   *            Where this was called from (action or event name).
+   * @return  boolean
+   **/
+  openOptionsPage : function( strCaller ) {
+    if ( boolConstIsBowserAvailable && strConstChromeVersion >= '42.0' ) {
+      chrome.runtime.openOptionsPage( function() {
+        Global.checkForRuntimeError(
+            undefined
+          , undefined
+          , { strCaller : strCaller || '' }
+          , true
+        );
+      } );
+    }
+    else {
+      // Link to new Options UI for 40+
+      var strOptionsUrl =
+            boolConstUseOptionsUi
+              ? 'chrome://extensions?options=' + strConstExtensionId
+              : chrome.extension.getURL( 'options/index.html' )
+              ;
+
+      Global.createTabOrUpdate( strOptionsUrl );
+    }
   }
 };
 

@@ -1,13 +1,17 @@
-// A generic onclick callback function.
-function genericOnClick(info, tab) {
-chrome.tabs.create({url:'/options.html'});
-}
+if ( localStorage[ 'contextmenu' ] == 'on' ) {
+  var arrContexts = [ 'page', 'image' ];
 
-// Creates context menu
-if (localStorage["contextmenu"]=="on") {
-    var contexts = ["page","image"];
-    for (var i = 0; i < contexts.length; i++) {
-        var context = contexts[i];
-        var id = chrome.contextMenus.create({ "title": 'Scroll To Top Button Options', "contexts": [context], "onclick": genericOnClick });
-    }
+  for ( var i = 0, l = arrContexts.length; i < l; i++ ) {
+    var strContext = arrContexts[ i ];
+
+    chrome.contextMenus.create( {
+        'id' : 'sttb_' + strContext
+      , 'title' : strConstExtensionName + ' Options'
+      , 'contexts' : [ strContext ]
+    } );
+  }
+
+  chrome.contextMenus.onClicked.addListener( function( objInfo ) {
+    Global.openOptionsPage( objInfo.menuItemId );
+  } );
 }
