@@ -297,7 +297,7 @@ var Background                    = {
     }
     if (localStorage[ 'latest' ] != '2' ) {
       localStorage[ 'latest' ] = '2';
-      chrome.tabs.create( { url: '/options.html', selected: false } );
+      Global.openOptionsPage( strLog );
     }
   }
   ,
