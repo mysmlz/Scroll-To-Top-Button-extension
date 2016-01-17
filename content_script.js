@@ -68,85 +68,93 @@ function STTB() {
         }
 
         // Creates the button image on the page
-        $("body").prepend('<img id="STTBimg" />');
+        if ( stbb !== 'keys' ) {
+            $("body").prepend('<img id="STTBimg" />');
+        }
+
         if(stbb=="flip"){
             $("#STTBimg").rotate(-180);
         }
+
         var $sttbImg = document.getElementById( 'STTBimg' );
-        $sttbImg.style.opacity = transparency;
-        $sttbImg.src=imgURL;
-        $sttbImg.style.position = 'fixed';
-        $sttbImg.style.width = size;
-        $sttbImg.style.height = 'auto';
-        $sttbImg.style.display = 'none';
-        $sttbImg.style.zIndex = 2147483647;
-        $sttbImg.style.border = '0px';
-        $sttbImg.style.padding = '0px';
-        if (location == "TR") {
-            $sttbImg.style.top = '20px';
-            $sttbImg.style.right = '20px';
-            $sttbImg.style.margin = '0px 0px 0px 0px';
-        }
-        else if (location == "TL") {
-            $sttbImg.style.top = '20px';
-            $sttbImg.style.left = '20px';
-            $sttbImg.style.margin = '0px 0px 0px 0px';
-        }
-        else if ((location == "BR") && (stbb != "dual")) {
-            $sttbImg.style.bottom = '20px';
-            $sttbImg.style.right = '20px';
-            $sttbImg.style.margin = '0px 0px 0px 0px';
-        }
-        else if ((location == "BR") && (stbb == "dual")) {
-            adjust=parseInt(size) / 2 + 22;
-            adjusted=adjust + "px";
-            $sttbImg.style.bottom = adjusted;
-            $sttbImg.style.right = '20px';
-            $sttbImg.style.margin = '0px 0px 0px 0px';
-        }
-        else if ((location == "BL") && (stbb != "dual")) {
-            $sttbImg.style.bottom = '20px';
-            $sttbImg.style.left = '20px';
-            $sttbImg.style.margin = '0px 0px 0px 0px';
-        }
-        else if ((location == "BL") && (stbb == "dual")) {
-            adjust=parseInt(size) / 2 + 22;
-            adjusted=adjust + "px";
-            $sttbImg.style.bottom = adjusted;
-            $sttbImg.style.left = '20px';
-            $sttbImg.style.margin = '0px 0px 0px 0px';
-        }
-        else if (location == "CR") {
-            adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-            $sttbImg.style.right = '20px';
-            $sttbImg.style.top = '50%';
-            $sttbImg.style.margin = adjust;
-        }
-        else if (location == "CL") {
-            adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-            $sttbImg.style.left = '20px';
-            $sttbImg.style.top = '50%';
-            $sttbImg.style.margin = adjust;
-        }
-        else if (location == "TC") {
-            adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-            $sttbImg.style.top = '20px';
-            $sttbImg.style.right = '50%';
-            $sttbImg.style.margin = adjust;
-        }
-        else if ((location == "BC") && (stbb != "dual")) {
-            adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-            $sttbImg.style.bottom = '20px';
-            $sttbImg.style.right = '50%';
-            $sttbImg.style.margin = adjust;
-        }
-        else if ((location == "BC") && (stbb == "dual")) {
-            adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
-            adjust2=parseInt(size) / 2 + 22;
-            adjusted=adjust2 + "px";
-            $sttbImg.style.bottom = adjusted;
-            $sttbImg.style.right = '50%';
-            $sttbImg.style.margin = adjust;
+
+        if ( document.contains( $sttbImg ) ) {
+            $sttbImg.style.opacity = transparency;
+            $sttbImg.src=imgURL;
+            $sttbImg.style.position = 'fixed';
+            $sttbImg.style.width = size;
+            $sttbImg.style.height = 'auto';
+            $sttbImg.style.display = 'none';
+            $sttbImg.style.zIndex = 2147483647;
+            $sttbImg.style.border = '0px';
+            $sttbImg.style.padding = '0px';
+
+            if (location == "TR") {
+                $sttbImg.style.top = '20px';
+                $sttbImg.style.right = '20px';
+                $sttbImg.style.margin = '0px 0px 0px 0px';
+            }
+            else if (location == "TL") {
+                $sttbImg.style.top = '20px';
+                $sttbImg.style.left = '20px';
+                $sttbImg.style.margin = '0px 0px 0px 0px';
+            }
+            else if ((location == "BR") && (stbb != "dual")) {
+                $sttbImg.style.bottom = '20px';
+                $sttbImg.style.right = '20px';
+                $sttbImg.style.margin = '0px 0px 0px 0px';
+            }
+            else if ((location == "BR") && (stbb == "dual")) {
+                adjust=parseInt(size) / 2 + 22;
+                adjusted=adjust + "px";
+                $sttbImg.style.bottom = adjusted;
+                $sttbImg.style.right = '20px';
+                $sttbImg.style.margin = '0px 0px 0px 0px';
+            }
+            else if ((location == "BL") && (stbb != "dual")) {
+                $sttbImg.style.bottom = '20px';
+                $sttbImg.style.left = '20px';
+                $sttbImg.style.margin = '0px 0px 0px 0px';
+            }
+            else if ((location == "BL") && (stbb == "dual")) {
+                adjust=parseInt(size) / 2 + 22;
+                adjusted=adjust + "px";
+                $sttbImg.style.bottom = adjusted;
+                $sttbImg.style.left = '20px';
+                $sttbImg.style.margin = '0px 0px 0px 0px';
+            }
+            else if (location == "CR") {
+                adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
+                $sttbImg.style.right = '20px';
+                $sttbImg.style.top = '50%';
+                $sttbImg.style.margin = adjust;
+            }
+            else if (location == "CL") {
+                adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
+                $sttbImg.style.left = '20px';
+                $sttbImg.style.top = '50%';
+                $sttbImg.style.margin = adjust;
+            }
+            else if (location == "TC") {
+                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
+                $sttbImg.style.top = '20px';
+                $sttbImg.style.right = '50%';
+                $sttbImg.style.margin = adjust;
+            }
+            else if ((location == "BC") && (stbb != "dual")) {
+                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
+                $sttbImg.style.bottom = '20px';
+                $sttbImg.style.right = '50%';
+                $sttbImg.style.margin = adjust;
+            }
+            else if ((location == "BC") && (stbb == "dual")) {
+                adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
+                adjust2=parseInt(size) / 2 + 22;
+                adjusted=adjust2 + "px";
+                $sttbImg.style.bottom = adjusted;
+                $sttbImg.style.right = '50%';
+                $sttbImg.style.margin = adjust;
+            }
         }
 
         if(stbb=="dual"){
@@ -226,7 +234,7 @@ function STTB() {
             style.type = 'text/css';
             style.appendChild(rules);
             head.appendChild(style);
-        };
+        }
 
         // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
         if ((transparency == 0.0) && (stbb=="dual")){
