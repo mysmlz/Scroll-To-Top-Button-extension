@@ -5,7 +5,7 @@
 * Brought back to life by PoziWorld
 * 
 * Copyright (c) 2011 Cody Sherman (versions < 6.1.3)
-* Copyright (c) 2014-2015 PoziWorld
+* Copyright (c) 2014-2016 PoziWorld
 * Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
 *
 * Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top!
