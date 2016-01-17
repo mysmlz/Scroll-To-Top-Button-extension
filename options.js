@@ -26,6 +26,7 @@ function authorsettings() {
   localStorage["transparency"]="0.5";
   localStorage["contextmenu"]="on";
   localStorage["shortcuts"]="arrows";
+  localStorage["homeendaction"]="sttb";
   restore_options();
   save_options();
   textChange();
@@ -76,6 +77,10 @@ function save_options() {
   var select = document.getElementById("shortcuts");
   var shortcuts = select.children[select.selectedIndex].value;
   localStorage["shortcuts"] = shortcuts;
+
+  select = document.getElementById("homeendaction");
+  var homeendaction = select.children[select.selectedIndex].value;
+  localStorage["homeendaction"] = homeendaction;
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
@@ -235,6 +240,19 @@ function restore_options() {
       break;
     }
   }
+
+  var favorite12 = localStorage["homeendaction"];
+  if (!favorite12) {
+    favorite12 = "homeendaction";
+  }
+  var select = document.getElementById("homeendaction");
+  for (var i = 0; i < select.children.length; i++) {
+    var child = select.children[i];
+    if (child.value == favorite12) {
+      child.selected = "true";
+      break;
+    }
+  }
   save_options();
 }
 
@@ -258,7 +276,7 @@ function textChange(){
     $(".appearance").hide();
     $(".down").show();
   }
-        else{
+  else{
     $("#textChange").html("Appear Distance:");
     $("#textChange").show();
     $("#distance").show();

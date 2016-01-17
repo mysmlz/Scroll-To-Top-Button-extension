@@ -289,6 +289,9 @@ var Background                    = {
     if ( ! localStorage[ 'shortcuts' ] ) {
       localStorage[ 'shortcuts' ] = 'arrows';
     }
+    if ( ! localStorage[ 'homeendaction' ] ) {
+      localStorage[ 'homeendaction' ] = 'sttb';
+    }
     if (localStorage[ 'stbb' ] === 'on' ) {
       localStorage[ 'stbb' ] = 'flip';
     }
@@ -421,6 +424,7 @@ var Background                    = {
         , stbb          : localStorage[ 'stbb' ]
         , transparency  : localStorage[ 'transparency' ]
         , shortcuts     : localStorage[ 'shortcuts' ]
+        , homeendaction : localStorage[ 'homeendaction' ]
       } );
     }
   }

@@ -58,6 +58,7 @@ function STTB() {
         var stbb = response.stbb;
         var transparency = response.transparency;
         var shortcuts = response.shortcuts;
+        var homeendaction = response.homeendaction;
 
         // Assigns the correct arrow color to imgURL
         if (stbb == "dual"){
@@ -304,15 +305,18 @@ function STTB() {
                 UP(speed, scroll);
             });
         }
-        shortcut.add("End", function() {
-            DOWN(speed2, scroll);
-        },{
-            'disable_in_input':true
-        });
-        shortcut.add("Home", function() {
-            UP(speed, scroll);
-        },{
-            'disable_in_input':true
-        });
+
+        if ( homeendaction === 'sttb' ) {
+            shortcut.add("End", function() {
+                DOWN(speed2, scroll);
+            },{
+                'disable_in_input':true
+            });
+            shortcut.add("Home", function() {
+                UP(speed, scroll);
+            },{
+                'disable_in_input':true
+            });
+        }
     });
 }
