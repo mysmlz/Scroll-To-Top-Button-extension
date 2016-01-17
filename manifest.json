@@ -1,11 +1,14 @@
 {
     "manifest_version"        : 2
-  , "name"                    : "__MSG_extensionName__"
-  , "version"                 : "6.2.0"
-  , "description"             : "__MSG_extensionDescription__"
-  , "author"                  : "PoziWorld"
-  , "homepage_url"            : "https://github.com/PoziWorld/Scroll-to-Top-Button-Extension"
+
   , "default_locale"          : "en_US"
+  , "name"                    : "__MSG_extensionName__"
+  , "version"                 : "6.2.1"
+  , "description"             : "__MSG_extensionDescription__"
+
+  , "short_name"              : "STTB"
+  , "author"                  : "PoziWorld"
+  , "homepage_url"            : "https://www.facebook.com/ScrollToTopButton"
 
   , "icons"                   : {
         "16"                  : "icons/Icon-16.png"
