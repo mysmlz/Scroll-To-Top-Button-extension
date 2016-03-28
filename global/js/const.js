@@ -20,34 +20,34 @@
  ============================================================================ */
 
 const
-    strConstExtensionId             = chrome.runtime.id
-  , strConstExtensionName           = chrome.i18n.getMessage( 'extensionName' )
-  , strConstExtensionVersion        = chrome.runtime.getManifest().version
-  , strConstExtensionLanguage       = chrome.i18n.getMessage( 'lang' )
+    strConstExtensionId = chrome.runtime.id
+  , strConstExtensionName = chrome.i18n.getMessage( 'extensionName' )
+  , strConstExtensionVersion = chrome.runtime.getManifest().version
+  , strConstExtensionLanguage = chrome.i18n.getMessage( 'lang' )
 
-  , boolConstIsBowserAvailable      = typeof bowser === 'object'
-  , strConstChromeVersion           =
+  , boolConstIsBowserAvailable = typeof bowser === 'object'
+  , strConstChromeVersion =
       boolConstIsBowserAvailable ? bowser.chromeVersion : ''
-  , boolConstUseOptionsUi           =
+  , boolConstUseOptionsUi =
           boolConstIsBowserAvailable
       &&  strConstChromeVersion >= '40.0'
       &&  bowser.name !== 'Opera'
 
-  , strConstLogOnInstalled          = 'chrome.runtime.onInstalled'
+  , strConstLogOnInstalled = 'chrome.runtime.onInstalled'
 
-  , strConstDisabledDomainsSetting  = 'arrDisabledDomains'
-  , strConstDisabledUrlsSetting     = 'arrDisabledUrls'
+  , strConstDisabledDomainsSetting = 'arrDisabledDomains'
+  , strConstDisabledUrlsSetting = 'arrDisabledUrls'
 
-  , objConstUserSetUp               = typeof bowser === 'object' ?
+  , objConstUserSetUp = typeof bowser === 'object' ?
         {
-            currentVersion          : strConstExtensionVersion
-          , browserName             : bowser.name
-          , browserVersion          : bowser.version
-          , browserVersionFull      : bowser.versionFull
-          , chromeVersion           : strConstChromeVersion
-          , chromeVersionFull       : bowser.chromeVersionFull
-          , language                : strConstExtensionLanguage
-          , userAgent               : bowser.userAgent
+            currentVersion : strConstExtensionVersion
+          , browserName : bowser.name
+          , browserVersion : bowser.version
+          , browserVersionFull : bowser.versionFull
+          , chromeVersion : strConstChromeVersion
+          , chromeVersionFull : bowser.chromeVersionFull
+          , language : strConstExtensionLanguage
+          , userAgent : bowser.userAgent
         }
       : {}
   ;
@@ -58,8 +58,7 @@ const
 
  ============================================================================ */
 
-var
-    StorageApi                    = chrome.storage
-  , StorageSync                   = StorageApi.sync
-  , StorageLocal                  = StorageApi.local
+var StorageApi = chrome.storage
+  , StorageSync = StorageApi.sync
+  , StorageLocal = StorageApi.local
   ;

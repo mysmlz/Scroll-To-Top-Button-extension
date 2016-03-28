@@ -77,12 +77,11 @@ var Page = {
    * @return  void
    **/
   localize : function( strPageName, strCustomSelectorParent ) {
-    var
-        boolIsCustomSelectorParentPresent =
+    var boolIsCustomSelectorParentPresent =
           typeof strCustomSelectorParent === 'string'
-      , strSelectorPrefix                 =
+      , strSelectorPrefix =
           boolIsCustomSelectorParentPresent ? strCustomSelectorParent + ' ' : ''
-      , $allLocalizableElements           =
+      , $allLocalizableElements =
           document.querySelectorAll( strSelectorPrefix + '[i18n-content]' )
       ;
 
@@ -91,34 +90,36 @@ var Page = {
       i < intLocalizableElements;
       i++
         ) {
-        var
-            $localizableElement = $allLocalizableElements[ i ]
-          , strI18              = $localizableElement
-                                    .getAttribute( 'i18n-content' )
-          , strMessage          = chrome.i18n.getMessage( strI18 )
+        var $localizableElement = $allLocalizableElements[ i ]
+          , strI18 = $localizableElement.getAttribute( 'i18n-content' )
+          , strMessage = chrome.i18n.getMessage( strI18 )
           ;
 
-        if ( $localizableElement.nodeName === 'LABEL' )
-          $localizableElement.innerHTML = 
-            $localizableElement.innerHTML + strMessage;
+        if ( $localizableElement.nodeName === 'LABEL' ) {
+          $localizableElement.innerHTML =  $localizableElement.innerHTML + strMessage;
+        }
         else if ( $localizableElement.nodeName === 'A' ) {
           $localizableElement.innerHTML = strMessage;
 
-          if ( $localizableElement.href === '' )
-            $localizableElement.href = 
-              chrome.i18n.getMessage( strI18 + 'Href' );
+          if ( $localizableElement.href === '' ) {
+            $localizableElement.href =  chrome.i18n.getMessage( strI18 + 'Href' );
+          }
         }
-        else if ( $localizableElement.nodeName === 'IMG' )
+        else if ( $localizableElement.nodeName === 'IMG' ) {
           $localizableElement.alt = strMessage;
-        else if ( ! $localizableElement.classList.contains( 'i18nNoInner' ) )
+        }
+        else if ( ! $localizableElement.classList.contains( 'i18nNoInner' ) ) {
           $localizableElement.innerHTML = strMessage;
+        }
 
-        if ( $localizableElement.classList.contains( 'i18nTitle' ) )
+        if ( $localizableElement.classList.contains( 'i18nTitle' ) ) {
           $localizableElement.setAttribute( 'title', strMessage );
+        }
     }
 
-    if ( !boolIsCustomSelectorParentPresent )
+    if ( !boolIsCustomSelectorParentPresent ) {
       document.title = chrome.i18n.getMessage( strPageName + 'PageTitle' );
+    }
   }
   ,
 
@@ -153,14 +154,17 @@ var Page = {
    * @return  void
    **/
   showSuccess : function( $element ) {
-    $element.classList.remove( 'show' );
+    var arrClassList = $element.classList;
+
+    arrClassList.remove( 'show' );
 
     // Does not work the second time if there is no timeout
     setTimeout(
         function() {
-          $element.classList.add( 'reset' );
-          $element.classList.remove( 'reset' );
-          $element.classList.add( 'show' );
+
+          arrClassList.add( 'reset' );
+          arrClassList.remove( 'reset' );
+          arrClassList.add( 'show' );
         }
       , 10
     );
@@ -176,8 +180,7 @@ var Page = {
    * @return  void
    **/
   toggleElement : function( $element, boolShow ) {
-    var
-        boolHidden
+    var boolHidden
       , boolAriaHidden
       ;
 
@@ -211,9 +214,7 @@ var Page = {
    **/
   hideInOpera : function() {
     if ( bowser.name === 'Opera' ) {
-      var $elements =
-            document
-              .getElementsByClassName( strHideInOperaClass );
+      var $elements = document.getElementsByClassName( strHideInOperaClass );
 
       for ( var i = ( $elements.length - 1 ); i >= 0; i-- ) {
         var $element = $elements[i];

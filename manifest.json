@@ -3,8 +3,8 @@
 
   , "default_locale"          : "en_US"
   , "name"                    : "__MSG_extensionName__"
-  , "version"                 : "6.2.1"
   , "description"             : "__MSG_extensionDescription__"
+  , "version"                 : "6.3.0"
 
   , "short_name"              : "STTB"
   , "author"                  : "PoziWorld"
@@ -44,6 +44,7 @@
               "libraries/jquery.js"
             , "libraries/jquery.easing.js"
             , "libraries/jQueryRotate.js"
+            , "content-script/js/sttb.js"
             , "jquery.scroll.pack.js"
             , "global/js/bowser.js"
             , "global/js/const.js"

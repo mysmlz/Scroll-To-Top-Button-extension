@@ -10,68 +10,58 @@
 * 
 * Version: 3.1, 29/07/2010
 *
-* Modified for Scroll to Top Button by Cody Sherman (versions < 6.1.3)
-* http://scrolltotopbutton.com/
-* http://codysherman.com/
-*
-* Modified for version 5.0.2
+* Modified for Scroll to Top Button
 -----------------------*/
-// Functions for going either UP or DOWN
-function UP(speed,ease){
-    $("html, body").animate({scrollTop:"0"},speed,ease,function() {inProgress="no"});
-}
-function DOWN(speed,ease){
-    $("html, body").animate({scrollTop:$(document).height()},speed,ease,function() {inProgress="no"});
-}
 
 // Craig's Scroll to Top Plugin with modifications
 (function($){
     $.fn.extend({
         scrollToTop:function(options){
 
-            var defaults={speed:"slow",ease:"jswing",start:0};
+            var defaults = {
+                    speed : 'slow'
+                ,   ease : 'jswing'
+                ,   start : 0
+            };
 
-            var options=$.extend(defaults,options);
+            options = $.extend( defaults, options );
 
             return this.each(function(){
 
-                var o=options;var scrollDiv=$(this);
+                var o = options
+                ,   $scrollDiv = $( this )
+                ;
 
-                $(this).hide().removeAttr("href").css("cursor","pointer");
+                $scrollDiv.hide().removeAttr("href").css("cursor","pointer");
 
                 // Allows the button to change directions when in "Flip" mode on page load
                 if(o.stbb=="flip"){
-                    if($(window).scrollTop()>=o.flipDistance){
+                    if ( sttb.getScrollTop() >= o.flipDistance){
                         $("#STTBimg").rotate({animateTo:0});
                         o.direction="up";
                     }
 
-                    if($(window).scrollTop()<"200"){
+                    if ( sttb.getScrollTop() < "200"){
                         $("#STTBimg").rotate({animateTo:-180});
                         o.direction="down";
                     }
                 }
 
-                // Checks whether button should be visable at page load
-                if($(window).scrollTop()>=o.start){
-                    $(this).show();
+                // Checks whether button should be visible at page load
+                if ( sttb.getScrollTop() >= o.start ) {
+                    $scrollDiv.show();
                 }
 
-                // Checks whether button should be visable/flipped on scroll
-                $(window).scroll(function(){
-                    if($(window).scrollTop()>=o.start){
-                        $(scrollDiv).show();
-                    }else{
-                        $(scrollDiv).hide();
-                    }
+                // Checks whether button should be visible/flipped on scroll
+                sttb.getScrollableElement().scroll( function() {
+                    $scrollDiv.toggle( sttb.getScrollTop() >= o.start );
 
                     if(o.stbb=="flip"){
-                        if($(window).scrollTop()>=o.flipDistance){
+                        if ( sttb.getScrollTop() >= o.flipDistance ) {
                             $("#STTBimg").rotate({animateTo:0});
                             o.direction="up";
                         }
-
-                        if($(window).scrollTop()<o.flipDistance){
+                        else {
                             $("#STTBimg").rotate({animateTo:-180});
                             o.direction="down";
                         }
@@ -82,11 +72,11 @@ function DOWN(speed,ease){
 
                 //Rules specific to the button when it is bi-directional
                 if((o.stbb=="flip") || (o.stbb=="dual")){
-                    scrollDiv.click(function(event){
+                    $scrollDiv.click(function(event){
 
                         // Stops the scrolling if button is clicked a second time.
                         if(inProgress=="yes"){
-                            $("html, body").stop();
+                            sttb.getAnimatableElement().stop();
                             inProgress="no";
                         }
 
@@ -95,7 +85,8 @@ function DOWN(speed,ease){
                             inProgress="yes";
                             speed=o.speed;
                             ease=o.ease;
-                            UP(speed,ease);
+                            sttb.scrollUp( speed, ease );
+
                             if((o.transparency=="0.0")&&(o.stbb=="dual")){
                                 $(this).fadeTo("medium", 0.5);
                             }
@@ -108,7 +99,8 @@ function DOWN(speed,ease){
                             inProgress="yes";
                             speed=o.speed;
                             ease=o.ease;
-                            DOWN(speed,ease);
+                            sttb.scrollDown( speed, ease );
+
                             if((o.transparency=="0.0")&&(o.stbb=="dual")){
                                 $(this).fadeTo("medium", 0.5);
                             }
@@ -121,9 +113,9 @@ function DOWN(speed,ease){
 
                 // Sets up the scrolling rules when in only Scroll to Top mode
                 else if(o.stbb=="off"){
-                    scrollDiv.click(function(event){
+                    $scrollDiv.click(function(event){
                         if(inProgress=="yes"){
-                            $("html, body").stop();
+                            sttb.getAnimatableElement().stop();
                             inProgress="no";
                         }
 
@@ -131,7 +123,7 @@ function DOWN(speed,ease){
                             inProgress="yes";
                             speed=o.speed;
                             ease=o.ease;
-                            UP(speed,ease);
+                            sttb.scrollUp( speed, ease );
                         }
                     })
                 }

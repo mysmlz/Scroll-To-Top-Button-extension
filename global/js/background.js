@@ -36,18 +36,17 @@
  ============================================================================ */
 
 const
-    objSettingsNotSyncable                        = {
-        strLatestTrackedVersion                   : strConstExtensionVersion
+    objSettingsNotSyncable = {
+        strLatestTrackedVersion : strConstExtensionVersion
     }
-  , objSettingsSyncable                           = {
-        arrDisabledDomains                        : [
-            'mail.google.com'
-          , 'docs.google.com'
+  , objSettingsSyncable = {
+        arrDisabledDomains : [
+            'docs.google.com'
           , 'docs0.google.com'
           , 'spreadsheets.google.com'
           , 'spreadsheets0.google.com'
         ]
-      , arrDisabledUrls                           : []
+      , arrDisabledUrls : []
     }
   ;
 
@@ -57,10 +56,10 @@ const
 
  ============================================================================ */
 
-var Background                    = {
-    intCheckSettingsTimeout       : 50
-  , boolWasAnyChromeEventFired    : false
-  , objPreservedSettings          : {}
+var Background = {
+    intCheckSettingsTimeout : 50
+  , boolWasAnyChromeEventFired : false
+  , objPreservedSettings : {}
   ,
 
   /**
@@ -94,8 +93,7 @@ var Background                    = {
 
         var strLatestTrackedVersion = objReturn.strLatestTrackedVersion;
 
-        if (
-              typeof strLatestTrackedVersion === 'string'
+        if (  typeof strLatestTrackedVersion === 'string'
           &&  (
                     strLatestTrackedVersion < strConstExtensionVersion
                 ||  strLatestTrackedVersion === ''
@@ -141,6 +139,8 @@ var Background                    = {
       , { strLatestTrackedVersion : strConstExtensionVersion }
       , strLog + ', save version'
     );
+
+    objDetails.boolWasUpdated = true;
   }
   ,
 
@@ -171,12 +171,19 @@ var Background                    = {
     strLog = 'cleanUp';
     Log.add( strLog );
 
-    if (
-          typeof boolIsCalledFromOnInstalledListener === 'boolean'
-      &&  boolIsCalledFromOnInstalledListener
-    ) {
-      Background.removeOldSettings( objDetails );
-    }
+    // To make removeOldSettings asynchronous.
+    // Otherwise, it won't work correctly.
+    var arrSettingsToCleanUp = [
+        'strDummySetting'
+    ];
+
+    StorageLocal.remove( arrSettingsToCleanUp, function() {
+      if (  typeof boolIsCalledFromOnInstalledListener === 'boolean'
+        &&  boolIsCalledFromOnInstalledListener
+      ) {
+        Background.removeOldSettings( objDetails );
+      }
+    } );
   }
   ,
 
@@ -194,16 +201,59 @@ var Background                    = {
     strLog = 'removeOldSettings';
     Log.add( strLog, objDetails );
 
-    if (
-          typeof objDetails.boolWasUpdated === 'boolean'
+    if (  typeof objDetails.boolWasUpdated === 'boolean'
       &&  objDetails.boolWasUpdated
     ) {
       StorageSync.get( null, function( objReturn ) {
         strLog = 'removeOldSettings';
 
-        var
-            arrSettingsToRemove   = []
+        var arrSettingsToRemove = []
+          , objDeprecatedSettings = {}
+          , strPreviousVersion = objDetails.previousVersion
           ;
+
+        // Added support for Gmail
+        if ( typeof strPreviousVersion === 'string' && strPreviousVersion < '6.3.0' ) {
+          objDeprecatedSettings.arrDisabledDomains = [
+              'mail.google.com'
+          ];
+        }
+
+        for ( miscSetting in objDeprecatedSettings ) {
+          if ( objDeprecatedSettings.hasOwnProperty( miscSetting ) ) {
+            if ( objDeprecatedSettings[ miscSetting ] === null ) {
+              // Remove it only if it is present
+              if ( objReturn[ miscSetting ] ) {
+                arrSettingsToRemove.push( miscSetting );
+              }
+            }
+            else {
+              // If deprecated subsetting is present in current setting object,
+              // remove it preserving the rest.
+              // Restore preserved in setExtensionDefaults().
+              var objCurrentSetting = objReturn[ miscSetting ]
+                , objDeprecatedSetting = objDeprecatedSettings[ miscSetting ]
+                ;
+
+              if ( objCurrentSetting ) {
+                if ( Array.isArray( objCurrentSetting ) && Array.isArray( objDeprecatedSetting ) ) {
+                  for ( var i = 0, l = objDeprecatedSetting.length; i < l; i++ ) {
+                    objCurrentSetting = objCurrentSetting.filter( function( strItem ) {
+                      return strItem !== objDeprecatedSetting[ i ];
+                    } );
+                  }
+                }
+
+                if ( ! Global.isEmpty( objDeprecatedSetting ) ) {
+                  Background.objPreservedSettings[ miscSetting ] =
+                    objCurrentSetting;
+
+                  arrSettingsToRemove.push( miscSetting );
+                }
+              }
+            }
+          }
+        }
 
         if ( ! Global.isEmpty( arrSettingsToRemove ) ) {
           StorageSync.remove( arrSettingsToRemove, function() {
@@ -211,13 +261,13 @@ var Background                    = {
             Log.add( strLog + strLogDo, arrSettingsToRemove, true );
 
             if ( chrome.runtime.lastError ) {
-              var
-                  objLogDetails   = {}
+              var objLogDetails = {}
                 , strErrorMessage = chrome.runtime.lastError.message
                 ;
 
-              if ( typeof strErrorMessage === 'string' )
+              if ( typeof strErrorMessage === 'string' ) {
                 objLogDetails = { strErrorMessage: strErrorMessage };
+              }
 
               Log.add( strLog + strLogError, objLogDetails, true );
               return;
@@ -292,10 +342,10 @@ var Background                    = {
     if ( ! localStorage[ 'homeendaction' ] ) {
       localStorage[ 'homeendaction' ] = 'sttb';
     }
-    if (localStorage[ 'stbb' ] === 'on' ) {
+    if ( localStorage[ 'stbb' ] === 'on' ) {
       localStorage[ 'stbb' ] = 'flip';
     }
-    if (localStorage[ 'latest' ] != '2' ) {
+    if ( localStorage[ 'latest' ] != '2' ) {
       localStorage[ 'latest' ] = '2';
       Global.openOptionsPage( strLog );
     }
@@ -323,55 +373,62 @@ var Background                    = {
 
       for ( var strSetting in objSettings ) {
         if ( objSettings.hasOwnProperty( strSetting ) ) {
-          var
-              miscSetting       = objSettings[ strSetting ]
+          var miscSetting = objSettings[ strSetting ]
             , miscReturnSetting = objReturn[ strSetting ]
             ;
 
           // If a new setting introduced, set its default
-          if ( typeof miscReturnSetting === 'undefined' )
+          if ( typeof miscReturnSetting === 'undefined' ) {
             objTempToSet[ strSetting ] = miscSetting;
+          }
 
-          if (
-                typeof miscSetting === 'object'
-            &&  ! Array.isArray( miscSetting )
-          )
-            for ( var strSubsetting in miscSetting ) {
-              if ( miscSetting.hasOwnProperty( strSubsetting ) ) {
-                // If a new subsetting introduced, set its default
-                if (
-                      typeof miscReturnSetting !== 'undefined'
-                  &&  typeof miscReturnSetting[ strSubsetting ] === 'undefined'
-                ) {
-                  // If the setting has been set before.
-                  if ( typeof objTempToSet[ strSetting ] === 'undefined' )
-                    // Preserve other subsettings.
-                    objTempToSet[ strSetting ] = miscReturnSetting;
-
-                  objTempToSet[ strSetting ][ strSubsetting ] =
-                    miscSetting[ strSubsetting ];
-                }
-                else {
-                  var objSetting =
-                        Background.objPreservedSettings[ strSetting ];
-
-                  if (
-                        typeof objSetting !== 'undefined'
-                    &&  typeof objSetting[ strSubsetting ] !== 'undefined'
+          if ( typeof miscSetting === 'object' ) {
+            if ( ! Array.isArray( miscSetting ) ) {
+              for ( var strSubsetting in miscSetting ) {
+                if ( miscSetting.hasOwnProperty( strSubsetting ) ) {
+                  // If a new subsetting introduced, set its default
+                  if (  typeof miscReturnSetting !== 'undefined'
+                    &&  typeof miscReturnSetting[ strSubsetting ] === 'undefined'
                   ) {
+                    // If the setting has been set before.
+                    if ( typeof objTempToSet[ strSetting ] === 'undefined' ) {
+                      // Preserve other subsettings.
+                      objTempToSet[ strSetting ] = miscReturnSetting;
+                    }
+
                     objTempToSet[ strSetting ][ strSubsetting ] =
-                      objSetting[ strSubsetting ];
+                      miscSetting[ strSubsetting ];
+                  }
+                  else {
+                    var objSetting = Background.objPreservedSettings[ strSetting ];
+
+                    if (  typeof objSetting !== 'undefined'
+                      &&  typeof objSetting[ strSubsetting ] !== 'undefined'
+                    ) {
+                      objTempToSet[ strSetting ][ strSubsetting ] =
+                        objSetting[ strSubsetting ];
+                    }
                   }
                 }
               }
             }
+            else {
+              var arrSetting = Background.objPreservedSettings[ strSetting ];
+
+              if ( typeof arrSetting === 'object' && Array.isArray( arrSetting ) ) {
+                objTempToSet[ strSetting ] = Background.objPreservedSettings[ strSetting ];
+              }
+            }
+          }
         }
       }
 
-      if ( ! Global.isEmpty( objTempToSet ) )
+      if ( ! Global.isEmpty( objTempToSet ) ) {
         Global.setStorageItems( Storage, objTempToSet, strLog );
-      else
+      }
+      else {
         Log.add( strLog + strLogDoNot );
+      }
     });
   }
   ,
@@ -457,7 +514,7 @@ chrome.runtime.onMessage.addListener(
 /**
  * Fired when the extension is first installed, 
  * when the extension is updated to a new version, 
- * and when Chrome is updated to a new version.
+ * and when browser is updated to a new version.
  *
  * @type    method
  * @param   objDetails
@@ -473,16 +530,17 @@ chrome.runtime.onInstalled.addListener(
 
     // Copy user set-up details
     // TODO: Replace with Object.assign() when supported
-    for ( var miscProperty in objConstUserSetUp )
-      if ( objConstUserSetUp.hasOwnProperty( miscProperty ) )
+    for ( var miscProperty in objConstUserSetUp ) {
+      if ( objConstUserSetUp.hasOwnProperty( miscProperty ) ) {
         objDetails[ miscProperty ] = objConstUserSetUp[ miscProperty ];
+      }
+    }
 
     Log.add( strLog, objDetails, true );
 
     Background.cleanUp( true, objDetails );
 
-    if (
-          objDetails.reason === 'update'
+    if (  objDetails.reason === 'update'
       &&  typeof objDetails.previousVersion === 'string'
       &&  objDetails.previousVersion < strConstExtensionVersion
     ) {

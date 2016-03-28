@@ -6,34 +6,30 @@
 * 
 * Copyright (c) 2011 Cody Sherman (versions < 6.1.3)
 * Copyright (c) 2014-2016 PoziWorld
-* Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
-*
-* Description: Scroll to Top Button allows you to quickly jump back to the top of any page! Once you scroll far enough down on a page, the button will appear in the top right corner. Click it, and you will be taken to the very top!
-*
-* http://scrolltotopbutton.com
+* 
+* Licensed under the MIT License
+* http://www.opensource.org/licenses/mit-license.php
 *
 * Original source code at: http://github.com/codysherman/Scroll-to-Top-Button-Extension
 * Forked source code at: http://github.com/PoziWorld/Scroll-to-Top-Button-Extension
-*
-*Version: 6.1.4
 -----------------------*/
+
 // Checks to see if page is larger than window, otherwise runs watch();
-if ((window == top) && ($(window).height()<$(document).height())) {
+if ( ( window == top ) && ( $( window ).height() < $( document ).height() ) ) {
     ContentScript.init();
 }
 else {
-    watch();
+    sttb.watch();
 }
 
-// Checks to see if the page changes size later or if a mistake was made judging size by user scrolling
-function watch(){
-    $(window).scroll(function () {
-        STTB();
-        $(window).unbind('scroll');
-    });
-}
+/**
+ * Main function, sets up the button
+ *
+ * @type    method
+ * @param   No Parameters Taken
+ * @return  void
+ **/
 
-// Main function, sets up the button
 function STTB() {
     // Removes the built-in button when on Tumblr
     if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
@@ -80,6 +76,7 @@ function STTB() {
         var $sttbImg = document.getElementById( 'STTBimg' );
 
         if ( document.contains( $sttbImg ) ) {
+            // TODO: Move moveable properties to .css
             $sttbImg.style.opacity = transparency;
             $sttbImg.src=imgURL;
             $sttbImg.style.position = 'fixed';
@@ -240,28 +237,30 @@ function STTB() {
         // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
         if ((transparency == 0.0) && (stbb=="dual")){
             $("#STTBimg").hover(function(){
-                if($(window).scrollTop()>=distance){
+                if ( sttb.getScrollTop() >= distance ) {
                     $("#STTBimg").stop();
                     $("#STTBimg2").stop();
                     $("#STTBimg").stop().fadeTo("fast", 1.0);
                     $("#STTBimg2").stop().fadeTo("fast", 0.5);
                 }
             },function(){
-                if($(window).scrollTop()>=distance){
-                    $("#STTBimg").stop().fadeTo("medium", transparency);$("#STTBimg2").stop().fadeTo("medium", transparency);
+                if ( sttb.getScrollTop() >= distance ) {
+                    $("#STTBimg").stop().fadeTo("medium", transparency);
+                    $("#STTBimg2").stop().fadeTo("medium", transparency);
                 }
             });
 
             $("#STTBimg2").hover(function(){
-                if($(window).scrollTop()>=distance){
+                if ( sttb.getScrollTop() >= distance ) {
                     $("#STTBimg").stop();
                     $("#STTBimg2").stop();
                     $("#STTBimg").stop().fadeTo("fast", 0.5);
                     $("#STTBimg2").stop().fadeTo("fast", 1.0);
                 }
             },function(){
-                if($(window).scrollTop()>=distance){
-                    $("#STTBimg").fadeTo("medium", transparency);$("#STTBimg2").fadeTo("medium", transparency);
+                if ( sttb.getScrollTop() >= distance ) {
+                    $("#STTBimg").fadeTo("medium", transparency);
+                    $("#STTBimg2").fadeTo("medium", transparency);
                 }
             });
         }
@@ -270,50 +269,75 @@ function STTB() {
         else{
             if (transparency != 1.0) {
                 $("#STTBimg").hover(function(){
-                    if($(window).scrollTop()>=distance){$("#STTBimg").stop().fadeTo("fast", 1.0);}
+                    if ( sttb.getScrollTop() >= distance ) {
+                        $("#STTBimg").stop().fadeTo("fast", 1.0);
+                    }
                 },function(){
-                    if($(window).scrollTop()>=distance){$("#STTBimg").stop().fadeTo("medium", transparency);}
+                    if ( sttb.getScrollTop() >= distance ) {
+                        $("#STTBimg").stop().fadeTo("medium", transparency);
+                    }
                 });
 
                 $("#STTBimg2").hover(function(){
-                    if($(window).scrollTop()>=distance){$("#STTBimg2").stop().fadeTo("fast", 1.0);}
+                    if ( sttb.getScrollTop() >= distance ) {
+                        $("#STTBimg2").stop().fadeTo("fast", 1.0);
+                    }
                 },function(){
-                    if($(window).scrollTop()>=distance){$("#STTBimg2").stop().fadeTo("medium", transparency);}
+                    if ( sttb.getScrollTop() >= distance ) {
+                        $("#STTBimg2").stop().fadeTo("medium", transparency);
+                    }
                 });
             }
         }
 
 
         // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-        $("#STTBimg").scrollToTop({speed:speed, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"up"});
-        $("#STTBimg2").scrollToTop({speed:speed2, ease:scroll, start:distance, stbb:stbb, flipDistance:flipDistance, transparency:transparency, direction:"down"});
+        $( "#STTBimg" ).scrollToTop( {
+                speed : speed
+            ,   ease : scroll
+            ,   start : distance
+            ,   stbb : stbb
+            ,   flipDistance : flipDistance
+            ,   transparency : transparency
+            ,   direction : 'up'
+        } );
+
+        $( "#STTBimg2" ).scrollToTop( {
+                speed : speed2
+            ,   ease : scroll
+            ,   start : distance
+            ,   stbb : stbb
+            ,   flipDistance : flipDistance
+            ,   transparency : transparency
+            ,   direction : 'down'
+        } );
 
         //Adds keyboard commands using shortcut.js
         if (shortcuts == "arrows") {
             shortcut.add("Alt+Down", function() {
-                DOWN(speed2, scroll);
+                sttb.scrollDown( speed2, scroll );
             });
             shortcut.add("Alt+Up", function() {
-                UP(speed, scroll);
+                sttb.scrollUp( speed, scroll );
             });
         }
         else if (shortcuts == "tb") {
             shortcut.add("Alt+B", function() {
-                DOWN(speed2, scroll);
+                sttb.scrollDown( speed2, scroll );
             });
             shortcut.add("Alt+T", function() {
-                UP(speed, scroll);
+                sttb.scrollUp( speed, scroll );
             });
         }
 
         if ( homeendaction === 'sttb' ) {
             shortcut.add("End", function() {
-                DOWN(speed2, scroll);
+                sttb.scrollDown( speed2, scroll );
             },{
                 'disable_in_input':true
             });
             shortcut.add("Home", function() {
-                UP(speed, scroll);
+                sttb.scrollUp( speed, scroll );
             },{
                 'disable_in_input':true
             });

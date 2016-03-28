@@ -90,12 +90,12 @@ function save_options() {
   }, 3000);
 }
 
-// Message to restart Chrome when setting change requires it
+// Message to restart browser when setting change requires it
 var restartChange = "false";
 function restart() {
   if (restartChange=="false") {
     var status = document.getElementById("restartstatus");
-    status.innerHTML = "Restart Google Chrome to take effect.";
+    status.innerHTML = "Restart your browser to take effect.";
     restartChange = "true";
   }
   else if (restartChange=="true") {
@@ -296,13 +296,17 @@ $(function() {
   restore_options();
   textChange();
 
-  // Show appropriate link for Opera
-  if ( navigator.vendor.indexOf( 'Opera' ) === 0 )
+  // Show appropriate link for Opera (snippet from http://stackoverflow.com/a/9851769)
+  if (  ( !! window.opr && !! opr.addons )
+    ||  !! window.opera
+    ||  navigator.userAgent.indexOf( ' OPR/' ) >= 0
+  ) {
     $( '#rate' )
       .attr(
           'href'
         , 'https://addons.opera.com/extensions/details/scroll-to-top-button/'
       );
+  }
 
   // Button Mode
   $( '#stbb' ).bind( 'change', function() {

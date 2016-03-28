@@ -25,14 +25,13 @@
  ============================================================================ */
 
 const
-    arrSettingsToGet              = [
-                                        strConstDisabledDomainsSetting
-                                      , strConstDisabledUrlsSetting
-                                    ]
+    arrSettingsToGet = [
+        strConstDisabledDomainsSetting
+      , strConstDisabledUrlsSetting
+    ]
   ;
 
-var
-    strTabUrl
+var strTabUrl
   , strTabDomain
   ;
 
@@ -85,9 +84,8 @@ var ContentScript = {
   getActiveTabSettings : function() {
     StorageSync.get( arrSettingsToGet, function( objReturn ) {
       // Check domain first
-      var
-          arrDisabledDomains    = objReturn[ strConstDisabledDomainsSetting ]
-        , boolIsDisabledDomain  =
+      var arrDisabledDomains = objReturn[ strConstDisabledDomainsSetting ]
+        , boolIsDisabledDomain =
                 Array.isArray( arrDisabledDomains )
             &&  ~ arrDisabledDomains.indexOf( strTabDomain )
         ;
@@ -97,9 +95,8 @@ var ContentScript = {
       }
 
       // Check URL
-      var
-          arrDisabledUrls       = objReturn[ strConstDisabledUrlsSetting ]
-        , boolIsDisabledUrl     =
+      var arrDisabledUrls = objReturn[ strConstDisabledUrlsSetting ]
+        , boolIsDisabledUrl =
                 Array.isArray( arrDisabledUrls )
             &&  ~ arrDisabledUrls.indexOf( strTabUrl )
         ;
