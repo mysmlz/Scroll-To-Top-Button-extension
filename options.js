@@ -51,7 +51,7 @@ function save_options() {
   localStorage["size"] = size;
 
   var select = document.getElementById("buttoncolor");
-  var color = select.children[select.selectedIndex].value;
+  var color = select[select.selectedIndex].value;
   localStorage["arrow"] = color;
 
   /*var select = document.getElementById("scroll");
@@ -258,30 +258,30 @@ function restore_options() {
 
 function textChange(){
   if(localStorage["stbb"]=="flip"){
-    $("#textChange").html("Flip Distance:");
-    $("#textChange").show();
-    $("#distance").show();
-    $(".appearance").show();
-    $(".down").show();
+    $("#textChange").html( chrome.i18n.getMessage( 'flipDistance' ) );
+    $("#textChange").closest( '.settingContainer' ).show();
+    $("#distance").closest( '.settingContainer' ).show();
+    $(".appearance").closest( '.settingContainer' ).show();
+    $("#speed2").closest( '.settingContainer' ).show();
   }
   else if(localStorage["stbb"]=="dual"){
-    $("#textChange").hide();
-    $("#distance").hide();
-    $(".appearance").show();
-    $(".down").show();
+    $("#textChange").closest( '.settingContainer' ).hide();
+    $("#distance").closest( '.settingContainer' ).hide();
+    $(".appearance").closest( '.settingContainer' ).show();
+    $("#speed2").closest( '.settingContainer' ).show();
   }
   else if(localStorage["stbb"]=="keys"){
-    $("#textChange").hide();
-    $("#distance").hide();
-    $(".appearance").hide();
-    $(".down").show();
+    $("#textChange").closest( '.settingContainer' ).hide();
+    $("#distance").closest( '.settingContainer' ).hide();
+    $(".appearance").closest( '.settingContainer' ).hide();
+    $("#speed2").closest( '.settingContainer' ).show();
   }
   else{
-    $("#textChange").html("Appear Distance:");
-    $("#textChange").show();
-    $("#distance").show();
-    $(".appearance").show();
-    $(".down").hide();
+    $("#textChange").html( chrome.i18n.getMessage( 'appearDistance' ) );
+    $("#textChange").closest( '.settingContainer' ).show();
+    $("#distance").closest( '.settingContainer' ).show();
+    $(".appearance").closest( '.settingContainer' ).show();
+    $("#speed2").closest( '.settingContainer' ).hide();
   }
 }
 
@@ -296,17 +296,17 @@ $(function() {
   restore_options();
   textChange();
 
+  var strRateLink = 'https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews';
+
   // Show appropriate link for Opera (snippet from http://stackoverflow.com/a/9851769)
   if (  ( !! window.opr && !! opr.addons )
     ||  !! window.opera
     ||  navigator.userAgent.indexOf( ' OPR/' ) >= 0
   ) {
-    $( '#rate' )
-      .attr(
-          'href'
-        , 'https://addons.opera.com/extensions/details/scroll-to-top-button/'
-      );
+    strRateLink = 'https://addons.opera.com/extensions/details/scroll-to-top-button/';
   }
+
+  $( '#rateLink' ).attr( 'href', strRateLink );
 
   // Button Mode
   $( '#stbb' ).bind( 'change', function() {
@@ -330,10 +330,17 @@ $(function() {
   // Restore Defaults
   $( '#restore' ).bind( 'click', function() {
     defaults();
+    return false;
   } );
 
   // Author's Settings
   $( '#author' ).bind( 'click', function() {
     authorsettings();
+    return false;
+  } );
+
+  // Form submission
+  $( '#settingsForm' ).bind( 'submit', function() {
+    return false;
   } );
 });

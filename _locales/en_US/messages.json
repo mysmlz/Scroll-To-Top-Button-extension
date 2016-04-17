@@ -2,48 +2,257 @@
   "lang": {
     "message": "en"
   }
-  ,
-  "extensionName": {
+, "extensionName": {
     "message": "Scroll To Top Button"
   }
-  ,
-  "extensionDescription": {
+, "extensionDescription": {
     "message": "Adds a scroll to top or bottom button."
   }
-  ,
-  "optionsPageTitle": {
+, "optionsPageTitle": {
     "message": "Options | Scroll To Top Button"
   }
-    ,
-    "optionsTitle": {
+  , "optionsTitle": {
       "message": "Scroll To Top Button Options"
     }
-  ,
-  "close": {
+, "close": {
     "message": "Close"
   }
-  ,
-  "browserActionPageTitle": {
+, "browserActionPageTitle": {
     "message": "Active tab settings | Scroll To Top Button"
   }
-    ,
-    "browserActionTitle": {
+  , "browserActionTitle": {
       "message": "Active tab settings"
     }
-    ,
-    "browserActionSttbEnabled": {
+  , "browserActionSttbEnabled": {
       "message": "Enable STTB"
     }
-    ,
-    "browserActionSttbDisabledUrl": {
+  , "browserActionSttbDisabledUrl": {
       "message": "Disable STTB for this URL"
     }
-    ,
-    "browserActionSttbDisabledDomain": {
+  , "browserActionSttbDisabledDomain": {
       "message": "Disable STTB for this domain"
     }
-    ,
-    "browserActionReloadActiveTab": {
+  , "browserActionReloadActiveTab": {
       "message": "Reload tab"
     }
+
+, "ratingHelpsOthers": {
+    "message": "Please <a href=\"#\" target=\"_blank\" id=\"rateLink\">rate this extension</a> if you enjoy it!<br>The feedback really helps others find this extension!"
+  }
+
+, "buttonSettings": {
+    "message": "Button settings"
+  }
+  , "buttonMode": {
+      "message": "Button mode"
+    }
+    , "scrollToTopOnly": {
+        "message": "Scroll to top only"
+      }
+    , "flipBetweenTopBottom": {
+        "message": "Flip between top &amp; bottom"
+      }
+    , "dualArrows": {
+        "message": "Dual arrows"
+      }
+    , "keyboardOnly": {
+        "message": "Keyboard only"
+      }
+  , "scrollUpSpeed": {
+      "message": "Scroll up speed"
+    }
+  , "scrollDownSpeed": {
+      "message": "Scroll down speed"
+    }
+    , "slowest": {
+        "message": "Slowest"
+      }
+    , "slower": {
+        "message": "Slower"
+      }
+    , "slow": {
+        "message": "Slow"
+      }
+    , "fast": {
+        "message": "Fast"
+      }
+    , "faster": {
+        "message": "Faster"
+      }
+    , "fastest": {
+        "message": "Fastest (instant)"
+      }
+  , "appearDistance": {
+      "message": "Appear distance"
+    }
+  , "flipDistance": {
+      "message": "Flip distance"
+    }
+    , "barelyAny": {
+        "message": "Barely any"
+      }
+    , "aLittle": {
+        "message": "A little"
+      }
+    , "medium": {
+        "message": "Medium"
+      }
+    , "moreThanAverage": {
+        "message": "More than average"
+      }
+    , "aLot": {
+        "message": "A lot"
+      }
+    , "aTon": {
+        "message": "A ton"
+      }
+  , "buttonSize": {
+      "message": "Button size"
+    }
+    , "buttonSizeInPixels": {
+          "message": "$LENGTH$x$WIDTH$ pixels"
+        , "description" : "Button size in pixels (length, width): 35x40 pixels"
+        , "placeholders" : {
+              "length" : {
+                  "content" : "$1"
+                , "example" : "35"
+              }
+            , "width" : {
+                  "content" : "$2"
+                , "example" : "40"
+              }
+          }
+      }
+  , "buttonDesign": {
+      "message": "Button design"
+    }
+    , "colors": {
+        "message": "Colors"
+      }
+      , "tumblerBlue": {
+          "message": "Tumbler blue"
+        }
+      , "grey": {
+          "message": "Gray"
+        }
+      , "black": {
+          "message": "Black"
+        }
+      , "red": {
+          "message": "Red"
+        }
+      , "orange": {
+          "message": "Orange"
+        }
+      , "yellow": {
+          "message": "Yellow"
+        }
+      , "green": {
+          "message": "Green"
+        }
+      , "blue": {
+          "message": "Blue"
+        }
+      , "purple": {
+          "message": "Purple"
+        }
+      , "pink": {
+          "message": "Pink"
+        }
+    , "arrowOnly": {
+        "message": "Arrows only"
+      }
+    , "alternateDesigns": {
+        "message": "Alternate designs"
+      }
+      , "pixelDesign": {
+          "message": "Pixel design"
+        }
+  , "buttonLocation": {
+      "message": "Button location"
+    }
+    , "topRight": {
+        "message": "Top right"
+      }
+    , "topLeft": {
+        "message": "Top left"
+      }
+    , "topCenter": {
+        "message": "Top center"
+      }
+    , "centerRight": {
+        "message": "Center right"
+      }
+    , "centerLeft": {
+        "message": "Center left"
+      }
+    , "bottomRight": {
+        "message": "Bottom right"
+      }
+    , "bottomLeft": {
+        "message": "Bottom left"
+      }
+    , "bottomCenter": {
+        "message": "Bottom center"
+      }
+  , "notActiveButtonOpacity": {
+      "message": "Not active button opacity"
+    }
+    , "invisible": {
+        "message": "Invisible"
+      }
+    , "transparent": {
+        "message": "Transparent"
+      }
+    , "opaque": {
+        "message": "Opaque"
+      }
+  , "keyboardShortcuts": {
+      "message": "Keyboard shortcuts"
+    }
+    , "altUpDownArrows": {
+        "message": "Alt + Up/Down Arrows"
+      }
+    , "altTB": {
+        "message": "Alt + T/B"
+      }
+    , "off": {
+        "message": "Off"
+      }
+  , "homeEndKeysControlledBy": {
+      "message": "Home &amp; End keys controlled by"
+    }
+    , "operatingSystem": {
+        "message": "Operating system"
+      }
+  , "contextRightClickMenu": {
+      "message": "Context (right-click) menu"
+    }
+    , "on": {
+        "message": "On"
+      }
+
+, "keyboardSettings": {
+    "message": "Keyboard settings"
+  }
+
+, "otherSettings": {
+    "message": "Other settings"
+  }
+  , "restoreDefaults": {
+      "message": "Restore defaults"
+    }
+  , "authorsSettings": {
+      "message": "Author's settings"
+    }
+
+, "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"
+  }
+, "incentivizeFurtherDevelopment": {
+    "message": "Incentivize further development: <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a>"
+  }
+, "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Release notes</a>"
+  }
 }

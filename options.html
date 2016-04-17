@@ -1,157 +1,182 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Scroll To Top Button Options</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <script src="/global/js/bowser.js"></script>
-    <script src="/global/js/const.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/options/css/options.css">
   </head>
   <body>
-    <div id="options">
-      <div id="headerTitle"></div>
-      <div id="content">
-        <p><strong><center>Please <a href="https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews" id="rate" target="_blank">rate this extension</a> if you enjoy it!<br/>The feedback really helps others find this extension!</strong></center></p>
-        <p>
-          Button Mode:
-          <select id="stbb">
-            <option value="off">Scroll to Top Only</option>
-            <option value="flip">Flip between Top/Bottom</option>
-            <option value="dual">Dual Arrows</option>
-            <option value="keys">Keyboard Only</option>
-          </select>
+    <aside>
+      <p data-i18n="ratingHelpsOthers"></p>
+    </aside>
+    <form id="settingsForm">
+      <fieldset>
+        <legend data-i18n="buttonSettings"></legend>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="buttonMode"></span>
+            <select id="stbb">
+              <option value="off" data-i18n="scrollToTopOnly"></option>
+              <option value="flip" data-i18n="flipBetweenTopBottom"></option>
+              <option value="dual" data-i18n="dualArrows"></option>
+              <option value="keys" data-i18n="keyboardOnly"></option>
+            </select>
+          </label>
         </p>
-        <p>
-          Scroll Up Speed:
-          <select id="speed" class="optionsChanger">
-            <option value="40000">Slowest</option>
-            <option value="20000">Slower</option>
-            <option value="2000">Slow</option>
-            <option value="1000">Fast</option>
-            <option value="100">Faster</option>
-            <option value="1">Fastest (Instant)</option>
-          </select>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="scrollUpSpeed"></span>
+            <select id="speed" class="optionsChanger">
+              <option value="40000" data-i18n="slowest"></option>
+              <option value="20000" data-i18n="slower"></option>
+              <option value="2000" data-i18n="slow"></option>
+              <option value="1000" data-i18n="fast"></option>
+              <option value="100" data-i18n="faster"></option>
+              <option value="1" data-i18n="fastest"></option>
+            </select>
+          </label>
         </p>
-        <div class="row">
-          <div class="down" style="clear:left;padding-right:4px;">Scroll Down Speed:
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="scrollDownSpeed"></span>
             <select id="speed2" class="optionsChanger">
-              <option value="40000">Slowest</option>
-              <option value="20000">Slower</option>
-              <option value="2000">Slow</option>
-              <option value="1000">Fast</option>
-              <option value="100">Faster</option>
-              <option value="1">Fastest (Instant)</option>
+              <option value="40000" data-i18n="slowest"></option>
+              <option value="20000" data-i18n="slower"></option>
+              <option value="2000" data-i18n="slow"></option>
+              <option value="1000" data-i18n="fast"></option>
+              <option value="100" data-i18n="faster"></option>
+              <option value="1" data-i18n="fastest"></option>
             </select>
-          </div>
-        </div>
-        <div class="row">
-          <div id="textChange" style="float:left;padding-right:4px;">Appear Distance:</div>
-          <select id="distance" class="optionsChanger">
-            <option value="100">Barely Any</option>
-            <option value="275">A little</option>
-            <option value="400">Medium</option>
-            <option value="700">More than average</option>
-            <option value="1000">A lot</option>
-            <option value="2500">A ton</option>
-          </select>
-        </div>
-        <div class="row">
-          <div class="appearance" style="clear:left;padding-right:4px;">Button Size:
-            <select id="buttonsize" class="optionsChanger">
-              <option value="35px">35x35 pixels</option>
-              <option value="40px">40x40 pixels</option>
-              <option value="45px">45x45 pixels</option>
-              <option value="50px">50x50 pixels</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="appearance" style="clear:left;padding-right:4px;">Button Design:
-            <select id="buttoncolor" class="optionsChanger">
-              <option value="arrow_blue">Tumblr Blue</option>
-              <option value="arrow_grey">Grey</option>
-              <option value="arrow_black">Black</option>
-              <option value="" disabled="disabled">Colors</option>
-              <option value="arrow_red">Red</option>
-              <option value="arrow_orange">Orange</option>
-              <option value="arrow_yellow">Yellow</option>
-              <option value="arrow_green">Green</option>
-              <option value="arrow_blue2">Blue</option>
-              <option value="arrow_purple">Purple</option>
-              <option value="arrow_pink">Pink</option>
-              <option value="" disabled="disabled">Arrow Only</option>
-              <option value="arrow_only_blue">Tumblr Blue - Arrow Only</option>
-              <option value="arrow_only_grey">Grey - Arrow Only</option>
-              <option value="" disabled="disabled">Alternate Designs</option>
-              <option value="arrow_pixel_blue">Pixel Design</option>
-            </select>
-          </div>
-        </div>
-        <!--<p>
-        Page Bounce:
-        <select id="scroll" onChange="save_options();report(5)">
-        <option value="jswing">Off</option>
-        <option value="easeOutBounce">On</option>
-        </select>
-        </p>-->
-        <div class="row">
-          <div class="appearance" style="clear:left;padding-right:4px;">Button Location:
-            <select id="location" class="optionsChanger">
-              <option value="TR">Top Right</option>
-              <option value="TL">Top Left</option>
-              <option value="TC">Top Center</option>
-              <option value="CR">Center Right</option>
-              <option value="CL">Center Left</option>
-              <option value="BR">Bottom Right</option>
-              <option value="BL">Bottom Left</option>
-              <option value="BC">Bottom Center</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="appearance" style="clear:left;padding-right:4px;">Opacity of button while idle:
-            <select id="transparency" class="optionsChanger">
-              <option value="0.0">Invisible</option>
-              <option value="0.5">Transparent</option>
-              <option value="1.0">Opaque</option>
-            </select>
-          </div>
-        </div>
-        <p>
-          Keyboard Shortcuts:
-          <select id="shortcuts" class="optionsChanger">
-            <option value="arrows">Alt + Up/Down Arrows</option>
-            <option value="tb">Alt + T/B</option>
-            <option value="off">Off</option>
-          </select>
+          </label>
         </p>
-        <p>
-          Home &amp; End keys action:
-          <select id="homeendaction" class="optionsChanger">
-            <option value="sttb">Scroll To Top Button</option>
-            <option value="system">System</option>
-          </select>
-        </p>
-        <div class="row">
-          <div style="float:left; margin-top:0px; padding-right:4px;">
-            Context (Right-click) Menu:
-            <select id="contextmenu" style="margin-top:0px;">
-              <option value="on">On</option>
-              <option value="off">Off</option>
+        <p class="settingContainer">
+          <label>
+            <span id="textChange" data-i18n="appearDistance"></span>
+            <select id="distance" class="optionsChanger">
+              <option value="100" data-i18n="barelyAny"></option>
+              <option value="275" data-i18n="aLittle"></option>
+              <option value="400" data-i18n="medium"></option>
+              <option value="700" data-i18n="moreThanAverage"></option>
+              <option value="1000" data-i18n="aLot"></option>
+              <option value="2500" data-i18n="aTon"></option>
             </select>
-          </div>
-          <p id="restartstatus" style="float:left; font-size:.9em; line-height:.5; margin-top:0px; padding:6px 0 0 10px;"></p>
-        </div>
-        <button id="restore" title="Restore Defaults"></button>
-        <button id="author" title="Author's Settings"></button>
-        <p id="status" style="float:left; font-size:.9em; line-height:.5; padding:3px 0 0 10px;"></p>
-        <p style="padding-top:10px;clear:left;"><strong><center>Pick a shortcut above or use Home/End keys on a page to scroll with just your keyboard!</center></strong></p>
-        <!--<p><strong>Do you speak multiple languages? Please help me translate this extension! <a href="mailto:sttb@codysherman.com">Email me!</a></strong></p>-->
-        <div id="bottomNav">
-          <a href="https://github.com/PoziWorld/Scroll-to-Top-Button-Extension/releases" title="Release Notes" target="_blank"><div id="release"></div></a>
-          <a href="http://github.com/PoziWorld/Scroll-to-Top-Button-Extension" title="Source Code" target="_blank"><div id="source"></div></a>
-        </div>
-      </div>
-    </div>
+          </label>
+        </p>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="buttonSize"></span>
+            <select id="buttonsize" class="appearance optionsChanger">
+              <option value="35px" data-i18n="buttonSizeInPixels" data-i18n-parameters="35|35"></option>
+              <option value="40px" data-i18n="buttonSizeInPixels" data-i18n-parameters="40|40"></option>
+              <option value="45px" data-i18n="buttonSizeInPixels" data-i18n-parameters="45|45"></option>
+              <option value="50px" data-i18n="buttonSizeInPixels" data-i18n-parameters="50|50"></option>
+            </select>
+          </label>
+        </p>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="buttonDesign"></span>
+            <select id="buttoncolor" class="appearance optionsChanger">
+              <optgroup data-i18n="colors">
+                <option value="arrow_blue" data-i18n="tumblerBlue"></option>
+                <option value="arrow_grey" data-i18n="grey"></option>
+                <option value="arrow_black" data-i18n="black"></option>
+                <option value="arrow_red" data-i18n="red"></option>
+                <option value="arrow_orange" data-i18n="orange"></option>
+                <option value="arrow_yellow" data-i18n="yellow"></option>
+                <option value="arrow_green" data-i18n="green"></option>
+                <option value="arrow_blue2" data-i18n="blue"></option>
+                <option value="arrow_purple" data-i18n="purple"></option>
+                <option value="arrow_pink" data-i18n="pink"></option>
+              </optgroup>
+              <optgroup data-i18n="arrowOnly">
+                <option value="arrow_only_blue" data-i18n="tumblerBlue"></option>
+                <option value="arrow_only_grey" data-i18n="grey"></option>
+              </optgroup>
+              <optgroup data-i18n="alternateDesigns">
+                <option value="arrow_pixel_blue" data-i18n="pixelDesign"></option>
+              </optgroup>
+            </select>
+          </label>
+        </p>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="buttonLocation"></span>
+            <select id="location" class="appearance optionsChanger">
+              <option value="TR" data-i18n="topRight"></option>
+              <option value="TL" data-i18n="topLeft"></option>
+              <option value="TC" data-i18n="topCenter"></option>
+              <option value="CR" data-i18n="centerRight"></option>
+              <option value="CL" data-i18n="centerLeft"></option>
+              <option value="BR" data-i18n="bottomRight"></option>
+              <option value="BL" data-i18n="bottomLeft"></option>
+              <option value="BC" data-i18n="bottomCenter"></option>
+            </select>
+          </label>
+        </p>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="notActiveButtonOpacity"></span>
+            <select id="transparency" class="appearance optionsChanger">
+              <option value="0.0" data-i18n="invisible"></option>
+              <option value="0.5" data-i18n="transparent"></option>
+              <option value="1.0" data-i18n="opaque"></option>
+            </select>
+          </label>
+        </p>
+      </fieldset>
+      <fieldset>
+        <legend data-i18n="keyboardSettings"></legend>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="keyboardShortcuts"></span>
+            <select id="shortcuts" class="optionsChanger">
+              <option value="arrows" data-i18n="altUpDownArrows"></option>
+              <option value="tb" data-i18n="altTB"></option>
+              <option value="off" data-i18n="off"></option>
+            </select>
+          </label>
+        </p>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="homeEndKeysControlledBy"></span>
+            <select id="homeendaction" class="optionsChanger">
+              <option value="sttb" data-i18n="extensionName"></option>
+              <option value="system" data-i18n="operatingSystem"></option>
+            </select>
+          </label>
+        </p>
+      </fieldset>
+      <fieldset>
+        <legend data-i18n="otherSettings"></legend>
+        <p class="settingContainer">
+          <label>
+            <span data-i18n="contextRightClickMenu"></span>
+            <select id="contextmenu">
+              <option value="on" data-i18n="on"></option>
+              <option value="off" data-i18n="off"></option>
+            </select>
+          </label>
+        </p>
+        <p class="settingContainer">
+          <button id="restore" data-i18n="restoreDefaults"></button>
+          <button id="author" data-i18n="authorsSettings"></button>
+        </p>
+      </fieldset>
+      <p id="status"></p>
+      <p id="restartstatus"></p>
+    </form>
+    <aside>
+      <ul>
+        <li data-i18n="helpTranslate"></li>
+        <li data-i18n="incentivizeFurtherDevelopment"></li>
+        <li data-i18n="releaseNotes"></li>
+      </ul>
+    </aside>
+    <script src="/global/js/bowser.js"></script>
+    <script src="/global/js/const.js"></script>
+    <script src="/global/js/page-v2.js"></script>
+    <script src="/options/js/options.js"></script>
     <script src="/libraries/jquery.js"></script>
     <script src="/options.js"></script>
   </body>

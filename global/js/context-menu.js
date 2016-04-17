@@ -7,7 +7,7 @@
 
       chrome.contextMenus.create( {
           'id' : 'sttb_' + strContext
-        , 'title' : strConstExtensionName + ' Options'
+        , 'title' : chrome.i18n.getMessage( 'optionsTitle' )
         , 'contexts' : [ strContext ]
       } );
     }

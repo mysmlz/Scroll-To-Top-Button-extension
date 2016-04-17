@@ -1,5 +1,12 @@
 > Latest updates are also available here — [Scroll To Top Button on Facebook](https://www.facebook.com/ScrollToTopButton)
 
+* [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
+* Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
+
+### v6.4.0
+    * Fixed: dropdown menus in Options wouldn't work properly.
+      Bug reported by Yy Simonz, Nadin Nasalskaya, Aimee Gormady, Craig Domingue.
+
 ### v6.3.0
     * Fixed: wouldn't work in Gmail.
       Bug reported by Ken 010107.

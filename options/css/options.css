@@ -1,0 +1,19 @@
+/* =============================================================================
+
+  Product: Scroll To Top Button
+  Author: PoziWorld
+  Copyright: (c) 2016 PoziWorld
+  License: pozitone.com/license
+
+ ============================================================================ */
+
+html {
+  min-width: 400px;
+}
+select {
+  margin-left: 15px;
+}
+ul {
+  padding-left: 20px;
+  line-height: 20px;
+}
