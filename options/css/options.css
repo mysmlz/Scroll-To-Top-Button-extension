@@ -7,13 +7,22 @@
 
  ============================================================================ */
 
-html {
-  min-width: 400px;
-}
 select {
   margin-left: 15px;
 }
 ul {
   padding-left: 20px;
   line-height: 20px;
+}
+label {
+  white-space: nowrap; /* fix page width bug */
+}
+
+#saveSettings {
+  display: -webkit-flex;
+  display: flex;
+}
+#status {
+  line-height: 2;
+  margin-left: 10px;
 }

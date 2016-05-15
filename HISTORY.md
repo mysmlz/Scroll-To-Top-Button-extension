@@ -3,6 +3,10 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+### v6.4.1
+    * New: added a Save button in Options.
+      Idea by S Cc.
+
 ### v6.4.0
     * Fixed: dropdown menus in Options wouldn't work properly.
       Bug reported by Yy Simonz, Nadin Nasalskaya, Aimee Gormady, Craig Domingue.

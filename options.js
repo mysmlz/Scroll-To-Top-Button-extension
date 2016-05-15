@@ -339,6 +339,12 @@ $(function() {
     return false;
   } );
 
+  // Save settings button
+  document.getElementById( 'save' ).addEventListener( 'click', function () {
+    save_options();
+    return false;
+  } );
+
   // Form submission
   $( '#settingsForm' ).bind( 'submit', function() {
     return false;
