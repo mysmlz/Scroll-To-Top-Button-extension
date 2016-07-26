@@ -252,10 +252,17 @@
 , "helpTranslate": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"
   }
+, "translatedBy": {
+      "message": " "
+    , "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  }
 , "incentivizeFurtherDevelopment": {
-    "message": "Incentivize further development: <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a>"
+    "message": "Support extension development: <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a>"
   }
 , "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Release notes</a>"
+  }
+, "otherProjects": {
+    "message": "Our other projects:"
   }
 }

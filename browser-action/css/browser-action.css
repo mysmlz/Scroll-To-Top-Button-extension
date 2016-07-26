@@ -8,8 +8,10 @@
 
   Table of Contents:
 
+    General
     Toolbar
     Content
+    Other projects
 
  ============================================================================ */
 
@@ -93,7 +95,6 @@
       to    { -webkit-transform: scale(1.25); }
     }
 
-
 /* =============================================================================
 
   Content
@@ -137,5 +138,27 @@
     {
       font-size: 1em;
       padding: 1rem 0;
-      border-top: .1rem solid #eee;
+      border: .1rem solid #eee;
+      border-right: 0;
+      border-left: 0;
     }
+
+/* =============================================================================
+
+  Other projects
+
+ ============================================================================ */
+
+#otherProjectsContainer
+  {
+    padding: 1.5rem 0 1rem;
+  }
+#otherProjectsList
+  {
+    margin: .5rem 0 0 2rem;
+    list-style-type: circle;
+  }
+.otherProject
+  {
+    font-size: 1.2em;
+  }

@@ -3,6 +3,12 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+### v6.4.2
+    * Scroll To Top Button is now available in Simplified Chinese.
+      Translation by Pluwen.
+
+      Scroll To Top Button 有简体中文版了，来自 Pluwen 的翻译。
+
 ### v6.4.1
     * New: added a Save button in Options.
       Idea by S Cc.
