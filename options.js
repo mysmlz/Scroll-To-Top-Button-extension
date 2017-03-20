@@ -156,31 +156,31 @@ function restore_options() {
       break;
     }
   }
-  var favorite4 = localStorage["arrow"];
-  if (!favorite4) {
-    favorite4 = "arrow_blue";
+
+  // Button design
+  var favorite4 = localStorage[ 'arrow' ];
+  if ( ! favorite4 ) {
+    favorite4 = 'arrow_blue';
   }
-  var select = document.getElementById("buttoncolor");
-  for (var i = 0; i < select.children.length; i++) {
-    var child = select.children[i];
-    if (child.value == favorite4) {
-      child.selected = "true";
-      break;
+
+  var $$select = document.getElementById( 'buttoncolor' );
+
+  loopOptgroups:
+  for ( var i = 0, l = $$select.children.length; i < l; i++ ) {
+    var $$optgroup = $$select.children[ i ];
+
+    for ( var j = 0, m = $$optgroup.children.length; j < m; j++ ) {
+      var $$option = $$optgroup.children[ j ];
+
+      if ( $$option.value == favorite4 ) {
+        $$option.selected = 'true';
+        break loopOptgroups;
+      }
     }
   }
-  /*var favorite5 = localStorage["scroll"];
-  if (!favorite5) {
-    favorite5 = "jswing";
-  }
-  var select = document.getElementById("scroll");
-  for (var i = 0; i < select.children.length; i++) {
-    var child = select.children[i];
-    if (child.value == favorite5) {
-      child.selected = "true";
-      break;
-    }
-  }*/
- var favorite6 = localStorage["location"];
+
+  // Button location
+  var favorite6 = localStorage["location"];
   if (!favorite6) {
     favorite6 = "TR";
   }
