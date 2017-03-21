@@ -90,22 +90,6 @@ function save_options() {
   }, 3000);
 }
 
-// Message to restart browser when setting change requires it
-var restartChange = "false";
-function restart() {
-  if (restartChange=="false") {
-    var status = document.getElementById("restartstatus");
-    status.innerHTML = "Restart your browser to take effect.";
-    restartChange = "true";
-  }
-  else if (restartChange=="true") {
-    var status = document.getElementById("restartstatus");
-    status.innerHTML = "";
-    restartChange = "false";
-  }
-
-}
-
 // Restores select box state to saved value from localStorage.
 function restore_options() {
   var favorite = localStorage["scroll_speed"];
@@ -324,7 +308,7 @@ $(function() {
   // Context (Right-click) Menu
   $( '#contextmenu' ).bind( 'change', function() {
     save_options();
-    restart();
+    sttb.contextMenus.toggle();
   } );
 
   // Restore Defaults

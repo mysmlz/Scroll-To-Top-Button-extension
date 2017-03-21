@@ -4,7 +4,7 @@
   , "default_locale"          : "en_US"
   , "name"                    : "__MSG_extensionName__"
   , "description"             : "__MSG_extensionDescription__"
-  , "version"                 : "6.4.3"
+  , "version"                 : "6.4.4"
 
   , "short_name"              : "STTB"
   , "author"                  : "PoziWorld"
@@ -31,9 +31,9 @@
           , "global/js/const.js"
           , "global/js/log.js"
           , "global/js/global.js"
+          , "global/js/context-menus.js"
           , "global/js/background.js"
           , "global/js/punycode.min.js"
-          , "global/js/context-menu.js"
         ]
     }
 

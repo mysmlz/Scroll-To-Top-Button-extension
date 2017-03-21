@@ -71,6 +71,7 @@ var Background = {
    **/
   init : function() {
     Background.checkIfUpdatedSilently();
+    sttb.contextMenus.toggle();
   }
   ,
 

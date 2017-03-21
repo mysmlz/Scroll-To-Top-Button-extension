@@ -3,6 +3,10 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+### v6.4.4
+    * Improved: changing a context menu setting in Options no longer requires a browser restart.
+      Inspired by Shirley Long.
+
 ### v6.4.3
     * Fixed: button design would always reset to Tumbler blue on Options page load.
       Bug reported by Dennis Long.
