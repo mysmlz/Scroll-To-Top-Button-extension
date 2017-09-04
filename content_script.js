@@ -64,9 +64,21 @@ function STTB() {
             var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
         }
 
+        var $body;
+
         // Creates the button image on the page
         if ( stbb !== 'keys' ) {
-            $("body").prepend('<img id="STTBimg" />');
+            $body = $( 'body' );
+
+            $body.append(
+                '<img id="STTBimg" />' +
+                // Don't show buttons when JavaScript is disabled
+                '<noscript>' +
+                  '<style>' +
+                      '#STTBimg, #STTBimg2 { display: none !important; }' +
+                  '</style>' +
+                '</noscript>'
+            );
         }
 
         if(stbb=="flip"){
@@ -156,7 +168,7 @@ function STTB() {
         }
 
         if(stbb=="dual"){
-            $("body").prepend('<img id="STTBimg2" />');
+            $body.append( '<img id="STTBimg2" />' );
             $("#STTBimg2").rotate(-180);
             var $sttbImg2 = document.getElementById( 'STTBimg2' );
             $sttbImg2.style.opacity = transparency;
