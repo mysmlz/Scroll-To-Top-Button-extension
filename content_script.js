@@ -354,5 +354,24 @@ function STTB() {
                 'disable_in_input':true
             });
         }
+
+        document.addEventListener( 'webkitfullscreenchange', onFullscreenchange );
+        document.addEventListener( 'mozfullscreenchange', onFullscreenchange );
+        document.addEventListener( 'msfullscreenchange', onFullscreenchange );
+        document.addEventListener( 'fullscreenchange', onFullscreenchange );
+
+        var arrButtons = [ $sttbImg, $sttbImg2 ];
+
+        function onFullscreenchange() {
+            var boolIsFullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+
+            for ( var i = arrButtons.length; i--; ) {
+                var $button = arrButtons[ i ];
+
+                if ( document.contains( $button ) ) {
+                    $button.classList.toggle( 'disabled', boolIsFullscreen );
+                }
+            }
+        }
     });
 }
