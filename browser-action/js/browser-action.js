@@ -140,7 +140,10 @@ var BrowserAction = {
    * @return  void
    **/
   getActiveTabAddress : function() {
-    var objQuery = { active: true };
+    const objQuery = {
+        active: true
+      , currentWindow: true
+    };
 
     chrome.tabs.query( objQuery, function( objTabs ) {
       objActiveTab = objTabs[ 0 ];
