@@ -8,7 +8,7 @@
 
   , "short_name"              : "STTB"
   , "author"                  : "PoziWorld"
-  , "homepage_url"            : "https://www.facebook.com/ScrollToTopButton"
+  , "homepage_url"            : "https://scroll-to-top-button.com/"
 
   , "icons"                   : {
         "16"                  : "icons/Icon-16.png"

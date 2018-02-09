@@ -262,6 +262,10 @@
 , "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Release notes</a>"
   }
+, "officialWebsite": {
+      "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Homepage</a>"
+    , "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  }
 , "otherProjects": {
     "message": "Our other projects:"
   }
