@@ -3,6 +3,16 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+## v6.4.8
+
+### Fixed
+
+* “Dual arrows” mode wouldn't work properly on Bing and, sometimes, Google search result pages.
+   
+  Bug reported by [Miss Vasquez](https://plus.google.com/101122222877588657617).
+
+---
+
 ## v6.4.7
 
 ### Fixed
@@ -10,7 +20,6 @@
 * In case of multiple open windows of the same browser profile, the browser action (a popup that shows up when the Scroll To Top Button icon next to the address bar is clicked on) might show a wrong URL.
 
 ---
-
 
 ## v6.4.6
 

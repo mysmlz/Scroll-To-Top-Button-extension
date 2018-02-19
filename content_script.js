@@ -70,7 +70,7 @@ function STTB() {
         if ( stbb !== 'keys' ) {
             $body = $( 'body' );
 
-            $body.append(
+            $body.after( // Have to use after. Otherwise, Bing search results page removes #STTBimg in dual-arrow mode
                 '<img id="STTBimg" />' +
                 // Don't show buttons when JavaScript is disabled
                 '<noscript>' +
@@ -168,7 +168,7 @@ function STTB() {
         }
 
         if(stbb=="dual"){
-            $body.append( '<img id="STTBimg2" />' );
+            $body.after( '<img id="STTBimg2" />' ); // Have to use after. Otherwise, Bing search results page removes #STTBimg in dual-arrow mode
             $("#STTBimg2").rotate(-180);
             var $sttbImg2 = document.getElementById( 'STTBimg2' );
             $sttbImg2.style.opacity = transparency;
