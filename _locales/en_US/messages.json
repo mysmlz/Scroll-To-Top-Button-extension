@@ -269,4 +269,30 @@
 , "otherProjects": {
     "message": "Our other projects:"
   }
+
+, "referralProgramInfoShortTitle_amazon": {
+    "message": "Shop?"
+  }
+, "referralProgramInfoTitle_amazon": {
+    "message": "Shop on Amazon?"
+  }
+, "referralProgramInfoText_amazon": {
+    "message": "You can help us by doing what you already do without spending an extra penny."
+  }
+, "referralProgramInfoText2_amazon": {
+    "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
+  }
+, "referralProgramInfoCta_amazon": {
+    "message": "I want to help"
+  }
+, "referralProgramInfoLink_amazon": {
+    "message": "Find out how this works"
+  }
+, "referralProgramInfoDisclaimer_amazon": {
+    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
+  }
+
+, "referralProgramInfoNotify": {
+    "message": "Notify me when I can help through this program"
+  }
 }

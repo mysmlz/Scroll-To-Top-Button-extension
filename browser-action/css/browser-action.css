@@ -21,10 +21,61 @@
 
  ============================================================================ */
 
-  body
-    {
-      min-width: 0;
-    }
+body
+  {
+    min-width: 0;
+  }
+.pwCheckable
+  {
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    position: relative;
+    bottom: .2rem;
+    vertical-align: middle;
+    margin: 0 .5rem 0 0;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-image: -webkit-linear-gradient( #ededed, #ededed 38%, #dedede );
+    border: .1rem solid rgba( 0, 0, 0, .25 );
+    border-radius: .2rem;
+    box-shadow: 0 .1rem 0 rgba( 0, 0, 0, .08 ), inset 0 .1rem .2rem rgba( 255, 255, 255, .75 );
+    color: #444;
+    cursor: pointer;
+    font: inherit;
+    text-shadow: 0 .1rem 0 rgb( 240, 240, 240 );
+  }
+.pwCheckable:focus
+  {
+    background-image: -webkit-linear-gradient( #fff, #fff 38%, #eee );
+    border-color: rgba( 0, 0, 0, .75 );
+    box-shadow: 0 .1rem 0 rgba( 0, 0, 0, .08 ), inset 0 .1rem .2rem rgba( 255, 255, 255, 1 );
+  }
+.pwCheckable:checked:before
+  {
+    -webkit-user-select: none;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-image: url(/global/img/tick-icon-11.png);
+    background-size: 100% 100%;
+  }
+.pwRadio
+  {
+    border-radius: 100%;
+  }
+.pwRadio:checked:before
+  {
+    content: '';
+    display: block;
+    position: absolute;
+    top: .3rem;
+    right: .3rem;
+    bottom: .3rem;
+    left: .3rem;
+    background-color: #666;
+    border-radius: 100%;
+  }
 
 /* =============================================================================
 
@@ -161,4 +212,58 @@
 .otherProject
   {
     font-size: 1.2em;
+  }
+
+/* =============================================================================
+
+  Affiliate
+
+ ============================================================================ */
+
+#referralProgramInfoContainer
+  {
+    margin: 1rem 0;
+  }
+#referralProgramInfoContainer::before
+  {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    right: -2rem;
+    left: -2rem;
+    bottom: 0;
+    background: linear-gradient( to bottom, rgba( 238, 238, 238, .65 ) 0%, rgba( 0, 0, 0, 0 ) 100% );
+    border-top: .1rem solid #eee;
+  }
+#referralProgramInfoTitle
+  {
+    padding: .5rem 0;
+  }
+.referralProgramInfoText
+  {
+    font-size: 1.2em;
+    margin-top: .5rem;
+    color: #303942;
+  }
+#referralProgramInfoCta
+  {
+    margin: .8rem 0;
+  }
+#referralProgramInfoLink
+  {
+    display: block;
+    font-size: 1.2em;
+  }
+#referralProgramInfoDisclaimer
+  {
+    margin: 1rem 0;
+  }
+#referralProgramInfoLabel
+  {
+    line-height: 3em;
+  }
+#referralProgramInfoLabelText
+  {
+    font-size: 1.2em;
+    color: #303942;
   }

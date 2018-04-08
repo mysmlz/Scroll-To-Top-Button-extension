@@ -4,7 +4,8 @@
   , "default_locale"          : "en_US"
   , "name"                    : "__MSG_extensionName__"
   , "description"             : "__MSG_extensionDescription__"
-  , "version"                 : "6.4.8"
+  , "version"                 : "6.5.0"
+  , "version_name"            : "6.5.0 Lia"
 
   , "short_name"              : "STTB"
   , "author"                  : "PoziWorld"
@@ -28,11 +29,15 @@
         "persistent"            : false
       , "scripts"               : [
             "global/js/bowser.js"
+          , "global/js/event.js"
+          , "global/js/utils.js"
           , "global/js/const.js"
           , "global/js/log.js"
           , "global/js/global.js"
           , "global/js/context-menus.js"
           , "global/js/background.js"
+          , "global/js/tabs.js"
+          , "global/js/referral-programs.js"
           , "global/js/punycode.min.js"
         ]
     }

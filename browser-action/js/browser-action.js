@@ -51,12 +51,11 @@ const
                                     ]
   ;
 
-var
-    objActiveTab
-  , strTabUrl
-  , strTabDomain
-  , $reloadActiveTabCta
-  ;
+var objActiveTab;
+var strTabId;
+var strTabUrl;
+var strTabDomain;
+var $reloadActiveTabCta;
 
 /* =============================================================================
 
@@ -148,17 +147,13 @@ var BrowserAction = {
     chrome.tabs.query( objQuery, function( objTabs ) {
       objActiveTab = objTabs[ 0 ];
 
-      if (
-            typeof objActiveTab === 'object'
-        &&  ! Global.isEmpty( objActiveTab )
-      ) {
-        var
-            $a            = document.createElement( 'a' )
-          , $url          = document.getElementById( strTabAddressUrlId )
-          , $domain       = document.getElementById( strTabAddressDomainId )
-          , strTempDomain
-          ;
+      if ( typeof objActiveTab === 'object' && ! Global.isEmpty( objActiveTab ) ) {
+        const $a = document.createElement( 'a' );
+        const $url = document.getElementById( strTabAddressUrlId );
+        const $domain = document.getElementById( strTabAddressDomainId );
+        var strTempDomain;
 
+        strTabId = objActiveTab.id;
         strTabUrl = objActiveTab.url;
 
         // Tab domain

@@ -3,6 +3,17 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+## v6.5.0
+
+### New
+
+* Shop on Amazon?
+  
+  Make us your referral – support project development in one click!
+  > Go to Amazon and click the Scroll To Top Button icon next to the address bar to learn the details.
+
+---
+
 ## v6.4.8
 
 ### Fixed

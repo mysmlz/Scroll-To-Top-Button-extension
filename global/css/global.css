@@ -259,7 +259,7 @@
       display:                block;
       height:                 100%;
       width:                  100%;
-      background-image:       url('/global/img/options-checkbox-tick-icon-11.png');
+      background-image:       url('/global/img/tick-icon-11.png');
       background-size:        100% 100%;
     }
   input[type='radio']
@@ -317,15 +317,13 @@
       color:                  #000;
       text-decoration:        none;
     }
-  .pwCta:active
+  .pwCta:active,
+  .pwCta:focus
     {
-      background-image:       -webkit-linear-gradient(
-                                  #e7e7e7
-                                , #e7e7e7 38%
-                                , #d7d7d7
-                              );
-      box-shadow:             none;
-      text-shadow:            none;
+      background-image: -webkit-linear-gradient( #e7e7e7, #e7e7e7 38%, #d7d7d7 );
+      border-color: rgba( 0, 0, 0, .75 );
+      box-shadow: none;
+      text-shadow: none;
     }
   .pwCta:disabled
     {
