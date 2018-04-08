@@ -80,6 +80,18 @@
     }
   };
 
+  /***
+   * Check whether the window meets the criteria before initializing STTB.
+   *
+   * Only top frames and ~full-screen iframes (since there is no access to the top frame, compare the iframe height to the screen height, considering it also includes the height of the address bar, tabs titles, optional bookmarks bar – the ratio for Chrome and Opera is ~91%, but make it 85% just in case).
+   *
+   * @return {boolean}
+   */
+
+  Sttb.prototype.isWindowReady = function () {
+    return ( window == top || window.innerHeight / window.screen.height > .85 ) && window.innerHeight < $( document ).height();
+  };
+
   /**
    * If there is a scrollable element other than the whole document, set it.
    *

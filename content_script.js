@@ -14,8 +14,7 @@
 * Forked source code at: http://github.com/PoziWorld/Scroll-to-Top-Button-Extension
 -----------------------*/
 
-// Checks to see if page is larger than window, otherwise runs watch();
-if ( ( window == top ) && ( $( window ).height() < $( document ).height() ) ) {
+if ( sttb.isWindowReady() ) {
     ContentScript.init();
 }
 else {
