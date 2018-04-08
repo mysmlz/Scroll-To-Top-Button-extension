@@ -53,7 +53,7 @@
                 }
 
                 // Checks whether button should be visible/flipped on scroll
-                sttb.getScrollableElement().scroll( function() {
+                sttb.getJqueriedScrollableElement().scroll( function() {
                     $scrollDiv.toggle( sttb.getScrollTop() >= o.start );
 
                     if(o.stbb=="flip"){

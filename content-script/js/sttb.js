@@ -21,31 +21,93 @@
 
  ============================================================================ */
 
-( function() {
+( function () {
   'use strict';
 
   function Sttb() {
-    this.$window = $( window );
-    this.$$scrollableElement = null;
+    const $window = $( window );
+    let $$scrollableElement = null;
+    let $$scrollCausingElement = null;
+
+    /**
+     * Return window.
+     *
+     * @return {jQuery}
+     */
+
+    Sttb.prototype.getWindow = function () {
+      return $window;
+    };
+
+    /**
+     * Get scrollable element if provided on init or use window object otherwise.
+     *
+     * @return {HTMLElement}
+     */
+
+    Sttb.prototype.getScrollableElement = function () {
+      return $$scrollableElement;
+    };
+
+    /**
+     * Get scrollable element as instance of jQuery if provided on init or use window object otherwise.
+     *
+     * @return {HTMLElement}
+     */
+
+    Sttb.prototype.getJqueriedScrollableElement = function () {
+      return $$scrollableElement ? $( $$scrollableElement ) : this.getWindow();
+    };
+
+    /**
+     * If there is a scrollable element other than the whole document, set it.
+     *
+     * @param {HTMLElement} [$$element] - When not the whole page is scrollable, only some element.
+     */
+
+    Sttb.prototype.setScrollableElement = function ( $$element ) {
+      $$scrollableElement = $$element;
+    };
+
+    /**
+     * If there is a scroll-causing element, return it.
+     *
+     * @return {HTMLElement}
+     */
+
+    Sttb.prototype.getScrollCausingElement = function () {
+      return $$scrollCausingElement;
+    };
+
+    /**
+     * If there is a scroll-causing element, set it.
+     *
+     * @param {HTMLElement} [$$element]
+     */
+
+    Sttb.prototype.setScrollCausingElement = function ( $$element ) {
+      $$scrollCausingElement = $$element;
+    };
   }
 
   /**
-   * Check whether the page changes size later or a mistake was made judging
-   * size by user scrolling.
+   * Check whether the page changes size later or a mistake was made judging size by user scrolling.
    *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
+   * @param {boolean} boolSkipSpecialCase
+   */
 
-  Sttb.prototype.watch = function () {
+  Sttb.prototype.watch = function ( boolSkipSpecialCase ) {
     // Gmail
     if ( /^mail.google\.[a-z]{2,}$/.test( location.host ) ) {
       this.handleGmail();
     }
+    // Transifex
+    else if ( ! boolSkipSpecialCase && /^www\.transifex\.com$/.test( location.host ) ) {
+      this.handleTransifex();
+    }
     // All other sites
     else {
-      var $window = this.$window;
+      var $window = this.getWindow();
 
       $window.scroll( function () {
         ContentScript.init();
@@ -65,18 +127,30 @@
    **/
 
   Sttb.prototype.handleGmail = function () {
-    var $$scrollableElementParent = document.querySelector( '.AO' )
-      , self = this
-      ;
+    const $$scrollableElementParent = document.querySelector( '.AO' );
+    const _this = this;
 
     if ( ! $$scrollableElementParent ) {
-      window.requestAnimationFrame( function () {
-        self.handleGmail();
-      } );
+      window.requestAnimationFrame( _this.handleGmail.bind( _this ) );
     }
     else {
-      this.setScrollableElement( $$scrollableElementParent.firstElementChild );
+      const $$scrollableElement = $$scrollableElementParent.firstElementChild;
+
+      this.setScrollableElement( $$scrollableElement );
+      this.setScrollCausingElement( $$scrollableElement.firstElementChild );
       ContentScript.init();
+    }
+  };
+
+  /**
+   * Transifex's scrollable area is a div when viewing/editing translations, not whole document like on most other sites. Plus, they manipulate CSS “top” property instead of “scrollTop”. Ignore this page for now.
+   **/
+
+  Sttb.prototype.handleTransifex = function () {
+    var $$scrollableElement = document.querySelector( '#stringlist-area .viewport' );
+
+    if ( ! $$scrollableElement ) {
+      this.watch( true );
     }
   };
 
@@ -89,21 +163,8 @@
    */
 
   Sttb.prototype.isWindowReady = function () {
-    return ( window == top || window.innerHeight / window.screen.height > .85 ) && window.innerHeight < $( document ).height();
-  };
-
-  /**
-   * If there is a scrollable element other than the whole document, set it.
-   *
-   * @type    method
-   * @param   $$scrollableElement
-   *              Optional. When not the whole page is scrollable,
-   *              only some element.
-   * @return  void
-   **/
-
-  Sttb.prototype.setScrollableElement = function ( $$scrollableElement ) {
-    this.$$scrollableElement = $$scrollableElement;
+    return ( window == top || window.innerHeight / window.screen.height > .85 ) &&
+      window.innerHeight < ( $( document ).height() - 3 ); // Hello, Transifex's 3px!
   };
 
   /**
@@ -163,25 +224,13 @@
 
   Sttb.prototype.scrollDown = function ( intSpeed, strEase ) {
     this.scroll(
-        $( this.$$scrollableElement
-            ? this.$$scrollableElement.firstElementChild
+        $( this.getScrollCausingElement()
+            ? this.getScrollCausingElement()
             : document
         ).height()
       , intSpeed
       , strEase
     );
-  };
-
-  /**
-   * Get scrollable element if provided on init or use window object otherwise.
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  jQuery element
-   **/
-
-  Sttb.prototype.getScrollableElement = function () {
-    return ( this.$$scrollableElement ? $( this.$$scrollableElement ) : this.$window );
   };
 
   /**
@@ -193,7 +242,7 @@
    **/
 
   Sttb.prototype.getAnimatableElement = function () {
-    return $( this.$$scrollableElement ? this.$$scrollableElement : 'html, body' );
+    return $( this.getScrollableElement() ? this.getScrollableElement() : 'html, body' );
   };
 
   /**
@@ -205,7 +254,7 @@
    **/
 
   Sttb.prototype.getScrollTop = function () {
-    return this.getScrollableElement().scrollTop();
+    return this.getJqueriedScrollableElement().scrollTop();
   };
 
   if ( typeof sttb === 'undefined' ) {
