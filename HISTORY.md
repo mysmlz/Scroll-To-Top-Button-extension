@@ -3,6 +3,16 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+## v6.5.1
+
+### Fixed
+
+* Unable to scroll Options page on smaller screens.
+   
+  > Bug reported by [Jeff Seymour](https://plus.google.com/101598275677991812643) & [Michael Rhum](https://plus.google.com/101346129192192436780).
+
+---
+
 ## v6.5.0
 
 ### New
@@ -19,8 +29,8 @@
 ### Fixed
 
 * “Dual arrows” mode wouldn't work properly on Bing and, sometimes, Google search result pages.
-   
-  Bug reported by [Miss Vasquez](https://plus.google.com/101122222877588657617).
+   
+  > Bug reported by [Miss Vasquez](https://plus.google.com/101122222877588657617).
 
 ---
 
@@ -37,8 +47,8 @@
 ### Fixed
 
 * Button(s) wouldn't hide in fullscreen mode.
-   
-  Bug reported by [Сергей Кателина](https://plus.google.com/114544103485939423643).
+   
+  > Bug reported by [Сергей Кателина](https://plus.google.com/114544103485939423643).
 
 ---
 

@@ -4,8 +4,7 @@
   , "default_locale"          : "en_US"
   , "name"                    : "__MSG_extensionName__"
   , "description"             : "__MSG_extensionDescription__"
-  , "version"                 : "6.5.0"
-  , "version_name"            : "6.5.0 Lia"
+  , "version"                 : "6.5.1"
 
   , "short_name"              : "STTB"
   , "author"                  : "PoziWorld"
