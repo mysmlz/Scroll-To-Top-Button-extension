@@ -3,6 +3,17 @@
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
 * Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
 
+## v6.5.2
+
+### Improved
+
+* Make Scroll To Top Button work on sites with full-screen iframes (e.g., ZeroNet).
+   
+  > Issue reported by [赵名字](https://plus.google.com/102362001786834990486).
+* Disable Scroll To Top Button on Transifex when viewing/editing translations.
+
+---
+
 ## v6.5.1
 
 ### Fixed
