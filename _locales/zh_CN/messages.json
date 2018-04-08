@@ -63,10 +63,6 @@
         "message": "仅箭头",
         "description": ""
     },
-    "incentivizeFurtherDevelopment": {
-        "message": "捐赠激励我们开发新版本：<a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a>",
-        "description": ""
-    },
     "otherProjects": {
         "message": "我们的其他项目：",
         "description": ""

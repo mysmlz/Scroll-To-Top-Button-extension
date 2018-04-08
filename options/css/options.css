@@ -7,6 +7,11 @@
 
  ============================================================================ */
 
+#incentivizeFurtherDevelopment {
+  margin: -.45rem 0;
+  padding: 1rem;
+  background-color: #eee;
+}
 select {
   margin-left: 15px;
 }
