@@ -250,6 +250,9 @@
 , "save": {
     "message": "Save"
   }
+, "optionsSaved": {
+    "message": "Options saved."
+  }
 
 , "helpTranslate": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"

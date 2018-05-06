@@ -84,7 +84,7 @@ function save_options() {
 
   // Update status to let user know options were saved.
   var status = document.getElementById("status");
-  status.innerHTML = "Options Saved.";
+  status.innerHTML = chrome.i18n.getMessage( 'optionsSaved' );
   setTimeout(function() {
     status.innerHTML = "";
   }, 3000);
