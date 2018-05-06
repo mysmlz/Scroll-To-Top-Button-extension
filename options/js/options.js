@@ -42,7 +42,7 @@
 
     document.getElementById( 'incentivizePaypalLink' ).href = 'https://www.paypal.me/ScrollToTopButton';
     document.getElementById( 'incentivizeSquarecashLink' ).href = 'https://cash.me/$ScrollToTopButton';
-    document.getElementById( 'incentivizeCoinbaseLink' ).href = 'https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a';
+    document.getElementById( 'incentivizeCoinbaseLink' ).href = 'https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5';
 
     if ( $$translatedBy && $$translatedBy.textContent.length > 1 ) {
       $$translatedBy.hidden = false;

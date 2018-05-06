@@ -1,7 +1,7 @@
 > Latest updates are also available here — [Scroll To Top Button on Facebook](https://www.facebook.com/ScrollToTopButton)
 
 * [Help translate](https://www.transifex.com/poziworld/scroll-to-top-button)
-* Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://www.coinbase.com/checkouts/de5afdbcf22ffea5d5fbc1b5f6b3fa4a)
+* Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 
 ## v6.5.2
 
