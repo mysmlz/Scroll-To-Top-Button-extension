@@ -2,7 +2,7 @@
 
 > [Follow Scroll To Top Button updates](README.md##scroll-to-top-button-on-social-networks)
 
-> Help [translate Scroll To Top Button](https://www.transifex.com/poziworld/scroll-to-top-button)
+> Help [translate Scroll To Top Button](https://www.transifex.com/poziworld/scroll-to-top-button/)
 
 > Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 

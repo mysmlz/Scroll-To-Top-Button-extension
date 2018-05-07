@@ -29,7 +29,7 @@
     const $$translatedBy = document.getElementById( 'translatedBy' );
 
     if ( document.contains( $$translateLink ) ) {
-      $$translateLink.href = 'https://www.transifex.com/poziworld/scroll-to-top-button';
+      $$translateLink.href = 'https://www.transifex.com/poziworld/scroll-to-top-button/';
     }
 
     if ( document.contains( $$releaseLink ) ) {
