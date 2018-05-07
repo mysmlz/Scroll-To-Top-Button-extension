@@ -1,0 +1,296 @@
+{
+  "browserActionReloadActiveTab": {
+    "message": "Обновить вкладку"
+  },
+  "black": {
+    "message": "Чёрный"
+  },
+  "browserActionSttbEnabled": {
+    "message": "Включить Scroll To Top Button (STTB)"
+  },
+  "scrollToTopOnly": {
+    "message": "Прокрутка только вверх"
+  },
+  "altTB": {
+    "message": "Alt + T/B (на англ.)"
+  },
+  "contextRightClickMenu": {
+    "message": "Контекстное меню (правый клик)"
+  },
+  "medium": {
+    "message": "Среднее"
+  },
+  "buttonSettings": {
+    "message": "Настройки кнопки"
+  },
+  "browserActionSttbDisabledUrl": {
+    "message": "Отключить STTB для данного URL"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Домашняя страница</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "slower": {
+    "message": "Медленнее"
+  },
+  "faster": {
+    "message": "Быстрее"
+  },
+  "aLot": {
+    "message": "Большое"
+  },
+  "extensionDescription": {
+    "message": "Добавляет кнопку прокрутки вверх или вниз."
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* Мы являемся участником партнёрской рекламной программы Amazon Services LLC Associates Program, предназначенной для предоставления нам способов получения комиссионных сборов путём ссылки на Amazon.com и аффилированных сайтов."
+  },
+  "topCenter": {
+    "message": "Сверху по центру"
+  },
+  "buttonLocation": {
+    "message": "Расположение кнопки"
+  },
+  "arrowOnly": {
+    "message": "Только стрелки"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "Если вам нравится наш проект и вы считаете наше произведение труда полезным, пожалуйста, поддержите нас через <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> — ваши щедрые взносы помогают оплачивать хостинг, программные средства и время, необходимое для исправления ошибок и внедрения новых функций."
+  },
+  "otherProjects": {
+    "message": "Наши другие проекты:"
+  },
+  "off": {
+    "message": "Выключить"
+  },
+  "authorsSettings": {
+    "message": "Настройки автора"
+  },
+  "buttonDesign": {
+    "message": "Дизайн кнопки"
+  },
+  "otherSettings": {
+    "message": "Другие настройки"
+  },
+  "tumblerBlue": {
+    "message": "Синий (Tumblr)"
+  },
+  "optionsPageTitle": {
+    "message": "Параметры |  Scroll To Top Button"
+  },
+  "red": {
+    "message": "Красный"
+  },
+  "fast": {
+    "message": "Быстрая"
+  },
+  "browserActionSttbDisabledDomain": {
+    "message": "Отключить STTB для данного домена"
+  },
+  "blue": {
+    "message": "Синий"
+  },
+  "flipBetweenTopBottom": {
+    "message": "Переключение между верхом и низом"
+  },
+  "bottomLeft": {
+    "message": "Снизу слева"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Контроль клавиш Home &amp; End"
+  },
+  "close": {
+    "message": "Закрыть"
+  },
+  "scrollDownSpeed": {
+    "message": "Скорость прокрутки вниз"
+  },
+  "pixelDesign": {
+    "message": "Пиксельный дизайн"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "Я хочу помочь"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Узнайте, как это работает"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + Стрелка Вверх/Вниз"
+  },
+  "centerRight": {
+    "message": "По центру справа"
+  },
+  "appearDistance": {
+    "message": "Расстояние до появления кнопки"
+  },
+  "topRight": {
+    "message": "Сверху справа"
+  },
+  "colors": {
+    "message": "Цвета"
+  },
+  "topLeft": {
+    "message": "Сверху слева"
+  },
+  "barelyAny": {
+    "message": "Почти нисколько"
+  },
+  "on": {
+    "message": "Включить"
+  },
+  "lang": {
+    "message": "ru",
+    "description": "According to https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes and https://developer.chrome.com/webstore/i18n#localeTable"
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Помогите с переводом</a>"
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">История изменений (версий)</a>"
+  },
+  "buttonMode": {
+    "message": "Режим кнопки"
+  },
+  "slowest": {
+    "message": "Самая медленная"
+  },
+  "pink": {
+    "message": "Розовый"
+  },
+  "keyboardOnly": {
+    "message": "Только клавиатура"
+  },
+  "restoreDefaults": {
+    "message": "Восстановить первоначальные"
+  },
+  "browserActionPageTitle": {
+    "message": "Настройки активной вкладки |  Scroll To Top Button"
+  },
+  "operatingSystem": {
+    "message": "Операционная система"
+  },
+  "grey": {
+    "message": "Серый"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "Вы можете помочь нам, делая то, что вы уже делаете, не переплатив ни лишней копейки."
+  },
+  "moreThanAverage": {
+    "message": "Больше среднего"
+  },
+  "buttonSizeInPixels": {
+    "message": "$LENGTH$x$WIDTH$ пикселей",
+    "description": "Button size in pixels (length, width): 35x40 pixels",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "35"
+      },
+      "width": {
+        "content": "$2",
+        "example" : "40"
+      }
+    }
+  },
+  "ratingHelpsOthers": {
+    "message": "Пожалуйста, <a href=\"#\" target=\"_blank\" id=\"rateLink\">оцените это расширение</a>, если оно вам нравится.<br>Отзывы реально помогают другим найти это расширение!"
+  },
+  "keyboardShortcuts": {
+    "message": "Быстрые клавиши"
+  },
+  "transparent": {
+    "message": "Прозрачная"
+  },
+  "keyboardSettings": {
+    "message": "Настройки клавиатуры"
+  },
+  "dualArrows": {
+    "message": "Двойные стрелки"
+  },
+  "buttonSize": {
+    "message": "Размер кнопки"
+  },
+  "aLittle": {
+    "message": "Небольшое"
+  },
+  "orange": {
+    "message": "Оранжевый"
+  },
+  "aTon": {
+    "message": "Огромное"
+  },
+  "bottomRight": {
+    "message": "Снизу справа"
+  },
+  "bottomCenter": {
+    "message": "Снизу по центру"
+  },
+  "save": {
+    "message": "Сохранить"
+  },
+  "slow": {
+    "message": "Медленная"
+  },
+  "centerLeft": {
+    "message": "По центру слева"
+  },
+  "referralProgramInfoNotify": {
+    "message": "Оповещайте меня, когда я могу помочь через эту программу"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Совершаете покупки на Amazon?"
+  },
+  "flipDistance": {
+    "message": "Расстояние до переключения"
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "Один щелчок кнопки ниже перед тем, как положить товар в корзину, — это всё, что нужно!*"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Стиль неактивной кнопки"
+  },
+  "optionsSaved": {
+    "message": "Параметры сохранены."
+  },
+  "browserActionTitle": {
+    "message": "Настройки активной вкладки"
+  },
+  "opaque": {
+    "message": "Непрозрачная"
+  },
+  "invisible": {
+    "message": "Невидимая"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Shop?"
+  },
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
+  },
+  "fastest": {
+    "message": "Самая быстрая (мгновенно)"
+  },
+  "translatedBy": {
+    "message": "Перевод: <a href=\"https://www.transifex.com/user/profile/reidel/\" target=\"_blank\" id=\"translatorLink\">Пётр Михайлишин</a>, <a href=\"https://www.transifex.com/user/profile/aleev.insmile/\" target=\"_blank\" id=\"translatorLink\">Руслан Алеев</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "alternateDesigns": {
+    "message": "Альтернативные дизайны"
+  },
+  "yellow": {
+    "message": "Жёлтый"
+  },
+  "green": {
+    "message": "Зелёный"
+  },
+  "scrollUpSpeed": {
+    "message": "Скорость прокрутки вверх"
+  },
+  "optionsTitle": {
+    "message": "Параметры Scroll To Top Button"
+  },
+  "purple": {
+    "message": "Фиолетовый"
+  }
+}
