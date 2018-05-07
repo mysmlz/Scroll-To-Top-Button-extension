@@ -377,11 +377,21 @@
     } )
       .then( function ( objSettings ) {
         let arrDisabledNotificationsToSet = [];
-        const arrDisabledNotifications = objSettings[ _this.getNotificationSettingsKey() ];
+        let arrDisabledNotifications = objSettings[ _this.getNotificationSettingsKey() ];
+        const boolFoundDisabledNotifcations = Array.isArray( arrDisabledNotifications );
 
-        if ( Array.isArray( arrDisabledNotifications ) ) {
-          const intIndex = arrDisabledNotifications.indexOf( _this.getName() );
-          const boolIsDisabled = intIndex > -1;
+        if ( boolFoundDisabledNotifcations || poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
+          let intIndex = -1;
+          let boolIsDisabled = false;
+
+          if ( boolFoundDisabledNotifcations ) {
+            intIndex = arrDisabledNotifications.indexOf( _this.getName() );
+
+            boolIsDisabled = intIndex > -1;
+          }
+          else {
+            arrDisabledNotifications = [];
+          }
 
           if ( boolIsDisabled && ! boolDisable ) {
             arrDisabledNotifications.splice( intIndex, 1 );
@@ -473,12 +483,18 @@
       );
     } )
       .then( function ( objSettings ) {
-        if ( poziworldExtension.utils.isType( objSettings, 'object' ) && ! Global.isEmpty( objSettings ) ) {
+        if ( poziworldExtension.utils.isType( objSettings, 'object' ) ) {
           const arrDisabledNotifications = objSettings[ _this.getNotificationSettingsKey() ];
+          const boolFoundDisabledNotifcations = Array.isArray( arrDisabledNotifications );
 
-          if ( Array.isArray( arrDisabledNotifications ) || poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
-            const intIndex = arrDisabledNotifications.indexOf( _this.getName() );
-            const boolIsEnabled = intIndex === -1;
+          if ( boolFoundDisabledNotifcations || poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
+            let boolIsEnabled = true;
+
+            if ( boolFoundDisabledNotifcations ) {
+              const intIndex = arrDisabledNotifications.indexOf( _this.getName() );
+
+              boolIsEnabled = intIndex === -1;
+            }
 
             if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
               boolReturnStorageObject = poziworldExtension.utils.isType( boolReturnStorageObject, 'boolean' ) && boolReturnStorageObject;
