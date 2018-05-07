@@ -25,7 +25,7 @@ body
   {
     min-width: 0;
   }
-.pwCheckable
+input.pwCheckable
   {
     -webkit-appearance: none;
     -webkit-user-select: none;
@@ -44,13 +44,13 @@ body
     font: inherit;
     text-shadow: 0 .1rem 0 rgb( 240, 240, 240 );
   }
-.pwCheckable:focus
+input.pwCheckable:focus
   {
     background-image: -webkit-linear-gradient( #fff, #fff 38%, #eee );
     border-color: rgba( 0, 0, 0, .75 );
     box-shadow: 0 .1rem 0 rgba( 0, 0, 0, .08 ), inset 0 .1rem .2rem rgba( 255, 255, 255, 1 );
   }
-.pwCheckable:checked:before
+input.pwCheckable:checked:before
   {
     -webkit-user-select: none;
     content: '';
@@ -60,11 +60,11 @@ body
     background-image: url(/global/img/tick-icon-11.png);
     background-size: 100% 100%;
   }
-.pwRadio
+input.pwRadio
   {
     border-radius: 100%;
   }
-.pwRadio:checked:before
+input.pwRadio:checked:before
   {
     content: '';
     display: block;
@@ -262,10 +262,18 @@ body
   }
 #referralProgramInfoLabel
   {
+    display: flex;
+    align-items: center;
     line-height: 3em;
+  }
+#referralProgramInfoCheckbox
+  {
+    flex: 0 0 1.3rem;
+    bottom: unset;
   }
 #referralProgramInfoLabelText
   {
     font-size: 1.2em;
+    line-height: 1.2;
     color: #303942;
   }
