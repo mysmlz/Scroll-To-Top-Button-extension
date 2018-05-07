@@ -6,6 +6,27 @@
 
 > Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 
+## v6.6.0
+
+### New
+
+* [Scroll To Top Button translated](https://www.transifex.com/poziworld/scroll-to-top-button) into Russian. / [Scroll To Top Button переведён](https://www.transifex.com/poziworld/scroll-to-top-button) на русский.
+
+  > Thank you, [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/) and [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/)!
+
+### Improved
+
+* You can now [support Scroll To Top Button development](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5) with Bitcoin (BTC), Bitcoin Cash (BCH), Ethereum (ETH), and Litecoin (LTC).
+
+### Fixed
+
+* Amazon badge notification and its settings wouldn't work.
+  
+  Make us your referral – support project development in one click!
+  > Go to Amazon and click the Scroll To Top Button icon next to the address bar to learn the details.
+
+---
+
 ## v6.5.2
 
 ### Improved
