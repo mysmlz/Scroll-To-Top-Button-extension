@@ -1,4 +1,4 @@
-[Scroll To Top Button<img src="/global/img/sttb-icon-38.png" width="38" height="38" alt="Scroll To Top Button">](https://scroll-to-top-button.com)
+[Scroll To Top Button <img src="/global/img/sttb-icon-38.png" width="38" height="38" alt="Scroll To Top Button">](https://scroll-to-top-button.com)
 =======
 
 Scroll To Top Button is an extension for the Google Chrome, Opera, and other Chromium-based browsers that allows you to quickly jump to the top and/or bottom of a page.
@@ -95,6 +95,8 @@ Scroll To Top Button on social networks
 - [Scroll To Top Button on Google+](https://plus.google.com/111049917037858081473)
 - [Scroll To Top Button on VK](https://vk.com/scrolltotopbutton)
 - [Scroll To Top Button on OK](https://ok.ru/group/54802374459420)
+
+<sup>[(back to table of contents)](#table-of-contents)</sup>
 
 
 Gratitudes
