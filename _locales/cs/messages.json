@@ -1,0 +1,296 @@
+{
+  "browserActionReloadActiveTab": {
+    "message": "Obnovit kartu"
+  },
+  "black": {
+    "message": "Černá"
+  },
+  "browserActionSttbEnabled": {
+    "message": "Zapnout Scroll To Top Button (STTB)"
+  },
+  "scrollToTopOnly": {
+    "message": "Scroll to top only"
+  },
+  "altTB": {
+    "message": "Alt + T/B"
+  },
+  "contextRightClickMenu": {
+    "message": "Kontextové menu (pravé-tlačitko)"
+  },
+  "medium": {
+    "message": "Středně"
+  },
+  "buttonSettings": {
+    "message": "Nastavení tlačítka"
+  },
+  "browserActionSttbDisabledUrl": {
+    "message": "Vypnout STTB pro tuto URL"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Domovská stránka</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "slower": {
+    "message": "Pomalejší"
+  },
+  "faster": {
+    "message": "Rychleji"
+  },
+  "aLot": {
+    "message": "Hodně"
+  },
+  "extensionDescription": {
+    "message": "Adds a scroll to top or bottom button."
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
+  },
+  "topCenter": {
+    "message": "Nahoře uprostřed"
+  },
+  "buttonLocation": {
+    "message": "Pozice tlačítka"
+  },
+  "arrowOnly": {
+    "message": "Pouze šipky"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "If you like the project and find our work useful, please consider supporting us via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features."
+  },
+  "otherProjects": {
+    "message": "Naše další projekty:"
+  },
+  "off": {
+    "message": "Vypnuto"
+  },
+  "authorsSettings": {
+    "message": "Autorské nastavení"
+  },
+  "buttonDesign": {
+    "message": "Design tlačítka"
+  },
+  "otherSettings": {
+    "message": "Jiné nastavení"
+  },
+  "tumblerBlue": {
+    "message": "Tumblr modř"
+  },
+  "optionsPageTitle": {
+    "message": "Možnosti | Scroll To Top Button"
+  },
+  "red": {
+    "message": "Červená"
+  },
+  "fast": {
+    "message": "Rychle"
+  },
+  "browserActionSttbDisabledDomain": {
+    "message": "Vypnout STTB pro tuto doménu"
+  },
+  "blue": {
+    "message": "Modrá"
+  },
+  "flipBetweenTopBottom": {
+    "message": "Přepínat dolů &amp; nahoru"
+  },
+  "bottomLeft": {
+    "message": "Dole vlevo"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Tlačítka Home &amp; End ovládány"
+  },
+  "close": {
+    "message": "Zavřít"
+  },
+  "scrollDownSpeed": {
+    "message": "Rychlost posunu dolů"
+  },
+  "pixelDesign": {
+    "message": "Pixel design"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "I want to help"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Find out how this works"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + šipky Nahoru/Dolů"
+  },
+  "centerRight": {
+    "message": "Uprostřed vpravo"
+  },
+  "appearDistance": {
+    "message": "Appear distance"
+  },
+  "topRight": {
+    "message": "Nahoře vpravo"
+  },
+  "colors": {
+    "message": "Barvy"
+  },
+  "topLeft": {
+    "message": "Nahoře vlevo"
+  },
+  "barelyAny": {
+    "message": "Barely any"
+  },
+  "on": {
+    "message": "Zapnuto"
+  },
+  "lang": {
+    "message": "cs",
+    "description": "According to https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes and https://developer.chrome.com/webstore/i18n#localeTable"
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Poznámky k vydaní</a>"
+  },
+  "buttonMode": {
+    "message": "Typ tlačítka"
+  },
+  "slowest": {
+    "message": "Nejpomalejší"
+  },
+  "pink": {
+    "message": "Řužová"
+  },
+  "keyboardOnly": {
+    "message": "Pouze klávesnice"
+  },
+  "restoreDefaults": {
+    "message": "Obnovit vychozí"
+  },
+  "browserActionPageTitle": {
+    "message": "Karta aktivního nastavení | Scroll To Top Button"
+  },
+  "operatingSystem": {
+    "message": "Operační systém"
+  },
+  "grey": {
+    "message": "Šedá"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "You can help us by doing what you already do without spending an extra penny."
+  },
+  "moreThanAverage": {
+    "message": "Více než průměr"
+  },
+  "buttonSizeInPixels": {
+    "message": "$LENGTH$x$WIDTH$ pixelů",
+    "description": "Button size in pixels (length, width): 35x40 pixels",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "35"
+      },
+      "width": {
+        "content": "$2",
+        "example" : "40"
+      }
+    }
+  },
+  "ratingHelpsOthers": {
+    "message": "Please <a href=\"#\" target=\"_blank\" id=\"rateLink\">rate this extension</a> if you enjoy it!<br>The feedback really helps others find this extension!"
+  },
+  "keyboardShortcuts": {
+    "message": "Klávesové zkratky "
+  },
+  "transparent": {
+    "message": "Transparent"
+  },
+  "keyboardSettings": {
+    "message": "Nastavení klávesnice"
+  },
+  "dualArrows": {
+    "message": "Dvojitá šipka"
+  },
+  "buttonSize": {
+    "message": "Velikost tlačitka"
+  },
+  "aLittle": {
+    "message": "Trochu"
+  },
+  "orange": {
+    "message": "Oranžová"
+  },
+  "aTon": {
+    "message": "A ton"
+  },
+  "bottomRight": {
+    "message": "Dole vpravo"
+  },
+  "bottomCenter": {
+    "message": "Dole uprostřed"
+  },
+  "save": {
+    "message": "Uložit"
+  },
+  "slow": {
+    "message": "Pomalu"
+  },
+  "centerLeft": {
+    "message": "Uprostřed vlevo"
+  },
+  "referralProgramInfoNotify": {
+    "message": "Notify me when I can help through this program"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Shop on Amazon?"
+  },
+  "flipDistance": {
+    "message": "Flip distance"
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Průhlednost neaktivního tlačítka"
+  },
+  "optionsSaved": {
+    "message": "Options saved."
+  },
+  "browserActionTitle": {
+    "message": "Karta aktivního nastavení"
+  },
+  "opaque": {
+    "message": "Neprůhledný"
+  },
+  "invisible": {
+    "message": "Neviditelné"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Shop?"
+  },
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
+  },
+  "fastest": {
+    "message": "Nejrychlejší (okamžitě)"
+  },
+  "translatedBy": {
+    "message": " ",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "alternateDesigns": {
+    "message": "Alternate designs"
+  },
+  "yellow": {
+    "message": "Žlutá"
+  },
+  "green": {
+    "message": "Zelená"
+  },
+  "scrollUpSpeed": {
+    "message": "Rychlost posunu nahoru"
+  },
+  "optionsTitle": {
+    "message": "Scroll To Top Button Možnosti"
+  },
+  "purple": {
+    "message": "Fialová"
+  }
+}
