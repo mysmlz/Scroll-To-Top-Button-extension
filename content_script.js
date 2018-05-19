@@ -97,6 +97,10 @@ function STTB() {
             $sttbImg.style.zIndex = 2147483647;
             $sttbImg.style.border = '0px';
             $sttbImg.style.padding = '0px';
+            $sttbImg.style.minWidth = 'auto';
+            $sttbImg.style.minHeight = 'auto';
+            $sttbImg.style.maxWidth = 'none';
+            $sttbImg.style.maxHeight = 'none';
 
             if (location == "TR") {
                 $sttbImg.style.top = '20px';
@@ -179,6 +183,11 @@ function STTB() {
             $sttbImg2.style.zIndex = 2147483647;
             $sttbImg2.style.border = '0px';
             $sttbImg2.style.padding = '0px';
+            $sttbImg2.style.minWidth = 'auto';
+            $sttbImg2.style.minHeight = 'auto';
+            $sttbImg2.style.maxWidth = 'none';
+            $sttbImg2.style.maxHeight = 'none';
+
             if (location == "TR") {
                 adjust=parseInt(size) / 2 + 22;
                 adjusted=adjust + "px";
