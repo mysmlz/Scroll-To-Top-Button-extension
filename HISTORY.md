@@ -6,6 +6,26 @@
 
 > Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 
+## v6.7.0
+
+### New
+
+* [Scroll To Top Button translated](https://www.transifex.com/poziworld/scroll-to-top-button) into Dutch (Netherlands). / [Scroll To Top Button vertaald](https://www.transifex.com/poziworld/scroll-to-top-button) naar het Nederlands.
+
+  > Thank you, [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/)!
+
+* Scroll To Top Button partially translated into Czech.
+
+  > Thank you, [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/)!
+
+### Fixed
+
+* Button wouldn't have the right size on some pages.
+   
+  > Issue reported by [Devia Jeff (Kslr)](https://plus.google.com/111793170384760579738).
+
+---
+
 ## v6.6.0
 
 ### New
