@@ -104,7 +104,8 @@ Gratitudes
 
 - Translators:
   - Chinese (China) — [Pluwen](https://www.transifex.com/user/profile/pluwen/);
-  - Russian — [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/), [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/).
+  - Russian — [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/), [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/);
+  - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/).
 
 <sup>[(back to table of contents)](#table-of-contents)</sup>
 

@@ -1,0 +1,296 @@
+{
+  "browserActionReloadActiveTab": {
+    "message": "Herlaad tab"
+  },
+  "black": {
+    "message": "Zwart"
+  },
+  "browserActionSttbEnabled": {
+    "message": "Zet Scroll To Top Button (STTB) aan"
+  },
+  "scrollToTopOnly": {
+    "message": "Alleen scroll naar boven"
+  },
+  "altTB": {
+    "message": "Alt + T (Top) / B (Bottom)"
+  },
+  "contextRightClickMenu": {
+    "message": "Context (rechtermuisknop) menu"
+  },
+  "medium": {
+    "message": "Middelmatig"
+  },
+  "buttonSettings": {
+    "message": "Knop instellingen"
+  },
+  "browserActionSttbDisabledUrl": {
+    "message": "Zet STTB uit voor deze URL"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Startpagina</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "slower": {
+    "message": "Langzamer"
+  },
+  "faster": {
+    "message": "Sneller"
+  },
+  "aLot": {
+    "message": "Veel"
+  },
+  "extensionDescription": {
+    "message": "Voegt een knop toe waarmee je helemaal naar boven of beneden kan scrollen."
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* Wij nemen deel in het Amazon Services LLC Associates Program - een filiaal adverteringsprogramma ontworpen om een inkomst voor ons te creëren door naar Amazon.com en geaffilieerde sites te linken."
+  },
+  "topCenter": {
+    "message": "Boven midden"
+  },
+  "buttonLocation": {
+    "message": "Knop positie"
+  },
+  "arrowOnly": {
+    "message": "Alleen pijlen"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "Als je dit project leuk vind en ons werk nuttig, overweeg alstublieft ons te ondersteunen via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – jouw gulle contributie helpt ons betalen voor dingen zoals 'hosting', benodigde programma's, en de tijd die we steken in het repareren van bugs en nieuwe mogelijkheden implementeren."
+  },
+  "otherProjects": {
+    "message": "Onze andere projecten:"
+  },
+  "off": {
+    "message": "Uit"
+  },
+  "authorsSettings": {
+    "message": "Auteur's instellingen"
+  },
+  "buttonDesign": {
+    "message": "Knop design"
+  },
+  "otherSettings": {
+    "message": "Andere instellingen"
+  },
+  "tumblerBlue": {
+    "message": "Tumblr blauw"
+  },
+  "optionsPageTitle": {
+    "message": "Opties | Scroll To Top Button"
+  },
+  "red": {
+    "message": "Rood"
+  },
+  "fast": {
+    "message": "Snel"
+  },
+  "browserActionSttbDisabledDomain": {
+    "message": "Zet STTB uit voor dit domein"
+  },
+  "blue": {
+    "message": "Blauw"
+  },
+  "flipBetweenTopBottom": {
+    "message": "Wissel tussen boven &amp; beneden"
+  },
+  "bottomLeft": {
+    "message": "Linksonder"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Home &amp; End knoppen gecontroleerd door"
+  },
+  "close": {
+    "message": "Sluit"
+  },
+  "scrollDownSpeed": {
+    "message": "Snelheid naar beneden scrollen"
+  },
+  "pixelDesign": {
+    "message": "Pixel ontwerp"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "Ik wil helpen"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Ontdek hoe het werkt"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + naar Boven/Beneden Pijl"
+  },
+  "centerRight": {
+    "message": "Rechtsmidden"
+  },
+  "appearDistance": {
+    "message": "Verschijn afstand"
+  },
+  "topRight": {
+    "message": "Rechtsboven"
+  },
+  "colors": {
+    "message": "Kleuren"
+  },
+  "topLeft": {
+    "message": "Linksboven"
+  },
+  "barelyAny": {
+    "message": "Nauwelijks iets"
+  },
+  "on": {
+    "message": "Aan"
+  },
+  "lang": {
+    "message": "nl",
+    "description": "According to https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes and https://developer.chrome.com/webstore/i18n#localeTable"
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help vertalen</a>"
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Opmerkingen bij deze uitgave</a>"
+  },
+  "buttonMode": {
+    "message": "Knop type"
+  },
+  "slowest": {
+    "message": "Langzaamst"
+  },
+  "pink": {
+    "message": "Roze"
+  },
+  "keyboardOnly": {
+    "message": "Alleen toetsenbord"
+  },
+  "restoreDefaults": {
+    "message": "Standaardinstellingen herstellen"
+  },
+  "browserActionPageTitle": {
+    "message": "Actieve tab instellingen | Scroll To Top Button"
+  },
+  "operatingSystem": {
+    "message": "Besturingssysteem"
+  },
+  "grey": {
+    "message": "Grijs"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "Je kan ons helpen door te doen what je al doet zonder ook maar een cent uit te geven."
+  },
+  "moreThanAverage": {
+    "message": "Meer dan gemiddeld"
+  },
+  "buttonSizeInPixels": {
+    "message": "$LENGTH$x$WIDTH$ pixels",
+    "description": "Button size in pixels (length, width): 35x40 pixels",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "35"
+      },
+      "width": {
+        "content": "$2",
+        "example" : "40"
+      }
+    }
+  },
+  "ratingHelpsOthers": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"rateLink\">Beoordeel deze extensie</a> alsjeblieft als het je bevalt!<br>De feedback helpt anderen deze extensie te vinden!"
+  },
+  "keyboardShortcuts": {
+    "message": "Toetsenbord snelkoppelingen"
+  },
+  "transparent": {
+    "message": "Transparant"
+  },
+  "keyboardSettings": {
+    "message": "Toetsenbord instellingen"
+  },
+  "dualArrows": {
+    "message": "Dubbele pijlen"
+  },
+  "buttonSize": {
+    "message": "Knop grootte"
+  },
+  "aLittle": {
+    "message": "Een klein beetje"
+  },
+  "orange": {
+    "message": "Oranje"
+  },
+  "aTon": {
+    "message": "Heel veel"
+  },
+  "bottomRight": {
+    "message": "Rechtsonder"
+  },
+  "bottomCenter": {
+    "message": "Onder midden"
+  },
+  "save": {
+    "message": "Opslaan"
+  },
+  "slow": {
+    "message": "Langzaam"
+  },
+  "centerLeft": {
+    "message": "Linksmidden"
+  },
+  "referralProgramInfoNotify": {
+    "message": "Stuur mij een notificatie wanneer ik door dit programma kan helpen"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Shop on Amazon?"
+  },
+  "flipDistance": {
+    "message": "Omwissel afstand"
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "Je hoeft alleen maar op de knop hieronder te klikken voordat je een product in je mandje doet!*"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Doorzichtigheid inactieve knop"
+  },
+  "optionsSaved": {
+    "message": "Instellingen opgeslagen."
+  },
+  "browserActionTitle": {
+    "message": "Actieve tab instellingen"
+  },
+  "opaque": {
+    "message": "Niet doorzichtig"
+  },
+  "invisible": {
+    "message": "Onzichtbaar"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Shop?"
+  },
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
+  },
+  "fastest": {
+    "message": "Snelst (direct)"
+  },
+  "translatedBy": {
+    "message": "Vertaald door <a href=\"https://www.transifex.com/user/profile/MichaelAtsma/\" target=\"_blank\" id=\"translatorLink\">Michael Atsma</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "alternateDesigns": {
+    "message": "Andere ontwerpen"
+  },
+  "yellow": {
+    "message": "Geel"
+  },
+  "green": {
+    "message": "Groen"
+  },
+  "scrollUpSpeed": {
+    "message": "Snelheid naar boven scrollen"
+  },
+  "optionsTitle": {
+    "message": "Scroll To Top Button Opties"
+  },
+  "purple": {
+    "message": "Paars"
+  }
+}
