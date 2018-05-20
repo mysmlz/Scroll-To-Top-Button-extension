@@ -276,10 +276,12 @@
   }
 
 , "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?"
+    "message": "Shop?",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
   }
 , "referralProgramInfoTitle_amazon": {
-    "message": "Shop on Amazon?"
+    "message": "Shop on Amazon?",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
   }
 , "referralProgramInfoText_amazon": {
     "message": "You can help us by doing what you already do without spending an extra penny."
