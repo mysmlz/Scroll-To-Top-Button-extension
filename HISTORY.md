@@ -6,6 +6,16 @@
 
 > Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 
+## v6.7.1
+
+### Fixed
+
+* Options page would flicker when language is not English.
+   
+  > Issue reported by [Pampero Cool](https://plus.google.com/+MarcFoces), [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/).
+
+---
+
 ## v6.7.0
 
 ### New
