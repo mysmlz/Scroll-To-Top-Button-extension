@@ -7,6 +7,9 @@
 
  ============================================================================ */
 
+html {
+  max-width: 483px; /* 500px - 17px scrollbar */
+}
 #incentivizeFurtherDevelopment {
   margin: -.45rem 0;
   padding: 1rem;
@@ -32,7 +35,7 @@ label {
   margin-left: 10px;
 }
 
-@media ( max-width: 450px ) { /* To not affect Opera standalone page style */
+@media ( max-width: 500px ) { /* To not affect Opera standalone page style, but also account for other languages (wide text causes Options iframe flickering) */
   html {
     height: 450px;
     overflow-y: hidden;
