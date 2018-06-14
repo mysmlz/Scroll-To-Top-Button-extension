@@ -30,6 +30,14 @@
     let $$scrollCausingElement = null;
 
     /**
+     * #editor-container on Transifex when viewing/editing translations is 3px higher than viewport.
+     *
+     * @type {number}
+     */
+
+    const TRANSIFEX_EDITOR_CONTAINER_EXTRA_HEIGHT = 3;
+
+    /**
      * Return window.
      *
      * @return {jQuery}
@@ -87,6 +95,16 @@
 
     Sttb.prototype.setScrollCausingElement = function ( $$element ) {
       $$scrollCausingElement = $$element;
+    };
+
+    /**
+     * Return the number of pixels the Transifex container is higher than viewport by.
+     *
+     * @return {number}
+     */
+
+    Sttb.prototype.getTransifexExtraHeight = function () {
+      return TRANSIFEX_EDITOR_CONTAINER_EXTRA_HEIGHT;
     };
   }
 
@@ -164,7 +182,7 @@
 
   Sttb.prototype.isWindowReady = function () {
     return ( window == top || window.innerHeight / window.screen.height > .85 ) &&
-      window.innerHeight < ( $( document ).height() - 3 ); // Hello, Transifex's 3px!
+      window.innerHeight < ( $( document ).height() - this.getTransifexExtraHeight() );
   };
 
   /**
