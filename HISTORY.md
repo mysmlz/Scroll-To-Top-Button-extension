@@ -6,6 +6,16 @@
 
 > Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 
+## v6.7.2
+
+### Improved
+
+* Make Scroll To Top Button work on Google News.
+   
+  > Issue reported by [phil reilly](https://plus.google.com/113610250929060370881).
+
+---
+
 ## v6.7.1
 
 ### Fixed
