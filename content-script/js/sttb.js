@@ -88,7 +88,7 @@
     };
 
     /**
-     * If there is a scroll-causing element, set it.
+     * If there is a scroll-causing (higher than viewport) element, set it.
      *
      * @param {HTMLElement} [$$element]
      */
@@ -111,16 +111,24 @@
   /**
    * Check whether the page changes size later or a mistake was made judging size by user scrolling.
    *
+   * @todo Find a universal way to detect scrollable pages where body height: 100% and overflow: hidden.
+   *
    * @param {boolean} boolSkipSpecialCase
    */
 
   Sttb.prototype.watch = function ( boolSkipSpecialCase ) {
+    const strHost = location.host;
+
     // Gmail
-    if ( /^mail.google\.[a-z]{2,}$/.test( location.host ) ) {
+    if ( /^mail.google\.[a-z]{2,}$/.test( strHost ) ) {
       this.handleGmail();
     }
+    // Google News
+    if ( /^news.google\.[a-z]{2,}$/.test( strHost ) ) {
+      this.handleGoogleNews();
+    }
     // Transifex
-    else if ( ! boolSkipSpecialCase && /^www\.transifex\.com$/.test( location.host ) ) {
+    else if ( ! boolSkipSpecialCase && /^www\.transifex\.com$/.test( strHost ) ) {
       this.handleTransifex();
     }
     // All other sites
@@ -157,6 +165,107 @@
       this.setScrollableElement( $$scrollableElement );
       this.setScrollCausingElement( $$scrollableElement.firstElementChild );
       ContentScript.init();
+    }
+  };
+
+  /**
+   * Google News' main scrollable area is a div, not whole document like on most other sites. Thus, it needs a special treatment.
+   **/
+
+  Sttb.prototype.handleGoogleNews = function () {
+    const _this = this;
+
+    /**
+     * Google News uses tabs for different “pages”. On navigation, it hides the current and (creates and) shows the new one.
+     *
+     * @type {NodeListOf<Element>}
+     */
+
+    const $$scrollCausingElementsParents = document.querySelectorAll( 'body > div > c-wiz' );
+
+    if ( ! $$scrollCausingElementsParents ) {
+      this.watchForGoogleNewsRepaint();
+
+      return;
+    }
+
+    let $$currentScrollCausingElementParent;
+
+    for ( let $$node of $$scrollCausingElementsParents ) {
+      if ( $$node.offsetHeight ) {
+        $$currentScrollCausingElementParent = $$node;
+
+        break;
+      }
+    }
+
+    const $$currentScrollCausingElement = $$currentScrollCausingElementParent.querySelector( 'div' );
+
+    if ( ! $$currentScrollCausingElement ) {
+      this.watchForGoogleNewsRepaint();
+    }
+    else {
+      this.setScrollableElement( $$currentScrollCausingElementParent );
+      this.setScrollCausingElement( $$currentScrollCausingElement );
+      ContentScript.init();
+      this.watchForGoogleNewsPageChange( $$currentScrollCausingElementParent );
+    }
+  };
+
+  /**
+   * Recheck for scrollable items on repaint.
+   */
+
+  Sttb.prototype.watchForGoogleNewsRepaint = function () {
+    const _this = this;
+
+    window.requestAnimationFrame( _this.handleGoogleNews.bind( _this ) );
+  };
+
+  /**
+   * Google News uses tabs for different “pages”. On navigation, it hides the current and (creates and) shows the new one.
+   *
+   * @param {HTMLElement} $$currentScrollCausingElementParent
+   */
+
+  Sttb.prototype.watchForGoogleNewsPageChange = function ( $$currentScrollCausingElementParent ) {
+    const _this = this;
+
+    var objObserverWatchFor = {
+      attributes: true,
+      attributeFilter: [
+        'style'
+      ]
+    };
+
+    let observer;
+
+    const disconnectObserver = function () {
+      observer.disconnect();
+    };
+
+    observer = new MutationObserver( this.handleGoogleNewsMutations.bind( _this, disconnectObserver ) );
+
+    observer.observe( $$currentScrollCausingElementParent, objObserverWatchFor );
+  };
+
+  /**
+   * Google News uses tabs for different “pages”. On navigation, it hides the current and (creates and) shows the new one.
+   *
+   * @param disconnectObserver
+   * @param {Object[]} arrMutations
+   */
+
+  Sttb.prototype.handleGoogleNewsMutations = function ( disconnectObserver, arrMutations ) {
+    for ( let objMutation of arrMutations ) {
+      const strDisplay = objMutation.target.style.display;
+
+      if ( typeof strDisplay === 'string' && strDisplay === 'none' ) {
+        disconnectObserver();
+        this.handleGoogleNews();
+
+        break;
+      }
     }
   };
 
