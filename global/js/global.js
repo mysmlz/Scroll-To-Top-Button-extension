@@ -12,13 +12,9 @@
       init()
       setStorageItems()
       isEmpty()
-      convertArrToObj()
-      returnIndexOfSubitemContaining()
       createTabOrUpdate()
       checkForRuntimeError()
       openOptionsPage()
-    On Load
-      Initialize
 
  ============================================================================ */
 
@@ -28,20 +24,8 @@
 
  ============================================================================ */
 
-var Global                        = {
-    strOptionsUiUrlPrefix         : 'chrome://extensions?options='
-  ,
-
-  /**
-   * Things to do on initialization.
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  init : function() {
-  }
-  ,
+const Global = {
+  strOptionsUiUrlPrefix: 'chrome://extensions?options=',
 
   /**
    * Sets multiple items in StorageArea.
@@ -94,52 +78,6 @@ var Global                        = {
       return false;
 
     return true;
-  }
-  ,
-
-  /**
-   * Makes an object out of an array
-   *
-   * @type    method
-   * @param   arrToConvert
-   *            Array to convert
-   * @return  object
-   **/
-  convertArrToObj : function ( arrToConvert )
-  {
-    return obj = arrToConvert.reduce(
-        function( o, v, i ) {
-          o[ i ] = v;
-          return o;
-        }
-      , {}
-    );
-  }
-  ,
-
-  /**
-   * Finds item in subarray, returns its index.
-   *
-   * @type    method
-   * @param   arrContainer
-   *            Array containing arrays/objects
-   * @param   miscItem
-   *            What to look for
-   * @param   miscProp
-   *            Array index or object key
-   * @return  integer
-   **/
-  returnIndexOfSubitemContaining : function ( arrContainer, miscItem, miscProp )
-  {
-    return arrContainer
-            .map(
-              function ( miscSub ) {
-                miscProp = ( typeof miscProp === 'undefined' ) ? 0 : miscProp;
-
-                return miscSub[ miscProp ]
-              }
-            )
-              .indexOf( miscItem );
   }
   ,
 
@@ -251,18 +189,3 @@ var Global                        = {
     }
   }
 };
-
-/* =============================================================================
-
-  On Load
-
- ============================================================================ */
-
-/**
- * Initializes.
- *
- * @type    method
- * @param   No Parameters taken
- * @return  void
- **/
-Global.init();
