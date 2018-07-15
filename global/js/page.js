@@ -10,13 +10,11 @@
 
     Globals
     Page
-      init()
       localize()
       template()
       showSuccess()
       toggleElement()
       hideInOpera()
-    Events
 
  ============================================================================ */
 
@@ -54,17 +52,6 @@ var addEvent = (function () {
  ============================================================================ */
 
 var Page = {
-
-  /**
-   * Initialize
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  init : function() {
-  }
-  ,
 
   /**
    * Localize page
@@ -224,11 +211,3 @@ var Page = {
     }
   }
 };
-
-/* =============================================================================
-
-  Events
-
- ============================================================================ */
-
-document.addEventListener( 'DOMContentLoaded', Page.init );
