@@ -25,9 +25,9 @@
     }
 
   , "background"                : {
-        "persistent"            : false
-      , "scripts"               : [
-            "global/js/bowser.js"
+        "scripts"               : [
+            "global/js/browser-polyfill.js"
+          , "global/js/bowser.js"
           , "global/js/event.js"
           , "global/js/utils.js"
           , "global/js/const.js"
@@ -49,12 +49,14 @@
               "content-script/css/content-script.css"
           ]
         , "js"                : [
-              "libraries/jquery.js"
+              "global/js/browser-polyfill.js"
+            , "libraries/jquery.js"
             , "libraries/jquery.easing.js"
             , "libraries/jQueryRotate.js"
             , "content-script/js/sttb.js"
             , "jquery.scroll.pack.js"
             , "global/js/bowser.js"
+            , "global/js/utils.js"
             , "global/js/const.js"
             , "global/js/log.js"
             , "global/js/global.js"

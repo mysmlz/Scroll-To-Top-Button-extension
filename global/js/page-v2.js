@@ -22,28 +22,21 @@
   /**
    * Initialize.
    *
-   * @type    method
-   * @param   strPageName
-   *            Optional. Page name it's called from.
-   * @return  void
-   **/
+   * @param {string} [pageName] - The name of the page this is called from.
+   */
 
-  Page.prototype.init = function ( strPageName ) {
-    this.localize( strPageName );
+  Page.prototype.init = function ( pageName ) {
+    this.localize( pageName );
   };
 
   /**
    * Provide text in the appropriate language for HTML elements that expect it.
    *
-   * @type    method
-   * @param   strPageName
-   *            Optional. Page name it's called from.
-   * @param   strCustomSelectorParent
-   *            Optional. If only part of the page needs to be localized.
-   * @return  void
-   **/
+   * @param {string} [strPageName] - The name of the page this is called from.
+   * @param {string} [strCustomSelectorParent] - If only part of the page needs to be localized.
+   */
 
-  Page.prototype.localize = function( strPageName, strCustomSelectorParent ) {
+  Page.prototype.localize = function ( strPageName, strCustomSelectorParent ) {
     var boolIsCustomSelectorParentPresent = typeof strCustomSelectorParent === 'string'
       , strSelectorPrefix = boolIsCustomSelectorParentPresent ? strCustomSelectorParent + ' ' : ''
       , $allLocalizableElements = document.querySelectorAll( strSelectorPrefix + '[data-i18n]' )
@@ -60,7 +53,7 @@
           arrI18Parameters = strI18Parameters.split( '|' );
         }
 
-        var strMessage = chrome.i18n.getMessage( strI18, arrI18Parameters );
+        var strMessage = browser.i18n.getMessage( strI18, arrI18Parameters );
 
         if ( $localizableElement.nodeName === 'LABEL' ) {
           $localizableElement.innerHTML = $localizableElement.innerHTML + strMessage;
@@ -71,7 +64,7 @@
           $localizableElement.innerHTML = strMessage;
 
           if ( $localizableElement.href === '' ) {
-            $localizableElement.href = chrome.i18n.getMessage( strI18 + 'Href' );
+            $localizableElement.href = browser.i18n.getMessage( strI18 + 'Href' );
           }
         }
         else if ( $localizableElement.nodeName === 'IMG' ) {
@@ -90,7 +83,7 @@
     }
 
     if ( ! boolIsCustomSelectorParentPresent && strPageName ) {
-      document.title = chrome.i18n.getMessage( strPageName + 'Title' );
+      document.title = browser.i18n.getMessage( strPageName + 'Title' );
     }
   };
 

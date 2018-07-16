@@ -1,31 +1,4 @@
-/* =============================================================================
-
-  Product                 :           Scroll To Top Button
-  Authors                 :           Cody Sherman (versions < 6.1.3), PoziWorld
-  Copyright               :           Copyright (c) 2014-2016 PoziWorld
-  File                    :           content-script/js/content-script.js
-  Description             :           Content Script JavaScript
-
-  Table of Contents:
-
-    Globals
-    ContentScript
-      init()
-      getActiveTabAddress()
-      getActiveTabSettings()
-    Events
-
- ============================================================================ */
-
-
-/* =============================================================================
-
-  Globals
-
- ============================================================================ */
-
-const
-    arrSettingsToGet = [
+const arrSettingsToGet = [
         strConstDisabledDomainsSetting
       , strConstDisabledUrlsSetting
     ]
@@ -75,14 +48,15 @@ var ContentScript = {
   ,
 
   /**
-   * Check whether STTB is disabled for this tab
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  getActiveTabSettings : function() {
-    StorageSync.get( arrSettingsToGet, function( objReturn ) {
+   * Check whether STTB is disabled for this tab.
+   */
+
+  getActiveTabSettings: function () {
+    const logTemp = 'getActiveTabSettings';
+
+    poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
+
+    function onActiveTabSettingsRetrieved( objReturn ) {
       // Check domain first
       var arrDisabledDomains = objReturn[ strConstDisabledDomainsSetting ]
         , boolIsDisabledDomain =
@@ -107,6 +81,6 @@ var ContentScript = {
 
       // STTB is enabled
       STTB();
-    } );
+    }
   }
 };

@@ -18,7 +18,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="buttonMode"></span>
-            <select id="stbb">
+            <select id="buttonMode" class="optionsChanger">
               <option value="off" data-i18n="scrollToTopOnly"></option>
               <option value="flip" data-i18n="flipBetweenTopBottom"></option>
               <option value="dual" data-i18n="dualArrows"></option>
@@ -29,7 +29,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="scrollUpSpeed"></span>
-            <select id="speed" class="optionsChanger">
+            <select id="scrollUpSpeed" class="optionsChanger">
               <option value="40000" data-i18n="slowest"></option>
               <option value="20000" data-i18n="slower"></option>
               <option value="2000" data-i18n="slow"></option>
@@ -42,7 +42,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="scrollDownSpeed"></span>
-            <select id="speed2" class="optionsChanger">
+            <select id="scrollDownSpeed" class="optionsChanger">
               <option value="40000" data-i18n="slowest"></option>
               <option value="20000" data-i18n="slower"></option>
               <option value="2000" data-i18n="slow"></option>
@@ -54,8 +54,8 @@
         </p>
         <p class="settingContainer">
           <label>
-            <span id="textChange" data-i18n="appearDistance"></span>
-            <select id="distance" class="optionsChanger">
+            <span id="distanceType" data-i18n="appearDistance"></span>
+            <select id="distanceLength" class="optionsChanger">
               <option value="100" data-i18n="barelyAny"></option>
               <option value="275" data-i18n="aLittle"></option>
               <option value="400" data-i18n="medium"></option>
@@ -68,7 +68,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="buttonSize"></span>
-            <select id="buttonsize" class="appearance optionsChanger">
+            <select id="buttonSize" class="appearance optionsChanger">
               <option value="35px" data-i18n="buttonSizeInPixels" data-i18n-parameters="35|35"></option>
               <option value="40px" data-i18n="buttonSizeInPixels" data-i18n-parameters="40|40"></option>
               <option value="45px" data-i18n="buttonSizeInPixels" data-i18n-parameters="45|45"></option>
@@ -79,7 +79,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="buttonDesign"></span>
-            <select id="buttoncolor" class="appearance optionsChanger">
+            <select id="buttonDesign" class="appearance optionsChanger">
               <optgroup data-i18n="colors">
                 <option value="arrow_blue" data-i18n="tumblerBlue"></option>
                 <option value="arrow_grey" data-i18n="grey"></option>
@@ -105,7 +105,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="buttonLocation"></span>
-            <select id="location" class="appearance optionsChanger">
+            <select id="buttonLocation" class="appearance optionsChanger">
               <option value="TR" data-i18n="topRight"></option>
               <option value="TL" data-i18n="topLeft"></option>
               <option value="TC" data-i18n="topCenter"></option>
@@ -120,7 +120,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="notActiveButtonOpacity"></span>
-            <select id="transparency" class="appearance optionsChanger">
+            <select id="notActiveButtonOpacity" class="appearance optionsChanger">
               <option value="0.0" data-i18n="invisible"></option>
               <option value="0.5" data-i18n="transparent"></option>
               <option value="1.0" data-i18n="opaque"></option>
@@ -133,7 +133,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="keyboardShortcuts"></span>
-            <select id="shortcuts" class="optionsChanger">
+            <select id="keyboardShortcuts" class="optionsChanger">
               <option value="arrows" data-i18n="altUpDownArrows"></option>
               <option value="tb" data-i18n="altTB"></option>
               <option value="off" data-i18n="off"></option>
@@ -143,7 +143,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="homeEndKeysControlledBy"></span>
-            <select id="homeendaction" class="optionsChanger">
+            <select id="homeEndKeysControlledBy" class="optionsChanger">
               <option value="sttb" data-i18n="extensionName"></option>
               <option value="system" data-i18n="operatingSystem"></option>
             </select>
@@ -155,7 +155,7 @@
         <p class="settingContainer">
           <label>
             <span data-i18n="contextRightClickMenu"></span>
-            <select id="contextmenu">
+            <select id="contextMenu" class="optionsChanger">
               <option value="on" data-i18n="on"></option>
               <option value="off" data-i18n="off"></option>
             </select>
@@ -197,12 +197,14 @@
         </li>
       </ul>
     </aside>
+    <script src="/global/js/browser-polyfill.js"></script>
     <script src="/global/js/bowser.js"></script>
+    <script src="/global/js/utils.js"></script>
     <script src="/global/js/const.js"></script>
+    <script src="/global/js/log.js"></script>
+    <script src="/global/js/global.js"></script>
     <script src="/global/js/page-v2.js"></script>
     <script src="/global/js/context-menus.js"></script>
     <script src="/options/js/options.js"></script>
-    <script src="/libraries/jquery.js"></script>
-    <script src="/options.js"></script>
   </body>
 </html>

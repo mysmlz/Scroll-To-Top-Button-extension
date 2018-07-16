@@ -83,25 +83,15 @@ var BrowserAction = {
   ,
 
   /**
-   * Add event listeners
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  addEventListeners : function() {
+   * Add event listeners.
+   */
+
+  addEventListeners: function () {
     addEvent(
         document.getElementById( strOptionsCtaId )
       , 'click'
       , function( objEvent ) {
-          // Link to new Options UI for 40+
-          var strOptionsUrl =
-                boolConstUseOptionsUi
-                  ? 'chrome://extensions?options=' + strConstExtensionId
-                  : chrome.extension.getURL( 'options/index.html' )
-                  ;
-
-          Global.createTabOrUpdate( strOptionsUrl );
+          Global.openOptionsPage( strOptionsCtaId );
         }
     );
 
@@ -132,19 +122,18 @@ var BrowserAction = {
   ,
 
   /**
-   * Get domain and full URL of active tab
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  getActiveTabAddress : function() {
+   * Get domain and full URL of active tab.
+   */
+
+  getActiveTabAddress: function () {
     const objQuery = {
         active: true
       , currentWindow: true
     };
 
-    chrome.tabs.query( objQuery, function( objTabs ) {
+    browser.tabs.query( objQuery ).then( onGot );
+
+    function onGot( objTabs ) {
       objActiveTab = objTabs[ 0 ];
 
       if ( typeof objActiveTab === 'object' && ! Global.isEmpty( objActiveTab ) ) {
@@ -171,19 +160,20 @@ var BrowserAction = {
         // What mode STTB is in for this tab
         BrowserAction.getActiveTabSettings();
       }
-    } );
+    }
   }
   ,
 
   /**
-   * Check whether STTB is disabled for this tab
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  getActiveTabSettings : function() {
-    StorageSync.get( arrSettingsToGet, function( objReturn ) {
+   * Check whether STTB is disabled for this tab.
+   */
+
+  getActiveTabSettings: function () {
+    const logTemp = 'getActiveTabSettings';
+
+    poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
+
+    function onActiveTabSettingsRetrieved( objReturn ) {
       // Check domain first
       var
           arrDisabledDomains    = objReturn[ strConstDisabledDomainsSetting ]
@@ -212,24 +202,23 @@ var BrowserAction = {
 
       // STTB is enabled
       document.getElementById( strModeOptionEnabledId ).checked = true;
-    } );
+    }
   }
   ,
 
   /**
    * Change STTB mode for the active tab (enabled, disabled for URL or domain)
    *
-   * @type    method
-   * @param   objEvent
-   *            Event object
-   * @return  void
-   **/
-  changeSttbMode : function( objEvent ) {
-    strLog = 'changeSttbMode';
+   * @param {Event} objEvent - Event object.
+   */
 
-    var strChosenModeOptionId = objEvent.target.id;
+  changeSttbMode: function ( objEvent ) {
+    const logTemp = strLog = 'changeSttbMode';
+    const strChosenModeOptionId = objEvent.target.id;
 
-    StorageSync.get( arrSettingsToGet, function( objReturn ) {
+    poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
+
+    function onActiveTabSettingsRetrieved( objReturn ) {
       if ( typeof objReturn === 'object' ) {
         var
             objTempToSet            = {}
@@ -343,21 +332,20 @@ var BrowserAction = {
         // Suggest to reload active tab
         Page.toggleElement( $reloadActiveTabCta, true );
       }
-    } );
+    }
   }
   ,
 
   /**
-   * Reload active tab to apply new settings
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  reloadActiveTab : function() {
-    chrome.tabs.reload( objActiveTab.id, function() {
+   * Reload active tab to apply new settings.
+   */
+
+  reloadActiveTab: function () {
+    browser.tabs.reload( objActiveTab.id ).then( onReloaded );
+
+    function onReloaded() {
       Page.toggleElement( $reloadActiveTabCta, false );
-    } );
+    }
   }
 };
 

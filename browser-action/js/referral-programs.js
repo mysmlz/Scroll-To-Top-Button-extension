@@ -86,19 +86,18 @@
   ReferralPrograms.prototype.detectReferralProgram = function () {
     const _this = this;
 
-    chrome.runtime.sendMessage(
-      {
-        objSttbApiRequest: {
-          strCall: 'referral-program',
-          strMethod: 'GET'
-        }
-      },
-      function ( strReferralProgramName ) {
-        if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' && _this.setName( strReferralProgramName ) ) {
-          _this.showInfo();
-        }
+    browser.runtime.sendMessage( {
+      objSttbApiRequest: {
+        strCall: 'referral-program',
+        strMethod: 'GET'
       }
-    );
+    } ).then( onResponse );
+
+    function onResponse( strReferralProgramName ) {
+      if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' && _this.setName( strReferralProgramName ) ) {
+        _this.showInfo();
+      }
+    }
   };
 
   /**
@@ -127,7 +126,7 @@
     for ( let i = 0, l = arrInfoElements.length; i < l; i++ ) {
       const strInfoElement = arrInfoElements[ i ];
       const $$infoElement = document.getElementById( 'referralProgramInfo' + strInfoElement );
-      const strInfoElementText = chrome.i18n.getMessage( 'referralProgramInfo' + strInfoElement + '_' + strName );
+      const strInfoElementText = browser.i18n.getMessage( 'referralProgramInfo' + strInfoElement + '_' + strName );
 
       if ( $$infoElement ) {
         if ( typeof strInfoElementText === 'string' && strInfoElementText !== '' ) {
@@ -183,15 +182,12 @@
     Log.add( strLog );
 
     return new Promise( function ( funcResolve, funcReject ) {
-      chrome.runtime.sendMessage(
-        {
-          objSttbApiRequest: {
-            strCall: 'referral-program/notification-settings',
-            strMethod: 'GET'
-          }
-        },
-        funcResolve
-      );
+      browser.runtime.sendMessage( {
+        objSttbApiRequest: {
+          strCall: 'referral-program/notification-settings',
+          strMethod: 'GET'
+        }
+      } ).then( funcResolve );
     } )
       .then( function ( boolIsEnabled ) {
         if ( poziworldExtension.utils.isType( boolIsEnabled, 'boolean' ) ) {
@@ -227,18 +223,15 @@
     event.preventDefault();
 
     return new Promise( function ( funcResolve, funcReject ) {
-      chrome.runtime.sendMessage(
-        {
-          objSttbApiRequest: {
-            strCall: 'referral-program/notification-settings',
-            strMethod: 'POST',
-            objData: {
-              boolDisable: ! boolIsToCheck
-            }
+      browser.runtime.sendMessage( {
+        objSttbApiRequest: {
+          strCall: 'referral-program/notification-settings',
+          strMethod: 'POST',
+          objData: {
+            boolDisable: ! boolIsToCheck
           }
-        },
-        funcResolve
-      );
+        }
+      } ).then( funcResolve );
     } )
       .then( function () {
         $$checkbox.checked = boolIsToCheck;
@@ -331,17 +324,9 @@
         break;
     }
 
-    chrome.tabs.update(
-      strTabId,
-      {
-        url: this.updateQueryString( 'tag', strTag, strTabUrl )
-      },
-      function( objTab ) {
-        /**
-         * @todo Show a thank-you message
-         */
-      }
-    );
+    browser.tabs.update( strTabId, {
+      url: this.updateQueryString( 'tag', strTag, strTabUrl )
+    } );
   };
 
   /**

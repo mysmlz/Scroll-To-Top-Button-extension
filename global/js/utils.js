@@ -42,23 +42,22 @@
    **/
 
   Utils.prototype.getStorageItems = function ( Storage, keys, strLog, funcSuccessCallback, funcErrorCallback, objErrorLogDetails, boolTrackError ) {
-    Storage.get( keys, function( objReturn ) {
+    Storage.get( keys ).then( onStorageItemsRetrieved, onStorageItemsRetrievalError );
+
+    function onStorageItemsRetrieved( objReturn ) {
       const strGetStorageItemsLog = strLog;
       Log.add( strLog + strLogDo, keys );
 
-      Global.checkForRuntimeError(
-        function() {
-          if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
-            funcSuccessCallback( objReturn );
-          }
+      if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
+        funcSuccessCallback( objReturn );
+      }
 
-          Log.add( strGetStorageItemsLog + strLogDone, objReturn );
-        },
-        funcErrorCallback,
-        objErrorLogDetails,
-        boolTrackError
-      );
-    } );
+      Log.add( strGetStorageItemsLog + strLogDone, objReturn );
+    }
+
+    function onStorageItemsRetrievalError( e ) {
+      Global.handleApiError( e, funcErrorCallback, objErrorLogDetails, boolTrackError );
+    }
   };
 
   /**
@@ -75,25 +74,127 @@
    **/
 
   Utils.prototype.setStorageItems = function ( Storage, objItems, strLog, funcSuccessCallback, funcErrorCallback, objErrorLogDetails, boolTrackError ) {
-    Storage.set( objItems, function() {
+    Storage.set( objItems ).then( onStorageItemsSet, onStorageItemsSettingError );
+
+    function onStorageItemsSet() {
       const strSetStorageItemsLog = strLog + ', setStorageItems';
       Log.add( strSetStorageItemsLog + strLogDo, objItems );
 
-      Global.checkForRuntimeError(
-          function() {
-            if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
-              funcSuccessCallback();
-            }
+      if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
+        funcSuccessCallback();
+      }
 
-            Storage.get( null, function( objAllItemsAfterUpdate ) {
-              Log.add( strSetStorageItemsLog + strLogDone, objAllItemsAfterUpdate );
-            } );
-          }
-        , funcErrorCallback
-        , objErrorLogDetails
-        , boolTrackError
+      poziworldExtension.utils.getStorageItems( StorageSync, null, strLog, onUpdatedSettingsRetrieved );
+
+      function onUpdatedSettingsRetrieved( objAllItemsAfterUpdate ) {
+        Log.add( strSetStorageItemsLog + strLogDone, objAllItemsAfterUpdate );
+      }
+    }
+
+    function onStorageItemsSettingError( e ) {
+      Global.handleApiError( e, funcErrorCallback, objErrorLogDetails, boolTrackError );
+    }
+  };
+
+  /**
+   * Get the main extension settings (the ones set on the Options page).
+   *
+   * @param {string} logPrefix - Debug line "prefix".
+   * @param {funcSuccessCallback} [successCallback] - Function to run on success.
+   * @param {funcErrorCallback} [errorCallback] - Function to run on error.
+   * @param {boolean} [trackableError] - Whether to track error if user participates in UEIP.
+   **/
+
+  Utils.prototype.getSettings = function ( logPrefix, successCallback, errorCallback, trackableError ) {
+    this.getStorageItems(
+      StorageSync,
+      'settings',
+      logPrefix,
+      this._verifySettings.bind( this, logPrefix, successCallback, errorCallback ),
+      errorCallback,
+      undefined,
+      trackableError
+    );
+  };
+
+  /**
+   * Set/update the main extension settings (the ones set on the Options page).
+   *
+   * @param {Object} settings - Key-value pairs to save in the Storage.
+   * @param {string} logPrefix - Debug line "prefix".
+   * @param {funcSuccessCallback} [successCallback] - Function to run on success.
+   * @param {funcErrorCallback} [errorCallback] - Function to run on error.
+   **/
+
+  Utils.prototype.setSettings = function ( settings, logPrefix, successCallback, errorCallback ) {
+    if ( this.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
+      this.getSettings(
+        logPrefix,
+        this._mergeSettings.bind( this, settings, logPrefix, successCallback, errorCallback ),
+        errorCallback
       );
-    } );
+    }
+  };
+
+  /**
+   * Due to the nature of the Storage, the Storage "get" request wraps the requested item into an object.
+   * Check whether the returned object actually contains the settings object and it's not empty.
+   *
+   * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage/StorageArea/get
+   *
+   * @param {string} logPrefix - Debug line "prefix".
+   * @param {funcSuccessCallback} [successCallback] - Function to run on success.
+   * @param {funcErrorCallback} [errorCallback] - Function to run on error.
+   * @param {Object} [storageData] - Object wrapping the requested Storage data.
+   * @return {boolean} - Whether the operation succeeded and the settings returned in the correct format.
+   **/
+
+  Utils.prototype._verifySettings = function ( logPrefix, successCallback, errorCallback, storageData ) {
+    if ( poziworldExtension.utils.isType( storageData, 'object' ) && ! Global.isEmpty( storageData ) ) {
+      let settingsInStorage = storageData.settings;
+
+      if ( poziworldExtension.utils.isType( settingsInStorage, 'object' ) && ! Global.isEmpty( settingsInStorage ) ) {
+        if ( poziworldExtension.utils.isType( successCallback, 'function' ) ) {
+          successCallback( settingsInStorage );
+        }
+
+        return true;
+      }
+    }
+
+    if ( poziworldExtension.utils.isType( errorCallback, 'function' ) ) {
+      errorCallback();
+    }
+
+    return false;
+  };
+
+  /**
+   * Due to the nature of the Storage, in order to update even one setting, its value needs to be merged with the rest of existing settings in the Storage. Otherwise, all other ones will be destroyed.
+   *
+   * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage/sync
+   *
+   * @param {Object} settings - An object which gives each key/val pair to update storage with.
+   * @param {string} logPrefix - Debug line "prefix".
+   * @param {funcSuccessCallback} [successCallback] - Function to run on success.
+   * @param {funcErrorCallback} [errorCallback] - Function to run on error.
+   * @param {Object} [settingsInStorage] - An object wrapping the requested Storage data.
+   **/
+
+  Utils.prototype._mergeSettings = function ( settings, logPrefix, successCallback, errorCallback, settingsInStorage ) {
+    if ( poziworldExtension.utils.isType( settingsInStorage, 'object' ) ) {
+      Object.assign( settingsInStorage, settings );
+
+      this.setStorageItems(
+        StorageSync,
+        {
+          settings: settingsInStorage
+        },
+        logPrefix,
+        successCallback,
+        errorCallback
+      );
+    }
   };
 
   /**

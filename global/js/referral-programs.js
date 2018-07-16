@@ -116,7 +116,7 @@
     Log.add( strLog );
 
     poziworldExtension.tabs.onActiveTabsChange.addListener( this.detectActiveTabsReferralPrograms.bind( this ) );
-    chrome.runtime.onMessage.addListener( this.handleMessage.bind( this ) );
+    browser.runtime.onMessage.addListener( this.handleMessage.bind( this ) );
   };
 
   /**
@@ -185,16 +185,16 @@
     const intTabId = objTab.intId;
 
     this.getNotificationSettingsFromStorage( function ( boolIsEnabled ) {
-      chrome.browserAction.setBadgeText( {
+      browser.browserAction.setBadgeText( {
         text: boolIsEnabled ?
-          chrome.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
+          browser.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
           '',
         tabId: intTabId
       } );
 
-      chrome.browserAction.setTitle( {
+      browser.browserAction.setTitle( {
         title: boolIsEnabled ?
-          chrome.i18n.getMessage( 'referralProgramInfoTitle_' + strName ) :
+          browser.i18n.getMessage( 'referralProgramInfoTitle_' + strName ) :
           '',
         tabId: intTabId
       } );
@@ -302,33 +302,32 @@
     strLog = 'poziworldExtension.referralPrograms.handleApiGetNameRequest';
     Log.add( strLog, funcSendResponse );
 
-    chrome.tabs.query(
-      {
-        lastFocusedWindow: true,
-        active: true
-      },
-      function ( arrTabs ) {
-        if ( Array.isArray( arrTabs ) ) {
-          const objTab = arrTabs[ 0 ];
+    browser.tabs.query( {
+      lastFocusedWindow: true,
+      active: true
+    } ).then( onGot );
 
-          if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
-            const intId = objTab.id;
+    function onGot( arrTabs ) {
+      if ( Array.isArray( arrTabs ) ) {
+        const objTab = arrTabs[ 0 ];
 
-            if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
-              const objSavedActiveTab = poziworldExtension.tabs.getSavedActiveTab( intId );
+        if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
+          const intId = objTab.id;
 
-              if ( poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
-                const strReferralProgramName = objSavedActiveTab.strReferralProgramName;
+          if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
+            const objSavedActiveTab = poziworldExtension.tabs.getSavedActiveTab( intId );
 
-                if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
-                  funcSendResponse( strReferralProgramName );
-                }
+            if ( poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
+              const strReferralProgramName = objSavedActiveTab.strReferralProgramName;
+
+              if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
+                funcSendResponse( strReferralProgramName );
               }
             }
           }
         }
       }
-    );
+    }
 
     return true;
   };
@@ -428,33 +427,32 @@
     strLog = 'poziworldExtension.referralPrograms.handleApiGetNameRequest';
     Log.add( strLog, funcSendResponse );
 
-    chrome.tabs.query(
-      {
-        lastFocusedWindow: true,
-        active: true
-      },
-      function ( arrTabs ) {
-        if ( Array.isArray( arrTabs ) ) {
-          const objTab = arrTabs[ 0 ];
+    browser.tabs.query( {
+      lastFocusedWindow: true,
+      active: true
+    } ).then( onGot );
 
-          if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
-            const intId = objTab.id;
+    function onGot( arrTabs ) {
+      if ( Array.isArray( arrTabs ) ) {
+        const objTab = arrTabs[ 0 ];
 
-            if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
-              const objSavedActiveTab = poziworldExtension.tabs.getSavedActiveTab( intId );
+        if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
+          const intId = objTab.id;
 
-              if ( poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
-                const strReferralProgramName = objSavedActiveTab.strReferralProgramName;
+          if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
+            const objSavedActiveTab = poziworldExtension.tabs.getSavedActiveTab( intId );
 
-                if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
-                  funcSendResponse( strReferralProgramName );
-                }
+            if ( poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
+              const strReferralProgramName = objSavedActiveTab.strReferralProgramName;
+
+              if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
+                funcSendResponse( strReferralProgramName );
               }
             }
           }
         }
       }
-    );
+    }
 
     return true;
   };

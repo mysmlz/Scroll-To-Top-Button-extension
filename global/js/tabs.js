@@ -214,10 +214,10 @@
 
     this.findActiveTabs();
 
-    chrome.tabs.onActivated.addListener( this.handleTabsActivated.bind( this ) );
-    chrome.tabs.onRemoved.addListener( this.handleTabsRemoved.bind( this ) );
-    chrome.tabs.onReplaced.addListener( this.handleTabsReplaced.bind( this ) );
-    chrome.tabs.onUpdated.addListener( this.handleTabsUpdated.bind( this ) );
+    browser.tabs.onActivated.addListener( this.handleTabsActivated.bind( this ) );
+    browser.tabs.onRemoved.addListener( this.handleTabsRemoved.bind( this ) );
+    browser.tabs.onReplaced.addListener( this.handleTabsReplaced.bind( this ) );
+    browser.tabs.onUpdated.addListener( this.handleTabsUpdated.bind( this ) );
   };
 
   /**
@@ -232,7 +232,7 @@
       active: true
     };
 
-    chrome.tabs.query( objQuery, this.handleActiveTabsQueryComplete.bind( this ) );
+    browser.tabs.query( objQuery ).then( this.handleActiveTabsQueryComplete.bind( this ) );
   };
 
   /**
@@ -339,7 +339,7 @@
      * @todo Prevent “Unchecked runtime.lastError while running tabs.get: No tab with id: ...”
      */
 
-    chrome.tabs.get( intId, this.processTabInfo.bind( this ) );
+    browser.tabs.get( intId ).then( this.processTabInfo.bind( this ) );
   };
 
   /**

@@ -13,7 +13,7 @@
       setStorageItems()
       isEmpty()
       createTabOrUpdate()
-      checkForRuntimeError()
+      handleApiError()
       openOptionsPage()
 
  ============================================================================ */
@@ -28,69 +28,63 @@ const Global = {
   strOptionsUiUrlPrefix: 'chrome://extensions?options=',
 
   /**
-   * Sets multiple items in StorageArea.
+   * Set multiple items in StorageArea.
    *
-   * @type    method
-   * @param   Storage
-   *            Target storage
-   * @param   objItems
-   *            An object which gives each key/val pair to update storage with.
-   * @param   strLog
-   *            Debug line "prefix".
-   * @return  void
-   **/
-  setStorageItems : function( Storage, objItems, strLog ) {
-    Storage.set( objItems, function() {
-      var strSetStorageItemsLog = strLog;
-      Log.add( strLog + strLogDo, objItems );
+   * @param Storage - Target storage. https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage#Properties
+   * @param {Object} items - Key-value pairs to update storage with.
+   * @param {string} log - Debug line "prefix".
+   */
 
-      if ( chrome.runtime.lastError ) {
-        var
-            objLogDetails   = {}
-          , strErrorMessage = chrome.runtime.lastError.message
-          ;
+  setStorageItems: function ( Storage, items, log ) {
+    Storage.set( items ).then( onStorageItemsSet, onStorageItemsSettingError );
 
-        if ( typeof strErrorMessage === 'string' )
-          objLogDetails.strErrorMessage = strErrorMessage;
+    function onStorageItemsSet() {
+      const logTemp = log;
+      Log.add( log + strLogDo, items );
 
-        Log.add( strLog + strLogError, objLogDetails, true );
-        return;
+      StorageSync.get( null ).then( onUpdatedSettingsRetrieved );
+
+      function onUpdatedSettingsRetrieved( objAllItemsAfterUpdate ) {
+        Log.add( logTemp + strLogDone, objAllItemsAfterUpdate );
+      }
+    }
+
+    function onStorageItemsSettingError( e ) {
+      let logDetails = {};
+      const strErrorMessage = e.message;
+
+      if ( typeof strErrorMessage === 'string' ) {
+        logDetails.strErrorMessage = strErrorMessage;
       }
 
-      Storage.get( null, function( objAllItemsAfterUpdate ) {
-        Log.add( strSetStorageItemsLog + strLogDone, objAllItemsAfterUpdate );
-      });
-    });
+      Log.add( log + strLogError, logDetails, true );
+    }
   }
   ,
 
   /**
-   * Checks whether object/array is empty.
+   * Check whether object/array is empty.
    *
-   * @type    method
-   * @param   objToTest
-   *            Object to check against
-   * @return  bool
+   * @param {Object} object - Object to check against.
+   * @return {boolean}
    **/
-  isEmpty : function ( objToTest )
-  {
-    for ( var i in objToTest )
+
+  isEmpty: function ( object ) {
+    for ( const key in object ) {
       return false;
+    }
 
     return true;
   }
   ,
 
   /**
-   * Creates tab if it is not open or makes it active
+   * Create tab if it is not open or makes it active.
    *
-   * @type    method
-   * @param   strUrl
-   *            URL to open
-   * @return  void
-   **/
-  createTabOrUpdate : function ( strUrl )
-  {
+   * @param {string} strUrl - URL to open.
+   */
+
+  createTabOrUpdate: function ( strUrl ) {
     if ( typeof strLog === 'string' ) {
       strLog = 'createTabOrUpdate';
       Log.add( strLog, strUrl );
@@ -99,93 +93,79 @@ const Global = {
     var objUrl = { url: strUrl };
 
     if ( ~~strUrl.indexOf( Global.strOptionsUiUrlPrefix ) ) {
-      chrome.tabs.query( objUrl, function( objTabs ) {
-        if ( objTabs.length )
-          chrome.tabs.update( objTabs[ 0 ].id, { active: true } );
-        else
-          chrome.tabs.create( objUrl );
-      } );
-    }
-    else
-      chrome.tabs.create( objUrl );
-  }
-  ,
+      browser.tabs.query( objUrl ).then( onGot );
 
-  /**
-   * Runtime sets an error variable when some call failed.
-   *
-   * @type    method
-   * @param   funcCallback
-   *            Do when runtime error is not set.
-   * @param   funcErrorCallback
-   *            Optional. Callback on error.
-   * @param   objErrorLogDetails
-   *            Optional. Data to be passed on error.
-   * @param   boolTrackError
-   *            Optional. Whether to track error if user participates in UEIP.
-   * @return  boolean
-   **/
-  checkForRuntimeError : function(
-      funcCallback
-    , funcErrorCallback
-    , objErrorLogDetails
-    , boolTrackError
-  ) {
-    if ( chrome.runtime.lastError ) {
-      if ( typeof objErrorLogDetails !== 'object' ) {
-        objErrorLogDetails = {};
+      function onGot( objTabs ) {
+        if ( objTabs.length ) {
+          browser.tabs.update( objTabs[ 0 ].id, { active: true } );
+        }
+        else {
+          browser.tabs.create( objUrl );
+        }
       }
-
-      var strErrorMessage = chrome.runtime.lastError.message;
-
-      if ( typeof strErrorMessage === 'string' ) {
-        objErrorLogDetails.strErrorMessage = strErrorMessage;
-      }
-
-      Log.add(
-          strLog + strLogError
-        , objErrorLogDetails
-        , boolTrackError || true
-      );
-
-      if ( typeof funcErrorCallback === 'function' ) {
-        funcErrorCallback();
-      }
-    }
-    else if ( typeof funcCallback === 'function' ) {
-      funcCallback();
-    }
-  }
-  ,
-
-  /**
-   * Opens Options page.
-   *
-   * @type    method
-   * @param   strCaller
-   *            Where this was called from (action or event name).
-   * @return  boolean
-   **/
-  openOptionsPage : function( strCaller ) {
-    if ( boolConstIsBowserAvailable && strConstChromeVersion >= '42.0' ) {
-      chrome.runtime.openOptionsPage( function() {
-        Global.checkForRuntimeError(
-            undefined
-          , undefined
-          , { strCaller : strCaller || '' }
-          , true
-        );
-      } );
     }
     else {
-      // Link to new Options UI for 40+
-      var strOptionsUrl =
-            boolConstUseOptionsUi
-              ? 'chrome://extensions?options=' + strConstExtensionId
-              : chrome.extension.getURL( 'options/index.html' )
-              ;
+      browser.tabs.create( objUrl );
+    }
+  }
+  ,
 
-      Global.createTabOrUpdate( strOptionsUrl );
+  /**
+   * If extension API call failed.
+   *
+   * @param e - Error
+   * @param {Function} [funcErrorCallback] - Callback on error.
+   * @param {Object} [objErrorLogDetails] - Data to be passed on error.
+   * @param {boolean} [boolTrackError] - Whether to track error if user participates in UEIP.
+   */
+
+  handleApiError: function ( e, funcErrorCallback, objErrorLogDetails, boolTrackError ) {
+    if ( typeof objErrorLogDetails !== 'object' ) {
+      objErrorLogDetails = {};
+    }
+
+    const strErrorMessage = e.message;
+
+    if ( typeof strErrorMessage === 'string' ) {
+      objErrorLogDetails.strErrorMessage = strErrorMessage;
+    }
+
+    Log.add(
+        strLog + strLogError
+      , objErrorLogDetails
+      , boolTrackError || true
+    );
+
+    if ( typeof funcErrorCallback === 'function' ) {
+      funcErrorCallback();
+    }
+  }
+  ,
+
+  /**
+   * Open Options page.
+   *
+   * @param {string} caller - Where this was called from (action or event name).
+   */
+
+  openOptionsPage: function ( caller ) {
+    const openOptionsPage = browser.runtime.openOptionsPage;
+
+    // Edge
+    if ( ! poziworldExtension.utils.isType( openOptionsPage, 'function' ) ) {
+      Global.createTabOrUpdate( browser.extension.getURL( 'options/index.html' ) );
+    }
+    else {
+      openOptionsPage().then( undefined, onError );
+
+      function onError( e ) {
+        Global.handleApiError(
+            e
+          , undefined
+          , { strCaller : caller || '' }
+          , true
+        );
+      }
     }
   }
 };

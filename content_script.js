@@ -22,11 +22,7 @@ else {
 }
 
 /**
- * Main function, sets up the button
- *
- * @type    method
- * @param   No Parameters Taken
- * @return  void
+ * Main function, sets up the button.
  **/
 
 function STTB() {
@@ -40,27 +36,29 @@ function STTB() {
         })
     }
 
-    // Asks Background for [LocalStorage] settings from Options Page and assigns them to variables
-    chrome.runtime.sendMessage({greeting: "settings"}, function(response) {
-        var speed = parseInt(response.speed);
-        var speed2 = parseInt(response.speed2);
-        var distance = parseInt(response.distance);
-        var flipDistance = parseInt(response.distance);
-        var size = response.size;
-        var arrow = response.arrow;
+    // Ask Background to retrieve the settings from the Storage
+    browser.runtime.sendMessage( { greeting: 'settings' } );
+
+    browser.runtime.onMessage.addListener( function ( response ) {
+        var speed = parseInt(response.scrollUpSpeed);
+        var speed2 = parseInt(response.scrollDownSpeed);
+        var distance = parseInt(response.distanceLength);
+        var flipDistance = parseInt(response.distanceLength);
+        var size = response.buttonSize;
+        var arrow = response.buttonDesign;
         var scroll = response.scroll;
-        var location = response.location;
-        var stbb = response.stbb;
-        var transparency = response.transparency;
-        var shortcuts = response.shortcuts;
-        var homeendaction = response.homeendaction;
+        var location = response.buttonLocation;
+        var stbb = response.buttonMode;
+        var transparency = response.notActiveButtonOpacity;
+        var shortcuts = response.keyboardShortcuts;
+        var homeendaction = response.homeEndKeysControlledBy;
 
         // Assigns the correct arrow color to imgURL
         if (stbb == "dual"){
-            var imgURL=chrome.extension.getURL("arrows/dual/"+arrow+".png");
+            var imgURL=browser.extension.getURL("arrows/dual/"+arrow+".png");
         }
         else{
-            var imgURL=chrome.extension.getURL("arrows/"+arrow+".png");
+            var imgURL=browser.extension.getURL("arrows/"+arrow+".png");
         }
 
         var $body;
@@ -381,5 +379,5 @@ function STTB() {
                 }
             }
         }
-    });
+    } );
 }

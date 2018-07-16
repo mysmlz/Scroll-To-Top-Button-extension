@@ -20,10 +20,10 @@
  ============================================================================ */
 
 const
-    strConstExtensionId = chrome.runtime.id
-  , strConstExtensionName = chrome.i18n.getMessage( 'extensionName' )
-  , strConstExtensionVersion = chrome.runtime.getManifest().version
-  , strConstExtensionLanguage = chrome.i18n.getMessage( 'lang' )
+    strConstExtensionId = browser.runtime.id
+  , strConstExtensionName = browser.i18n.getMessage( 'extensionName' )
+  , strConstExtensionVersion = browser.runtime.getManifest().version
+  , strConstExtensionLanguage = browser.i18n.getMessage( 'lang' )
 
   , boolConstIsBowserAvailable = typeof bowser === 'object'
   , strConstChromeVersion =
@@ -33,7 +33,7 @@ const
       &&  strConstChromeVersion >= '40.0'
       &&  bowser.name !== 'Opera'
 
-  , strConstLogOnInstalled = 'chrome.runtime.onInstalled'
+  , strConstLogOnInstalled = 'browser.runtime.onInstalled'
 
   , strConstDisabledDomainsSetting = 'arrDisabledDomains'
   , strConstDisabledUrlsSetting = 'arrDisabledUrls'
@@ -62,7 +62,6 @@ if ( typeof sttb === 'undefined' ) {
 
  ============================================================================ */
 
-var StorageApi = chrome.storage
-  , StorageSync = StorageApi.sync
-  , StorageLocal = StorageApi.local
-  ;
+const StorageApi = browser.storage;
+const StorageSync = StorageApi.sync;
+const StorageLocal = StorageApi.local;

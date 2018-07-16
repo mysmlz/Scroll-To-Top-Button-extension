@@ -54,16 +54,13 @@ var addEvent = (function () {
 var Page = {
 
   /**
-   * Localize page
+   * Provide text in the appropriate language for HTML elements that expect it.
    *
-   * @type    method
-   * @param   strPageName
-   *            Page name
-   * @param   strCustomSelectorParent
-   *            Optional. If only part of the page needs to be localized
-   * @return  void
-   **/
-  localize : function( strPageName, strCustomSelectorParent ) {
+   * @param {string} [strPageName] - The name of the page this is called from.
+   * @param {string} [strCustomSelectorParent] - If only part of the page needs to be localized.
+   */
+
+  localize: function ( strPageName, strCustomSelectorParent ) {
     var boolIsCustomSelectorParentPresent =
           typeof strCustomSelectorParent === 'string'
       , strSelectorPrefix =
@@ -79,7 +76,7 @@ var Page = {
         ) {
         var $localizableElement = $allLocalizableElements[ i ]
           , strI18 = $localizableElement.getAttribute( 'i18n-content' )
-          , strMessage = chrome.i18n.getMessage( strI18 )
+          , strMessage = browser.i18n.getMessage( strI18 )
           ;
 
         if ( $localizableElement.nodeName === 'LABEL' ) {
@@ -89,7 +86,7 @@ var Page = {
           $localizableElement.innerHTML = strMessage;
 
           if ( $localizableElement.href === '' ) {
-            $localizableElement.href =  chrome.i18n.getMessage( strI18 + 'Href' );
+            $localizableElement.href =  browser.i18n.getMessage( strI18 + 'Href' );
           }
         }
         else if ( $localizableElement.nodeName === 'IMG' ) {
@@ -105,7 +102,7 @@ var Page = {
     }
 
     if ( !boolIsCustomSelectorParentPresent ) {
-      document.title = chrome.i18n.getMessage( strPageName + 'PageTitle' );
+      document.title = browser.i18n.getMessage( strPageName + 'PageTitle' );
     }
   }
   ,

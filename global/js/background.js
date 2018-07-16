@@ -16,7 +16,7 @@
       preventCheckForSilentUpdate()
       cleanUp()
       removeOldSettings()
-      setLegacyDefaults()
+      checkForLegacySettings()
       setDefaults()
       setExtensionDefaults()
       onMessageCallback()
@@ -71,7 +71,7 @@ var Background = {
    **/
   init : function() {
     Background.checkIfUpdatedSilently();
-    sttb.contextMenus.toggle();
+    sttb.contextMenus.init();
   }
   ,
 
@@ -80,17 +80,17 @@ var Background = {
    * it doesn't fire onInstalled, and that causes the new settings
    * not being applied
    *
-   * TODO: utilize chrome.management.onEnabled.addListener(function callback)
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  checkIfUpdatedSilently : function() {
-    var funcCheck = function() {
-      StorageLocal.get( 'strLatestTrackedVersion', function( objReturn ) {
-        strLog = 'checkIfUpdatedSilently';
-        Log.add( strLog, {} );
+   * @todo Utilize browser.management.onEnabled.addListener(function callback)
+   */
+
+  checkIfUpdatedSilently: function () {
+    const logTemp = strLog = 'checkIfUpdatedSilently';
+
+    const funcCheck = function() {
+      poziworldExtension.utils.getStorageItems( StorageLocal, 'strLatestTrackedVersion', logTemp, onLatestTrackedVersionRetrieved );
+
+      function onLatestTrackedVersionRetrieved( objReturn ) {
+        Log.add( logTemp, {} );
 
         var strLatestTrackedVersion = objReturn.strLatestTrackedVersion;
 
@@ -104,9 +104,9 @@ var Background = {
           var objDetails = {};
 
           Background.cleanUp( true, objDetails );
-          Background.onUpdatedCallback( strLog, objDetails );
+          Background.onUpdatedCallback( logTemp, objDetails );
         }
-      });
+      }
     };
 
     setTimeout(
@@ -160,54 +160,52 @@ var Background = {
   /**
    * Clean up in case of browser (re-)load/crash, extension reload, etc.
    *
-   * @type    method
-   * @param   boolIsCalledFromOnInstalledListener
-   *            Whether to set extension defaults on clean-up complete
-   * @param   objDetails
-   *            Reason - install/update/chrome_update -
-   *            and (optional) previous version
-   * @return  void
-   **/
-  cleanUp : function( boolIsCalledFromOnInstalledListener, objDetails ) {
-    strLog = 'cleanUp';
+   * @param {boolean} boolIsCalledFromOnInstalledListener - Whether to set extension defaults on clean-up complete.
+   * @param {Object} objDetails - Reason (install/update/chrome_update) and (optional) previous version.
+   */
+
+  cleanUp: function ( boolIsCalledFromOnInstalledListener, objDetails ) {
+    const logTemp = strLog = 'cleanUp';
     Log.add( strLog );
 
     // To make removeOldSettings asynchronous.
     // Otherwise, it won't work correctly.
     var arrSettingsToCleanUp = [
-        'strDummySetting'
+      'strDummySetting'
     ];
 
-    StorageLocal.remove( arrSettingsToCleanUp, function() {
-      if (  typeof boolIsCalledFromOnInstalledListener === 'boolean'
-        &&  boolIsCalledFromOnInstalledListener
-      ) {
+    // Fails in case of a new install
+    StorageLocal.remove( arrSettingsToCleanUp ).then( onSettingsCleanedUp, onSettingsCleanedUp );
+
+    function onSettingsCleanedUp( e ) {
+      Log.add( logTemp + ', onSettingsCleanedUp', {
+        boolIsCalledFromOnInstalledListener: boolIsCalledFromOnInstalledListener,
+        e: e
+      } );
+
+      if ( typeof boolIsCalledFromOnInstalledListener === 'boolean' && boolIsCalledFromOnInstalledListener ) {
         Background.removeOldSettings( objDetails );
       }
-    } );
+    }
   }
   ,
 
   /**
-   * Remove old settings when updated to a newer version
-   * (some vars could have been renamed, deprecated)
+   * Remove old settings when updated to a newer version (some vars could have been renamed, deprecated).
    *
-   * @type    method
-   * @param   objDetails
-   *            Reason - install/update/chrome_update - 
-   *            and (optional) previous version
-   * @return  void
-   **/
-  removeOldSettings : function( objDetails ) {
-    strLog = 'removeOldSettings';
+   * @param {Object} objDetails - Reason (install/update/chrome_update) and (optional) previous version.
+   */
+
+  removeOldSettings: function ( objDetails ) {
+    const logTemp = strLog = 'removeOldSettings';
     Log.add( strLog, objDetails );
 
-    if (  typeof objDetails.boolWasUpdated === 'boolean'
-      &&  objDetails.boolWasUpdated
-    ) {
-      StorageSync.get( null, function( objReturn ) {
-        strLog = 'removeOldSettings';
+    const boolWasUpdated = objDetails.boolWasUpdated;
 
+    if ( typeof boolWasUpdated === 'boolean' && boolWasUpdated ) {
+      poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
+
+      function onSettingsRetrieved( objReturn ) {
         var arrSettingsToRemove = []
           , objDeprecatedSettings = {}
           , strPreviousVersion = objDetails.previousVersion
@@ -257,40 +255,41 @@ var Background = {
         }
 
         if ( ! Global.isEmpty( arrSettingsToRemove ) ) {
-          StorageSync.remove( arrSettingsToRemove, function() {
-            strLog = 'removeOldSettings';
-            Log.add( strLog + strLogDo, arrSettingsToRemove, true );
+          // Fails in case of a new install
+          StorageSync.remove( arrSettingsToRemove ).then( onSettingsRemoved, onSettingsRemovalError );
 
-            if ( chrome.runtime.lastError ) {
-              var objLogDetails = {}
-                , strErrorMessage = chrome.runtime.lastError.message
-                ;
+          function onSettingsRemoved() {
+            Log.add( logTemp + strLogDo, arrSettingsToRemove, true );
 
-              if ( typeof strErrorMessage === 'string' ) {
-                objLogDetails = { strErrorMessage: strErrorMessage };
-              }
+            poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onUpdatedSettingsRetrieved );
 
-              Log.add( strLog + strLogError, objLogDetails, true );
-              return;
+            function onUpdatedSettingsRetrieved( objData ) {
+              Log.add( logTemp + strLogDone, objData );
             }
 
-            StorageSync.get( null, function( objData ) {
-              strLog = 'removeOldSettings';
-              Log.add( strLog + strLogDone, objData );
-            });
-
             Background.setExtensionDefaults();
-          });
+          }
+
+          function onSettingsRemovalError( e ) {
+            let objLogDetails = {};
+            const strErrorMessage = e.message;
+
+            if ( typeof strErrorMessage === 'string' ) {
+              objLogDetails = { strErrorMessage: strErrorMessage };
+            }
+
+            Log.add( logTemp + strLogError, objLogDetails, true );
+          }
         }
         else {
-          Log.add( strLog + strLogDoNot );
+          Log.add( logTemp + strLogDoNot );
 
           Background.setExtensionDefaults();
         }
-      });
+      }
     }
     else {
-      Log.add( strLog + strLogDoNot );
+      Log.add( logTemp + strLogDoNot );
       
       Background.setExtensionDefaults();
     }
@@ -298,77 +297,144 @@ var Background = {
   ,
 
   /**
-   * Set extension defaults in case user hasn't set them yet
+   * Set extension defaults in case user hasn't set them yet.
+   * v7.0.0 moved settings from localStorage to the syncable storage.
    *
-   * TODO: Move to setDefaults() with chrome.storage
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  setLegacyDefaults : function() {
-    strLog = 'setLegacyDefaults';
+   * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage/sync
+   */
+
+  checkForLegacySettings: function () {
+    const logTemp = strLog = 'checkForLegacySettings';
     Log.add( strLog );
 
-    if ( ! localStorage[ 'scroll_speed' ] ) {
-      localStorage[ 'scroll_speed' ] = 1000;
-    }
-    if ( ! localStorage[ 'scroll_speed2' ] ) {
-      localStorage[ 'scroll_speed2' ] = localStorage[ 'scroll_speed' ];
-    }
-    if ( ! localStorage[ 'distance_length' ] ) {
-      localStorage[ 'distance_length' ] = 400;
-    }
-    if ( ! localStorage[ 'size' ] ) {
-      localStorage[ 'size' ] = '50px';
-    }
-    if ( ! localStorage[ 'arrow' ] ) {
-      localStorage[ 'arrow' ] = 'arrow_blue';
-    }
-    if ( ! localStorage[ 'location' ] ) {
-      localStorage[ 'location' ] = 'TR';
-    }
-    if ( ! localStorage[ 'stbb' ] ) {
-      localStorage[ 'stbb' ] = 'off';
-    }
-    if ( ! localStorage[ 'transparency' ] ) {
-      localStorage[ 'transparency' ] = '0.5';
-    }
-    if ( ! localStorage[ 'contextmenu' ] ) {
-      localStorage[ 'contextmenu' ] = 'on';
-    }
-    if ( ! localStorage[ 'shortcuts' ] ) {
-      localStorage[ 'shortcuts' ] = 'arrows';
-    }
-    if ( ! localStorage[ 'homeendaction' ] ) {
-      localStorage[ 'homeendaction' ] = 'sttb';
-    }
-    if ( localStorage[ 'stbb' ] === 'on' ) {
-      localStorage[ 'stbb' ] = 'flip';
-    }
-    if ( localStorage[ 'latest' ] != '2' ) {
-      localStorage[ 'latest' ] = '2';
-      Global.openOptionsPage( strLog );
+    poziworldExtension.utils.getSettings(
+      logTemp,
+      moveLegacySettings,
+      moveLegacySettings,
+      true
+    );
+
+    /**
+     * If the settings aren't in the Storage yet.
+     *
+     * @param {Object} settings - Key-value pairs.
+     */
+
+    function moveLegacySettings( settings ) {
+      if ( ! poziworldExtension.utils.isType( settings, 'object' ) || Global.isEmpty( settings ) ) {
+        const newSettings = {};
+        const availableSettings = {
+          buttonMode: [
+            'stbb',
+            'off'
+          ],
+          scrollUpSpeed: [
+            'scroll_speed',
+            1000
+          ],
+          scrollDownSpeed: [
+            'scroll_speed2',
+            1000
+          ],
+          distanceLength: [
+            'distance_length',
+            400
+          ],
+          buttonSize: [
+            'size',
+            '50px'
+          ],
+          buttonDesign: [
+            'arrow',
+            'arrow_blue'
+          ],
+          buttonLocation: [
+            'location',
+            'TR'
+          ],
+          notActiveButtonOpacity: [
+            'transparency',
+            '0.5'
+          ],
+          keyboardShortcuts: [
+            'shortcuts',
+            'arrows'
+          ],
+          contextMenu: [
+            'contextmenu',
+            'on'
+          ],
+          homeEndKeysControlledBy: [
+            'homeendaction',
+            'sttb'
+          ],
+          scroll: [
+            'scroll',
+            'jswing'
+          ]
+        };
+
+        let localStorageAvailable;
+
+        try {
+          localStorage.setItem( 'sttbTest', 'test' );
+          localStorage.getItem( 'sttbTest' );
+          localStorage.removeItem( 'sttbTest' );
+
+          localStorageAvailable = true;
+        }
+        catch ( e ) {
+          localStorageAvailable = false;
+        }
+
+        for ( const settingName in availableSettings ) {
+          if ( availableSettings.hasOwnProperty( settingName ) ) {
+            const setting = availableSettings[ settingName ];
+            let oldValue;
+
+            if ( localStorageAvailable ) {
+              const oldKey = setting[ 0 ];
+
+              oldValue = localStorage.getItem( oldKey );
+              localStorage.removeItem( oldKey );
+            }
+
+            newSettings[ settingName ] = oldValue || setting[ 1 ];
+          }
+        }
+
+        if ( ! Global.isEmpty( newSettings ) ) {
+          const storageObject = {
+            settings: newSettings
+          };
+
+          poziworldExtension.utils.setStorageItems( StorageSync, storageObject, logTemp );
+
+          if ( localStorageAvailable ) {
+            localStorage.removeItem( 'latest' );
+          }
+        }
+      }
     }
   }
   ,
 
   /**
-   * Set extension defaults
+   * Set extension defaults.
    *
-   * @type    method
-   * @param   Storage
-   *            StorageSync or StorageLocal
-   * @param   objSettings
-   *            Default settings
-   * @param   strLogSuffix
-   *            Type of storage to report in the log
-   * @return  void
-   **/
-  setDefaults : function( Storage, objSettings, strLogSuffix ) {
-    Storage.get( null, function( objReturn ) {
-      strLog = 'setExtensionDefaults, ' + strLogSuffix;
-      Log.add( strLog );
+   * @param Storage - StorageSync or StorageLocal. https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage#Properties
+   * @param {Object} objSettings - Default settings.
+   * @param {string} strLogSuffix - Type of storage to report in the log.
+   */
+
+  setDefaults: function ( Storage, objSettings, strLogSuffix ) {
+    let logTemp = strLog = 'setDefaults';
+
+    poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
+
+    function onSettingsRetrieved( objReturn ) {
+      logTemp += strLogSuffix;
+      Log.add( logTemp );
 
       var objTempToSet = {};
 
@@ -425,65 +491,59 @@ var Background = {
       }
 
       if ( ! Global.isEmpty( objTempToSet ) ) {
-        Global.setStorageItems( Storage, objTempToSet, strLog );
+        Global.setStorageItems( Storage, objTempToSet, logTemp );
       }
       else {
-        Log.add( strLog + strLogDoNot );
+        Log.add( logTemp + strLogDoNot );
       }
-    });
+    }
   }
   ,
 
   /**
-   * Set extension defaults
-   *
-   * @type    method
-   * @param   No Parameters Taken
-   * @return  void
-   **/
-  setExtensionDefaults : function() {
-    Background.setLegacyDefaults();
+   * Set extension defaults.
+   */
+
+  setExtensionDefaults: function () {
+    Background.checkForLegacySettings();
     Background.setDefaults( StorageLocal,  objSettingsNotSyncable,   'local' );
     Background.setDefaults( StorageSync,   objSettingsSyncable,      'sync'  );
   }
   ,
 
   /**
-   * Processes messages
+   * Listen for messages from other parts of the extension.
    *
-   * @type    method
-   * @param   objMessage
-   *            Message received
-   * @param   objSender
-   *            Sender of a message
-   * @param   boolExternal
-   *            Optional. Whether a message is sent from another extension/app
-   * @return  void
-   **/
-  onMessageCallback : function(
-      objMessage
-    , objSender
-    , objSendResponse
-    , boolExternal
-  ) {
-    strLog = 'onMessageCallback';
-    Log.add( strLog, objMessage );
+   * @param {Object} message
+   * @param {Object} sender
+   * @param {Function} sendResponse
+   */
 
-    // TODO: Switch to chrome.storage
-    if ( objMessage.greeting === 'settings' ) {
-      objSendResponse( {
-          speed         : localStorage[ 'scroll_speed' ]
-        , speed2        : localStorage[ 'scroll_speed2' ]
-        , distance      : localStorage[ 'distance_length' ]
-        , size          : localStorage[ 'size' ]
-        , arrow         : localStorage[ 'arrow' ]
-        , scroll        : 'jswing'
-        , location      : localStorage[ 'location' ]
-        , stbb          : localStorage[ 'stbb' ]
-        , transparency  : localStorage[ 'transparency' ]
-        , shortcuts     : localStorage[ 'shortcuts' ]
-        , homeendaction : localStorage[ 'homeendaction' ]
-      } );
+  onMessageCallback: function ( message, sender, sendResponse ) {
+    strLog = 'onMessageCallback';
+    Log.add( strLog, message );
+
+    if ( message.greeting === 'settings' ) {
+      const tabId = sender.tab.id;
+
+      poziworldExtension.utils.getSettings(
+        strLog,
+        onSettingsRetrieved,
+        undefined,
+        true
+      );
+
+      /**
+       * Send the settings back to the requester.
+       *
+       * @param {Object} settings - Key-value pairs.
+       */
+
+      function onSettingsRetrieved( settings ) {
+        if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
+          browser.tabs.sendMessage( tabId, settings );
+        }
+      }
     }
   }
 };
@@ -495,16 +555,13 @@ var Background = {
  ============================================================================ */
 
 /**
- * Listens for messages
+ * Listens for messages.
  *
- * @type    method
- * @param   objMessage
- *            Message received
- * @param   objSender
- *            Sender of the message
- * @return  void
- **/
-chrome.runtime.onMessage.addListener(
+ * @param {Object} objMessage - Message received.
+ * @param {Object} objSender - Sender of the message.
+ */
+
+browser.runtime.onMessage.addListener(
   function( objMessage, objSender, objSendResponse ) {
     Background.preventCheckForSilentUpdate();
 
@@ -513,17 +570,12 @@ chrome.runtime.onMessage.addListener(
 );
 
 /**
- * Fired when the extension is first installed, 
- * when the extension is updated to a new version, 
- * and when browser is updated to a new version.
+ * Fired when the extension is first installed, when the extension is updated to a new version, and when browser is updated to a new version.
  *
- * @type    method
- * @param   objDetails
- *            Reason - install/update/chrome_update - 
- *            and (optional) previous version
- * @return  void
- **/
-chrome.runtime.onInstalled.addListener(
+ * @param {Object} objDetails - Reason (install/update/chrome_update) and (optional) previous version.
+ */
+
+browser.runtime.onInstalled.addListener(
   function( objDetails ) {
     Background.preventCheckForSilentUpdate();
 
@@ -552,16 +604,13 @@ chrome.runtime.onInstalled.addListener(
 
 /**
  * Fired when a profile that has this extension installed first starts up.
- *
- * @type    method
- * @param   No Parameters Taken
- * @return  void
- **/
-chrome.runtime.onStartup.addListener(
+ */
+
+browser.runtime.onStartup && browser.runtime.onStartup.addListener(
   function() {
     Background.preventCheckForSilentUpdate();
 
-    strLog = 'chrome.runtime.onStartup';
+    strLog = 'browser.runtime.onStartup';
     Log.add( strLog, {}, true );
 
     Background.cleanUp();
@@ -575,10 +624,7 @@ chrome.runtime.onStartup.addListener(
  ============================================================================ */
 
 /**
- * Initialize
- *
- * @type    method
- * @param   No Parameters taken
- * @return  void
- **/
+ * Initialize.
+ */
+
 Background.init();
