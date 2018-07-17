@@ -408,7 +408,12 @@ var Background = {
             settings: newSettings
           };
 
-          poziworldExtension.utils.setStorageItems( StorageSync, storageObject, logTemp );
+          poziworldExtension.utils.setStorageItems(
+            StorageSync,
+            storageObject,
+            logTemp,
+            sttb.contextMenus.init
+          );
 
           if ( localStorageAvailable ) {
             localStorage.removeItem( 'latest' );

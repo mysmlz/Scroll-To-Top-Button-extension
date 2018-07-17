@@ -1,7 +1,8 @@
 ( function () {
   'use strict';
 
-  function ContextMenus() {}
+  function ContextMenus() {
+  }
 
   /**
    * Check settings to find out whether context menus should be created or removed.
@@ -11,7 +12,7 @@
     strLog = 'sttb.contextMenus.init';
     Log.add( strLog );
 
-    poziworldExtension.utils.getSettings( strLog, this.enableOrDisable.bind( this ) );
+    poziworldExtension.utils.getSettings( strLog, sttb.contextMenus.enableOrDisable );
   };
 
   /**
@@ -38,7 +39,7 @@
         } );
       }
 
-      browser.contextMenus.onClicked.addListener( this.handleContextMenuClick );
+      browser.contextMenus.onClicked.addListener( sttb.contextMenus.handleContextMenuClick );
     }
     else {
       browser.contextMenus.removeAll();
