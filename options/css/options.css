@@ -10,18 +10,31 @@
 html {
   max-width: 483px; /* 500px - 17px scrollbar */
 }
+
+#becomePatron {
+  margin: 1rem 0 2rem;
+}
+
+#becomePatronImg {
+  width: 150px;
+  height: 35px;
+}
+
 #incentivizeFurtherDevelopment {
   margin: -.45rem 0;
   padding: 1rem;
   background-color: #eee;
 }
+
 select {
   margin-left: 15px;
 }
+
 ul {
   padding-left: 20px;
   line-height: 20px;
 }
+
 label {
   white-space: nowrap; /* fix page width bug */
 }
@@ -30,6 +43,7 @@ label {
   display: -webkit-flex;
   display: flex;
 }
+
 #status {
   line-height: 2;
   margin-left: 10px;
@@ -40,6 +54,7 @@ label {
     height: 450px;
     overflow-y: hidden;
   }
+
   body {
     margin: 0;
     padding: 14px 17px; /* Chrome defaults for margin */
