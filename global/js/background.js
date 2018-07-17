@@ -438,7 +438,7 @@ var Background = {
     poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
 
     function onSettingsRetrieved( objReturn ) {
-      logTemp += strLogSuffix;
+      logTemp += ', ' + strLogSuffix;
       Log.add( logTemp );
 
       var objTempToSet = {};
