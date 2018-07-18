@@ -28,41 +28,6 @@ const Global = {
   strOptionsUiUrlPrefix: 'chrome://extensions?options=',
 
   /**
-   * Set multiple items in StorageArea.
-   *
-   * @param Storage - Target storage. https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage#Properties
-   * @param {Object} items - Key-value pairs to update storage with.
-   * @param {string} log - Debug line "prefix".
-   */
-
-  setStorageItems: function ( Storage, items, log ) {
-    Storage.set( items ).then( onStorageItemsSet, onStorageItemsSettingError );
-
-    function onStorageItemsSet() {
-      const logTemp = log;
-      Log.add( log + strLogDo, items );
-
-      StorageSync.get( null ).then( onUpdatedSettingsRetrieved );
-
-      function onUpdatedSettingsRetrieved( objAllItemsAfterUpdate ) {
-        Log.add( logTemp + strLogDone, objAllItemsAfterUpdate );
-      }
-    }
-
-    function onStorageItemsSettingError( e ) {
-      let logDetails = {};
-      const strErrorMessage = e.message;
-
-      if ( typeof strErrorMessage === 'string' ) {
-        logDetails.strErrorMessage = strErrorMessage;
-      }
-
-      Log.add( log + strLogError, logDetails, true );
-    }
-  }
-  ,
-
-  /**
    * Check whether object/array is empty.
    *
    * @param {Object} object - Object to check against.

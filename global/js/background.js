@@ -133,10 +133,12 @@ var Background = {
     strLog = 'onUpdatedCallback';
 
     // Save this version number
-    Global.setStorageItems(
-        StorageLocal
-      , { strLatestTrackedVersion : strConstExtensionVersion }
-      , strLog + ', save version'
+    poziworldExtension.utils.setStorageItems(
+      StorageLocal,
+      {
+        strLatestTrackedVersion: strConstExtensionVersion
+      },
+      strLog + ', save version'
     );
 
     objDetails.boolWasUpdated = true;
@@ -494,7 +496,7 @@ var Background = {
       }
 
       if ( ! Global.isEmpty( objTempToSet ) ) {
-        Global.setStorageItems( Storage, objTempToSet, logTemp );
+        poziworldExtension.utils.setStorageItems( Storage, objTempToSet, logTemp );
       }
       else {
         Log.add( logTemp + strLogDoNot );

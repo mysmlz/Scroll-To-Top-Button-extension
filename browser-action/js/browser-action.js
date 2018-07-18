@@ -327,7 +327,7 @@ var BrowserAction = {
 
         // Save
         if ( ! Global.isEmpty( objTempToSet ) ) {
-          Global.setStorageItems( StorageSync, objTempToSet, strLog );
+          poziworldExtension.utils.setStorageItems( StorageSync, objTempToSet, strLog );
         }
 
         // Suggest to reload active tab
