@@ -19,9 +19,7 @@
       checkForLegacySettings()
       setDefaults()
       setExtensionDefaults()
-      onMessageCallback()
     Listeners
-      runtime.onMessage
       runtime.onInstalled
       runtime.onStartup
     On Load
@@ -514,43 +512,6 @@ var Background = {
     Background.setDefaults( StorageLocal,  objSettingsNotSyncable,   'local' );
     Background.setDefaults( StorageSync,   objSettingsSyncable,      'sync'  );
   }
-  ,
-
-  /**
-   * Listen for messages from other parts of the extension.
-   *
-   * @param {Object} message
-   * @param {Object} sender
-   * @param {Function} sendResponse
-   */
-
-  onMessageCallback: function ( message, sender, sendResponse ) {
-    strLog = 'onMessageCallback';
-    Log.add( strLog, message );
-
-    if ( message.greeting === 'settings' ) {
-      const tabId = sender.tab.id;
-
-      poziworldExtension.utils.getSettings(
-        strLog,
-        onSettingsRetrieved,
-        undefined,
-        true
-      );
-
-      /**
-       * Send the settings back to the requester.
-       *
-       * @param {Object} settings - Key-value pairs.
-       */
-
-      function onSettingsRetrieved( settings ) {
-        if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
-          browser.tabs.sendMessage( tabId, settings );
-        }
-      }
-    }
-  }
 };
 
 /* =============================================================================
@@ -558,21 +519,6 @@ var Background = {
   Listeners
 
  ============================================================================ */
-
-/**
- * Listens for messages.
- *
- * @param {Object} objMessage - Message received.
- * @param {Object} objSender - Sender of the message.
- */
-
-browser.runtime.onMessage.addListener(
-  function( objMessage, objSender, objSendResponse ) {
-    Background.preventCheckForSilentUpdate();
-
-    Background.onMessageCallback( objMessage, objSender, objSendResponse );
-  }
-);
 
 /**
  * Fired when the extension is first installed, when the extension is updated to a new version, and when browser is updated to a new version.

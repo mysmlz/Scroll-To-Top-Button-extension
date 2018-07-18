@@ -36,22 +36,61 @@ function STTB() {
         })
     }
 
-    // Ask Background to retrieve the settings from the Storage
-    browser.runtime.sendMessage( { greeting: 'settings' } );
+    init();
 
-    browser.runtime.onMessage.addListener( function ( response ) {
-        var speed = parseInt(response.scrollUpSpeed);
-        var speed2 = parseInt(response.scrollDownSpeed);
-        var distance = parseInt(response.distanceLength);
-        var flipDistance = parseInt(response.distanceLength);
-        var size = response.buttonSize;
-        var arrow = response.buttonDesign;
-        var scroll = response.scroll;
-        var location = response.buttonLocation;
-        var stbb = response.buttonMode;
-        var transparency = response.notActiveButtonOpacity;
-        var shortcuts = response.keyboardShortcuts;
-        var homeendaction = response.homeEndKeysControlledBy;
+    /**
+     * To get started, retrieve the settings from the Storage and verify their integrity.
+     */
+
+    function init() {
+      strLog = 'init';
+      Log.add( strLog );
+
+      poziworldExtension.utils.getSettings(
+        strLog,
+        onSettingsRetrieved,
+        undefined,
+        true
+      );
+    }
+
+    /**
+     * Verify integrity of the settings.
+     *
+     * @param {Object} settings - Key-value pairs.
+     */
+
+    function onSettingsRetrieved( settings ) {
+      strLog = 'onSettingsRetrieved';
+      Log.add( strLog );
+
+      if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
+        onReady( settings );
+      }
+    }
+
+    /**
+     * Process settings, inject the button(s) if needed, add listeners.
+     *
+     * @param {Object} settings - Key-value pairs.
+     */
+
+    function onReady( settings ) {
+        strLog = 'onReady';
+        Log.add( strLog );
+
+        var speed = parseInt(settings.scrollUpSpeed);
+        var speed2 = parseInt(settings.scrollDownSpeed);
+        var distance = parseInt(settings.distanceLength);
+        var flipDistance = parseInt(settings.distanceLength);
+        var size = settings.buttonSize;
+        var arrow = settings.buttonDesign;
+        var scroll = settings.scroll;
+        var location = settings.buttonLocation;
+        var stbb = settings.buttonMode;
+        var transparency = settings.notActiveButtonOpacity;
+        var shortcuts = settings.keyboardShortcuts;
+        var homeendaction = settings.homeEndKeysControlledBy;
 
         // Assigns the correct arrow color to imgURL
         if (stbb == "dual"){
@@ -379,5 +418,5 @@ function STTB() {
                 }
             }
         }
-    } );
+    }
 }
