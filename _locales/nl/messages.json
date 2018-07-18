@@ -238,7 +238,8 @@
     "message": "Stuur mij een notificatie wanneer ik door dit programma kan helpen"
   },
   "referralProgramInfoTitle_amazon": {
-    "message": "Shop on Amazon?"
+    "message": "Winkelen op Amazon?",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
   },
   "flipDistance": {
     "message": "Omwissel afstand"
@@ -262,7 +263,8 @@
     "message": "Onzichtbaar"
   },
   "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?"
+    "message": "Winkelen?",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
   },
   "extensionName": {
     "message": "Scroll To Top Button",
