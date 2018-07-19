@@ -1,0 +1,39 @@
+{
+  "name": "scroll-to-top-button",
+  "version": "6.7.2",
+  "description": "Scroll To Top Button is a browser extension for the Google Chrome, Firefox, Edge, Opera, and some Chromium-based browsers that allows you to quickly jump to the top and/or bottom of a page.",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack --mode development --progress",
+    "build": "NODE_ENV=production webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PoziWorld/Scroll-to-Top-Button-Extension.git"
+  },
+  "keywords": [
+    "scroll",
+    "top",
+    "bottom",
+    "button",
+    "jump",
+    "browser",
+    "extension",
+    "chrome",
+    "firefox",
+    "edge"
+  ],
+  "author": "PoziWorld, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PoziWorld/Scroll-to-Top-Button-Extension/issues"
+  },
+  "homepage": "https://scroll-to-top-button.com",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.2",
+    "immutable": "^4.0.0-rc.9",
+    "path": "^0.12.7",
+    "webpack": "^4.12.2",
+    "webpack-cli": "^3.0.8"
+  }
+}
