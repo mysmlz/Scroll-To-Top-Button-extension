@@ -2,6 +2,7 @@ const path = require( 'path' );
 const { List, Map } = require( 'immutable' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
+const WebpackCleanPlugin = require( 'webpack-clean' );
 
 const modeDevelopment = process.env.NODE_ENV === 'development';
 
@@ -60,13 +61,29 @@ const supportedBrowsers = [
 
 module.exports = supportedBrowsers.map( browserName => {
   return defaultConfig
-    // Separate dist folder for each browser
+    // Create a separate dist folder for each browser
     .updateIn(
       [
         'output',
         'path',
       ],
       () => path.resolve( __dirname, 'dist', browserName ),
+    )
+    // Remove unused manifest.js post-build
+    .updateIn(
+      [
+        'plugins',
+      ],
+      value => value.push(
+        new WebpackCleanPlugin(
+          [
+            'manifest.js',
+          ],
+          {
+            basePath: path.resolve( __dirname, 'dist', browserName ),
+          },
+        ),
+      ),
     )
     .toJS()
     ;

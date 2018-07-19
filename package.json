@@ -35,6 +35,7 @@
     "immutable": "^4.0.0-rc.9",
     "path": "^0.12.7",
     "webpack": "^4.12.2",
+    "webpack-clean": "^1.2.2",
     "webpack-cli": "^3.0.8"
   }
 }
