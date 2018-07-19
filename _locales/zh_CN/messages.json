@@ -1,340 +1,298 @@
 {
-    "browserActionReloadActiveTab": {
-        "message": "刷新页面",
-        "description": ""
-    },
-    "black": {
-        "message": "黑色",
-        "description": ""
-    },
-    "browserActionSttbEnabled": {
-        "message": "启用 STTB",
-        "description": ""
-    },
-    "scrollToTopOnly": {
-        "message": "仅滚动到顶部",
-        "description": ""
-    },
-    "altTB": {
-        "message": "Alt + T/B",
-        "description": ""
-    },
-    "contextRightClickMenu": {
-        "message": "右键菜单",
-        "description": ""
-    },
-    "medium": {
-        "message": "中等",
-        "description": ""
-    },
-    "buttonSettings": {
-        "message": "按钮设置",
-        "description": ""
-    },
-    "browserActionSttbDisabledUrl": {
-        "message": "对这个 URL 禁用 STTB",
-        "description": ""
-    },
-    "slower": {
-        "message": "较慢",
-        "description": ""
-    },
-    "faster": {
-        "message": "较快",
-        "description": ""
-    },
-    "aLot": {
-        "message": "很多",
-        "description": ""
-    },
-    "extensionDescription": {
-        "message": "添加一个滚动到顶部/底部的按钮。",
-        "description": ""
-    },
-    "topCenter": {
-        "message": "顶部中间",
-        "description": ""
-    },
-    "buttonLocation": {
-        "message": "按钮位置",
-        "description": ""
-    },
-    "arrowOnly": {
-        "message": "仅箭头",
-        "description": ""
-    },
-    "otherProjects": {
-        "message": "我们的其他项目：",
-        "description": ""
-    },
-    "off": {
-        "message": "关",
-        "description": ""
-    },
-    "authorsSettings": {
-        "message": "作者的设置",
-        "description": ""
-    },
-    "buttonDesign": {
-        "message": "按钮样式",
-        "description": ""
-    },
-    "otherSettings": {
-        "message": "其他设置",
-        "description": ""
-    },
-    "tumblerBlue": {
-        "message": "Tumblr 蓝",
-        "description": ""
-    },
-    "optionsPageTitle": {
-        "message": "设置 | Scroll To Top Button",
-        "description": ""
-    },
-    "red": {
-        "message": "红色",
-        "description": ""
-    },
-    "fast": {
-        "message": "快",
-        "description": ""
-    },
-    "browserActionSttbDisabledDomain": {
-        "message": "对这个域名禁用 STTB",
-        "description": ""
-    },
-    "blue": {
-        "message": "蓝色",
-        "description": ""
-    },
-    "flipBetweenTopBottom": {
-        "message": "翻转 顶部 &amp; 按钮",
-        "description": ""
-    },
-    "bottomLeft": {
-        "message": "底部左边",
-        "description": ""
-    },
-    "homeEndKeysControlledBy": {
-        "message": "Home &amp; End 键已被控制",
-        "description": ""
-    },
-    "close": {
-        "message": "关闭",
-        "description": ""
-    },
-    "scrollDownSpeed": {
-        "message": "向下滚动速度",
-        "description": ""
-    },
-    "pixelDesign": {
-        "message": "像素风格",
-        "description": ""
-    },
-    "altUpDownArrows": {
-        "message": "Alt + Up/Down 箭头",
-        "description": ""
-    },
-    "centerRight": {
-        "message": "中间右侧",
-        "description": ""
-    },
-    "appearDistance": {
-        "message": "偏移显示距离",
-        "description": ""
-    },
-    "topRight": {
-        "message": "顶部右侧",
-        "description": ""
-    },
-    "colors": {
-        "message": "颜色",
-        "description": ""
-    },
-    "topLeft": {
-        "message": "顶部左侧",
-        "description": ""
-    },
-    "barelyAny": {
-        "message": "几乎没有",
-        "description": ""
-    },
-    "on": {
-        "message": "启用",
-        "description": ""
-    },
-    "lang": {
-        "message": "zh_CN",
-        "description": ""
-    },
-    "helpTranslate": {
-        "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">帮我们翻译</a>",
-        "description": ""
-    },
-    "releaseNotes": {
-        "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">发行说明</a>",
-        "description": ""
-    },
-    "buttonMode": {
-        "message": "按钮模式",
-        "description": ""
-    },
-    "slowest": {
-        "message": "最慢",
-        "description": ""
-    },
-    "pink": {
-        "message": "粉色",
-        "description": ""
-    },
-    "keyboardOnly": {
-        "message": "仅键盘",
-        "description": ""
-    },
-    "restoreDefaults": {
-        "message": "恢复默认",
-        "description": ""
-    },
-    "browserActionPageTitle": {
-        "message": "活动标签页设置 | Scroll To Top Button",
-        "description": ""
-    },
-    "operatingSystem": {
-        "message": "操作系统",
-        "description": ""
-    },
-    "grey": {
-        "message": "灰色",
-        "description": ""
-    },
-    "moreThanAverage": {
-        "message": "高于平均值",
-        "description": ""
-    },
-    "buttonSizeInPixels": {
-        "message": "$LENGTH$x$WIDTH$ 像素",
-        "description": "Button size in pixels (length, width): 35x40 pixels"
-        , "placeholders" : {
-              "length" : {
-                  "content" : "$1"
-                , "example" : "35"
-              }
-            , "width" : {
-                  "content" : "$2"
-                , "example" : "40"
-              }
-          }
-    },
-    "ratingHelpsOthers": {
-        "message": "如果你喜欢这个插件！请 <a href=\"#\" target=\"_blank\" id=\"rateLink\">给我好评</a><br>你的反馈会帮助更多人发现这个插件！",
-        "description": ""
-    },
-    "keyboardShortcuts": {
-        "message": "键盘快捷键",
-        "description": ""
-    },
-    "transparent": {
-        "message": "透明",
-        "description": ""
-    },
-    "keyboardSettings": {
-        "message": "键盘设置",
-        "description": ""
-    },
-    "dualArrows": {
-        "message": "双箭头",
-        "description": ""
-    },
-    "buttonSize": {
-        "message": "按钮尺寸",
-        "description": ""
-    },
-    "aLittle": {
-        "message": "一点点",
-        "description": ""
-    },
-    "orange": {
-        "message": "橙色",
-        "description": ""
-    },
-    "aTon": {
-        "message": "超多",
-        "description": ""
-    },
-    "bottomRight": {
-        "message": "底部右边",
-        "description": ""
-    },
-    "bottomCenter": {
-        "message": "底部中间",
-        "description": ""
-    },
-    "save": {
-        "message": "保存",
-        "description": ""
-    },
-    "slow": {
-        "message": "慢",
-        "description": ""
-    },
-    "centerLeft": {
-        "message": "中间左侧",
-        "description": ""
-    },
-    "flipDistance": {
-        "message": "翻转距离",
-        "description": ""
-    },
-    "notActiveButtonOpacity": {
-        "message": "未激活按钮透明度",
-        "description": ""
-    },
-    "browserActionTitle": {
-        "message": "活动标签页设置",
-        "description": ""
-    },
-    "opaque": {
-        "message": "不透明",
-        "description": ""
-    },
-    "invisible": {
-        "message": "隐藏",
-        "description": ""
-    },
-    "extensionName": {
-        "message": "Scroll To Top Button",
-        "description": ""
-    },
-    "fastest": {
-        "message": "最快（立即）",
-        "description": ""
-    },
-    "translatedBy": {
-        "message": "简体中文翻译 <a href=\"https://twitter.com/pluwen\" target=\"_blank\" id=\"translatorLink\">Pluwen</a>",
-        "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
-    },
-    "alternateDesigns": {
-        "message": "备用样式",
-        "description": ""
-    },
-    "yellow": {
-        "message": "黄色",
-        "description": ""
-    },
-    "green": {
-        "message": "绿色",
-        "description": ""
-    },
-    "scrollUpSpeed": {
-        "message": "向上滚动速度",
-        "description": ""
-    },
-    "optionsTitle": {
-        "message": "Scroll To Top Button 设置",
-        "description": ""
-    },
-    "purple": {
-        "message": "紫色",
-        "description": ""
+  "browserActionReloadActiveTab": {
+    "message": "刷新页面"
+  },
+  "black": {
+    "message": "黑色"
+  },
+  "browserActionSttbEnabled": {
+    "message": "启用 STTB"
+  },
+  "scrollToTopOnly": {
+    "message": "仅滚动到顶部"
+  },
+  "altTB": {
+    "message": "Alt + T/B"
+  },
+  "contextRightClickMenu": {
+    "message": "右键菜单"
+  },
+  "medium": {
+    "message": "中等"
+  },
+  "buttonSettings": {
+    "message": "按钮设置"
+  },
+  "browserActionSttbDisabledUrl": {
+    "message": "对这个 URL 禁用 STTB"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">主页</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "slower": {
+    "message": "较慢"
+  },
+  "faster": {
+    "message": "较快"
+  },
+  "aLot": {
+    "message": "很多"
+  },
+  "extensionDescription": {
+    "message": "添加一个滚动到顶部/底部的按钮。"
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
+  },
+  "topCenter": {
+    "message": "顶部中间"
+  },
+  "buttonLocation": {
+    "message": "按钮位置"
+  },
+  "arrowOnly": {
+    "message": "仅箭头"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "If you like the project and find our work useful, please consider supporting us via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features."
+  },
+  "otherProjects": {
+    "message": "我们的其他项目："
+  },
+  "off": {
+    "message": "关"
+  },
+  "authorsSettings": {
+    "message": "作者的设置"
+  },
+  "buttonDesign": {
+    "message": "按钮样式"
+  },
+  "otherSettings": {
+    "message": "其他设置"
+  },
+  "tumblerBlue": {
+    "message": "Tumblr 蓝"
+  },
+  "optionsPageTitle": {
+    "message": "设置 | Scroll To Top Button"
+  },
+  "red": {
+    "message": "红色"
+  },
+  "fast": {
+    "message": "快"
+  },
+  "browserActionSttbDisabledDomain": {
+    "message": "对这个域名禁用 STTB"
+  },
+  "blue": {
+    "message": "蓝色"
+  },
+  "flipBetweenTopBottom": {
+    "message": "翻转 顶部 &amp; 按钮"
+  },
+  "bottomLeft": {
+    "message": "底部左边"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Home &amp; End 键已被控制"
+  },
+  "close": {
+    "message": "关闭"
+  },
+  "scrollDownSpeed": {
+    "message": "向下滚动速度"
+  },
+  "pixelDesign": {
+    "message": "像素风格"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "我想帮忙"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Find out how this works"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + Up/Down 箭头"
+  },
+  "centerRight": {
+    "message": "中间右侧"
+  },
+  "appearDistance": {
+    "message": "偏移显示距离"
+  },
+  "topRight": {
+    "message": "顶部右侧"
+  },
+  "colors": {
+    "message": "颜色"
+  },
+  "topLeft": {
+    "message": "顶部左侧"
+  },
+  "barelyAny": {
+    "message": "几乎没有"
+  },
+  "on": {
+    "message": "启用"
+  },
+  "lang": {
+    "message": "zh_CN",
+    "description": "According to https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes and https://developer.chrome.com/webstore/i18n#localeTable"
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">帮我们翻译</a>"
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">发行说明</a>"
+  },
+  "buttonMode": {
+    "message": "按钮模式"
+  },
+  "slowest": {
+    "message": "最慢"
+  },
+  "pink": {
+    "message": "粉色"
+  },
+  "keyboardOnly": {
+    "message": "仅键盘"
+  },
+  "restoreDefaults": {
+    "message": "恢复默认"
+  },
+  "browserActionPageTitle": {
+    "message": "活动标签页设置 | Scroll To Top Button"
+  },
+  "operatingSystem": {
+    "message": "操作系统"
+  },
+  "grey": {
+    "message": "灰色"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "You can help us by doing what you already do without spending an extra penny."
+  },
+  "moreThanAverage": {
+    "message": "高于平均值"
+  },
+  "buttonSizeInPixels": {
+    "message": "$LENGTH$x$WIDTH$ 像素",
+    "description": "Button size in pixels (length, width): 35x40 pixels",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "35"
+      },
+      "width": {
+        "content": "$2",
+        "example" : "40"
+      }
     }
+  },
+  "ratingHelpsOthers": {
+    "message": "如果你喜欢这个插件！请 <a href=\"#\" target=\"_blank\" id=\"rateLink\">给我好评</a><br>你的反馈会帮助更多人发现这个插件！"
+  },
+  "keyboardShortcuts": {
+    "message": "键盘快捷键"
+  },
+  "transparent": {
+    "message": "透明"
+  },
+  "keyboardSettings": {
+    "message": "键盘设置"
+  },
+  "dualArrows": {
+    "message": "双箭头"
+  },
+  "buttonSize": {
+    "message": "按钮尺寸"
+  },
+  "aLittle": {
+    "message": "一点点"
+  },
+  "orange": {
+    "message": "橙色"
+  },
+  "aTon": {
+    "message": "超多"
+  },
+  "bottomRight": {
+    "message": "底部右边"
+  },
+  "bottomCenter": {
+    "message": "底部中间"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "slow": {
+    "message": "慢"
+  },
+  "centerLeft": {
+    "message": "中间左侧"
+  },
+  "referralProgramInfoNotify": {
+    "message": "Notify me when I can help through this program"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Shop on Amazon?",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "flipDistance": {
+    "message": "翻转距离"
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
+  },
+  "notActiveButtonOpacity": {
+    "message": "未激活按钮透明度"
+  },
+  "optionsSaved": {
+    "message": "选项已保存。"
+  },
+  "browserActionTitle": {
+    "message": "活动标签页设置"
+  },
+  "opaque": {
+    "message": "不透明"
+  },
+  "invisible": {
+    "message": "隐藏"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Shop?",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
+  },
+  "fastest": {
+    "message": "最快（立即）"
+  },
+  "translatedBy": {
+    "message": "简体中文翻译 <a href=\"https://twitter.com/pluwen\" target=\"_blank\" id=\"translatorLink\">Pluwen</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "alternateDesigns": {
+    "message": "备用样式"
+  },
+  "yellow": {
+    "message": "黄色"
+  },
+  "green": {
+    "message": "绿色"
+  },
+  "scrollUpSpeed": {
+    "message": "向上滚动速度"
+  },
+  "optionsTitle": {
+    "message": "Scroll To Top Button 设置"
+  },
+  "purple": {
+    "message": "紫色"
+  }
 }
