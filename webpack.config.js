@@ -1,6 +1,7 @@
 const path = require( 'path' );
 const { List, Map } = require( 'immutable' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
 
 const modeDevelopment = process.env.NODE_ENV === 'development';
 
@@ -23,6 +24,12 @@ const defaultConfig = Map( {
     ],
   },
   plugins: List( [
+    new CleanWebpackPlugin(
+      [
+        'dist',
+      ]
+    ),
+
     new CopyWebpackPlugin(
       [
         {

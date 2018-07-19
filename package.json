@@ -30,6 +30,7 @@
   },
   "homepage": "https://scroll-to-top-button.com",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "immutable": "^4.0.0-rc.9",
     "path": "^0.12.7",
