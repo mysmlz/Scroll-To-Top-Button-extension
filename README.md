@@ -73,6 +73,8 @@ If you know any foreign language or just noticed a discrepancy in the translatio
 
 If you like the project and find our work useful, please consider supporting us via [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), or [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5) – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features.
 
+[Become a patron](https://www.patreon.com/bePatron?c=1906606).
+
 <sup>[(back to table of contents)](#table-of-contents)</sup>
 
 
@@ -84,7 +86,7 @@ We appreciate your feedback!
 - Don't be shy to [ask questions](mailto:feedback@scroll-to-top-button.com).
 - [Bug reports](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/support) ([for Firefox](https://goo.gl/forms/QMZFZfgKjQHOnRCX2), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/?reports#feedback-container)) are valuable!
 - We like [praises](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container)), who doesn't? :)
-- Stick is helpful, but [carrot](https://cash.me/$ScrollToTopButton) is sweeter. ;)
+- Stick is helpful, but [carrot](https://www.patreon.com/bePatron?c=1906606) is sweeter. ;)
 
 <sup>[(back to table of contents)](#table-of-contents)</sup>
 
