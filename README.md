@@ -55,8 +55,11 @@ If you find Scroll To Top Button useful, why not recommend it to your friends, c
 There are a few ways you can help our cause:
 
 * Follow us on [Telegram](https://t.me/ScrollToTopButton), [Facebook](https://www.facebook.com/ScrollToTopButton), [Twitter](https://twitter.com/ScrollToTopBtn), [Google+](https://plus.google.com/111049917037858081473), [VK](https://vk.com/scrolltotopbutton), and [OK](https://ok.ru/group/54802374459420).
-* Share the [installation link](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj) ([for Opera](https://addons.opera.com/extensions/details/scroll-to-top-button/)) on your social networks and/or blog.
-* [Rate Scroll To Top Button](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Opera](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container)) – the feedback really helps others find this extension!
+* Share the installation link on your social networks and/or blog:
+  * [Scroll To Top Button for Chrome](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj)
+  * [Scroll To Top Button for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/)
+  * [Scroll To Top Button for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/)
+* [Rate Scroll To Top Button](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container)) – the feedback really helps others find this extension!
 
 ### Translation
 
@@ -79,8 +82,8 @@ Feedback
 We appreciate your feedback!
 
 - Don't be shy to [ask questions](mailto:feedback@scroll-to-top-button.com).
-- [Bug reports](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/support) ([for Opera](https://addons.opera.com/extensions/details/scroll-to-top-button/?reports#feedback-container)) are valuable!
-- We like [praises](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Opera](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container)), who doesn't? :)
+- [Bug reports](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/support) ([for Firefox](https://goo.gl/forms/QMZFZfgKjQHOnRCX2), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/?reports#feedback-container)) are valuable!
+- We like [praises](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container)), who doesn't? :)
 - Stick is helpful, but [carrot](https://cash.me/$ScrollToTopButton) is sweeter. ;)
 
 <sup>[(back to table of contents)](#table-of-contents)</sup>
