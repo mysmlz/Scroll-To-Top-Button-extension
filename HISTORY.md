@@ -6,6 +6,26 @@
 
 > Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
 
+## v7.0.0
+
+### New
+
+* Scroll To Top Button works in [Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/) & Edge* now, too!
+   
+  > Idea by [Michael Yarlot](https://www.facebook.com/michael.yarlot), [Fabrizio Morrone](https://twitter.com/FabrizioMorron3), [Keluen Mier](https://plus.google.com/108629557834198154933).
+
+  \* We reached out to Microsoft for approval to have our extension in the Microsoft Store.
+
+* Scroll To Top Button settings are now synchronized with your browser Sync account.
+
+### Improved
+
+* Updated Dutch (Netherlands) & Chinese (China) translation.
+
+  > Thank you, [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/) & [Pluwen](https://www.transifex.com/user/profile/pluwen/)!
+
+---
+
 ## v6.7.2
 
 ### Improved
