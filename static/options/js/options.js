@@ -79,6 +79,10 @@
       if ( ( !! window.opr && !! opr.addons ) || !! window.opera || navigator.userAgent.indexOf( ' OPR/' ) >= 0 ) {
         strRateLink = 'https://addons.opera.com/extensions/details/scroll-to-top-button/';
       }
+      // Firefox
+      else if ( typeof InstallTrigger !== 'undefined' ) {
+        strRateLink = 'https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/';
+      }
 
       document.getElementById( 'rateLink' ).href = strRateLink;
     }
