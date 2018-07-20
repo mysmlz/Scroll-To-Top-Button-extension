@@ -87,6 +87,25 @@
     }
   };
 
+  /**
+   * Translations contain <a /> elements, but href attributes aren't specified there.
+   *
+   * @param {string[][]} links
+   */
+
+  Page.prototype.setLinks = function ( links ) {
+    if ( Array.isArray( links ) ) {
+      for ( let i = 0, l = links.length; i < l; i++ ) {
+        const link = links[ i ];
+        const linkElement = document.getElementById( link[ 0 ] );
+
+        if ( linkElement ) {
+          linkElement.href = link[ 1 ];
+        }
+      }
+    }
+  };
+
   if ( typeof poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }

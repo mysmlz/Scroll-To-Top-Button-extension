@@ -59,29 +59,11 @@
       [
         'officialWebsiteLink',
         'https://scroll-to-top-button.com'
-      ],
-      [
-        'incentivizePaypalLink',
-        'https://www.paypal.me/ScrollToTopButton'
-      ],
-      [
-        'incentivizeSquarecashLink',
-        'https://cash.me/$ScrollToTopButton'
-      ],
-      [
-        'incentivizeCoinbaseLink',
-        'https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5'
       ]
     ];
 
-    for ( let i = 0, l = links.length; i < l; i++ ) {
-      const link = links[ i ];
-      const linkElement = document.getElementById( link[ 0 ] );
-
-      if ( linkElement ) {
-        linkElement.href = link[ 1 ];
-      }
-    }
+    poziworldExtension.page.setLinks( links );
+    poziworldExtension.incentive.setLinks();
 
     const translatedBy = document.getElementById( 'translatedBy' );
     const rateLink = document.getElementById( 'rateLink' );

@@ -77,6 +77,7 @@ var BrowserAction = {
 
     Page.hideInOpera();
     Page.localize( strPage );
+    poziworldExtension.incentive.setLinks();
     poziworldExtension.page.init( 'browserAction' );
     BrowserAction.addEventListeners();
     BrowserAction.getActiveTabAddress();
