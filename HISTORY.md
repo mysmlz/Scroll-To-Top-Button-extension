@@ -4,7 +4,17 @@
 
 > Help [translate Scroll To Top Button](https://www.transifex.com/poziworld/scroll-to-top-button/)
 
-> Incentivize further development: [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5)
+> [Become a patron](https://www.patreon.com/bePatron?c=1906606)
+
+## v7.0.1
+
+### Improved
+
+* Extension no longer outputs log to the DevTools Console on a page.
+
+  > Issue reported by [Ben Russell](https://plus.google.com/114806371046314371796).
+
+---
 
 ## v7.0.0
 
