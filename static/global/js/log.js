@@ -49,23 +49,23 @@ var
   /**
    * Add new item to the log (console.log + track)
    *
-   * @type    method
-   * @param   strEvent
-   *            Event name/desc
-   * @param   miscVar
-   *            Optional. Var to output contents of
-   * @param   boolTrack
-   *            Optional. Whether to track this
-   * @param   boolDoNotSendData
-   *            Optional. Whether to send details of the event
-   * @return  void
+   * @param {string} eventName - Event name/description.
+   * @param {*} [details] - Var to output contents of.
    **/
-  add : function( strEvent, miscVar, boolTrack, boolDoNotSendData ) {
-    if ( typeof miscVar === 'undefined' )
-      miscVar = {};
+  add : function( eventName, details ) {
+    if ( typeof details === 'undefined' ) {
+      details = {};
+    }
 
-    // Debug
-    console.log( strEvent, miscVar );
+    /**
+     * Do not pollute web page's log.
+     *
+     * @todo Use appropriate types (log, debug, error).
+     */
+
+    if ( typeof ContentScript === 'undefined' ) {
+      console.log( eventName, details );
+    }
   }
 };
 
