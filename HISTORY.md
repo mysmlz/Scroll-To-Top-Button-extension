@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v7.0.2
+
+### Changed
+
+* Don't show Patreon call-to-action to Edge users.
+
+---
+
 ## v7.0.1
 
 ### Improved
