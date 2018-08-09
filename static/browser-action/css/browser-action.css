@@ -195,6 +195,16 @@ input.pwRadio:checked:before
       border-right: 0;
       border-left: 0;
     }
+
+  @supports ( -ms-ime-align: auto )
+    {
+
+      #becomePatronLink
+        {
+          display: none;
+        }
+    }
+
   #becomePatronImg
     {
       width: 150px;
