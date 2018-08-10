@@ -6,6 +6,18 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v7.0.3
+
+### Fixed
+
+* Correct URL for Edge extension in Options.
+
+### Changed
+
+* Don't show Other Projects section to Edge users.
+
+---
+
 ## v7.0.2
 
 ### Changed
