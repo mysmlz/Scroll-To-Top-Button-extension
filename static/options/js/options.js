@@ -83,6 +83,10 @@
       else if ( typeof InstallTrigger !== 'undefined' ) {
         strRateLink = 'https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/';
       }
+      // Edge
+      else if ( !! window.StyleMedia ) {
+        strRateLink = 'https://www.microsoft.com/store/apps/9NS5KGBDLNGZ';
+      }
 
       document.getElementById( 'rateLink' ).href = strRateLink;
     }
