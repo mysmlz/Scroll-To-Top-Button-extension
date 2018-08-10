@@ -221,6 +221,14 @@ input.pwRadio:checked:before
   {
     padding: 1.5rem 0 1rem;
   }
+@supports ( -ms-ime-align: auto )
+  {
+
+    #otherProjectsContainer
+      {
+        display: none;
+      }
+  }
 #otherProjectsList
   {
     margin: .5rem 0 0 2rem;
