@@ -35,7 +35,7 @@ Available customizations
 - Not active button opacity
 - Keyboard shortcuts
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
 
 
 Privacy
@@ -43,7 +43,7 @@ Privacy
 
 This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
 
 
 Contribution
@@ -76,7 +76,7 @@ If you like the project and find our work useful, please consider supporting us 
 
 [Become a patron](https://www.patreon.com/bePatron?c=1906606).
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
 
 
 Feedback
@@ -89,7 +89,7 @@ We appreciate your feedback!
 - We like [praises](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews "Submit a review for Scroll To Top Button for Chrome") ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/ "Submit a review for Scroll To Top Button for Firefox"), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container "Submit a review for Scroll To Top Button for Opera & Yandex.Browser"), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab "Submit a review for Scroll To Top Button for Edge")), who doesn't? :)
 - Stick is helpful, but [carrot](https://www.patreon.com/bePatron?c=1906606 "Become a Scroll To Top Button Patron") is sweeter. ;)
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
 
 
 Scroll To Top Button on social networks
@@ -102,7 +102,7 @@ Scroll To Top Button on social networks
 - [Scroll To Top Button on VK](https://vk.com/scrolltotopbutton)
 - [Scroll To Top Button on OK](https://ok.ru/group/54802374459420)
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
 
 
 Gratitudes
@@ -114,7 +114,7 @@ Gratitudes
   - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/);
   - Czech — [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/).
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
 
 
 Credits
@@ -123,4 +123,4 @@ Credits
 * [Gentleface Mono Icon Set](http://gentleface.com/free_icon_set.html), Gentleface, [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/).
 * <sub>All trademarks mentioned belong to their owners, third party brands, product names, trade names, corporate names and company names mentioned may be trademarks of their respective owners or registered trademarks of other companies and are used for purposes of explanation and to the owner's benefit, without implying a violation of copyright law.</sub>
 
-<sup>[(back to table of contents)](#table-of-contents)</sup>
+<sup>(back to [table of contents](#table-of-contents))</sup>
