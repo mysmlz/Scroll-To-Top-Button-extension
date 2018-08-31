@@ -54,13 +54,13 @@ If you find Scroll To Top Button useful, why not recommend it to your friends, c
 
 There are a few ways you can help our cause:
 
-* Follow us on [Telegram](https://t.me/ScrollToTopButton), [Facebook](https://www.facebook.com/ScrollToTopButton), [Twitter](https://twitter.com/ScrollToTopBtn), [Google+](https://plus.google.com/111049917037858081473), [VK](https://vk.com/scrolltotopbutton), and [OK](https://ok.ru/group/54802374459420).
+* Follow us on [Telegram](https://t.me/ScrollToTopButton "Scroll To Top Button on Telegram"), [Facebook](https://www.facebook.com/ScrollToTopButton "Scroll To Top Button on Facebook"), [Twitter](https://twitter.com/ScrollToTopBtn "Scroll To Top Button on Twitter"), [Google+](https://plus.google.com/111049917037858081473 "Scroll To Top Button on Google+"), [VK](https://vk.com/scrolltotopbutton "Scroll To Top Button on VK"), and [OK](https://ok.ru/group/54802374459420 "Scroll To Top Button on OK").
 * Share the installation link on your social networks and/or blog:
   * [Scroll To Top Button for Chrome](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj)
   * [Scroll To Top Button for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/)
   * [Scroll To Top Button for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/)
   * [Scroll To Top Button for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz)
-* [Rate Scroll To Top Button](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab)) – the feedback really helps others find this extension!
+* [Rate Scroll To Top Button](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews "Rate Scroll To Top Button for Chrome") ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/ "Rate Scroll To Top Button for Firefox"), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container "Rate Scroll To Top Button for Opera & Yandex.Browser"), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab "Rate Scroll To Top Button for Edge")) – the feedback really helps others find this extension!
 
 ### Translation
 
@@ -68,11 +68,11 @@ Sprechen Sie Deutsch? Vous parlez français?
 
 We want as many Scroll To Top Button users as possible to be able to interact with the extension in their native language.
 
-If you know any foreign language or just noticed a discrepancy in the translation, please [let us know](https://www.transifex.com/poziworld/scroll-to-top-button/).
+If you know any foreign language or just noticed a discrepancy in the translation, please [help us translate](https://www.transifex.com/poziworld/scroll-to-top-button/ "Help translate Scroll To Top Button").
 
 ### Incentive
 
-If you like the project and find our work useful, please consider supporting us via [PayPal](https://www.paypal.me/ScrollToTopButton), [Square Cash](https://cash.me/$ScrollToTopButton), or [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5) – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features.
+If you like the project and find our work useful, please consider supporting us via [PayPal](https://www.paypal.me/ScrollToTopButton "Support Scroll To Top Button via PayPal"), [Square Cash](https://cash.me/$ScrollToTopButton "Support Scroll To Top Button via Square Cash"), or [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5 "Support Scroll To Top Button via Coinbase") – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features.
 
 [Become a patron](https://www.patreon.com/bePatron?c=1906606).
 
@@ -84,10 +84,10 @@ Feedback
 
 We appreciate your feedback!
 
-- Don't be shy to [ask questions](mailto:feedback@scroll-to-top-button.com).
-- [Bug reports](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/support) ([for Firefox](https://goo.gl/forms/QMZFZfgKjQHOnRCX2), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/?reports#feedback-container), [for Edge](https://goo.gl/forms/QMZFZfgKjQHOnRCX2)) are valuable!
-- We like [praises](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews) ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab)), who doesn't? :)
-- Stick is helpful, but [carrot](https://www.patreon.com/bePatron?c=1906606) is sweeter. ;)
+- Don't be shy to [ask questions](mailto:feedback@scroll-to-top-button.com "Email us with questions, issues, and/or suggestions for Scroll To Top Button").
+- [Bug reports](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/support "File a bug report for Scroll To Top Button for Chrome") ([for Firefox](https://goo.gl/forms/QMZFZfgKjQHOnRCX2 "File a bug report for Scroll To Top Button for Firefox"), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/?reports#feedback-container "File a bug report for Scroll To Top Button for Opera & Yandex.Browser"), [for Edge](https://goo.gl/forms/QMZFZfgKjQHOnRCX2 "File a bug report for Scroll To Top Button for Edge")) are valuable!
+- We like [praises](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews "Submit a review for Scroll To Top Button for Chrome") ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/ "Submit a review for Scroll To Top Button for Firefox"), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container "Submit a review for Scroll To Top Button for Opera & Yandex.Browser"), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab "Submit a review for Scroll To Top Button for Edge")), who doesn't? :)
+- Stick is helpful, but [carrot](https://www.patreon.com/bePatron?c=1906606 "Become a Scroll To Top Button Patron") is sweeter. ;)
 
 <sup>[(back to table of contents)](#table-of-contents)</sup>
 
