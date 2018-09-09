@@ -6,6 +6,17 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v7.0.4
+
+### Changed
+
+* Updated Amazon referral IDs.
+
+  > Support project development by making us your referral! 
+    Go to Amazon, click the Scroll To Top Button icon next to the address bar, click “I want to help”.
+
+---
+
 ## v7.0.3
 
 ### Fixed
