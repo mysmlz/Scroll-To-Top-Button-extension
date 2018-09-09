@@ -291,35 +291,35 @@
 
   ReferralPrograms.prototype.handleAmazonInfoCtaClick = function () {
     const strActiveTabDomain = this.getAmazonDomain();
-    let strTag = 'sttb-20';
+    let strTag = 'pwsttb-20';
 
     switch ( strActiveTabDomain ) {
       case 'amazon.ca':
-        strTag = 'sttbca-20';
+        strTag = 'pwsttbca-20';
 
         break;
       case 'amazon.co.uk':
-        strTag = 'sttb-21';
+        strTag = 'pwsttb-21';
 
         break;
       case 'amazon.de':
-        strTag = 'sttbde-21';
+        strTag = 'pwsttbde-21';
 
         break;
       case 'amazon.es':
-        strTag = 'sttbes-21';
+        strTag = 'pwsttbes-21';
 
         break;
       case 'amazon.fr':
-        strTag = 'sttbfr-21';
+        strTag = 'pwsttbfr-21';
 
         break;
       case 'amazon.in':
-        strTag = 'sttbin-21';
+        strTag = 'pwsttbin-21';
 
         break;
       case 'amazon.it':
-        strTag = 'sttbit-21';
+        strTag = 'pwsttbit-21';
 
         break;
     }
