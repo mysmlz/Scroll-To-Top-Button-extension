@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v7.1.0
+
+### New
+
+* Ability to specify scroll up/down speed value in milliseconds instead of selecting a pre-set one.
+   
+  > Idea by [Phil Reilly](https://www.facebook.com/pjpreilly).
+
+---
+
 ## v7.0.4
 
 ### Changed
