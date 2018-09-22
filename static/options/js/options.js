@@ -1,8 +1,15 @@
 ( function() {
   'use strict';
 
+  const form = document.getElementById( 'settingsForm' );
+  const SETTING_CONTAINER_SELECTOR = '.settingContainer';
   const options = document.getElementsByClassName( 'optionsChanger' );
   const optionsCount = options.length;
+  const SCROLL_UP_SPEED_ID = 'scrollUpSpeed';
+  const SCROLL_DOWN_SPEED_ID = 'scrollDownSpeed';
+  const SCROLL_SPEED_CUSTOM_ID_SUFFIX = 'Custom';
+  const SCROLL_SPEED_CUSTOM_CLASS = 'custom';
+  const SCROLL_SPEED_CUSTOM_VALUE_INDICATOR = '-1';
   const buttonMode = document.getElementById( 'buttonMode' );
   const distanceType = document.getElementById( 'distanceType' );
   const status = document.getElementById( 'status' );
@@ -108,7 +115,7 @@
     document.getElementById( 'restore' ).addEventListener( 'click', restoreDefaultSettings );
     document.getElementById( 'author' ).addEventListener( 'click', setOriginalAuthorSettings );
     document.getElementById( 'save' ).addEventListener( 'click', handleFormSubmit );
-    document.getElementById( 'settingsForm' ).addEventListener( 'submit', handleFormSubmit );
+    form.addEventListener( 'submit', handleFormSubmit );
   }
 
   /**
@@ -123,7 +130,9 @@
     const settings = {
       buttonMode: 'off',
       scrollUpSpeed: 1000,
+      scrollUpSpeedCustom: 1000,
       scrollDownSpeed: 1000,
+      scrollDownSpeedCustom: 1000,
       distanceLength: 400,
       buttonSize: '50px',
       buttonDesign: 'arrow_blue',
@@ -150,7 +159,9 @@
     const settings = {
       buttonMode: 'dual',
       scrollUpSpeed: 1000,
+      scrollUpSpeedCustom: 1000,
       scrollDownSpeed: 1000,
+      scrollDownSpeedCustom: 1000,
       distanceLength: 400,
       buttonSize: '50px',
       buttonDesign: 'arrow_only_blue',
@@ -189,6 +200,7 @@
 
       if ( updatedSettingsCounter ) {
         checkMode();
+        switchCustomOptionsVisibility();
       }
     }
   }
@@ -201,30 +213,96 @@
 
   function handleOptionChange( event ) {
     if ( event ) {
-      const settings = {};
       const target = event.target;
+      const id = target.id;
 
-      settings[ target.id ] = target.value;
+      if ( id === SCROLL_UP_SPEED_ID || id === SCROLL_DOWN_SPEED_ID ) {
+        switchCustomOptionVisibility( id, target );
+      }
+      else if ( target.classList.contains( SCROLL_SPEED_CUSTOM_CLASS ) && ! checkFormValidity() ) {
+        return;
+      }
 
-      setSettings( settings );
+      handleFormSubmit();
     }
+  }
+
+  /**
+   * Show custom value fields only when user chose to specify them instead of selecting pre-set values.
+   */
+
+  function switchCustomOptionsVisibility() {
+    const optionIds = [
+      SCROLL_UP_SPEED_ID,
+      SCROLL_DOWN_SPEED_ID
+    ];
+
+    for ( let i = 0, l = optionIds.length; i < l; i++ ) {
+      switchCustomOptionVisibility( optionIds[ i ] );
+    }
+  }
+
+  /**
+   * Show custom value field only when user chose to specify its value instead of selecting a pre-set one.
+   *
+   * @param {string} id - The ID of the element.
+   * @param {EventTarget} [element] - The element which the custom value field is related to.
+   */
+
+  function switchCustomOptionVisibility( id, element ) {
+    if ( ! document.contains( element ) ) {
+      element = document.getElementById( id );
+    }
+
+    const customElement = document.getElementById( id + SCROLL_SPEED_CUSTOM_ID_SUFFIX );
+    const hidden = ( element.value !== SCROLL_SPEED_CUSTOM_VALUE_INDICATOR );
+
+    customElement.closest( SETTING_CONTAINER_SELECTOR ).hidden = hidden;
+    customElement.required = ! hidden;
+  }
+
+  /**
+   * Verify form fields values match patterns (if any).
+   *
+   * @return {boolean}
+   */
+
+  function checkFormValidity() {
+    if ( ! form.checkValidity() ) {
+      form.reportValidity();
+
+      return false;
+    }
+
+    return true;
   }
 
   /**
    * Get the current values of all the settings.
    *
-   * @param {Event} event
+   * @param {Event} [event]
    */
 
   function handleFormSubmit( event ) {
-    event.preventDefault();
+    if ( event ) {
+      event.preventDefault();
+    }
 
     const settings = {};
 
     for ( let i = 0, l = optionsCount; i < l; i++ ) {
       const option = options[ i ];
+      const id = option.id;
+      const value = option.value;
 
-      settings[ option.id ] = option.value;
+      if ( value !== SCROLL_SPEED_CUSTOM_VALUE_INDICATOR || document.getElementById( id + SCROLL_SPEED_CUSTOM_ID_SUFFIX ).value !== '' ) {
+        settings[ id ] = value;
+      }
+      else {
+        form.reportValidity();
+
+        return;
+      }
     }
 
     setSettings( settings );
@@ -401,6 +479,6 @@
    */
 
   function switchElement( show, element ) {
-    element.closest( '.settingContainer' ).hidden = ! show;
+    element.closest( SETTING_CONTAINER_SELECTOR ).hidden = ! show;
   }
 } )();

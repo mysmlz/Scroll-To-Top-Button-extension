@@ -63,8 +63,16 @@
     "scrollUpSpeed": {
       "message": "Scroll up speed"
     },
+    "scrollUpSpeedCustom": {
+      "message": "Scroll up speed in milliseconds",
+      "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
+    },
     "scrollDownSpeed": {
       "message": "Scroll down speed"
+    },
+    "scrollDownSpeedCustom": {
+      "message": "Scroll down speed in milliseconds",
+      "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
     },
       "slowest": {
         "message": "Slowest"
@@ -83,6 +91,10 @@
       },
       "fastest": {
         "message": "Fastest (instant)"
+      },
+      "custom": {
+        "message": "Let me specify...",
+        "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
       },
     "appearDistance": {
       "message": "Appear distance"

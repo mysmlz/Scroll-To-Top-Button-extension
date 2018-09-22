@@ -33,8 +33,24 @@ html {
   background-color: #eee;
 }
 
-select {
+.settingContainer {
+  line-height: 22px;
+  margin: 12px 0;
+}
+
+.optionsChanger,
+input.optionsChanger {
   margin-left: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.optionsChanger.custom {
+  width: 100px;
+}
+
+.optionsChanger:invalid {
+  border-color: #f00;
 }
 
 ul {

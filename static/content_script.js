@@ -79,8 +79,11 @@ function STTB() {
         strLog = 'onReady';
         Log.add( strLog );
 
-        var speed = parseInt(settings.scrollUpSpeed);
-        var speed2 = parseInt(settings.scrollDownSpeed);
+        let scrollUpSpeed = parseInt( settings.scrollUpSpeed );
+        const scrollUpSpeedCustom = parseInt( settings.scrollUpSpeedCustom );
+        let scrollDownSpeed = parseInt( settings.scrollDownSpeed );
+        const scrollDownSpeedCustom = parseInt( settings.scrollDownSpeedCustom );
+
         var distance = parseInt(settings.distanceLength);
         var flipDistance = parseInt(settings.distanceLength);
         var size = settings.buttonSize;
@@ -91,6 +94,14 @@ function STTB() {
         var transparency = settings.notActiveButtonOpacity;
         var shortcuts = settings.keyboardShortcuts;
         var homeendaction = settings.homeEndKeysControlledBy;
+
+        if ( shouldUseCustom( scrollUpSpeed, scrollUpSpeedCustom ) ) {
+          scrollUpSpeed = scrollUpSpeedCustom;
+        }
+
+        if ( shouldUseCustom( scrollDownSpeed, scrollDownSpeedCustom ) ) {
+          scrollDownSpeed = scrollDownSpeedCustom;
+        }
 
         // Assigns the correct arrow color to imgURL
         if (stbb == "dual"){
@@ -350,7 +361,7 @@ function STTB() {
 
         // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
         $( "#STTBimg" ).scrollToTop( {
-                speed : speed
+                speed : scrollUpSpeed
             ,   ease : scroll
             ,   start : distance
             ,   stbb : stbb
@@ -360,7 +371,7 @@ function STTB() {
         } );
 
         $( "#STTBimg2" ).scrollToTop( {
-                speed : speed2
+                speed : scrollDownSpeed
             ,   ease : scroll
             ,   start : distance
             ,   stbb : stbb
@@ -372,29 +383,29 @@ function STTB() {
         //Adds keyboard commands using shortcut.js
         if (shortcuts == "arrows") {
             shortcut.add("Alt+Down", function() {
-                sttb.scrollDown( speed2, scroll );
+                sttb.scrollDown( scrollDownSpeed, scroll );
             });
             shortcut.add("Alt+Up", function() {
-                sttb.scrollUp( speed, scroll );
+                sttb.scrollUp( scrollUpSpeed, scroll );
             });
         }
         else if (shortcuts == "tb") {
             shortcut.add("Alt+B", function() {
-                sttb.scrollDown( speed2, scroll );
+                sttb.scrollDown( scrollDownSpeed, scroll );
             });
             shortcut.add("Alt+T", function() {
-                sttb.scrollUp( speed, scroll );
+                sttb.scrollUp( scrollUpSpeed, scroll );
             });
         }
 
         if ( homeendaction === 'sttb' ) {
             shortcut.add("End", function() {
-                sttb.scrollDown( speed2, scroll );
+                sttb.scrollDown( scrollDownSpeed, scroll );
             },{
                 'disable_in_input':true
             });
             shortcut.add("Home", function() {
-                sttb.scrollUp( speed, scroll );
+                sttb.scrollUp( scrollUpSpeed, scroll );
             },{
                 'disable_in_input':true
             });
@@ -418,5 +429,17 @@ function STTB() {
                 }
             }
         }
+    }
+
+    /**
+     * Check whether user chose to specify a value instead of selecting a pre-set one.
+     *
+     * @param {number} value - The value corresponding to a dropdown option.
+     * @param {number} customValue - The number input field value.
+     * @return {boolean}
+     */
+
+    function shouldUseCustom( value, customValue ) {
+      return value === -1 && customValue > -1;
     }
 }
