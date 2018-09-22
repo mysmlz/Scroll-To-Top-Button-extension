@@ -1,305 +1,305 @@
 {
   "lang": {
-      "message": "en"
-    , "description": "According to https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes and https://developer.chrome.com/webstore/i18n#localeTable"
-  }
-, "extensionName": {
-      "message": "Scroll To Top Button"
-    , "description": "Should NOT be translated"
-  }
-, "extensionDescription": {
+    "message": "en",
+    "description": "According to https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes and https://developer.chrome.com/webstore/i18n#localeTable"
+  },
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
+  },
+  "extensionDescription": {
     "message": "Adds a scroll to top or bottom button."
-  }
-, "optionsPageTitle": {
+  },
+  "optionsPageTitle": {
     "message": "Options | Scroll To Top Button"
-  }
-  , "optionsTitle": {
+  },
+    "optionsTitle": {
       "message": "Scroll To Top Button Options"
-    }
-, "close": {
+    },
+  "close": {
     "message": "Close"
-  }
-, "browserActionPageTitle": {
+  },
+  "browserActionPageTitle": {
     "message": "Active tab settings | Scroll To Top Button"
-  }
-  , "browserActionTitle": {
+  },
+    "browserActionTitle": {
       "message": "Active tab settings"
-    }
-  , "browserActionSttbEnabled": {
+    },
+    "browserActionSttbEnabled": {
       "message": "Enable STTB"
-    }
-  , "browserActionSttbDisabledUrl": {
+    },
+    "browserActionSttbDisabledUrl": {
       "message": "Disable STTB for this URL"
-    }
-  , "browserActionSttbDisabledDomain": {
+    },
+    "browserActionSttbDisabledDomain": {
       "message": "Disable STTB for this domain"
-    }
-  , "browserActionReloadActiveTab": {
+    },
+    "browserActionReloadActiveTab": {
       "message": "Reload tab"
-    }
+    },
 
-, "ratingHelpsOthers": {
+  "ratingHelpsOthers": {
     "message": "Please <a href=\"#\" target=\"_blank\" id=\"rateLink\">rate this extension</a> if you enjoy it!<br>The feedback really helps others find this extension!"
-  }
+  },
 
-, "buttonSettings": {
+  "buttonSettings": {
     "message": "Button settings"
-  }
-  , "buttonMode": {
+  },
+    "buttonMode": {
       "message": "Button mode"
-    }
-    , "scrollToTopOnly": {
+    },
+      "scrollToTopOnly": {
         "message": "Scroll to top only"
-      }
-    , "flipBetweenTopBottom": {
+      },
+      "flipBetweenTopBottom": {
         "message": "Flip between top &amp; bottom"
-      }
-    , "dualArrows": {
+      },
+      "dualArrows": {
         "message": "Dual arrows"
-      }
-    , "keyboardOnly": {
+      },
+      "keyboardOnly": {
         "message": "Keyboard only"
-      }
-  , "scrollUpSpeed": {
+      },
+    "scrollUpSpeed": {
       "message": "Scroll up speed"
-    }
-  , "scrollDownSpeed": {
+    },
+    "scrollDownSpeed": {
       "message": "Scroll down speed"
-    }
-    , "slowest": {
+    },
+      "slowest": {
         "message": "Slowest"
-      }
-    , "slower": {
+      },
+      "slower": {
         "message": "Slower"
-      }
-    , "slow": {
+      },
+      "slow": {
         "message": "Slow"
-      }
-    , "fast": {
+      },
+      "fast": {
         "message": "Fast"
-      }
-    , "faster": {
+      },
+      "faster": {
         "message": "Faster"
-      }
-    , "fastest": {
+      },
+      "fastest": {
         "message": "Fastest (instant)"
-      }
-  , "appearDistance": {
+      },
+    "appearDistance": {
       "message": "Appear distance"
-    }
-  , "flipDistance": {
+    },
+    "flipDistance": {
       "message": "Flip distance"
-    }
-    , "barelyAny": {
+    },
+      "barelyAny": {
         "message": "Barely any"
-      }
-    , "aLittle": {
+      },
+      "aLittle": {
         "message": "A little"
-      }
-    , "medium": {
+      },
+      "medium": {
         "message": "Medium"
-      }
-    , "moreThanAverage": {
+      },
+      "moreThanAverage": {
         "message": "More than average"
-      }
-    , "aLot": {
+      },
+      "aLot": {
         "message": "A lot"
-      }
-    , "aTon": {
+      },
+      "aTon": {
         "message": "A ton"
-      }
-  , "buttonSize": {
+      },
+    "buttonSize": {
       "message": "Button size"
-    }
-    , "buttonSizeInPixels": {
-          "message": "$LENGTH$x$WIDTH$ pixels"
-        , "description" : "Button size in pixels (length, width): 35x40 pixels"
-        , "placeholders" : {
-              "length" : {
-                  "content" : "$1"
-                , "example" : "35"
-              }
-            , "width" : {
-                  "content" : "$2"
-                , "example" : "40"
-              }
+    },
+      "buttonSizeInPixels": {
+        "message": "$LENGTH$x$WIDTH$ pixels",
+        "description": "Button size in pixels (length, width): 35x40 pixels",
+        "placeholders": {
+          "length": {
+            "content": "$1",
+            "example": "35"
+          },
+          "width": {
+            "content": "$2",
+            "example": "40"
           }
-      }
-  , "buttonDesign": {
+        }
+      },
+    "buttonDesign": {
       "message": "Button design"
-    }
-    , "colors": {
+    },
+      "colors": {
         "message": "Colors"
-      }
-      , "tumblerBlue": {
+      },
+        "tumblerBlue": {
           "message": "Tumblr blue"
-        }
-      , "grey": {
+        },
+        "grey": {
           "message": "Gray"
-        }
-      , "black": {
+        },
+        "black": {
           "message": "Black"
-        }
-      , "red": {
+        },
+        "red": {
           "message": "Red"
-        }
-      , "orange": {
+        },
+        "orange": {
           "message": "Orange"
-        }
-      , "yellow": {
+        },
+        "yellow": {
           "message": "Yellow"
-        }
-      , "green": {
+        },
+        "green": {
           "message": "Green"
-        }
-      , "blue": {
+        },
+        "blue": {
           "message": "Blue"
-        }
-      , "purple": {
+        },
+        "purple": {
           "message": "Purple"
-        }
-      , "pink": {
+        },
+        "pink": {
           "message": "Pink"
-        }
-    , "arrowOnly": {
+        },
+      "arrowOnly": {
         "message": "Arrows only"
-      }
-    , "alternateDesigns": {
+      },
+      "alternateDesigns": {
         "message": "Alternate designs"
-      }
-      , "pixelDesign": {
+      },
+        "pixelDesign": {
           "message": "Pixel design"
-        }
-  , "buttonLocation": {
+        },
+    "buttonLocation": {
       "message": "Button location"
-    }
-    , "topRight": {
+    },
+      "topRight": {
         "message": "Top right"
-      }
-    , "topLeft": {
+      },
+      "topLeft": {
         "message": "Top left"
-      }
-    , "topCenter": {
+      },
+      "topCenter": {
         "message": "Top center"
-      }
-    , "centerRight": {
+      },
+      "centerRight": {
         "message": "Center right"
-      }
-    , "centerLeft": {
+      },
+      "centerLeft": {
         "message": "Center left"
-      }
-    , "bottomRight": {
+      },
+      "bottomRight": {
         "message": "Bottom right"
-      }
-    , "bottomLeft": {
+      },
+      "bottomLeft": {
         "message": "Bottom left"
-      }
-    , "bottomCenter": {
+      },
+      "bottomCenter": {
         "message": "Bottom center"
-      }
-  , "notActiveButtonOpacity": {
+      },
+    "notActiveButtonOpacity": {
       "message": "Not active button opacity"
-    }
-    , "invisible": {
+    },
+      "invisible": {
         "message": "Invisible"
-      }
-    , "transparent": {
+      },
+      "transparent": {
         "message": "Transparent"
-      }
-    , "opaque": {
+      },
+      "opaque": {
         "message": "Opaque"
-      }
-  , "keyboardShortcuts": {
+      },
+    "keyboardShortcuts": {
       "message": "Keyboard shortcuts"
-    }
-    , "altUpDownArrows": {
+    },
+      "altUpDownArrows": {
         "message": "Alt + Up/Down Arrows"
-      }
-    , "altTB": {
+      },
+      "altTB": {
         "message": "Alt + T/B"
-      }
-    , "off": {
+      },
+      "off": {
         "message": "Off"
-      }
-  , "homeEndKeysControlledBy": {
+      },
+    "homeEndKeysControlledBy": {
       "message": "Home &amp; End keys controlled by"
-    }
-    , "operatingSystem": {
+    },
+      "operatingSystem": {
         "message": "Operating system"
-      }
-  , "contextRightClickMenu": {
+      },
+    "contextRightClickMenu": {
       "message": "Context (right-click) menu"
-    }
-    , "on": {
+    },
+      "on": {
         "message": "On"
-      }
+      },
 
-, "keyboardSettings": {
+  "keyboardSettings": {
     "message": "Keyboard settings"
-  }
+  },
 
-, "otherSettings": {
+  "otherSettings": {
     "message": "Other settings"
-  }
-  , "restoreDefaults": {
+  },
+    "restoreDefaults": {
       "message": "Restore defaults"
-    }
-  , "authorsSettings": {
+    },
+    "authorsSettings": {
       "message": "Author's settings"
-    }
-, "save": {
+    },
+  "save": {
     "message": "Save"
-  }
-, "optionsSaved": {
+  },
+  "optionsSaved": {
     "message": "Options saved."
-  }
+  },
 
-, "helpTranslate": {
+  "helpTranslate": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"
-  }
-, "translatedBy": {
-      "message": " "
-    , "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
-  }
-, "incentivizeFurtherDevelopment": {
+  },
+  "translatedBy": {
+    "message": " ",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "incentivizeFurtherDevelopment": {
     "message": "If you like the project and find our work useful, please consider supporting us via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features."
-  }
-, "releaseNotes": {
+  },
+  "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Release notes</a>"
-  }
-, "officialWebsite": {
-      "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Homepage</a>"
-    , "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  }
-, "otherProjects": {
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Homepage</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "otherProjects": {
     "message": "Our other projects:"
-  }
+  },
 
-, "referralProgramInfoShortTitle_amazon": {
+  "referralProgramInfoShortTitle_amazon": {
     "message": "Shop?",
     "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  }
-, "referralProgramInfoTitle_amazon": {
+  },
+  "referralProgramInfoTitle_amazon": {
     "message": "Shop on Amazon?",
     "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  }
-, "referralProgramInfoText_amazon": {
+  },
+  "referralProgramInfoText_amazon": {
     "message": "You can help us by doing what you already do without spending an extra penny."
-  }
-, "referralProgramInfoText2_amazon": {
+  },
+  "referralProgramInfoText2_amazon": {
     "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
-  }
-, "referralProgramInfoCta_amazon": {
+  },
+  "referralProgramInfoCta_amazon": {
     "message": "I want to help"
-  }
-, "referralProgramInfoLink_amazon": {
+  },
+  "referralProgramInfoLink_amazon": {
     "message": "Find out how this works"
-  }
-, "referralProgramInfoDisclaimer_amazon": {
+  },
+  "referralProgramInfoDisclaimer_amazon": {
     "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
-  }
+  },
 
-, "referralProgramInfoNotify": {
+  "referralProgramInfoNotify": {
     "message": "Notify me when I can help through this program"
   }
 }
