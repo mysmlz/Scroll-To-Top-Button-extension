@@ -18,7 +18,7 @@
     <form id="settingsForm">
       <fieldset>
         <legend data-i18n="buttonSettings"></legend>
-        <p class="settingContainer">
+        <div class="settingContainer">
           <label>
             <span data-i18n="buttonMode"></span>
             <select id="buttonMode" class="optionsChanger">
@@ -28,8 +28,8 @@
               <option value="keys" data-i18n="keyboardOnly"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="scrollUpSpeed"></span>
             <select id="scrollUpSpeed" class="optionsChanger">
@@ -41,8 +41,8 @@
               <option value="1" data-i18n="fastest"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="scrollDownSpeed"></span>
             <select id="scrollDownSpeed" class="optionsChanger">
@@ -54,8 +54,8 @@
               <option value="1" data-i18n="fastest"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span id="distanceType" data-i18n="appearDistance"></span>
             <select id="distanceLength" class="optionsChanger">
@@ -67,8 +67,8 @@
               <option value="2500" data-i18n="aTon"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="buttonSize"></span>
             <select id="buttonSize" class="appearance optionsChanger">
@@ -78,8 +78,8 @@
               <option value="50px" data-i18n="buttonSizeInPixels" data-i18n-parameters="50|50"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="buttonDesign"></span>
             <select id="buttonDesign" class="appearance optionsChanger">
@@ -104,8 +104,8 @@
               </optgroup>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="buttonLocation"></span>
             <select id="buttonLocation" class="appearance optionsChanger">
@@ -119,8 +119,8 @@
               <option value="BC" data-i18n="bottomCenter"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="notActiveButtonOpacity"></span>
             <select id="notActiveButtonOpacity" class="appearance optionsChanger">
@@ -129,11 +129,11 @@
               <option value="1.0" data-i18n="opaque"></option>
             </select>
           </label>
-        </p>
+        </div>
       </fieldset>
       <fieldset>
         <legend data-i18n="keyboardSettings"></legend>
-        <p class="settingContainer">
+        <div class="settingContainer">
           <label>
             <span data-i18n="keyboardShortcuts"></span>
             <select id="keyboardShortcuts" class="optionsChanger">
@@ -142,8 +142,8 @@
               <option value="off" data-i18n="off"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <label>
             <span data-i18n="homeEndKeysControlledBy"></span>
             <select id="homeEndKeysControlledBy" class="optionsChanger">
@@ -151,11 +151,11 @@
               <option value="system" data-i18n="operatingSystem"></option>
             </select>
           </label>
-        </p>
+        </div>
       </fieldset>
       <fieldset>
         <legend data-i18n="otherSettings"></legend>
-        <p class="settingContainer">
+        <div class="settingContainer">
           <label>
             <span data-i18n="contextRightClickMenu"></span>
             <select id="contextMenu" class="optionsChanger">
@@ -163,16 +163,16 @@
               <option value="off" data-i18n="off"></option>
             </select>
           </label>
-        </p>
-        <p class="settingContainer">
+        </div>
+        <div class="settingContainer">
           <button id="restore" data-i18n="restoreDefaults"></button>
           <button id="author" data-i18n="authorsSettings"></button>
-        </p>
+        </div>
       </fieldset>
       <div id="saveSettings">
-        <p class="settingContainer">
+        <div class="settingContainer">
           <button id="save" data-i18n="save"></button>
-        </p>
+        </div>
         <p id="status"></p>
       </div>
       <p id="restartstatus"></p>
