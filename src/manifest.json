@@ -28,6 +28,10 @@
       "global/js/utils.js",
       "global/js/const.js",
       "global/js/log.js",
+      "global/js/i18next/i18next.min.js",
+      "global/js/i18next/i18nextBrowserLanguageDetector.min.js",
+      "global/js/i18next/i18nextXHRBackend.js",
+      "global/js/i18n.js",
       "global/js/global.js",
       "global/js/context-menus.js",
       "global/js/background.js",
@@ -66,6 +70,10 @@
         "global/js/utils.js",
         "global/js/const.js",
         "global/js/log.js",
+        "global/js/i18next/i18next.min.js",
+        "global/js/i18next/i18nextBrowserLanguageDetector.min.js",
+        "global/js/i18next/i18nextXHRBackend.js",
+        "global/js/i18n.js",
         "global/js/global.js",
         "global/js/punycode.min.js",
         "content-script/js/content-script.js",
@@ -76,6 +84,7 @@
   ],
 
   "web_accessible_resources": [
-    "arrows/*.png"
+    "arrows/*.png",
+    "*.json"
   ]
 }

@@ -53,7 +53,7 @@
           arrI18Parameters = strI18Parameters.split( '|' );
         }
 
-        var strMessage = browser.i18n.getMessage( strI18, arrI18Parameters );
+        var strMessage = poziworldExtension.i18n.getMessage( strI18, arrI18Parameters );
 
         if ( $localizableElement.nodeName === 'LABEL' ) {
           $localizableElement.innerHTML = $localizableElement.innerHTML + strMessage;
@@ -64,7 +64,7 @@
           $localizableElement.innerHTML = strMessage;
 
           if ( $localizableElement.href === '' ) {
-            $localizableElement.href = browser.i18n.getMessage( strI18 + 'Href' );
+            $localizableElement.href = poziworldExtension.i18n.getMessage( strI18 + 'Href' );
           }
         }
         else if ( $localizableElement.nodeName === 'IMG' ) {
@@ -83,7 +83,7 @@
     }
 
     if ( ! boolIsCustomSelectorParentPresent && strPageName ) {
-      document.title = browser.i18n.getMessage( strPageName + 'Title' );
+      document.title = poziworldExtension.i18n.getMessage( strPageName + 'Title' );
     }
   };
 

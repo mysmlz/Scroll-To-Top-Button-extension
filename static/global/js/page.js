@@ -76,7 +76,7 @@ var Page = {
         ) {
         var $localizableElement = $allLocalizableElements[ i ]
           , strI18 = $localizableElement.getAttribute( 'i18n-content' )
-          , strMessage = browser.i18n.getMessage( strI18 )
+          , strMessage = poziworldExtension.i18n.getMessage( strI18 )
           ;
 
         if ( $localizableElement.nodeName === 'LABEL' ) {
@@ -86,7 +86,7 @@ var Page = {
           $localizableElement.innerHTML = strMessage;
 
           if ( $localizableElement.href === '' ) {
-            $localizableElement.href =  browser.i18n.getMessage( strI18 + 'Href' );
+            $localizableElement.href =  poziworldExtension.i18n.getMessage( strI18 + 'Href' );
           }
         }
         else if ( $localizableElement.nodeName === 'IMG' ) {
@@ -102,7 +102,7 @@ var Page = {
     }
 
     if ( !boolIsCustomSelectorParentPresent ) {
-      document.title = browser.i18n.getMessage( strPageName + 'PageTitle' );
+      document.title = poziworldExtension.i18n.getMessage( strPageName + 'PageTitle' );
     }
   }
   ,

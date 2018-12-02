@@ -34,7 +34,7 @@
 
         browser.contextMenus.create( {
           'id': 'sttb_' + context,
-          'title': browser.i18n.getMessage( 'optionsTitle' ),
+          'title': poziworldExtension.i18n.getMessage( 'optionsTitle' ),
           'contexts': [ context ]
         } );
       }

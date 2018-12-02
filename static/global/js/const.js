@@ -21,9 +21,9 @@
 
 const
     strConstExtensionId = browser.runtime.id
-  , strConstExtensionName = browser.i18n.getMessage( 'extensionName' )
+  , objConstExtensionManifest = chrome.runtime.getManifest()
+  , strConstExtensionName = objConstExtensionManifest.name
   , strConstExtensionVersion = browser.runtime.getManifest().version
-  , strConstExtensionLanguage = browser.i18n.getMessage( 'lang' )
 
   , boolConstIsBowserAvailable = typeof bowser === 'object'
   , strConstChromeVersion =
@@ -46,8 +46,13 @@ const
           , browserVersionFull : bowser.versionFull
           , chromeVersion : strConstChromeVersion
           , chromeVersionFull : bowser.chromeVersionFull
-          , language : strConstExtensionLanguage
           , userAgent : bowser.userAgent
+
+           /**
+           * @todo Use a listener instead of poziworldExtension.i18n.saveExtensionLanguage
+           */
+
+           , language : ''
         }
       : {}
   ;

@@ -126,7 +126,7 @@
     for ( let i = 0, l = arrInfoElements.length; i < l; i++ ) {
       const strInfoElement = arrInfoElements[ i ];
       const $$infoElement = document.getElementById( 'referralProgramInfo' + strInfoElement );
-      const strInfoElementText = browser.i18n.getMessage( 'referralProgramInfo' + strInfoElement + '_' + strName );
+      const strInfoElementText = poziworldExtension.i18n.getMessage( 'referralProgramInfo' + strInfoElement + '_' + strName );
 
       if ( $$infoElement ) {
         if ( typeof strInfoElementText === 'string' && strInfoElementText !== '' ) {

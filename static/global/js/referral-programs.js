@@ -187,14 +187,14 @@
     this.getNotificationSettingsFromStorage( function ( boolIsEnabled ) {
       browser.browserAction.setBadgeText( {
         text: boolIsEnabled ?
-          browser.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
+          poziworldExtension.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
           '',
         tabId: intTabId
       } );
 
       browser.browserAction.setTitle( {
         title: boolIsEnabled ?
-          browser.i18n.getMessage( 'referralProgramInfoTitle_' + strName ) :
+          poziworldExtension.i18n.getMessage( 'referralProgramInfoTitle_' + strName ) :
           '',
         tabId: intTabId
       } );

@@ -13,7 +13,7 @@
   const buttonMode = document.getElementById( 'buttonMode' );
   const distanceType = document.getElementById( 'distanceType' );
   const status = document.getElementById( 'status' );
-  const statusOptionsSaved = browser.i18n.getMessage( 'optionsSaved' );
+  const statusOptionsSaved = poziworldExtension.i18n.getMessage( 'optionsSaved' );
   let statusTimeoutId;
   const STATUS_TIMEOUT_DELAY = 3000;
 
@@ -453,7 +453,7 @@
    */
 
   function changeDistanceType( type ) {
-    distanceType.textContent = browser.i18n.getMessage( type );
+    distanceType.textContent = poziworldExtension.i18n.getMessage( type );
   }
 
   /**
