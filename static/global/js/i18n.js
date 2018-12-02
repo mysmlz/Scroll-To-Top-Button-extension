@@ -52,6 +52,7 @@
     const arrSupportedLocales = [
       'cs',
       'en_US',
+      'gl',
       'nl',
       'ru',
       'zh_CN'

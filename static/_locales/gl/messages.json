@@ -1,0 +1,296 @@
+{
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
+  },
+  "extensionDescription": {
+    "message": "Engade un botón para desprazarse cara enriba ou embaixo."
+  },
+  "optionsPageTitle": {
+    "message": "Opcións | Scroll To Top Button"
+  },
+  "optionsTitle": {
+    "message": "Opcións do Scroll To Top Button"
+  },
+  "close": {
+    "message": "Pechar"
+  },
+  "browserActionPageTitle": {
+    "message": "Axustes da lapela activa | Scroll To Top Button"
+  },
+  "browserActionTitle": {
+    "message": "Axustes da lapela activa"
+  },
+  "browserActionSttbEnabled": {
+    "message": "Activar STTB"
+  },
+  "browserActionSttbDisabledUrl": {
+    "message": "Desactivar STTB neste URL"
+  },
+  "browserActionSttbDisabledDomain": {
+    "message": "Desactivar STTB neste dominio"
+  },
+  "browserActionReloadActiveTab": {
+    "message": "Recargar lapela"
+  },
+  "ratingHelpsOthers": {
+    "message": "Por favor, <a href=\"#\" target=\"_blank\" id=\"rateLink\">valore esta extensión</a> se goza dela!<br>As valoracións axudarán a outros a atopar esta extensión!"
+  },
+  "buttonSettings": {
+    "message": "Axustes dos botóns"
+  },
+  "buttonMode": {
+    "message": "Modo botón"
+  },
+  "scrollToTopOnly": {
+    "message": "Só desprazamento cara enriba"
+  },
+  "flipBetweenTopBottom": {
+    "message": "Mudar entre enriba e embaixo"
+  },
+  "dualArrows": {
+    "message": "Dobre frecha"
+  },
+  "keyboardOnly": {
+    "message": "Só teclado"
+  },
+  "scrollUpSpeed": {
+    "message": "Velocidade cara enriba"
+  },
+  "scrollUpSpeedCustom": {
+    "message": "Velocidade cara enriba en milisegundos",
+    "description": "Lets user enter scroll up speed value in milliseconds."
+  },
+  "scrollDownSpeed": {
+    "message": "Velocidade cara embaixo"
+  },
+  "scrollDownSpeedCustom": {
+    "message": "Velocidade cara embaixo en milisegundos",
+    "description": "Lets user enter scroll up speed value in milliseconds."
+  },
+  "slowest": {
+    "message": "Moito máis amodo"
+  },
+  "slower": {
+    "message": "Máis amodo"
+  },
+  "slow": {
+    "message": "Amodo"
+  },
+  "fast": {
+    "message": "Axiña"
+  },
+  "faster": {
+    "message": "Máis axiña"
+  },
+  "fastest": {
+    "message": "Moito máis axiña (instantáneo)"
+  },
+  "custom": {
+    "message": "Permitídeme especificar...",
+    "description": "Shows a number input field that lets user enter scroll up speed value in milliseconds."
+  },
+  "appearDistance": {
+    "message": "Distancia da aparición"
+  },
+  "flipDistance": {
+    "message": "Distancia do xiro"
+  },
+  "barelyAny": {
+    "message": "Apenas nada"
+  },
+  "aLittle": {
+    "message": "Algo"
+  },
+  "medium": {
+    "message": "Media"
+  },
+  "moreThanAverage": {
+    "message": "Máis da media"
+  },
+  "aLot": {
+    "message": "Moita"
+  },
+  "aTon": {
+    "message": "Moitísima"
+  },
+  "buttonSize": {
+    "message": "Tamaño do botón"
+  },
+  "buttonSizeInPixels": {
+    "message": "$LENGTH$x$WIDTH$ pixels",
+    "description": "Button size in pixels (length, width): 35x40 pixels"
+  },
+  "buttonDesign": {
+    "message": "Deseño do botón"
+  },
+  "colors": {
+    "message": "Cores"
+  },
+  "tumblerBlue": {
+    "message": " Azul de Tumblr"
+  },
+  "grey": {
+    "message": "Gris"
+  },
+  "black": {
+    "message": "Negro"
+  },
+  "red": {
+    "message": "Vermello"
+  },
+  "orange": {
+    "message": "Laranxa"
+  },
+  "yellow": {
+    "message": "Amarelo"
+  },
+  "green": {
+    "message": "Verde"
+  },
+  "blue": {
+    "message": "Azul"
+  },
+  "purple": {
+    "message": "Púrpura"
+  },
+  "pink": {
+    "message": "Rosa"
+  },
+  "arrowOnly": {
+    "message": "Só frechas"
+  },
+  "alternateDesigns": {
+    "message": "Deseños alternativos"
+  },
+  "pixelDesign": {
+    "message": "Deseño dos píxeles"
+  },
+  "buttonLocation": {
+    "message": "Localización do botón"
+  },
+  "topRight": {
+    "message": "Enriba dereita"
+  },
+  "topLeft": {
+    "message": "Enriba esquerda"
+  },
+  "topCenter": {
+    "message": "Enriba central"
+  },
+  "centerRight": {
+    "message": "Central dereita"
+  },
+  "centerLeft": {
+    "message": "Central esquerda"
+  },
+  "bottomRight": {
+    "message": "Embaixo dereita"
+  },
+  "bottomLeft": {
+    "message": "Embaixo esquerda"
+  },
+  "bottomCenter": {
+    "message": "Embaixo central"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Opacidade do botón inactivo"
+  },
+  "invisible": {
+    "message": "Invisíbel"
+  },
+  "transparent": {
+    "message": "Transparente"
+  },
+  "opaque": {
+    "message": "Opaco"
+  },
+  "keyboardShortcuts": {
+    "message": "Atallos do teclado"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + Frechas Arriba/Abaixo"
+  },
+  "altTB": {
+    "message": "Alt + T/B"
+  },
+  "off": {
+    "message": "Desactivado"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Teclas de Inicio e Fin controladas por"
+  },
+  "operatingSystem": {
+    "message": "Sistema operativo"
+  },
+  "contextRightClickMenu": {
+    "message": "Menú contextual (clic dereito)"
+  },
+  "on": {
+    "message": "Activado"
+  },
+  "keyboardSettings": {
+    "message": "Axustes do teclado"
+  },
+  "otherSettings": {
+    "message": "Outros axustes"
+  },
+  "restoreDefaults": {
+    "message": "Restabelecer predefinicións"
+  },
+  "authorsSettings": {
+    "message": "Axustes polo autor"
+  },
+  "save": {
+    "message": "Gardar"
+  },
+  "optionsSaved": {
+    "message": "Opcións gardadas."
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Axudar cas traducións</a>"
+  },
+  "translatedBy": {
+    "message": "Traducido por <a href=\"https://www.transifex.com/user/profile/antiparvos/\" target=\"_blank\" id=\"translatorLink\">antiparvos</a> e <a href=\"https://www.transifex.com/user/profile/Navhy/\" target=\"_blank\" id=\"translatorLink\">Iván Seoane</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "Se lle gusta o proxecto e o ve útil, considere axudarnos por <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a>.  A súa contribución xenerosa axuda a pagar a hospedaxe, ferramentas e tempo necesario para arranxar fallos e implementar novas funcionalidades."
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Notas da versión</a>"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Páxina web</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "otherProjects": {
+    "message": "Outros proxectos nosos:"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Ir de compras?",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Mercar no Amazon?",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "Pode axudarnos facendo o que vostede xa fai sen gastar un peso extra."
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "Un clic no botón inferior antes de engadir o produto á cesta da compra é o único que ten que facer!*"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "Desexo axudar"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Averigüe como funciona isto"
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* Participamos no Amazon Services LLC Associates Program, un programa de publicidade deseñado para fornecer medios co fin de obter ganancias ligado ó Amazon.com e sitios asociados."
+  },
+  "referralProgramInfoNotify": {
+    "message": "Notificarme cando poida axudar por medio deste programa"
+  }
+}
