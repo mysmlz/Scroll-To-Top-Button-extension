@@ -1,7 +1,26 @@
 ( function () {
   'use strict';
 
+  let _this;
+
+  expose();
+
+  /**
+   * Create an instance of the context menus API and expose it to other parts of the extension.
+   */
+
+  function expose() {
+    sttb.contextMenus = new ContextMenus();
+  }
+
+  /**
+   * Define a ContextMenus constructor.
+   *
+   * @constructor
+   */
+
   function ContextMenus() {
+    setInstance( this );
   }
 
   /**
@@ -12,7 +31,9 @@
     strLog = 'sttb.contextMenus.init';
     Log.add( strLog );
 
-    poziworldExtension.utils.getSettings( strLog, sttb.contextMenus.enableOrDisable );
+    const _this = getInstance();
+
+    poziworldExtension.utils.getSettings( strLog, _this.toggle );
   };
 
   /**
@@ -22,29 +43,52 @@
    * @param {object} settings - Key-value pairs.
    */
 
-  ContextMenus.prototype.enableOrDisable = function( settings ) {
-    if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) && settings.contextMenu === 'on' ) {
-      const contexts = [
-        'page',
-        'image'
-      ];
+  ContextMenus.prototype.toggle = function( settings ) {
+    const contextMenus = browser.contextMenus;
 
-      for ( let i = 0, l = contexts.length; i < l; i++ ) {
-        const context = contexts[ i ];
-
-        browser.contextMenus.create( {
-          'id': 'sttb_' + context,
-          'title': poziworldExtension.i18n.getMessage( 'optionsTitle' ),
-          'contexts': [ context ]
-        } );
+    if ( contextMenus ) {
+      if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) && settings.contextMenu === 'on' ) {
+        browser.contextMenus.removeAll().then( createContextMenus );
       }
-
-      browser.contextMenus.onClicked.addListener( sttb.contextMenus.handleContextMenuClick );
-    }
-    else {
-      browser.contextMenus.removeAll();
+      else {
+        browser.contextMenus.removeAll();
+      }
     }
   };
+
+  /**
+   * Create a context-menu option allowing to open the Scroll To Top Button Options from any page or image.
+   */
+
+  function createContextMenus() {
+    const contexts = [
+      'page',
+      'image'
+    ];
+
+    while ( contexts.length ) {
+      const context = contexts.shift();
+      const contextMenuProperties = {
+        id: 'sttb_' + context,
+        title: poziworldExtension.i18n.getMessage( 'optionsTitle' ),
+        contexts: [
+          context
+        ]
+      };
+
+      browser.contextMenus.create( contextMenuProperties );
+    }
+
+    addListeners();
+  }
+
+  /**
+   * Context menus are actionable. Add a click listener.
+   */
+
+  function addListeners() {
+    browser.contextMenus.onClicked.addListener( handleContextMenuClick );
+  }
 
   /**
    * Fired when a context menu item is clicked.
@@ -52,9 +96,27 @@
    * @param {object} info - Information about the item clicked and the context where the click happened.
    */
 
-  ContextMenus.prototype.handleContextMenuClick = function( info ) {
+  function handleContextMenuClick( info ) {
     Global.openOptionsPage( info.menuItemId );
-  };
+  }
 
-  sttb.contextMenus = new ContextMenus();
+  /**
+   * Return the ContextMenus instance.
+   *
+   * @param {ContextMenus} instance
+   */
+
+  function setInstance( instance ) {
+    _this = instance;
+  }
+
+  /**
+   * Return the ContextMenus instance.
+   *
+   * @return {ContextMenus}
+   */
+
+  function getInstance() {
+    return _this;
+  }
 } )();

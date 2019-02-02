@@ -324,7 +324,7 @@
       );
 
       if ( poziworldExtension.utils.isType( settings.contextMenu, 'string' ) ) {
-        sttb.contextMenus.enableOrDisable( settings );
+        sttb.contextMenus.toggle( settings );
       }
     }
   }
