@@ -59,14 +59,14 @@
   },
   "scrollUpSpeedCustom": {
     "message": "Velocidade cara enriba en milisegundos",
-    "description": "Lets user enter scroll up speed value in milliseconds."
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
   "scrollDownSpeed": {
     "message": "Velocidade cara embaixo"
   },
   "scrollDownSpeedCustom": {
     "message": "Velocidade cara embaixo en milisegundos",
-    "description": "Lets user enter scroll up speed value in milliseconds."
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
   "slowest": {
     "message": "Moito máis amodo"
@@ -88,7 +88,7 @@
   },
   "custom": {
     "message": "Permitídeme especificar...",
-    "description": "Shows a number input field that lets user enter scroll up speed value in milliseconds."
+    "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
   "appearDistance": {
     "message": "Distancia da aparición"
@@ -119,7 +119,17 @@
   },
   "buttonSizeInPixels": {
     "message": "$LENGTH$x$WIDTH$ pixels",
-    "description": "Button size in pixels (length, width): 35x40 pixels"
+    "description": "Button size in pixels (length, width): 35x40 pixels",
+    "placeholders": {
+      "length": {
+        "content": "$1",
+        "example": "35"
+      },
+      "width": {
+        "content": "$2",
+        "example" : "40"
+      }
+    }
   },
   "buttonDesign": {
     "message": "Deseño do botón"
@@ -241,6 +251,42 @@
   "authorsSettings": {
     "message": "Axustes polo autor"
   },
+  "uiLanguage": {
+    "message": "Idioma",
+    "description": "Setting on the Options page: language of the user interface."
+  },
+  "language_browserDefault": {
+    "message": "Automático (predeterminado no navegador)",
+    "description": "Language option.\n\nIf the extension supports the language that is chosen as default in the browser, use that one. Otherwise, use English (United States)."
+  },
+  "language_browserDefault_tooltip": {
+    "message": "Se a extensión acepta o idioma seleccionado como predeterminado no navegador, usará este. En caso contrario, usará o inglés (Estados Unidos).",
+    "description": "Explanation of the \"Automatic (browser default)\"\" language option that should be shown in a tooltip."
+  },
+  "language_cs": {
+    "message": "Checo - čeština",
+    "description": "Language option: cs (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_en_US": {
+    "message": "Inglés (Estados Unidos) - English (United States)",
+    "description": "Language option: en-US (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes - https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_gl": {
+    "message": "Galego",
+    "description": "Language option: gl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_nl": {
+    "message": "Neerlandés - Nederlands",
+    "description": "Language option: nl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_ru": {
+    "message": "Ruso - русский",
+    "description": "Language option: ru (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_zh_CN": {
+    "message": "Chino (China) - 中文（中国）",
+    "description": "Language option: zh_CN (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
   "save": {
     "message": "Gardar"
   },
@@ -276,7 +322,7 @@
     "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
   },
   "referralProgramInfoText_amazon": {
-    "message": "Pode axudarnos facendo o que vostede xa fai sen gastar un peso extra."
+    "message": "Pode axudarnos facendo o que vostede xa fai sen gastar un céntimo de máis."
   },
   "referralProgramInfoText2_amazon": {
     "message": "Un clic no botón inferior antes de engadir o produto á cesta da compra é o único que ten que facer!*"
