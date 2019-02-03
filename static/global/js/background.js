@@ -200,21 +200,21 @@
             ];
           }
 
-        for ( miscSetting in objDeprecatedSettings ) {
-          if ( objDeprecatedSettings.hasOwnProperty( miscSetting ) ) {
-            if ( objDeprecatedSettings[ miscSetting ] === null ) {
-              // Remove it only if it is present
-              if ( objReturn[ miscSetting ] ) {
-                arrSettingsToRemove.push( miscSetting );
+          for ( let miscSetting in objDeprecatedSettings ) {
+            if ( objDeprecatedSettings.hasOwnProperty( miscSetting ) ) {
+              if ( objDeprecatedSettings[ miscSetting ] === null ) {
+                // Remove it only if it is present
+                if ( objReturn[ miscSetting ] ) {
+                  arrSettingsToRemove.push( miscSetting );
+                }
               }
-            }
-            else {
-              // If deprecated subsetting is present in current setting object,
-              // remove it preserving the rest.
-              // Restore preserved in setExtensionDefaults().
-              var objCurrentSetting = objReturn[ miscSetting ]
-                , objDeprecatedSetting = objDeprecatedSettings[ miscSetting ]
-                ;
+              else {
+                // If deprecated subsetting is present in current setting object,
+                // remove it preserving the rest.
+                // Restore preserved in setExtensionDefaults().
+                var objCurrentSetting = objReturn[ miscSetting ]
+                  , objDeprecatedSetting = objDeprecatedSettings[ miscSetting ]
+                  ;
 
                 if ( objCurrentSetting ) {
                   if ( Array.isArray( objCurrentSetting ) && Array.isArray( objDeprecatedSetting ) ) {
