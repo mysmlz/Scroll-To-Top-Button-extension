@@ -128,6 +128,7 @@ Gratitudes
   - Russian — [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/), [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/);
   - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/);
   - Czech — [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/).
+  - Galician — [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Navhy (Iván Seoane)](https://www.transifex.com/user/profile/Navhy/).
 
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
