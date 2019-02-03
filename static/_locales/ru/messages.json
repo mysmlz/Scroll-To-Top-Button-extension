@@ -1,178 +1,121 @@
 {
-  "browserActionReloadActiveTab": {
-    "message": "Обновить вкладку"
-  },
-  "black": {
-    "message": "Чёрный"
-  },
-  "browserActionSttbEnabled": {
-    "message": "Включить Scroll To Top Button (STTB)"
-  },
-  "scrollToTopOnly": {
-    "message": "Прокрутка только вверх"
-  },
-  "altTB": {
-    "message": "Alt + T/B (на англ.)"
-  },
-  "contextRightClickMenu": {
-    "message": "Контекстное меню (правый клик)"
-  },
-  "medium": {
-    "message": "Среднее"
-  },
-  "buttonSettings": {
-    "message": "Настройки кнопки"
-  },
-  "browserActionSttbDisabledUrl": {
-    "message": "Отключить STTB для данного URL"
-  },
-  "officialWebsite": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Домашняя страница</a>",
-    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  },
-  "slower": {
-    "message": "Медленнее"
-  },
-  "faster": {
-    "message": "Быстрее"
-  },
-  "aLot": {
-    "message": "Большое"
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
   },
   "extensionDescription": {
     "message": "Добавляет кнопку прокрутки вверх или вниз."
   },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* Мы являемся участником партнёрской рекламной программы Amazon Services LLC Associates Program, предназначенной для предоставления нам способов получения комиссионных сборов путём ссылки на Amazon.com и аффилированных сайтов."
-  },
-  "topCenter": {
-    "message": "Сверху по центру"
-  },
-  "buttonLocation": {
-    "message": "Расположение кнопки"
-  },
-  "arrowOnly": {
-    "message": "Только стрелки"
-  },
-  "incentivizeFurtherDevelopment": {
-    "message": "Если вам нравится наш проект и вы считаете наше произведение труда полезным, пожалуйста, поддержите нас через <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> — ваши щедрые взносы помогают оплачивать хостинг, программные средства и время, необходимое для исправления ошибок и внедрения новых функций."
-  },
-  "otherProjects": {
-    "message": "Наши другие проекты:"
-  },
-  "off": {
-    "message": "Выключить"
-  },
-  "authorsSettings": {
-    "message": "Настройки автора"
-  },
-  "buttonDesign": {
-    "message": "Дизайн кнопки"
-  },
-  "otherSettings": {
-    "message": "Другие настройки"
-  },
-  "tumblerBlue": {
-    "message": "Синий (Tumblr)"
-  },
   "optionsPageTitle": {
     "message": "Параметры |  Scroll To Top Button"
   },
-  "red": {
-    "message": "Красный"
-  },
-  "fast": {
-    "message": "Быстрая"
-  },
-  "browserActionSttbDisabledDomain": {
-    "message": "Отключить STTB для данного домена"
-  },
-  "blue": {
-    "message": "Синий"
-  },
-  "flipBetweenTopBottom": {
-    "message": "Переключение между верхом и низом"
-  },
-  "bottomLeft": {
-    "message": "Снизу слева"
-  },
-  "homeEndKeysControlledBy": {
-    "message": "Контроль клавиш Home &amp; End"
+  "optionsTitle": {
+    "message": "Параметры Scroll To Top Button"
   },
   "close": {
     "message": "Закрыть"
   },
-  "scrollDownSpeed": {
-    "message": "Скорость прокрутки вниз"
+  "browserActionPageTitle": {
+    "message": "Настройки активной вкладки |  Scroll To Top Button"
   },
-  "pixelDesign": {
-    "message": "Пиксельный дизайн"
+  "browserActionTitle": {
+    "message": "Настройки активной вкладки"
   },
-  "referralProgramInfoCta_amazon": {
-    "message": "Я хочу помочь"
+  "browserActionSttbEnabled": {
+    "message": "Включить Scroll To Top Button (STTB)"
   },
-  "referralProgramInfoLink_amazon": {
-    "message": "Узнайте, как это работает"
+  "browserActionSttbDisabledUrl": {
+    "message": "Отключить STTB для данного URL"
   },
-  "altUpDownArrows": {
-    "message": "Alt + Стрелка Вверх/Вниз"
+  "browserActionSttbDisabledDomain": {
+    "message": "Отключить STTB для данного домена"
   },
-  "centerRight": {
-    "message": "По центру справа"
+  "browserActionReloadActiveTab": {
+    "message": "Обновить вкладку"
   },
-  "appearDistance": {
-    "message": "Расстояние до появления кнопки"
+  "ratingHelpsOthers": {
+    "message": "Пожалуйста, <a href=\"#\" target=\"_blank\" id=\"rateLink\">оцените это расширение</a>, если оно вам нравится.<br>Отзывы реально помогают другим найти это расширение!"
   },
-  "topRight": {
-    "message": "Сверху справа"
-  },
-  "colors": {
-    "message": "Цвета"
-  },
-  "topLeft": {
-    "message": "Сверху слева"
-  },
-  "barelyAny": {
-    "message": "Почти нисколько"
-  },
-  "on": {
-    "message": "Включить"
-  },
-  "helpTranslate": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Помогите с переводом</a>"
-  },
-  "releaseNotes": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">История изменений (версий)</a>"
+  "buttonSettings": {
+    "message": "Настройки кнопки"
   },
   "buttonMode": {
     "message": "Режим кнопки"
   },
-  "slowest": {
-    "message": "Самая медленная"
+  "scrollToTopOnly": {
+    "message": "Прокрутка только вверх"
   },
-  "pink": {
-    "message": "Розовый"
+  "flipBetweenTopBottom": {
+    "message": "Переключение между верхом и низом"
+  },
+  "dualArrows": {
+    "message": "Двойные стрелки"
   },
   "keyboardOnly": {
     "message": "Только клавиатура"
   },
-  "restoreDefaults": {
-    "message": "Восстановить первоначальные"
+  "scrollUpSpeed": {
+    "message": "Скорость прокрутки вверх"
   },
-  "browserActionPageTitle": {
-    "message": "Настройки активной вкладки |  Scroll To Top Button"
+  "scrollUpSpeedCustom": {
+    "message": "Скорость прокрутки вверх в миллисекундах",
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
-  "operatingSystem": {
-    "message": "Операционная система"
+  "scrollDownSpeed": {
+    "message": "Скорость прокрутки вниз"
   },
-  "grey": {
-    "message": "Серый"
+  "scrollDownSpeedCustom": {
+    "message": "Скорость прокрутки вниз в миллисекундах",
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
-  "referralProgramInfoText_amazon": {
-    "message": "Вы можете помочь нам, делая то, что вы уже делаете, не переплатив ни лишней копейки."
+  "slowest": {
+    "message": "Самая медленная"
+  },
+  "slower": {
+    "message": "Медленнее"
+  },
+  "slow": {
+    "message": "Медленная"
+  },
+  "fast": {
+    "message": "Быстрая"
+  },
+  "faster": {
+    "message": "Быстрее"
+  },
+  "fastest": {
+    "message": "Самая быстрая (мгновенно)"
+  },
+  "custom": {
+    "message": "Позвольте мне указать...",
+    "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
+  },
+  "appearDistance": {
+    "message": "Расстояние до появления кнопки"
+  },
+  "flipDistance": {
+    "message": "Расстояние до переключения"
+  },
+  "barelyAny": {
+    "message": "Почти нисколько"
+  },
+  "aLittle": {
+    "message": "Небольшое"
+  },
+  "medium": {
+    "message": "Среднее"
   },
   "moreThanAverage": {
     "message": "Больше среднего"
+  },
+  "aLot": {
+    "message": "Большое"
+  },
+  "aTon": {
+    "message": "Огромное"
+  },
+  "buttonSize": {
+    "message": "Размер кнопки"
   },
   "buttonSizeInPixels": {
     "message": "$LENGTH$x$WIDTH$ пикселей",
@@ -188,91 +131,26 @@
       }
     }
   },
-  "ratingHelpsOthers": {
-    "message": "Пожалуйста, <a href=\"#\" target=\"_blank\" id=\"rateLink\">оцените это расширение</a>, если оно вам нравится.<br>Отзывы реально помогают другим найти это расширение!"
+  "buttonDesign": {
+    "message": "Дизайн кнопки"
   },
-  "keyboardShortcuts": {
-    "message": "Быстрые клавиши"
+  "colors": {
+    "message": "Цвета"
   },
-  "transparent": {
-    "message": "Прозрачная"
+  "tumblerBlue": {
+    "message": "Синий (Tumblr)"
   },
-  "keyboardSettings": {
-    "message": "Настройки клавиатуры"
+  "grey": {
+    "message": "Серый"
   },
-  "dualArrows": {
-    "message": "Двойные стрелки"
+  "black": {
+    "message": "Чёрный"
   },
-  "buttonSize": {
-    "message": "Размер кнопки"
-  },
-  "aLittle": {
-    "message": "Небольшое"
+  "red": {
+    "message": "Красный"
   },
   "orange": {
     "message": "Оранжевый"
-  },
-  "aTon": {
-    "message": "Огромное"
-  },
-  "bottomRight": {
-    "message": "Снизу справа"
-  },
-  "bottomCenter": {
-    "message": "Снизу по центру"
-  },
-  "save": {
-    "message": "Сохранить"
-  },
-  "slow": {
-    "message": "Медленная"
-  },
-  "centerLeft": {
-    "message": "По центру слева"
-  },
-  "referralProgramInfoNotify": {
-    "message": "Оповещайте меня, когда я могу помочь через эту программу"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Совершаете покупки на Amazon?"
-  },
-  "flipDistance": {
-    "message": "Расстояние до переключения"
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Один щелчок кнопки ниже перед тем, как положить товар в корзину, — это всё, что нужно!*"
-  },
-  "notActiveButtonOpacity": {
-    "message": "Стиль неактивной кнопки"
-  },
-  "optionsSaved": {
-    "message": "Параметры сохранены."
-  },
-  "browserActionTitle": {
-    "message": "Настройки активной вкладки"
-  },
-  "opaque": {
-    "message": "Непрозрачная"
-  },
-  "invisible": {
-    "message": "Невидимая"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?"
-  },
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Should NOT be translated"
-  },
-  "fastest": {
-    "message": "Самая быстрая (мгновенно)"
-  },
-  "translatedBy": {
-    "message": "Перевод: <a href=\"https://www.transifex.com/user/profile/reidel/\" target=\"_blank\" id=\"translatorLink\">Пётр Михайлишин</a>, <a href=\"https://www.transifex.com/user/profile/aleev.insmile/\" target=\"_blank\" id=\"translatorLink\">Руслан Алеев</a>",
-    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
-  },
-  "alternateDesigns": {
-    "message": "Альтернативные дизайны"
   },
   "yellow": {
     "message": "Жёлтый"
@@ -280,13 +158,185 @@
   "green": {
     "message": "Зелёный"
   },
-  "scrollUpSpeed": {
-    "message": "Скорость прокрутки вверх"
-  },
-  "optionsTitle": {
-    "message": "Параметры Scroll To Top Button"
+  "blue": {
+    "message": "Синий"
   },
   "purple": {
     "message": "Фиолетовый"
+  },
+  "pink": {
+    "message": "Розовый"
+  },
+  "arrowOnly": {
+    "message": "Только стрелки"
+  },
+  "alternateDesigns": {
+    "message": "Альтернативные дизайны"
+  },
+  "pixelDesign": {
+    "message": "Пиксельный дизайн"
+  },
+  "buttonLocation": {
+    "message": "Расположение кнопки"
+  },
+  "topRight": {
+    "message": "Сверху справа"
+  },
+  "topLeft": {
+    "message": "Сверху слева"
+  },
+  "topCenter": {
+    "message": "Сверху по центру"
+  },
+  "centerRight": {
+    "message": "По центру справа"
+  },
+  "centerLeft": {
+    "message": "По центру слева"
+  },
+  "bottomRight": {
+    "message": "Снизу справа"
+  },
+  "bottomLeft": {
+    "message": "Снизу слева"
+  },
+  "bottomCenter": {
+    "message": "Снизу по центру"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Стиль неактивной кнопки"
+  },
+  "invisible": {
+    "message": "Невидимая"
+  },
+  "transparent": {
+    "message": "Прозрачная"
+  },
+  "opaque": {
+    "message": "Непрозрачная"
+  },
+  "keyboardShortcuts": {
+    "message": "Быстрые клавиши"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + Стрелка Вверх/Вниз"
+  },
+  "altTB": {
+    "message": "Alt + T/B (на англ.)"
+  },
+  "off": {
+    "message": "Выключить"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Контроль клавиш Home &amp; End"
+  },
+  "operatingSystem": {
+    "message": "Операционная система"
+  },
+  "contextRightClickMenu": {
+    "message": "Контекстное меню (правый клик)"
+  },
+  "on": {
+    "message": "Включить"
+  },
+  "keyboardSettings": {
+    "message": "Настройки клавиатуры"
+  },
+  "otherSettings": {
+    "message": "Другие настройки"
+  },
+  "restoreDefaults": {
+    "message": "Восстановить первоначальные"
+  },
+  "authorsSettings": {
+    "message": "Настройки автора"
+  },
+  "uiLanguage": {
+    "message": "Язык",
+    "description": "Setting on the Options page: language of the user interface."
+  },
+  "language_browserDefault": {
+    "message": "Автоматический (как в браузере)",
+    "description": "Language option.\n\nIf the extension supports the language that is chosen as default in the browser, use that one. Otherwise, use English (United States)."
+  },
+  "language_browserDefault_tooltip": {
+    "message": "Если расширение поддерживает язык, выбранный языком по умолчанию в браузере, будет использоваться этот. В противном случае будет использоваться английский (Соединённые Штаты).",
+    "description": "Explanation of the \"Automatic (browser default)\"\" language option that should be shown in a tooltip."
+  },
+  "language_cs": {
+    "message": "Чешский - čeština",
+    "description": "Language option: cs (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_en_US": {
+    "message": "Английский (Соединённые Штаты) - English (United States)",
+    "description": "Language option: en-US (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes - https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_gl": {
+    "message": "Галисийский - galego",
+    "description": "Language option: gl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_nl": {
+    "message": "Нидерландский - Nederlands",
+    "description": "Language option: nl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_ru": {
+    "message": "Русский",
+    "description": "Language option: ru (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_zh_CN": {
+    "message": "Китайский (Китай) - 中文（中国）",
+    "description": "Language option: zh_CN (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "save": {
+    "message": "Сохранить"
+  },
+  "optionsSaved": {
+    "message": "Параметры сохранены."
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Помогите с переводом</a>"
+  },
+  "translatedBy": {
+    "message": "Перевод: <a href=\"https://www.transifex.com/user/profile/reidel/\" target=\"_blank\" id=\"translatorLink\">Пётр Михайлишин</a>, <a href=\"https://www.transifex.com/user/profile/aleev.insmile/\" target=\"_blank\" id=\"translatorLink\">Руслан Алеев</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "Если вам нравится наш проект и вы считаете наше произведение труда полезным, пожалуйста, поддержите нас через <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> — ваши щедрые взносы помогают оплачивать хостинг, программные средства и время, необходимое для исправления ошибок и внедрения новых функций."
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">История изменений (версий)</a>"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Домашняя страница</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "otherProjects": {
+    "message": "Наши другие проекты:"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Shop?",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Совершаете покупки на Amazon?",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "Вы можете помочь нам, делая то, что вы уже делаете, не переплатив ни лишней копейки."
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "Один щелчок кнопки ниже перед тем, как положить товар в корзину, — это всё, что нужно!*"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "Я хочу помочь"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Узнайте, как это работает"
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* Мы являемся участником партнёрской рекламной программы Amazon Services LLC Associates Program, предназначенной для предоставления нам способов получения комиссионных сборов путём ссылки на Amazon.com и аффилированных сайтов."
+  },
+  "referralProgramInfoNotify": {
+    "message": "Оповещайте меня, когда я могу помочь через эту программу"
   }
 }
