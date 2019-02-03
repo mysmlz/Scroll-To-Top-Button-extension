@@ -515,7 +515,7 @@
   }
 
   /**
-   * Check whether there is a PoziTone translation for the provided locale.
+   * Check whether there is a translation for the provided locale.
    *
    * @param {string} languageCode - en_US, en, ru
    * @return {boolean}
