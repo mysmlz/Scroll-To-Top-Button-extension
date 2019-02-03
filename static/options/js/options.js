@@ -12,10 +12,13 @@
   const SCROLL_SPEED_CUSTOM_VALUE_INDICATOR = '-1';
   const buttonMode = document.getElementById( 'buttonMode' );
   const distanceType = document.getElementById( 'distanceType' );
+  const UI_LANGUAGE_ID = 'uiLanguage';
+  const uiLanguage = document.getElementById( UI_LANGUAGE_ID );
   const status = document.getElementById( 'status' );
-  const statusOptionsSaved = poziworldExtension.i18n.getMessage( 'optionsSaved' );
+  let statusOptionsSaved;
   let statusTimeoutId;
   const STATUS_TIMEOUT_DELAY = 3000;
+  let originalSettings;
 
   init();
 
@@ -24,11 +27,22 @@
    */
 
   function init() {
-    poziworldExtension.page.init( 'options' );
+    poziworldExtension.page.init( 'options' )
+      .then( cacheMessages )
+      .then( setLinks )
+      .then( sortLanguages );
+
     getSettings();
     applyUi();
-    setLinks();
     addListeners();
+  }
+
+  /**
+   * To avoid requesting localization of some status messages multiples times, request once and save.
+   */
+
+  function cacheMessages() {
+    statusOptionsSaved = poziworldExtension.i18n.getMessage( 'optionsSaved' );
   }
 
   /**
@@ -36,7 +50,7 @@
    */
 
   function getSettings() {
-    poziworldExtension.utils.getSettings( 'getSettings', updateSelectedOptions );
+    poziworldExtension.utils.getSettings( 'getSettings', handleGotSettings );
   }
 
   /**
@@ -96,6 +110,33 @@
       }
 
       document.getElementById( 'rateLink' ).href = strRateLink;
+    }
+  }
+
+  /**
+   * In the markup, languages are sorted by language codes.
+   * When showing to user, sort by language names in the current language.
+   */
+
+  function sortLanguages() {
+    if ( uiLanguage ) {
+      const currentLanguage = uiLanguage.value;
+      const languages = Array.from( uiLanguage.children );
+      // Keep “Automatic (browser default)” always first in the sorted list
+      const automaticLanguage = languages.shift();
+
+      languages.sort( sortByTextContent );
+
+      const sortedLanguages = [ automaticLanguage ].concat( languages );
+
+      uiLanguage.innerHTML = '';
+
+      while ( sortedLanguages.length ) {
+        uiLanguage.appendChild( sortedLanguages.shift() );
+      }
+
+      // Once sorted, the last option gets selected, if the language hasn't been previously set
+      uiLanguage.value = currentLanguage;
     }
   }
 
@@ -174,6 +215,41 @@
     };
 
     setSettings( settings, true );
+  }
+
+  /**
+   * The settings from the Storage are retrived, proceed.
+   *
+   * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
+   */
+
+  function handleGotSettings( settings ) {
+    if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
+      setOriginalSettings( settings );
+      updateSelectedOptions( settings );
+    }
+  }
+
+  /**
+   * Remember what settings values were on page load.
+   *
+   * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
+   */
+
+  function setOriginalSettings( settings ) {
+    if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
+      originalSettings = settings;
+    }
+  }
+
+  /**
+   * Remind what settings values were on page load.
+   *
+   * @return {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
+   */
+
+  function getOriginalSettings() {
+    return originalSettings;
   }
 
   /**
@@ -347,6 +423,15 @@
     if ( refreshForm ) {
       updateSelectedOptions( settings );
     }
+
+    /**
+     * @todo Ask user to confirm before reloading.
+     */
+
+    if ( isLanguageBeingChanged( settings ) ) {
+      browser.runtime.reload();
+      window.close();
+    }
   }
 
   /**
@@ -480,5 +565,38 @@
 
   function switchElement( show, element ) {
     element.closest( SETTING_CONTAINER_SELECTOR ).hidden = ! show;
+  }
+
+  /**
+   * Check whether a new language has been chosen.
+   *
+   * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
+   * @return {boolean}
+   */
+
+  function isLanguageBeingChanged( settings ) {
+    return settings.uiLanguage !== getOriginalSettings().uiLanguage;
+  }
+
+  /**
+   * Sort Nodes by their text content.
+   *
+   * @param {Node} a
+   * @param {Node} b
+   * @return {number}
+   */
+
+  function sortByTextContent( a, b ) {
+    const aTextContent = a.textContent;
+    const bTextContent = b.textContent;
+
+    if ( aTextContent < bTextContent ) {
+      return -1;
+    }
+    else if ( aTextContent > bTextContent ) {
+      return 1;
+    }
+
+    return 0;
   }
 } )();
