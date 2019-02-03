@@ -8,6 +8,7 @@ ___
 ##### Table of contents
 
   * [Available customizations](#available-customizations)
+  * [Languages](#languages)
   * [Privacy](#privacy)
   * [Contribution](#contribution)
     * [Spread the word](#spread-the-word)
@@ -34,6 +35,20 @@ Available customizations
 - Button design
 - Not active button opacity
 - Keyboard shortcuts
+- Language
+
+<sup>(back to [table of contents](#table-of-contents))</sup>
+
+
+Languages
+--------
+
+- Chinese (China / Simplified)
+- Czech
+- Dutch (Netherlands)
+- English (United States)
+- Galician
+- Russian
 
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
