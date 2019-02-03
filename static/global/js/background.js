@@ -302,59 +302,63 @@
        * @param {Object} settings - Key-value pairs.
        */
 
-    function moveLegacySettings( settings ) {
-      if ( ! poziworldExtension.utils.isType( settings, 'object' ) || Global.isEmpty( settings ) ) {
-        const newSettings = {};
-        const availableSettings = {
-          buttonMode: [
-            'stbb',
-            'off'
-          ],
-          scrollUpSpeed: [
-            'scroll_speed',
-            1000
-          ],
-          scrollDownSpeed: [
-            'scroll_speed2',
-            1000
-          ],
-          distanceLength: [
-            'distance_length',
-            400
-          ],
-          buttonSize: [
-            'size',
-            '50px'
-          ],
-          buttonDesign: [
-            'arrow',
-            'arrow_blue'
-          ],
-          buttonLocation: [
-            'location',
-            'TR'
-          ],
-          notActiveButtonOpacity: [
-            'transparency',
-            '0.5'
-          ],
-          keyboardShortcuts: [
-            'shortcuts',
-            'arrows'
-          ],
-          contextMenu: [
-            'contextmenu',
-            'on'
-          ],
-          homeEndKeysControlledBy: [
-            'homeendaction',
-            'sttb'
-          ],
-          scroll: [
-            'scroll',
-            'jswing'
-          ]
-        };
+      function moveLegacySettings( settings ) {
+        if ( ! poziworldExtension.utils.isType( settings, 'object' ) || Global.isEmpty( settings ) ) {
+          const newSettings = {};
+          const availableSettings = {
+            uiLanguage: [
+              'uiLanguage',
+              'browserDefault'
+            ],
+            buttonMode: [
+              'stbb',
+              'off'
+            ],
+            scrollUpSpeed: [
+              'scroll_speed',
+              1000
+            ],
+            scrollDownSpeed: [
+              'scroll_speed2',
+              1000
+            ],
+            distanceLength: [
+              'distance_length',
+              400
+            ],
+            buttonSize: [
+              'size',
+              '50px'
+            ],
+            buttonDesign: [
+              'arrow',
+              'arrow_blue'
+            ],
+            buttonLocation: [
+              'location',
+              'TR'
+            ],
+            notActiveButtonOpacity: [
+              'transparency',
+              '0.5'
+            ],
+            keyboardShortcuts: [
+              'shortcuts',
+              'arrows'
+            ],
+            contextMenu: [
+              'contextmenu',
+              'on'
+            ],
+            homeEndKeysControlledBy: [
+              'homeendaction',
+              'sttb'
+            ],
+            scroll: [
+              'scroll',
+              'jswing'
+            ]
+          };
 
           let localStorageAvailable;
 
