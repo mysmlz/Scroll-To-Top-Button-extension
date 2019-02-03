@@ -16,6 +16,28 @@
 ( function() {
   'use strict';
 
+  setUp();
+
+  /**
+   * Make the logic readily available.
+   */
+
+  function setUp() {
+    exposeApi();
+  }
+
+  /**
+   * Create an instance of the page API and expose it to other parts of the extension.
+   */
+
+  function exposeApi() {
+    if ( typeof poziworldExtension === 'undefined' ) {
+      window.poziworldExtension = {};
+    }
+
+    poziworldExtension.page = new Page();
+  }
+
   function Page() {
   }
 
@@ -119,12 +141,6 @@
       .then( resolve )
       .then( this.localize.bind( this, pageName ) );
   }
-
-  if ( typeof poziworldExtension === 'undefined' ) {
-    window.poziworldExtension = {};
-  }
-
-  poziworldExtension.page = new Page();
 
   /**
    * Resolve promise.

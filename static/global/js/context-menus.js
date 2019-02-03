@@ -3,13 +3,21 @@
 
   let _this;
 
-  expose();
+  setUp();
+
+  /**
+   * Make the logic readily available.
+   */
+
+  function setUp() {
+    exposeApi();
+  }
 
   /**
    * Create an instance of the context menus API and expose it to other parts of the extension.
    */
 
-  function expose() {
+  function exposeApi() {
     sttb.contextMenus = new ContextMenus();
   }
 
