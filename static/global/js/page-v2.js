@@ -103,6 +103,13 @@
         if ( $localizableElement.classList.contains( 'i18nTitle' ) ) {
           $localizableElement.setAttribute( 'title', strMessage );
         }
+        else {
+          const tooltip = $localizableElement.getAttribute( 'data-i18n-tooltip' );
+
+          if ( poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
+            $localizableElement.setAttribute( 'title', poziworldExtension.i18n.getMessage( tooltip ) );
+          }
+        }
     }
 
     if ( ! boolIsCustomSelectorParentPresent && strPageName ) {
