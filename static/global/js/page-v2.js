@@ -23,10 +23,11 @@
    * Initialize.
    *
    * @param {string} [pageName] - The name of the page this is called from.
+   * @return {Promise}
    */
 
   Page.prototype.init = function ( pageName ) {
-    this.localize( pageName );
+    return new Promise( initI18n.bind( this, pageName ) );
   };
 
   /**
@@ -106,9 +107,28 @@
     }
   };
 
+  /**
+   * Before starting to localize, make sure i18n is initialized.
+   *
+   * @param {string} [pageName] - The name of the page this is called from.
+   * @param {resolve} resolve
+   */
+
+  function initI18n( pageName, resolve ) {
+    poziworldExtension.i18n.init()
+      .then( resolve )
+      .then( this.localize.bind( this, pageName ) );
+  }
+
   if ( typeof poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
   poziworldExtension.page = new Page();
+
+  /**
+   * Resolve promise.
+   *
+   * @callback resolve
+   */
 }() );

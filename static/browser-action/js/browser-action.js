@@ -76,9 +76,10 @@ var BrowserAction = {
     $reloadActiveTabCta = document.getElementById( strReloadActiveTabCtaId );
 
     Page.hideInOpera();
-    Page.localize( strPage );
+    poziworldExtension.i18n.init()
+      .then( Page.localize.bind( null, strPage ) );
     poziworldExtension.incentive.setLinks();
-    poziworldExtension.page.init( 'browserAction' );
+    poziworldExtension.page.init( strPage );
     BrowserAction.addEventListeners();
     BrowserAction.getActiveTabAddress();
   }
