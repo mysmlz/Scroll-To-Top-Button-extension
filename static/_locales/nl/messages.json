@@ -1,178 +1,121 @@
 {
-  "browserActionReloadActiveTab": {
-    "message": "Herlaad tab"
-  },
-  "black": {
-    "message": "Zwart"
-  },
-  "browserActionSttbEnabled": {
-    "message": "Zet Scroll To Top Button (STTB) aan"
-  },
-  "scrollToTopOnly": {
-    "message": "Alleen scroll naar boven"
-  },
-  "altTB": {
-    "message": "Alt + T (Top) / B (Bottom)"
-  },
-  "contextRightClickMenu": {
-    "message": "Context (rechtermuisknop) menu"
-  },
-  "medium": {
-    "message": "Middelmatig"
-  },
-  "buttonSettings": {
-    "message": "Knop instellingen"
-  },
-  "browserActionSttbDisabledUrl": {
-    "message": "Zet STTB uit voor deze URL"
-  },
-  "officialWebsite": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Startpagina</a>",
-    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  },
-  "slower": {
-    "message": "Langzamer"
-  },
-  "faster": {
-    "message": "Sneller"
-  },
-  "aLot": {
-    "message": "Veel"
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
   },
   "extensionDescription": {
     "message": "Voegt een knop toe waarmee je helemaal naar boven of beneden kan scrollen."
   },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* Wij nemen deel in het Amazon Services LLC Associates Program - een filiaal adverteringsprogramma ontworpen om een inkomst voor ons te creëren door naar Amazon.com en geaffilieerde sites te linken."
-  },
-  "topCenter": {
-    "message": "Boven midden"
-  },
-  "buttonLocation": {
-    "message": "Knop positie"
-  },
-  "arrowOnly": {
-    "message": "Alleen pijlen"
-  },
-  "incentivizeFurtherDevelopment": {
-    "message": "Als je dit project leuk vind en ons werk nuttig, overweeg alstublieft ons te ondersteunen via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – jouw gulle contributie helpt ons betalen voor dingen zoals 'hosting', benodigde programma's, en de tijd die we steken in het repareren van bugs en nieuwe mogelijkheden implementeren."
-  },
-  "otherProjects": {
-    "message": "Onze andere projecten:"
-  },
-  "off": {
-    "message": "Uit"
-  },
-  "authorsSettings": {
-    "message": "Auteur's instellingen"
-  },
-  "buttonDesign": {
-    "message": "Knop design"
-  },
-  "otherSettings": {
-    "message": "Andere instellingen"
-  },
-  "tumblerBlue": {
-    "message": "Tumblr blauw"
-  },
   "optionsPageTitle": {
     "message": "Opties | Scroll To Top Button"
   },
-  "red": {
-    "message": "Rood"
-  },
-  "fast": {
-    "message": "Snel"
-  },
-  "browserActionSttbDisabledDomain": {
-    "message": "Zet STTB uit voor dit domein"
-  },
-  "blue": {
-    "message": "Blauw"
-  },
-  "flipBetweenTopBottom": {
-    "message": "Wissel tussen boven &amp; beneden"
-  },
-  "bottomLeft": {
-    "message": "Linksonder"
-  },
-  "homeEndKeysControlledBy": {
-    "message": "Home &amp; End knoppen gecontroleerd door"
+  "optionsTitle": {
+    "message": "Scroll To Top Button Opties"
   },
   "close": {
     "message": "Sluit"
   },
-  "scrollDownSpeed": {
-    "message": "Snelheid naar beneden scrollen"
+  "browserActionPageTitle": {
+    "message": "Actieve tab instellingen | Scroll To Top Button"
   },
-  "pixelDesign": {
-    "message": "Pixel ontwerp"
+  "browserActionTitle": {
+    "message": "Actieve tab instellingen"
   },
-  "referralProgramInfoCta_amazon": {
-    "message": "Ik wil helpen"
+  "browserActionSttbEnabled": {
+    "message": "Zet Scroll To Top Button (STTB) aan"
   },
-  "referralProgramInfoLink_amazon": {
-    "message": "Ontdek hoe het werkt"
+  "browserActionSttbDisabledUrl": {
+    "message": "Zet STTB uit voor deze URL"
   },
-  "altUpDownArrows": {
-    "message": "Alt + naar Boven/Beneden Pijl"
+  "browserActionSttbDisabledDomain": {
+    "message": "Zet STTB uit voor dit domein"
   },
-  "centerRight": {
-    "message": "Rechtsmidden"
+  "browserActionReloadActiveTab": {
+    "message": "Herlaad tab"
   },
-  "appearDistance": {
-    "message": "Verschijn afstand"
+  "ratingHelpsOthers": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"rateLink\">Beoordeel deze extensie</a> alsjeblieft als het je bevalt!<br>De feedback helpt anderen deze extensie te vinden!"
   },
-  "topRight": {
-    "message": "Rechtsboven"
-  },
-  "colors": {
-    "message": "Kleuren"
-  },
-  "topLeft": {
-    "message": "Linksboven"
-  },
-  "barelyAny": {
-    "message": "Nauwelijks iets"
-  },
-  "on": {
-    "message": "Aan"
-  },
-  "helpTranslate": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help vertalen</a>"
-  },
-  "releaseNotes": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Opmerkingen bij deze uitgave</a>"
+  "buttonSettings": {
+    "message": "Knop instellingen"
   },
   "buttonMode": {
     "message": "Knop type"
   },
-  "slowest": {
-    "message": "Langzaamst"
+  "scrollToTopOnly": {
+    "message": "Alleen scroll naar boven"
   },
-  "pink": {
-    "message": "Roze"
+  "flipBetweenTopBottom": {
+    "message": "Wissel tussen boven &amp; beneden"
+  },
+  "dualArrows": {
+    "message": "Dubbele pijlen"
   },
   "keyboardOnly": {
     "message": "Alleen toetsenbord"
   },
-  "restoreDefaults": {
-    "message": "Standaardinstellingen herstellen"
+  "scrollUpSpeed": {
+    "message": "Snelheid naar boven scrollen"
   },
-  "browserActionPageTitle": {
-    "message": "Actieve tab instellingen | Scroll To Top Button"
+  "scrollUpSpeedCustom": {
+    "message": "Snelheid naar boven scrollen in milliseconden",
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
-  "operatingSystem": {
-    "message": "Besturingssysteem"
+  "scrollDownSpeed": {
+    "message": "Snelheid naar beneden scrollen"
   },
-  "grey": {
-    "message": "Grijs"
+  "scrollDownSpeedCustom": {
+    "message": "Snelheid naar beneden scrollen in milliseconden",
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
-  "referralProgramInfoText_amazon": {
-    "message": "Je kan ons helpen door te doen what je al doet zonder ook maar een cent uit te geven."
+  "slowest": {
+    "message": "Langzaamst"
+  },
+  "slower": {
+    "message": "Langzamer"
+  },
+  "slow": {
+    "message": "Langzaam"
+  },
+  "fast": {
+    "message": "Snel"
+  },
+  "faster": {
+    "message": "Sneller"
+  },
+  "fastest": {
+    "message": "Snelst (direct)"
+  },
+  "custom": {
+    "message": "Laat mij specificeren...",
+    "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
+  },
+  "appearDistance": {
+    "message": "Verschijn afstand"
+  },
+  "flipDistance": {
+    "message": "Omwissel afstand"
+  },
+  "barelyAny": {
+    "message": "Nauwelijks iets"
+  },
+  "aLittle": {
+    "message": "Een klein beetje"
+  },
+  "medium": {
+    "message": "Middelmatig"
   },
   "moreThanAverage": {
     "message": "Meer dan gemiddeld"
+  },
+  "aLot": {
+    "message": "Veel"
+  },
+  "aTon": {
+    "message": "Heel veel"
+  },
+  "buttonSize": {
+    "message": "Knop grootte"
   },
   "buttonSizeInPixels": {
     "message": "$LENGTH$x$WIDTH$ pixels",
@@ -188,93 +131,26 @@
       }
     }
   },
-  "ratingHelpsOthers": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"rateLink\">Beoordeel deze extensie</a> alsjeblieft als het je bevalt!<br>De feedback helpt anderen deze extensie te vinden!"
+  "buttonDesign": {
+    "message": "Knop design"
   },
-  "keyboardShortcuts": {
-    "message": "Toetsenbord snelkoppelingen"
+  "colors": {
+    "message": "Kleuren"
   },
-  "transparent": {
-    "message": "Transparant"
+  "tumblerBlue": {
+    "message": "Tumblr blauw"
   },
-  "keyboardSettings": {
-    "message": "Toetsenbord instellingen"
+  "grey": {
+    "message": "Grijs"
   },
-  "dualArrows": {
-    "message": "Dubbele pijlen"
+  "black": {
+    "message": "Zwart"
   },
-  "buttonSize": {
-    "message": "Knop grootte"
-  },
-  "aLittle": {
-    "message": "Een klein beetje"
+  "red": {
+    "message": "Rood"
   },
   "orange": {
     "message": "Oranje"
-  },
-  "aTon": {
-    "message": "Heel veel"
-  },
-  "bottomRight": {
-    "message": "Rechtsonder"
-  },
-  "bottomCenter": {
-    "message": "Onder midden"
-  },
-  "save": {
-    "message": "Opslaan"
-  },
-  "slow": {
-    "message": "Langzaam"
-  },
-  "centerLeft": {
-    "message": "Linksmidden"
-  },
-  "referralProgramInfoNotify": {
-    "message": "Stuur mij een notificatie wanneer ik door dit programma kan helpen"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Winkelen op Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "flipDistance": {
-    "message": "Omwissel afstand"
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Je hoeft alleen maar op de knop hieronder te klikken voordat je een product in je mandje doet!*"
-  },
-  "notActiveButtonOpacity": {
-    "message": "Doorzichtigheid inactieve knop"
-  },
-  "optionsSaved": {
-    "message": "Instellingen opgeslagen."
-  },
-  "browserActionTitle": {
-    "message": "Actieve tab instellingen"
-  },
-  "opaque": {
-    "message": "Niet doorzichtig"
-  },
-  "invisible": {
-    "message": "Onzichtbaar"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Winkelen?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Should NOT be translated"
-  },
-  "fastest": {
-    "message": "Snelst (direct)"
-  },
-  "translatedBy": {
-    "message": "Vertaald door <a href=\"https://www.transifex.com/user/profile/MichaelAtsma/\" target=\"_blank\" id=\"translatorLink\">Michael Atsma</a>",
-    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
-  },
-  "alternateDesigns": {
-    "message": "Andere ontwerpen"
   },
   "yellow": {
     "message": "Geel"
@@ -282,13 +158,185 @@
   "green": {
     "message": "Groen"
   },
-  "scrollUpSpeed": {
-    "message": "Snelheid naar boven scrollen"
-  },
-  "optionsTitle": {
-    "message": "Scroll To Top Button Opties"
+  "blue": {
+    "message": "Blauw"
   },
   "purple": {
     "message": "Paars"
+  },
+  "pink": {
+    "message": "Roze"
+  },
+  "arrowOnly": {
+    "message": "Alleen pijlen"
+  },
+  "alternateDesigns": {
+    "message": "Andere ontwerpen"
+  },
+  "pixelDesign": {
+    "message": "Pixel ontwerp"
+  },
+  "buttonLocation": {
+    "message": "Knop positie"
+  },
+  "topRight": {
+    "message": "Rechtsboven"
+  },
+  "topLeft": {
+    "message": "Linksboven"
+  },
+  "topCenter": {
+    "message": "Boven midden"
+  },
+  "centerRight": {
+    "message": "Rechtsmidden"
+  },
+  "centerLeft": {
+    "message": "Linksmidden"
+  },
+  "bottomRight": {
+    "message": "Rechtsonder"
+  },
+  "bottomLeft": {
+    "message": "Linksonder"
+  },
+  "bottomCenter": {
+    "message": "Onder midden"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Doorzichtigheid inactieve knop"
+  },
+  "invisible": {
+    "message": "Onzichtbaar"
+  },
+  "transparent": {
+    "message": "Transparant"
+  },
+  "opaque": {
+    "message": "Niet doorzichtig"
+  },
+  "keyboardShortcuts": {
+    "message": "Toetsenbord snelkoppelingen"
+  },
+  "altUpDownArrows": {
+    "message": "Alt + naar Boven/Beneden Pijl"
+  },
+  "altTB": {
+    "message": "Alt + T (Top) / B (Bottom)"
+  },
+  "off": {
+    "message": "Uit"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Home &amp; End knoppen gecontroleerd door"
+  },
+  "operatingSystem": {
+    "message": "Besturingssysteem"
+  },
+  "contextRightClickMenu": {
+    "message": "Context (rechtermuisknop) menu"
+  },
+  "on": {
+    "message": "Aan"
+  },
+  "keyboardSettings": {
+    "message": "Toetsenbord instellingen"
+  },
+  "otherSettings": {
+    "message": "Andere instellingen"
+  },
+  "restoreDefaults": {
+    "message": "Standaardinstellingen herstellen"
+  },
+  "authorsSettings": {
+    "message": "Auteur's instellingen"
+  },
+  "uiLanguage": {
+    "message": "Taal",
+    "description": "Setting on the Options page: language of the user interface."
+  },
+  "language_browserDefault": {
+    "message": "Automatisch (webbrowser instelling)",
+    "description": "Language option.\n\nIf the extension supports the language that is chosen as default in the browser, use that one. Otherwise, use English (United States)."
+  },
+  "language_browserDefault_tooltip": {
+    "message": "Als de extensie de taal ondersteunt die in de browser is ingesteld als standaard, gebruik dan die. Gebruik anders Engels (Verenigde Staten).",
+    "description": "Explanation of the \"Automatic (browser default)\"\" language option that should be shown in a tooltip."
+  },
+  "language_cs": {
+    "message": "Tsjechisch - čeština",
+    "description": "Language option: cs (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_en_US": {
+    "message": "Engels (Verenigde Staten) - English (United States)",
+    "description": "Language option: en-US (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes - https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_gl": {
+    "message": "Galicisch - galego",
+    "description": "Language option: gl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_nl": {
+    "message": "Nederlands",
+    "description": "Language option: nl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_ru": {
+    "message": "Russisch - русский",
+    "description": "Language option: ru (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_zh_CN": {
+    "message": "Chinees (China) - 中文（中国）",
+    "description": "Language option: zh_CN (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "save": {
+    "message": "Opslaan"
+  },
+  "optionsSaved": {
+    "message": "Instellingen opgeslagen."
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help vertalen</a>"
+  },
+  "translatedBy": {
+    "message": "Vertaald door <a href=\"https://www.transifex.com/user/profile/MichaelAtsma/\" target=\"_blank\" id=\"translatorLink\">Michael Atsma</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "Als je dit project leuk vind en ons werk nuttig, overweeg alstublieft ons te ondersteunen via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – jouw gulle contributie helpt ons betalen voor dingen zoals 'hosting', benodigde programma's, en de tijd die we steken in het repareren van bugs en nieuwe mogelijkheden implementeren."
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Opmerkingen bij deze uitgave</a>"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Startpagina</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "otherProjects": {
+    "message": "Onze andere projecten:"
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "Winkelen?",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "Winkelen op Amazon?",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "Je kan ons helpen door te doen what je al doet zonder ook maar een cent uit te geven."
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "Je hoeft alleen maar op de knop hieronder te klikken voordat je een product in je mandje doet!*"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "Ik wil helpen"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "Ontdek hoe het werkt"
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "* Wij nemen deel in het Amazon Services LLC Associates Program - een filiaal adverteringsprogramma ontworpen om een inkomst voor ons te creëren door naar Amazon.com en geaffilieerde sites te linken."
+  },
+  "referralProgramInfoNotify": {
+    "message": "Stuur mij een notificatie wanneer ik door dit programma kan helpen"
   }
 }
