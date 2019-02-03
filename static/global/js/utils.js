@@ -217,6 +217,17 @@
     return Object.prototype.toString.call( param ).slice( 8, -1 ).toLowerCase() === strType;
   };
 
+  /**
+   * Check whether the provided value is of 'string' type and non-empty.
+   *
+   * @param {*} value
+   * @return {boolean}
+   */
+
+  Utils.prototype.isNonEmptyString = function ( value ) {
+    return this.isType( value, 'string' ) && value !== '';
+  };
+
   if ( typeof poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
