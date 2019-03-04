@@ -50,7 +50,7 @@
    */
 
   const i18nextXhrBackendOptions = {
-    loadPath: browser.extension.getURL( '_locales/{{lng}}/messages.json' ),
+    loadPath: browser.runtime.getURL( '_locales/{{lng}}/messages.json' ),
     async: false
   };
 

@@ -105,10 +105,10 @@ function STTB() {
 
         // Assigns the correct arrow color to imgURL
         if (stbb == "dual"){
-            var imgURL=browser.extension.getURL("arrows/dual/"+arrow+".png");
+            var imgURL=browser.runtime.getURL("arrows/dual/"+arrow+".png");
         }
         else{
-            var imgURL=browser.extension.getURL("arrows/"+arrow+".png");
+            var imgURL=browser.runtime.getURL("arrows/"+arrow+".png");
         }
 
         var $body;
