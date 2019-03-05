@@ -21,9 +21,9 @@
 
 const
     strConstExtensionId = browser.runtime.id
-  , objConstExtensionManifest = chrome.runtime.getManifest()
+  , objConstExtensionManifest = browser.runtime.getManifest()
   , strConstExtensionName = objConstExtensionManifest.name
-  , strConstExtensionVersion = browser.runtime.getManifest().version
+  , strConstExtensionVersion = objConstExtensionManifest.version
 
   , boolConstIsBowserAvailable = typeof bowser === 'object'
   , strConstChromeVersion =
