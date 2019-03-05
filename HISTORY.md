@@ -6,6 +6,18 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v7.2.0
+
+### New
+
+* [Scroll To Top Button translated](https://www.transifex.com/poziworld/scroll-to-top-button) into Galician. / [Scroll To Top Button traducido](https://www.transifex.com/poziworld/scroll-to-top-button) ao galego.
+
+  > Thank you, [antiparvos](https://www.transifex.com/user/profile/antiparvos/) and [Navhy (Iván Seoane)](https://www.transifex.com/user/profile/Navhy/)!
+
+* Ability to change language in Options.
+
+---
+
 ## v7.1.0
 
 ### New
