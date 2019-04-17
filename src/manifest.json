@@ -78,6 +78,8 @@
         "global/js/Array.from.polyfill.js",
         "global/js/i18n.js",
         "global/js/punycode.min.js",
+        "global/js/webcomponents-sd-ce.js",
+        "shared/custom-elements/index.js",
         "content-script/js/content-script.js",
         "content_script.js",
         "libraries/shortcut.js"

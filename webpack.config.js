@@ -9,6 +9,7 @@ const modeDevelopment = process.env.NODE_ENV === 'development';
 const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
+    'shared/custom-elements/index': './src/shared/custom-elements/index.js',
   },
   output: Map( {
     filename: '[name].js',
@@ -21,6 +22,11 @@ const defaultConfig = Map( {
         test: /manifest.json$/,
         exclude: /node_modules/,
         loader: 'manifest-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
       },
     ],
   },
