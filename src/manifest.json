@@ -89,6 +89,7 @@
 
   "web_accessible_resources": [
     "arrows/*.png",
+    "shared/buttons/buttons.css",
     "*.json"
   ]
 }

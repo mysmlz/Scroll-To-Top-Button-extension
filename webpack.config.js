@@ -3,12 +3,14 @@ const { List, Map } = require( 'immutable' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
 const WebpackCleanPlugin = require( 'webpack-clean' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
 const modeDevelopment = process.env.NODE_ENV === 'development';
 
 const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
+    'shared/buttons/buttons': './src/shared/buttons/buttons.css',
     'shared/custom-elements/index': './src/shared/custom-elements/index.js',
   },
   output: Map( {
@@ -45,6 +47,10 @@ const defaultConfig = Map( {
         },
       ]
     ),
+
+    new MiniCssExtractPlugin( {
+      filename: '[name].css',
+    } ),
   ] ),
   resolveLoader: {
     modules: [
@@ -75,7 +81,7 @@ module.exports = supportedBrowsers.map( browserName => {
       ],
       () => path.resolve( __dirname, 'dist', browserName ),
     )
-    // Remove unused manifest.js post-build
+    // Remove unused automatically-created JavaScript files post-build
     .updateIn(
       [
         'plugins',
@@ -84,6 +90,7 @@ module.exports = supportedBrowsers.map( browserName => {
         new WebpackCleanPlugin(
           [
             'manifest.js',
+            'shared/buttons/buttons.js',
           ],
           {
             basePath: path.resolve( __dirname, 'dist', browserName ),
