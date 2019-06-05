@@ -130,6 +130,7 @@ Gratitudes
   - Czech — [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/).
   - Galician — [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Navhy (Iván Seoane)](https://www.transifex.com/user/profile/Navhy/).
   - Polish — [MusicInMe_TH (Ireek)](https://www.transifex.com/user/profile/MusicInMe_TH/).
+  - Turkish — [E.Tas (Eren Tas)](https://www.transifex.com/user/profile/E.Tas/).
 
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
