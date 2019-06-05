@@ -4,13 +4,16 @@
     "description": "Should NOT be translated"
   },
   "extensionDescription": {
-    "message": "Добавляет кнопку прокрутки вверх или вниз."
+    "message": "Добавляет кнопку прокрутки вверх или вниз.",
+    "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
   },
   "optionsPageTitle": {
-    "message": "Параметры |  Scroll To Top Button"
+    "message": "Параметры |  Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "optionsTitle": {
-    "message": "Параметры Scroll To Top Button"
+    "message": "Параметры Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "close": {
     "message": "Закрыть"
@@ -46,7 +49,8 @@
     "message": "Прокрутка только вверх"
   },
   "flipBetweenTopBottom": {
-    "message": "Переключение между верхом и низом"
+    "message": "Переключение между верхом и низом",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
   },
   "dualArrows": {
     "message": "Двойные стрелки"
@@ -91,10 +95,12 @@
     "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
   "appearDistance": {
-    "message": "Расстояние до появления кнопки"
+    "message": "Расстояние до появления кнопки",
+    "description": "In other words, “distance after which the button appears.”"
   },
   "flipDistance": {
-    "message": "Расстояние до переключения"
+    "message": "Расстояние до переключения",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
   },
   "barelyAny": {
     "message": "Почти нисколько"
@@ -204,7 +210,8 @@
     "message": "Снизу по центру"
   },
   "notActiveButtonOpacity": {
-    "message": "Стиль неактивной кнопки"
+    "message": "Стиль неактивной кнопки",
+    "description": "In other words, “Opacity of inactive button.”"
   },
   "invisible": {
     "message": "Невидимая"
@@ -216,10 +223,12 @@
     "message": "Непрозрачная"
   },
   "keyboardShortcuts": {
-    "message": "Быстрые клавиши"
+    "message": "Быстрые клавиши",
+    "description": "Go to https://support.google.com/chrome/answer/157179?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "altUpDownArrows": {
-    "message": "Alt + Стрелка Вверх/Вниз"
+    "message": "Alt + Стрелка Вверх/Вниз",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en#pageshortcuts. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "altTB": {
     "message": "Alt + T/B (на англ.)"
@@ -231,10 +240,12 @@
     "message": "Контроль клавиш Home &amp; End"
   },
   "operatingSystem": {
-    "message": "Операционная система"
+    "message": "Операционная система",
+    "description": "Go to https://support.google.com/chromebook/answer/177889?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "contextRightClickMenu": {
-    "message": "Контекстное меню (правый клик)"
+    "message": "Контекстное меню (правый клик)",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "on": {
     "message": "Включить"
@@ -261,7 +272,7 @@
   },
   "language_browserDefault_tooltip": {
     "message": "Если расширение поддерживает язык, выбранный языком по умолчанию в браузере, будет использоваться этот. В противном случае будет использоваться английский (Соединённые Штаты).",
-    "description": "Explanation of the \"Automatic (browser default)\"\" language option that should be shown in a tooltip."
+    "description": "Explanation of the “Automatic (browser default)” language option that should be shown in a tooltip."
   },
   "language_cs": {
     "message": "Чешский - čeština",

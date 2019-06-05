@@ -4,13 +4,16 @@
     "description": "Should NOT be translated"
   },
   "extensionDescription": {
-    "message": "Engade un botón para desprazarse cara enriba ou embaixo."
+    "message": "Engade un botón para desprazarse cara enriba ou embaixo.",
+    "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
   },
   "optionsPageTitle": {
-    "message": "Opcións | Scroll To Top Button"
+    "message": "Opcións | Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "optionsTitle": {
-    "message": "Opcións do Scroll To Top Button"
+    "message": "Opcións do Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "close": {
     "message": "Pechar"
@@ -46,7 +49,8 @@
     "message": "Só desprazamento cara enriba"
   },
   "flipBetweenTopBottom": {
-    "message": "Mudar entre enriba e embaixo"
+    "message": "Mudar entre enriba e embaixo",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
   },
   "dualArrows": {
     "message": "Dobre frecha"
@@ -91,10 +95,12 @@
     "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
   "appearDistance": {
-    "message": "Distancia da aparición"
+    "message": "Distancia da aparición",
+    "description": "In other words, “distance after which the button appears.”"
   },
   "flipDistance": {
-    "message": "Distancia do xiro"
+    "message": "Distancia do xiro",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
   },
   "barelyAny": {
     "message": "Apenas nada"
@@ -204,7 +210,8 @@
     "message": "Embaixo central"
   },
   "notActiveButtonOpacity": {
-    "message": "Opacidade do botón inactivo"
+    "message": "Opacidade do botón inactivo",
+    "description": "In other words, “Opacity of inactive button.”"
   },
   "invisible": {
     "message": "Invisíbel"
@@ -216,10 +223,12 @@
     "message": "Opaco"
   },
   "keyboardShortcuts": {
-    "message": "Atallos do teclado"
+    "message": "Atallos do teclado",
+    "description": "Go to https://support.google.com/chrome/answer/157179?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "altUpDownArrows": {
-    "message": "Alt + Frechas Arriba/Abaixo"
+    "message": "Alt + Frechas Arriba/Abaixo",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en#pageshortcuts. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "altTB": {
     "message": "Alt + T/B"
@@ -231,10 +240,12 @@
     "message": "Teclas de Inicio e Fin controladas por"
   },
   "operatingSystem": {
-    "message": "Sistema operativo"
+    "message": "Sistema operativo",
+    "description": "Go to https://support.google.com/chromebook/answer/177889?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "contextRightClickMenu": {
-    "message": "Menú contextual (clic dereito)"
+    "message": "Menú contextual (clic dereito)",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "on": {
     "message": "Activado"
@@ -261,7 +272,7 @@
   },
   "language_browserDefault_tooltip": {
     "message": "Se a extensión acepta o idioma seleccionado como predeterminado no navegador, usará este. En caso contrario, usará o inglés (Estados Unidos).",
-    "description": "Explanation of the \"Automatic (browser default)\"\" language option that should be shown in a tooltip."
+    "description": "Explanation of the “Automatic (browser default)” language option that should be shown in a tooltip."
   },
   "language_cs": {
     "message": "Checo - čeština",
