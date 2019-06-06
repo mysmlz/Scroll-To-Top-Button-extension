@@ -6,6 +6,20 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v7.3.0
+
+### New
+
+* Scroll To Top Button [translated](https://www.transifex.com/poziworld/scroll-to-top-button "Help translate Scroll To Top Button") into Polish.
+
+  > Thank you, [MusicInMe_TH (Ireek)](https://www.transifex.com/user/profile/MusicInMe_TH/)!
+
+* Scroll To Top Button [translated](https://www.transifex.com/poziworld/scroll-to-top-button "Help translate Scroll To Top Button") into Turkish.
+
+  > Thank you, [E.Tas (Eren Tas)](https://www.transifex.com/user/profile/E.Tas/)!
+
+---
+
 ## v7.2.0
 
 ### New
