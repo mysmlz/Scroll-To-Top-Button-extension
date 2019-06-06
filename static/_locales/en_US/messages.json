@@ -4,13 +4,16 @@
     "description": "Should NOT be translated"
   },
   "extensionDescription": {
-    "message": "Adds a scroll to top or bottom button."
+    "message": "Adds a scroll to top or bottom button.",
+    "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
   },
   "optionsPageTitle": {
-    "message": "Options | Scroll To Top Button"
+    "message": "Options | Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
     "optionsTitle": {
-      "message": "Scroll To Top Button Options"
+      "message": "Scroll To Top Button Options",
+      "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
     },
   "close": {
     "message": "Close"
@@ -48,7 +51,8 @@
         "message": "Scroll to top only"
       },
       "flipBetweenTopBottom": {
-        "message": "Flip between top &amp; bottom"
+        "message": "Flip between top &amp; bottom",
+        "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
       },
       "dualArrows": {
         "message": "Dual arrows"
@@ -93,10 +97,12 @@
         "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
       },
     "appearDistance": {
-      "message": "Appear distance"
+      "message": "Appear distance",
+      "description": "In other words, “distance after which the button appears.”"
     },
     "flipDistance": {
-      "message": "Flip distance"
+      "message": "Flip distance",
+      "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
     },
       "barelyAny": {
         "message": "Barely any"
@@ -206,7 +212,8 @@
         "message": "Bottom center"
       },
     "notActiveButtonOpacity": {
-      "message": "Not active button opacity"
+      "message": "Not active button opacity",
+      "description": "In other words, “Opacity of inactive button.”"
     },
       "invisible": {
         "message": "Invisible"
@@ -218,10 +225,12 @@
         "message": "Opaque"
       },
     "keyboardShortcuts": {
-      "message": "Keyboard shortcuts"
+      "message": "Keyboard shortcuts",
+      "description": "Go to https://support.google.com/chrome/answer/157179?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
     },
       "altUpDownArrows": {
-        "message": "Alt + Up/Down Arrows"
+        "message": "Alt + Up/Down Arrows",
+        "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en#pageshortcuts. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
       },
       "altTB": {
         "message": "Alt + T/B"
@@ -233,10 +242,12 @@
       "message": "Home &amp; End keys controlled by"
     },
       "operatingSystem": {
-        "message": "Operating system"
+        "message": "Operating system",
+        "description": "Go to https://support.google.com/chromebook/answer/177889?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
       },
     "contextRightClickMenu": {
-      "message": "Context (right-click) menu"
+      "message": "Context (right-click) menu",
+      "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
     },
       "on": {
         "message": "On"
@@ -265,7 +276,7 @@
   },
   "language_browserDefault_tooltip": {
     "message": "If the extension supports the language that is chosen as default in the browser, use that one. Otherwise, use English (United States).",
-    "description": "Explanation of the \"Automatic (browser default)\"\" language option that should be shown in a tooltip."
+    "description": "Explanation of the “Automatic (browser default)” language option that should be shown in a tooltip."
   },
   "language_cs": {
     "message": "Czech - čeština",
@@ -283,9 +294,17 @@
     "message": "Dutch - Nederlands",
     "description": "Language option: nl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
   },
+  "language_pl": {
+    "message": "Polish - polski",
+    "description": "Language option: pl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
   "language_ru": {
     "message": "Russian - русский",
     "description": "Language option: ru (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_tr": {
+    "message": "Turkish - Türkçe",
+    "description": "Language option: tr (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
   },
   "language_zh_CN": {
     "message": "Chinese (China) - 中文（中国）",
