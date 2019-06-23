@@ -10,7 +10,7 @@ const KEY_CODES = {
  * @extends HTMLElement
  */
 
-export class Sttb extends HTMLElement {
+export class ScrollToTopButton extends HTMLElement {
   /**
    * Define all the functionality the element will have when an instance of it is instantiated.
    */
@@ -35,7 +35,7 @@ export class Sttb extends HTMLElement {
  *
  * Reference: https://w3c.github.io/webcomponents/spec/custom/#drawbacks-of-autonomous-custom-elements
  *
- * @param {Sttb} element
+ * @param {ScrollToTopButton} element
  */
 
 function addListeners( element ) {
@@ -48,7 +48,7 @@ function addListeners( element ) {
  *
  * Reference: https://w3c.github.io/webcomponents/spec/custom/#drawbacks-of-autonomous-custom-elements
  *
- * @param {Sttb} element
+ * @param {ScrollToTopButton} element
  */
 
 function addSemantics( element ) {

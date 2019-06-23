@@ -5,7 +5,7 @@
  * @extends HTMLElement
  */
 
-export class SttbContainer extends HTMLElement {
+export class ScrollToTopButtonContainer extends HTMLElement {
   /**
    * Define all the functionality the element will have when an instance of it is instantiated.
    */

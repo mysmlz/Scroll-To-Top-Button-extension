@@ -79,7 +79,7 @@
         "global/js/i18n.js",
         "global/js/punycode.min.js",
         "global/js/webcomponents-sd-ce.js",
-        "shared/custom-elements/index.js",
+        "shared/custom-elements/custom-elements.js",
         "content-script/js/content-script.js",
         "content_script.js",
         "libraries/shortcut.js"
@@ -89,7 +89,7 @@
 
   "web_accessible_resources": [
     "arrows/*.png",
-    "shared/buttons/buttons.css",
+    "shared/custom-elements/custom-elements.css",
     "*.json"
   ]
 }
