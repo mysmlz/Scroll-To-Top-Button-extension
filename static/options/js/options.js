@@ -1,15 +1,15 @@
-( function() {
+( function () {
   'use strict';
 
   const form = document.getElementById( 'settingsForm' );
   const SETTING_CONTAINER_SELECTOR = '.settingContainer';
-  const options = document.getElementsByClassName( 'optionsChanger' );
-  const optionsCount = options.length;
-  const SCROLL_UP_SPEED_ID = 'scrollUpSpeed';
-  const SCROLL_DOWN_SPEED_ID = 'scrollDownSpeed';
-  const SCROLL_SPEED_CUSTOM_ID_SUFFIX = 'Custom';
-  const SCROLL_SPEED_CUSTOM_CLASS = 'custom';
-  const SCROLL_SPEED_CUSTOM_VALUE_INDICATOR = '-1';
+  const options = Array.from( document.getElementsByClassName( 'optionsChanger' ) );
+  const CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME = 'data-customizable';
+  const CUSTOMIZABLE_OPTION_ATTRIBUTE_VALUE = 1;
+  const CUSTOMIZABLE_OPTION_SELECTOR = '[' + CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME + '="' + CUSTOMIZABLE_OPTION_ATTRIBUTE_VALUE + '"]';
+  const CUSTOM_OPTION_CLASS = 'custom';
+  const CUSTOM_OPTION_SELECTOR = '.' + CUSTOM_OPTION_CLASS;
+  const CUSTOM_VALUE_INDICATOR = '-1';
   const buttonMode = document.getElementById( 'buttonMode' );
   const distanceType = document.getElementById( 'distanceType' );
   const UI_LANGUAGE_ID = 'uiLanguage';
@@ -145,18 +145,24 @@
    */
 
   function addListeners() {
-    for ( let i = 0, l = optionsCount; i < l; i++ ) {
-      const option = options[ i ];
-
-      option.addEventListener( 'change', handleOptionChange );
-      option.addEventListener( 'blur', handleOptionChange );
-    }
+    options.forEach( addOptionChangeListener );
 
     buttonMode.addEventListener( 'change', checkMode );
     document.getElementById( 'restore' ).addEventListener( 'click', restoreDefaultSettings );
     document.getElementById( 'author' ).addEventListener( 'click', setOriginalAuthorSettings );
     document.getElementById( 'save' ).addEventListener( 'click', handleFormSubmit );
     form.addEventListener( 'submit', handleFormSubmit );
+  }
+
+  /**
+   * Listen for setting changes.
+   *
+   * @param {HTMLElement} element
+   */
+
+  function addOptionChangeListener( element ) {
+    element.addEventListener( 'change', handleOptionChange );
+    element.addEventListener( 'blur', handleOptionChange );
   }
 
   /**
@@ -289,13 +295,13 @@
 
   function handleOptionChange( event ) {
     if ( event ) {
-      const target = event.target;
-      const id = target.id;
+      const element = event.target;
+      const customizable = Boolean( Number( element.getAttribute( CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME ) ) );
 
-      if ( id === SCROLL_UP_SPEED_ID || id === SCROLL_DOWN_SPEED_ID ) {
-        switchCustomOptionVisibility( id, target );
+      if ( customizable ) {
+        switchCustomOptionVisibility( element );
       }
-      else if ( target.classList.contains( SCROLL_SPEED_CUSTOM_CLASS ) && ! checkFormValidity() ) {
+      else if ( element.classList.contains( CUSTOM_OPTION_CLASS ) && ! checkFormValidity() ) {
         return;
       }
 
@@ -308,33 +314,42 @@
    */
 
   function switchCustomOptionsVisibility() {
-    const optionIds = [
-      SCROLL_UP_SPEED_ID,
-      SCROLL_DOWN_SPEED_ID
-    ];
-
-    for ( let i = 0, l = optionIds.length; i < l; i++ ) {
-      switchCustomOptionVisibility( optionIds[ i ] );
-    }
+    document.querySelectorAll( CUSTOMIZABLE_OPTION_SELECTOR ).forEach( switchCustomOptionVisibility );
   }
 
   /**
    * Show custom value field only when user chose to specify its value instead of selecting a pre-set one.
    *
-   * @param {string} id - The ID of the element.
-   * @param {EventTarget} [element] - The element which the custom value field is related to.
+   * @param {EventTarget} element - The element which the custom value field is related to.
    */
 
-  function switchCustomOptionVisibility( id, element ) {
-    if ( ! document.contains( element ) ) {
-      element = document.getElementById( id );
-    }
+  function switchCustomOptionVisibility( element ) {
+    const customOptionNotApplicable = ( element.value !== CUSTOM_VALUE_INDICATOR );
 
-    const customElement = document.getElementById( id + SCROLL_SPEED_CUSTOM_ID_SUFFIX );
-    const hidden = ( element.value !== SCROLL_SPEED_CUSTOM_VALUE_INDICATOR );
+    getCustomElements( element ).forEach( toggleElementActiveState.bind( null, customOptionNotApplicable ) );
+  }
 
-    customElement.closest( SETTING_CONTAINER_SELECTOR ).hidden = hidden;
-    customElement.required = ! hidden;
+  /**
+   * Show/hide the custom setting when appropriate.
+   *
+   * @param {boolean} customOptionNotApplicable
+   * @param {HTMLElement} element
+   */
+
+  function toggleElementActiveState( customOptionNotApplicable, element ) {
+      element.closest( SETTING_CONTAINER_SELECTOR ).hidden = customOptionNotApplicable;
+      element.required = ! customOptionNotApplicable;
+  }
+
+  /**
+   * Find custom settings' elements for the specified element.
+   *
+   * @param {EventTarget} element
+   * @return {HTMLElement[]}
+   */
+
+  function getCustomElements( element ) {
+    return Array.from( getSettingContainer( element ).querySelectorAll( CUSTOM_OPTION_SELECTOR ) );
   }
 
   /**
@@ -365,13 +380,14 @@
     }
 
     const settings = {};
+    const optionsTemp = Array.from( options );
 
-    for ( let i = 0, l = optionsCount; i < l; i++ ) {
-      const option = options[ i ];
+    while ( optionsTemp.length ) {
+      const option = optionsTemp.shift();
       const id = option.id;
       const value = option.value;
 
-      if ( value !== SCROLL_SPEED_CUSTOM_VALUE_INDICATOR || document.getElementById( id + SCROLL_SPEED_CUSTOM_ID_SUFFIX ).value !== '' ) {
+      if ( value !== CUSTOM_VALUE_INDICATOR || hasSetCustomValues( option ) ) {
         settings[ id ] = value;
       }
       else {
@@ -382,6 +398,27 @@
     }
 
     setSettings( settings );
+  }
+
+  /**
+   * If the setting is set to use custom value(s), make sure that custom value(s) is set.
+   *
+   * @param {HTMLElement} element
+   * @return {boolean}
+   */
+
+  function hasSetCustomValues( element ) {
+    const customElements = getCustomElements( element );
+
+    while ( customElements.length ) {
+      const customElement = customElements.shift();
+
+      if ( ! poziworldExtension.utils.isNonEmptyString( customElement.value ) ) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   /**
@@ -564,7 +601,18 @@
    */
 
   function switchElement( show, element ) {
-    element.closest( SETTING_CONTAINER_SELECTOR ).hidden = ! show;
+    getSettingContainer( element ).hidden = ! show;
+  }
+
+  /**
+   * Find the setting (option + its custom options) container.
+   *
+   * @param {HTMLElement} element
+   * @return {HTMLElement} element
+   */
+
+  function getSettingContainer( element ) {
+    return element.closest( SETTING_CONTAINER_SELECTOR );
   }
 
   /**
