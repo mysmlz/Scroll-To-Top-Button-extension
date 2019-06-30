@@ -36,19 +36,19 @@ function STTB() {
         })
     }
 
-    init();
+    setUp();
 
     /**
      * To get started, retrieve the settings from the Storage and verify their integrity.
      */
 
-    function init() {
-      strLog = 'init';
+    function setUp() {
+      strLog = 'setUp';
       Log.add( strLog );
 
       poziworldExtension.utils.getSettings(
         strLog,
-        onSettingsRetrieved,
+        handleRetrievedSettings,
         undefined,
         true
       );
@@ -60,8 +60,8 @@ function STTB() {
      * @param {Object} settings - Key-value pairs.
      */
 
-    function onSettingsRetrieved( settings ) {
-      strLog = 'onSettingsRetrieved';
+    function handleRetrievedSettings( settings ) {
+      strLog = 'handleRetrievedSettings';
       Log.add( strLog );
 
       if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
@@ -75,8 +75,8 @@ function STTB() {
      * @param {Object} settings - Key-value pairs.
      */
 
-    function onReady( settings ) {
-        strLog = 'onReady';
+    function init( settings ) {
+        strLog = 'init';
         Log.add( strLog );
 
         let scrollUpSpeed = parseInt( settings.scrollUpSpeed );
