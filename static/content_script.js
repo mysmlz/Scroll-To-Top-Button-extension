@@ -3,10 +3,10 @@
 * by Cody Sherman (versions < 6.1.3), http://codysherman.com/
 *
 * Brought back to life by PoziWorld
-* 
+*
 * Copyright (c) 2011 Cody Sherman (versions < 6.1.3)
 * Copyright (c) 2014-2016 PoziWorld
-* 
+*
 * Licensed under the MIT License
 * http://www.opensource.org/licenses/mit-license.php
 *
@@ -26,6 +26,17 @@ else {
  **/
 
 function STTB() {
+    const MODE_DUAL_ARROWS = 'dual';
+    const MODE_KEYBOARD_ONLY = 'keys';
+
+    const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
+    const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
+    const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
+    const BUTTON_ID = 'scroll-to-top-button-' + BUTTON_NUMBER_PLACEHOLDER;
+    const BUTTON_LABEL = 'Scroll To Top Button';
+
+    let buttonsCount = 0;
+
     // Removes the built-in button when on Tumblr
     if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
         var alreadyHasIt=['http://www.tumblr.com/dashboard','http://www.tumblr.com/tumblelog/','http://www.tumblr.com/messages','http://www.tumblr.com/tagged/','http://www.tumblr.com/liked/by/','http://www.tumblr.com/likes'];
@@ -64,8 +75,8 @@ function STTB() {
       strLog = 'handleRetrievedSettings';
       Log.add( strLog );
 
-      if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
-        onReady( settings );
+      if ( isExpectedSettingsFormat( settings ) ) {
+        init( settings );
       }
     }
 
@@ -103,46 +114,20 @@ function STTB() {
           scrollDownSpeed = scrollDownSpeedCustom;
         }
 
-        // Assigns the correct arrow color to imgURL
-        if (stbb == "dual"){
-            var imgURL=browser.runtime.getURL("arrows/dual/"+arrow+".png");
-        }
-        else{
-            var imgURL=browser.runtime.getURL("arrows/"+arrow+".png");
+        createButtons( settings );
+
+        if ( stbb === 'flip' ) {
+            $( '#scroll-to-top-button-1' ).rotate( -180 );
         }
 
-        var $body;
-
-        // Creates the button image on the page
-        if ( stbb !== 'keys' ) {
-            $body = $( 'body' );
-
-            $body.after( // Have to use after. Otherwise, Bing search results page removes #STTBimg in dual-arrow mode
-                '<img id="STTBimg" />' +
-                // Don't show buttons when JavaScript is disabled
-                '<noscript>' +
-                  '<style>' +
-                      '#STTBimg, #STTBimg2 { display: none !important; }' +
-                  '</style>' +
-                '</noscript>'
-            );
-        }
-
-        if(stbb=="flip"){
-            $("#STTBimg").rotate(-180);
-        }
-
-        var $sttbImg = document.getElementById( 'STTBimg' );
+        var $sttbImg = document.getElementById( 'scroll-to-top-button-1' );
 
         if ( document.contains( $sttbImg ) ) {
             // TODO: Move moveable properties to .css
             $sttbImg.style.opacity = transparency;
-            $sttbImg.src=imgURL;
-            $sttbImg.style.position = 'fixed';
             $sttbImg.style.width = size;
             $sttbImg.style.height = 'auto';
             $sttbImg.style.display = 'none';
-            $sttbImg.style.zIndex = 2147483647;
             $sttbImg.style.border = '0px';
             $sttbImg.style.padding = '0px';
             $sttbImg.style.minWidth = 'auto';
@@ -151,84 +136,52 @@ function STTB() {
             $sttbImg.style.maxHeight = 'none';
 
             if (location == "TR") {
-                $sttbImg.style.top = '20px';
-                $sttbImg.style.right = '20px';
                 $sttbImg.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "TL") {
-                $sttbImg.style.top = '20px';
-                $sttbImg.style.left = '20px';
                 $sttbImg.style.margin = '0px 0px 0px 0px';
             }
             else if ((location == "BR") && (stbb != "dual")) {
-                $sttbImg.style.bottom = '20px';
-                $sttbImg.style.right = '20px';
                 $sttbImg.style.margin = '0px 0px 0px 0px';
             }
             else if ((location == "BR") && (stbb == "dual")) {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg.style.bottom = adjusted;
-                $sttbImg.style.right = '20px';
                 $sttbImg.style.margin = '0px 0px 0px 0px';
             }
             else if ((location == "BL") && (stbb != "dual")) {
-                $sttbImg.style.bottom = '20px';
-                $sttbImg.style.left = '20px';
                 $sttbImg.style.margin = '0px 0px 0px 0px';
             }
             else if ((location == "BL") && (stbb == "dual")) {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg.style.bottom = adjusted;
-                $sttbImg.style.left = '20px';
                 $sttbImg.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "CR") {
                 adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                $sttbImg.style.right = '20px';
-                $sttbImg.style.top = '50%';
                 $sttbImg.style.margin = adjust;
             }
             else if (location == "CL") {
                 adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                $sttbImg.style.left = '20px';
-                $sttbImg.style.top = '50%';
                 $sttbImg.style.margin = adjust;
             }
             else if (location == "TC") {
                 adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg.style.top = '20px';
-                $sttbImg.style.right = '50%';
                 $sttbImg.style.margin = adjust;
             }
             else if ((location == "BC") && (stbb != "dual")) {
                 adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg.style.bottom = '20px';
-                $sttbImg.style.right = '50%';
                 $sttbImg.style.margin = adjust;
             }
             else if ((location == "BC") && (stbb == "dual")) {
                 adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
-                adjust2=parseInt(size) / 2 + 22;
-                adjusted=adjust2 + "px";
-                $sttbImg.style.bottom = adjusted;
-                $sttbImg.style.right = '50%';
                 $sttbImg.style.margin = adjust;
             }
         }
 
         if(stbb=="dual"){
-            $body.after( '<img id="STTBimg2" />' ); // Have to use after. Otherwise, Bing search results page removes #STTBimg in dual-arrow mode
-            $("#STTBimg2").rotate(-180);
-            var $sttbImg2 = document.getElementById( 'STTBimg2' );
+            $( '#scroll-to-top-button-2' ).rotate(-180);
+            var $sttbImg2 = document.getElementById( 'scroll-to-top-button-2' );
             $sttbImg2.style.opacity = transparency;
-            $sttbImg2.src=imgURL;
-            $sttbImg2.style.position = 'fixed';
             $sttbImg2.style.width = size;
             $sttbImg2.style.height = 'auto';
             $sttbImg2.style.display = 'none';
-            $sttbImg2.style.zIndex = 2147483647;
             $sttbImg2.style.border = '0px';
             $sttbImg2.style.padding = '0px';
             $sttbImg2.style.minWidth = 'auto';
@@ -237,51 +190,31 @@ function STTB() {
             $sttbImg2.style.maxHeight = 'none';
 
             if (location == "TR") {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg2.style.top = adjusted;
-                $sttbImg2.style.right = '20px';
                 $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "TL") {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg2.style.top = adjusted;
-                $sttbImg2.style.left = '20px';
                 $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "BR") {
-                $sttbImg2.style.bottom = '20px';
-                $sttbImg2.style.right = '20px';
                 $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "BL") {
-                $sttbImg2.style.bottom = '20px';
-                $sttbImg2.style.left = '20px';
                 $sttbImg2.style.margin = '0px 0px 0px 0px';
             }
             else if (location == "CR") {
                 adjust=2 + "px 0px 0px 0px";
-                $sttbImg2.style.right = '20px';
-                $sttbImg2.style.top = '50%';
                 $sttbImg2.style.margin = adjust;
             }
             else if (location == "CL") {
                 adjust=2 + "px 0px 0px 0px";
-                $sttbImg2.style.left = '20px';
-                $sttbImg2.style.top = '50%';
                 $sttbImg2.style.margin = adjust;
             }
             else if (location == "TC") {
                 adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg2.style.top = '20px';
-                $sttbImg2.style.right = '50%';
                 $sttbImg2.style.margin = adjust;
             }
             else if (location == "BC") {
                 adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg2.style.bottom = '20px';
-                $sttbImg2.style.right = '50%';
                 $sttbImg2.style.margin = adjust;
             }
         }
@@ -295,7 +228,7 @@ function STTB() {
         if (stbb != "keys"){
             var head = document.getElementsByTagName('head')[0],
             style = document.createElement('style'),
-            rules = document.createTextNode('@media print{#STTBimg{ display:none; }#STTBimg2{ display:none; }}');
+            rules = document.createTextNode('@media print{scroll-to-top-button-container{ display:none; }}');
 
             style.type = 'text/css';
             style.appendChild(rules);
@@ -304,31 +237,31 @@ function STTB() {
 
         // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
         if ((transparency == 0.0) && (stbb=="dual")){
-            $("#STTBimg").hover(function(){
+            $( '#scroll-to-top-button-1' ).hover(function(){
                 if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").stop();
-                    $("#STTBimg2").stop();
-                    $("#STTBimg").stop().fadeTo("fast", 1.0);
-                    $("#STTBimg2").stop().fadeTo("fast", 0.5);
+                    $( '#scroll-to-top-button-1' ).stop();
+                    $( '#scroll-to-top-button-2' ).stop();
+                    $( '#scroll-to-top-button-1' ).stop().fadeTo("fast", 1.0);
+                    $( '#scroll-to-top-button-2' ).stop().fadeTo("fast", 0.5);
                 }
             },function(){
                 if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").stop().fadeTo("medium", transparency);
-                    $("#STTBimg2").stop().fadeTo("medium", transparency);
+                    $( '#scroll-to-top-button-1' ).stop().fadeTo("medium", transparency);
+                    $( '#scroll-to-top-button-2' ).stop().fadeTo("medium", transparency);
                 }
             });
 
-            $("#STTBimg2").hover(function(){
+            $( '#scroll-to-top-button-2' ).hover(function(){
                 if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").stop();
-                    $("#STTBimg2").stop();
-                    $("#STTBimg").stop().fadeTo("fast", 0.5);
-                    $("#STTBimg2").stop().fadeTo("fast", 1.0);
+                    $( '#scroll-to-top-button-1' ).stop();
+                    $( '#scroll-to-top-button-2' ).stop();
+                    $( '#scroll-to-top-button-1' ).stop().fadeTo("fast", 0.5);
+                    $( '#scroll-to-top-button-2' ).stop().fadeTo("fast", 1.0);
                 }
             },function(){
                 if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").fadeTo("medium", transparency);
-                    $("#STTBimg2").fadeTo("medium", transparency);
+                    $( '#scroll-to-top-button-1' ).fadeTo("medium", transparency);
+                    $( '#scroll-to-top-button-2' ).fadeTo("medium", transparency);
                 }
             });
         }
@@ -336,23 +269,23 @@ function STTB() {
         // Has transparency change on mouseover
         else{
             if (transparency != 1.0) {
-                $("#STTBimg").hover(function(){
+                $( '#scroll-to-top-button-1' ).hover(function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg").stop().fadeTo("fast", 1.0);
+                        $( '#scroll-to-top-button-1' ).stop().fadeTo("fast", 1.0);
                     }
                 },function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg").stop().fadeTo("medium", transparency);
+                        $( '#scroll-to-top-button-1' ).stop().fadeTo("medium", transparency);
                     }
                 });
 
-                $("#STTBimg2").hover(function(){
+                $( '#scroll-to-top-button-2' ).hover(function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg2").stop().fadeTo("fast", 1.0);
+                        $( '#scroll-to-top-button-2' ).stop().fadeTo("fast", 1.0);
                     }
                 },function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg2").stop().fadeTo("medium", transparency);
+                        $( '#scroll-to-top-button-2' ).stop().fadeTo("medium", transparency);
                     }
                 });
             }
@@ -360,7 +293,7 @@ function STTB() {
 
 
         // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-        $( "#STTBimg" ).scrollToTop( {
+        $( '#scroll-to-top-button-1' ).scrollToTop( {
                 speed : scrollUpSpeed
             ,   ease : scroll
             ,   start : distance
@@ -370,7 +303,7 @@ function STTB() {
             ,   direction : 'up'
         } );
 
-        $( "#STTBimg2" ).scrollToTop( {
+        $( "#scroll-to-top-button-2" ).scrollToTop( {
                 speed : scrollDownSpeed
             ,   ease : scroll
             ,   start : distance
@@ -429,6 +362,149 @@ function STTB() {
                 }
             }
         }
+    }
+
+    /**
+     * Create button(s) with the specified settings (user preferences) and add it to the page.
+     *
+     * @param {Object} settings - Key-value pairs.
+     */
+
+    function createButtons( settings ) {
+      const buttonMode = settings.buttonMode;
+
+      if ( buttonMode === MODE_KEYBOARD_ONLY || ! isExpectedSettingsFormat( settings ) ) {
+        return;
+      }
+
+      const container = createContainer( settings.buttonLocation );
+
+      container.append( createButton( settings ) );
+
+      if ( buttonMode === MODE_DUAL_ARROWS ) {
+        container.append( createButton( settings ) );
+      }
+
+      container.append( createDisabledJavascriptBandage() );
+
+      document.body.insertAdjacentElement( 'afterend', container );
+    }
+
+    /**
+     * For easier styling, wrap the button(s) with a container.
+     *
+     * @param {string} buttonLocation - Position of the button on the page.
+     * @return {HTMLElement}
+     */
+
+    function createContainer( buttonLocation ) {
+      const container = document.createElement( CONTAINER_TAG_NAME );
+      const position = getPosition( buttonLocation );
+
+      container.setAttribute( 'data-position-vertical', position.vertical );
+      container.setAttribute( 'data-position-horizontal', position.horizontal );
+
+      return container;
+    }
+
+    /**
+     * Create a button with the specified settings (user preferences).
+     *
+     * @param {Object} settings - Key-value pairs.
+     * @return {HTMLElement}
+     */
+
+    function createButton( settings ) {
+      const button = document.createElement( BUTTON_TAG_NAME );
+
+      buttonsCount++;
+      button.id = BUTTON_ID.replace( BUTTON_NUMBER_PLACEHOLDER, buttonsCount );
+      button.setAttribute( 'data-mode', settings.buttonMode );
+      button.setAttribute( 'data-design', settings.buttonDesign );
+      button.setAttribute( 'data-size', settings.buttonSize );
+      button.setAttribute( 'data-width', settings.buttonWidthCustom );
+      button.setAttribute( 'data-height', settings.buttonHeightCustom );
+      button.setAttribute( 'aria-label', BUTTON_LABEL );
+
+      return button;
+    }
+
+    /**
+     * When JavaScript is disabled, the extensions still work.
+     * One user requested to make the button not show up in such case.
+     *
+     * @return {HTMLElement}
+     */
+
+    function createDisabledJavascriptBandage() {
+      const noscript = document.createElement( 'NOSCRIPT' );
+      const style = document.createElement( 'STYLE' );
+
+      style.innerHTML = CONTAINER_TAG_NAME.toLowerCase() + ' { display: none !important; }';
+      noscript.innerHTML = style.outerHTML; // .append makes CSS always apply
+
+      return noscript;
+    }
+
+    /**
+     * “Decipher” the two-letter button position abbreviation.
+     *
+     * @param {string} buttonLocation - Position of the button on the page.
+     * @return {{horizontal: string, vertical: string}}
+     */
+
+    function getPosition( buttonLocation ) {
+      return {
+        vertical: getPositionVertical( buttonLocation[ 0 ] ),
+        horizontal: getPositionHorizontal( buttonLocation[ 1 ] ),
+      };
+    }
+
+    /**
+     * “Decipher” the button vertical position from the two-letter button position abbreviation.
+     *
+     * @param {string} positionIndicator - The first letter of the two-letter button position abbreviation.
+     * @return {string}
+     */
+
+    function getPositionVertical( positionIndicator ) {
+      switch ( positionIndicator ) {
+        case 'T':
+          return 'top';
+        case 'B':
+          return 'bottom';
+        default:
+          return 'center';
+      }
+    }
+
+    /**
+     * “Decipher” the button horizontal position from the two-letter button position abbreviation.
+     *
+     * @param {string} positionIndicator - The second letter of the two-letter button position abbreviation.
+     * @return {string}
+     */
+
+    function getPositionHorizontal( positionIndicator ) {
+      switch ( positionIndicator ) {
+        case 'L':
+          return 'left';
+        case 'C':
+          return 'center';
+        default:
+          return 'right';
+      }
+    }
+
+    /**
+     * Check whether the settings are presented as key-value pairs.
+     *
+     * @param {Object} settings - Key-value pairs.
+     * @return {boolean}
+     */
+
+    function isExpectedSettingsFormat( settings ) {
+      return poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings );
     }
 
     /**

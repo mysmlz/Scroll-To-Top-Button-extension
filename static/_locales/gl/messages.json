@@ -133,9 +133,17 @@
       },
       "width": {
         "content": "$2",
-        "example" : "40"
+        "example": "40"
       }
     }
+  },
+  "buttonWidthCustom": {
+    "message": "Largura do botón en píxeles",
+    "description": "Lets user specify button width value in pixels instead of selecting a pre-set size."
+  },
+  "buttonHeightCustom": {
+    "message": "Altura do botón en píxeles",
+    "description": "Lets user specify button height value in pixels instead of selecting a pre-set size."
   },
   "buttonDesign": {
     "message": "Deseño do botón"

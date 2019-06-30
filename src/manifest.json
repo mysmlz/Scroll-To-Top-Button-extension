@@ -58,7 +58,8 @@
       ],
       "all_frames": true,
       "css": [
-        "content-script/css/content-script.css"
+        "content-script/css/content-script.css",
+        "shared/custom-elements/custom-elements.css"
       ],
       "js": [
         "global/js/browser-polyfill.js",
@@ -78,7 +79,6 @@
         "global/js/Array.from.polyfill.js",
         "global/js/i18n.js",
         "global/js/punycode.min.js",
-        "global/js/webcomponents-sd-ce.js",
         "shared/custom-elements/custom-elements.js",
         "content-script/js/content-script.js",
         "content_script.js",
@@ -88,7 +88,8 @@
   ],
 
   "web_accessible_resources": [
-    "arrows/*.png",
+    "shared/buttons/buttons.css",
+    "shared/buttons/*.svg",
     "shared/custom-elements/custom-elements.css",
     "*.json"
   ]

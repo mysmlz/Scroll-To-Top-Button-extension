@@ -27,7 +27,32 @@ const defaultConfig = Map( {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-private-methods',
+            ],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require( 'precss' )(),
+              ],
+            },
+          },
+        ],
       },
     ],
   },
@@ -43,6 +68,10 @@ const defaultConfig = Map( {
         {
           from: './static',
           to: './',
+        },
+        {
+          from: './src/shared/buttons',
+          to: './shared/buttons',
         },
       ]
     ),

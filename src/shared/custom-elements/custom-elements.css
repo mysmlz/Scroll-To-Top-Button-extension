@@ -1,9 +1,10 @@
 $buttonMargin: 20px;
 
-/* --- */
+/* Container */
 
 scroll-to-top-button-container {
   display: flex;
+  z-index: 2147483647;
   flex-direction: column;
   flex-wrap: nowrap;
   position: fixed;
@@ -13,6 +14,10 @@ scroll-to-top-button-container {
   left: 0;
   pointer-events: none;
 }
+
+/**
+ * @todo Use logical properties and flow-relative values. https://github.com/csstools/postcss-logical
+ */
 
 scroll-to-top-button-container[data-position-vertical="top"] {
   justify-content: flex-start;
@@ -42,7 +47,18 @@ scroll-to-top-button-container[data-position-horizontal="right"] {
   margin-right: $buttonMargin;
 }
 
+/* Button */
+
 scroll-to-top-button {
   display: inline-flex;
   pointer-events: all;
+  cursor: pointer;
+}
+
+/**
+ * @todo Add accessibility setting in Options that doesn't disable outline.
+ */
+
+scroll-to-top-button:focus {
+  outline: none;
 }

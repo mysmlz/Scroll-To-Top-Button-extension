@@ -1,3 +1,5 @@
+import '@webcomponents/custom-elements';
+
 import { ScrollToTopButtonContainer } from './scroll-to-top-button-container';
 import { ScrollToTopButton } from './scroll-to-top-button';
 

@@ -137,6 +137,14 @@
       }
     }
   },
+  "buttonWidthCustom": {
+    "message": "按钮宽度（单位：像素）",
+    "description": "Lets user specify button width value in pixels instead of selecting a pre-set size."
+  },
+  "buttonHeightCustom": {
+    "message": "按钮高度（单位：像素）",
+    "description": "Lets user specify button height value in pixels instead of selecting a pre-set size."
+  },
   "buttonDesign": {
     "message": "按钮样式"
   },
