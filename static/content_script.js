@@ -123,37 +123,9 @@ function STTB() {
         var $sttbImg = document.getElementById( 'scroll-to-top-button-1' );
 
         if ( document.contains( $sttbImg ) ) {
-            // TODO: Move moveable properties to .css
             $sttbImg.style.opacity = transparency;
-            $sttbImg.style.width = size;
-            $sttbImg.style.height = 'auto';
-            $sttbImg.style.display = 'none';
-            $sttbImg.style.border = '0px';
-            $sttbImg.style.padding = '0px';
-            $sttbImg.style.minWidth = 'auto';
-            $sttbImg.style.minHeight = 'auto';
-            $sttbImg.style.maxWidth = 'none';
-            $sttbImg.style.maxHeight = 'none';
 
-            if (location == "TR") {
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "TL") {
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BR") && (stbb != "dual")) {
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BR") && (stbb == "dual")) {
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BL") && (stbb != "dual")) {
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BL") && (stbb == "dual")) {
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "CR") {
+            if (location == "CR") {
                 adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
                 $sttbImg.style.margin = adjust;
             }
@@ -179,29 +151,8 @@ function STTB() {
             $( '#scroll-to-top-button-2' ).rotate(-180);
             var $sttbImg2 = document.getElementById( 'scroll-to-top-button-2' );
             $sttbImg2.style.opacity = transparency;
-            $sttbImg2.style.width = size;
-            $sttbImg2.style.height = 'auto';
-            $sttbImg2.style.display = 'none';
-            $sttbImg2.style.border = '0px';
-            $sttbImg2.style.padding = '0px';
-            $sttbImg2.style.minWidth = 'auto';
-            $sttbImg2.style.minHeight = 'auto';
-            $sttbImg2.style.maxWidth = 'none';
-            $sttbImg2.style.maxHeight = 'none';
 
-            if (location == "TR") {
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "TL") {
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "BR") {
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "BL") {
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "CR") {
+            if (location == "CR") {
                 adjust=2 + "px 0px 0px 0px";
                 $sttbImg2.style.margin = adjust;
             }
