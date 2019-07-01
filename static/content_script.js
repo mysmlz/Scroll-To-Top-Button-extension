@@ -180,17 +180,6 @@ function STTB() {
                 distance=0;
             }
 
-            // Creates CSS so that the button is not present on printed pages
-            if (stbb != "keys"){
-                var head = document.getElementsByTagName('head')[0],
-                style = document.createElement('style'),
-                rules = document.createTextNode('@media print{scroll-to-top-button-container{ display:none; }}');
-
-                style.type = 'text/css';
-                style.appendChild(rules);
-                head.appendChild(style);
-            }
-
             // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
             if ((transparency == 0.0) && (stbb=="dual")){
                 $button.hover(function(){

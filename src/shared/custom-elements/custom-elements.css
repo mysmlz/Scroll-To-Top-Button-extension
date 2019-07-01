@@ -62,3 +62,12 @@ scroll-to-top-button {
 scroll-to-top-button:focus {
   outline: none;
 }
+
+/* Hide from print view */
+
+@media print {
+
+  scroll-to-top-button-container {
+    display: none;
+  }
+}
