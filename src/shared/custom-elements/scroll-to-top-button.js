@@ -100,8 +100,17 @@ export class ScrollToTopButton extends HTMLElement {
     this.#addListeners();
     this.#getButtonPreferences();
     this.#setButtonImagePath();
-    this.#loadButtonImage();
-    this.#loadButtonCss();
+
+    // Avoid race condition where arrow-only button “flashes” because CSS gets loaded after image had been appended
+    const promiseImage = this.#getButtonImage()
+      .then( this.#configureButtonImage );
+    const promiseCss = new Promise( this.#loadButtonCss );
+
+    Promise.all( [
+      promiseImage,
+      promiseCss,
+    ] )
+      .then( this.#setButtonImage );
   }
 
   /**
@@ -175,54 +184,52 @@ export class ScrollToTopButton extends HTMLElement {
   }
 
   /**
-   * Request the button image file.
+   * Request the button image file contents (markup of the SVG file).
+   *
+   * @return {Promise<string>}
    */
 
-  #loadButtonImage() {
-    const xmlHttpRequest = new XMLHttpRequest();
-
-    xmlHttpRequest.open( 'GET', getUrl( this.#imagePath ) );
-    xmlHttpRequest.addEventListener( 'load', this.#setButtonImage.bind( this ) );
-    xmlHttpRequest.send();
+  #getButtonImage() {
+    return fetch( getUrl( this.#imagePath ) )
+      .then( response => response.text() );
   }
 
   /**
    * Request the button-related CSS file.
    */
 
-  #loadButtonCss() {
+  #loadButtonCss = ( resolve ) => {
     const link = document.createElement( 'LINK' );
 
     link.rel = 'stylesheet';
     link.href = getUrl( this.#CSS_PATH );
+    link.addEventListener( 'load', resolve );
 
     this.#shadow.append( link );
-  }
+  };
 
   /**
-   * Customize the button image per user preferences (settings) and attach it to the button element.
+   * Customize the button image per user preferences (settings).
    *
-   * @param {ProgressEvent} event
+   * @param {string} imageMarkup
    */
 
-  #setButtonImage( event ) {
-    this.#prepareButtonImage( event );
+  #configureButtonImage = ( imageMarkup ) => {
+    this.#prepareButtonImage( imageMarkup );
     this.#checkSizePreference();
     this.#normalizeDimensions();
     this.#setDimensions();
     this.#setColors();
-
-    this.#shadow.append( this.#image );
-  }
+  };
 
   /**
    * Convert the markup of the loaded button image into a DocumentFragment, so it's easy to modify its properties (size, color, etc.).
    *
-   * @param {ProgressEvent} event
+   * @param {string} imageMarkup
    */
 
-  #prepareButtonImage( event ) {
-    const imageFragment = getDocumentFragment( event.target.responseText );
+  #prepareButtonImage( imageMarkup ) {
+    const imageFragment = getDocumentFragment( imageMarkup );
 
     this.#image = imageFragment.firstChild;
   }
@@ -310,6 +317,14 @@ export class ScrollToTopButton extends HTMLElement {
 
     this.#image.getElementById( targetId ).style.fill = this.#COLORS[ color ];
   }
+
+  /**
+   * Add the image to the button element.
+   */
+
+  #setButtonImage = () => {
+    this.#shadow.append( this.#image );
+  };
 
   /**
    * 1) The addition of the tabindex attribute makes an element interactive content, thus making it focusable.
