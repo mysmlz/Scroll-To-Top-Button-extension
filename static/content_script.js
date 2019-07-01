@@ -35,6 +35,11 @@ function STTB() {
     const BUTTON_ID = 'scroll-to-top-button-' + BUTTON_NUMBER_PLACEHOLDER;
     const BUTTON_LABEL = 'Scroll To Top Button';
 
+    let container = null;
+    let button = null;
+    let button2 = null;
+    let $button = null;
+    let $button2 = null;
     let buttonsCount = 0;
 
     // Removes the built-in button when on Tumblr
@@ -114,155 +119,157 @@ function STTB() {
           scrollDownSpeed = scrollDownSpeedCustom;
         }
 
-        createButtons( settings );
+        if ( ! isKeyboardOnlyMode( stbb ) ) {
+            createElements( settings );
 
-        if ( stbb === 'flip' ) {
-            $( '#scroll-to-top-button-1' ).rotate( -180 );
-        }
-
-        var $sttbImg = document.getElementById( 'scroll-to-top-button-1' );
-
-        if ( document.contains( $sttbImg ) ) {
-            $sttbImg.style.opacity = transparency;
-
-            if (location == "CR") {
-                adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                $sttbImg.style.margin = adjust;
+            if ( stbb === 'flip' ) {
+              $button.rotate( -180 );
             }
-            else if (location == "CL") {
-                adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                $sttbImg.style.margin = adjust;
-            }
-            else if (location == "TC") {
-                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg.style.margin = adjust;
-            }
-            else if ((location == "BC") && (stbb != "dual")) {
-                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg.style.margin = adjust;
-            }
-            else if ((location == "BC") && (stbb == "dual")) {
-                adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
-                $sttbImg.style.margin = adjust;
-            }
-        }
 
-        if(stbb=="dual"){
-            $( '#scroll-to-top-button-2' ).rotate(-180);
-            var $sttbImg2 = document.getElementById( 'scroll-to-top-button-2' );
-            $sttbImg2.style.opacity = transparency;
+            if ( document.contains( button ) ) {
+                button.style.opacity = transparency;
 
-            if (location == "CR") {
-                adjust=2 + "px 0px 0px 0px";
-                $sttbImg2.style.margin = adjust;
-            }
-            else if (location == "CL") {
-                adjust=2 + "px 0px 0px 0px";
-                $sttbImg2.style.margin = adjust;
-            }
-            else if (location == "TC") {
-                adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg2.style.margin = adjust;
-            }
-            else if (location == "BC") {
-                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg2.style.margin = adjust;
-            }
-        }
-
-        // Sets the appear distance to 0 for modes where button is always present
-        if((stbb=="flip") || (stbb=="dual")){
-            distance=0;
-        }
-
-        // Creates CSS so that the button is not present on printed pages
-        if (stbb != "keys"){
-            var head = document.getElementsByTagName('head')[0],
-            style = document.createElement('style'),
-            rules = document.createTextNode('@media print{scroll-to-top-button-container{ display:none; }}');
-
-            style.type = 'text/css';
-            style.appendChild(rules);
-            head.appendChild(style);
-        }
-
-        // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
-        if ((transparency == 0.0) && (stbb=="dual")){
-            $( '#scroll-to-top-button-1' ).hover(function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $( '#scroll-to-top-button-1' ).stop();
-                    $( '#scroll-to-top-button-2' ).stop();
-                    $( '#scroll-to-top-button-1' ).stop().fadeTo("fast", 1.0);
-                    $( '#scroll-to-top-button-2' ).stop().fadeTo("fast", 0.5);
+                if (location == "CR") {
+                    adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
+                    button.style.margin = adjust;
                 }
-            },function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $( '#scroll-to-top-button-1' ).stop().fadeTo("medium", transparency);
-                    $( '#scroll-to-top-button-2' ).stop().fadeTo("medium", transparency);
+                else if (location == "CL") {
+                    adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
+                    button.style.margin = adjust;
                 }
-            });
+                else if (location == "TC") {
+                    adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
+                    button.style.margin = adjust;
+                }
+                else if ((location == "BC") && (stbb != "dual")) {
+                    adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
+                    button.style.margin = adjust;
+                }
+                else if ((location == "BC") && (stbb == "dual")) {
+                    adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
+                    button.style.margin = adjust;
+                }
+            }
 
-            $( '#scroll-to-top-button-2' ).hover(function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $( '#scroll-to-top-button-1' ).stop();
-                    $( '#scroll-to-top-button-2' ).stop();
-                    $( '#scroll-to-top-button-1' ).stop().fadeTo("fast", 0.5);
-                    $( '#scroll-to-top-button-2' ).stop().fadeTo("fast", 1.0);
-                }
-            },function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $( '#scroll-to-top-button-1' ).fadeTo("medium", transparency);
-                    $( '#scroll-to-top-button-2' ).fadeTo("medium", transparency);
-                }
-            });
-        }
+            if(stbb=="dual"){
+                $button2.rotate(-180);
+                button2.style.opacity = transparency;
 
-        // Has transparency change on mouseover
-        else{
-            if (transparency != 1.0) {
-                $( '#scroll-to-top-button-1' ).hover(function(){
+                if (location == "CR") {
+                    adjust=2 + "px 0px 0px 0px";
+                    button2.style.margin = adjust;
+                }
+                else if (location == "CL") {
+                    adjust=2 + "px 0px 0px 0px";
+                    button2.style.margin = adjust;
+                }
+                else if (location == "TC") {
+                    adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
+                    button2.style.margin = adjust;
+                }
+                else if (location == "BC") {
+                    adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
+                    button2.style.margin = adjust;
+                }
+            }
+
+            // Sets the appear distance to 0 for modes where button is always present
+            if((stbb=="flip") || (stbb=="dual")){
+                distance=0;
+            }
+
+            // Creates CSS so that the button is not present on printed pages
+            if (stbb != "keys"){
+                var head = document.getElementsByTagName('head')[0],
+                style = document.createElement('style'),
+                rules = document.createTextNode('@media print{scroll-to-top-button-container{ display:none; }}');
+
+                style.type = 'text/css';
+                style.appendChild(rules);
+                head.appendChild(style);
+            }
+
+            // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
+            if ((transparency == 0.0) && (stbb=="dual")){
+                $button.hover(function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $( '#scroll-to-top-button-1' ).stop().fadeTo("fast", 1.0);
+                        $button.stop();
+                        $button2.stop();
+                        $button.stop().fadeTo("fast", 1.0);
+                        $button2.stop().fadeTo("fast", 0.5);
                     }
                 },function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $( '#scroll-to-top-button-1' ).stop().fadeTo("medium", transparency);
+                        $button.stop().fadeTo("medium", transparency);
+                        $button2.stop().fadeTo("medium", transparency);
                     }
                 });
 
-                $( '#scroll-to-top-button-2' ).hover(function(){
+                $button2.hover(function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $( '#scroll-to-top-button-2' ).stop().fadeTo("fast", 1.0);
+                        $button.stop();
+                        $button2.stop();
+                        $button.stop().fadeTo("fast", 0.5);
+                        $button2.stop().fadeTo("fast", 1.0);
                     }
                 },function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $( '#scroll-to-top-button-2' ).stop().fadeTo("medium", transparency);
+                        $button.fadeTo("medium", transparency);
+                        $button2.fadeTo("medium", transparency);
                     }
                 });
             }
+
+            // Has transparency change on mouseover
+            else{
+                if (transparency != 1.0) {
+                    $button.hover(function(){
+                        if ( sttb.getScrollTop() >= distance ) {
+                            $button.stop().fadeTo("fast", 1.0);
+                        }
+                    },function(){
+                        if ( sttb.getScrollTop() >= distance ) {
+                            $button.stop().fadeTo("medium", transparency);
+                        }
+                    });
+
+                    if ( isDualArrowsMode( stbb ) ) {
+                        $button2.hover(function(){
+                            if ( sttb.getScrollTop() >= distance ) {
+                                $button2.stop().fadeTo("fast", 1.0);
+                            }
+                        },function(){
+                            if ( sttb.getScrollTop() >= distance ) {
+                                $button2.stop().fadeTo("medium", transparency);
+                            }
+                        });
+                    }
+                }
+            }
+
+            // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
+            $button.scrollToTop( {
+                    speed : scrollUpSpeed
+                ,   ease : scroll
+                ,   start : distance
+                ,   stbb : stbb
+                ,   flipDistance : flipDistance
+                ,   transparency : transparency
+                ,   direction : 'up'
+            } );
+
+            if ( isDualArrowsMode( stbb ) ) {
+                $button2.scrollToTop( {
+                        speed : scrollDownSpeed
+                    ,   ease : scroll
+                    ,   start : distance
+                    ,   stbb : stbb
+                    ,   flipDistance : flipDistance
+                    ,   transparency : transparency
+                    ,   direction : 'down'
+                } );
+            }
         }
-
-
-        // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-        $( '#scroll-to-top-button-1' ).scrollToTop( {
-                speed : scrollUpSpeed
-            ,   ease : scroll
-            ,   start : distance
-            ,   stbb : stbb
-            ,   flipDistance : flipDistance
-            ,   transparency : transparency
-            ,   direction : 'up'
-        } );
-
-        $( "#scroll-to-top-button-2" ).scrollToTop( {
-                speed : scrollDownSpeed
-            ,   ease : scroll
-            ,   start : distance
-            ,   stbb : stbb
-            ,   flipDistance : flipDistance
-            ,   transparency : transparency
-            ,   direction : 'down'
-        } );
 
         //Adds keyboard commands using shortcut.js
         if (shortcuts == "arrows") {
@@ -295,21 +302,23 @@ function STTB() {
             });
         }
 
-        document.addEventListener( 'webkitfullscreenchange', onFullscreenchange );
-        document.addEventListener( 'mozfullscreenchange', onFullscreenchange );
-        document.addEventListener( 'msfullscreenchange', onFullscreenchange );
-        document.addEventListener( 'fullscreenchange', onFullscreenchange );
+        if ( ! isKeyboardOnlyMode( stbb ) ) {
+            document.addEventListener( 'webkitfullscreenchange', onFullscreenchange );
+            document.addEventListener( 'mozfullscreenchange', onFullscreenchange );
+            document.addEventListener( 'msfullscreenchange', onFullscreenchange );
+            document.addEventListener( 'fullscreenchange', onFullscreenchange );
 
-        var arrButtons = [ $sttbImg, $sttbImg2 ];
+            var arrButtons = [ button, button2 ];
 
-        function onFullscreenchange() {
-            var boolIsFullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+            function onFullscreenchange() {
+                var boolIsFullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
 
-            for ( var i = arrButtons.length; i--; ) {
-                var $button = arrButtons[ i ];
+                for ( var i = arrButtons.length; i--; ) {
+                    var $button = arrButtons[ i ];
 
-                if ( document.contains( $button ) ) {
-                    $button.classList.toggle( 'disabled', boolIsFullscreen );
+                    if ( document.contains( $button ) ) {
+                        $button.classList.toggle( 'disabled', boolIsFullscreen );
+                    }
                 }
             }
         }
@@ -321,19 +330,18 @@ function STTB() {
      * @param {Object} settings - Key-value pairs.
      */
 
-    function createButtons( settings ) {
-      const buttonMode = settings.buttonMode;
+    function createElements( settings ) {
+      container = createContainer( settings.buttonLocation );
+      button = createButton( settings );
+      $button = $( button );
 
-      if ( buttonMode === MODE_KEYBOARD_ONLY || ! isExpectedSettingsFormat( settings ) ) {
-        return;
-      }
+      container.append( button );
 
-      const container = createContainer( settings.buttonLocation );
+      if ( isDualArrowsMode( settings.buttonMode ) ) {
+        button2 = createButton( settings );
+        $button2 = $( button2 );
 
-      container.append( createButton( settings ) );
-
-      if ( buttonMode === MODE_DUAL_ARROWS ) {
-        container.append( createButton( settings ) );
+        container.append( button2 );
       }
 
       container.append( createDisabledJavascriptBandage() );
@@ -445,6 +453,28 @@ function STTB() {
         default:
           return 'right';
       }
+    }
+
+    /**
+     * Check whether user chose to have dual arrows.
+     *
+     * @param {string} buttonMode
+     * @return {boolean}
+     */
+
+    function isDualArrowsMode( buttonMode ) {
+      return buttonMode === MODE_DUAL_ARROWS;
+    }
+
+    /**
+     * Check whether user chose to use keyboard only.
+     *
+     * @param {string} buttonMode
+     * @return {boolean}
+     */
+
+    function isKeyboardOnlyMode( buttonMode ) {
+      return buttonMode === MODE_KEYBOARD_ONLY;
     }
 
     /**
