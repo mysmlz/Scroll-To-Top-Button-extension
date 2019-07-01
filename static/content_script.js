@@ -305,24 +305,10 @@ function STTB() {
         }
 
         if ( ! isKeyboardOnlyMode( stbb ) ) {
-            document.addEventListener( 'webkitfullscreenchange', onFullscreenchange );
-            document.addEventListener( 'mozfullscreenchange', onFullscreenchange );
-            document.addEventListener( 'msfullscreenchange', onFullscreenchange );
-            document.addEventListener( 'fullscreenchange', onFullscreenchange );
-
-            var arrButtons = [ button, button2 ];
-
-            function onFullscreenchange() {
-                var boolIsFullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
-
-                for ( var i = arrButtons.length; i--; ) {
-                    var $button = arrButtons[ i ];
-
-                    if ( document.contains( $button ) ) {
-                        $button.classList.toggle( 'disabled', boolIsFullscreen );
-                    }
-                }
-            }
+          document.addEventListener( 'webkitfullscreenchange', handleFullscreenchangeEvent );
+          document.addEventListener( 'mozfullscreenchange', handleFullscreenchangeEvent );
+          document.addEventListener( 'msfullscreenchange', handleFullscreenchangeEvent );
+          document.addEventListener( 'fullscreenchange', handleFullscreenchangeEvent );
         }
     }
 
@@ -500,5 +486,17 @@ function STTB() {
 
     function shouldUseCustom( value, customValue ) {
       return value === -1 && customValue > -1;
+    }
+
+    /**
+     * Hide the button(s) when fullscreen is activated (most likely, a video player).
+     */
+
+    function handleFullscreenchangeEvent() {
+      if ( document.contains( container ) ) {
+        const fullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+
+        container.hidden = fullscreen;
+      }
     }
 }
