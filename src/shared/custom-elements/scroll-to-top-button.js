@@ -79,7 +79,7 @@ export class ScrollToTopButton extends HTMLElement {
    */
 
   #CUSTOM_SIZE_INDICATOR = '-1'; // All values come as strings
-  #SIZE_VALUE_DIVIDER = '|';
+  #SUGGESTED_SIZE_REGEXP = '\\d{2}px'; // '35px', '50px', etc.
 
   #DEFAULT_WIDTH = 50;
   #MIN_WIDTH = 1;
@@ -242,11 +242,11 @@ export class ScrollToTopButton extends HTMLElement {
     const size = this.#size;
 
     // User picked one of the suggested sizes
-    if ( size !== this.#CUSTOM_SIZE_INDICATOR && /[\d]{2}\|[\d]{2}/u.test( size ) ) {
-      const [ width, height ] = size.split( this.#SIZE_VALUE_DIVIDER );
+    if ( size !== this.#CUSTOM_SIZE_INDICATOR && RegExp( this.#SUGGESTED_SIZE_REGEXP, 'u' ).test( size ) ) {
+      const sizeInPixels = parseInt( size );
 
-      this.#width = width;
-      this.#height = height;
+      this.#width = sizeInPixels;
+      this.#height = sizeInPixels;
     }
   }
 
