@@ -103,7 +103,6 @@ function STTB() {
         var distance = parseInt(settings.distanceLength);
         var flipDistance = parseInt(settings.distanceLength);
         var size = settings.buttonSize;
-        var arrow = settings.buttonDesign;
         var scroll = settings.scroll;
         var location = settings.buttonLocation;
         var stbb = settings.buttonMode;
