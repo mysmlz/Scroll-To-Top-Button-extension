@@ -83,6 +83,9 @@ function STTB() {
       if ( isExpectedSettingsFormat( settings ) ) {
         init( settings );
       }
+      else {
+        throw new TypeError();
+      }
     }
 
     /**
