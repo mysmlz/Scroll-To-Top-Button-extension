@@ -48,7 +48,9 @@ Languages
 - Dutch (Netherlands)
 - English (United States)
 - Galician
+- Polish
 - Russian
+- Turkish
 
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
