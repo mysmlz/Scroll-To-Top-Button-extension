@@ -105,9 +105,7 @@ function STTB() {
 
         var distance = parseInt(settings.distanceLength);
         var flipDistance = parseInt(settings.distanceLength);
-        var size = settings.buttonSize;
         var scroll = settings.scroll;
-        var location = settings.buttonLocation;
         var stbb = settings.buttonMode;
         var transparency = settings.notActiveButtonOpacity;
         var shortcuts = settings.keyboardShortcuts;
