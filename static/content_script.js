@@ -135,23 +135,6 @@ function STTB() {
             if(stbb=="dual"){
                 $button2.rotate(-180);
                 button2.style.opacity = transparency;
-
-                if (location == "CR") {
-                    adjust=2 + "px 0px 0px 0px";
-                    button2.style.margin = adjust;
-                }
-                else if (location == "CL") {
-                    adjust=2 + "px 0px 0px 0px";
-                    button2.style.margin = adjust;
-                }
-                else if (location == "TC") {
-                    adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
-                    button2.style.margin = adjust;
-                }
-                else if (location == "BC") {
-                    adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                    button2.style.margin = adjust;
-                }
             }
 
             // Sets the appear distance to 0 for modes where button is always present
