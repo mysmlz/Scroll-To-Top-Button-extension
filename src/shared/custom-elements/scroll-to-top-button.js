@@ -31,6 +31,7 @@ export class ScrollToTopButton extends HTMLElement {
   #size;
   #width;
   #height;
+  #opacity;
 
   /**
    * Button image constants.
@@ -156,6 +157,7 @@ export class ScrollToTopButton extends HTMLElement {
       size,
       width,
       height,
+      opacity,
     } = this.dataset;
 
     this.#mode = mode;
@@ -163,6 +165,7 @@ export class ScrollToTopButton extends HTMLElement {
     this.#size = size;
     this.#width = width;
     this.#height = height;
+    this.#opacity = opacity;
   }
 
   /**
@@ -318,6 +321,7 @@ export class ScrollToTopButton extends HTMLElement {
     }
 
     this.#image.getElementById( targetId ).style.fill = this.#COLORS[ color ];
+    this.style.opacity = this.#opacity;
   }
 
   /**

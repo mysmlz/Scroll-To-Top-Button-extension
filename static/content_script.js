@@ -126,13 +126,8 @@ function STTB() {
               $button.rotate( -180 );
             }
 
-            if ( document.contains( button ) ) {
-                button.style.opacity = transparency;
-            }
-
             if(stbb=="dual"){
                 $button2.rotate(-180);
-                button2.style.opacity = transparency;
             }
 
             // Sets the appear distance to 0 for modes where button is always present
@@ -320,6 +315,7 @@ function STTB() {
       button.setAttribute( 'data-size', settings.buttonSize );
       button.setAttribute( 'data-width', settings.buttonWidthCustom );
       button.setAttribute( 'data-height', settings.buttonHeightCustom );
+      button.setAttribute( 'data-opacity', settings.notActiveButtonOpacity );
       button.setAttribute( 'aria-label', BUTTON_LABEL );
 
       return button;
