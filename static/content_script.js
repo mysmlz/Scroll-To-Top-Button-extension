@@ -130,27 +130,6 @@ function STTB() {
 
             if ( document.contains( button ) ) {
                 button.style.opacity = transparency;
-
-                if (location == "CR") {
-                    adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                    button.style.margin = adjust;
-                }
-                else if (location == "CL") {
-                    adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                    button.style.margin = adjust;
-                }
-                else if (location == "TC") {
-                    adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                    button.style.margin = adjust;
-                }
-                else if ((location == "BC") && (stbb != "dual")) {
-                    adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                    button.style.margin = adjust;
-                }
-                else if ((location == "BC") && (stbb == "dual")) {
-                    adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
-                    button.style.margin = adjust;
-                }
             }
 
             if(stbb=="dual"){
