@@ -24,6 +24,7 @@
     "scripts": [
       "global/js/browser-polyfill.js",
       "global/js/bowser.js",
+      "global/js/punycode.min.js",
       "global/js/global.js",
       "global/js/event.js",
       "global/js/utils.js",
@@ -36,8 +37,7 @@
       "global/js/context-menus.js",
       "global/js/background.js",
       "global/js/tabs.js",
-      "global/js/referral-programs.js",
-      "global/js/punycode.min.js"
+      "global/js/referral-programs.js"
     ]
   },
 
@@ -67,6 +67,7 @@
         "content-script/js/sttb.js",
         "jquery.scroll.pack.js",
         "global/js/bowser.js",
+        "global/js/punycode.min.js",
         "global/js/global.js",
         "global/js/utils.js",
         "global/js/const.js",
@@ -75,7 +76,6 @@
         "global/js/i18next/i18nextBrowserLanguageDetector.min.js",
         "global/js/i18next/i18nextXHRBackend.js",
         "global/js/i18n.js",
-        "global/js/punycode.min.js",
         "shared/custom-elements/custom-elements.js",
         "content-script/js/content-script.js",
         "content_script.js",
