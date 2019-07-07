@@ -57,7 +57,6 @@
       ],
       "all_frames": true,
       "css": [
-        "content-script/css/content-script.css",
         "shared/custom-elements/custom-elements.css"
       ],
       "js": [
