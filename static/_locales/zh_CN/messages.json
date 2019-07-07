@@ -1,178 +1,127 @@
 {
-  "browserActionReloadActiveTab": {
-    "message": "刷新页面"
-  },
-  "black": {
-    "message": "黑色"
-  },
-  "browserActionSttbEnabled": {
-    "message": "启用 STTB"
-  },
-  "scrollToTopOnly": {
-    "message": "仅滚动到顶部"
-  },
-  "altTB": {
-    "message": "Alt + T/B"
-  },
-  "contextRightClickMenu": {
-    "message": "右键菜单"
-  },
-  "medium": {
-    "message": "中等"
-  },
-  "buttonSettings": {
-    "message": "按钮设置"
-  },
-  "browserActionSttbDisabledUrl": {
-    "message": "对这个 URL 禁用 STTB"
-  },
-  "officialWebsite": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">主页</a>",
-    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  },
-  "slower": {
-    "message": "较慢"
-  },
-  "faster": {
-    "message": "较快"
-  },
-  "aLot": {
-    "message": "很多"
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Should NOT be translated"
   },
   "extensionDescription": {
-    "message": "添加一个滚动到顶部/底部的按钮。"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
-  },
-  "topCenter": {
-    "message": "顶部中间"
-  },
-  "buttonLocation": {
-    "message": "按钮位置"
-  },
-  "arrowOnly": {
-    "message": "仅箭头"
-  },
-  "incentivizeFurtherDevelopment": {
-    "message": "If you like the project and find our work useful, please consider supporting us via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features."
-  },
-  "otherProjects": {
-    "message": "我们的其他项目："
-  },
-  "off": {
-    "message": "关"
-  },
-  "authorsSettings": {
-    "message": "作者的设置"
-  },
-  "buttonDesign": {
-    "message": "按钮样式"
-  },
-  "otherSettings": {
-    "message": "其他设置"
-  },
-  "tumblerBlue": {
-    "message": "Tumblr 蓝"
+    "message": "添加一个滚动到顶部/底部的按钮。",
+    "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
   },
   "optionsPageTitle": {
-    "message": "设置 | Scroll To Top Button"
+    "message": "设置 | Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
-  "red": {
-    "message": "红色"
-  },
-  "fast": {
-    "message": "快"
-  },
-  "browserActionSttbDisabledDomain": {
-    "message": "对这个域名禁用 STTB"
-  },
-  "blue": {
-    "message": "蓝色"
-  },
-  "flipBetweenTopBottom": {
-    "message": "翻转 顶部 &amp; 按钮"
-  },
-  "bottomLeft": {
-    "message": "底部左边"
-  },
-  "homeEndKeysControlledBy": {
-    "message": "Home &amp; End 键已被控制"
+  "optionsTitle": {
+    "message": "Scroll To Top Button 设置",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "close": {
     "message": "关闭"
   },
-  "scrollDownSpeed": {
-    "message": "向下滚动速度"
+  "browserActionPageTitle": {
+    "message": "活动标签页设置 | Scroll To Top Button"
   },
-  "pixelDesign": {
-    "message": "像素风格"
+  "browserActionTitle": {
+    "message": "活动标签页设置"
   },
-  "referralProgramInfoCta_amazon": {
-    "message": "我想帮忙"
+  "browserActionSttbEnabled": {
+    "message": "启用 STTB"
   },
-  "referralProgramInfoLink_amazon": {
-    "message": "Find out how this works"
+  "browserActionSttbDisabledUrl": {
+    "message": "对这个 URL 禁用 STTB"
   },
-  "altUpDownArrows": {
-    "message": "Alt + Up/Down 箭头"
+  "browserActionSttbDisabledDomain": {
+    "message": "对这个域名禁用 STTB"
   },
-  "centerRight": {
-    "message": "中间右侧"
+  "browserActionReloadActiveTab": {
+    "message": "刷新页面"
   },
-  "appearDistance": {
-    "message": "偏移显示距离"
+  "ratingHelpsOthers": {
+    "message": "如果你喜欢这个插件！请 <a href=\"#\" target=\"_blank\" id=\"rateLink\">给我好评</a><br>你的反馈会帮助更多人发现这个插件！"
   },
-  "topRight": {
-    "message": "顶部右侧"
-  },
-  "colors": {
-    "message": "颜色"
-  },
-  "topLeft": {
-    "message": "顶部左侧"
-  },
-  "barelyAny": {
-    "message": "几乎没有"
-  },
-  "on": {
-    "message": "启用"
-  },
-  "helpTranslate": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">帮我们翻译</a>"
-  },
-  "releaseNotes": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">发行说明</a>"
+  "buttonSettings": {
+    "message": "按钮设置"
   },
   "buttonMode": {
     "message": "按钮模式"
   },
-  "slowest": {
-    "message": "最慢"
+  "scrollToTopOnly": {
+    "message": "仅滚动到顶部"
   },
-  "pink": {
-    "message": "粉色"
+  "flipBetweenTopBottom": {
+    "message": "翻转 顶部 &amp; 按钮",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
+  },
+  "dualArrows": {
+    "message": "双箭头"
   },
   "keyboardOnly": {
     "message": "仅键盘"
   },
-  "restoreDefaults": {
-    "message": "恢复默认"
+  "scrollUpSpeed": {
+    "message": "向上滚动速度"
   },
-  "browserActionPageTitle": {
-    "message": "活动标签页设置 | Scroll To Top Button"
+  "scrollUpSpeedCustom": {
+    "message": "向上滚动速度（单位：毫秒）",
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
-  "operatingSystem": {
-    "message": "操作系统"
+  "scrollDownSpeed": {
+    "message": "向下滚动速度"
   },
-  "grey": {
-    "message": "灰色"
+  "scrollDownSpeedCustom": {
+    "message": "向下滚动速度（单位：毫秒）",
+    "description": "Lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
-  "referralProgramInfoText_amazon": {
-    "message": "You can help us by doing what you already do without spending an extra penny."
+  "slowest": {
+    "message": "最慢"
+  },
+  "slower": {
+    "message": "较慢"
+  },
+  "slow": {
+    "message": "慢"
+  },
+  "fast": {
+    "message": "快"
+  },
+  "faster": {
+    "message": "较快"
+  },
+  "fastest": {
+    "message": "最快（立即）"
+  },
+  "custom": {
+    "message": "让我来指定…",
+    "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
+  },
+  "appearDistance": {
+    "message": "偏移显示距离",
+    "description": "In other words, “distance after which the button appears.”"
+  },
+  "flipDistance": {
+    "message": "翻转距离",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
+  },
+  "barelyAny": {
+    "message": "几乎没有"
+  },
+  "aLittle": {
+    "message": "一点点"
+  },
+  "medium": {
+    "message": "中等"
   },
   "moreThanAverage": {
     "message": "高于平均值"
+  },
+  "aLot": {
+    "message": "很多"
+  },
+  "aTon": {
+    "message": "超多"
+  },
+  "buttonSize": {
+    "message": "按钮尺寸"
   },
   "buttonSizeInPixels": {
     "message": "$LENGTH$x$WIDTH$ 像素",
@@ -184,97 +133,38 @@
       },
       "width": {
         "content": "$2",
-        "example" : "40"
+        "example": "40"
       }
     }
   },
-  "ratingHelpsOthers": {
-    "message": "如果你喜欢这个插件！请 <a href=\"#\" target=\"_blank\" id=\"rateLink\">给我好评</a><br>你的反馈会帮助更多人发现这个插件！"
+  "buttonWidthCustom": {
+    "message": "按钮宽度（单位：像素）",
+    "description": "Lets user specify button width value in pixels instead of selecting a pre-set size."
   },
-  "keyboardShortcuts": {
-    "message": "键盘快捷键"
+  "buttonHeightCustom": {
+    "message": "按钮高度（单位：像素）",
+    "description": "Lets user specify button height value in pixels instead of selecting a pre-set size."
   },
-  "transparent": {
-    "message": "透明"
+  "buttonDesign": {
+    "message": "按钮样式"
   },
-  "keyboardSettings": {
-    "message": "键盘设置"
+  "colors": {
+    "message": "颜色"
   },
-  "dualArrows": {
-    "message": "双箭头"
+  "tumblerBlue": {
+    "message": "Tumblr 蓝"
   },
-  "buttonSize": {
-    "message": "按钮尺寸"
+  "grey": {
+    "message": "灰色"
   },
-  "aLittle": {
-    "message": "一点点"
+  "black": {
+    "message": "黑色"
+  },
+  "red": {
+    "message": "红色"
   },
   "orange": {
     "message": "橙色"
-  },
-  "aTon": {
-    "message": "超多"
-  },
-  "bottomRight": {
-    "message": "底部右边"
-  },
-  "bottomCenter": {
-    "message": "底部中间"
-  },
-  "save": {
-    "message": "保存"
-  },
-  "slow": {
-    "message": "慢"
-  },
-  "centerLeft": {
-    "message": "中间左侧"
-  },
-  "referralProgramInfoNotify": {
-    "message": "Notify me when I can help through this program"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Shop on Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "flipDistance": {
-    "message": "翻转距离"
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
-  },
-  "notActiveButtonOpacity": {
-    "message": "未激活按钮透明度"
-  },
-  "optionsSaved": {
-    "message": "选项已保存。"
-  },
-  "browserActionTitle": {
-    "message": "活动标签页设置"
-  },
-  "opaque": {
-    "message": "不透明"
-  },
-  "invisible": {
-    "message": "隐藏"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Should NOT be translated"
-  },
-  "fastest": {
-    "message": "最快（立即）"
-  },
-  "translatedBy": {
-    "message": "简体中文翻译 <a href=\"https://twitter.com/pluwen\" target=\"_blank\" id=\"translatorLink\">Pluwen</a>",
-    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
-  },
-  "alternateDesigns": {
-    "message": "备用样式"
   },
   "yellow": {
     "message": "黄色"
@@ -282,13 +172,198 @@
   "green": {
     "message": "绿色"
   },
-  "scrollUpSpeed": {
-    "message": "向上滚动速度"
-  },
-  "optionsTitle": {
-    "message": "Scroll To Top Button 设置"
+  "blue": {
+    "message": "蓝色"
   },
   "purple": {
     "message": "紫色"
+  },
+  "pink": {
+    "message": "粉色"
+  },
+  "arrowOnly": {
+    "message": "仅箭头"
+  },
+  "alternateDesigns": {
+    "message": "备用样式"
+  },
+  "pixelDesign": {
+    "message": "像素风格"
+  },
+  "buttonLocation": {
+    "message": "按钮位置"
+  },
+  "topRight": {
+    "message": "顶部右侧"
+  },
+  "topLeft": {
+    "message": "顶部左侧"
+  },
+  "topCenter": {
+    "message": "顶部中间"
+  },
+  "centerRight": {
+    "message": "中间右侧"
+  },
+  "centerLeft": {
+    "message": "中间左侧"
+  },
+  "bottomRight": {
+    "message": "底部右边"
+  },
+  "bottomLeft": {
+    "message": "底部左边"
+  },
+  "bottomCenter": {
+    "message": "底部中间"
+  },
+  "notActiveButtonOpacity": {
+    "message": "未激活按钮透明度",
+    "description": "In other words, “Opacity of inactive button.”"
+  },
+  "invisible": {
+    "message": "隐藏"
+  },
+  "transparent": {
+    "message": "透明"
+  },
+  "opaque": {
+    "message": "不透明"
+  },
+  "keyboardShortcuts": {
+    "message": "键盘快捷键",
+    "description": "Go to https://support.google.com/chrome/answer/157179?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "altUpDownArrows": {
+    "message": "Alt + Up/Down 箭头",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en#pageshortcuts. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "altTB": {
+    "message": "Alt + T/B"
+  },
+  "off": {
+    "message": "关"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Home &amp; End 键已被控制"
+  },
+  "operatingSystem": {
+    "message": "操作系统",
+    "description": "Go to https://support.google.com/chromebook/answer/177889?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "contextRightClickMenu": {
+    "message": "右键菜单",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "on": {
+    "message": "启用"
+  },
+  "keyboardSettings": {
+    "message": "键盘设置"
+  },
+  "otherSettings": {
+    "message": "其他设置"
+  },
+  "restoreDefaults": {
+    "message": "恢复默认"
+  },
+  "authorsSettings": {
+    "message": "作者的设置"
+  },
+  "uiLanguage": {
+    "message": "语言",
+    "description": "Setting on the Options page: language of the user interface."
+  },
+  "language_browserDefault": {
+    "message": "自动（浏览器默认）",
+    "description": "Language option.\n\nIf the extension supports the language that is chosen as default in the browser, use that one. Otherwise, use English (United States)."
+  },
+  "language_browserDefault_tooltip": {
+    "message": "如果扩展程序支持在浏览器中选择为默认语言，请使用该语言。 否则，请使用英语（美国）。",
+    "description": "Explanation of the “Automatic (browser default)” language option that should be shown in a tooltip."
+  },
+  "language_cs": {
+    "message": "捷克语 - čeština",
+    "description": "Language option: cs (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_en_US": {
+    "message": "英语（美国）- English (United States)",
+    "description": "Language option: en-US (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes - https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_gl": {
+    "message": "加利西亚语 - galego",
+    "description": "Language option: gl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_nl": {
+    "message": "荷兰语 - Nederlands",
+    "description": "Language option: nl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_pl": {
+    "message": "波兰语 - polski",
+    "description": "Language option: pl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_ru": {
+    "message": "俄语 - русский",
+    "description": "Language option: ru (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_tr": {
+    "message": "土耳其语 - Türkçe",
+    "description": "Language option: tr (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "language_zh_CN": {
+    "message": "中文（中国）",
+    "description": "Language option: zh_CN (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
+  "save": {
+    "message": "保存"
+  },
+  "optionsSaved": {
+    "message": "选项已保存。"
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">帮我们翻译</a>"
+  },
+  "translatedBy": {
+    "message": "简体中文翻译 <a href=\"https://twitter.com/pluwen\" target=\"_blank\" id=\"translatorLink\">Pluwen</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "incentivizeFurtherDevelopment": {
+    "message": "如果你喜欢该项目并发现我们的工作有用，请考虑通过以下方式支持我们： <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>、<a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>、<a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – 你的慷慨捐助有助于支付我们修复问题，以及实现新功能所需的托管、工具和时间。"
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">发行说明</a>"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">主页</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
+  },
+  "otherProjects": {
+    "message": "我们的其他项目："
+  },
+  "referralProgramInfoShortTitle_amazon": {
+    "message": "购物？",
+    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoTitle_amazon": {
+    "message": "有在亚马逊购物吗？",
+    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
+  },
+  "referralProgramInfoText_amazon": {
+    "message": "你可以通过做你已经做过的事情来帮助我们，无需花费额外的一分钱。"
+  },
+  "referralProgramInfoText2_amazon": {
+    "message": "只需点击下面的按钮，然后将产品放入购物车即可！*"
+  },
+  "referralProgramInfoCta_amazon": {
+    "message": "我想帮忙"
+  },
+  "referralProgramInfoLink_amazon": {
+    "message": "了解这是如何工作的"
+  },
+  "referralProgramInfoDisclaimer_amazon": {
+    "message": "*我们是亚马逊服务有限责任公司联盟计划的参与者，该计划是一项联盟广告计划，旨在通过链接到Amazon.com和附属网站为我们提供赚取费用的方式。"
+  },
+  "referralProgramInfoNotify": {
+    "message": "当我可以通过这个程序提供帮助时提醒我"
   }
 }

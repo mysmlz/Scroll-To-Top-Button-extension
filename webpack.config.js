@@ -3,12 +3,15 @@ const { List, Map } = require( 'immutable' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
 const WebpackCleanPlugin = require( 'webpack-clean' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
 const modeDevelopment = process.env.NODE_ENV === 'development';
 
 const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
+    'shared/custom-elements/custom-elements': './src/shared/custom-elements/custom-elements.js',
+    'options/options': './src/options/options.js',
   },
   output: Map( {
     filename: '[name].js',
@@ -21,6 +24,36 @@ const defaultConfig = Map( {
         test: /manifest.json$/,
         exclude: /node_modules/,
         loader: 'manifest-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-private-methods',
+            ],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require( 'precss' )(),
+              ],
+            },
+          },
+        ],
       },
     ],
   },
@@ -37,8 +70,16 @@ const defaultConfig = Map( {
           from: './static',
           to: './',
         },
+        {
+          from: './src/shared/buttons',
+          to: './shared/buttons',
+        },
       ]
     ),
+
+    new MiniCssExtractPlugin( {
+      filename: '[name].css',
+    } ),
   ] ),
   resolveLoader: {
     modules: [
@@ -69,7 +110,7 @@ module.exports = supportedBrowsers.map( browserName => {
       ],
       () => path.resolve( __dirname, 'dist', browserName ),
     )
-    // Remove unused manifest.js post-build
+    // Remove unused automatically-created JavaScript files post-build
     .updateIn(
       [
         'plugins',

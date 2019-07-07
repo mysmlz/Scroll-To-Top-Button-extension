@@ -32,7 +32,7 @@
         <div class="settingContainer">
           <label>
             <span data-i18n="scrollUpSpeed"></span>
-            <select id="scrollUpSpeed" class="optionsChanger">
+            <select id="scrollUpSpeed" class="optionsChanger" data-customizable="1">
               <option value="40000" data-i18n="slowest"></option>
               <option value="20000" data-i18n="slower"></option>
               <option value="2000" data-i18n="slow"></option>
@@ -52,7 +52,7 @@
         <div class="settingContainer">
           <label>
             <span data-i18n="scrollDownSpeed"></span>
-            <select id="scrollDownSpeed" class="optionsChanger">
+            <select id="scrollDownSpeed" class="optionsChanger" data-customizable="1">
               <option value="40000" data-i18n="slowest"></option>
               <option value="20000" data-i18n="slower"></option>
               <option value="2000" data-i18n="slow"></option>
@@ -85,13 +85,26 @@
         <div class="settingContainer">
           <label>
             <span data-i18n="buttonSize"></span>
-            <select id="buttonSize" class="appearance optionsChanger">
+            <select id="buttonSize" class="appearance optionsChanger" data-customizable="1">
               <option value="35px" data-i18n="buttonSizeInPixels" data-i18n-parameters="35|35"></option>
               <option value="40px" data-i18n="buttonSizeInPixels" data-i18n-parameters="40|40"></option>
               <option value="45px" data-i18n="buttonSizeInPixels" data-i18n-parameters="45|45"></option>
               <option value="50px" data-i18n="buttonSizeInPixels" data-i18n-parameters="50|50"></option>
+              <option value="-1" data-i18n="custom"></option>
             </select>
           </label>
+          <div class="settingContainer">
+            <label>
+              <span data-i18n="buttonWidthCustom"></span>
+              <input type="number" min="1" max="500" step="1" pattern="\d*" placeholder="60" value="60" id="buttonWidthCustom" class="custom optionsChanger">
+            </label>
+          </div>
+          <div class="settingContainer">
+            <label>
+              <span data-i18n="buttonHeightCustom"></span>
+              <input type="number" min="1" max="500" step="1" pattern="\d*" placeholder="60" value="60" id="buttonHeightCustom" class="custom optionsChanger">
+            </label>
+          </div>
         </div>
         <div class="settingContainer">
           <label>
@@ -246,11 +259,10 @@
     <script src="/global/js/i18next/i18next.min.js"></script>
     <script src="/global/js/i18next/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="/global/js/i18next/i18nextXHRBackend.js"></script>
-    <script src="/global/js/Array.from.polyfill.js"></script>
     <script src="/global/js/i18n.js"></script>
     <script src="/global/js/page-v2.js"></script>
     <script src="/global/js/context-menus.js"></script>
     <script src="/global/js/incentive.js"></script>
-    <script src="/options/js/options.js"></script>
+    <script src="/options/options.js"></script>
   </body>
 </html>

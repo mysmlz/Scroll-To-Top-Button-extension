@@ -139,6 +139,14 @@
           }
         }
       },
+      "buttonWidthCustom": {
+        "message": "Button width in pixels",
+        "description": "Lets user specify button width value in pixels instead of selecting a pre-set size."
+      },
+      "buttonHeightCustom": {
+        "message": "Button height in pixels",
+        "description": "Lets user specify button height value in pixels instead of selecting a pre-set size."
+      },
     "buttonDesign": {
       "message": "Button design"
     },

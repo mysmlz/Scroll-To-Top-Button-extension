@@ -1,0 +1,77 @@
+$buttonMargin: 20px;
+
+/* Container */
+
+scroll-to-top-button-container {
+  display: flex;
+  z-index: 2147483647;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/**
+ * @todo Use logical properties and flow-relative values. https://github.com/csstools/postcss-logical
+ */
+
+scroll-to-top-button-container[data-position-vertical="top"] {
+  justify-content: flex-start;
+  margin-top: $buttonMargin;
+}
+
+scroll-to-top-button-container[data-position-vertical="center"] {
+  justify-content: center;
+}
+
+scroll-to-top-button-container[data-position-vertical="bottom"] {
+  justify-content: flex-end;
+  margin-bottom: $buttonMargin;
+}
+
+scroll-to-top-button-container[data-position-horizontal="left"] {
+  align-items: flex-start;
+  margin-left: $buttonMargin;
+}
+
+scroll-to-top-button-container[data-position-horizontal="center"] {
+  align-items: center;
+}
+
+scroll-to-top-button-container[data-position-horizontal="right"] {
+  align-items: flex-end;
+  margin-right: $buttonMargin;
+}
+
+/* Button */
+
+scroll-to-top-button {
+  display: inline-flex;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+#scroll-to-top-button-2 {
+  margin-top: 2px;
+}
+
+/**
+ * @todo Add accessibility setting in Options that doesn't disable outline.
+ */
+
+scroll-to-top-button:focus {
+  outline: none;
+}
+
+/* Hide from print view */
+
+@media print {
+
+  scroll-to-top-button-container {
+    display: none;
+  }
+}

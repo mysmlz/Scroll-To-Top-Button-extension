@@ -133,9 +133,17 @@
       },
       "width": {
         "content": "$2",
-        "example" : "40"
+        "example": "40"
       }
     }
+  },
+  "buttonWidthCustom": {
+    "message": "Knop breedte in pixels",
+    "description": "Lets user specify button width value in pixels instead of selecting a pre-set size."
+  },
+  "buttonHeightCustom": {
+    "message": "Knop hoogte in pixels",
+    "description": "Lets user specify button height value in pixels instead of selecting a pre-set size."
   },
   "buttonDesign": {
     "message": "Knop design"

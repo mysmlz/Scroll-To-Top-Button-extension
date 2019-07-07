@@ -3,10 +3,10 @@
 * by Cody Sherman (versions < 6.1.3), http://codysherman.com/
 *
 * Brought back to life by PoziWorld
-* 
+*
 * Copyright (c) 2011 Cody Sherman (versions < 6.1.3)
 * Copyright (c) 2014-2016 PoziWorld
-* 
+*
 * Licensed under the MIT License
 * http://www.opensource.org/licenses/mit-license.php
 *
@@ -26,6 +26,22 @@ else {
  **/
 
 function STTB() {
+    const MODE_DUAL_ARROWS = 'dual';
+    const MODE_KEYBOARD_ONLY = 'keys';
+
+    const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
+    const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
+    const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
+    const BUTTON_ID = 'scroll-to-top-button-' + BUTTON_NUMBER_PLACEHOLDER;
+    const BUTTON_LABEL = 'Scroll To Top Button';
+
+    let container = null;
+    let button = null;
+    let button2 = null;
+    let $button = null;
+    let $button2 = null;
+    let buttonsCount = 0;
+
     // Removes the built-in button when on Tumblr
     if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
         var alreadyHasIt=['http://www.tumblr.com/dashboard','http://www.tumblr.com/tumblelog/','http://www.tumblr.com/messages','http://www.tumblr.com/tagged/','http://www.tumblr.com/liked/by/','http://www.tumblr.com/likes'];
@@ -36,19 +52,19 @@ function STTB() {
         })
     }
 
-    init();
+    setUp();
 
     /**
      * To get started, retrieve the settings from the Storage and verify their integrity.
      */
 
-    function init() {
-      strLog = 'init';
+    function setUp() {
+      strLog = 'setUp';
       Log.add( strLog );
 
       poziworldExtension.utils.getSettings(
         strLog,
-        onSettingsRetrieved,
+        handleRetrievedSettings,
         undefined,
         true
       );
@@ -60,12 +76,15 @@ function STTB() {
      * @param {Object} settings - Key-value pairs.
      */
 
-    function onSettingsRetrieved( settings ) {
-      strLog = 'onSettingsRetrieved';
+    function handleRetrievedSettings( settings ) {
+      strLog = 'handleRetrievedSettings';
       Log.add( strLog );
 
-      if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
-        onReady( settings );
+      if ( isExpectedSettingsFormat( settings ) ) {
+        init( settings );
+      }
+      else {
+        throw new TypeError();
       }
     }
 
@@ -75,8 +94,8 @@ function STTB() {
      * @param {Object} settings - Key-value pairs.
      */
 
-    function onReady( settings ) {
-        strLog = 'onReady';
+    function init( settings ) {
+        strLog = 'init';
         Log.add( strLog );
 
         let scrollUpSpeed = parseInt( settings.scrollUpSpeed );
@@ -86,10 +105,7 @@ function STTB() {
 
         var distance = parseInt(settings.distanceLength);
         var flipDistance = parseInt(settings.distanceLength);
-        var size = settings.buttonSize;
-        var arrow = settings.buttonDesign;
         var scroll = settings.scroll;
-        var location = settings.buttonLocation;
         var stbb = settings.buttonMode;
         var transparency = settings.notActiveButtonOpacity;
         var shortcuts = settings.keyboardShortcuts;
@@ -103,282 +119,103 @@ function STTB() {
           scrollDownSpeed = scrollDownSpeedCustom;
         }
 
-        // Assigns the correct arrow color to imgURL
-        if (stbb == "dual"){
-            var imgURL=browser.runtime.getURL("arrows/dual/"+arrow+".png");
-        }
-        else{
-            var imgURL=browser.runtime.getURL("arrows/"+arrow+".png");
-        }
+        if ( ! isKeyboardOnlyMode( stbb ) ) {
+            createElements( settings );
 
-        var $body;
+            if ( stbb === 'flip' ) {
+              $button.rotate( -180 );
+            }
 
-        // Creates the button image on the page
-        if ( stbb !== 'keys' ) {
-            $body = $( 'body' );
+            if(stbb=="dual"){
+                $button2.rotate(-180);
+            }
 
-            $body.after( // Have to use after. Otherwise, Bing search results page removes #STTBimg in dual-arrow mode
-                '<img id="STTBimg" />' +
-                // Don't show buttons when JavaScript is disabled
-                '<noscript>' +
-                  '<style>' +
-                      '#STTBimg, #STTBimg2 { display: none !important; }' +
-                  '</style>' +
-                '</noscript>'
-            );
-        }
+            // Sets the appear distance to 0 for modes where button is always present
+            if((stbb=="flip") || (stbb=="dual")){
+                distance=0;
+            }
 
-        if(stbb=="flip"){
-            $("#STTBimg").rotate(-180);
-        }
-
-        var $sttbImg = document.getElementById( 'STTBimg' );
-
-        if ( document.contains( $sttbImg ) ) {
-            // TODO: Move moveable properties to .css
-            $sttbImg.style.opacity = transparency;
-            $sttbImg.src=imgURL;
-            $sttbImg.style.position = 'fixed';
-            $sttbImg.style.width = size;
-            $sttbImg.style.height = 'auto';
-            $sttbImg.style.display = 'none';
-            $sttbImg.style.zIndex = 2147483647;
-            $sttbImg.style.border = '0px';
-            $sttbImg.style.padding = '0px';
-            $sttbImg.style.minWidth = 'auto';
-            $sttbImg.style.minHeight = 'auto';
-            $sttbImg.style.maxWidth = 'none';
-            $sttbImg.style.maxHeight = 'none';
-
-            if (location == "TR") {
-                $sttbImg.style.top = '20px';
-                $sttbImg.style.right = '20px';
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "TL") {
-                $sttbImg.style.top = '20px';
-                $sttbImg.style.left = '20px';
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BR") && (stbb != "dual")) {
-                $sttbImg.style.bottom = '20px';
-                $sttbImg.style.right = '20px';
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BR") && (stbb == "dual")) {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg.style.bottom = adjusted;
-                $sttbImg.style.right = '20px';
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BL") && (stbb != "dual")) {
-                $sttbImg.style.bottom = '20px';
-                $sttbImg.style.left = '20px';
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if ((location == "BL") && (stbb == "dual")) {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg.style.bottom = adjusted;
-                $sttbImg.style.left = '20px';
-                $sttbImg.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "CR") {
-                adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                $sttbImg.style.right = '20px';
-                $sttbImg.style.top = '50%';
-                $sttbImg.style.margin = adjust;
-            }
-            else if (location == "CL") {
-                adjust="-" + parseInt(size) / 2 + "px 0px 0px 0px";
-                $sttbImg.style.left = '20px';
-                $sttbImg.style.top = '50%';
-                $sttbImg.style.margin = adjust;
-            }
-            else if (location == "TC") {
-                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg.style.top = '20px';
-                $sttbImg.style.right = '50%';
-                $sttbImg.style.margin = adjust;
-            }
-            else if ((location == "BC") && (stbb != "dual")) {
-                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg.style.bottom = '20px';
-                $sttbImg.style.right = '50%';
-                $sttbImg.style.margin = adjust;
-            }
-            else if ((location == "BC") && (stbb == "dual")) {
-                adjust="0px -" + parseInt(size) / 2 + "px " + "0px 0px";
-                adjust2=parseInt(size) / 2 + 22;
-                adjusted=adjust2 + "px";
-                $sttbImg.style.bottom = adjusted;
-                $sttbImg.style.right = '50%';
-                $sttbImg.style.margin = adjust;
-            }
-        }
-
-        if(stbb=="dual"){
-            $body.after( '<img id="STTBimg2" />' ); // Have to use after. Otherwise, Bing search results page removes #STTBimg in dual-arrow mode
-            $("#STTBimg2").rotate(-180);
-            var $sttbImg2 = document.getElementById( 'STTBimg2' );
-            $sttbImg2.style.opacity = transparency;
-            $sttbImg2.src=imgURL;
-            $sttbImg2.style.position = 'fixed';
-            $sttbImg2.style.width = size;
-            $sttbImg2.style.height = 'auto';
-            $sttbImg2.style.display = 'none';
-            $sttbImg2.style.zIndex = 2147483647;
-            $sttbImg2.style.border = '0px';
-            $sttbImg2.style.padding = '0px';
-            $sttbImg2.style.minWidth = 'auto';
-            $sttbImg2.style.minHeight = 'auto';
-            $sttbImg2.style.maxWidth = 'none';
-            $sttbImg2.style.maxHeight = 'none';
-
-            if (location == "TR") {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg2.style.top = adjusted;
-                $sttbImg2.style.right = '20px';
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "TL") {
-                adjust=parseInt(size) / 2 + 22;
-                adjusted=adjust + "px";
-                $sttbImg2.style.top = adjusted;
-                $sttbImg2.style.left = '20px';
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "BR") {
-                $sttbImg2.style.bottom = '20px';
-                $sttbImg2.style.right = '20px';
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "BL") {
-                $sttbImg2.style.bottom = '20px';
-                $sttbImg2.style.left = '20px';
-                $sttbImg2.style.margin = '0px 0px 0px 0px';
-            }
-            else if (location == "CR") {
-                adjust=2 + "px 0px 0px 0px";
-                $sttbImg2.style.right = '20px';
-                $sttbImg2.style.top = '50%';
-                $sttbImg2.style.margin = adjust;
-            }
-            else if (location == "CL") {
-                adjust=2 + "px 0px 0px 0px";
-                $sttbImg2.style.left = '20px';
-                $sttbImg2.style.top = '50%';
-                $sttbImg2.style.margin = adjust;
-            }
-            else if (location == "TC") {
-                adjust=parseInt(size) / 2 + 2 + "px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg2.style.top = '20px';
-                $sttbImg2.style.right = '50%';
-                $sttbImg2.style.margin = adjust;
-            }
-            else if (location == "BC") {
-                adjust="0px -" + parseInt(size) / 2 + "px 0px 0px";
-                $sttbImg2.style.bottom = '20px';
-                $sttbImg2.style.right = '50%';
-                $sttbImg2.style.margin = adjust;
-            }
-        }
-
-        // Sets the appear distance to 0 for modes where button is always present
-        if((stbb=="flip") || (stbb=="dual")){
-            distance=0;
-        }
-
-        // Creates CSS so that the button is not present on printed pages
-        if (stbb != "keys"){
-            var head = document.getElementsByTagName('head')[0],
-            style = document.createElement('style'),
-            rules = document.createTextNode('@media print{#STTBimg{ display:none; }#STTBimg2{ display:none; }}');
-
-            style.type = 'text/css';
-            style.appendChild(rules);
-            head.appendChild(style);
-        }
-
-        // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
-        if ((transparency == 0.0) && (stbb=="dual")){
-            $("#STTBimg").hover(function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").stop();
-                    $("#STTBimg2").stop();
-                    $("#STTBimg").stop().fadeTo("fast", 1.0);
-                    $("#STTBimg2").stop().fadeTo("fast", 0.5);
-                }
-            },function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").stop().fadeTo("medium", transparency);
-                    $("#STTBimg2").stop().fadeTo("medium", transparency);
-                }
-            });
-
-            $("#STTBimg2").hover(function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").stop();
-                    $("#STTBimg2").stop();
-                    $("#STTBimg").stop().fadeTo("fast", 0.5);
-                    $("#STTBimg2").stop().fadeTo("fast", 1.0);
-                }
-            },function(){
-                if ( sttb.getScrollTop() >= distance ) {
-                    $("#STTBimg").fadeTo("medium", transparency);
-                    $("#STTBimg2").fadeTo("medium", transparency);
-                }
-            });
-        }
-
-        // Has transparency change on mouseover
-        else{
-            if (transparency != 1.0) {
-                $("#STTBimg").hover(function(){
+            // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
+            if ((transparency == 0.0) && (stbb=="dual")){
+                $button.hover(function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg").stop().fadeTo("fast", 1.0);
+                        $button.stop();
+                        $button2.stop();
+                        $button.stop().fadeTo("fast", 1.0);
+                        $button2.stop().fadeTo("fast", 0.5);
                     }
                 },function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg").stop().fadeTo("medium", transparency);
+                        $button.stop().fadeTo("medium", transparency);
+                        $button2.stop().fadeTo("medium", transparency);
                     }
                 });
 
-                $("#STTBimg2").hover(function(){
+                $button2.hover(function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg2").stop().fadeTo("fast", 1.0);
+                        $button.stop();
+                        $button2.stop();
+                        $button.stop().fadeTo("fast", 0.5);
+                        $button2.stop().fadeTo("fast", 1.0);
                     }
                 },function(){
                     if ( sttb.getScrollTop() >= distance ) {
-                        $("#STTBimg2").stop().fadeTo("medium", transparency);
+                        $button.fadeTo("medium", transparency);
+                        $button2.fadeTo("medium", transparency);
                     }
                 });
             }
+
+            // Has transparency change on mouseover
+            else{
+                if (transparency != 1.0) {
+                    $button.hover(function(){
+                        if ( sttb.getScrollTop() >= distance ) {
+                            $button.stop().fadeTo("fast", 1.0);
+                        }
+                    },function(){
+                        if ( sttb.getScrollTop() >= distance ) {
+                            $button.stop().fadeTo("medium", transparency);
+                        }
+                    });
+
+                    if ( isDualArrowsMode( stbb ) ) {
+                        $button2.hover(function(){
+                            if ( sttb.getScrollTop() >= distance ) {
+                                $button2.stop().fadeTo("fast", 1.0);
+                            }
+                        },function(){
+                            if ( sttb.getScrollTop() >= distance ) {
+                                $button2.stop().fadeTo("medium", transparency);
+                            }
+                        });
+                    }
+                }
+            }
+
+            // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
+            $button.scrollToTop( {
+                    speed : scrollUpSpeed
+                ,   ease : scroll
+                ,   start : distance
+                ,   stbb : stbb
+                ,   flipDistance : flipDistance
+                ,   transparency : transparency
+                ,   direction : 'up'
+            } );
+
+            if ( isDualArrowsMode( stbb ) ) {
+                $button2.scrollToTop( {
+                        speed : scrollDownSpeed
+                    ,   ease : scroll
+                    ,   start : distance
+                    ,   stbb : stbb
+                    ,   flipDistance : flipDistance
+                    ,   transparency : transparency
+                    ,   direction : 'down'
+                } );
+            }
         }
-
-
-        // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-        $( "#STTBimg" ).scrollToTop( {
-                speed : scrollUpSpeed
-            ,   ease : scroll
-            ,   start : distance
-            ,   stbb : stbb
-            ,   flipDistance : flipDistance
-            ,   transparency : transparency
-            ,   direction : 'up'
-        } );
-
-        $( "#STTBimg2" ).scrollToTop( {
-                speed : scrollDownSpeed
-            ,   ease : scroll
-            ,   start : distance
-            ,   stbb : stbb
-            ,   flipDistance : flipDistance
-            ,   transparency : transparency
-            ,   direction : 'down'
-        } );
 
         //Adds keyboard commands using shortcut.js
         if (shortcuts == "arrows") {
@@ -411,24 +248,178 @@ function STTB() {
             });
         }
 
-        document.addEventListener( 'webkitfullscreenchange', onFullscreenchange );
-        document.addEventListener( 'mozfullscreenchange', onFullscreenchange );
-        document.addEventListener( 'msfullscreenchange', onFullscreenchange );
-        document.addEventListener( 'fullscreenchange', onFullscreenchange );
-
-        var arrButtons = [ $sttbImg, $sttbImg2 ];
-
-        function onFullscreenchange() {
-            var boolIsFullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
-
-            for ( var i = arrButtons.length; i--; ) {
-                var $button = arrButtons[ i ];
-
-                if ( document.contains( $button ) ) {
-                    $button.classList.toggle( 'disabled', boolIsFullscreen );
-                }
-            }
+        if ( ! isKeyboardOnlyMode( stbb ) ) {
+          document.addEventListener( 'webkitfullscreenchange', handleFullscreenchangeEvent );
+          document.addEventListener( 'mozfullscreenchange', handleFullscreenchangeEvent );
+          document.addEventListener( 'msfullscreenchange', handleFullscreenchangeEvent );
+          document.addEventListener( 'fullscreenchange', handleFullscreenchangeEvent );
         }
+    }
+
+    /**
+     * Create button(s) with the specified settings (user preferences) and add it to the page.
+     *
+     * @param {Object} settings - Key-value pairs.
+     */
+
+    function createElements( settings ) {
+      container = createContainer( settings.buttonLocation );
+      button = createButton( settings );
+      $button = $( button );
+
+      container.append( button );
+
+      if ( isDualArrowsMode( settings.buttonMode ) ) {
+        button2 = createButton( settings );
+        $button2 = $( button2 );
+
+        container.append( button2 );
+      }
+
+      container.insertAdjacentHTML( 'beforeend', createDisabledJavascriptBandage() );
+
+      document.body.insertAdjacentElement( 'afterend', container );
+    }
+
+    /**
+     * For easier styling, wrap the button(s) with a container.
+     *
+     * @param {string} buttonLocation - Position of the button on the page.
+     * @return {HTMLElement}
+     */
+
+    function createContainer( buttonLocation ) {
+      const container = document.createElement( CONTAINER_TAG_NAME );
+      const position = getPosition( buttonLocation );
+
+      container.setAttribute( 'data-position-vertical', position.vertical );
+      container.setAttribute( 'data-position-horizontal', position.horizontal );
+
+      return container;
+    }
+
+    /**
+     * Create a button with the specified settings (user preferences).
+     *
+     * @param {Object} settings - Key-value pairs.
+     * @return {HTMLElement}
+     */
+
+    function createButton( settings ) {
+      const button = document.createElement( BUTTON_TAG_NAME );
+
+      buttonsCount++;
+      button.id = BUTTON_ID.replace( BUTTON_NUMBER_PLACEHOLDER, buttonsCount );
+      button.setAttribute( 'data-mode', settings.buttonMode );
+      button.setAttribute( 'data-design', settings.buttonDesign );
+      button.setAttribute( 'data-size', settings.buttonSize );
+      button.setAttribute( 'data-width', settings.buttonWidthCustom );
+      button.setAttribute( 'data-height', settings.buttonHeightCustom );
+      button.setAttribute( 'data-opacity', settings.notActiveButtonOpacity );
+      button.setAttribute( 'aria-label', BUTTON_LABEL );
+
+      return button;
+    }
+
+    /**
+     * When JavaScript is disabled, the extensions still work.
+     * One user requested to make the button not show up in such case.
+     *
+     * @return {string}
+     */
+
+    function createDisabledJavascriptBandage() {
+      // .append and .innerHTML don't work as expected in Chrome v49
+      return `
+        <noscript>
+          <style>
+            ${ CONTAINER_TAG_NAME.toLowerCase() } { display: none !important; }
+          </style>
+        </noscript>
+      `;
+    }
+
+    /**
+     * “Decipher” the two-letter button position abbreviation.
+     *
+     * @param {string} buttonLocation - Position of the button on the page.
+     * @return {{horizontal: string, vertical: string}}
+     */
+
+    function getPosition( buttonLocation ) {
+      return {
+        vertical: getPositionVertical( buttonLocation[ 0 ] ),
+        horizontal: getPositionHorizontal( buttonLocation[ 1 ] ),
+      };
+    }
+
+    /**
+     * “Decipher” the button vertical position from the two-letter button position abbreviation.
+     *
+     * @param {string} positionIndicator - The first letter of the two-letter button position abbreviation.
+     * @return {string}
+     */
+
+    function getPositionVertical( positionIndicator ) {
+      switch ( positionIndicator ) {
+        case 'T':
+          return 'top';
+        case 'B':
+          return 'bottom';
+        default:
+          return 'center';
+      }
+    }
+
+    /**
+     * “Decipher” the button horizontal position from the two-letter button position abbreviation.
+     *
+     * @param {string} positionIndicator - The second letter of the two-letter button position abbreviation.
+     * @return {string}
+     */
+
+    function getPositionHorizontal( positionIndicator ) {
+      switch ( positionIndicator ) {
+        case 'L':
+          return 'left';
+        case 'C':
+          return 'center';
+        default:
+          return 'right';
+      }
+    }
+
+    /**
+     * Check whether user chose to have dual arrows.
+     *
+     * @param {string} buttonMode
+     * @return {boolean}
+     */
+
+    function isDualArrowsMode( buttonMode ) {
+      return buttonMode === MODE_DUAL_ARROWS;
+    }
+
+    /**
+     * Check whether user chose to use keyboard only.
+     *
+     * @param {string} buttonMode
+     * @return {boolean}
+     */
+
+    function isKeyboardOnlyMode( buttonMode ) {
+      return buttonMode === MODE_KEYBOARD_ONLY;
+    }
+
+    /**
+     * Check whether the settings are presented as key-value pairs.
+     *
+     * @param {Object} settings - Key-value pairs.
+     * @return {boolean}
+     */
+
+    function isExpectedSettingsFormat( settings ) {
+      return poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings );
     }
 
     /**
@@ -441,5 +432,17 @@ function STTB() {
 
     function shouldUseCustom( value, customValue ) {
       return value === -1 && customValue > -1;
+    }
+
+    /**
+     * Hide the button(s) when fullscreen is activated (most likely, a video player).
+     */
+
+    function handleFullscreenchangeEvent() {
+      if ( document.contains( container ) ) {
+        const fullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+
+        container.hidden = fullscreen;
+      }
     }
 }

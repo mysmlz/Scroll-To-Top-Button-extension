@@ -37,12 +37,12 @@
                 // Allows the button to change directions when in "Flip" mode on page load
                 if(o.stbb=="flip"){
                     if ( sttb.getScrollTop() >= o.flipDistance){
-                        $("#STTBimg").rotate({animateTo:0});
+                        $scrollDiv.rotate({animateTo:0});
                         o.direction="up";
                     }
 
                     if ( sttb.getScrollTop() < "200"){
-                        $("#STTBimg").rotate({animateTo:-180});
+                        $scrollDiv.rotate({animateTo:-180});
                         o.direction="down";
                     }
                 }
@@ -58,11 +58,11 @@
 
                     if(o.stbb=="flip"){
                         if ( sttb.getScrollTop() >= o.flipDistance ) {
-                            $("#STTBimg").rotate({animateTo:0});
+                            $scrollDiv.rotate({animateTo:0});
                             o.direction="up";
                         }
                         else {
-                            $("#STTBimg").rotate({animateTo:-180});
+                            $scrollDiv.rotate({animateTo:-180});
                             o.direction="down";
                         }
                     }
