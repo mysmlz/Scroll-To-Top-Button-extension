@@ -1,13 +1,13 @@
 /*-----------------------
 * jQuery Plugin: Scroll to Top
 * by Craig Wilson, Ph.Creative http://www.ph-creative.com
-* 
+*
 * Copyright (c) 2009 Ph.Creative Ltd.
 * Licensed under the MIT License http://www.opensource.org/licenses/mit-license.php
 *
 * Description: Adds an unobtrusive "Scroll to Top" link to your page with smooth scrolling.
 * For usage instructions and version updates to go http://blog.ph-creative.com/post/jquery-plugin-scroll-to-top-v3.aspx
-* 
+*
 * Version: 3.1, 29/07/2010
 *
 * Modified for Scroll to Top Button
@@ -28,11 +28,10 @@
 
             return this.each(function(){
 
-                var o = options
-                ,   $scrollDiv = $( this )
-                ;
+                var o = options;
+                var $scrollDiv = $( this );
 
-                $scrollDiv.hide().removeAttr("href").css("cursor","pointer");
+                $scrollDiv.hide();
 
                 // Allows the button to change directions when in "Flip" mode on page load
                 if(o.stbb=="flip"){
