@@ -137,6 +137,14 @@
       }
     }
   },
+  "buttonWidthCustom": {
+    "message": "Piksel olarak buton genişliği",
+    "description": "Lets user specify button width value in pixels instead of selecting a pre-set size."
+  },
+  "buttonHeightCustom": {
+    "message": "Piksel olarak buton yüksekliği",
+    "description": "Lets user specify button height value in pixels instead of selecting a pre-set size."
+  },
   "buttonDesign": {
     "message": "Buton tasarımı"
   },
