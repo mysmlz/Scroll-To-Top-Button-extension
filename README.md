@@ -91,7 +91,7 @@ If you know any foreign language or just noticed a discrepancy in the translatio
 
 If you like the project and find our work useful, please consider supporting us via [PayPal](https://www.paypal.me/ScrollToTopButton "Support Scroll To Top Button via PayPal"), [Square Cash](https://cash.me/$ScrollToTopButton "Support Scroll To Top Button via Square Cash"), or [Coinbase](https://commerce.coinbase.com/checkout/60af24ed-830b-4ef3-b501-caae08411af5 "Support Scroll To Top Button via Coinbase") – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features.
 
-[Become a patron](https://www.patreon.com/bePatron?c=1906606).
+Or, [become a patron](https://www.patreon.com/bePatron?c=1906606).
 
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
