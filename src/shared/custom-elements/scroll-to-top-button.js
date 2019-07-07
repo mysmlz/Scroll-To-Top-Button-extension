@@ -1,3 +1,5 @@
+import 'dom4';
+
 import {
   getDocumentFragment,
   getUrl,
@@ -242,7 +244,7 @@ export class ScrollToTopButton extends HTMLElement {
     const size = this.#size;
 
     // User picked one of the suggested sizes
-    if ( size !== this.#CUSTOM_SIZE_INDICATOR && RegExp( this.#SUGGESTED_SIZE_REGEXP, 'u' ).test( size ) ) {
+    if ( size !== this.#CUSTOM_SIZE_INDICATOR && RegExp( this.#SUGGESTED_SIZE_REGEXP ).test( size ) ) {
       const sizeInPixels = parseInt( size );
 
       this.#width = sizeInPixels;

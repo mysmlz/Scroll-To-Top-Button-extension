@@ -321,7 +321,7 @@ function STTB() {
         container.append( button2 );
       }
 
-      container.append( createDisabledJavascriptBandage() );
+      container.insertAdjacentHTML( 'beforeend', createDisabledJavascriptBandage() );
 
       document.body.insertAdjacentElement( 'afterend', container );
     }
@@ -369,17 +369,18 @@ function STTB() {
      * When JavaScript is disabled, the extensions still work.
      * One user requested to make the button not show up in such case.
      *
-     * @return {HTMLElement}
+     * @return {string}
      */
 
     function createDisabledJavascriptBandage() {
-      const noscript = document.createElement( 'NOSCRIPT' );
-      const style = document.createElement( 'STYLE' );
-
-      style.innerHTML = CONTAINER_TAG_NAME.toLowerCase() + ' { display: none !important; }';
-      noscript.innerHTML = style.outerHTML; // .append makes CSS always apply
-
-      return noscript;
+      // .append and .innerHTML don't work as expected in Chrome v49
+      return `
+        <noscript>
+          <style>
+            ${ CONTAINER_TAG_NAME.toLowerCase() } { display: none !important; }
+          </style>
+        </noscript>
+      `;
     }
 
     /**

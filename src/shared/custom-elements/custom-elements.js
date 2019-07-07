@@ -1,4 +1,4 @@
-import '@webcomponents/custom-elements';
+import '@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce';
 
 import { ScrollToTopButtonContainer } from './scroll-to-top-button-container';
 import { ScrollToTopButton } from './scroll-to-top-button';

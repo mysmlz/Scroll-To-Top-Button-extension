@@ -11,6 +11,7 @@ const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
     'shared/custom-elements/custom-elements': './src/shared/custom-elements/custom-elements.js',
+    'options/options': './src/options/options.js',
   },
   output: Map( {
     filename: '[name].js',
