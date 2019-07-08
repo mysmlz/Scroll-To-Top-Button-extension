@@ -15,20 +15,18 @@
 
    ============================================================================ */
 
-  const
-      objSettingsNotSyncable = {
-          strLatestTrackedVersion : strConstExtensionVersion
-      }
-    , objSettingsSyncable = {
-          arrDisabledDomains : [
-              'docs.google.com'
-            , 'docs0.google.com'
-            , 'spreadsheets.google.com'
-            , 'spreadsheets0.google.com'
-          ]
-        , arrDisabledUrls : []
-      }
-    ;
+  const objSettingsNotSyncable = {
+    strLatestTrackedVersion: strConstExtensionVersion,
+  };
+  const objSettingsSyncable = {
+    arrDisabledDomains: [
+      'docs.google.com',
+      'docs0.google.com',
+      'spreadsheets.google.com',
+      'spreadsheets0.google.com',
+    ],
+    arrDisabledUrls: [],
+  };
 
   /* =============================================================================
 
