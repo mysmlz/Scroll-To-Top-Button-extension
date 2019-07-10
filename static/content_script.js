@@ -27,6 +27,7 @@ else {
 
 function STTB() {
     const MODE_DUAL_ARROWS = 'dual';
+    const MODE_FLIP = 'flip';
     const MODE_KEYBOARD_ONLY = 'keys';
 
     const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
@@ -42,6 +43,47 @@ function STTB() {
     let $button2 = null;
     let buttonsCount = 0;
 
+    /**
+     * @typedef {Object} Settings
+     * @property {string} buttonMode
+     * @property {number} scrollUpSpeed
+     * @property {number} scrollUpSpeedCustom
+     * @property {number} scrollDownSpeed
+     * @property {number} scrollDownSpeedCustom
+     * @property {number} distanceLength
+     * @property {number} flipDistanceLength
+     * @property {string} buttonSize
+     * @property {number} buttonWidthCustom
+     * @property {number} buttonHeightCustom
+     * @property {string} buttonDesign
+     * @property {string} buttonLocation
+     * @property {string} notActiveButtonOpacity
+     * @property {string} keyboardShortcuts
+     * @property {string} contextMenu
+     * @property {string} homeEndKeysControlledBy
+     * @property {string} scroll
+     */
+
+    const settings = {
+      buttonMode: 'off',
+      scrollUpSpeed: 1000,
+      scrollUpSpeedCustom: 1000,
+      scrollDownSpeed: 1000,
+      scrollDownSpeedCustom: 1000,
+      distanceLength: 400,
+      flipDistanceLength: 400,
+      buttonSize: '50px',
+      buttonWidthCustom: 60,
+      buttonHeightCustom: 60,
+      buttonDesign: 'arrow_blue',
+      buttonLocation: 'TR',
+      notActiveButtonOpacity: '0.5',
+      keyboardShortcuts: 'arrows',
+      contextMenu: 'on',
+      homeEndKeysControlledBy: 'sttb',
+      scroll: 'jswing',
+    };
+
     // Removes the built-in button when on Tumblr
     if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
         var alreadyHasIt=['http://www.tumblr.com/dashboard','http://www.tumblr.com/tumblelog/','http://www.tumblr.com/messages','http://www.tumblr.com/tagged/','http://www.tumblr.com/liked/by/','http://www.tumblr.com/likes'];
@@ -55,72 +97,94 @@ function STTB() {
     setUp();
 
     /**
-     * To get started, retrieve the settings from the Storage and verify their integrity.
+     * To get started, retrieve the settings from the Storage and normalize them.
      */
 
     function setUp() {
-      strLog = 'setUp';
-      Log.add( strLog );
+      new Promise( getSettings )
+        .then( normalizeSettings )
+        .then( init );
+    }
 
+
+    /**
+     * Retrieve the settings from the Storage.
+     *
+     * @param {resolve} resolve
+     * @param {reject} reject
+     */
+
+    function getSettings( resolve, reject ) {
       poziworldExtension.utils.getSettings(
-        strLog,
-        handleRetrievedSettings,
-        undefined,
-        true
+        '',
+        resolve,
+        reject,
+        true,
       );
     }
 
     /**
-     * Verify integrity of the settings.
+     * Make sure the settings from the Storage are in the right format and tweak a few parameters if necessary.
      *
-     * @param {Object} settings - Key-value pairs.
+     * @param {Settings} settingsToNormalize - Extension settings.
      */
 
-    function handleRetrievedSettings( settings ) {
-      strLog = 'handleRetrievedSettings';
-      Log.add( strLog );
+    function normalizeSettings( settingsToNormalize ) {
+      const normalizedSettings = {
+        buttonMode: settingsToNormalize.buttonMode,
+        scrollUpSpeed: parseInt( settingsToNormalize.scrollUpSpeed ),
+        scrollUpSpeedCustom: parseInt( settingsToNormalize.scrollUpSpeedCustom ),
+        scrollDownSpeed: parseInt( settingsToNormalize.scrollDownSpeed ),
+        scrollDownSpeedCustom: parseInt( settingsToNormalize.scrollDownSpeedCustom ),
+        distanceLength: parseInt( settingsToNormalize.distanceLength ),
+        flipDistanceLength: parseInt( settingsToNormalize.distanceLength ),
+        buttonSize: settingsToNormalize.buttonSize,
+        buttonWidthCustom: settingsToNormalize.buttonWidthCustom,
+        buttonHeightCustom: settingsToNormalize.buttonHeightCustom,
+        buttonDesign: settingsToNormalize.buttonDesign,
+        buttonLocation: settingsToNormalize.buttonLocation,
+        notActiveButtonOpacity: settingsToNormalize.notActiveButtonOpacity,
+        keyboardShortcuts: settingsToNormalize.keyboardShortcuts,
+        contextMenu: settingsToNormalize.contextMenu,
+        homeEndKeysControlledBy: settingsToNormalize.homeEndKeysControlledBy,
+      };
+      const buttonMode = normalizedSettings.buttonMode;
+      const scrollUpSpeedCustom = normalizedSettings.scrollUpSpeedCustom;
+      const scrollDownSpeedCustom = normalizedSettings.scrollDownSpeedCustom;
 
-      if ( isExpectedSettingsFormat( settings ) ) {
-        init( settings );
+      if ( shouldUseCustom( normalizedSettings.scrollUpSpeed, scrollUpSpeedCustom ) ) {
+        normalizedSettings.scrollUpSpeed = scrollUpSpeedCustom;
       }
-      else {
-        throw new TypeError();
+
+      if ( shouldUseCustom( normalizedSettings.scrollDownSpeed, scrollDownSpeedCustom ) ) {
+        normalizedSettings.scrollDownSpeed = scrollDownSpeedCustom;
       }
+
+      // Button is always present in these modes
+      if ( isDualArrowsMode( buttonMode ) || isFlipMode( buttonMode ) ) {
+        normalizedSettings.distanceLength = 0;
+      }
+
+      Object.assign( settings, normalizedSettings );
     }
 
     /**
-     * Process settings, inject the button(s) if needed, add listeners.
-     *
-     * @param {Object} settings - Key-value pairs.
+     * Inject the button(s) if needed, add listeners.
      */
 
-    function init( settings ) {
-        strLog = 'init';
-        Log.add( strLog );
+    function init() {
+        const scrollUpSpeed = settings.scrollUpSpeed;
+        const scrollDownSpeed = settings.scrollDownSpeed;
 
-        let scrollUpSpeed = parseInt( settings.scrollUpSpeed );
-        const scrollUpSpeedCustom = parseInt( settings.scrollUpSpeedCustom );
-        let scrollDownSpeed = parseInt( settings.scrollDownSpeed );
-        const scrollDownSpeedCustom = parseInt( settings.scrollDownSpeedCustom );
-
-        var distance = parseInt(settings.distanceLength);
-        var flipDistance = parseInt(settings.distanceLength);
-        var scroll = settings.scroll;
-        var stbb = settings.buttonMode;
-        var transparency = settings.notActiveButtonOpacity;
-        var shortcuts = settings.keyboardShortcuts;
-        var homeendaction = settings.homeEndKeysControlledBy;
-
-        if ( shouldUseCustom( scrollUpSpeed, scrollUpSpeedCustom ) ) {
-          scrollUpSpeed = scrollUpSpeedCustom;
-        }
-
-        if ( shouldUseCustom( scrollDownSpeed, scrollDownSpeedCustom ) ) {
-          scrollDownSpeed = scrollDownSpeedCustom;
-        }
+        const distance = settings.distanceLength;
+        const scroll = settings.scroll;
+        const stbb = settings.buttonMode;
+        const transparency = settings.notActiveButtonOpacity;
+        const shortcuts = settings.keyboardShortcuts;
+        const homeendaction = settings.homeEndKeysControlledBy;
 
         if ( ! isKeyboardOnlyMode( stbb ) ) {
-            createElements( settings );
+            createElements();
 
             if ( stbb === 'flip' ) {
               $button.rotate( -180 );
@@ -128,11 +192,6 @@ function STTB() {
 
             if(stbb=="dual"){
                 $button2.rotate(-180);
-            }
-
-            // Sets the appear distance to 0 for modes where button is always present
-            if((stbb=="flip") || (stbb=="dual")){
-                distance=0;
             }
 
             // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
@@ -193,28 +252,7 @@ function STTB() {
                 }
             }
 
-            // Calls and passes variables to jquery.scroll.pack.js which finds the created button and applies the scrolling rules.
-            $button.scrollToTop( {
-                    speed : scrollUpSpeed
-                ,   ease : scroll
-                ,   start : distance
-                ,   stbb : stbb
-                ,   flipDistance : flipDistance
-                ,   transparency : transparency
-                ,   direction : 'up'
-            } );
-
-            if ( isDualArrowsMode( stbb ) ) {
-                $button2.scrollToTop( {
-                        speed : scrollDownSpeed
-                    ,   ease : scroll
-                    ,   start : distance
-                    ,   stbb : stbb
-                    ,   flipDistance : flipDistance
-                    ,   transparency : transparency
-                    ,   direction : 'down'
-                } );
-            }
+            setButtonsAction();
         }
 
         //Adds keyboard commands using shortcut.js
@@ -258,19 +296,17 @@ function STTB() {
 
     /**
      * Create button(s) with the specified settings (user preferences) and add it to the page.
-     *
-     * @param {Object} settings - Key-value pairs.
      */
 
-    function createElements( settings ) {
+    function createElements() {
       container = createContainer( settings.buttonLocation );
-      button = createButton( settings );
+      button = createButton();
       $button = $( button );
 
       container.append( button );
 
       if ( isDualArrowsMode( settings.buttonMode ) ) {
-        button2 = createButton( settings );
+        button2 = createButton();
         $button2 = $( button2 );
 
         container.append( button2 );
@@ -301,11 +337,10 @@ function STTB() {
     /**
      * Create a button with the specified settings (user preferences).
      *
-     * @param {Object} settings - Key-value pairs.
      * @return {HTMLElement}
      */
 
-    function createButton( settings ) {
+    function createButton() {
       const button = document.createElement( BUTTON_TAG_NAME );
 
       buttonsCount++;
@@ -337,6 +372,34 @@ function STTB() {
           </style>
         </noscript>
       `;
+    }
+
+    /**
+     * Configure the buttons onclick behavior (main functionality of this extension).
+     */
+
+    function setButtonsAction() {
+      setButtonAction( $button, settings.scrollUpSpeed, 'up' );
+
+      if ( isDualArrowsMode( settings.buttonMode ) ) {
+        setButtonAction( $button2, settings.scrollDownSpeed, 'down' );
+      }
+    }
+
+    /**
+     * Configure the button onclick behavior (main functionality of this extension).
+     */
+
+    function setButtonAction( $element, scrollSpeed, direction ) {
+      $element.scrollToTop( {
+        direction: direction,
+        speed: scrollSpeed,
+        ease: settings.scroll,
+        start: settings.distanceLength,
+        stbb: settings.buttonMode,
+        flipDistance: settings.flipDistanceLength,
+        transparency: settings.notActiveButtonOpacity,
+      } );
     }
 
     /**
@@ -401,6 +464,17 @@ function STTB() {
     }
 
     /**
+     * Check whether user chose to use the flip (between top and bottom) mode.
+     *
+     * @param {string} buttonMode
+     * @return {boolean}
+     */
+
+    function isFlipMode( buttonMode ) {
+      return buttonMode === MODE_FLIP;
+    }
+
+    /**
      * Check whether user chose to use keyboard only.
      *
      * @param {string} buttonMode
@@ -409,17 +483,6 @@ function STTB() {
 
     function isKeyboardOnlyMode( buttonMode ) {
       return buttonMode === MODE_KEYBOARD_ONLY;
-    }
-
-    /**
-     * Check whether the settings are presented as key-value pairs.
-     *
-     * @param {Object} settings - Key-value pairs.
-     * @return {boolean}
-     */
-
-    function isExpectedSettingsFormat( settings ) {
-      return poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings );
     }
 
     /**
