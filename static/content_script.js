@@ -106,7 +106,6 @@ function STTB() {
         .then( init );
     }
 
-
     /**
      * Retrieve the settings from the Storage.
      *
@@ -196,28 +195,18 @@ function STTB() {
 
             // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
             if ((transparency == 0.0) && (stbb=="dual")){
-                $button.hover(function(){
-                    if ( sttb.getScrollTop() >= distance ) {
-                        $button.stop();
-                        $button2.stop();
-                        $button.stop().fadeTo("fast", 1.0);
-                        $button2.stop().fadeTo("fast", 0.5);
-                    }
-                },function(){
+                $button.hover(
+                  handleInvisibleDualArrowsMouseenter.bind( null, $button, $button2 ),
+                  function(){
                     if ( sttb.getScrollTop() >= distance ) {
                         $button.stop().fadeTo("medium", transparency);
                         $button2.stop().fadeTo("medium", transparency);
                     }
                 });
 
-                $button2.hover(function(){
-                    if ( sttb.getScrollTop() >= distance ) {
-                        $button.stop();
-                        $button2.stop();
-                        $button.stop().fadeTo("fast", 0.5);
-                        $button2.stop().fadeTo("fast", 1.0);
-                    }
-                },function(){
+                $button2.hover(
+                  handleInvisibleDualArrowsMouseenter.bind( null, $button2, $button ),
+                  function(){
                     if ( sttb.getScrollTop() >= distance ) {
                         $button.fadeTo("medium", transparency);
                         $button2.fadeTo("medium", transparency);
@@ -400,6 +389,22 @@ function STTB() {
         flipDistance: settings.flipDistanceLength,
         transparency: settings.notActiveButtonOpacity,
       } );
+    }
+
+    /**
+     * If user has set transparency to 0, both buttons will appear when hovering over one in “dual arrows” mode.
+     *
+     * @param {jQuery} $thisButton - The button being hovered over.
+     * @param {jQuery} $otherButton - The other button.
+     */
+
+    function handleInvisibleDualArrowsMouseenter( $thisButton, $otherButton ) {
+      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+        $thisButton.stop();
+        $otherButton.stop();
+        $thisButton.stop().fadeTo( 'fast', 1.0 );
+        $otherButton.stop().fadeTo( 'fast', 0.5 );
+      }
     }
 
     /**
