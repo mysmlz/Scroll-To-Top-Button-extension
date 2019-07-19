@@ -197,21 +197,13 @@ function STTB() {
             if ((transparency == 0.0) && (stbb=="dual")){
                 $button.hover(
                   handleInvisibleDualArrowsMouseenter.bind( null, $button, $button2 ),
-                  function(){
-                    if ( sttb.getScrollTop() >= distance ) {
-                        $button.stop().fadeTo("medium", transparency);
-                        $button2.stop().fadeTo("medium", transparency);
-                    }
-                });
+                  handleInvisibleDualArrowsMouseleave
+                );
 
                 $button2.hover(
                   handleInvisibleDualArrowsMouseenter.bind( null, $button2, $button ),
-                  function(){
-                    if ( sttb.getScrollTop() >= distance ) {
-                        $button.fadeTo("medium", transparency);
-                        $button2.fadeTo("medium", transparency);
-                    }
-                });
+                  handleInvisibleDualArrowsMouseleave
+                );
             }
 
             // Has transparency change on mouseover
@@ -404,6 +396,19 @@ function STTB() {
         $otherButton.stop();
         $thisButton.stop().fadeTo( 'fast', 1.0 );
         $otherButton.stop().fadeTo( 'fast', 0.5 );
+      }
+    }
+
+    /**
+     * If user has set transparency to 0, both buttons will disappear when hovering out one in “dual arrows” mode.
+     */
+
+    function handleInvisibleDualArrowsMouseleave() {
+      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+        const opacity = settings.notActiveButtonOpacity;
+
+        $button.fadeTo( 'medium', opacity );
+        $button2.fadeTo( 'medium', opacity );
       }
     }
 
