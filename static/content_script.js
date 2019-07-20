@@ -209,26 +209,24 @@ function STTB() {
             // Has transparency change on mouseover
             else{
                 if (transparency != 1.0) {
-                    $button.hover(function(){
-                        if ( sttb.getScrollTop() >= distance ) {
-                            $button.stop().fadeTo("fast", 1.0);
-                        }
-                    },function(){
+                    $button.hover(
+                      handleNonOpaqueSingleArrowMouseenter.bind( null, $button ),
+                      function(){
                         if ( sttb.getScrollTop() >= distance ) {
                             $button.stop().fadeTo("medium", transparency);
                         }
-                    });
+                      }
+                    );
 
                     if ( isDualArrowsMode( stbb ) ) {
-                        $button2.hover(function(){
-                            if ( sttb.getScrollTop() >= distance ) {
-                                $button2.stop().fadeTo("fast", 1.0);
-                            }
-                        },function(){
+                        $button2.hover(
+                          handleNonOpaqueSingleArrowMouseenter.bind( null, $button2 ),
+                          function(){
                             if ( sttb.getScrollTop() >= distance ) {
                                 $button2.stop().fadeTo("medium", transparency);
                             }
-                        });
+                          }
+                        );
                     }
                 }
             }
@@ -409,6 +407,18 @@ function STTB() {
 
         $button.fadeTo( 'medium', opacity );
         $button2.fadeTo( 'medium', opacity );
+      }
+    }
+
+    /**
+     * Fade in the button on hover over.
+     *
+     * @param {jQuery} $thisButton - The button being hovered over.
+     */
+
+    function handleNonOpaqueSingleArrowMouseenter( $thisButton ) {
+      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+        $thisButton.stop().fadeTo('fast', 1.0 );
       }
     }
 
