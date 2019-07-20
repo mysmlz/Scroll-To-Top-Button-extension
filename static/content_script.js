@@ -211,21 +211,13 @@ function STTB() {
                 if (transparency != 1.0) {
                     $button.hover(
                       handleNonOpaqueSingleArrowMouseenter.bind( null, $button ),
-                      function(){
-                        if ( sttb.getScrollTop() >= distance ) {
-                            $button.stop().fadeTo("medium", transparency);
-                        }
-                      }
+                      handleNonOpaqueSingleArrowMouseleave.bind( null, $button )
                     );
 
                     if ( isDualArrowsMode( stbb ) ) {
                         $button2.hover(
                           handleNonOpaqueSingleArrowMouseenter.bind( null, $button2 ),
-                          function(){
-                            if ( sttb.getScrollTop() >= distance ) {
-                                $button2.stop().fadeTo("medium", transparency);
-                            }
-                          }
+                          handleNonOpaqueSingleArrowMouseleave.bind( null, $button2 )
                         );
                     }
                 }
@@ -418,7 +410,19 @@ function STTB() {
 
     function handleNonOpaqueSingleArrowMouseenter( $thisButton ) {
       if ( sttb.getScrollTop() >= settings.distanceLength ) {
-        $thisButton.stop().fadeTo('fast', 1.0 );
+        $thisButton.stop().fadeTo( 'fast', 1.0 );
+      }
+    }
+
+    /**
+     * Fade out the button on hover out.
+     *
+     * @param {jQuery} $thisButton - The button being hovered out.
+     */
+
+    function handleNonOpaqueSingleArrowMouseleave( $thisButton ) {
+      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+        $thisButton.stop().fadeTo( 'medium', settings.notActiveButtonOpacity );
       }
     }
 
