@@ -381,7 +381,7 @@ function STTB() {
      */
 
     function handleInvisibleDualArrowsMouseenter( $thisButton, $otherButton ) {
-      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+      if ( isButtonHoverable() ) {
         $thisButton.stop();
         $otherButton.stop();
         $thisButton.stop().fadeTo( 'fast', 1.0 );
@@ -394,7 +394,7 @@ function STTB() {
      */
 
     function handleInvisibleDualArrowsMouseleave() {
-      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+      if ( isButtonHoverable() ) {
         const opacity = settings.notActiveButtonOpacity;
 
         $button.fadeTo( 'medium', opacity );
@@ -409,7 +409,7 @@ function STTB() {
      */
 
     function handleNonOpaqueSingleArrowMouseenter( $thisButton ) {
-      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+      if ( isButtonHoverable() ) {
         $thisButton.stop().fadeTo( 'fast', 1.0 );
       }
     }
@@ -421,7 +421,7 @@ function STTB() {
      */
 
     function handleNonOpaqueSingleArrowMouseleave( $thisButton ) {
-      if ( sttb.getScrollTop() >= settings.distanceLength ) {
+      if ( isButtonHoverable() ) {
         $thisButton.stop().fadeTo( 'medium', settings.notActiveButtonOpacity );
       }
     }
@@ -519,6 +519,16 @@ function STTB() {
 
     function shouldUseCustom( value, customValue ) {
       return value === -1 && customValue > -1;
+    }
+
+    /**
+     * Whether the button would be active if hovered, whether the page has been scrolled enough (equal to or more than set by “Appear distance” option).
+     *
+     * @return {boolean}
+     */
+
+    function isButtonHoverable() {
+      return sttb.getScrollTop() >= settings.distanceLength;
     }
 
     /**
