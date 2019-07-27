@@ -261,6 +261,26 @@
   "keyboardSettings": {
     "message": "Axustes do teclado"
   },
+  "clickthroughKeys": {
+    "message": "Premer un elemento debaixo do botón",
+    "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and the was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
+  },
+  "clickthroughKeysTooltip": {
+    "message": "Antes, vostede non era quen de premer nun elemento situado debaixo/detrás do botón porque o botón estaba no medio e impedíao.\n\nAgora, pode manter premida unha tecla determinada e situar o cursor sobre o botón para que este desapareza, permitíndolle comodamente premer no elemento previamente inaccesíbel.",
+    "description": "The tooltip that explains the “clickthrough keys” option in detail."
+  },
+  "ctrlKey": {
+    "message": "Ctrl (Control) + Clic",
+    "description": "Ctrl (Control on Macintosh keyboards) key + Click button."
+  },
+  "shiftKey": {
+    "message": "Maiús + Clic",
+    "description": "Shift key + Click button."
+  },
+  "ctrlKeyOrShiftKey": {
+    "message": "Ctrl/Maiús + Clic",
+    "description": "Ctrl (Control on Macintosh keyboards) or Shift key + Click button."
+  },
   "otherSettings": {
     "message": "Outros axustes"
   },

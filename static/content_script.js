@@ -61,6 +61,7 @@ function STTB() {
      * @property {string} keyboardShortcuts
      * @property {string} contextMenu
      * @property {string} homeEndKeysControlledBy
+     * @property {string} clickthroughKeys
      * @property {string} scroll
      */
 
@@ -81,6 +82,7 @@ function STTB() {
       keyboardShortcuts: 'arrows',
       contextMenu: 'on',
       homeEndKeysControlledBy: 'sttb',
+      clickthroughKeys: 'ctrl|shift',
       scroll: 'jswing',
     };
 
@@ -146,6 +148,7 @@ function STTB() {
         keyboardShortcuts: settingsToNormalize.keyboardShortcuts,
         contextMenu: settingsToNormalize.contextMenu,
         homeEndKeysControlledBy: settingsToNormalize.homeEndKeysControlledBy,
+        clickthroughKeys: settingsToNormalize.clickthroughKeys,
       };
       const buttonMode = normalizedSettings.buttonMode;
       const scrollUpSpeedCustom = normalizedSettings.scrollUpSpeedCustom;
@@ -174,8 +177,6 @@ function STTB() {
     function init() {
         const scrollUpSpeed = settings.scrollUpSpeed;
         const scrollDownSpeed = settings.scrollDownSpeed;
-
-        const distance = settings.distanceLength;
         const scroll = settings.scroll;
         const stbb = settings.buttonMode;
         const transparency = settings.notActiveButtonOpacity;
@@ -184,6 +185,7 @@ function STTB() {
 
         if ( ! isKeyboardOnlyMode( stbb ) ) {
             createElements();
+            addListeners();
 
             if ( stbb === 'flip' ) {
               $button.rotate( -180 );
@@ -346,6 +348,53 @@ function STTB() {
     }
 
     /**
+     * Set up event listeners.
+     */
+
+    function addListeners() {
+      addClickthroughKeysPressListener();
+    }
+
+    /**
+     * Monitor key presses for presses of “clickthrough keys”.
+     * Listen on window, as STTB is inserted after <body />.
+     */
+
+    function addClickthroughKeysPressListener() {
+      window.addEventListener( 'keydown', handleClickthroughKeyPress );
+    }
+
+    /**
+     * If a “clickthrough key” pressed, hide the button.
+     *
+     * @param {KeyboardEvent} event - The event.
+     */
+
+    function handleClickthroughKeyPress( event ) {
+      if ( ! sttb.isClickthroughKeyPressed( event, settings ) ) {
+        return;
+      }
+
+      const buttons = [
+        button,
+      ];
+
+      if ( isDualArrowsMode() ) {
+        buttons.push( button2 );
+      }
+
+      while ( buttons.length ) {
+        const buttonTemp = buttons.shift();
+
+        if ( buttonTemp && buttonTemp.matches( ':hover' ) ) {
+          hideButton( $( buttonTemp ) );
+
+          break;
+        }
+      }
+    }
+
+    /**
      * Configure the buttons onclick behavior (main functionality of this extension).
      */
 
@@ -370,6 +419,7 @@ function STTB() {
         stbb: settings.buttonMode,
         flipDistance: settings.flipDistanceLength,
         transparency: settings.notActiveButtonOpacity,
+        clickthroughKeys: settings.clickthroughKeys,
       } );
     }
 
@@ -378,10 +428,17 @@ function STTB() {
      *
      * @param {jQuery} $thisButton - The button being hovered over.
      * @param {jQuery} $otherButton - The other button.
+     * @param {MouseEvent} event - The event.
      */
 
-    function handleInvisibleDualArrowsMouseenter( $thisButton, $otherButton ) {
+    function handleInvisibleDualArrowsMouseenter( $thisButton, $otherButton, event ) {
       if ( isButtonHoverable() ) {
+        if ( sttb.isClickthroughKeyPressed( event, settings ) ) {
+          hideButton( $thisButton );
+
+          return;
+        }
+
         $thisButton.stop();
         $otherButton.stop();
         $thisButton.stop().fadeTo( 'fast', 1.0 );
@@ -406,10 +463,17 @@ function STTB() {
      * Fade in the button on hover over.
      *
      * @param {jQuery} $thisButton - The button being hovered over.
+     * @param {MouseEvent} event - The event.
      */
 
-    function handleNonOpaqueSingleArrowMouseenter( $thisButton ) {
+    function handleNonOpaqueSingleArrowMouseenter( $thisButton, event ) {
       if ( isButtonHoverable() ) {
+        if ( sttb.isClickthroughKeyPressed( event, settings ) ) {
+          hideButton( $thisButton );
+
+          return;
+        }
+
         $thisButton.stop().fadeTo( 'fast', 1.0 );
       }
     }
@@ -424,6 +488,16 @@ function STTB() {
       if ( isButtonHoverable() ) {
         $thisButton.stop().fadeTo( 'medium', settings.notActiveButtonOpacity );
       }
+    }
+
+    /**
+     * Make the button see-through, let user click what's underneath/behind it.
+     *
+     * @param {jQuery} $thisButton - The button being hovered over.
+     */
+
+    function hideButton( $thisButton ) {
+      $thisButton.stop().fadeTo( 'fast', 0 );
     }
 
     /**
@@ -479,12 +553,18 @@ function STTB() {
     /**
      * Check whether user chose to have dual arrows.
      *
-     * @param {string} buttonMode
+     * @param {string} [buttonMode]
      * @return {boolean}
      */
 
     function isDualArrowsMode( buttonMode ) {
-      return buttonMode === MODE_DUAL_ARROWS;
+      let buttonModeTemp = buttonMode;
+
+      if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) ) {
+        buttonModeTemp = settings.buttonMode;
+      }
+
+      return buttonModeTemp === MODE_DUAL_ARROWS;
     }
 
     /**

@@ -264,6 +264,26 @@
   "keyboardSettings": {
     "message": "Keyboard settings"
   },
+    "clickthroughKeys": {
+      "message": "Click element behind button",
+      "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and the was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
+    },
+      "clickthroughKeysTooltip": {
+        "message": "Before, you might have wanted to click an element located underneath/behind the button, but the button was in the way and the was no way to get rid of the button.\n\nNow, you can hold a certain key on your keyboard and hover over the button and the button will disappear, allowing you to comfortably click the previously inaccessible element.",
+        "description": "The tooltip that explains the “clickthrough keys” option in detail."
+      },
+      "ctrlKey": {
+        "message": "Ctrl (Control) + Click",
+        "description": "Ctrl (Control on Macintosh keyboards) key + Click button."
+      },
+      "shiftKey": {
+        "message": "Shift + Click",
+        "description": "Shift key + Click button."
+      },
+      "ctrlKeyOrShiftKey": {
+        "message": "Ctrl/Shift + Click",
+        "description": "Ctrl (Control on Macintosh keyboards) or Shift key + Click button."
+      },
 
   "otherSettings": {
     "message": "Other settings"

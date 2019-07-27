@@ -24,6 +24,8 @@
 ( function () {
   'use strict';
 
+  const CLICKTHROUGH_KEYS_DIVIDER = '|';
+
   function Sttb() {
     const $window = $( window );
     let $$scrollableElement = null;
@@ -382,6 +384,32 @@
 
   Sttb.prototype.getScrollTop = function () {
     return this.getJqueriedScrollableElement().scrollTop();
+  };
+
+  /**
+   * Check whether one of the “clickthrough keys” is pressed when hovering over or clicking the button.
+   *
+   * @param {KeyboardEvent|MouseEvent} event - The event.
+   * @param {Settings} settings - The button settings.
+   * @return {boolean}
+   */
+
+  Sttb.prototype.isClickthroughKeyPressed = function ( event, settings ) {
+    const option = settings.clickthroughKeys;
+
+    if ( poziworldExtension.utils.isNonEmptyString( option ) ) {
+      const keys = option.split( CLICKTHROUGH_KEYS_DIVIDER );
+
+      while ( keys.length ) {
+        const key = keys.shift();
+
+        if ( poziworldExtension.utils.isNonEmptyString( key ) && event[ `${ key }Key` ] ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   };
 
   if ( typeof sttb === 'undefined' ) {

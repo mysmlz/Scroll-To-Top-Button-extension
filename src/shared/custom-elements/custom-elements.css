@@ -59,6 +59,11 @@ scroll-to-top-button {
   margin-top: 2px;
 }
 
+scroll-to-top-button.disabled {
+  pointer-events: none;
+  opacity: 0;
+}
+
 /**
  * @todo Add accessibility setting in Options that doesn't disable outline.
  */

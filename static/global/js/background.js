@@ -284,127 +284,13 @@
      */
 
     checkForLegacySettings: function () {
-      const logTemp = strLog = 'checkForLegacySettings';
+      strLog = 'checkForLegacySettings';
       Log.add( strLog );
 
-      poziworldExtension.utils.getSettings(
-        logTemp,
-        moveLegacySettings,
-        moveLegacySettings,
-        true
-      );
-
-      /**
-       * If the settings aren't in the Storage yet.
-       *
-       * @param {Object} settings - Key-value pairs.
-       */
-
-      function moveLegacySettings( settings ) {
-        if ( ! poziworldExtension.utils.isType( settings, 'object' ) || Global.isEmpty( settings ) ) {
-          const newSettings = {};
-          const availableSettings = {
-            uiLanguage: [
-              'uiLanguage',
-              'browserDefault'
-            ],
-            buttonMode: [
-              'stbb',
-              'off'
-            ],
-            scrollUpSpeed: [
-              'scroll_speed',
-              1000
-            ],
-            scrollDownSpeed: [
-              'scroll_speed2',
-              1000
-            ],
-            distanceLength: [
-              'distance_length',
-              400
-            ],
-            buttonSize: [
-              'size',
-              '50px'
-            ],
-            buttonDesign: [
-              'arrow',
-              'arrow_blue'
-            ],
-            buttonLocation: [
-              'location',
-              'TR'
-            ],
-            notActiveButtonOpacity: [
-              'transparency',
-              '0.5'
-            ],
-            keyboardShortcuts: [
-              'shortcuts',
-              'arrows'
-            ],
-            contextMenu: [
-              'contextmenu',
-              'on'
-            ],
-            homeEndKeysControlledBy: [
-              'homeendaction',
-              'sttb'
-            ],
-            scroll: [
-              'scroll',
-              'jswing'
-            ]
-          };
-
-          let localStorageAvailable;
-
-          try {
-            localStorage.setItem( 'sttbTest', 'test' );
-            localStorage.getItem( 'sttbTest' );
-            localStorage.removeItem( 'sttbTest' );
-
-            localStorageAvailable = true;
-          }
-          catch ( e ) {
-            localStorageAvailable = false;
-          }
-
-          for ( const settingName in availableSettings ) {
-            if ( availableSettings.hasOwnProperty( settingName ) ) {
-              const setting = availableSettings[ settingName ];
-              let oldValue;
-
-              if ( localStorageAvailable ) {
-                const oldKey = setting[ 0 ];
-
-                oldValue = localStorage.getItem( oldKey );
-                localStorage.removeItem( oldKey );
-              }
-
-              newSettings[ settingName ] = oldValue || setting[ 1 ];
-            }
-          }
-
-          if ( ! Global.isEmpty( newSettings ) ) {
-            const storageObject = {
-              settings: newSettings
-            };
-
-            poziworldExtension.utils.setStorageItems(
-              StorageSync,
-              storageObject,
-              logTemp,
-              initContextMenus
-            );
-
-            if ( localStorageAvailable ) {
-              localStorage.removeItem( 'latest' );
-            }
-          }
-        }
-      }
+      new Promise( getSettings )
+        .catch( moveLegacySettings )
+        .then( moveLegacySettings )
+        .then( initContextMenus );
     }
     ,
 
@@ -501,12 +387,153 @@
   };
 
   /**
+   * Retrieve the settings from the Storage.
+   *
+   * @param {resolve} resolve
+   * @param {reject} reject
+   */
+
+  function getSettings( resolve, reject ) {
+    poziworldExtension.utils.getSettings(
+      '',
+      resolve,
+      reject,
+      true,
+    );
+  }
+
+  /**
+   * If the settings aren't in the Storage yet.
+   *
+   * @param {Object} settings - Key-value pairs.
+   */
+
+  function moveLegacySettings( settings ) {
+    const logTemp = 'moveLegacySettings';
+    const availableSettings = {
+      uiLanguage: [
+        'uiLanguage',
+        'browserDefault',
+      ],
+      buttonMode: [
+        'stbb',
+        'off',
+      ],
+      scrollUpSpeed: [
+        'scroll_speed',
+        1000,
+      ],
+      scrollDownSpeed: [
+        'scroll_speed2',
+        1000,
+      ],
+      distanceLength: [
+        'distance_length',
+        400,
+      ],
+      buttonSize: [
+        'size',
+        '50px',
+      ],
+      buttonDesign: [
+        'arrow',
+        'arrow_blue',
+      ],
+      buttonLocation: [
+        'location',
+        'TR',
+      ],
+      notActiveButtonOpacity: [
+        'transparency',
+        '0.5',
+      ],
+      keyboardShortcuts: [
+        'shortcuts',
+        'arrows',
+      ],
+      contextMenu: [
+        'contextmenu',
+        'on',
+      ],
+      homeEndKeysControlledBy: [
+        'homeendaction',
+        'sttb',
+      ],
+      clickthroughKeys: [
+        'clickthroughKeys',
+        'ctrl|shift',
+      ],
+      scroll: [
+        'scroll',
+        'jswing',
+      ],
+    };
+
+    if ( ! poziworldExtension.utils.isType( settings, 'object' ) || Object.keys( settings ).length !== Object.keys( availableSettings ).length ) {
+      const newSettings = {};
+
+      const localStorageAvailable = isLocalStorageAvailable();
+
+      for ( const settingName in availableSettings ) {
+        if ( availableSettings.hasOwnProperty( settingName ) ) {
+          const setting = availableSettings[ settingName ];
+          let oldValue;
+
+          if ( localStorageAvailable ) {
+            const oldKey = setting[ 0 ];
+
+            oldValue = localStorage.getItem( oldKey );
+            localStorage.removeItem( oldKey );
+          }
+
+          newSettings[ settingName ] = oldValue || setting[ 1 ];
+        }
+      }
+
+      if ( ! Global.isEmpty( newSettings ) ) {
+        const storageObject = {
+          settings: newSettings
+        };
+
+        poziworldExtension.utils.setStorageItems(
+          StorageSync,
+          storageObject,
+          logTemp,
+        );
+
+        if ( localStorageAvailable ) {
+          localStorage.removeItem( 'latest' );
+        }
+      }
+    }
+  }
+
+  /**
    * Initialize context menus, which requires i18n to be initialized first.
    */
 
   function initContextMenus() {
     poziworldExtension.i18n.init()
       .then( sttb.contextMenus.init );
+  }
+
+  /**
+   * Check whether localStorage is available (can write into it and read from it).
+   *
+   * @return {boolean}
+   */
+
+  function isLocalStorageAvailable() {
+    try {
+      localStorage.setItem( 'sttbTest', 'test' );
+      localStorage.getItem( 'sttbTest' );
+      localStorage.removeItem( 'sttbTest' );
+
+      return true;
+    }
+    catch ( e ) {
+      return false;
+    }
   }
 
   /* =============================================================================

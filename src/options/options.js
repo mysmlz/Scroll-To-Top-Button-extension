@@ -189,6 +189,7 @@ function restoreDefaultSettings( event ) {
     keyboardShortcuts: 'arrows',
     contextMenu: 'on',
     homeEndKeysControlledBy: 'sttb',
+    clickthroughKeys: 'ctrl|shift',
     scroll: 'jswing'
   };
 
@@ -220,6 +221,7 @@ function setOriginalAuthorSettings( event ) {
     keyboardShortcuts: 'arrows',
     contextMenu: 'on',
     homeEndKeysControlledBy: 'sttb',
+    clickthroughKeys: 'ctrl|shift',
     scroll: 'jswing'
   };
 
@@ -508,6 +510,7 @@ function checkMode() {
           '#distanceLength',
           '.appearance',
           '#scrollDownSpeed',
+          '#clickthroughKeys',
         ],
         true
       );
@@ -518,7 +521,7 @@ function checkMode() {
       switchElements(
         [
           '#checkMode',
-          '#distanceLength'
+          '#distanceLength',
         ],
         false
       );
@@ -526,6 +529,7 @@ function checkMode() {
         [
           '.appearance',
           '#scrollDownSpeed',
+          '#clickthroughKeys',
         ],
         true
       );
@@ -537,13 +541,14 @@ function checkMode() {
         [
           '#checkMode',
           '#distanceLength',
-          '.appearance'
+          '.appearance',
+          '#clickthroughKeys',
         ],
         false
       );
       switchElements(
         [
-          '#scrollDownSpeed'
+          '#scrollDownSpeed',
         ],
         true
       );
@@ -556,13 +561,14 @@ function checkMode() {
         [
           '#checkMode',
           '#distanceLength',
-          '.appearance'
+          '.appearance',
+          '#clickthroughKeys',
         ],
         true
       );
       switchElements(
         [
-          '#scrollDownSpeed'
+          '#scrollDownSpeed',
         ],
         false
       );

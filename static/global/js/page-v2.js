@@ -66,38 +66,40 @@
       ;
 
     for ( var i = 0, l = $allLocalizableElements.length; i < l; i++ ) {
-        var $localizableElement = $allLocalizableElements[ i ]
-          , strI18 = $localizableElement.getAttribute( 'data-i18n' )
-          , strI18Parameters = $localizableElement.getAttribute( 'data-i18n-parameters' )
-          , arrI18Parameters
-          ;
+        const $localizableElement = $allLocalizableElements[ i ];
+        const strI18 = $localizableElement.getAttribute( 'data-i18n' );
+        const strI18Parameters = $localizableElement.getAttribute( 'data-i18n-parameters' );
+        let arrI18Parameters;
+        let strMessage;
 
-        if ( typeof strI18Parameters === 'string' && strI18Parameters !== '' ) {
-          arrI18Parameters = strI18Parameters.split( '|' );
-        }
-
-        var strMessage = poziworldExtension.i18n.getMessage( strI18, arrI18Parameters );
-
-        if ( $localizableElement.nodeName === 'LABEL' ) {
-          $localizableElement.innerHTML = $localizableElement.innerHTML + strMessage;
-        }
-        else if ( $localizableElement.nodeName === 'A'
-              &&  ! $localizableElement.classList.contains( 'i18nNoInner' )
-        ) {
-          $localizableElement.innerHTML = strMessage;
-
-          if ( $localizableElement.href === '' ) {
-            $localizableElement.href = poziworldExtension.i18n.getMessage( strI18 + 'Href' );
+        if ( poziworldExtension.utils.isNonEmptyString( strI18 ) ) {
+          if ( typeof strI18Parameters === 'string' && strI18Parameters !== '' ) {
+            arrI18Parameters = strI18Parameters.split( '|' );
           }
-        }
-        else if ( $localizableElement.nodeName === 'IMG' ) {
-          $localizableElement.alt = strMessage;
-        }
-        else if ( $localizableElement.nodeName === 'OPTGROUP' ) {
-          $localizableElement.label = strMessage;
-        }
-        else if ( ! $localizableElement.classList.contains( 'i18nNoInner' ) ) {
-          $localizableElement.innerHTML = strMessage;
+
+          strMessage = poziworldExtension.i18n.getMessage( strI18, arrI18Parameters );
+
+          if ( $localizableElement.nodeName === 'LABEL' ) {
+            $localizableElement.innerHTML = $localizableElement.innerHTML + strMessage;
+          }
+          else if ( $localizableElement.nodeName === 'A'
+                &&  ! $localizableElement.classList.contains( 'i18nNoInner' )
+          ) {
+            $localizableElement.innerHTML = strMessage;
+
+            if ( $localizableElement.href === '' ) {
+              $localizableElement.href = poziworldExtension.i18n.getMessage( strI18 + 'Href' );
+            }
+          }
+          else if ( $localizableElement.nodeName === 'IMG' ) {
+            $localizableElement.alt = strMessage;
+          }
+          else if ( $localizableElement.nodeName === 'OPTGROUP' ) {
+            $localizableElement.label = strMessage;
+          }
+          else if ( ! $localizableElement.classList.contains( 'i18nNoInner' ) ) {
+            $localizableElement.innerHTML = strMessage;
+          }
         }
 
         if ( $localizableElement.classList.contains( 'i18nTitle' ) ) {

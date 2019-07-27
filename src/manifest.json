@@ -61,15 +61,12 @@
       ],
       "js": [
         "global/js/browser-polyfill.js",
-        "libraries/jquery-3.3.1.min.js",
-        "libraries/jquery.easing.js",
-        "libraries/jQueryRotate.js",
-        "content-script/js/sttb.js",
-        "jquery.scroll.pack.js",
         "global/js/bowser.js",
         "global/js/punycode.min.js",
         "global/js/global.js",
         "global/js/utils.js",
+        "libraries/jquery-3.3.1.min.js",
+        "content-script/js/sttb.js",
         "global/js/const.js",
         "global/js/log.js",
         "global/js/i18next/i18next.min.js",
@@ -77,9 +74,12 @@
         "global/js/i18next/i18nextXHRBackend.js",
         "global/js/i18n.js",
         "shared/custom-elements/custom-elements.js",
+        "libraries/jquery.easing.js",
+        "libraries/jQueryRotate.js",
+        "libraries/shortcut.js",
+        "jquery.scroll.pack.js",
         "content-script/js/content-script.js",
-        "content_script.js",
-        "libraries/shortcut.js"
+        "content_script.js"
       ]
     }
   ],

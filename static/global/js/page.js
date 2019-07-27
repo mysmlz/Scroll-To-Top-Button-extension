@@ -97,7 +97,21 @@ var Page = {
         }
 
         if ( $localizableElement.classList.contains( 'i18nTitle' ) ) {
-          $localizableElement.setAttribute( 'title', strMessage );
+          const strI18nTitle = $localizableElement.getAttribute( 'data-i18n-title' );
+          let strTitle = strMessage;
+
+          if ( poziworldExtension.utils.isNonEmptyString( strI18nTitle ) ) {
+            strTitle = poziworldExtension.i18n.getMessage( strI18nTitle );
+          }
+
+          $localizableElement.setAttribute( 'title', strTitle );
+        }
+        else {
+          const tooltip = $localizableElement.getAttribute( 'data-i18n-tooltip' );
+
+          if ( poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
+            $localizableElement.setAttribute( 'title', poziworldExtension.i18n.getMessage( tooltip ) );
+          }
         }
     }
 
