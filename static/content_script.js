@@ -183,7 +183,7 @@ function STTB() {
         const shortcuts = settings.keyboardShortcuts;
         const homeendaction = settings.homeEndKeysControlledBy;
 
-        if ( ! isKeyboardOnlyMode( stbb ) ) {
+        if ( ! isKeyboardOnlyMode() ) {
             createElements();
             addListeners();
 
@@ -216,7 +216,7 @@ function STTB() {
                       handleNonOpaqueSingleArrowMouseleave.bind( null, $button )
                     );
 
-                    if ( isDualArrowsMode( stbb ) ) {
+                    if ( isDualArrowsMode() ) {
                         $button2.hover(
                           handleNonOpaqueSingleArrowMouseenter.bind( null, $button2 ),
                           handleNonOpaqueSingleArrowMouseleave.bind( null, $button2 )
@@ -271,7 +271,7 @@ function STTB() {
 
       container.append( button );
 
-      if ( isDualArrowsMode( settings.buttonMode ) ) {
+      if ( isDualArrowsMode() ) {
         button2 = createButton();
         $button2 = $( button2 );
 
@@ -406,7 +406,7 @@ function STTB() {
     function setButtonsAction() {
       setButtonAction( $button, settings.scrollUpSpeed, 'up' );
 
-      if ( isDualArrowsMode( settings.buttonMode ) ) {
+      if ( isDualArrowsMode() ) {
         setButtonAction( $button2, settings.scrollDownSpeed, 'down' );
       }
     }
@@ -563,35 +563,47 @@ function STTB() {
      */
 
     function isDualArrowsMode( buttonMode ) {
+      return isMode( buttonMode, MODE_DUAL_ARROWS );
+    }
+
+    /**
+     * Check whether user chose to use the flip (between top and bottom) mode.
+     *
+     * @param {string} [buttonMode]
+     * @return {boolean}
+     */
+
+    function isFlipMode( buttonMode ) {
+      return isMode( buttonMode, MODE_FLIP );
+    }
+
+    /**
+     * Check whether user chose to use keyboard only.
+     *
+     * @param {string} [buttonMode]
+     * @return {boolean}
+     */
+
+    function isKeyboardOnlyMode( buttonMode ) {
+      return isMode( buttonMode, MODE_KEYBOARD_ONLY );
+    }
+
+    /**
+     * Check whether the mode specified in the Settings is equal to the one being checked.
+     *
+     * @param {string} [buttonMode] - The mode specified in settings.
+     * @param {string} modeToCheck - The mode to check against.
+     * @return {boolean}
+     */
+
+    function isMode( buttonMode, modeToCheck ) {
       let buttonModeTemp = buttonMode;
 
       if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) ) {
         buttonModeTemp = settings.buttonMode;
       }
 
-      return buttonModeTemp === MODE_DUAL_ARROWS;
-    }
-
-    /**
-     * Check whether user chose to use the flip (between top and bottom) mode.
-     *
-     * @param {string} buttonMode
-     * @return {boolean}
-     */
-
-    function isFlipMode( buttonMode ) {
-      return buttonMode === MODE_FLIP;
-    }
-
-    /**
-     * Check whether user chose to use keyboard only.
-     *
-     * @param {string} buttonMode
-     * @return {boolean}
-     */
-
-    function isKeyboardOnlyMode( buttonMode ) {
-      return buttonMode === MODE_KEYBOARD_ONLY;
+      return buttonModeTemp === modeToCheck;
     }
 
     /**
