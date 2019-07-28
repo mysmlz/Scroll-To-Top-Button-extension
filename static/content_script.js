@@ -30,6 +30,10 @@ function STTB() {
     const MODE_FLIP = 'flip';
     const MODE_KEYBOARD_ONLY = 'keys';
 
+    const STYLE_TRANSPARENT = '0.0';
+    const STYLE_SEMITRANSPARENT = '0.5';
+    const STYLE_OPAQUE = '1.0';
+
     const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
     const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
     const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
@@ -78,7 +82,7 @@ function STTB() {
       buttonHeightCustom: 60,
       buttonDesign: 'arrow_blue',
       buttonLocation: 'TR',
-      notActiveButtonOpacity: '0.5',
+      notActiveButtonOpacity: STYLE_SEMITRANSPARENT,
       keyboardShortcuts: 'arrows',
       contextMenu: 'on',
       homeEndKeysControlledBy: 'sttb',
@@ -179,7 +183,6 @@ function STTB() {
         const scrollDownSpeed = settings.scrollDownSpeed;
         const scroll = settings.scroll;
         const stbb = settings.buttonMode;
-        const transparency = settings.notActiveButtonOpacity;
         const shortcuts = settings.keyboardShortcuts;
         const homeendaction = settings.homeEndKeysControlledBy;
 
@@ -193,36 +196,6 @@ function STTB() {
 
             if(stbb=="dual"){
                 $button2.rotate(-180);
-            }
-
-            // A fix so that if user has set transparency to 0, both buttons will appear when hovering over one in dual mode
-            if ((transparency == 0.0) && (stbb=="dual")){
-                $button.hover(
-                  handleInvisibleDualArrowsMouseenter.bind( null, $button, $button2 ),
-                  handleInvisibleDualArrowsMouseleave
-                );
-
-                $button2.hover(
-                  handleInvisibleDualArrowsMouseenter.bind( null, $button2, $button ),
-                  handleInvisibleDualArrowsMouseleave
-                );
-            }
-
-            // Has transparency change on mouseover
-            else{
-                if (transparency != 1.0) {
-                    $button.hover(
-                      handleNonOpaqueSingleArrowMouseenter.bind( null, $button ),
-                      handleNonOpaqueSingleArrowMouseleave.bind( null, $button )
-                    );
-
-                    if ( isDualArrowsMode() ) {
-                        $button2.hover(
-                          handleNonOpaqueSingleArrowMouseenter.bind( null, $button2 ),
-                          handleNonOpaqueSingleArrowMouseleave.bind( null, $button2 )
-                        );
-                    }
-                }
             }
 
             setButtonsAction();
@@ -345,8 +318,57 @@ function STTB() {
      */
 
     function addListeners() {
+      addButtonsHoverListeners();
       addClickthroughKeysPressListener();
       addFullscreenchangeListener();
+    }
+
+    /**
+     * So that the button(s) don't catch the eye all the time, change their transparency when hovering over and out.
+     */
+
+    function addButtonsHoverListeners() {
+      const opacity = settings.notActiveButtonOpacity;
+      const dualArrowModeActive = isDualArrowsMode();
+
+      if ( opacity === STYLE_TRANSPARENT && dualArrowModeActive ) {
+        addInvisibleDualArrowsButtonHoverListener( $button, $button2 );
+        addInvisibleDualArrowsButtonHoverListener( $button2, $button );
+      }
+      else if ( opacity !== STYLE_OPAQUE ) {
+        addNonOpaqueSingleArrowHoverListener( $button );
+
+        if ( dualArrowModeActive ) {
+          addNonOpaqueSingleArrowHoverListener( $button2 );
+        }
+      }
+    }
+
+    /**
+     * If transparency set to 0, both buttons appear when hovering over one in “dual arrows” mode.
+     *
+     * @param {jQuery} $thisButton - The button being hovered over.
+     * @param {jQuery} $otherButton - The other button.
+     */
+
+    function addInvisibleDualArrowsButtonHoverListener( $thisButton, $otherButton ) {
+      $thisButton.hover(
+        handleInvisibleDualArrowsMouseenter.bind( null, $thisButton, $otherButton ),
+        handleInvisibleDualArrowsMouseleave
+      );
+    }
+
+    /**
+     * The button has transparency change on mouseover.
+     *
+     * @param {jQuery} $thisButton - The button being hovered over.
+     */
+
+    function addNonOpaqueSingleArrowHoverListener( $thisButton ) {
+      $thisButton.hover(
+        handleNonOpaqueSingleArrowMouseenter.bind( null, $thisButton ),
+        handleNonOpaqueSingleArrowMouseleave.bind( null, $thisButton )
+      );
     }
 
     /**
@@ -446,8 +468,8 @@ function STTB() {
 
         $thisButton.stop();
         $otherButton.stop();
-        $thisButton.stop().fadeTo( 'fast', 1.0 );
-        $otherButton.stop().fadeTo( 'fast', 0.5 );
+        $thisButton.stop().fadeTo( 'fast', STYLE_OPAQUE );
+        $otherButton.stop().fadeTo( 'fast', STYLE_SEMITRANSPARENT );
       }
     }
 
@@ -479,7 +501,7 @@ function STTB() {
           return;
         }
 
-        $thisButton.stop().fadeTo( 'fast', 1.0 );
+        $thisButton.stop().fadeTo( 'fast', STYLE_OPAQUE );
       }
     }
 
@@ -502,7 +524,7 @@ function STTB() {
      */
 
     function hideButton( $thisButton ) {
-      $thisButton.stop().fadeTo( 'fast', 0 );
+      $thisButton.stop().fadeTo( 'fast', STYLE_TRANSPARENT );
     }
 
     /**
