@@ -258,13 +258,6 @@ function STTB() {
                 'disable_in_input':true
             });
         }
-
-        if ( ! isKeyboardOnlyMode( stbb ) ) {
-          document.addEventListener( 'webkitfullscreenchange', handleFullscreenchangeEvent );
-          document.addEventListener( 'mozfullscreenchange', handleFullscreenchangeEvent );
-          document.addEventListener( 'msfullscreenchange', handleFullscreenchangeEvent );
-          document.addEventListener( 'fullscreenchange', handleFullscreenchangeEvent );
-        }
     }
 
     /**
@@ -353,6 +346,7 @@ function STTB() {
 
     function addListeners() {
       addClickthroughKeysPressListener();
+      addFullscreenchangeListener();
     }
 
     /**
@@ -362,6 +356,17 @@ function STTB() {
 
     function addClickthroughKeysPressListener() {
       window.addEventListener( 'keydown', handleClickthroughKeyPress );
+    }
+
+    /**
+     * Monitor for a fullscreenchange event to hide the button(s), as it's most likely a video player and it doesn't need the button(s).
+     */
+
+    function addFullscreenchangeListener() {
+      document.addEventListener( 'webkitfullscreenchange', handleFullscreenchangeEvent );
+      document.addEventListener( 'mozfullscreenchange', handleFullscreenchangeEvent );
+      document.addEventListener( 'msfullscreenchange', handleFullscreenchangeEvent );
+      document.addEventListener( 'fullscreenchange', handleFullscreenchangeEvent );
     }
 
     /**
