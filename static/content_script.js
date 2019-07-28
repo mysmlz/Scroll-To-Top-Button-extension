@@ -33,6 +33,7 @@ function STTB() {
     const STYLE_TRANSPARENT = '0.0';
     const STYLE_SEMITRANSPARENT = '0.5';
     const STYLE_OPAQUE = '1.0';
+    const STYLE_ROTATED_BUTTON_DEGREE = -180;
 
     const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
     const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
@@ -182,22 +183,13 @@ function STTB() {
         const scrollUpSpeed = settings.scrollUpSpeed;
         const scrollDownSpeed = settings.scrollDownSpeed;
         const scroll = settings.scroll;
-        const stbb = settings.buttonMode;
         const shortcuts = settings.keyboardShortcuts;
         const homeendaction = settings.homeEndKeysControlledBy;
 
         if ( ! isKeyboardOnlyMode() ) {
             createElements();
             addListeners();
-
-            if ( stbb === 'flip' ) {
-              $button.rotate( -180 );
-            }
-
-            if(stbb=="dual"){
-                $button2.rotate(-180);
-            }
-
+            rotateButtons();
             setButtonsAction();
         }
 
@@ -419,6 +411,30 @@ function STTB() {
           break;
         }
       }
+    }
+
+    /**
+     * As arrow image buttons are reused, rotate when necessary.
+     */
+
+    function rotateButtons() {
+      if ( isFlipMode() ) {
+        rotateButton( $button );
+      }
+
+      if ( isDualArrowsMode() ) {
+        rotateButton( $button2 );
+      }
+    }
+
+    /**
+     * Rotate the arrow image, so it's pointing the right direction, according to its function.
+     *
+     * @param {jQuery} $buttonToRotate - The button being rotated.
+     */
+
+    function rotateButton( $buttonToRotate ) {
+      $buttonToRotate.rotate( STYLE_ROTATED_BUTTON_DEGREE );
     }
 
     /**
