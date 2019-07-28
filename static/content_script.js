@@ -35,6 +35,10 @@ function STTB() {
     const STYLE_OPAQUE = '1.0';
     const STYLE_ROTATED_BUTTON_DEGREE = -180;
 
+    const KEYBOARD_SHORTCUTS_ALT_UP_DOWN_ARROWS = 'arrows';
+    const KEYBOARD_SHORTCUTS_ALT_T_B = 'tb';
+    const HOME_END_KEYS_CONTROLLED_BY_STTB = 'sttb';
+
     const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
     const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
     const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
@@ -84,9 +88,9 @@ function STTB() {
       buttonDesign: 'arrow_blue',
       buttonLocation: 'TR',
       notActiveButtonOpacity: STYLE_SEMITRANSPARENT,
-      keyboardShortcuts: 'arrows',
+      keyboardShortcuts: KEYBOARD_SHORTCUTS_ALT_UP_DOWN_ARROWS,
       contextMenu: 'on',
-      homeEndKeysControlledBy: 'sttb',
+      homeEndKeysControlledBy: HOME_END_KEYS_CONTROLLED_BY_STTB,
       clickthroughKeys: 'ctrl|shift',
       scroll: 'jswing',
     };
@@ -180,49 +184,14 @@ function STTB() {
      */
 
     function init() {
-        const scrollUpSpeed = settings.scrollUpSpeed;
-        const scrollDownSpeed = settings.scrollDownSpeed;
-        const scroll = settings.scroll;
-        const shortcuts = settings.keyboardShortcuts;
-        const homeendaction = settings.homeEndKeysControlledBy;
+      if ( ! isKeyboardOnlyMode() ) {
+        createElements();
+        addListeners();
+        rotateButtons();
+        setButtonsAction();
+      }
 
-        if ( ! isKeyboardOnlyMode() ) {
-            createElements();
-            addListeners();
-            rotateButtons();
-            setButtonsAction();
-        }
-
-        //Adds keyboard commands using shortcut.js
-        if (shortcuts == "arrows") {
-            shortcut.add("Alt+Down", function() {
-                sttb.scrollDown( scrollDownSpeed, scroll );
-            });
-            shortcut.add("Alt+Up", function() {
-                sttb.scrollUp( scrollUpSpeed, scroll );
-            });
-        }
-        else if (shortcuts == "tb") {
-            shortcut.add("Alt+B", function() {
-                sttb.scrollDown( scrollDownSpeed, scroll );
-            });
-            shortcut.add("Alt+T", function() {
-                sttb.scrollUp( scrollUpSpeed, scroll );
-            });
-        }
-
-        if ( homeendaction === 'sttb' ) {
-            shortcut.add("End", function() {
-                sttb.scrollDown( scrollDownSpeed, scroll );
-            },{
-                'disable_in_input':true
-            });
-            shortcut.add("Home", function() {
-                sttb.scrollUp( scrollUpSpeed, scroll );
-            },{
-                'disable_in_input':true
-            });
-        }
+      setKeyboardShortcuts();
     }
 
     /**
@@ -464,6 +433,48 @@ function STTB() {
         transparency: settings.notActiveButtonOpacity,
         clickthroughKeys: settings.clickthroughKeys,
       } );
+    }
+
+    /**
+     * If user selected one of the predefined keyboard shortcuts, set them up.
+     */
+
+    function setKeyboardShortcuts() {
+      const keyboardShortcuts = settings.keyboardShortcuts;
+
+      if ( keyboardShortcuts === KEYBOARD_SHORTCUTS_ALT_UP_DOWN_ARROWS ) {
+        shortcut.add( 'Alt+Down', scrollDown );
+        shortcut.add( 'Alt+Up', scrollUp );
+      }
+      else if ( keyboardShortcuts === KEYBOARD_SHORTCUTS_ALT_T_B ) {
+        shortcut.add( 'Alt+B', scrollDown );
+        shortcut.add( 'Alt+T', scrollUp );
+      }
+
+      if ( settings.homeEndKeysControlledBy === HOME_END_KEYS_CONTROLLED_BY_STTB ) {
+        const options = {
+          disable_in_input: true,
+        };
+
+        shortcut.add( 'End', scrollDown, options );
+        shortcut.add( 'Home', scrollUp, options );
+      }
+    }
+
+    /**
+     * Scroll the page down.
+     */
+
+    function scrollDown() {
+      sttb.scrollDown( settings.scrollDownSpeed, settings.scroll );
+    }
+
+    /**
+     * Scroll the page up.
+     */
+
+    function scrollUp() {
+      sttb.scrollUp( settings.scrollUpSpeed, settings.scroll );
     }
 
     /**
