@@ -95,16 +95,6 @@ function STTB() {
       scroll: 'jswing',
     };
 
-    // Removes the built-in button when on Tumblr
-    if (window.location.href.indexOf('http://www.tumblr.com/') != -1) {
-        var alreadyHasIt=['http://www.tumblr.com/dashboard','http://www.tumblr.com/tumblelog/','http://www.tumblr.com/messages','http://www.tumblr.com/tagged/','http://www.tumblr.com/liked/by/','http://www.tumblr.com/likes'];
-        $.each( alreadyHasIt, function(i, urlString){
-            if (window.location.href.indexOf( urlString ) != -1) {
-                $('#return_to_top').remove();
-            }
-        })
-    }
-
     setUp();
 
     /**
