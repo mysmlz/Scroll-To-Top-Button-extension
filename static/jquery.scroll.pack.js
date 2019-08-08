@@ -15,8 +15,6 @@
 
 // Craig's Scroll to Top Plugin with modifications
 (function($){
-    const BUTTON_DISABLED_CLASS = 'disabled';
-
     $.fn.extend({
         scrollToTop:function(options){
 
@@ -73,13 +71,7 @@
 
                 //Rules specific to the button when it is bi-directional
                 if((o.stbb=="flip") || (o.stbb=="dual")){
-                    $scrollDiv.click(function(event){
-                        if ( sttb.isClickthroughKeyPressed( event, o ) ) {
-                          clickThrough( event );
-
-                          return;
-                        }
-
+                    $scrollDiv.click(function(){
                         // Stops the scrolling if button is clicked a second time.
                         if(inProgress=="yes"){
                             sttb.getAnimatableElement().stop();
@@ -119,13 +111,7 @@
 
                 // Sets up the scrolling rules when in only Scroll to Top mode
                 else if(o.stbb=="off"){
-                    $scrollDiv.click(function(event){
-                        if ( sttb.isClickthroughKeyPressed( event, o ) ) {
-                          clickThrough( event );
-
-                          return;
-                        }
-
+                    $scrollDiv.click(function(){
                         if(inProgress=="yes"){
                             sttb.getAnimatableElement().stop();
                             inProgress="no";
@@ -142,27 +128,5 @@
             });
         }
     });
-
-    /**
-     * When a “clickthrough key” is pressed, make sure the click happens on the element underneath/behind the button and not the button itself.
-     *
-     * @param {KeyboardEvent|MouseEvent} event - The event.
-     */
-
-    function clickThrough( event ) {
-      const target = event.target;
-
-      if ( target ) {
-        target.classList.add( BUTTON_DISABLED_CLASS );
-
-        const elementFromPoint = document.elementFromPoint( event.clientX, event.clientY );
-
-        if ( elementFromPoint ) {
-          elementFromPoint.click();
-        }
-
-        target.classList.remove( BUTTON_DISABLED_CLASS );
-      }
-    }
 })
 (jQuery);

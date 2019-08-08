@@ -38,12 +38,22 @@ function STTB() {
     const KEYBOARD_SHORTCUTS_ALT_UP_DOWN_ARROWS = 'arrows';
     const KEYBOARD_SHORTCUTS_ALT_T_B = 'tb';
     const HOME_END_KEYS_CONTROLLED_BY_STTB = 'sttb';
+    const CLICKTHROUGH_KEYS_DIVIDER = '|';
+    const KEYPRESS_THROTTLE_DELAY = 150;
+
+    const MOUSEMOVE_DEBOUNCE_DELAY = 200;
+    const cursorPosition = {
+      x: 0,
+      y: 0,
+    };
 
     const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
     const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
     const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
     const BUTTON_ID = 'scroll-to-top-button-' + BUTTON_NUMBER_PLACEHOLDER;
     const BUTTON_LABEL = 'Scroll To Top Button';
+    const BUTTON_DISABLED_CLASS = 'disabled';
+    const BUTTON_HOVERED_SELECTOR = ':hover';
 
     let container = null;
     let button = null;
@@ -270,8 +280,9 @@ function STTB() {
 
     function addListeners() {
       addButtonsHoverListeners();
-      addClickthroughKeysPressListener();
+      addKeypressListener();
       addFullscreenchangeListener();
+      addMousemoveListener();
     }
 
     /**
@@ -327,8 +338,92 @@ function STTB() {
      * Listen on window, as STTB is inserted after <body />.
      */
 
-    function addClickthroughKeysPressListener() {
-      window.addEventListener( 'keydown', handleClickthroughKeyPress );
+    function addKeypressListener() {
+      const throttledKeydownHandler = throttle( handleKeydown, KEYPRESS_THROTTLE_DELAY );
+      const throttledKeyupHandler = throttle( handleKeyup, KEYPRESS_THROTTLE_DELAY );
+
+      window.addEventListener( 'keydown', throttledKeydownHandler );
+      window.addEventListener( 'keyup', throttledKeyupHandler );
+    }
+
+    /**
+     * Process the “keydown” event.
+     *
+     * @param {KeyboardEvent} event - The event.
+     */
+
+    function handleKeydown( event ) {
+      if ( ! isClickthroughKeyPressed( event ) ) {
+        return;
+      }
+
+      handleClickthroughKeydown( event );
+    }
+
+    /**
+     * Process the “keyup” event.
+     *
+     * @param {KeyboardEvent} event - The event.
+     */
+
+    function handleKeyup( event ) {
+      if ( isClickthroughKeyPressed( event ) ) {
+        return;
+      }
+
+      handleClickthroughKeyup( event );
+    }
+
+    /**
+     * If a “clickthrough key” is pressed, hide the button.
+     *
+     * @param {KeyboardEvent} event - The event.
+     */
+
+    function handleClickthroughKeydown( event ) {
+      const buttons = [
+        button,
+      ];
+
+      if ( isDualArrowsMode() ) {
+        buttons.push( button2 );
+      }
+
+      while ( buttons.length ) {
+        const buttonTemp = buttons.shift();
+
+        if ( buttonTemp && isButtonHovered( buttonTemp ) ) {
+          hideButton( $( buttonTemp ) );
+
+          break;
+        }
+      }
+    }
+
+    /**
+     * If a “clickthrough key” is unpressed, show the button.
+     *
+     * @param {KeyboardEvent} event - The event.
+     */
+
+    function handleClickthroughKeyup( event ) {
+      const buttons = [
+        button,
+      ];
+
+      if ( isDualArrowsMode() ) {
+        buttons.push( button2 );
+      }
+
+      while ( buttons.length ) {
+        const buttonTemp = buttons.shift();
+
+        if ( buttonTemp && ! isButtonHovered( buttonTemp ) ) {
+          showButton( $( buttonTemp ) );
+
+          break;
+        }
+      }
     }
 
     /**
@@ -343,33 +438,36 @@ function STTB() {
     }
 
     /**
-     * If a “clickthrough key” pressed, hide the button.
-     *
-     * @param {KeyboardEvent} event - The event.
+     * Hide the button(s) when fullscreen is activated (most likely, a video player).
      */
 
-    function handleClickthroughKeyPress( event ) {
-      if ( ! sttb.isClickthroughKeyPressed( event, settings ) ) {
-        return;
+    function handleFullscreenchangeEvent() {
+      if ( document.contains( container ) ) {
+        const fullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+
+        container.hidden = fullscreen;
       }
+    }
 
-      const buttons = [
-        button,
-      ];
+    /**
+     * Listen for the mousemove event, so when a “clickthrough key” is unpressed the “keyup” event can check the position of the cursor (not natively accessible on a key-related event) and if it's over the button then the button doesn't get shown.
+     */
 
-      if ( isDualArrowsMode() ) {
-        buttons.push( button2 );
-      }
+    function addMousemoveListener() {
+      const debouncedHandler = debounce( saveCursorPosition, MOUSEMOVE_DEBOUNCE_DELAY );
 
-      while ( buttons.length ) {
-        const buttonTemp = buttons.shift();
+      document.addEventListener( 'mousemove', debouncedHandler );
+    }
 
-        if ( buttonTemp && buttonTemp.matches( ':hover' ) ) {
-          hideButton( $( buttonTemp ) );
+    /**
+     * Save the cursor position, so when a “clickthrough key” is unpressed the “keyup” event can check the position of the cursor (not natively accessible on a key-related event) and if it's over the button then the button doesn't get shown.
+     *
+     * @param {MouseEvent} event - The event.
+     */
 
-          break;
-        }
-      }
+    function saveCursorPosition( event ) {
+      cursorPosition.x = event.clientX;
+      cursorPosition.y = event.clientY;
     }
 
     /**
@@ -477,7 +575,7 @@ function STTB() {
 
     function handleInvisibleDualArrowsMouseenter( $thisButton, $otherButton, event ) {
       if ( isButtonHoverable() ) {
-        if ( sttb.isClickthroughKeyPressed( event, settings ) ) {
+        if ( isClickthroughKeyPressed( event ) ) {
           hideButton( $thisButton );
 
           return;
@@ -492,9 +590,15 @@ function STTB() {
 
     /**
      * If user has set transparency to 0, both buttons will disappear when hovering out one in “dual arrows” mode.
+     *
+     * @param {MouseEvent} event - The event.
      */
 
-    function handleInvisibleDualArrowsMouseleave() {
+    function handleInvisibleDualArrowsMouseleave( event ) {
+      if ( ! isClickthroughKeyPressed( event ) ) {
+        showButton( $( event.target ) );
+      }
+
       if ( isButtonHoverable() ) {
         const opacity = settings.notActiveButtonOpacity;
 
@@ -512,7 +616,7 @@ function STTB() {
 
     function handleNonOpaqueSingleArrowMouseenter( $thisButton, event ) {
       if ( isButtonHoverable() ) {
-        if ( sttb.isClickthroughKeyPressed( event, settings ) ) {
+        if ( isClickthroughKeyPressed( event ) ) {
           hideButton( $thisButton );
 
           return;
@@ -526,9 +630,14 @@ function STTB() {
      * Fade out the button on hover out.
      *
      * @param {jQuery} $thisButton - The button being hovered out.
+     * @param {MouseEvent} event - The event.
      */
 
-    function handleNonOpaqueSingleArrowMouseleave( $thisButton ) {
+    function handleNonOpaqueSingleArrowMouseleave( $thisButton, event ) {
+      if ( ! isClickthroughKeyPressed( event ) ) {
+        showButton( $thisButton );
+      }
+
       if ( isButtonHoverable() ) {
         $thisButton.stop().fadeTo( 'medium', settings.notActiveButtonOpacity );
       }
@@ -541,7 +650,17 @@ function STTB() {
      */
 
     function hideButton( $thisButton ) {
-      $thisButton.stop().fadeTo( 'fast', STYLE_TRANSPARENT );
+      $thisButton[ 0 ].classList.add( BUTTON_DISABLED_CLASS );
+    }
+
+    /**
+     * Restore button state to the original.
+     *
+     * @param {jQuery} $thisButton - The button being hovered over.
+     */
+
+    function showButton( $thisButton ) {
+      $thisButton[ 0 ].classList.remove( BUTTON_DISABLED_CLASS );
     }
 
     /**
@@ -668,14 +787,111 @@ function STTB() {
     }
 
     /**
-     * Hide the button(s) when fullscreen is activated (most likely, a video player).
+     * Check whether one of the “clickthrough keys” is pressed when hovering over or clicking the button.
+     *
+     * @param {KeyboardEvent|MouseEvent} event - The event.
+     * @return {boolean}
      */
 
-    function handleFullscreenchangeEvent() {
-      if ( document.contains( container ) ) {
-        const fullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+    function isClickthroughKeyPressed( event ) {
+      const option = settings.clickthroughKeys;
 
-        container.hidden = fullscreen;
+      if ( poziworldExtension.utils.isNonEmptyString( option ) ) {
+        const keys = option.split( CLICKTHROUGH_KEYS_DIVIDER );
+
+        while ( keys.length ) {
+          const key = keys.shift();
+
+          if ( poziworldExtension.utils.isNonEmptyString( key ) && event[ `${ key }Key` ] ) {
+            return true;
+          }
+        }
       }
+
+      return false;
+    }
+
+    /**
+     * Check whether the cursor is currently positioned over the button.
+     *
+     * @param {HTMLElement} buttonToCheck - The button in question.
+     * @return {boolean}
+     */
+
+    function isButtonHovered( buttonToCheck ) {
+      return buttonToCheck.matches( BUTTON_HOVERED_SELECTOR ) ||
+        buttonToCheck.isSameNode( document.elementFromPoint( cursorPosition.x, cursorPosition.y ) );
+    }
+
+    /**
+     * Returns a function, that, as long as it continues to be invoked, will not be triggered. The function will be called after it stops being called for N milliseconds. If `immediate` is passed, trigger the function on the leading edge, instead of the trailing.
+     *
+     * @see https://davidwalsh.name/javascript-debounce-function
+     *
+     * @param func
+     * @param wait
+     * @param immediate
+     * @return {Function}
+     */
+
+    function debounce( func, wait, immediate ) {
+      let timeout;
+
+      return function () {
+        const context = this;
+        const args = arguments;
+        const later = function () {
+          timeout = null;
+
+          if ( ! immediate ) {
+            func.apply( context, args );
+          }
+        };
+        const callNow = immediate && !timeout;
+
+        clearTimeout( timeout );
+
+        timeout = setTimeout( later, wait );
+
+        if ( callNow ) {
+          func.apply( context, args );
+        }
+      };
+    }
+
+    /**
+     * Returns a function, that, as long as it continues to be invoked, will only trigger every N milliseconds. If `immediate` is passed, trigger the function on the leading edge, instead of the trailing.
+     *
+     * @see https://davidwalsh.name/javascript-debounce-function
+     *
+     * @param func
+     * @param wait
+     * @param immediate
+     * @return {Function}
+     */
+
+    function throttle( func, wait, immediate ) {
+      let timeout;
+
+      return function () {
+        const context = this;
+        const args = arguments;
+        const later = function () {
+          timeout = null;
+
+          if ( ! immediate ) {
+            func.apply( context, args );
+          }
+        };
+        const callNow = immediate && !timeout;
+
+        if ( ! timeout ) {
+          timeout = setTimeout( later, wait );
+        }
+
+        if ( callNow ) {
+          func.apply( context, args );
+        }
+      };
     }
 }

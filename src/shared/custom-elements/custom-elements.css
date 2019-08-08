@@ -61,7 +61,7 @@ scroll-to-top-button {
 
 scroll-to-top-button.disabled {
   pointer-events: none;
-  opacity: 0;
+  visibility: hidden;
 }
 
 /**
