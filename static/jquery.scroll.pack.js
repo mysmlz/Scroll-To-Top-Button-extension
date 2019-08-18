@@ -39,11 +39,7 @@
                     $scrollDiv.show();
                 }
 
-                // Checks whether button should be visible/flipped on scroll
-                sttb.getJqueriedScrollableElement().scroll( function() {
-                    $scrollDiv.toggle( sttb.getScrollTop() >= o.start );
-                    flipButtonIfNecessary( $scrollDiv, o );
-                });
+                sttb.getJqueriedScrollableElement().scroll( handleScroll.bind( null, $scrollDiv, o ) );
 
                 inProgress="no";
 
@@ -56,6 +52,18 @@
             });
         }
     });
+
+    /**
+     * Check whether the button should be visible and/or flipped on scroll.
+     *
+     * @param {jQuery} $button
+     * @param {object} options
+     */
+
+    function handleScroll( $button, options ) {
+      $button.toggle( sttb.getScrollTop() >= options.start );
+      flipButtonIfNecessary( $button, options );
+    }
 
     /**
      * Rules specific to the button when it is in a bi-directional (flip or dual arrows) mode.
@@ -81,7 +89,7 @@
     }
 
     /**
-     * Sets up the scrolling rules when in the “scroll to top only” mode.
+     * Set up the scrolling rules when in the “scroll to top only” mode.
      *
      * @param {object} options
      */
