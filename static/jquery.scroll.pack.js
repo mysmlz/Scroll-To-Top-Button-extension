@@ -32,19 +32,7 @@
                 var $scrollDiv = $( this );
 
                 $scrollDiv.hide();
-
-                // Allows the button to change directions when in "Flip" mode on page load
-                if(o.stbb=="flip"){
-                    if ( sttb.getScrollTop() >= o.flipDistance){
-                        $scrollDiv.rotate({animateTo:0});
-                        o.direction="up";
-                    }
-
-                    if ( sttb.getScrollTop() < "200"){
-                        $scrollDiv.rotate({animateTo:-180});
-                        o.direction="down";
-                    }
-                }
+                flipButtonIfNecessary( $scrollDiv, o );
 
                 // Checks whether button should be visible at page load
                 if ( sttb.getScrollTop() >= o.start ) {
@@ -54,17 +42,7 @@
                 // Checks whether button should be visible/flipped on scroll
                 sttb.getJqueriedScrollableElement().scroll( function() {
                     $scrollDiv.toggle( sttb.getScrollTop() >= o.start );
-
-                    if(o.stbb=="flip"){
-                        if ( sttb.getScrollTop() >= o.flipDistance ) {
-                            $scrollDiv.rotate({animateTo:0});
-                            o.direction="up";
-                        }
-                        else {
-                            $scrollDiv.rotate({animateTo:-180});
-                            o.direction="down";
-                        }
-                    }
+                    flipButtonIfNecessary( $scrollDiv, o );
                 });
 
                 inProgress="no";
@@ -102,6 +80,32 @@
             });
         }
     });
+
+    /**
+     * If user chose the flip (between top and bottom) mode, flip the button.
+     *
+     * @param {jQuery} $button
+     * @param {object} options
+     */
+
+    function flipButtonIfNecessary( $button, options ) {
+      if ( options.stbb === 'flip' ) {
+        if ( sttb.getScrollTop() >= options.flipDistance ) {
+          $button.rotate( {
+            animateTo: 0,
+          } );
+
+          options.direction = 'up';
+        }
+        else {
+          $button.rotate( {
+            animateTo: -180,
+          } );
+
+          options.direction = 'down';
+        }
+      }
+    }
 
     /**
      * Scroll the page up.
