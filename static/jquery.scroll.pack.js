@@ -47,39 +47,53 @@
 
                 inProgress="no";
 
-                //Rules specific to the button when it is bi-directional
-                if((o.stbb=="flip") || (o.stbb=="dual")){
-                    $scrollDiv.click(function(){
-                        if ( isInProgress() ) {
-                            stopScrolling();
-                        }
-                        else {
-                            if ( o.direction === 'up' ) {
-                                scrollUp( o );
-                            }
-                            else {
-                                scrollDown( o );
-                            }
-
-                            restoreButtonOpacity( $scrollDiv, o );
-                        }
-                    })
+                if ( o.stbb === 'flip' || o.stbb === 'dual' ) {
+                    $scrollDiv.click( handleBidirectionalModeClick.bind( null, $scrollDiv, o ) );
                 }
-
-                // Sets up the scrolling rules when in only Scroll to Top mode
-                else if(o.stbb=="off"){
-                    $scrollDiv.click(function(){
-                        if ( isInProgress() ) {
-                            stopScrolling();
-                        }
-                        else {
-                            scrollUp( o );
-                        }
-                    })
+                else if ( o.stbb === 'off' ) {
+                    $scrollDiv.click( handleUnidirectionalModeClick.bind( null, o ) );
                 }
             });
         }
     });
+
+    /**
+     * Rules specific to the button when it is in a bi-directional (flip or dual arrows) mode.
+     *
+     * @param {jQuery} $button
+     * @param {object} options
+     */
+
+    function handleBidirectionalModeClick( $button, options ) {
+      if ( isInProgress() ) {
+        stopScrolling();
+      }
+      else {
+        if ( options.direction === 'up' ) {
+          scrollUp( options );
+        }
+        else {
+          scrollDown( options );
+        }
+
+        restoreButtonOpacity( $button, options );
+      }
+    }
+
+    /**
+     * Sets up the scrolling rules when in the “scroll to top only” mode.
+     *
+     * @param {object} options
+     */
+
+    function handleUnidirectionalModeClick( options ) {
+      if ( isInProgress() ) {
+        stopScrolling();
+      }
+      else {
+        scrollUp( options );
+      }
+    }
 
     /**
      * If user chose the flip (between top and bottom) mode, flip the button.
