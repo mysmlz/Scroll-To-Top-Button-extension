@@ -31,27 +31,30 @@
                 var o = options;
                 var $scrollDiv = $( this );
 
-                $scrollDiv.hide();
-                flipButtonIfNecessary( $scrollDiv, o );
-
-                // Checks whether button should be visible at page load
-                if ( sttb.getScrollTop() >= o.start ) {
-                    $scrollDiv.show();
-                }
-
-                sttb.getJqueriedScrollableElement().scroll( handleScroll.bind( null, $scrollDiv, o ) );
-
-                inProgress="no";
-
-                if ( o.stbb === 'flip' || o.stbb === 'dual' ) {
-                    $scrollDiv.click( handleBidirectionalModeClick.bind( null, $scrollDiv, o ) );
-                }
-                else if ( o.stbb === 'off' ) {
-                    $scrollDiv.click( handleUnidirectionalModeClick.bind( null, o ) );
-                }
+                switchButtonVisualProperties( $scrollDiv, o );
+                stopProgress();
+                addListeners( $scrollDiv, o );
             });
         }
     });
+
+    /**
+     * Set up event listeners.
+     *
+     * @param {jQuery} $button
+     * @param {object} options
+     */
+
+    function addListeners( $button, options ) {
+      sttb.getJqueriedScrollableElement().scroll( handleScroll.bind( null, $button, options ) );
+
+      if ( options.stbb === 'flip' || options.stbb === 'dual' ) {
+          $button.click( handleBidirectionalModeClick.bind( null, $button, options ) );
+      }
+      else if ( options.stbb === 'off' ) {
+          $button.click( handleUnidirectionalModeClick.bind( null, options ) );
+      }
+    }
 
     /**
      * Check whether the button should be visible and/or flipped on scroll.
@@ -61,6 +64,17 @@
      */
 
     function handleScroll( $button, options ) {
+      switchButtonVisualProperties( $button, options );
+    }
+
+    /**
+     * Show/hide the button and flip it, if necessary.
+     *
+     * @param {jQuery} $button
+     * @param {object} options
+     */
+
+    function switchButtonVisualProperties( $button, options ) {
       $button.toggle( sttb.getScrollTop() >= options.start );
       flipButtonIfNecessary( $button, options );
     }
