@@ -88,10 +88,7 @@
                         }
 
                         else if(o.direction=="down"){
-                            inProgress="yes";
-                            speed=o.speed;
-                            ease=o.ease;
-                            sttb.scrollDown( speed, ease );
+                            scrollDown( o );
 
                             if((o.transparency=="0.0")&&(o.stbb=="dual")){
                                 $(this).fadeTo("medium", 0.5);
@@ -127,6 +124,17 @@
     function scrollUp( options ) {
       startProgress();
       sttb.scrollUp( options.speed, options.ease );
+    }
+
+    /**
+     * Scroll the page down.
+     *
+     * @param {object} options
+     */
+
+    function scrollDown( options ) {
+      startProgress();
+      sttb.scrollDown( options.speed, options.ease );
     }
 
     /**
