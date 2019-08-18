@@ -77,10 +77,7 @@
                         }
                         // Runs the proper scroll direction function
                         else if(o.direction=="up"){
-                            inProgress="yes";
-                            speed=o.speed;
-                            ease=o.ease;
-                            sttb.scrollUp( speed, ease );
+                            scrollUp( o );
 
                             if((o.transparency=="0.0")&&(o.stbb=="dual")){
                                 $(this).fadeTo("medium", 0.5);
@@ -113,16 +110,24 @@
                             stopScrolling();
                         }
                         else {
-                            inProgress="yes";
-                            speed=o.speed;
-                            ease=o.ease;
-                            sttb.scrollUp( speed, ease );
+                            scrollUp( o );
                         }
                     })
                 }
             });
         }
     });
+
+    /**
+     * Scroll the page up.
+     *
+     * @param {object} options
+     */
+
+    function scrollUp( options ) {
+      startProgress();
+      sttb.scrollUp( options.speed, options.ease );
+    }
 
     /**
      * Stops the scrolling (for example, if button is clicked a second time).
@@ -141,6 +146,14 @@
 
     function isInProgress() {
       return window.inProgress === 'yes';
+    }
+
+    /**
+     * Set scrolling state to “in progress”.
+     */
+
+    function startProgress() {
+      window.inProgress = 'yes';
     }
 
     /**
