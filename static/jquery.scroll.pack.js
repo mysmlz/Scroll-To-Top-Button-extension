@@ -72,12 +72,9 @@
                 //Rules specific to the button when it is bi-directional
                 if((o.stbb=="flip") || (o.stbb=="dual")){
                     $scrollDiv.click(function(){
-                        // Stops the scrolling if button is clicked a second time.
-                        if(inProgress=="yes"){
-                            sttb.getAnimatableElement().stop();
-                            inProgress="no";
+                        if ( isInProgress() ) {
+                            stopScrolling();
                         }
-
                         // Runs the proper scroll direction function
                         else if(o.direction=="up"){
                             inProgress="yes";
@@ -112,12 +109,10 @@
                 // Sets up the scrolling rules when in only Scroll to Top mode
                 else if(o.stbb=="off"){
                     $scrollDiv.click(function(){
-                        if(inProgress=="yes"){
-                            sttb.getAnimatableElement().stop();
-                            inProgress="no";
+                        if ( isInProgress() ) {
+                            stopScrolling();
                         }
-
-                        else{
+                        else {
                             inProgress="yes";
                             speed=o.speed;
                             ease=o.ease;
@@ -128,5 +123,32 @@
             });
         }
     });
+
+    /**
+     * Stops the scrolling (for example, if button is clicked a second time).
+     */
+
+    function stopScrolling() {
+      sttb.getAnimatableElement().stop();
+      stopProgress();
+    }
+
+    /**
+     * Check whether the scrolling is currently in progress.
+     *
+     * @return {boolean}
+     */
+
+    function isInProgress() {
+      return window.inProgress === 'yes';
+    }
+
+    /**
+     * Set scrolling state to “not in progress”.
+     */
+
+    function stopProgress() {
+      window.inProgress = 'no';
+    }
 })
 (jQuery);
