@@ -75,27 +75,15 @@
                         if ( isInProgress() ) {
                             stopScrolling();
                         }
-                        // Runs the proper scroll direction function
-                        else if(o.direction=="up"){
-                            scrollUp( o );
+                        else {
+                            if ( o.direction === 'up' ) {
+                                scrollUp( o );
+                            }
+                            else {
+                                scrollDown( o );
+                            }
 
-                            if((o.transparency=="0.0")&&(o.stbb=="dual")){
-                                $(this).fadeTo("medium", 0.5);
-                            }
-                            else{
-                                $(this).fadeTo("medium", o.transparency);
-                            }
-                        }
-
-                        else if(o.direction=="down"){
-                            scrollDown( o );
-
-                            if((o.transparency=="0.0")&&(o.stbb=="dual")){
-                                $(this).fadeTo("medium", 0.5);
-                            }
-                            else{
-                                $(this).fadeTo("medium", o.transparency);
-                            }
+                            restoreButtonOpacity( $scrollDiv, o );
                         }
                     })
                 }
@@ -144,6 +132,27 @@
     function stopScrolling() {
       sttb.getAnimatableElement().stop();
       stopProgress();
+    }
+
+    /**
+     * Options allow user to specify “not active button opacity”, which gets changed on hover.
+     * Once scrolling is finished, restore the value from the Options.
+     *
+     * @param {jQuery} $button
+     * @param {object} options
+     */
+
+    function restoreButtonOpacity( $button, options ) {
+        let opacity;
+
+        if ( options.transparency === '0.0' && options.stbb === 'dual' ) {
+            opacity = 0.5;
+        }
+        else {
+            opacity = options.transparency;
+        }
+
+        $button.fadeTo( 'medium', opacity );
     }
 
     /**
