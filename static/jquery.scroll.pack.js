@@ -26,17 +26,25 @@
 
             options = $.extend( defaults, options );
 
-            return this.each(function(){
-
-                var o = options;
-                var $scrollDiv = $( this );
-
-                switchButtonVisualProperties( $scrollDiv, o );
-                stopProgress();
-                addListeners( $scrollDiv, o );
-            });
+            return this.each( init.bind( null, options ) );
         }
     });
+
+    /**
+     * Set the button initial visual properties, scrolling rules, click handlers.
+     *
+     * @param {object} options
+     * @param {number} index
+     * @param {HTMLElement} button
+     */
+
+    function init( options, index, button ) {
+      const $button = $( button );
+
+      switchButtonVisualProperties( $button, options );
+      stopProgress();
+      addListeners( $button, options );
+    }
 
     /**
      * Set up event listeners.
