@@ -410,9 +410,16 @@
 
   function moveLegacySettings( settings ) {
     const logTemp = 'moveLegacySettings';
+
+    /**
+     * Each setting (object property) specifies an array, where the first item is the old name of the setting (if it existed and was different when the settings used to be stored in localStorage) and the second item is a default value.
+     *
+     * @todo Have one source of truth (make all places reference the same settings object).
+     */
+
     const availableSettings = {
       uiLanguage: [
-        'uiLanguage',
+        undefined,
         'browserDefault',
       ],
       buttonMode: [
@@ -423,8 +430,16 @@
         'scroll_speed',
         1000,
       ],
+      scrollUpSpeedCustom: [
+        undefined,
+        1000,
+      ],
       scrollDownSpeed: [
         'scroll_speed2',
+        1000,
+      ],
+      scrollDownSpeedCustom: [
+        undefined,
         1000,
       ],
       distanceLength: [
@@ -434,6 +449,14 @@
       buttonSize: [
         'size',
         '50px',
+      ],
+      buttonWidthCustom: [
+        undefined,
+        60,
+      ],
+      buttonHeightCustom: [
+        undefined,
+        60,
       ],
       buttonDesign: [
         'arrow',
@@ -460,11 +483,11 @@
         'sttb',
       ],
       clickthroughKeys: [
-        'clickthroughKeys',
+        undefined,
         'ctrl|shift',
       ],
       scroll: [
-        'scroll',
+        undefined,
         'jswing',
       ],
     };
@@ -477,28 +500,33 @@
       for ( const settingName in availableSettings ) {
         if ( availableSettings.hasOwnProperty( settingName ) ) {
           const setting = availableSettings[ settingName ];
+          const DEFAULT_VALUE_INDEX = 1;
           let oldValue;
 
           if ( localStorageAvailable ) {
-            const oldKey = setting[ 0 ];
+            const OLD_KEY_INDEX = 0;
+            const oldKey = setting[ OLD_KEY_INDEX ] || settingName;
 
             oldValue = localStorage.getItem( oldKey );
             localStorage.removeItem( oldKey );
           }
 
-          newSettings[ settingName ] = oldValue || setting[ 1 ];
+          newSettings[ settingName ] = oldValue ||
+            settings ?
+              settings[ settingName ] :
+              setting[ DEFAULT_VALUE_INDEX ];
         }
       }
 
       if ( ! Global.isEmpty( newSettings ) ) {
         const storageObject = {
-          settings: newSettings
+          settings: newSettings,
         };
 
         poziworldExtension.utils.setStorageItems(
           StorageSync,
           storageObject,
-          logTemp,
+          logTemp
         );
 
         if ( localStorageAvailable ) {
