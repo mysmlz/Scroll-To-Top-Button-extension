@@ -41,7 +41,7 @@ function flipButton( angle, direction ) {
     animateTo: angle,
   } );
 
-  scrollDirections.currentDirection = direction;
+  scrollDirections.setCurrentDirection( direction );
 }
 
 /**
