@@ -76,7 +76,7 @@
         "libraries/jquery.easing.js",
         "libraries/jQueryRotate.js",
         "libraries/shortcut.js",
-        "content-script/content-script.js"
+        "content-scripts/content-scripts.js"
       ]
     }
   ],
