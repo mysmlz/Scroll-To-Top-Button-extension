@@ -66,7 +66,6 @@
         "global/js/global.js",
         "global/js/utils.js",
         "libraries/jquery-3.3.1.min.js",
-        "content-script/js/sttb.js",
         "global/js/const.js",
         "global/js/log.js",
         "global/js/i18next/i18next.min.js",
@@ -77,9 +76,7 @@
         "libraries/jquery.easing.js",
         "libraries/jQueryRotate.js",
         "libraries/shortcut.js",
-        "jquery.scroll.pack.js",
-        "content-script/js/content-script.js",
-        "content_script.js"
+        "content-script/content-script.js"
       ]
     }
   ],

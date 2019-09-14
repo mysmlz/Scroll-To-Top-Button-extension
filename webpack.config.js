@@ -10,6 +10,7 @@ const modeDevelopment = process.env.NODE_ENV === 'development';
 const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
+    'content-script/content-script': './src/content-script/content-script.js',
     'shared/custom-elements/custom-elements': './src/shared/custom-elements/custom-elements.js',
     'options/options': './src/options/options.js',
   },

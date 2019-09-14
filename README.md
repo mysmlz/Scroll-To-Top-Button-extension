@@ -140,6 +140,7 @@ Credits
 --------
 
 * Originally developed in 2011 by [Cody Sherman](https://github.com/codysherman). [Brought back to life](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/commit/b02625e5d448084981ba9921f275138bc63fb4ac) in 2014 and [maintained](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/commits/) since then by [PoziWorld](https://github.com/PoziWorld).
+* Original logic partially borrowed from jQuery Plugin: Scroll to Top by Craig Wilson, [Ph.Creative](http://www.ph-creative.com), [MIT License](http://www.opensource.org/licenses/mit-license.php).
 * [Gentleface Mono Icon Set](http://gentleface.com/free_icon_set.html), Gentleface, [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/).
 * “[Language](https://www.iconfinder.com/icons/1608752/language_icon)” icon by Dave Gandy from [Font Awesome](https://fontawesome.com/). [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
 * <sub>All trademarks mentioned belong to their owners, third party brands, product names, trade names, corporate names and company names mentioned may be trademarks of their respective owners or registered trademarks of other companies and are used for purposes of explanation and to the owner's benefit, without implying a violation of copyright law.</sub>

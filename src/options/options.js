@@ -173,6 +173,10 @@ function addOptionChangeListener( element ) {
 function restoreDefaultSettings( event ) {
   event.preventDefault();
 
+  /**
+   * @todo Have one source of truth (make all places reference the same settings object).
+   */
+
   const settings = {
     buttonMode: 'off',
     scrollUpSpeed: 1000,

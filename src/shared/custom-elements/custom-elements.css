@@ -3,7 +3,7 @@ $buttonMargin: 20px;
 /* Container */
 
 scroll-to-top-button-container {
-  display: flex;
+  display: none;
   z-index: 2147483647;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -13,6 +13,10 @@ scroll-to-top-button-container {
   bottom: 0;
   left: 0;
   pointer-events: none;
+}
+
+scroll-to-top-button-container[data-state-active] {
+  display: flex;
 }
 
 /**
@@ -59,7 +63,7 @@ scroll-to-top-button {
   margin-top: 2px;
 }
 
-scroll-to-top-button.disabled {
+scroll-to-top-button[data-state-disabled] {
   pointer-events: none;
   visibility: hidden;
 }
