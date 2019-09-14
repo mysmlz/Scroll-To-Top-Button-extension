@@ -57,7 +57,7 @@
       ],
       "all_frames": true,
       "css": [
-        "shared/custom-elements/custom-elements.css"
+        "content-scripts/content-scripts.css"
       ],
       "js": [
         "global/js/browser-polyfill.js",
@@ -72,7 +72,6 @@
         "global/js/i18next/i18nextBrowserLanguageDetector.min.js",
         "global/js/i18next/i18nextXHRBackend.js",
         "global/js/i18n.js",
-        "shared/custom-elements/custom-elements.js",
         "libraries/jquery.easing.js",
         "libraries/jQueryRotate.js",
         "libraries/shortcut.js",
@@ -84,7 +83,7 @@
   "web_accessible_resources": [
     "shared/buttons/buttons.css",
     "shared/buttons/*.svg",
-    "shared/custom-elements/custom-elements.css",
+    "content-scripts/content-scripts.css",
     "*.json"
   ]
 }

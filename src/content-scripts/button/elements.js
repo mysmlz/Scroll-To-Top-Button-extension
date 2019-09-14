@@ -1,3 +1,6 @@
+// @todo Avoid name collision with window.customElements.
+import * as customElements from 'Shared/custom-elements/custom-elements';
+
 import buttonSettings from './settings';
 import * as modes from './settings/modes';
 
@@ -8,10 +11,8 @@ export let $button1 = null;
 export let $button2 = null;
 let buttonsCount = 0;
 
-const CONTAINER_TAG_NAME = 'SCROLL-TO-TOP-BUTTON-CONTAINER';
 export const CONTAINER_ATTRIBUTE_STATE_ACTIVE = 'data-state-active';
 
-const BUTTON_TAG_NAME = 'SCROLL-TO-TOP-BUTTON';
 const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
 const BUTTON_ID = `scroll-to-top-button-${ BUTTON_NUMBER_PLACEHOLDER }`;
 const BUTTON_LABEL = 'Scroll To Top Button';
@@ -26,6 +27,7 @@ export let scrollCausingElement = null;
  */
 
 export function createElements() {
+  customElements.setUp();
   container = createContainer( buttonSettings.buttonLocation );
   button1 = createButton();
   $button1 = $( button1 );
@@ -52,7 +54,7 @@ export function createElements() {
  */
 
 function createContainer( buttonLocation ) {
-  const containerTemp = document.createElement( CONTAINER_TAG_NAME );
+  const containerTemp = document.createElement( customElements.CONTAINER_TAG_NAME );
   const position = getPosition( buttonLocation );
 
   containerTemp.setAttribute( 'data-position-vertical', position.vertical );
@@ -68,7 +70,8 @@ function createContainer( buttonLocation ) {
  */
 
 function createButton() {
-  const button = document.createElement( BUTTON_TAG_NAME );
+  // @todo Investigate why lowercase doesn't work.
+  const button = document.createElement( customElements.BUTTON_TAG_NAME.toUpperCase() );
 
   buttonsCount++;
   button.id = BUTTON_ID.replace( BUTTON_NUMBER_PLACEHOLDER, buttonsCount );
@@ -95,7 +98,7 @@ function createDisabledJavascriptBandage() {
   return `
     <noscript>
       <style>
-        ${ CONTAINER_TAG_NAME.toLowerCase() } { display: none !important; }
+        ${ customElements.CONTAINER_TAG_NAME } { display: none !important; }
       </style>
     </noscript>
   `;

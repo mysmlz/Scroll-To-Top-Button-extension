@@ -5,13 +5,14 @@ import { ScrollToTopButton } from './scroll-to-top-button';
 
 import './custom-elements.css';
 
-setUp();
+export const CONTAINER_TAG_NAME = 'scroll-to-top-button-container';
+export const BUTTON_TAG_NAME = 'scroll-to-top-button';
 
 /**
  * Module-specific configuration.
  */
 
-function setUp() {
+export function setUp() {
   define();
 }
 
@@ -20,6 +21,6 @@ function setUp() {
  */
 
 function define() {
-  customElements.define( 'scroll-to-top-button-container', ScrollToTopButtonContainer );
-  customElements.define( 'scroll-to-top-button', ScrollToTopButton );
+  customElements.define( CONTAINER_TAG_NAME, ScrollToTopButtonContainer );
+  customElements.define( BUTTON_TAG_NAME, ScrollToTopButton );
 }

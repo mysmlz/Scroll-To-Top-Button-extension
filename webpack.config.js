@@ -11,7 +11,6 @@ const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
     'content-scripts/content-scripts': './src/content-scripts/content-scripts.js',
-    'shared/custom-elements/custom-elements': './src/shared/custom-elements/custom-elements.js',
     'options/options': './src/options/options.js',
   },
   output: Map( {
@@ -82,6 +81,12 @@ const defaultConfig = Map( {
       filename: '[name].css',
     } ),
   ] ),
+  resolve: {
+    alias: {
+      Shared: path.resolve( __dirname, 'src', 'shared' ),
+      ContentScripts: path.resolve( __dirname, 'src', 'content-scripts' ),
+    },
+  },
   resolveLoader: {
     modules: [
       path.resolve( __dirname, 'src', 'loaders' ),
