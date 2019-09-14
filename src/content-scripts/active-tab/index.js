@@ -110,12 +110,10 @@ function checkDisabled( storageData, settingName, value ) {
  *
  * Only top frames and ~fullscreen iframes (since there is no access to the top frame, compare the iframe height to the screen height, considering it also includes the height of the address bar, tabs titles, optional bookmarks bar – the ratio for Chrome and Opera is ~91%, but make it 85% just in case).
  *
- * @param {resolve} resolve
- * @param {reject} reject
  * @returns {Promise<void>}
  */
 
-function checkWindowCriteria( resolve, reject ) {
+function checkWindowCriteria() {
   const HEIGHT_RATIO = .85;
 
   if ( ( window === top || window.innerHeight / window.screen.height > HEIGHT_RATIO ) &&
@@ -123,7 +121,5 @@ function checkWindowCriteria( resolve, reject ) {
     return Promise.resolve();
   }
 
-  return new Promise( specialCaseWebsites.watch )
-    .then( resolve )
-    .catch( reject );
+  return new Promise( specialCaseWebsites.watch );
 }
