@@ -28,6 +28,6 @@ function checkElementsDoNotExist() {
   elements.getButtonContainerElement()
     .should( 'not.exist' );
 
-  elements.getButtonElement()
+  elements.getButton1Element()
     .should( 'not.exist' );
 }

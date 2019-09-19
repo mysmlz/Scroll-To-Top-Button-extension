@@ -1,3 +1,5 @@
+// @todo https://docs.cypress.io/api/cypress-api/custom-commands.html#2-Don%E2%80%99t-overcomplicate-things ?
+
 /**
  * Return the Scroll To Top Button's container element.
  *
@@ -15,7 +17,18 @@ export function getButtonContainerElement() {
  * @return {Cypress.Chainable<JQuery<HTMLElement>>}
  */
 
-export function getButtonElement() {
+export function getButton1Element() {
   // @todo Get the tag name from const.
-  return cy.get( 'scroll-to-top-button' );
+  return cy.get( '#scroll-to-top-button-1' );
+}
+
+/**
+ * Return the Scroll To Top Button's second button element.
+ *
+ * @return {Cypress.Chainable<JQuery<HTMLElement>>}
+ */
+
+export function getButton2Element() {
+  // @todo Get the tag name from const.
+  return cy.get( '#scroll-to-top-button-2' );
 }

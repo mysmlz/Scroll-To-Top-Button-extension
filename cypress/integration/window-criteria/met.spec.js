@@ -15,7 +15,7 @@ function runTests() {
  * Make sure the Scroll To Top Button's elements exist on the page when the page is scrollable.
  */
 
-function checkElementsExist() {
+export function checkElementsExist() {
   // @todo Pick the safest site to load in terms of speed, security, & not to DoS it.
   cy.visit( 'https://developers.cloudflare.com/sponsorships/' );
 
@@ -31,6 +31,6 @@ function checkElementsExist() {
   elements.getButtonContainerElement()
     .should( 'exist' );
 
-  elements.getButtonElement()
+  elements.getButton1Element()
     .should( 'exist' );
 }
