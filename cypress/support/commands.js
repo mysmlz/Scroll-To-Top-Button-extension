@@ -1,3 +1,15 @@
-const addExtensionCommands = require( 'cypress-browser-extension-plugin/commands' );
+import addCommands from 'cypress-browser-extension-plugin/commands';
 
-addExtensionCommands( Cypress );
+setUp();
+
+/**
+ * Add commands made available by plugins.
+ */
+
+function setUp() {
+  addCommands( Cypress, {
+    alias: 'sttb',
+    debug: true,
+    timeout: 5000,
+  } );
+}
