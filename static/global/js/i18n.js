@@ -144,11 +144,18 @@
   /**
    * Initialize. Identify language to be used and load the translations.
    *
-   * @return {Promise}
+   * @return {Promise<string>|Promise<void>}
    */
 
   I18n.prototype.init = function () {
-    Log.add( 'poziworldExtension.i18n.init' );
+    const initialized = Boolean( getTranslationFunction() );
+    Log.add( 'poziworldExtension.i18n.init', {
+      initialized: initialized,
+    } );
+
+    if ( initialized ) {
+      return Promise.resolve();
+    }
 
     return setLanguage()
       .then( loadLanguage );
