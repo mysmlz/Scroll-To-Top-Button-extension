@@ -38,11 +38,11 @@
    * @param {funcErrorCallback} [funcErrorCallback] - Function to run on error.
    * @param {Object} [objErrorLogDetails] - Data to be passed on error.
    * @param {boolean} [boolTrackError] - Whether to track error if user participates in UEIP.
-   * @return {Object} - Object with items in their key-value mappings.
-   **/
+   * @return {*}
+   */
 
   Utils.prototype.getStorageItems = function ( Storage, keys, strLog, funcSuccessCallback, funcErrorCallback, objErrorLogDetails, boolTrackError ) {
-    Storage.get( keys ).then( onStorageItemsRetrieved, onStorageItemsRetrievalError );
+    return Storage.get( keys ).then( onStorageItemsRetrieved, onStorageItemsRetrievalError );
 
     function onStorageItemsRetrieved( objReturn ) {
       const strGetStorageItemsLog = strLog + ', getStorageItems';

@@ -292,7 +292,7 @@
       strLog = 'checkForLegacySettings';
       Log.add( strLog );
 
-      new Promise( getSettings.bind( null, strLog ) )
+      return new Promise( getSettings.bind( null, strLog ) )
         .catch( moveLegacySettings )
         .then( moveLegacySettings )
         .then( initContextMenus );
@@ -310,7 +310,7 @@
     setDefaults: function ( Storage, objSettings, strLogSuffix ) {
       const logTemp = strLog = 'setDefaults' + ', ' + strLogSuffix;
 
-      poziworldExtension.utils.getStorageItems( Storage, null, logTemp, onSettingsRetrieved );
+      return poziworldExtension.utils.getStorageItems( Storage, null, logTemp, onSettingsRetrieved );
 
       function onSettingsRetrieved( objReturn ) {
         Log.add( logTemp, objReturn );
@@ -384,9 +384,9 @@
      */
 
     setExtensionDefaults: function () {
-      Background.checkForLegacySettings();
-      Background.setDefaults( StorageLocal,  objSettingsNotSyncable,   'local' );
-      Background.setDefaults( StorageSync,   objSettingsSyncable,      'sync'  );
+      Background.checkForLegacySettings()
+        .then( Background.setDefaults.bind( null, StorageLocal, objSettingsNotSyncable, 'local' ) )
+        .then( Background.setDefaults.bind( null, StorageSync, objSettingsSyncable, 'sync' ) );
     }
   };
 
