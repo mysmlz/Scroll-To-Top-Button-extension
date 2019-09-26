@@ -45,8 +45,8 @@
     Storage.get( keys ).then( onStorageItemsRetrieved, onStorageItemsRetrievalError );
 
     function onStorageItemsRetrieved( objReturn ) {
-      const strGetStorageItemsLog = strLog;
-      Log.add( strLog + strLogDo, keys );
+      const strGetStorageItemsLog = strLog + ', getStorageItems';
+      Log.add( strGetStorageItemsLog + strLogDo, keys );
 
       if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
         funcSuccessCallback( objReturn );

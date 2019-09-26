@@ -236,7 +236,7 @@
 
   function getLanguagePreferences( resolve, reject ) {
     poziworldExtension.utils.getSettings(
-      '',
+      'getLanguagePreferences',
       getExtensionLanguageSettings.bind( null, resolve, reject ),
       getBrowserLanguageSettings.bind( null, resolve, reject )
     );

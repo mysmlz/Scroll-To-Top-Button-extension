@@ -292,7 +292,7 @@
       strLog = 'checkForLegacySettings';
       Log.add( strLog );
 
-      new Promise( getSettings )
+      new Promise( getSettings.bind( null, strLog ) )
         .catch( moveLegacySettings )
         .then( moveLegacySettings )
         .then( initContextMenus );
@@ -308,13 +308,12 @@
      */
 
     setDefaults: function ( Storage, objSettings, strLogSuffix ) {
-      let logTemp = strLog = 'setDefaults';
+      const logTemp = strLog = 'setDefaults' + ', ' + strLogSuffix;
 
       poziworldExtension.utils.getStorageItems( Storage, null, logTemp, onSettingsRetrieved );
 
       function onSettingsRetrieved( objReturn ) {
-        logTemp += ', ' + strLogSuffix;
-        Log.add( logTemp );
+        Log.add( logTemp, objReturn );
 
         var objTempToSet = {};
 
@@ -394,13 +393,14 @@
   /**
    * Retrieve the settings from the Storage.
    *
+   * @param {string} logPrefix
    * @param {resolve} resolve
    * @param {reject} reject
    */
 
-  function getSettings( resolve, reject ) {
+  function getSettings( logPrefix, resolve, reject ) {
     poziworldExtension.utils.getSettings(
-      '',
+      logPrefix,
       resolve,
       reject,
       true,
@@ -537,8 +537,12 @@
         if ( localStorageAvailable ) {
           localStorage.removeItem( 'latest' );
         }
+
+        return;
       }
     }
+
+    Log.add( logTemp + strLogDoNot );
   }
 
   /**
