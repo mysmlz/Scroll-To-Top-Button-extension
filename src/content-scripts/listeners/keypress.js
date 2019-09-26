@@ -41,6 +41,7 @@ function handleKeydown( event ) {
  */
 
 function handleKeyup( event ) {
+  // @todo Handle a case when both, Ctrl and Shift, get keyed-up within KEYPRESS_THROTTLE_DELAY: only the first one gets picked-up and the second one gets ignored.
   if ( isClickthroughKeyPressed( event ) ) {
     return;
   }
