@@ -1,5 +1,6 @@
 import * as windows from '../../shared/windows';
 import * as elements from '../../shared/elements';
+import * as testPages from '../../shared/test-pages';
 
 context( 'Window criteria met', runTests );
 
@@ -16,8 +17,7 @@ function runTests() {
  */
 
 export function checkElementsExist() {
-  // @todo Pick the safest site to load in terms of speed, security, & not to DoS it.
-  cy.visit( 'https://developers.cloudflare.com/sponsorships/' );
+  testPages.openTestPage();
 
   // Make sure the page is scrollable.
   // @todo Account for distanceLength.
@@ -25,8 +25,7 @@ export function checkElementsExist() {
     .its( 'documentElement.scrollHeight' )
     .should( 'gt', windows.DEFAULT_VIEWPORT_HEIGHT );
 
-  // @todo Figure out how to get elements injected on page load.
-  cy.scrollTo( 'bottom' );
+  testPages.forceButtonInjection();
 
   elements.getButtonContainerElement()
     .should( 'exist' );
