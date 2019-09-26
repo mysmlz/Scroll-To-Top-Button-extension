@@ -10,7 +10,7 @@ import * as styles from './styles';
  * @property {number} scrollDownSpeed
  * @property {number} scrollDownSpeedCustom
  * @property {number} distanceLength
- * @property {number} flipDistanceLength
+ * @property {number} [flipDistanceLength]
  * @property {string} buttonSize
  * @property {number} buttonWidthCustom
  * @property {number} buttonHeightCustom
