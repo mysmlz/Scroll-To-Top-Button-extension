@@ -310,7 +310,7 @@
     setDefaults: function ( Storage, objSettings, strLogSuffix ) {
       let logTemp = strLog = 'setDefaults';
 
-      poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
+      poziworldExtension.utils.getStorageItems( Storage, null, logTemp, onSettingsRetrieved );
 
       function onSettingsRetrieved( objReturn ) {
         logTemp += ', ' + strLogSuffix;
