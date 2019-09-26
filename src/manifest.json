@@ -37,7 +37,8 @@
       "global/js/context-menus.js",
       "global/js/background.js",
       "global/js/tabs.js",
-      "global/js/referral-programs.js"
+      "global/js/referral-programs.js",
+      "background/background.js"
     ]
   },
 

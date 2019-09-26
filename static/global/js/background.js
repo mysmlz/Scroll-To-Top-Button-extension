@@ -28,6 +28,9 @@
     arrDisabledUrls: [],
   };
 
+  const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY = 'requestedToSimulateExtensionUpdate';
+  const EXTENSION_INSTALL_TYPE_DEVELOPMENT = 'development';
+
   /* =============================================================================
 
     Background
@@ -50,6 +53,7 @@
     init : function() {
       Background.checkIfUpdatedSilently();
       initContextMenus();
+      exposeApi();
     }
     ,
 
@@ -140,31 +144,32 @@
     /**
      * Clean up in case of browser (re-)load/crash, extension reload, etc.
      *
-     * @param {boolean} boolIsCalledFromOnInstalledListener - Whether to set extension defaults on clean-up complete.
-     * @param {Object} objDetails - Reason (install/update/chrome_update) and (optional) previous version.
+     * @param {boolean} [calledFromOnInstalledListener] - Whether to set extension defaults on clean-up complete.
+     * @param {Object} details - Reason (install/update/chrome_update) and (optional) previous version.
      */
 
-    cleanUp: function ( boolIsCalledFromOnInstalledListener, objDetails ) {
+    cleanUp: function ( calledFromOnInstalledListener, details ) {
       const logTemp = strLog = 'cleanUp';
       Log.add( strLog );
 
       // To make removeOldSettings asynchronous.
       // Otherwise, it won't work correctly.
-      var arrSettingsToCleanUp = [
-        'strDummySetting'
+      const settingsToCleanUp = [
+        'dummySetting',
+        REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY,
       ];
 
       // Fails in case of a new install
-      StorageLocal.remove( arrSettingsToCleanUp ).then( onSettingsCleanedUp, onSettingsCleanedUp );
+      StorageLocal.remove( settingsToCleanUp ).then( onSettingsCleanedUp, onSettingsCleanedUp );
 
       function onSettingsCleanedUp( e ) {
         Log.add( logTemp + ', onSettingsCleanedUp', {
-          boolIsCalledFromOnInstalledListener: boolIsCalledFromOnInstalledListener,
-          e: e
+          calledFromOnInstalledListener: calledFromOnInstalledListener,
+          e: e,
         } );
 
-        if ( typeof boolIsCalledFromOnInstalledListener === 'boolean' && boolIsCalledFromOnInstalledListener ) {
-          Background.removeOldSettings( objDetails );
+        if ( poziworldExtension.utils.isType( calledFromOnInstalledListener, 'boolean' ) && calledFromOnInstalledListener ) {
+          Background.removeOldSettings( details );
         }
       }
     }
@@ -278,9 +283,9 @@
 
     /**
      * Set extension defaults in case user hasn't set them yet.
-     * v7.0.0 moved settings from localStorage to the syncable storage.
+     * v7.0.0 moved settings from localStorage to the {@link https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage/sync sync} storage.
      *
-     * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage/sync
+     * @return {Promise<unknown>}
      */
 
     checkForLegacySettings: function () {
@@ -543,6 +548,51 @@
   function initContextMenus() {
     poziworldExtension.i18n.init()
       .then( sttb.contextMenus.init );
+  }
+
+  /**
+   * Expose some functionality to other components.
+   */
+
+  function exposeApi() {
+    window.poziworldExtension.background = {
+      requestToSimulateExtensionUpdate: requestToSimulateExtensionUpdate,
+    };
+  }
+
+  /**
+   * Provide an ability to simulate the {@link https://developer.chrome.com/extensions/runtime#event-onInstalled onInstalled} event.
+   */
+
+  function requestToSimulateExtensionUpdate() {
+    browser.management.getSelf()
+      .then( checkForDevelopmentMode )
+      .then( simulateExtensionUpdate );
+  }
+
+  /**
+   * Make sure the extension was loaded unpacked in developer mode ({@link https://developer.chrome.com/extensions/management#type-ExtensionInstallType}).
+   *
+   * @param {object} extensionInfo - {@link https://developer.chrome.com/extensions/management#type-ExtensionInfo}
+   * @returns {Promise<never>|Promise<void>}
+   */
+
+  function checkForDevelopmentMode( extensionInfo ) {
+    if ( extensionInfo.installType === EXTENSION_INSTALL_TYPE_DEVELOPMENT ) {
+      return Promise.resolve();
+    }
+
+    return Promise.reject();
+  }
+
+  /**
+   * Simulate the {@link https://developer.chrome.com/extensions/runtime#event-onInstalled onInstalled} event.
+   */
+
+  function simulateExtensionUpdate() {
+    Background.cleanUp( true, {
+      boolWasUpdated: false,
+    } );
   }
 
   /**
