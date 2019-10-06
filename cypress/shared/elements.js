@@ -1,5 +1,7 @@
 // @todo https://docs.cypress.io/api/cypress-api/custom-commands.html#2-Don%E2%80%99t-overcomplicate-things ?
 
+export const BUTTON_1_SELECTOR = '#scroll-to-top-button-1';
+
 /**
  * Return the Scroll To Top Button's container element.
  *
@@ -19,7 +21,7 @@ export function getButtonContainerElement() {
 
 export function getButton1Element() {
   // @todo Get the tag name from const.
-  return cy.get( '#scroll-to-top-button-1' );
+  return cy.get( BUTTON_1_SELECTOR );
 }
 
 /**
