@@ -2,6 +2,22 @@ import * as buttonSettings from '../../../shared/button-settings';
 import * as testPages from '../../../shared/test-pages';
 import * as elements from '../../../shared/elements';
 
+/**
+ * @type {string[]} {@see Settings.buttonSize}
+ */
+
+const buttonSizes = [
+  '50px',
+  '45px',
+  '40px',
+  '35px',
+];
+
+const BUTTON_WIDTH_CUSTOM = 60;
+const BUTTON_HEIGHT_CUSTOM = 60;
+const buttonWidthCustomPx = `${ BUTTON_WIDTH_CUSTOM }px`;
+const buttonHeightCustomPx = `${ BUTTON_HEIGHT_CUSTOM }px`;
+
 context( 'Button settings -> Size -> Pre-set values', runTests );
 
 /**
@@ -9,13 +25,6 @@ context( 'Button settings -> Size -> Pre-set values', runTests );
  */
 
 function runTests() {
-  const buttonSizes = [
-    '50px',
-    '45px',
-    '40px',
-    '35px',
-  ];
-
   for ( const buttonSize of buttonSizes ) {
     it( `Button size is ${ buttonSize } by ${ buttonSize }`, checkSize.bind( null, buttonSize ) );
   }
@@ -30,8 +39,8 @@ function runTests() {
 function checkSize( buttonSize ) {
   buttonSettings.updateButtonSettings( {
     buttonSize,
-    buttonWidthCustom: 60,
-    buttonHeightCustom: 60,
+    buttonWidthCustom: BUTTON_WIDTH_CUSTOM,
+    buttonHeightCustom: BUTTON_HEIGHT_CUSTOM,
   } );
 
   testPages.openTestPage();
@@ -51,4 +60,7 @@ function checkSize( buttonSize ) {
 function assertButtonSize( buttonSize, $button1 ) {
   expect( $button1 ).to.have.css( 'width', buttonSize );
   expect( $button1 ).to.have.css( 'height', buttonSize );
+
+  expect( $button1 ).to.not.have.css( 'width', buttonWidthCustomPx );
+  expect( $button1 ).to.not.have.css( 'height', buttonHeightCustomPx );
 }
