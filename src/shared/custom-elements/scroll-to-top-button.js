@@ -81,6 +81,7 @@ export class ScrollToTopButton extends HTMLElement {
    * Size constants.
    */
 
+  /** @var {string} customSizeIndicator */
   #CUSTOM_SIZE_INDICATOR = '-1'; // All values come as strings
   #SUGGESTED_SIZE_REGEXP = '\\d{2}px'; // '35px', '50px', etc.
 
