@@ -2,10 +2,7 @@ import * as buttonSettings from '../../../shared/button-settings';
 import * as testPages from '../../../shared/test-pages';
 import * as elements from '../../../shared/elements';
 
-/**
- * @type {string[]} {@see Settings.buttonSize}
- */
-
+/** @type {string[]} {@link Settings#buttonSize} */
 const buttonSizes = [
   '50px',
   '45px',
@@ -22,6 +19,8 @@ context( 'Button settings -> Size -> Pre-set values', runTests );
 
 /**
  * Define & execute the tests.
+ *
+ * @todo Add a test to fail “5px”, for example.
  */
 
 function runTests() {
@@ -33,7 +32,7 @@ function runTests() {
 /**
  * Prepare the button by setting its settings and making it appear on the page, then make sure its size (width and height) matches the specified one.
  *
- * @param {string} buttonSize - {@see Settings.buttonSize}
+ * @param {string} buttonSize - {@link Settings#buttonSize}
  */
 
 function checkSize( buttonSize ) {
@@ -53,7 +52,7 @@ function checkSize( buttonSize ) {
 /**
  * Make sure the button size matches the size set in the settings.
  *
- * @param {string} buttonSize - {@see Settings.buttonSize}
+ * @param {string} buttonSize - {@link Settings#buttonSize}
  * @param {Cypress.Chainable<JQuery<HTMLElement>>} $button1
  */
 
