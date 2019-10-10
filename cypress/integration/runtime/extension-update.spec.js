@@ -3,6 +3,7 @@ import * as testPages from '../../shared/test-pages';
 import * as buttonSettings from '../../shared/button-settings';
 
 const nonDefaultSettings = {
+  uiLanguage: 'browserDefault',
   buttonMode: 'dual',
   scrollUpSpeed: 1000,
   scrollUpSpeedCustom: 1000,
