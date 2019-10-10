@@ -19,9 +19,12 @@
     "jump",
     "browser",
     "extension",
+    "addon",
     "chrome",
     "firefox",
-    "edge"
+    "edge",
+    "opera",
+    "chromium"
   ],
   "author": "PoziWorld, Inc.",
   "license": "MIT",
