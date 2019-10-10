@@ -507,6 +507,7 @@
           const setting = availableSettings[ settingName ];
           const DEFAULT_VALUE_INDEX = 1;
           let oldValue;
+          let value;
 
           if ( localStorageAvailable ) {
             const OLD_KEY_INDEX = 0;
@@ -516,10 +517,18 @@
             localStorage.removeItem( oldKey );
           }
 
-          newSettings[ settingName ] = oldValue ||
-            settings ?
-              settings[ settingName ] :
-              setting[ DEFAULT_VALUE_INDEX ];
+          if ( ! poziworldExtension.utils.isType( oldValue, 'undefined' ) && oldValue !== null ) {
+            value = oldValue;
+          }
+          else if ( poziworldExtension.utils.isType( settings, 'object' ) ) {
+            value = settings[ settingName ];
+          }
+
+          if ( poziworldExtension.utils.isType( value, 'undefined' ) ) {
+            value = setting[ DEFAULT_VALUE_INDEX ];
+          }
+
+          newSettings[ settingName ] = value;
         }
       }
 
