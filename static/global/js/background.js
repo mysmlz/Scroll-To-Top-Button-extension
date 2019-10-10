@@ -419,6 +419,7 @@
     /**
      * Each setting (object property) specifies an array, where the first item is the old name of the setting (if it existed and was different when the settings used to be stored in localStorage) and the second item is a default value.
      *
+     * @namespace availableSettings
      * @todo Have one source of truth (make all places reference the same settings object).
      */
 
@@ -433,6 +434,7 @@
       ],
       scrollUpSpeed: [
         'scroll_speed',
+        /** @alias availableSettings.scrollUpSpeedDefault */
         1000,
       ],
       scrollUpSpeedCustom: [
@@ -457,10 +459,12 @@
       ],
       buttonWidthCustom: [
         undefined,
+        /** @alias availableSettings.buttonWidthCustomDefault */
         60,
       ],
       buttonHeightCustom: [
         undefined,
+        /** @alias availableSettings.buttonHeightCustomDefault */
         60,
       ],
       buttonDesign: [
@@ -489,6 +493,7 @@
       ],
       clickthroughKeys: [
         undefined,
+        /** @alias availableSettings.clickthroughKeysDefault */
         'ctrl|shift',
       ],
       scroll: [

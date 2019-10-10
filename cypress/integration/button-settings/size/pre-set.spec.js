@@ -10,7 +10,9 @@ const buttonSizes = [
   '35px',
 ];
 
+/** @type {number} {@link availableSettings.buttonWidthCustomDefault} */
 const BUTTON_WIDTH_CUSTOM = 60;
+/** @type {number} {@link availableSettings.buttonHeightCustomDefault} */
 const BUTTON_HEIGHT_CUSTOM = 60;
 const buttonWidthCustomPx = `${ BUTTON_WIDTH_CUSTOM }px`;
 const buttonHeightCustomPx = `${ BUTTON_HEIGHT_CUSTOM }px`;
