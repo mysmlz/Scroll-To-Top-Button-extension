@@ -33,11 +33,11 @@
   },
   "homepage": "https://scroll-to-top-button.com",
   "devDependencies": {
-    "@babel/core": "^7.6.0",
+    "@babel/core": "^7.6.3",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-private-methods": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@webcomponents/webcomponentsjs": "^2.2.10",
+    "@babel/preset-env": "^7.6.3",
+    "@webcomponents/webcomponentsjs": "^2.3.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
@@ -50,9 +50,9 @@
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
-    "webpack": "^4.40.2",
+    "webpack": "^4.41.0",
     "webpack-clean": "^1.2.2",
-    "webpack-cli": "^3.3.8"
+    "webpack-cli": "^3.3.9"
   },
   "dependencies": {
     "core-js": "^3.2.1",
