@@ -261,6 +261,26 @@
   "keyboardSettings": {
     "message": "键盘设置"
   },
+  "clickthroughKeys": {
+    "message": "点击按钮下面的元素",
+    "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and the was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
+  },
+  "clickthroughKeysTooltip": {
+    "message": "首先，你可能想要点击一个位于按钮下面/后面的元素，但是这个按钮挡住了并且不能绕过这个按钮。\n\n现在，你可以按住键盘上一个特定的键，同时鼠标悬停在这个按钮上，然后这个按钮就会消失，这时你就可以轻松地点击之前点不到的元素。",
+    "description": "The tooltip that explains the “clickthrough keys” option in detail."
+  },
+  "ctrlKey": {
+    "message": "Ctrl(Control)+点击",
+    "description": "Ctrl (Control on Macintosh keyboards) key + Click button."
+  },
+  "shiftKey": {
+    "message": "Shift+点击",
+    "description": "Shift key + Click button."
+  },
+  "ctrlKeyOrShiftKey": {
+    "message": "Ctrl/Shift+点击",
+    "description": "Ctrl (Control on Macintosh keyboards) or Shift key + Click button."
+  },
   "otherSettings": {
     "message": "其他设置"
   },
