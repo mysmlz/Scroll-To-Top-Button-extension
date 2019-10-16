@@ -10,9 +10,10 @@ const modeDevelopment = process.env.NODE_ENV === 'development';
 const defaultConfig = Map( {
   entry: {
     'manifest': './src/manifest.json',
-    'background/background': './src/background/background.js',
-    'content-scripts/content-scripts': './src/content-scripts/content-scripts.js',
-    'options/options': './src/options/options.js',
+    'background': './src/background/index.js',
+    'content-scripts': './src/content-scripts/index.js',
+    // Put in a folder, as it has more resources (HTML, images) than other entries
+    'options/index': './src/options/index.js',
   },
   output: Map( {
     filename: '[name].js',

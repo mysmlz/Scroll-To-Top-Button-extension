@@ -38,7 +38,7 @@
       "global/js/background.js",
       "global/js/tabs.js",
       "global/js/referral-programs.js",
-      "background/background.js"
+      "background.js"
     ]
   },
 
@@ -58,7 +58,7 @@
       ],
       "all_frames": true,
       "css": [
-        "content-scripts/content-scripts.css"
+        "content-scripts.css"
       ],
       "js": [
         "global/js/browser-polyfill.js",
@@ -76,7 +76,7 @@
         "libraries/jquery.easing.js",
         "libraries/jQueryRotate.js",
         "libraries/shortcut.js",
-        "content-scripts/content-scripts.js"
+        "content-scripts.js"
       ]
     }
   ],
@@ -84,7 +84,7 @@
   "web_accessible_resources": [
     "shared/buttons/buttons.css",
     "shared/buttons/*.svg",
-    "content-scripts/content-scripts.css",
+    "content-scripts.css",
     "*.json"
   ]
 }

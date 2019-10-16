@@ -1,5 +1,5 @@
 // @todo Avoid name collision with window.customElements.
-import * as customElements from 'Shared/custom-elements/custom-elements';
+import * as customElements from 'Shared/custom-elements';
 
 import buttonSettings from './settings';
 import * as modes from './settings/modes';
