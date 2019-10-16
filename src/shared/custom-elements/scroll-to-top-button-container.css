@@ -1,7 +1,5 @@
 $buttonMargin: 20px;
 
-/* Container */
-
 scroll-to-top-button-container {
   display: none;
   z-index: 2147483647;
@@ -19,9 +17,7 @@ scroll-to-top-button-container[data-state-active] {
   display: flex;
 }
 
-/**
- * @todo Use logical properties and flow-relative values. https://github.com/csstools/postcss-logical
- */
+/** @todo Use logical properties and flow-relative values. https://github.com/csstools/postcss-logical */
 
 scroll-to-top-button-container[data-position-vertical="top"] {
   justify-content: flex-start;
@@ -49,31 +45,6 @@ scroll-to-top-button-container[data-position-horizontal="center"] {
 scroll-to-top-button-container[data-position-horizontal="right"] {
   align-items: flex-end;
   margin-right: $buttonMargin;
-}
-
-/* Button */
-
-scroll-to-top-button {
-  display: inline-flex;
-  pointer-events: all;
-  cursor: pointer;
-}
-
-#scroll-to-top-button-2 {
-  margin-top: 2px;
-}
-
-scroll-to-top-button[data-state-disabled] {
-  pointer-events: none;
-  visibility: hidden;
-}
-
-/**
- * @todo Add accessibility setting in Options that doesn't disable outline.
- */
-
-scroll-to-top-button:focus {
-  outline: none;
 }
 
 /* Hide from print view */

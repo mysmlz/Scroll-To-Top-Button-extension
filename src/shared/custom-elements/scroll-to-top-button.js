@@ -6,6 +6,8 @@ import {
 } from '../utils';
 import keyCodes from '../constants/key-codes';
 
+import './scroll-to-top-button.css';
+
 /**
  * Scroll To Top Button button custom element to avoid style collisions.
  *

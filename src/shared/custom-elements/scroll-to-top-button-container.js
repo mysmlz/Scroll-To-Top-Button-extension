@@ -1,3 +1,5 @@
+import './scroll-to-top-button-container.css';
+
 /**
  * Scroll To Top Button button container custom element to avoid style collisions.
  *
