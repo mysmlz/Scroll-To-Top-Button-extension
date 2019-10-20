@@ -84,6 +84,8 @@ function adaptManifestJson( source ) {
         browser_style: true,
       };
 
+      delete manifestJsonAsJs.version_name;
+
       break;
     }
     case 'edge':
@@ -97,6 +99,8 @@ function adaptManifestJson( source ) {
         persistent: false,
       };
       newProperties.options_page = OPTIONS_PAGE_PATH;
+
+      delete manifestJsonAsJs.version_name;
 
       break;
     }
