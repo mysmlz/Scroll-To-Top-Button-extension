@@ -789,6 +789,18 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@poziworld/cypress-browser-extension-plugin@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@poziworld/cypress-browser-extension-plugin/-/cypress-browser-extension-plugin-0.2.1.tgz#7d6e9e228f7085e139099cf7344969028d2466f4"
+  integrity sha512-PEzj5xeuiWtg2Q4IAmRuHx3gn9X19volYVyZMwNEe7Eoa9Trv8fJyTMZMJaJgMW0Iu+RcOe4FeSdfzFx5cBXPw==
+  dependencies:
+    browserify "^16.2.0"
+    browserify-versionify "^1.0.6"
+    chokidar "^2.0.3"
+    fs-extra "^5.0.0"
+    nanoid "^1.0.2"
+    unzip-crx "^0.2.0"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -2027,18 +2039,6 @@ cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
-
-cypress-browser-extension-plugin@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/cypress-browser-extension-plugin/-/cypress-browser-extension-plugin-0.1.0.tgz#c7cfddfac62cf563be55f0db98199902e7b22870"
-  integrity sha1-x8/d+sYs9WO+VfDbmBmZAueyKHA=
-  dependencies:
-    browserify "^16.2.0"
-    browserify-versionify "^1.0.6"
-    chokidar "^2.0.3"
-    fs-extra "^5.0.0"
-    nanoid "^1.0.2"
-    unzip-crx "^0.2.0"
 
 cypress@^3.4.1:
   version "3.4.1"
