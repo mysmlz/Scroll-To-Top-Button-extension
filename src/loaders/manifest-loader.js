@@ -1,12 +1,3 @@
-/**
- * Build browser-specific manifest.json files, as not all manifest.json keys are supported by all browsers.
- * Also, copy over some details from package.json. 
- *
- * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Browser_compatibility_for_manifest.json
- *
- * Inspired by https://stackoverflow.com/a/44249538
- */
-
 const path = require( 'path' );
 const fs = require( 'fs' );
 const { mergeDeep } = require( 'immutable' );
@@ -36,7 +27,21 @@ const OPTIONS_PAGE_PATH = 'options/index.html';
 
 const EXTENSION_ID_AFFIX = '@poziworld.com';
 
-module.exports = function ( source ) {
+module.exports = adaptManifestJson;
+
+/**
+ * Build browser-specific manifest.json files, as not all manifest.json keys are supported by all browsers.
+ * Also, copy over some details from package.json.
+ *
+ * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Browser_compatibility_for_manifest.json
+ *
+ * Inspired by https://stackoverflow.com/a/44249538
+ *
+ * @param {string} source - Stringified original manifest.json's contents.
+ * @return {string} - Stringified updated browser-specific manifest.json's contents.
+ */
+
+function adaptManifestJson( source ) {
   const manifestJsonAsJs = JSON.parse( source );
   const packageJsonContents = fs.readFileSync( PACKAGE_JSON_PATH, PACKAGE_JSON_ENCODING );
   const packageJsonAsJs = JSON.parse( packageJsonContents );
@@ -103,4 +108,4 @@ module.exports = function ( source ) {
   this.emitFile( 'manifest.json', mergedJson );
 
   return mergedJson;
-};
+}
