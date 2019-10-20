@@ -3,6 +3,8 @@
 
   "default_locale": "en_US",
   "name": "__MSG_extensionName__",
+  "version": "8.0.0",
+  "version_name": "8.0.0 AVG",
   "short_name": "STTB",
   "description": "__MSG_extensionDescription__",
 

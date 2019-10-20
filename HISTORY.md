@@ -6,6 +6,44 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v8.0.0
+
+### New
+
+* Ability to set a custom button size (min – 1px, max – 500px) in Options.
+
+  > [Idea](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/2) by [luikhh](https://github.com/luikhh).
+
+* Ability to click an element underneath/behind the button.
+
+  > Before, you might have wanted to click an element located underneath/behind the button, but the button was in the way and there was no way to get rid of the button.
+
+  > Now, you can hold a Ctrl (Control) or Shift key on your keyboard and hover over the button and the button will disappear, allowing you to comfortably click the previously inaccessible element.
+
+  > Idea by [Natalia Smirnova](https://www.transifex.com/user/profile/natasmirnova1392/).
+
+### Improved
+
+* Updated Chinese (China), Dutch (Netherlands), Galician, and Turkish translations.
+
+  > Thank you, [pluwen](https://www.transifex.com/user/profile/pluwen/), [Bright X](https://www.transifex.com/user/profile/whaat7er/), [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/), [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Iváns](https://www.transifex.com/user/profile/Iváns/), [Eren Tas](https://www.transifex.com/user/profile/E.Tas/)!
+
+### Fixed
+
+* Prevent a possible exception in tab checking logic.
+
+  > [Issue](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/4) reported by [MagicAndre1981](https://github.com/MagicAndre1981).
+
+* In some cases, the button would not go back to the transparent state when not active.
+
+  > [Issue](https://vk.com/wall-80569939_47?reply=52&thread=48) reported by [Anton Kizernis](https://vk.com/kizernis).
+
+### Changed
+
+* Bumped minimum supported Chrome version to 49 (last version supported on Windows XP and Mac OS X Snow Leopard).
+
+---
+
 ## v7.3.0
 
 ### New
