@@ -263,7 +263,7 @@
   },
   "clickthroughKeys": {
     "message": "Klik element achter knop",
-    "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and the was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
+    "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and there was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
   },
   "clickthroughKeysTooltip": {
     "message": "Hiervoor had je misschien ergens op willen klikken dat onder/achter de knop zat verstopt, maar er was geen manier om de knop weg te halen.\n\nNu kan je een bepaalde knop op je toetsenbord ingedrukt houden en de muis boven de STTB houden en dan zal de knop verdwijnen, zodat je makkelijk op het element klikken waar je eerst niet bij kon.",

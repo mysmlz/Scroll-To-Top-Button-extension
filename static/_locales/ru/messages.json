@@ -263,7 +263,7 @@
   },
   "clickthroughKeys": {
     "message": "Щёлкнуть по элементу за кнопкой",
-    "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and the was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
+    "description": "Before, user might have wanted to click an element located underneath/behind the button, but the button was in the way and there was no way to get rid of the button. Now, such user can hold a certain key on his/her keyboard and hover over the button and the button will disappear, allowing the user to comfortably click the previously inaccessible element."
   },
   "clickthroughKeysTooltip": {
     "message": "Раньше вы, возможно, хотели щёлкнуть по элементу, находящемуся под/за кнопкой, но кнопка преграждала путь, и не было способа избавиться от кнопки.\n\nТеперь вы можете зажать определённую кнопку на клавиатуре и навести курсор на кнопку, и кнопка исчезнет, что позволит вам удобно щёлкнуть по прежде недосягаемому элементу.",
