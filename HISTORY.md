@@ -37,7 +37,7 @@
 ### New
 
 * Ability to specify scroll up/down speed value in milliseconds instead of selecting a pre-set one.
-   
+
   > Idea by [Phil Reilly](https://www.facebook.com/pjpreilly).
 
 ---
@@ -48,7 +48,7 @@
 
 * Updated Amazon referral IDs.
 
-  > Support project development by making us your referral! 
+  > Support project development by making us your referral!
     Go to Amazon, click the Scroll To Top Button icon next to the address bar, click “I want to help”.
 
 ---
@@ -88,7 +88,7 @@
 ### New
 
 * Scroll To Top Button works in [Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/) & Edge* now, too!
-   
+
   > Idea by [Michael Yarlot](https://www.facebook.com/michael.yarlot), [Fabrizio Morrone](https://twitter.com/FabrizioMorron3), [Keluen Mier](https://plus.google.com/108629557834198154933).
 
   \* We reached out to Microsoft for approval to have our extension in the Microsoft Store.
@@ -108,7 +108,7 @@
 ### Improved
 
 * Make Scroll To Top Button work on Google News.
-   
+
   > Issue reported by [phil reilly](https://plus.google.com/113610250929060370881).
 
 ---
@@ -118,7 +118,7 @@
 ### Fixed
 
 * Options page would flicker when language is not English.
-   
+
   > Issue reported by [Pampero Cool](https://plus.google.com/+MarcFoces), [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/).
 
 ---
@@ -138,7 +138,7 @@
 ### Fixed
 
 * Button wouldn't have the right size on some pages.
-   
+
   > Issue reported by [Devia Jeff (Kslr)](https://plus.google.com/111793170384760579738).
 
 ---
@@ -158,7 +158,7 @@
 ### Fixed
 
 * Amazon badge notification and its settings wouldn't work.
-  
+
   Make us your referral – support project development in one click!
   > Go to Amazon and click the Scroll To Top Button icon next to the address bar to learn the details.
 
@@ -169,7 +169,7 @@
 ### Improved
 
 * Make Scroll To Top Button work on sites with full-screen iframes (e.g., ZeroNet).
-   
+
   > Issue reported by [赵名字](https://plus.google.com/102362001786834990486).
 * Disable Scroll To Top Button on Transifex when viewing/editing translations.
 
@@ -180,7 +180,7 @@
 ### Fixed
 
 * Unable to scroll Options page on smaller screens.
-   
+
   > Bug reported by [Jeff Seymour](https://plus.google.com/101598275677991812643) & [Michael Rhum](https://plus.google.com/101346129192192436780).
 
 ---
@@ -190,7 +190,7 @@
 ### New
 
 * Shop on Amazon?
-  
+
   Make us your referral – support project development in one click!
   > Go to Amazon and click the Scroll To Top Button icon next to the address bar to learn the details.
 
@@ -201,7 +201,7 @@
 ### Fixed
 
 * “Dual arrows” mode wouldn't work properly on Bing and, sometimes, Google search result pages.
-   
+
   > Bug reported by [Miss Vasquez](https://plus.google.com/101122222877588657617).
 
 ---
@@ -219,7 +219,7 @@
 ### Fixed
 
 * Button(s) wouldn't hide in fullscreen mode.
-   
+
   > Bug reported by [Сергей Кателина](https://plus.google.com/114544103485939423643).
 
 ---
