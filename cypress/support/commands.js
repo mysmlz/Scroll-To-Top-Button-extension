@@ -1,4 +1,4 @@
-import addCommands from 'cypress-browser-extension-plugin/commands';
+import addCommands from '@poziworld/cypress-browser-extension-plugin/commands';
 
 setUp();
 

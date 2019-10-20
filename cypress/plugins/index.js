@@ -1,4 +1,4 @@
-const extensionLoader = require( 'cypress-browser-extension-plugin/loader' );
+const extensionLoader = require( '@poziworld/cypress-browser-extension-plugin/loader' );
 
 module.exports = ( on ) => {
   on( 'before:browser:launch', ( browser = {}, args ) => (
