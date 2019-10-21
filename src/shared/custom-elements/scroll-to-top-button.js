@@ -96,12 +96,11 @@ export class ScrollToTopButton extends HTMLElement {
   #MAX_HEIGHT = 500;
 
   /**
-   * Define all the functionality the element will have when an instance of it is instantiated.
+   * Invoked each time the custom element is appended into a document-connected element. This will happen each time the node is moved, and may happen before the element's contents have been fully parsed.
    */
 
-  constructor() {
-    super();
-
+  connectedCallback() {
+    this.#addSemantics();
     this.#createShadowRoot();
     this.#addListeners();
     this.#getButtonPreferences();
@@ -117,14 +116,6 @@ export class ScrollToTopButton extends HTMLElement {
       promiseCss,
     ] )
       .then( this.#setButtonImage );
-  }
-
-  /**
-   * Invoked each time the custom element is appended into a document-connected element. This will happen each time the node is moved, and may happen before the element's contents have been fully parsed.
-   */
-
-  connectedCallback() {
-    this.#addSemantics();
   }
 
   /**
