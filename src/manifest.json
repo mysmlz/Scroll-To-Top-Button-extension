@@ -65,7 +65,6 @@
       "js": [
         "global/js/browser-polyfill.js",
         "global/js/bowser.js",
-        "global/js/punycode.min.js",
         "global/js/global.js",
         "global/js/utils.js",
         "libraries/jquery-3.3.1.min.js",

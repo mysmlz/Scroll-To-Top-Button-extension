@@ -1,3 +1,5 @@
+import punycode from 'punycode';
+
 import * as specialCaseWebsites from './special-case-websites';
 
 const DISABLED_DOMAINS_SETTING = 'arrDisabledDomains';
@@ -43,7 +45,7 @@ function getActiveTabAddress() {
   const tempDomain = window.location.hostname;
 
   // Handle non-ASCII domain names.
-  tabDomain = window.punycode.toUnicode( tempDomain );
+  tabDomain = punycode.toUnicode( tempDomain );
   tabUrl = window.location.href.replace( tempDomain, tabDomain );
 }
 
