@@ -83,6 +83,7 @@
   ],
 
   "web_accessible_resources": [
+    "shared/custom-elements/scroll-to-top-button.css",
     "shared/buttons/buttons.css",
     "shared/buttons/*.svg",
     "content-scripts.css",

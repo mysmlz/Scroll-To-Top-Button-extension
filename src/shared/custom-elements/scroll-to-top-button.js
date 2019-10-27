@@ -3,7 +3,7 @@ import 'dom4';
 import {
   getDocumentFragment,
   getUrl,
-} from '../utils';
+} from 'Shared/utils';
 import keyCodes from '../constants/key-codes';
 
 import './scroll-to-top-button.css';

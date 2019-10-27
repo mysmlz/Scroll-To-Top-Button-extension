@@ -1,3 +1,4 @@
+import { getUrl } from 'Shared/utils';
 // @todo Avoid name collision with window.customElements.
 import * as customElements from 'Shared/custom-elements';
 
@@ -5,6 +6,7 @@ import buttonSettings from './settings';
 import * as modes from './settings/modes';
 
 export let container = null;
+export let containerShadow = null;
 export let button1 = null;
 export let button2 = null;
 export let $button1 = null;
@@ -28,20 +30,15 @@ export let scrollCausingElement = null;
 
 export function createElements() {
   customElements.setUp();
-  container = createContainer( buttonSettings.buttonLocation );
-  button1 = createButton();
-  $button1 = $( button1 );
-
-  container.append( button1 );
+  createContainer( buttonSettings.buttonLocation );
+  createButton1();
 
   if ( modes.isDualArrowsMode() ) {
-    button2 = createButton();
-    $button2 = $( button2 );
-
-    container.append( button2 );
+    createButton2();
   }
 
-  container.insertAdjacentHTML( 'beforeend', createDisabledJavascriptBandage() );
+  createButtonsStyles();
+  createDisabledJavascriptBandage();
 
   document.body.insertAdjacentElement( 'afterend', container );
 }
@@ -50,17 +47,46 @@ export function createElements() {
  * For easier styling, wrap the button(s) with a container.
  *
  * @param {string} buttonLocation - Position of the button on the page.
- * @returns {HTMLElement}
  */
 
 function createContainer( buttonLocation ) {
-  const containerTemp = document.createElement( customElements.CONTAINER_TAG_NAME );
   const position = getPosition( buttonLocation );
 
-  containerTemp.setAttribute( 'data-position-vertical', position.vertical );
-  containerTemp.setAttribute( 'data-position-horizontal', position.horizontal );
+  container = document.createElement( customElements.CONTAINER_TAG_NAME );
 
-  return containerTemp;
+  container.setAttribute( 'data-position-vertical', position.vertical );
+  container.setAttribute( 'data-position-horizontal', position.horizontal );
+
+  // Avoid CSS collisions when websites define styles for [role="button"] or even <scroll-to-top-button>
+  containerShadow = container.attachShadow( {
+    mode: 'open',
+  } );
+}
+
+/**
+ * Create button 1 element, cache it for reuse, and it add to the page.
+ *
+ * @todo DRY.
+ */
+
+function createButton1() {
+  button1 = createButton();
+  $button1 = $( button1 );
+
+  containerShadow.append( button1 );
+}
+
+/**
+ * Create button 2 element, cache it for reuse, and it add to the page.
+ *
+ * @todo DRY.
+ */
+
+function createButton2() {
+  button2 = createButton();
+  $button2 = $( button2 );
+
+  containerShadow.append( button2 );
 }
 
 /**
@@ -87,21 +113,34 @@ function createButton() {
 }
 
 /**
+ * As the buttons are a part of the Shadow DOM, their CSS is scoped and need to be loaded separately.
+ */
+
+function createButtonsStyles() {
+  const link = document.createElement( 'LINK' );
+
+  link.rel = 'stylesheet';
+  link.href = getUrl( 'shared/custom-elements/scroll-to-top-button.css' );
+
+  containerShadow.append( link );
+}
+
+/**
  * When JavaScript is disabled, the extensions still work.
  * One user requested to make the button not show up in such case.
- *
- * @returns {string}
  */
 
 function createDisabledJavascriptBandage() {
-  // .append and .innerHTML don't work as expected in Chrome v49
-  return `
+  const html = `
     <noscript>
       <style>
         ${ customElements.CONTAINER_TAG_NAME } { display: none !important; }
       </style>
     </noscript>
   `;
+
+  // .append and .innerHTML don't work as expected in Chrome v49
+  container.insertAdjacentHTML( 'beforeend', html );
 }
 
 /**

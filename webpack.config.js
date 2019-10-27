@@ -14,6 +14,7 @@ const defaultConfig = Map( {
     'content-scripts': './src/content-scripts/index.js',
     // Put in a folder, as it has more resources (HTML, images) than other entries
     'options/index': './src/options/index.js',
+    'shared/custom-elements/scroll-to-top-button': './src/shared/custom-elements/scroll-to-top-button.css',
   },
   output: Map( {
     filename: '[name].js',
@@ -129,6 +130,7 @@ module.exports = supportedBrowsers.map( browserName => {
         new WebpackCleanPlugin(
           [
             'manifest.js',
+            'shared/custom-elements/scroll-to-top-button.js',
           ],
           {
             basePath: path.resolve( __dirname, 'dist', browserName ),
