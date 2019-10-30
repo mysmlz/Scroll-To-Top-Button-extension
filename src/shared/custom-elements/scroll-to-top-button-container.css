@@ -55,6 +55,6 @@ scroll-to-top-button-container[data-position-horizontal="right"] {
 @media print {
 
   scroll-to-top-button-container {
-    display: none;
+    display: none !important;
   }
 }
