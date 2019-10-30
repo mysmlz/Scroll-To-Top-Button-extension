@@ -403,7 +403,7 @@
       logPrefix,
       resolve,
       reject,
-      true,
+      true
     );
   }
 
