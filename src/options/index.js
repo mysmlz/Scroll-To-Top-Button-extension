@@ -636,7 +636,13 @@ function getSettingContainer( element ) {
  */
 
 function isLanguageBeingChanged( settings ) {
-  return settings.uiLanguage !== getOriginalSettings().uiLanguage;
+  const newUiLanguage = settings.uiLanguage;
+
+  if ( poziworldExtension.utils.isNonEmptyString( newUiLanguage ) ) {
+    return newUiLanguage !== getOriginalSettings().uiLanguage;
+  }
+
+  return false;
 }
 
 /**
