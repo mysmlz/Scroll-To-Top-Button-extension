@@ -194,9 +194,9 @@ export function setScrollCausingElement( element ) {
  */
 
 export function getScrollTop() {
-  return ( scrollableElement ?
-    scrollableElement :
-    document.documentElement ).scrollTop;
+  return scrollableElement ?
+    scrollableElement.scrollTop :
+    window.scrollY;
 }
 
 /**
