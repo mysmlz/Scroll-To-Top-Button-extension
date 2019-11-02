@@ -34,10 +34,10 @@ export function addButtonsHoverListeners() {
  */
 
 function addInvisibleDualArrowsButtonHoverListener( $thisButton, $otherButton ) {
-  $thisButton.hover(
-    handleInvisibleDualArrowsMouseenter.bind( null, $thisButton, $otherButton ),
-    handleInvisibleDualArrowsMouseleave
-  );
+  const button = $thisButton[ 0 ];
+
+  button.addEventListener( 'mouseover', handleInvisibleDualArrowsMouseenter.bind( null, $thisButton, $otherButton ) );
+  button.addEventListener( 'mouseout', handleInvisibleDualArrowsMouseleave );
 }
 
 /**
@@ -47,10 +47,10 @@ function addInvisibleDualArrowsButtonHoverListener( $thisButton, $otherButton ) 
  */
 
 function addNonOpaqueSingleArrowHoverListener( $thisButton ) {
-  $thisButton.hover(
-    handleNonOpaqueSingleArrowMouseenter.bind( null, $thisButton ),
-    handleNonOpaqueSingleArrowMouseleave.bind( null, $thisButton )
-  );
+  const button = $thisButton[ 0 ];
+
+  button.addEventListener( 'mouseover', handleNonOpaqueSingleArrowMouseenter.bind( null, $thisButton ) );
+  button.addEventListener( 'mouseout', handleNonOpaqueSingleArrowMouseleave.bind( null, $thisButton ) );
 }
 
 /**
