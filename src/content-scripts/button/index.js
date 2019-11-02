@@ -26,7 +26,6 @@ export function init() {
     elements.createElements();
     listeners.addNonKeyboardOnlyModeListeners();
     visualProperties.switchVisualProperties();
-    visualProperties.setDualArrowsModeButton();
   }
 
   listeners.addAllModeListeners();

@@ -6,6 +6,7 @@ scroll-to-top-button {
 
 #scroll-to-top-button-2 {
   margin-top: 2px;
+  transform: rotate( -180deg );
 }
 
 scroll-to-top-button[data-state-disabled] {

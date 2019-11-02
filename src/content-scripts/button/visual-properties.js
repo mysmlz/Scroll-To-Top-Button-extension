@@ -88,26 +88,6 @@ export function toggleButton( $thisButton, visible ) {
 }
 
 /**
- * As arrow image buttons are reused, rotate when necessary.
- */
-
-export function setDualArrowsModeButton() {
-  if ( modes.isDualArrowsMode() ) {
-    rotateButton( elements.$button2 );
-  }
-}
-
-/**
- * Rotate the arrow image, so it's pointing the right direction, according to its function.
- *
- * @param {jQuery} $button - The button being rotated.
- */
-
-function rotateButton( $button ) {
-  $button.rotate( styles.STYLE_ROTATED_BUTTON_DEGREE );
-}
-
-/**
  * Whether the button would be active if hovered, whether the page has been scrolled enough (equal to or more than set by “Appear distance” option).
  *
  * @returns {boolean}
