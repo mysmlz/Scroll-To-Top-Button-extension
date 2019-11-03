@@ -83,6 +83,7 @@ export function toggleButtons( visible ) {
  */
 
 export function toggleButton( $thisButton, visible ) {
+  $thisButton.stop( true, true );
   // Normal state of the button doesn't need an attribute, so it's only added when the button needs to be hidden
   $thisButton[ 0 ].toggleAttribute( elements.BUTTON_ATTRIBUTE_STATE_DISABLED, ! visible );
 }
