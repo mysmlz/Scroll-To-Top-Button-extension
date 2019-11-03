@@ -125,11 +125,11 @@ Gratitudes
 --------
 
 - Translators:
-  - Chinese (China) — [Pluwen](https://www.transifex.com/user/profile/pluwen/);
+  - Chinese (China) — [Pluwen](https://www.transifex.com/user/profile/pluwen/), [Bright X](https://www.transifex.com/user/profile/whaat7er/);
   - Russian — [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/), [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/);
   - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/);
   - Czech — [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/).
-  - Galician — [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Navhy (Iván Seoane)](https://www.transifex.com/user/profile/Navhy/).
+  - Galician — [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Navhy (Iván Seoane)](https://www.transifex.com/user/profile/Navhy/), [Iváns](https://www.transifex.com/user/profile/Iváns/).
   - Polish — [MusicInMe_TH (Ireek)](https://www.transifex.com/user/profile/MusicInMe_TH/).
   - Turkish — [E.Tas (Eren Tas)](https://www.transifex.com/user/profile/E.Tas/).
 
