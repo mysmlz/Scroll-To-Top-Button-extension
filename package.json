@@ -43,22 +43,22 @@
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^2.1.1",
-    "cypress": "^3.4.1",
+    "cypress": "^3.6.0",
     "dompurify": "^1.0.11",
     "immutable": "^4.0.0-rc.9",
-    "mini-css-extract-plugin": "^0.6.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "path": "^0.12.7",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-mixins": "^6.2.3",
     "precss": "^4.0.0",
     "punycode": "^2.1.1",
-    "webpack": "^4.41.0",
+    "webpack": "^4.41.2",
     "webpack-clean": "^1.2.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "core-js": "^3.3.2",
+    "core-js": "^3.3.6",
     "dom4": "^2.1.5"
   }
 }
