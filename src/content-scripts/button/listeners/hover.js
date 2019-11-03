@@ -122,6 +122,10 @@ function handleNonOpaqueSingleArrowMouseenter( $thisButton, event ) {
  */
 
 function handleNonOpaqueSingleArrowMouseleave( $thisButton, event ) {
+  if ( ! hasMouseMoved( event ) ) {
+    return;
+  }
+
   if ( ! isClickthroughKeyPressed( event ) ) {
     visualProperties.toggleButton( $thisButton, true );
   }
@@ -129,4 +133,16 @@ function handleNonOpaqueSingleArrowMouseleave( $thisButton, event ) {
   if ( visualProperties.isButtonHoverable() ) {
     $thisButton.stop().fadeTo( 'medium', buttonSettings.notActiveButtonOpacity );
   }
+}
+
+/**
+ * In Firefox, the “mouseout” event gets triggered as soon as a button gets pointer-events: none.
+ * If the cursor coordinates haven't changed since they were recorded on “mouseover”, then report the mouse didn't move.
+ *
+ * @param {MouseEvent} event - The event.
+ * @return {boolean}
+ */
+
+function hasMouseMoved( event ) {
+  return event.clientX !== mousemove.cursorPosition.x || event.clientY !== mousemove.cursorPosition.y;
 }
