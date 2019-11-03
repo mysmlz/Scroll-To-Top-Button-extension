@@ -13,6 +13,34 @@ body {
   margin: 0;
 }
 
+/* Wait for dynamic page content */
+
+.waitingForJs {
+  overflow: hidden;
+}
+
+.waitingForJs > * {
+  opacity: 0;
+}
+
+.waitingForJsMessageContainer {
+  display: none;
+}
+
+.waitingForJs .waitingForJsMessageContainer {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  opacity: initial;
+}
+
+/* Generic */
+
 * {
   position: relative;
 }

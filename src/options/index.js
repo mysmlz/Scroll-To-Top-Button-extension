@@ -2,6 +2,7 @@ import 'dom4';
 
 import './options.css';
 
+const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
 const SETTING_CONTAINER_SELECTOR = '.pwFormRow';
 const options = Array.from( document.getElementsByClassName( 'optionsChanger' ) );
@@ -32,6 +33,7 @@ function init() {
     .then( cacheMessages )
     .then( setLinks )
     .then( sortLanguages )
+    .then( handlePageReady )
     .then( setDocumentLanguage );
 
   getSettings();
@@ -629,6 +631,14 @@ function switchElement( show, element ) {
 
 function getSettingContainer( element ) {
   return element.closest( SETTING_CONTAINER_SELECTOR );
+}
+
+/**
+ * If page waited for JavaScript to show content, signal it's now ready.
+ */
+
+function handlePageReady() {
+  document.body.classList.remove( NOT_READY_CLASS );
 }
 
 /**
