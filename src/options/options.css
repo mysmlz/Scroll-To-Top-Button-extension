@@ -1,0 +1,169 @@
+@import "../shared/pages/shared";
+@import "./mixins";
+
+body {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 55rem;
+}
+
+/* Message banner */
+
+.messageBanner {
+  margin: 0;
+  padding: 1rem;
+  background-color: #f7f7f7;
+}
+
+@mixin messageBannerPositioned top, bottom;
+@mixin messageBannerPositioned bottom, top;
+
+.messageBanner .pwText {
+  @mixin secondaryText;
+  line-height: 1.3;
+  margin: 0;
+  text-align: right;
+}
+
+/* @todo Refactor language files to avoid tag names. */
+
+.messageBanner a {
+  @mixin link;
+  color: #0c63fb;
+}
+
+/* Patreon */
+
+#becomePatron {
+  @mixin secondaryInfoBlock;
+  margin-top: 1rem;
+}
+
+@supports ( -ms-ime-align: auto ) {
+
+  #becomePatron {
+    display: none;
+  }
+}
+
+#becomePatronImg {
+  width: 15rem;
+  height: 3.5rem;
+}
+
+/* Settings */
+
+#settingsForm {
+  margin: 2rem 0;
+}
+
+.optionsChanger,
+input.optionsChanger {
+  margin-left: 3rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-width: 35rem;
+}
+
+.optionsChanger.custom {
+  width: 10rem;
+}
+
+.optionsChanger:invalid {
+  border-color: #f00;
+}
+
+[data-i18n="uiLanguage"]::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: .5rem;
+  width: 2rem;
+  height: 2rem;
+  background: url( /options/img/switch-language.svg ) center / contain no-repeat;
+}
+
+#author {
+  margin-left: 1.5rem;
+}
+
+#settingsForm .pwFormControls {
+  display: flex;
+  align-items: baseline;
+}
+
+#saveSettings {
+  display: flex;
+}
+
+#status {
+  line-height: 2;
+  margin: 0 0 0 1.5rem;
+}
+
+/* Secondary information */
+
+#otherProjectsContainer {
+  margin-bottom: 3rem;
+}
+
+@supports ( -ms-ime-align: auto ) {
+
+  #otherProjectsContainer {
+    display: none;
+  }
+}
+
+.secondaryInfoContainer::before {
+  content: '';
+  position: absolute;
+  top: -1.7rem;
+  right: 0;
+  left: 0;
+  height: .1rem;
+  border-top: .1rem dashed #ccc;
+}
+
+/* Links */
+
+.linksHeading {
+  @mixin secondaryCaption;
+  @mixin secondaryInfoBlock;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.links {
+  @mixin secondaryInfoBlock;
+  line-height: 2rem;
+  padding-left: 1.7rem;
+}
+
+.linkWrapper {
+  @mixin secondaryText;
+  line-height: 1.2;
+  margin-bottom: .5rem;
+}
+
+/* @todo Refactor language files to avoid tag names. */
+
+.linkWrapper a,
+.link {
+  @mixin link;
+  color: #15c;
+}
+
+@media ( max-width: 30em /* Up to 480px */ ) {
+
+  /* Settings */
+
+  .optionsChanger,
+  input.optionsChanger {
+    max-width: 22rem;
+  }
+
+  #author {
+    margin-left: .5rem;
+  }
+}

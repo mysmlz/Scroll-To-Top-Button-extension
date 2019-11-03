@@ -42,10 +42,10 @@ module.exports = adaptManifestJson;
  */
 
 function adaptManifestJson( source ) {
-  const manifestJsonAsJs = JSON.parse( source );
+  let manifestJsonAsJs = JSON.parse( source );
   const packageJsonContents = fs.readFileSync( PACKAGE_JSON_PATH, PACKAGE_JSON_ENCODING );
   const packageJsonAsJs = JSON.parse( packageJsonContents );
-  const newProperties = {
+  let newProperties = {
     version: packageJsonAsJs.version,
     author: packageJsonAsJs.author,
     homepage_url: packageJsonAsJs.homepage,
@@ -65,10 +65,7 @@ function adaptManifestJson( source ) {
       newProperties.background = {
         persistent: false,
       };
-      newProperties.options_ui = {
-        page: OPTIONS_PAGE_PATH,
-        chrome_style: true,
-      };
+      newProperties.options_page = OPTIONS_PAGE_PATH;
 
       break;
     }

@@ -1,7 +1,9 @@
 import 'dom4';
 
+import './options.css';
+
 const form = document.getElementById( 'settingsForm' );
-const SETTING_CONTAINER_SELECTOR = '.settingContainer';
+const SETTING_CONTAINER_SELECTOR = '.pwFormRow';
 const options = Array.from( document.getElementsByClassName( 'optionsChanger' ) );
 const CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME = 'data-customizable';
 const CUSTOMIZABLE_OPTION_ATTRIBUTE_VALUE = 1;
@@ -29,7 +31,8 @@ function init() {
   poziworldExtension.page.init( 'options' )
     .then( cacheMessages )
     .then( setLinks )
-    .then( sortLanguages );
+    .then( sortLanguages )
+    .then( setDocumentLanguage );
 
   getSettings();
   applyUi();
@@ -626,6 +629,26 @@ function switchElement( show, element ) {
 
 function getSettingContainer( element ) {
   return element.closest( SETTING_CONTAINER_SELECTOR );
+}
+
+/**
+ * Set lang attribute value on <html />.
+ */
+
+function setDocumentLanguage() {
+  const i18n = window.i18next;
+
+  if ( i18n ) {
+    const language = i18n.language;
+
+    if ( poziworldExtension.utils.isNonEmptyString( language ) ) {
+      const PLATFORM_LANGUAGE_SEPARATOR = '_';
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax
+      const LANGUAGE_TAG_SEPARATOR = '-';
+
+      document.documentElement.lang = language.replace( PLATFORM_LANGUAGE_SEPARATOR, LANGUAGE_TAG_SEPARATOR );
+    }
+  }
 }
 
 /**

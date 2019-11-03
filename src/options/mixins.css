@@ -1,0 +1,19 @@
+@define-mixin secondaryInfoBlock {
+  margin-right: 3rem;
+  margin-left: 3rem;
+
+  @media ( max-width: 30em /* Up to 480px */ ) {
+
+    & {
+      margin-right: 2rem;
+      margin-left: 2rem;
+    }
+  }
+}
+
+@define-mixin messageBannerPositioned $position, $contentPosition {
+  .$(position).messageBanner {
+    margin-$(contentPosition): 1rem;
+    border-$(contentPosition): .1rem dashed #ccc;
+  }
+}

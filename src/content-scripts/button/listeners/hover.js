@@ -4,6 +4,7 @@ import * as styles from '../settings/styles';
 import * as elements from '../elements';
 import * as visualProperties from '../visual-properties';
 import { isClickthroughKeyPressed } from '../../listeners/keypress';
+import * as mousemove from 'ContentScripts/listeners/mousemove';
 
 /**
  * So that the button(s) don't catch the eye all the time, change their transparency when hovering over and out.

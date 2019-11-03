@@ -12,8 +12,7 @@ const defaultConfig = Map( {
     'manifest': './src/manifest.json',
     'background': './src/background/index.js',
     'content-scripts': './src/content-scripts/index.js',
-    // Put in a folder, as it has more resources (HTML, images) than other entries
-    'options/index': './src/options/index.js',
+    'options': './src/options/index.js',
     'shared/custom-elements/scroll-to-top-button': './src/shared/custom-elements/scroll-to-top-button.css',
   },
   output: Map( {
@@ -51,9 +50,6 @@ const defaultConfig = Map( {
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: [
-                require( 'precss' )(),
-              ],
             },
           },
         ],

@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="">
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="/options/css/options.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../options.css">
   </head>
   <body>
-    <aside>
-      <p data-i18n="ratingHelpsOthers"></p>
-      <hr>
-    </aside>
-    <aside id="becomePatron">
-      <a href="https://www.patreon.com/bePatron?c=1906606" target="_blank">
-        <img src="/global/img/become-a-patron-button.png" id="becomePatronImg" alt="Become a patron">
-      </a>
+    <h1 class="pwVisuallyHidden" data-i18n="optionsTitle"></h1>
+    <aside class="messageBanner top">
+      <p class="pwText" data-i18n="ratingHelpsOthers"></p>
     </aside>
     <form id="settingsForm">
-      <fieldset>
-        <legend data-i18n="buttonSettings"></legend>
-        <div class="settingContainer">
+      <fieldset id="button-settings" class="pwFormGroup">
+        <legend class="pwFormGroupCaption">
+          <a href="#button-settings" class="pwFormGroupCaptionLink" data-i18n="buttonSettings"></a>
+        </legend>
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="buttonMode"></span>
-            <select id="buttonMode" class="optionsChanger">
+            <span class="pwFormRowText" data-i18n="buttonMode"></span>
+            <select id="buttonMode" class="optionsChanger pwSelect">
               <option value="off" data-i18n="scrollToTopOnly"></option>
               <option value="flip" data-i18n="flipBetweenTopBottom"></option>
               <option value="dual" data-i18n="dualArrows"></option>
@@ -29,10 +27,10 @@
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="scrollUpSpeed"></span>
-            <select id="scrollUpSpeed" class="optionsChanger" data-customizable="1">
+            <span class="pwFormRowText" data-i18n="scrollUpSpeed"></span>
+            <select id="scrollUpSpeed" class="optionsChanger pwSelect" data-customizable="1">
               <option value="40000" data-i18n="slowest"></option>
               <option value="20000" data-i18n="slower"></option>
               <option value="2000" data-i18n="slow"></option>
@@ -42,17 +40,17 @@
               <option value="-1" data-i18n="custom"></option>
             </select>
           </label>
-          <div class="settingContainer">
+          <div class="pwFormRow">
             <label>
-              <span data-i18n="scrollUpSpeedCustom"></span>
-              <input type="number" min="0" step="1" pattern="\d*" placeholder="1000" value="1000" id="scrollUpSpeedCustom" class="custom optionsChanger">
+              <span class="pwFormRowText" data-i18n="scrollUpSpeedCustom"></span>
+              <input type="number" min="0" step="1" pattern="\d*" placeholder="1000" value="1000" id="scrollUpSpeedCustom" class="custom optionsChanger pwInput">
             </label>
           </div>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="scrollDownSpeed"></span>
-            <select id="scrollDownSpeed" class="optionsChanger" data-customizable="1">
+            <span class="pwFormRowText" data-i18n="scrollDownSpeed"></span>
+            <select id="scrollDownSpeed" class="optionsChanger pwSelect" data-customizable="1">
               <option value="40000" data-i18n="slowest"></option>
               <option value="20000" data-i18n="slower"></option>
               <option value="2000" data-i18n="slow"></option>
@@ -62,17 +60,17 @@
               <option value="-1" data-i18n="custom"></option>
             </select>
           </label>
-          <div class="settingContainer">
+          <div class="pwFormRow">
             <label>
-              <span data-i18n="scrollDownSpeedCustom"></span>
-              <input type="number" min="0" step="1" pattern="\d*" placeholder="1000" value="1000" id="scrollDownSpeedCustom" class="custom optionsChanger">
+              <span class="pwFormRowText" data-i18n="scrollDownSpeedCustom"></span>
+              <input type="number" min="0" step="1" pattern="\d*" placeholder="1000" value="1000" id="scrollDownSpeedCustom" class="custom optionsChanger pwInput">
             </label>
           </div>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span id="distanceType" data-i18n="appearDistance"></span>
-            <select id="distanceLength" class="optionsChanger">
+            <span class="pwFormRowText" id="distanceType" data-i18n="appearDistance"></span>
+            <select id="distanceLength" class="optionsChanger pwSelect">
               <option value="100" data-i18n="barelyAny"></option>
               <option value="275" data-i18n="aLittle"></option>
               <option value="400" data-i18n="medium"></option>
@@ -82,10 +80,10 @@
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="buttonSize"></span>
-            <select id="buttonSize" class="appearance optionsChanger" data-customizable="1">
+            <span class="pwFormRowText" data-i18n="buttonSize"></span>
+            <select id="buttonSize" class="appearance optionsChanger pwSelect" data-customizable="1">
               <option value="35px" data-i18n="buttonSizeInPixels" data-i18n-parameters="35|35"></option>
               <option value="40px" data-i18n="buttonSizeInPixels" data-i18n-parameters="40|40"></option>
               <option value="45px" data-i18n="buttonSizeInPixels" data-i18n-parameters="45|45"></option>
@@ -93,23 +91,23 @@
               <option value="-1" data-i18n="custom"></option>
             </select>
           </label>
-          <div class="settingContainer">
+          <div class="pwFormRow">
             <label>
-              <span data-i18n="buttonWidthCustom"></span>
-              <input type="number" min="1" max="500" step="1" pattern="\d*" placeholder="60" value="60" id="buttonWidthCustom" class="custom optionsChanger">
+              <span class="pwFormRowText" data-i18n="buttonWidthCustom"></span>
+              <input type="number" min="1" max="500" step="1" pattern="\d*" placeholder="60" value="60" id="buttonWidthCustom" class="custom optionsChanger pwInput">
             </label>
           </div>
-          <div class="settingContainer">
+          <div class="pwFormRow">
             <label>
-              <span data-i18n="buttonHeightCustom"></span>
-              <input type="number" min="1" max="500" step="1" pattern="\d*" placeholder="60" value="60" id="buttonHeightCustom" class="custom optionsChanger">
+              <span class="pwFormRowText" data-i18n="buttonHeightCustom"></span>
+              <input type="number" min="1" max="500" step="1" pattern="\d*" placeholder="60" value="60" id="buttonHeightCustom" class="custom optionsChanger pwInput">
             </label>
           </div>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="buttonDesign"></span>
-            <select id="buttonDesign" class="appearance optionsChanger">
+            <span class="pwFormRowText" data-i18n="buttonDesign"></span>
+            <select id="buttonDesign" class="appearance optionsChanger pwSelect">
               <optgroup data-i18n="colors">
                 <option value="arrow_blue" data-i18n="tumblerBlue"></option>
                 <option value="arrow_grey" data-i18n="grey"></option>
@@ -132,10 +130,10 @@
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="buttonLocation"></span>
-            <select id="buttonLocation" class="appearance optionsChanger">
+            <span class="pwFormRowText" data-i18n="buttonLocation"></span>
+            <select id="buttonLocation" class="appearance optionsChanger pwSelect">
               <option value="TR" data-i18n="topRight"></option>
               <option value="TL" data-i18n="topLeft"></option>
               <option value="TC" data-i18n="topCenter"></option>
@@ -147,10 +145,10 @@
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="notActiveButtonOpacity"></span>
-            <select id="notActiveButtonOpacity" class="appearance optionsChanger">
+            <span class="pwFormRowText" data-i18n="notActiveButtonOpacity"></span>
+            <select id="notActiveButtonOpacity" class="appearance optionsChanger pwSelect">
               <option value="0.0" data-i18n="invisible"></option>
               <option value="0.5" data-i18n="transparent"></option>
               <option value="1.0" data-i18n="opaque"></option>
@@ -158,31 +156,33 @@
           </label>
         </div>
       </fieldset>
-      <fieldset>
-        <legend data-i18n="keyboardSettings"></legend>
-        <div class="settingContainer">
+      <fieldset id="keyboard-settings" class="pwFormGroup">
+        <legend class="pwFormGroupCaption">
+          <a href="#keyboard-settings" class="pwFormGroupCaptionLink" data-i18n="keyboardSettings"></a>
+        </legend>
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="keyboardShortcuts"></span>
-            <select id="keyboardShortcuts" class="optionsChanger">
+            <span class="pwFormRowText" data-i18n="keyboardShortcuts"></span>
+            <select id="keyboardShortcuts" class="optionsChanger pwSelect">
               <option value="arrows" data-i18n="altUpDownArrows"></option>
               <option value="tb" data-i18n="altTB"></option>
               <option value="off" data-i18n="off"></option>
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="homeEndKeysControlledBy"></span>
-            <select id="homeEndKeysControlledBy" class="optionsChanger">
+            <span class="pwFormRowText" data-i18n="homeEndKeysControlledBy"></span>
+            <select id="homeEndKeysControlledBy" class="optionsChanger pwSelect">
               <option value="sttb" data-i18n="extensionName"></option>
               <option value="system" data-i18n="operatingSystem"></option>
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label data-i18n data-i18n-tooltip="clickthroughKeysTooltip">
-            <span data-i18n="clickthroughKeys"></span>
-            <select id="clickthroughKeys" class="optionsChanger">
+            <span class="pwFormRowText" data-i18n="clickthroughKeys"></span>
+            <select id="clickthroughKeys" class="optionsChanger pwSelect">
               <option value="ctrl" data-i18n="ctrlKey"></option>
               <option value="shift" data-i18n="shiftKey"></option>
               <option value="ctrl|shift" data-i18n="ctrlKeyOrShiftKey"></option>
@@ -190,12 +190,14 @@
           </label>
         </div>
       </fieldset>
-      <fieldset>
-        <legend data-i18n="otherSettings"></legend>
-        <div class="settingContainer">
+      <fieldset id="other-settings" class="pwFormGroup">
+        <legend class="pwFormGroupCaption">
+          <a href="#other-settings" class="pwFormGroupCaptionLink" data-i18n="otherSettings"></a>
+        </legend>
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="uiLanguage"></span>
-            <select id="uiLanguage" class="optionsChanger">
+            <span class="pwFormRowText" data-i18n="uiLanguage"></span>
+            <select id="uiLanguage" class="optionsChanger pwSelect">
               <option value="browserDefault" data-i18n="language_browserDefault" data-i18n-tooltip="language_browserDefault_tooltip"></option>
               <option value="cs" data-i18n="language_cs"></option>
               <option value="en_US" data-i18n="language_en_US"></option>
@@ -208,57 +210,65 @@
             </select>
           </label>
         </div>
-        <div class="settingContainer">
+        <div class="pwFormRow">
           <label>
-            <span data-i18n="contextRightClickMenu"></span>
-            <select id="contextMenu" class="optionsChanger">
+            <span class="pwFormRowText" data-i18n="contextRightClickMenu"></span>
+            <select id="contextMenu" class="optionsChanger pwSelect">
               <option value="on" data-i18n="on"></option>
               <option value="off" data-i18n="off"></option>
             </select>
           </label>
         </div>
-        <div class="settingContainer">
-          <button id="restore" data-i18n="restoreDefaults"></button>
-          <button id="author" data-i18n="authorsSettings"></button>
+        <div class="pwFormRow">
+          <button id="restore" class="pwCta" data-i18n="restoreDefaults"></button>
+          <button id="author" class="pwCta" data-i18n="authorsSettings"></button>
         </div>
       </fieldset>
-      <div id="saveSettings">
-        <div class="settingContainer">
-          <button id="save" data-i18n="save"></button>
-        </div>
-        <p id="status"></p>
+      <div id="saveSettings" class="pwFormControls">
+        <button id="save" class="pwCta" data-i18n="save"></button>
+        <p id="status" class="pwText"></p>
       </div>
-      <p id="restartstatus"></p>
     </form>
-    <aside>
-      <ul>
-        <li data-i18n="helpTranslate"></li>
-        <li id="translatedBy" data-i18n="translatedBy" hidden></li>
-        <li data-i18n="releaseNotes"></li>
-        <li data-i18n="officialWebsite"></li>
+    <aside class="secondaryInfoContainer">
+      <ul class="links">
+        <li class="linkWrapper" data-i18n="helpTranslate"></li>
+        <li class="linkWrapper" id="translatedBy" data-i18n="translatedBy" hidden></li>
+        <li class="linkWrapper" data-i18n="releaseNotes"></li>
+        <li class="linkWrapper" data-i18n="officialWebsite"></li>
       </ul>
     </aside>
-    <aside id="otherProjectsContainer">
-      <hr>
-      <h2 data-i18n="otherProjects"></h2>
-      <ul>
-        <li>
-          <a href="https://github.com/PoziWorld/Swaggy?ref=sepo" target="_blank">Swaggy</a>
+    <aside id="becomePatron">
+      <a href="https://www.patreon.com/bePatron?c=1906606" target="_blank" rel="noopener noreferrer">
+        <img src="/global/img/become-a-patron-button.png" id="becomePatronImg" alt="Become a patron">
+      </a>
+    </aside>
+    <aside id="otherProjectsContainer" class="secondaryInfoContainer">
+      <h6 class="linksHeading" data-i18n="otherProjects"></h6>
+      <ul class="links">
+        <li class="linkWrapper">
+          <a href="https://github.com/PoziWorld/Swaggy?ref=sepo" target="_blank" class="link" rel="noopener noreferrer">
+            Swaggy
+          </a>
         </li>
-        <li>
-          <a href="https://pozitone.com/?ref=sepo" target="_blank">PoziTone</a>
+        <li class="linkWrapper">
+          <a href="https://pozitone.com/?ref=sepo" target="_blank" class="link" rel="noopener noreferrer">
+            PoziTone
+          </a>
         </li>
-        <li>
-          <a href="https://github.com/PoziWorld/PoziWorld-Elf?ref=sepo" target="_blank">PoziWorld Elf</a>
+        <li class="linkWrapper">
+          <a href="https://github.com/PoziWorld/PoziWorld-Elf?ref=sepo" target="_blank" class="link" rel="noopener noreferrer">
+            PoziWorld Elf
+          </a>
         </li>
-        <li>
-          <a href="https://printwasteminimizer.com/?ref=sepo" target="_blank">Print Waste Minimizer</a>
+        <li class="linkWrapper">
+          <a href="https://printwasteminimizer.com/?ref=sepo" target="_blank" class="link" rel="noopener noreferrer">
+            Print Waste Minimizer
+          </a>
         </li>
       </ul>
     </aside>
-    <aside>
-      <hr>
-      <p id="incentivizeFurtherDevelopment" data-i18n="incentivizeFurtherDevelopment"></p>
+    <aside class="messageBanner bottom">
+      <p id="incentivizeFurtherDevelopment" class="pwText" data-i18n="incentivizeFurtherDevelopment"></p>
     </aside>
     <script src="/global/js/browser-polyfill.js"></script>
     <script src="/global/js/bowser.js"></script>
@@ -273,6 +283,6 @@
     <script src="/global/js/page-v2.js"></script>
     <script src="/global/js/context-menus.js"></script>
     <script src="/global/js/incentive.js"></script>
-    <script src="/options/index.js"></script>
+    <script src="../options.js"></script>
   </body>
 </html>

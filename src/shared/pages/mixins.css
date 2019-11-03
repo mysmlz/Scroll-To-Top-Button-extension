@@ -1,0 +1,55 @@
+@define-mixin caption {
+  font-size: 1.9em;
+
+  @media ( max-width: 40em /* Up to 640px */ ) {
+
+    & {
+      font-size: 1.6em;
+    }
+
+    @media ( max-width: 30em /* Up to 480px */ ) {
+
+      & {
+        font-size: 1.4em;
+      }
+    }
+  }
+}
+
+@define-mixin secondaryCaption {
+  @mixin caption;
+
+  font-size: 1.6em;
+}
+
+@define-mixin text {
+  font-size: 1.6em;
+
+  @media ( max-width: 40em /* Up to 640px */ ) {
+
+    & {
+      font-size: 1.4em;
+    }
+
+    @media ( max-width: 30em /* Up to 480px */ ) {
+
+      & {
+        font-size: 1.2em;
+      }
+    }
+  }
+}
+
+@define-mixin secondaryText {
+  @mixin text;
+
+  font-size: 1.4em;
+}
+
+@define-mixin link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
