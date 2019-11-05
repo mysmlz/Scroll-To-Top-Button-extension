@@ -16,7 +16,7 @@ let buttonsCount = 0;
 export const CONTAINER_ATTRIBUTE_STATE_ACTIVE = 'data-state-active';
 
 const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
-const BUTTON_ID = `scroll-to-top-button-${ BUTTON_NUMBER_PLACEHOLDER }`;
+const BUTTON_ID = `${ customElements.BUTTON_TAG_NAME }-${ BUTTON_NUMBER_PLACEHOLDER }`;
 const BUTTON_LABEL = 'Scroll To Top Button';
 export const BUTTON_ATTRIBUTE_STATE_DISABLED = 'data-state-disabled';
 export const BUTTON_HOVERED_SELECTOR = ':hover';
