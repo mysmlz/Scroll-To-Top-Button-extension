@@ -4,6 +4,7 @@ import * as styles from './settings/styles';
 import * as elements from './elements';
 import * as scrollDirections from './scroll-directions';
 import { cursorPosition } from '../listeners/mousemove';
+import * as customElements from 'Shared/custom-elements';
 
 /**
  * Show/hide the button and flip it, if necessary.
@@ -106,6 +107,15 @@ export function isButtonHoverable() {
  */
 
 export function isButtonHovered( buttonToCheck ) {
-  return buttonToCheck.matches( elements.BUTTON_HOVERED_SELECTOR ) ||
-    buttonToCheck.isSameNode( document.elementFromPoint( cursorPosition.x, cursorPosition.y ) );
+  if ( buttonToCheck.matches( elements.BUTTON_HOVERED_SELECTOR ) ) {
+    return true;
+  }
+
+  let elementFromPoint = document.elementFromPoint( cursorPosition.x, cursorPosition.y );
+
+  if ( elementFromPoint.localName === customElements.CONTAINER_TAG_NAME ) {
+    elementFromPoint = elementFromPoint.shadowRoot.elementFromPoint( cursorPosition.x, cursorPosition.y );
+  }
+
+  return buttonToCheck.isSameNode( elementFromPoint );
 }
