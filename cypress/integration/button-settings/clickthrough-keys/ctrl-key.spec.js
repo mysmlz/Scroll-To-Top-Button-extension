@@ -25,8 +25,10 @@ let finalPageLinkScrollTop;
 let buttonPositionTop;
 let buttonPositionLeft;
 
-const buttonSelector = elements.BUTTON_1_SELECTOR;
+// Attributes that distinguish the test elements
+const BUTTON_ATTRIBUTE = 'data-design';
 const FINAL_PAGE_LINK_SELECTOR = '.hero-button[href^="/1.1.1.1"]';
+const FINAL_PAGE_LINK_ATTRIBUTE = 'href';
 
 context( 'Button settings -> Clickthrough keys -> Ctrl', runTests );
 
@@ -71,13 +73,13 @@ function checkCtrlHidesButton() {
     // When Ctrl is not pressed, make sure click happens on button, not final page link (element behind/underneath button)
     .then( scrollToFinalPageLink )
     .then( waitForScrollEnd )
-    .then( simulateClick.bind( null, buttonSelector ) )
+    .then( simulateClick.bind( null, BUTTON_ATTRIBUTE ) )
     .then( waitForScrollEnd )
     .then( assertUrl.bind( null, PAGE_URL ) )
     // When Ctrl is not pressed again, make sure click happens on button again (make sure first time wasn't a coincidence), not final page link (element behind/underneath button)
     .then( scrollToFinalPageLink )
     .then( waitForScrollEnd )
-    .then( simulateClick.bind( null, buttonSelector ) )
+    .then( simulateClick.bind( null, BUTTON_ATTRIBUTE ) )
     .then( waitForScrollEnd )
     .then( assertUrl.bind( null, PAGE_URL ) )
     // When Ctrl is pressed, make sure click happens on final page link (previously, element behind/underneath button), not button
@@ -85,7 +87,7 @@ function checkCtrlHidesButton() {
     .then( waitForScrollEnd )
     .then( simulateKeydown )
     .then( waitForScrollEnd )
-    .then( simulateClick.bind( null, FINAL_PAGE_LINK_SELECTOR ) )
+    .then( simulateClick.bind( null, FINAL_PAGE_LINK_ATTRIBUTE ) )
     .then( assertUrl.bind( null, FINAL_PAGE_URL ) );
 }
 
@@ -233,12 +235,26 @@ function scrollToFinalPageLink() {
  */
 
 function simulateClick( selector ) {
-  const $elementFromPoint = Cypress.$( _document.elementFromPoint( buttonPositionLeft, buttonPositionTop ) );
+  let elementFromPoint = getElementFromButtonPosition( _document );
 
-  expect( $elementFromPoint ).to.match( selector );
+  if ( selector === BUTTON_ATTRIBUTE ) {
+    elementFromPoint = getElementFromButtonPosition( elementFromPoint.shadowRoot );
+  }
 
-  cy.wrap( $elementFromPoint )
-    .click();
+  expect( elementFromPoint.getAttribute( selector ) ).to.not.be.empty;
+
+  elementFromPoint.click();
+}
+
+/**
+ * Find which element is located on top of others at the initial button position.
+ *
+ * @param {HTMLDocument|ShadowRoot} element
+ * @return {Element}
+ */
+
+function getElementFromButtonPosition( element ) {
+  return element.elementFromPoint( buttonPositionLeft, buttonPositionTop );
 }
 
 /**
