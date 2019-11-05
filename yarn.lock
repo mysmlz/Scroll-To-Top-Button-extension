@@ -2088,6 +2088,11 @@ cyclist@~0.2.2:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
   integrity sha1-GzN5LhHpFKL9bW7WRHRkRE5fpkA=
 
+cypress-shadow-dom@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/cypress-shadow-dom/-/cypress-shadow-dom-1.0.1.tgz#9fedc1de02bf76d62f1674356bee145b4c6f1ab2"
+  integrity sha512-tW7sPet2A7OEVPagU2qKNQS9TUWRQ8GfGug+zGA2sGo8619odYRTpWdNEt3uxoNhBZ4/P0pzwJYKOq9UJtoWiA==
+
 cypress@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.6.0.tgz#b7c88c169970aeb74a00182a1e8dc43a355d9eea"

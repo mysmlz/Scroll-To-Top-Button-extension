@@ -1,6 +1,8 @@
 // @todo https://docs.cypress.io/api/cypress-api/custom-commands.html#2-Don%E2%80%99t-overcomplicate-things ?
 
+// @todo Get the ID pattern from const.
 export const BUTTON_1_SELECTOR = '#scroll-to-top-button-1';
+const BUTTON_2_SELECTOR = '#scroll-to-top-button-2';
 
 /**
  * Return the Scroll To Top Button's container element.
@@ -10,7 +12,7 @@ export const BUTTON_1_SELECTOR = '#scroll-to-top-button-1';
 
 export function getButtonContainerElement() {
   // @todo Get the tag name from const.
-  return cy.get( 'scroll-to-top-button-container' );
+  return cy.shadowGet( 'scroll-to-top-button-container' );
 }
 
 /**
@@ -20,8 +22,9 @@ export function getButtonContainerElement() {
  */
 
 export function getButton1Element() {
-  // @todo Get the tag name from const.
-  return cy.get( BUTTON_1_SELECTOR );
+  return getButtonContainerElement()
+    .shadowFind( BUTTON_1_SELECTOR )
+    .shadowFirst();
 }
 
 /**
@@ -31,6 +34,7 @@ export function getButton1Element() {
  */
 
 export function getButton2Element() {
-  // @todo Get the tag name from const.
-  return cy.get( '#scroll-to-top-button-2' );
+  return getButtonContainerElement()
+    .shadowFind( BUTTON_2_SELECTOR )
+    .shadowFirst();
 }

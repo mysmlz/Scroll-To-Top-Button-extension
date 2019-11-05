@@ -1,3 +1,4 @@
+import 'cypress-shadow-dom';
 import addCommands from '@poziworld/cypress-browser-extension-plugin/commands';
 
 setUp();
