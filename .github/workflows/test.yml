@@ -21,17 +21,17 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: yarn install
-    - uses: borales/actions-yarn@v2.1.0
+      uses: borales/actions-yarn@v2.1.0
       with:
         cmd: install
 
     - name: yarn build
-    - uses: borales/actions-yarn@v2.1.0
+      uses: borales/actions-yarn@v2.1.0
       with:
         cmd: build
 
     - name: yarn test
-    - uses: borales/actions-yarn@v2.1.0
+      uses: borales/actions-yarn@v2.1.0
       with:
         cmd: test
       env:
