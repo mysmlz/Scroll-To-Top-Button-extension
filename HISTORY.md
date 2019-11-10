@@ -6,6 +6,30 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v8.1.0
+
+### New
+
+* Options page now gets open in a new tab instead of being embedded into the extensions management page.
+
+  > Based on [feedback](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/4#issuecomment-544360596) from [MagicAndre1981](https://github.com/MagicAndre1981) and Ronen TheLion.
+
+### Fixed
+
+* Button look would get affected by website's CSS.
+
+  > Issue reported by phil reilly.
+
+* Extension wouldn't work in Chrome v49.
+
+  > Issue reported by Julian aka Ronen TheLion.
+
+* Extension wouldn't work in Firefox.
+
+* Options page would close sometimes even when language not updated.
+
+---
+
 ## v8.0.0
 
 ### New
