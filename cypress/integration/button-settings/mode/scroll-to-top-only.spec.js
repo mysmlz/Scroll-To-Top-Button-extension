@@ -2,6 +2,8 @@ import * as elements from '../../../shared/elements';
 
 import { checkElementsExist } from '../../window-criteria/met.spec';
 
+const ANIMATION_DURATION = 500;
+
 context( 'Button settings -> Mode -> Scroll to top only', runTests );
 
 /**
@@ -20,9 +22,7 @@ function runTests() {
 function checkOnlyOneButtonExists() {
   // @todo Replace with a custom command? https://docs.cypress.io/api/cypress-api/custom-commands.html
   checkElementsExist();
-
-  elements.getButton2Element()
-    .should( 'not.exist' );
+  elements.expectToNotExist( elements.getButton2Element() );
 }
 
 /**
@@ -37,33 +37,23 @@ function checkScrollsToTop() {
     .its( 'documentElement.scrollTop' )
     .should( 'gt', 0 );
 
-  elements.getButton1Element().click();
+  elements.getButton1Element().shadowClick();
 
   cy.document()
     .its( 'documentElement.scrollTop' )
     .should( 'eq', 0 );
 
-  elements.getButton1Element()
-    .should( 'not.be.visible' );
-
-  // Account for jQuery animation
-  cy.wait( 500 );
-
+  elements.expectToNotBeVisible( elements.getButton1Element() );
+  cy.wait( ANIMATION_DURATION );
   // @todo Use > distanceLength
   cy.scrollTo( 'center' );
-
-  // Account for jQuery animation
-  cy.wait( 500 );
-
-  elements.getButton1Element()
-    .should( 'be.visible' );
-
-  elements.getButton1Element().click();
+  cy.wait( ANIMATION_DURATION );
+  elements.expectToBeVisible( elements.getButton1Element() );
+  elements.getButton1Element().shadowClick();
 
   cy.document()
     .its( 'documentElement.scrollTop' )
     .should( 'eq', 0 );
 
-  elements.getButton1Element()
-    .should( 'not.be.visible' );
+  elements.expectToNotBeVisible( elements.getButton1Element() );
 }

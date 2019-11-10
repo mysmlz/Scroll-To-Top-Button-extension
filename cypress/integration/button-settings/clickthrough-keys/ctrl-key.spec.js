@@ -134,25 +134,29 @@ function waitForScrollEnd() {
 /**
  * Cache the button height for reuse.
  *
- * @param {Cypress.Chainable<JQuery<HTMLElement>>} $button
+ * @param {NodeList} nodeList
  * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
  */
 
-function saveButtonHeight( $button ) {
-  buttonHeight = $button.height();
+function saveButtonHeight( nodeList ) {
+  const button = nodeList[ 0 ];
 
-  return $button;
+  buttonHeight = button.getBoundingClientRect().height;
+
+  return nodeList;
 }
 
 /**
  * Cache the button position on the page (top and left coordinates) for reuse.
  *
- * @param {Cypress.Chainable<JQuery<HTMLElement>>} $button
+ * @param {NodeList} nodeList
  */
 
-function saveButtonPosition( $button ) {
-  buttonPositionTop = $button.position().top;
-  buttonPositionLeft = $button.position().left;
+function saveButtonPosition( nodeList ) {
+  const button = nodeList[ 0 ];
+
+  buttonPositionTop = button.offsetTop;
+  buttonPositionLeft = button.offsetLeft;
 
   // @todo DRY.
   const TOP_KEY = 'top';

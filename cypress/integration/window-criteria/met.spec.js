@@ -26,10 +26,6 @@ export function checkElementsExist() {
     .should( 'gt', windows.DEFAULT_VIEWPORT_HEIGHT );
 
   testPages.forceButtonInjection();
-
-  elements.getButtonContainerElement()
-    .should( 'exist' );
-
-  elements.getButton1Element()
-    .should( 'exist' );
+  elements.expectToExist( elements.getButtonContainerElement() );
+  elements.expectToExist( elements.getButton1Element() );
 }

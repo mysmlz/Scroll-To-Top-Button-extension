@@ -25,9 +25,7 @@ function checkElementsDoNotExist() {
     .its( 'documentElement.scrollHeight' )
     .should( 'lte', windows.DEFAULT_VIEWPORT_HEIGHT );
 
+  // Checking just for the container should suffice, as the buttons don't exist without it
   elements.getButtonContainerElement()
-    .should( 'not.exist' );
-
-  elements.getButton1Element()
     .should( 'not.exist' );
 }

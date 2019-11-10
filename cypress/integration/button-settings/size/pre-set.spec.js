@@ -14,8 +14,6 @@ const buttonSizes = [
 const BUTTON_WIDTH_CUSTOM = 60;
 /** @type {number} {@link availableSettings.buttonHeightCustomDefault} */
 const BUTTON_HEIGHT_CUSTOM = 60;
-const buttonWidthCustomPx = `${ BUTTON_WIDTH_CUSTOM }px`;
-const buttonHeightCustomPx = `${ BUTTON_HEIGHT_CUSTOM }px`;
 
 context( 'Button settings -> Size -> Pre-set values', runTests );
 
@@ -55,13 +53,18 @@ function checkSize( buttonSize ) {
  * Make sure the button size matches the size set in the settings.
  *
  * @param {string} buttonSize - {@link Settings#buttonSize}
- * @param {Cypress.Chainable<JQuery<HTMLElement>>} $button1
+ * @param {NodeList} nodeList
  */
 
-function assertButtonSize( buttonSize, $button1 ) {
-  expect( $button1 ).to.have.css( 'width', buttonSize );
-  expect( $button1 ).to.have.css( 'height', buttonSize );
+function assertButtonSize( buttonSize, nodeList ) {
+  const boundingRectangle = nodeList[ 0 ].getBoundingClientRect();
+  const width = boundingRectangle.width;
+  const height = boundingRectangle.height;
+  const size = window.parseInt( buttonSize );
 
-  expect( $button1 ).to.not.have.css( 'width', buttonWidthCustomPx );
-  expect( $button1 ).to.not.have.css( 'height', buttonHeightCustomPx );
+  expect( width ).to.equal( size );
+  expect( height ).to.equal( size );
+
+  expect( width ).to.not.equal( BUTTON_WIDTH_CUSTOM );
+  expect( height ).to.not.equal( BUTTON_HEIGHT_CUSTOM );
 }

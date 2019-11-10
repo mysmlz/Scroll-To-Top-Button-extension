@@ -84,8 +84,7 @@ function checkSetsMissingSettings() {
   runtime.requestToSimulateExtensionUpdate();
   testPages.openTestPage();
   testPages.forceButtonInjection();
-  elements.getButton1Element()
-    .should( 'exist' );
+  elements.expectToExist( elements.getButton1Element() );
   compareSettings();
 }
 

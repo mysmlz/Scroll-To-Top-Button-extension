@@ -45,10 +45,12 @@ function checkSize( buttonWidthCustom, buttonHeightCustom ) {
  *
  * @param {string} buttonWidthCustom - {@link Settings#buttonWidthCustom}
  * @param {string} buttonHeightCustom - {@link Settings#buttonHeightCustom}
- * @param {Cypress.Chainable<JQuery<HTMLElement>>} $button1
+ * @param {NodeList} nodeList
  */
 
-function assertButtonSize( buttonWidthCustom, buttonHeightCustom, $button1 ) {
-  expect( $button1 ).to.have.css( 'width', `${ buttonWidthCustom }px` );
-  expect( $button1 ).to.have.css( 'height', `${ buttonHeightCustom }px` );
+function assertButtonSize( buttonWidthCustom, buttonHeightCustom, nodeList ) {
+  const boundingRectangle = nodeList[ 0 ].getBoundingClientRect();
+
+  expect( boundingRectangle.width ).to.equal( buttonWidthCustom );
+  expect( boundingRectangle.height ).to.equal( buttonHeightCustom );
 }
