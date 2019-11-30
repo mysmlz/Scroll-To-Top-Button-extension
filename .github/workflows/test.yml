@@ -1,4 +1,4 @@
-name: Install, build, and test
+name: End-to-end tests
 
 on: [push, pull_request]
 
@@ -9,30 +9,15 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
-        os: [windows-latest]
+        os: [ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v1
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: yarn install
-      uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: install
-
-    - name: yarn build
-      uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: build
-
-    - name: yarn test
-      uses: borales/actions-yarn@v2.1.0
-      with:
-        cmd: test
-      env:
-        CI: true
+      # Install dependencies, cache them correctly, build, and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v1
+        with:
+          build: yarn build
+          browser: chrome
