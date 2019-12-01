@@ -19,6 +19,8 @@ let _window;
 // Cache Cypress equivalent of window.document
 let _document;
 
+const VIEWPORT_WIDTH = 517;
+
 let buttonHeight;
 let finalPageLinkScrollTop;
 
@@ -98,8 +100,6 @@ function checkCtrlHidesButton() {
  */
 
 function preparePage() {
-  const VIEWPORT_WIDTH = 517;
-
   return cy.viewport( VIEWPORT_WIDTH, windows.DEFAULT_VIEWPORT_HEIGHT )
     .visit( PAGE_URL );
 }
@@ -162,7 +162,7 @@ function saveButtonPosition( nodeList ) {
   const TOP_KEY = 'top';
   const TOP_VALUE = 305;
   const LEFT_KEY = 'left';
-  const LEFT_VALUE = 430;
+  const LEFT_VALUE = getExpectedButtonPositionLeft();
 
   cy.wrap( { [ TOP_KEY ]: TOP_VALUE } )
     .its( TOP_KEY )
@@ -171,6 +171,20 @@ function saveButtonPosition( nodeList ) {
   cy.wrap( { [ LEFT_KEY ]: LEFT_VALUE } )
     .its( LEFT_KEY )
     .should( 'eq', buttonPositionLeft );
+}
+
+/**
+ * Horizontal button position depends on the scrollbar width, which is different on different operating systems - 17px on Windows, 15px on Ubuntu.
+ *
+ * @return {number}
+ */
+
+function getExpectedButtonPositionLeft() {
+  const BUTTON_WIDTH = 50;
+  const BUTTON_MARGIN = 20;
+  const scrollbarWidth = _window.innerWidth - _document.documentElement.clientWidth;
+
+  return VIEWPORT_WIDTH - BUTTON_WIDTH - BUTTON_MARGIN - scrollbarWidth;
 }
 
 /**
