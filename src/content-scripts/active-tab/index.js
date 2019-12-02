@@ -119,9 +119,25 @@ function checkWindowCriteria() {
   const HEIGHT_RATIO = .85;
 
   if ( ( window === top || window.innerHeight / window.screen.height > HEIGHT_RATIO ) &&
-    window.innerHeight < ( $( document ).height() - specialCaseWebsites.TRANSIFEX_EDITOR_CONTAINER_EXTRA_HEIGHT ) ) {
+    window.innerHeight < ( getDocumentHeight() - specialCaseWebsites.TRANSIFEX_EDITOR_CONTAINER_EXTRA_HEIGHT ) ) {
     return Promise.resolve();
   }
 
   return new Promise( specialCaseWebsites.watch );
+}
+
+/**
+ * $( document ).height() replacement.
+ *
+ * @returns {number}
+ */
+
+function getDocumentHeight() {
+  const documentElement = document.documentElement;
+
+  return Math.max(
+    documentElement.clientHeight,
+    documentElement.offsetHeight,
+    documentElement.scrollHeight,
+  );
 }
