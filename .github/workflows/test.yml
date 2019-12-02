@@ -10,6 +10,8 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+        # Run multiple copies of the current job in parallel
+        containers: [1, 2, 3, 4, 5, 6, 7]
 
     steps:
       - name: Checkout
@@ -22,6 +24,8 @@ jobs:
           build: yarn build
           browser: chrome
           record: true
+          parallel: true
+          group: Parallel tests in Chrome on ${{ matrix.os }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
