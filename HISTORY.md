@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v8.1.1
+
+### Fixed
+
+* Extension would cause www.lesswrong.com's scripts to remove page elements in Firefox.
+
+  > [Issue](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/6) reported by [markran](https://github.com/markran).
+
+---
+
 ## v8.1.0
 
 ### New
