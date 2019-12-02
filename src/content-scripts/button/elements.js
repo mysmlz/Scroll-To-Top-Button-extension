@@ -39,8 +39,7 @@ export function createElements() {
 
   createButtonsStyles();
   createDisabledJavascriptBandage();
-
-  document.body.insertAdjacentElement( 'afterend', container );
+  injectElementsIntoPage();
 }
 
 /**
@@ -141,6 +140,38 @@ function createDisabledJavascriptBandage() {
 
   // .append and .innerHTML don't work as expected in Chrome v49
   container.insertAdjacentHTML( 'beforeend', html );
+}
+
+/**
+ * Add the extension elements to the page.
+ */
+
+function injectElementsIntoPage() {
+  /**
+   * No page elements should be placed outside the body, but some browser extensions employ this technique to make sure their elements, such as the Scroll To Top Button's buttons, are always on top of other elements and to make sure those elements don't get (un)intentionally removed by the page's scripts (for example, there was an issue on Bing: its JavaScript was removing one of the buttons).
+   *
+   * @type {InsertPosition}
+   */
+
+  let position = 'afterend';
+
+  /**
+   * These websites' scripts don't work correctly in some instances because of the way the extension elements are injected into a page.
+   *
+   * @see {@link https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/6}
+   *
+   * @type {Location.hostname[]}
+   */
+
+  const EXCLUDED_HOSTNAMES = [
+    'www.lesswrong.com',
+  ];
+
+  if ( EXCLUDED_HOSTNAMES.includes( window.location.hostname ) ) {
+    position = 'beforeend';
+  }
+
+  document.body.insertAdjacentElement( position, container );
 }
 
 /**
