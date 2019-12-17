@@ -318,6 +318,10 @@
     "message": "Galician - galego",
     "description": "Language option: gl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
   },
+  "language_ja": {
+    "message": "Japanese - 日本語",
+    "description": "Language option: ja (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
   "language_nl": {
     "message": "Dutch - Nederlands",
     "description": "Language option: nl (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
