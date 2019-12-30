@@ -27,21 +27,18 @@ const OPTIONS_PAGE_PATH = 'options/index.html';
 
 const EXTENSION_ID_AFFIX = '@poziworld.com';
 
-module.exports = adaptManifestJson;
+module.exports = loadManifestJson;
 
 /**
- * Build browser-specific manifest.json files, as not all manifest.json keys are supported by all browsers.
- * Also, copy over some details from package.json.
+ * Inherit generic properties of package.json in manifest.json, so there is no need to have them in both files.
  *
- * https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Browser_compatibility_for_manifest.json
- *
- * Inspired by https://stackoverflow.com/a/44249538
+ * Inspired by {@link https://stackoverflow.com/a/44249538}.
  *
  * @param {string} source - Stringified original manifest.json's contents.
  * @return {string} - Stringified updated browser-specific manifest.json's contents.
  */
 
-function adaptManifestJson( source ) {
+function loadManifestJson( source ) {
   let manifestJsonAsJs = JSON.parse( source );
   const packageJsonContents = fs.readFileSync( PACKAGE_JSON_PATH, PACKAGE_JSON_ENCODING );
   const packageJsonAsJs = JSON.parse( packageJsonContents );
@@ -51,62 +48,132 @@ function adaptManifestJson( source ) {
     homepage_url: packageJsonAsJs.homepage,
   };
 
-  /**
-   * See supportedBrowsers in webpack.config.js.
-   *
-   * @todo Find a cleaner way.
-   */
-
+  // See supportedBrowsers in webpack.config.js
   const browserName = path.basename( this._compiler.outputPath );
+  const finalJson = makeBrowserSpecificManifestJson( browserName, manifestJsonAsJs, packageJsonAsJs, newProperties );
+
+  this.emitFile( 'manifest.json', finalJson );
+
+  return finalJson;
+}
+
+/**
+ * Build browser-specific manifest.json files, as not all manifest.json keys are supported by all browsers.
+ *
+ * @see {@link https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Browser_compatibility_for_manifest.json}
+ *
+ * @param {('chromium'|'firefox'|'edge')} browserName
+ * @param {object} manifestJsonAsJs
+ * @param {object} packageJsonAsJs
+ * @param {object} newProperties
+ * @return {string} - Stringified updated browser-specific manifest.json's contents.
+ */
+
+function makeBrowserSpecificManifestJson( browserName, manifestJsonAsJs, packageJsonAsJs, newProperties ) {
+  let json;
 
   switch ( browserName ) {
     case 'chromium':
     {
-      newProperties.background = {
-        persistent: false,
-      };
-      newProperties.options_page = OPTIONS_PAGE_PATH;
+      json = makeChromiumSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties );
 
       break;
     }
     case 'firefox':
     {
-      newProperties.applications = {
-        gecko: {
-          id: packageJsonAsJs.name + EXTENSION_ID_AFFIX,
-        }
-      };
-      newProperties.options_ui = {
-        page: OPTIONS_PAGE_PATH,
-        browser_style: true,
-      };
-
-      delete manifestJsonAsJs.version_name;
+      json = makeFirefoxSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties );
 
       break;
     }
     case 'edge':
     {
-      newProperties.applications = {
-        gecko: {
-          id: packageJsonAsJs.name + EXTENSION_ID_AFFIX,
-        }
-      };
-      newProperties.background = {
-        persistent: false,
-      };
-      newProperties.options_page = OPTIONS_PAGE_PATH;
-
-      delete manifestJsonAsJs.version_name;
+      json = makeLegacyEdgeSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties );
 
       break;
     }
   }
 
+  return json;
+}
+
+/**
+ * Build manifest.json for Chromium-based browsers: Chrome, Opera, Microsoft Edge (as of 2020), Brave, and others.
+ *
+ * @param {object} manifestJsonAsJs
+ * @param {object} packageJsonAsJs
+ * @param {object} newProperties
+ * @return {string} - Stringified updated browser-specific manifest.json's contents.
+ */
+
+function makeChromiumSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties ) {
+  newProperties.background = {
+    persistent: false,
+  };
+  newProperties.options_page = OPTIONS_PAGE_PATH;
+
+  return combineProperties( manifestJsonAsJs, newProperties );
+}
+
+/**
+ * Build manifest.json for Firefox-based browsers: Firefox, Waterfox, and others.
+ *
+ * @param {object} manifestJsonAsJs
+ * @param {object} packageJsonAsJs
+ * @param {object} newProperties
+ * @return {string} - Stringified updated browser-specific manifest.json's contents.
+ */
+
+function makeFirefoxSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties ) {
+  newProperties.applications = {
+    gecko: {
+      id: packageJsonAsJs.name + EXTENSION_ID_AFFIX,
+    }
+  };
+  newProperties.options_ui = {
+    page: OPTIONS_PAGE_PATH,
+    browser_style: true,
+  };
+
+  delete manifestJsonAsJs.version_name;
+
+  return combineProperties( manifestJsonAsJs, newProperties );
+}
+
+/**
+ * Build manifest.json for the legacy Microsoft Edge (pre-2020).
+ *
+ * @param {object} manifestJsonAsJs
+ * @param {object} packageJsonAsJs
+ * @param {object} newProperties
+ * @return {string} - Stringified updated browser-specific manifest.json's contents.
+ */
+
+function makeLegacyEdgeSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties ) {
+  newProperties.applications = {
+    gecko: {
+      id: packageJsonAsJs.name + EXTENSION_ID_AFFIX,
+    }
+  };
+  newProperties.background = {
+    persistent: false,
+  };
+  newProperties.options_page = OPTIONS_PAGE_PATH;
+
+  delete manifestJsonAsJs.version_name;
+
+  return combineProperties( manifestJsonAsJs, newProperties );
+}
+
+/**
+ * Put together properties from manifest.json, properties from package.json, and browser-specific properties.
+ *
+ * @param {object} manifestJsonAsJs
+ * @param {object} newProperties
+ * @return {string} - Stringified updated browser-specific manifest.json's contents.
+ */
+
+function combineProperties( manifestJsonAsJs, newProperties ) {
   const merged = mergeDeep( manifestJsonAsJs, newProperties );
-  const mergedJson = JSON.stringify( merged );
 
-  this.emitFile( 'manifest.json', mergedJson );
-
-  return mergedJson;
+  return JSON.stringify( merged );
 }
