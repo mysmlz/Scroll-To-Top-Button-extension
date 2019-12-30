@@ -4,7 +4,7 @@ import * as styles from './settings/styles';
 import * as elements from './elements';
 import * as scrollDirections from './scroll-directions';
 import { cursorPosition } from '../listeners/mousemove';
-import * as customElements from 'Shared/custom-elements';
+import * as sharedElements from 'Shared/elements';
 
 /**
  * Show/hide the button and flip it, if necessary.
@@ -113,7 +113,7 @@ export function isButtonHovered( buttonToCheck ) {
 
   let elementFromPoint = document.elementFromPoint( cursorPosition.x, cursorPosition.y );
 
-  if ( elementFromPoint.localName === customElements.CONTAINER_TAG_NAME ) {
+  if ( elementFromPoint.localName === sharedElements.CONTAINER_TAG_NAME ) {
     elementFromPoint = elementFromPoint.shadowRoot.elementFromPoint( cursorPosition.x, cursorPosition.y );
   }
 

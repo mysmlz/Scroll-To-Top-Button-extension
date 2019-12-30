@@ -13,7 +13,7 @@ const defaultConfig = Map( {
     'background': './src/background/index.js',
     'content-scripts': './src/content-scripts/index.js',
     'options': './src/options/index.js',
-    'shared/custom-elements/scroll-to-top-button': './src/shared/custom-elements/scroll-to-top-button.css',
+    'shared/elements/scroll-to-top-button': './src/shared/elements/scroll-to-top-button.css',
   },
   output: Map( {
     filename: '[name].js',
@@ -126,7 +126,7 @@ module.exports = supportedBrowsers.map( browserName => {
         new WebpackCleanPlugin(
           [
             'manifest.js',
-            'shared/custom-elements/scroll-to-top-button.js',
+            'shared/elements/scroll-to-top-button.js',
           ],
           {
             basePath: path.resolve( __dirname, 'dist', browserName ),

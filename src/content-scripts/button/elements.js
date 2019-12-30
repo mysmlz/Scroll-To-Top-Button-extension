@@ -1,6 +1,5 @@
 import { getUrl } from 'Shared/utils';
-// @todo Avoid name collision with window.customElements.
-import * as customElements from 'Shared/custom-elements';
+import * as sharedElements from 'Shared/elements';
 
 import buttonSettings from './settings';
 import * as modes from './settings/modes';
@@ -16,7 +15,7 @@ let buttonsCount = 0;
 export const CONTAINER_ATTRIBUTE_STATE_ACTIVE = 'data-state-active';
 
 const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
-const BUTTON_ID = `${ customElements.BUTTON_TAG_NAME }-${ BUTTON_NUMBER_PLACEHOLDER }`;
+const BUTTON_ID = `${ sharedElements.BUTTON_TAG_NAME }-${ BUTTON_NUMBER_PLACEHOLDER }`;
 const BUTTON_LABEL = 'Scroll To Top Button';
 export const BUTTON_ATTRIBUTE_STATE_DISABLED = 'data-state-disabled';
 export const BUTTON_HOVERED_SELECTOR = ':hover';
@@ -29,7 +28,7 @@ export let scrollCausingElement = null;
  */
 
 export function createElements() {
-  customElements.setUp();
+  sharedElements.setUp();
   createContainer( buttonSettings.buttonLocation );
   createButton1();
 
@@ -51,7 +50,7 @@ export function createElements() {
 function createContainer( buttonLocation ) {
   const position = getPosition( buttonLocation );
 
-  container = document.createElement( customElements.CONTAINER_TAG_NAME );
+  container = document.createElement( sharedElements.CONTAINER_TAG_NAME );
 
   container.setAttribute( 'data-position-vertical', position.vertical );
   container.setAttribute( 'data-position-horizontal', position.horizontal );
@@ -96,7 +95,7 @@ function createButton2() {
 
 function createButton() {
   // @todo Investigate why lowercase doesn't work.
-  const button = document.createElement( customElements.BUTTON_TAG_NAME.toUpperCase() );
+  const button = document.createElement( sharedElements.BUTTON_TAG_NAME.toUpperCase() );
 
   buttonsCount++;
   button.id = BUTTON_ID.replace( BUTTON_NUMBER_PLACEHOLDER, buttonsCount );
@@ -119,7 +118,7 @@ function createButtonsStyles() {
   const link = document.createElement( 'LINK' );
 
   link.rel = 'stylesheet';
-  link.href = getUrl( 'shared/custom-elements/scroll-to-top-button.css' );
+  link.href = getUrl( 'shared/elements/scroll-to-top-button.css' );
 
   containerShadow.append( link );
 }
@@ -133,7 +132,7 @@ function createDisabledJavascriptBandage() {
   const html = `
     <noscript>
       <style>
-        ${ customElements.CONTAINER_TAG_NAME } { display: none !important; }
+        ${ sharedElements.CONTAINER_TAG_NAME } { display: none !important; }
       </style>
     </noscript>
   `;
