@@ -1,4 +1,4 @@
-import { getUrl } from 'Shared/utils';
+import utils from 'Shared/utils';
 import * as sharedElements from 'Shared/elements';
 
 import buttonSettings from './settings';
@@ -118,7 +118,7 @@ function createButtonsStyles() {
   const link = document.createElement( 'LINK' );
 
   link.rel = 'stylesheet';
-  link.href = getUrl( 'shared/elements/scroll-to-top-button.css' );
+  link.href = utils.getUrl( 'shared/elements/scroll-to-top-button.css' );
 
   containerShadow.append( link );
 }

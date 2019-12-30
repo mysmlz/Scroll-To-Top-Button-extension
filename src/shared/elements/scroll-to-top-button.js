@@ -1,9 +1,6 @@
 import 'dom4';
 
-import {
-  getDocumentFragment,
-  getUrl,
-} from 'Shared/utils';
+import utils from 'Shared/utils';
 import keyCodes from '../constants/key-codes';
 
 import './scroll-to-top-button.css';
@@ -189,7 +186,7 @@ export class ScrollToTopButton extends HTMLElement {
    */
 
   #getButtonImage() {
-    return fetch( getUrl( this.#imagePath ) )
+    return fetch( utils.getUrl( this.#imagePath ) )
       .then( response => response.text() );
   }
 
@@ -201,7 +198,7 @@ export class ScrollToTopButton extends HTMLElement {
     const link = document.createElement( 'LINK' );
 
     link.rel = 'stylesheet';
-    link.href = getUrl( this.#CSS_PATH );
+    link.href = utils.getUrl( this.#CSS_PATH );
     link.addEventListener( 'load', resolve );
 
     this.#shadow.append( link );
@@ -228,7 +225,7 @@ export class ScrollToTopButton extends HTMLElement {
    */
 
   #prepareButtonImage( imageMarkup ) {
-    const imageFragment = getDocumentFragment( imageMarkup );
+    const imageFragment = utils.getDocumentFragment( imageMarkup );
 
     this.#image = imageFragment.firstChild;
   }
