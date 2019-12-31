@@ -145,8 +145,9 @@ function makeFirefoxSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, new
   const minVersionMinusOne = browserList.match( /(firefox > )([0-9]{2,})/gi );
 
   if ( minVersionMinusOne ) {
+    // "/browser_specific_settings/gecko/strict_min_version" should match pattern "^[0-9]{1,3}(\.[a-z0-9]+)+$"
     // @todo Optimize.
-    newProperties.browser_specific_settings.gecko.strict_min_version = ( Number( minVersionMinusOne[ 0 ].match( /[0-9]{2,}/g )[ 0 ] ) + 1 ).toString();
+    newProperties.browser_specific_settings.gecko.strict_min_version = ( Number( minVersionMinusOne[ 0 ].match( /[0-9]{2,}/g )[ 0 ] ) + 1 ).toString() + '.0';
   }
 
   return combineProperties( manifestJsonAsJs, newProperties );
