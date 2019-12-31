@@ -6,6 +6,7 @@ const { mergeDeep } = require( 'immutable' );
  * https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options
  */
 
+// @todo Make dynamic.
 const PACKAGE_JSON_PATH = './package.json';
 const PACKAGE_JSON_ENCODING = 'utf8';
 
@@ -17,6 +18,7 @@ const PACKAGE_JSON_ENCODING = 'utf8';
  * @type {string}
  */
 
+// @todo Make dynamic.
 const OPTIONS_PAGE_PATH = 'options/index.html';
 
 /**
@@ -25,6 +27,7 @@ const OPTIONS_PAGE_PATH = 'options/index.html';
  * @type {string}
  */
 
+// @todo Make dynamic.
 const EXTENSION_ID_AFFIX = '@poziworld.com';
 
 module.exports = loadManifestJson;
@@ -124,7 +127,7 @@ function makeChromiumSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, ne
  */
 
 function makeFirefoxSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, newProperties ) {
-  newProperties.applications = {
+  newProperties.browser_specific_settings = {
     gecko: {
       id: packageJsonAsJs.name + EXTENSION_ID_AFFIX,
     }
@@ -135,6 +138,16 @@ function makeFirefoxSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, new
   };
 
   delete manifestJsonAsJs.version_name;
+
+  // @todo Make dynamic.
+  const browserList = fs.readFileSync( path.resolve( __dirname, '..', '..', '.browserslistrc' ), PACKAGE_JSON_ENCODING );
+  // @todo Make dynamic.
+  const minVersionMinusOne = browserList.match( /(firefox > )([0-9]{2,})/gi );
+
+  if ( minVersionMinusOne ) {
+    // @todo Optimize.
+    newProperties.browser_specific_settings.gecko.strict_min_version = ( Number( minVersionMinusOne[ 0 ].match( /[0-9]{2,}/g )[ 0 ] ) + 1 ).toString();
+  }
 
   return combineProperties( manifestJsonAsJs, newProperties );
 }

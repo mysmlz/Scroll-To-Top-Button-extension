@@ -8,6 +8,10 @@ module.exports = {
         debug: modeDevelopment,
         useBuiltIns: 'usage',
         corejs: 3,
+        exclude: [
+          'es.promise',
+          'es.promise.finally',
+        ],
       },
     ],
   ],

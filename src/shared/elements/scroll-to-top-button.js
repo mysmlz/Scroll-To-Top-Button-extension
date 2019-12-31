@@ -122,9 +122,16 @@ export class ScrollToTopButton extends HTMLElement {
    */
 
   #createShadowRoot() {
-    this.#shadow = this.attachShadow( {
-      mode: 'closed',
-    } );
+    if ( utils.canUseShadowDom() ) {
+      try {
+        this.#shadow = this.attachShadow( {
+          mode: 'closed',
+        } );
+      }
+      catch ( error ) {
+        // @todo Shouldn't be a case?
+      }
+    }
   }
 
   /**
@@ -201,7 +208,7 @@ export class ScrollToTopButton extends HTMLElement {
     link.href = utils.getUrl( this.#CSS_PATH );
     link.addEventListener( 'load', resolve );
 
-    this.#shadow.append( link );
+    this.#appendToShadow( link );
   };
 
   /**
@@ -320,7 +327,7 @@ export class ScrollToTopButton extends HTMLElement {
    */
 
   #setButtonImage = () => {
-    this.#shadow.append( this.#image );
+    this.#appendToShadow( this.#image );
   };
 
   /**
@@ -349,6 +356,26 @@ export class ScrollToTopButton extends HTMLElement {
         bubbles: true,
         cancelable: true,
       } ) );
+    }
+  }
+
+  /**
+   * Shadow DOM is not supported in old browsers, so they may experience CSS collisions.
+   *
+   * @param {HTMLElement} element
+   */
+
+  #appendToShadow( element ) {
+    if ( utils.canUseShadowDom() ) {
+      try {
+        this.#shadow.append( element );
+      }
+      catch ( error ) {
+        // @todo Shouldn't be a case?
+      }
+    }
+    else {
+      this.append( element );
     }
   }
 }

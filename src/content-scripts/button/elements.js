@@ -55,10 +55,20 @@ function createContainer( buttonLocation ) {
   container.setAttribute( 'data-position-vertical', position.vertical );
   container.setAttribute( 'data-position-horizontal', position.horizontal );
 
-  // Avoid CSS collisions when websites define styles for [role="button"] or even <scroll-to-top-button>
-  containerShadow = container.attachShadow( {
-    mode: 'open',
-  } );
+  if ( utils.canUseShadowDom() ) {
+    try {
+      // Avoid CSS collisions when websites define styles for [role="button"] or even <scroll-to-top-button>
+      containerShadow = container.attachShadow( {
+        mode: 'open',
+      } );
+    }
+    catch ( error ) {
+      // @todo Shouldn't be a case?
+    }
+  }
+  else {
+    containerShadow = container;
+  }
 }
 
 /**

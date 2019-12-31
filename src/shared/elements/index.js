@@ -1,5 +1,6 @@
-import '@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce';
+import '@poziworld/custom-elements';
 
+import utils from 'Shared/utils';
 import { ScrollToTopButtonContainer } from './scroll-to-top-button-container';
 import { ScrollToTopButton } from './scroll-to-top-button';
 
@@ -19,6 +20,15 @@ export function setUp() {
  */
 
 function define() {
-  customElements.define( CONTAINER_TAG_NAME, ScrollToTopButtonContainer );
-  customElements.define( BUTTON_TAG_NAME, ScrollToTopButton );
+  if ( utils.canUseCustomElements() ) {
+    try {
+      const customElements = window.customElements;
+
+      customElements.define( CONTAINER_TAG_NAME, ScrollToTopButtonContainer );
+      customElements.define( BUTTON_TAG_NAME, ScrollToTopButton );
+    }
+    catch ( error ) {
+      // @todo Shouldn't be a case?
+    }
+  }
 }
