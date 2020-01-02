@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v8.1.3
+
+### Fixed
+
+* Second arrow would point in an incorrect direction when Togglific is enabled in Waterfox Classic.
+
+  > [Issue](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/9) reported by [Graham Perrin (grahamperrin)](https://github.com/grahamperrin).
+
+---
+
 ## v8.1.2
 
 ### Fixed
