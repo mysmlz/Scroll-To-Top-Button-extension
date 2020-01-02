@@ -6,7 +6,7 @@ scroll-to-top-button {
 
 #scroll-to-top-button-2 {
   margin-top: 2px;
-  transform: rotate( -180deg );
+  transform: rotate( -180deg ) !important; /* !important to override Togglific's CSS - see https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/9 */
 }
 
 scroll-to-top-button[data-state-disabled] {
