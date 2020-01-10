@@ -12,8 +12,13 @@ scroll-to-top-button-container {
   left: 0;
   margin: 0;
   padding: 0;
+  background-color: transparent !important;
   border: 0;
   pointer-events: none;
+}
+
+scroll-to-top-button-container:not( [style*="background-color:"] ) { /* “Band-aid” for blog.webtor.io/en/post/ */
+  background-color: transparent !important;
 }
 
 scroll-to-top-button-container[data-state-active] {
