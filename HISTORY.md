@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v8.1.4
+
+### Fixed
+
+* blog.webtor.io's CSS would add a background color to the buttons container, rendering the whole page unusable.
+
+  > Issue reported by kleuton pereira ricarte at the Chrome Web Store.
+
+---
+
 ## v8.1.3
 
 ### Fixed
