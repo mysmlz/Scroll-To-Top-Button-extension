@@ -135,6 +135,7 @@ function makeFirefoxSpecificManifestJson( manifestJsonAsJs, packageJsonAsJs, new
   newProperties.options_ui = {
     page: OPTIONS_PAGE_PATH,
     browser_style: true,
+    open_in_tab: true,
   };
 
   delete manifestJsonAsJs.version_name;
