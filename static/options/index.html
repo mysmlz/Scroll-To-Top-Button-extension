@@ -22,15 +22,33 @@
           <a href="#button-settings" class="pwFormGroupCaptionLink" data-i18n="buttonSettings"></a>
         </legend>
         <div class="pwFormRow">
-          <label>
+          <label for="buttonMode">
             <span class="pwFormRowText" data-i18n="buttonMode"></span>
-            <select id="buttonMode" class="optionsChanger pwSelect">
+          </label>
+          <a href="https://scroll-to-top-button.com/info/settings/button-mode/" id="buttonModeInfoCta" class="pwInfoCta" data-i18n data-i18n-tooltip="buttonModeWatchDemo">
+            <span class="pwVisuallyHidden" data-i18n="buttonModeWatchDemo"></span>
+          </a>
+          <select id="buttonMode" class="optionsChanger pwSelect">
+            <optgroup data-i18n="buttonModeBasic">
+              <option value="scrollToTopOnlyBasic" data-i18n="scrollToTopOnly"></option>
+            </optgroup>
+            <optgroup data-i18n="buttonModeAdvanced">
+              <option value="scrollToTopOnlyAdvanced" data-i18n="scrollToTopOnly"></option>
+              <option value="flipBetweenTopBottomAdvanced" data-i18n="flipBetweenTopBottom"></option>
+              <option value="dualArrowsAdvanced" data-i18n="dualArrows"></option>
+            </optgroup>
+            <optgroup id="buttonModeExpertGroup" data-i18n="buttonModeExpert" disabled>
               <option value="off" data-i18n="scrollToTopOnly"></option>
               <option value="flip" data-i18n="flipBetweenTopBottom"></option>
               <option value="dual" data-i18n="dualArrows"></option>
               <option value="keys" data-i18n="keyboardOnly"></option>
-            </select>
-          </label>
+            </optgroup>
+          </select>
+          <button id="enableExpertButtonModesCta" data-i18n="enableExpertButtonModes"></button>
+          <button id="disableExpertButtonModesCta" data-i18n data-i18n-tooltip="disableExpertButtonModes">
+            <span class="pwVisuallyHidden" data-i18n="disableExpertButtonModes"></span>
+          </button>
+          <p id="hadVersion8InstalledBeforeMessage" data-i18n="hadVersion8InstalledBefore"></p>
         </div>
         <div class="pwFormRow">
           <label>
@@ -224,7 +242,7 @@
             </select>
           </label>
         </div>
-        <div class="pwFormRow">
+        <div id="settingsOverrideCtasContainer" class="pwFormRow">
           <button id="restore" class="pwCta" data-i18n="restoreDefaults"></button>
           <button id="author" class="pwCta" data-i18n="authorsSettings"></button>
         </div>
@@ -274,6 +292,15 @@
     </aside>
     <aside class="messageBanner bottom">
       <p id="incentivizeFurtherDevelopment" class="pwText" data-i18n="incentivizeFurtherDevelopment"></p>
+    </aside>
+    <aside id="permissionsPrivacyDetailsContainer" hidden>
+      <p class="permissionsPrivacyDetails" data-i18n="permissionsListExplanation"></p>
+      <ul>
+        <li class="permissionsPrivacyDetails" data-i18n="permissionDetailsOrigins" data-i18n-parameters="permissionNameOrigins%BROWSER_TYPE%"></li>
+        <li class="permissionsPrivacyDetails" data-i18n="permissionDetailsTabs" data-i18n-parameters="permissionNameTabs%BROWSER_TYPE%"></li>
+      </ul>
+      <p class="permissionsPrivacyDetails" data-i18n="privacyDetails"></p>
+      <p class="permissionsPrivacyDetails" data-i18n="openSourceDetails"></p>
     </aside>
     <script src="/global/js/browser-polyfill.js"></script>
     <script src="/global/js/bowser.js"></script>

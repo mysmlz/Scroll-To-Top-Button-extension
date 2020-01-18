@@ -1,8 +1,21 @@
+import * as settings from 'Shared/settings';
+
 import buttonSettings from './';
 
 const MODE_DUAL_ARROWS = 'dual';
 const MODE_FLIP = 'flip';
 const MODE_KEYBOARD_ONLY = 'keys';
+
+/**
+ * Check whether user chose (or was forced to) to click the browser action to scroll.
+ *
+ * @param {string} [buttonMode]
+ * @returns {boolean}
+ */
+
+export function isBrowserActionTopOnlyMode( buttonMode ) {
+  return isMode( buttonMode, settings.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE );
+}
 
 /**
  * Check whether user chose to have dual arrows.
@@ -52,5 +65,5 @@ function isMode( buttonMode, modeToCheck ) {
     buttonModeTemp = buttonSettings.buttonMode;
   }
 
-  return buttonModeTemp === modeToCheck;
+  return buttonModeTemp.includes( modeToCheck );
 }

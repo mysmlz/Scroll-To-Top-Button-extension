@@ -2,8 +2,13 @@ import 'dom4';
 
 import './options.css';
 
+import * as permissions from 'Shared/permissions';
+import * as settings from 'Shared/settings';
+
+const browserTypeIsFirefox = window.navigator.userAgent.includes( ' Firefox/' );
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
+const SETTING_SECTION_CONTAINER_SELECTOR = '.pwFormGroup';
 const SETTING_CONTAINER_SELECTOR = '.pwFormRow';
 const options = Array.from( document.getElementsByClassName( 'optionsChanger' ) );
 const CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME = 'data-customizable';
@@ -13,6 +18,11 @@ const CUSTOM_OPTION_CLASS = 'custom';
 const CUSTOM_OPTION_SELECTOR = '.' + CUSTOM_OPTION_CLASS;
 const CUSTOM_VALUE_INDICATOR = '-1';
 const buttonMode = document.getElementById( 'buttonMode' );
+let buttonModeCachedValue;
+const buttonModeExpertGroup = document.getElementById( 'buttonModeExpertGroup' );
+const enableExpertButtonModesCta = document.getElementById( 'enableExpertButtonModesCta' );
+const disableExpertButtonModesCta = document.getElementById( 'disableExpertButtonModesCta' );
+const permissionsPrivacyDetailsContainer = document.getElementById( 'permissionsPrivacyDetailsContainer' );
 const distanceType = document.getElementById( 'distanceType' );
 const UI_LANGUAGE_ID = 'uiLanguage';
 const uiLanguage = document.getElementById( UI_LANGUAGE_ID );
@@ -22,6 +32,8 @@ let statusTimeoutId;
 const STATUS_TIMEOUT_DELAY = 3000;
 let originalSettings;
 
+let permissionsGranted;
+
 init();
 
 /**
@@ -29,16 +41,191 @@ init();
  */
 
 function init() {
+  setBrowserSpecificI18n();
   poziworldExtension.page.init( 'options' )
+    .then( permissions.hasPermissions )
+    .then( cachePermissionsCheckResult )
+    .then( getSettings )
     .then( cacheMessages )
     .then( setLinks )
     .then( sortLanguages )
-    .then( handlePageReady )
     .then( setDocumentLanguage );
 
-  getSettings();
-  applyUi();
   addListeners();
+}
+
+/**
+ *
+ */
+
+function setBrowserSpecificI18n() {
+  const BROWSER_TYPE_PLACEHOLDER = '%BROWSER_TYPE%';
+  const browserType = getPermissionsRelatedBrowserType();
+  const browserSpecificI18nElements = [
+    ...document.querySelectorAll( `[data-i18n-parameters$="${ BROWSER_TYPE_PLACEHOLDER }"]` ),
+  ];
+
+  for ( let element of browserSpecificI18nElements ) {
+    const currentValue = element.getAttribute( 'data-i18n-parameters' );
+    const newValue = currentValue.replace( BROWSER_TYPE_PLACEHOLDER, browserType );
+
+    element.setAttribute( 'data-i18n-parameters', newValue );
+  }
+}
+
+/**
+ * Between the supported browsers, all/most Chromium-based ones have the same permission messaging. And Firefox-based one have the same permission messaging.
+ *
+ * @todo Replace with UA-CH when userAgent can no longer be trusted. {@link https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/-2JIRNMWJ7s/yHe4tQNLCgAJ}
+ */
+
+function getPermissionsRelatedBrowserType() {
+  if ( browserTypeIsFirefox ) {
+    return 'Firefox';
+  }
+
+  return 'Chromium';
+}
+
+/**
+ * Save whether the permissions required for the advanced button modes had been granted.
+ *
+ * @param {boolean} granted
+ */
+
+function cachePermissionsCheckResult( granted ) {
+  permissionsGranted = granted;
+}
+
+async function setUi() {
+  setButtonModesControllingCtasState();
+  await setHadVersion8InstalledBeforeMessageVisibility();
+  signalPageReady();
+}
+
+function setButtonModesControllingCtasState() {
+  if ( ! buttonModeExpertGroup || ! enableExpertButtonModesCta || ! disableExpertButtonModesCta ) {
+    return;
+  }
+
+  // @todo Optimize.
+  if ( permissionsGranted ) {
+    buttonModeExpertGroup.disabled = false;
+    enableExpertButtonModesCta.hidden = true;
+    enableExpertButtonModesCta.removeEventListener( 'click', requestPermissions );
+    disableExpertButtonModesCta.hidden = false;
+    disableExpertButtonModesCta.addEventListener( 'click', revokePermissions );
+  }
+  else {
+    buttonModeExpertGroup.disabled = true;
+    disableExpertButtonModesCta.hidden = true;
+    disableExpertButtonModesCta.removeEventListener( 'click', revokePermissions );
+    enableExpertButtonModesCta.hidden = false;
+    enableExpertButtonModesCta.addEventListener( 'click', requestPermissions );
+
+    const event = new Event( 'change' );
+    const buttonModeValue = buttonMode.value;
+
+    if ( settings.isExpertButtonMode( buttonModeValue ) ) {
+      buttonMode.value = settings.getExpertModeReplacement( buttonModeValue );
+      buttonMode.dispatchEvent( event );
+    }
+  }
+}
+
+async function setHadVersion8InstalledBeforeMessageVisibility() {
+  const hadVersion8InstalledBeforeMessage = document.getElementById( 'hadVersion8InstalledBeforeMessage' );
+
+  if ( hadVersion8InstalledBeforeMessage ) {
+    hadVersion8InstalledBeforeMessage.hidden = ! await settings.hadVersion8InstalledBefore() || await settings.haveGrantedPermissionsAtLeastOnce();
+  }
+}
+
+async function requestPermissions( event ) {
+  event.preventDefault();
+
+  togglePermissionsPrivacyDetails();
+
+  const granted = await browser.permissions.request( permissions.ADVANCED_BUTTON_MODES_PERMISSIONS );
+
+  handlePermissionsRequestResult( granted );
+}
+
+function togglePermissionsPrivacyDetails() {
+  const hidden = permissionsPrivacyDetailsContainer.hidden;
+
+  // Always reset the scrolling position of this takeover/modal.
+  permissionsPrivacyDetailsContainer.scrollTop = 0;
+  permissionsPrivacyDetailsContainer.hidden = ! hidden;
+  document.body.setAttribute( 'data-takeover-active', hidden );
+}
+
+async function handlePermissionsRequestResult( granted ) {
+  cachePermissionsCheckResult( granted );
+  setButtonModesControllingCtasState();
+
+  if ( granted ) {
+    await rememberGrantedAtLeastOnce( granted );
+    await setHadVersion8InstalledBeforeMessageVisibility();
+    reloadExtensionOnPermissionChange();
+  }
+
+  togglePermissionsPrivacyDetails();
+}
+
+async function rememberGrantedAtLeastOnce( granted ) {
+  try {
+    await browser.storage.local.set( {
+      [ settings.HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY ]: granted,
+    } );
+  }
+  catch ( error ) {
+    // @todo
+  }
+}
+
+function revokePermissions( event ) {
+  event.preventDefault();
+
+  browser.permissions.remove( permissions.ADVANCED_BUTTON_MODES_PERMISSIONS )
+    .then( handlePermissionsRevocationResult );
+}
+
+function handlePermissionsRevocationResult( revoked ) {
+  cachePermissionsCheckResult( ! revoked );
+  setButtonModesControllingCtasState();
+
+  if ( revoked ) {
+    reloadExtensionOnPermissionChange();
+  }
+}
+
+/**
+ * In Firefox, permissions listeners aren't available. In Chrome, they reconfigure the extension on the fly.
+ *
+ * @see {@link https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/permissions}
+ */
+
+function reloadExtensionOnPermissionChange() {
+  if ( browserTypeIsFirefox ) {
+    reloadExtension();
+  }
+}
+
+function reloadExtensionOnGroupChange( event ) {
+  const buttonModeNewValue = event.target.value;
+
+  if ( poziworldExtension.utils.isNonEmptyString( buttonModeNewValue ) && (
+    // @todo Optimize.
+    settings.isBasicButtonMode( buttonModeNewValue ) && ! settings.isBasicButtonMode( buttonModeCachedValue ) ||
+    ! settings.isBasicButtonMode( buttonModeNewValue ) && settings.isBasicButtonMode( buttonModeCachedValue ) ||
+    settings.isAdvancedButtonMode( buttonModeNewValue ) && ! settings.isAdvancedButtonMode( buttonModeCachedValue ) ||
+    ! settings.isAdvancedButtonMode( buttonModeNewValue ) && settings.isAdvancedButtonMode( buttonModeCachedValue ) ||
+    settings.isExpertButtonMode( buttonModeNewValue ) && ! settings.isExpertButtonMode( buttonModeCachedValue ) ||
+    ! settings.isExpertButtonMode( buttonModeNewValue ) && settings.isExpertButtonMode( buttonModeCachedValue )
+  ) ) {
+    reloadExtension();
+  }
 }
 
 async function reloadExtension() {
@@ -63,16 +250,6 @@ function cacheMessages() {
 
 function getSettings() {
   poziworldExtension.utils.getSettings( 'getSettings', handleGotSettings );
-}
-
-/**
- * Apply the appropriate styles when needed.
- */
-
-function applyUi() {
-  if ( boolConstUseOptionsUi ) {
-    document.body.classList.add( 'newUi' );
-  }
 }
 
 /**
@@ -160,6 +337,12 @@ function addListeners() {
   options.forEach( addOptionChangeListener );
 
   buttonMode.addEventListener( 'change', checkMode );
+
+  // @todo Move out.
+  if ( browserTypeIsFirefox ) {
+    buttonMode.addEventListener( 'change', reloadExtensionOnGroupChange );
+  }
+
   document.getElementById( 'restore' ).addEventListener( 'click', restoreDefaultSettings );
   document.getElementById( 'author' ).addEventListener( 'click', setOriginalAuthorSettings );
   document.getElementById( 'save' ).addEventListener( 'click', handleFormSubmit );
@@ -191,7 +374,7 @@ function restoreDefaultSettings( event ) {
    */
 
   const settings = {
-    buttonMode: 'off',
+    buttonMode: settings.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE,
     scrollUpSpeed: 1000,
     scrollUpSpeedCustom: 1000,
     scrollDownSpeed: 1000,
@@ -223,7 +406,7 @@ function setOriginalAuthorSettings( event ) {
   event.preventDefault();
 
   const settings = {
-    buttonMode: 'dual',
+    buttonMode: settings.DUAL_ARROWS_EXPERT_BUTTON_MODE,
     scrollUpSpeed: 1000,
     scrollUpSpeedCustom: 1000,
     scrollDownSpeed: 1000,
@@ -255,7 +438,12 @@ function handleGotSettings( settings ) {
   if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
     setOriginalSettings( settings );
     updateSelectedOptions( settings );
+
+    // @todo Move out.
+    buttonModeCachedValue = settings.buttonMode;
   }
+
+  setUi();
 }
 
 /**
@@ -518,26 +706,49 @@ function clearStatus() {
 function checkMode() {
   const mode = buttonMode.value;
 
+  // @todo Optimize.
   switch ( mode ) {
-    case 'flip':
+    case settings.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE:
+    case settings.SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE:
+    case settings.FLIP_ADVANCED_BUTTON_MODE:
+    case settings.DUAL_ARROWS_ADVANCED_BUTTON_MODE:
+    {
+      switchElements(
+        [
+          '#scrollUpSpeed',
+          '#scrollDownSpeed',
+          '#distanceLength',
+          '.appearance',
+          '#clickthroughKeys',
+          '#keyboard-settings',
+          '#settingsOverrideCtasContainer',
+        ],
+        false
+      );
+
+      break;
+    }
+
+    case settings.FLIP_EXPERT_BUTTON_MODE: {
       changeDistanceType( 'flipDistance' );
       switchElements(
         [
-          '#checkMode',
           '#distanceLength',
           '.appearance',
           '#scrollDownSpeed',
           '#clickthroughKeys',
+          '#keyboard-settings',
+          '#settingsOverrideCtasContainer',
         ],
         true
       );
 
       break;
+    }
 
-    case 'dual':
+    case settings.DUAL_ARROWS_EXPERT_BUTTON_MODE: {
       switchElements(
         [
-          '#checkMode',
           '#distanceLength',
         ],
         false
@@ -545,18 +756,21 @@ function checkMode() {
       switchElements(
         [
           '.appearance',
+          '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#clickthroughKeys',
+          '#keyboard-settings',
+          '#settingsOverrideCtasContainer',
         ],
         true
       );
 
       break;
+    }
 
-    case 'keys':
+    case 'keys': {
       switchElements(
         [
-          '#checkMode',
           '#distanceLength',
           '.appearance',
           '#clickthroughKeys',
@@ -566,20 +780,24 @@ function checkMode() {
       switchElements(
         [
           '#scrollDownSpeed',
+          '#keyboard-settings',
+          '#settingsOverrideCtasContainer',
         ],
         true
       );
 
       break;
+    }
 
-    default:
+    case settings.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE: {
       changeDistanceType( 'appearDistance' );
       switchElements(
         [
-          '#checkMode',
           '#distanceLength',
           '.appearance',
           '#clickthroughKeys',
+          '#keyboard-settings',
+          '#settingsOverrideCtasContainer',
         ],
         true
       );
@@ -591,6 +809,7 @@ function checkMode() {
       );
 
       break;
+    }
   }
 }
 
@@ -638,14 +857,14 @@ function switchElement( show, element ) {
  */
 
 function getSettingContainer( element ) {
-  return element.closest( SETTING_CONTAINER_SELECTOR );
+  return element.closest( SETTING_CONTAINER_SELECTOR ) || element.closest( SETTING_SECTION_CONTAINER_SELECTOR );
 }
 
 /**
  * If page waited for JavaScript to show content, signal it's now ready.
  */
 
-function handlePageReady() {
+function signalPageReady() {
   document.body.classList.remove( NOT_READY_CLASS );
 }
 

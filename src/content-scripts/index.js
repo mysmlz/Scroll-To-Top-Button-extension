@@ -2,6 +2,7 @@ import * as activeTab from './active-tab';
 import * as button from './button';
 
 stubLog();
+// @todo Don't run in browser action (advanced) modes.
 activeTab.runChecks()
   .then( button.setUp )
   .then( button.init )

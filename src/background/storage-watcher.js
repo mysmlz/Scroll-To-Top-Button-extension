@@ -1,3 +1,5 @@
+import * as scrollExecutors from './scroll-executors';
+
 const TARGET_STORAGE_AREA = 'local';
 const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY = 'requestedToSimulateExtensionUpdate';
 const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE = true;
@@ -30,6 +32,7 @@ function addListeners() {
 function addOnChangedListener() {
   // @todo Add only when in development mode.
   browser.storage.onChanged.addListener( checkForExtensionUpdateSimulationRequest );
+  browser.storage.onChanged.addListener( scrollExecutors.setController );
 }
 
 /**

@@ -7,6 +7,10 @@ body {
   max-width: 55rem;
 }
 
+[data-takeover-active="true"] {
+  overflow: hidden;
+}
+
 /* Message banner */
 
 .messageBanner {
@@ -51,7 +55,7 @@ body {
   height: 3.5rem;
 }
 
-/* Settings */
+/* General */
 
 #settingsForm {
   margin: 2rem 0;
@@ -71,6 +75,41 @@ input.optionsChanger {
 
 .optionsChanger:invalid {
   border-color: #f00;
+}
+
+/* Specific */
+
+[for="buttonMode"] {
+  display: flex;
+  align-items: center;
+}
+
+#buttonModeInfoCta {
+  @mixin graphicalCta;
+  display: flex;
+  align-items: center;
+  margin: 0 -1rem 0 0;
+  cursor: help;
+}
+
+#buttonModeInfoCta::after {
+  background-image: url( /shared/images/info-icon.svg );
+  background-size: 2rem;
+}
+
+#enableExpertButtonModesCta {
+  @mixin cta;
+  margin-top: 1.5rem;
+}
+
+#enableExpertButtonModesCta::before {
+  content: '';
+}
+
+#hadVersion8InstalledBeforeMessage {
+  @mixin paragraph;
+  margin-top: 1.5rem;
+  white-space: pre-line;
 }
 
 [data-i18n="uiLanguage"]::before {
@@ -99,6 +138,44 @@ input.optionsChanger {
 #status {
   line-height: 2;
   margin: 0 0 0 1.5rem;
+}
+
+/* Revoke permissions call-to-action */
+
+#disableExpertButtonModesCta {
+  @mixin graphicalCta;
+}
+
+#disableExpertButtonModesCta::after {
+  background-image: url( /shared/images/lock-icon.svg );
+}
+
+/* Permissions and privacy information */
+
+#permissionsPrivacyDetailsContainer {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  padding: 4rem 2rem;
+  max-width: 55rem;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.permissionsPrivacyDetails {
+  @mixin paragraph;
+  font-size: 1.8em;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  white-space: pre-line;
+}
+
+[data-i18n="privacyDetails"] {
+  font-weight: 700;
 }
 
 /* Secondary information */

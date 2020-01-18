@@ -15,9 +15,14 @@
   },
 
   "permissions": [
-    "tabs",
+    "activeTab",
     "contextMenus",
     "storage"
+  ],
+
+  "optional_permissions": [
+    "<all_urls>",
+    "tabs"
   ],
 
   "background": {
@@ -46,39 +51,8 @@
     "default_icon": {
       "19": "global/img/sttb-icon-19.png",
       "38": "global/img/sttb-icon-38.png"
-    },
-    "default_title": "__MSG_extensionName__",
-    "default_popup": "browser-action/index.html"
-  },
-
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "all_frames": true,
-      "css": [
-        "content-scripts.css"
-      ],
-      "js": [
-        "global/js/browser-polyfill.js",
-        "global/js/bowser.js",
-        "global/js/global.js",
-        "global/js/utils.js",
-        "libraries/jquery-3.3.1.min.js",
-        "global/js/const.js",
-        "global/js/log.js",
-        "global/js/i18next/i18next.min.js",
-        "global/js/i18next/i18nextBrowserLanguageDetector.min.js",
-        "global/js/i18next/i18nextXHRBackend.js",
-        "global/js/i18n.js",
-        "libraries/jquery.easing.js",
-        "libraries/jQueryRotate.js",
-        "libraries/shortcut.js",
-        "content-scripts.js"
-      ]
     }
-  ],
+  },
 
   "web_accessible_resources": [
     "shared/elements/scroll-to-top-button.css",

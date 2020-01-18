@@ -18,6 +18,9 @@
   "close": {
     "message": "Close"
   },
+  "buttonModeBrowserActionButtonTitle": {
+    "message": "Scroll to top of this page"
+  },
   "browserActionPageTitle": {
     "message": "Active tab settings | Scroll To Top Button"
   },
@@ -47,18 +50,155 @@
     "buttonMode": {
       "message": "Button mode"
     },
+      "buttonModeBasic": {
+        "message": "Basic (no permissions needed)",
+        "description": "A group of button modes that don't require any special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Context: https://user-images.githubusercontent.com/5961162/72518526-6a272480-380a-11ea-829d-606477de168e.png"
+      },
+        "buttonModeBasicBrowserActionTitle": {
+          "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to scroll*.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$* Might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
+          "description": "Tooltip of the extension icon next to the address bar when a basic button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518629-9e024a00-380a-11ea-9d59-90b858f0aa0c.png",
+          "placeholders": {
+            "extension_name": {
+              "content": "$1",
+              "example": "Scroll To Top Button"
+            },
+            "extension_version": {
+              "content": "$2",
+              "example": "9.0.0"
+            },
+            "breaking_changes_message": {
+              "content": "$3",
+              "example": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n"
+            }
+          }
+        },
+      "buttonModeAdvanced": {
+        "message": "Advanced (no permissions needed)",
+        "description": "A group of button modes that don't require any special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Context: https://user-images.githubusercontent.com/5961162/72518526-6a272480-380a-11ea-829d-606477de168e.png"
+      },
+        "buttonModeAdvancedBrowserActionTitle": {
+          "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to add button(s) to currently active page*.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$* Might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
+          "description": "Tooltip of the extension icon next to the address bar when an advanced button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518776-dd309b00-380a-11ea-81d8-e229571b71ba.png",
+          "placeholders": {
+            "extension_name": {
+              "content": "$1",
+              "example": "Scroll To Top Button"
+            },
+            "extension_version": {
+              "content": "$2",
+              "example": "9.0.0"
+            },
+            "breaking_changes_message": {
+              "content": "$3",
+              "example": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n"
+            }
+          }
+        },
+      "buttonModeExpert": {
+        "message": "Expert (permissions needed)",
+        "description": "A group of button modes that require special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation and while in use. Since these modes have those permissions, the feature scope is expanded. Context: https://user-images.githubusercontent.com/5961162/72518526-6a272480-380a-11ea-829d-606477de168e.png"
+      },
+        "buttonModeExpertBrowserActionTitle": {
+          "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to open active tab settings.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$Extension might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
+          "description": "Tooltip of the extension icon next to the address bar when an expert button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518945-40223200-380b-11ea-9856-cbbb78f00edf.png",
+          "placeholders": {
+            "extension_name": {
+              "content": "$1",
+              "example": "Scroll To Top Button"
+            },
+            "extension_version": {
+              "content": "$2",
+              "example": "9.0.0"
+            },
+            "breaking_changes_message": {
+              "content": "$3",
+              "example": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n"
+            }
+          }
+        },
       "scrollToTopOnly": {
-        "message": "Scroll to top only"
+        "message": "Scroll to top only",
+        "description": "Name of a button mode that allows scrolling only to the top of a page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
       },
       "flipBetweenTopBottom": {
         "message": "Flip between top &amp; bottom",
-        "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
+        "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
       },
       "dualArrows": {
-        "message": "Dual arrows"
+        "message": "Dual arrows",
+        "description": "Name of a button mode that allows scrolling to the top or bottom of a page. Always shows two arrows. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
       },
       "keyboardOnly": {
-        "message": "Keyboard only"
+        "message": "Keyboard only",
+        "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
+      },
+      "buttonModeWatchDemo": {
+        "message": "Learn more about button modes",
+        "description": "Title of a button that allows user to get mode details about the button modes. Context: https://user-images.githubusercontent.com/5961162/71781194-b2c81d80-2f80-11ea-826f-dfabe68ad433.png"
+      },
+      "enableExpertButtonModes": {
+        "message": "Enable expert button modes",
+        "description": "Title of a button that triggers a request for the required permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/72518398-1caab780-380a-11ea-972d-6a88c3b188c7.png"
+      },
+      "disableExpertButtonModes": {
+        "message": "Revoke permissions",
+        "description": "Title of a button that triggers a revocation of the previously granted permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/71878081-aa3a2900-30df-11ea-8be1-393dcf6578d0.png"
+      },
+      "breakingChangesUpgradingVersion8Message": {
+        "message": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n",
+        "description": "Message/warning displayed to users who had had version 8 of the extension before. Context: "
+      },
+      "hadVersion8InstalledBefore": {
+        "message": "Dear Scroll To Top Button user,\n\nTo give all users a choice of improved security, we made the following changes to the way the extension works:\n\nTo install, it now does not need any permissions.\n\nFor existing users, unfortunately, there was no way for us to keep the permissions you had granted upon the installation.\nTo restore how it used to work, please enable the expert button modes.\n\nOr, you can give a try to the new basic and advanced button modes, which work without any permissions.\n\nWe deeply apologize for the inconvenience.\nYour trust and support have always been paramount to us.\n\nTechnical details of the changes:\nhttps://developer.chrome.com/extensions/activeTab\n\nPoziWorld,\ndeveloper of Scroll To Top Button",
+        "description": "Message displayed to existing users when their extension gets updated from version 8 to version 9. Context: https://user-images.githubusercontent.com/5961162/72518398-1caab780-380a-11ea-972d-6a88c3b188c7.png"
+      },
+      "permissionsListExplanation": {
+        "message": "The following permissions are required for the advanced button modes – modes that work by adding the button(s) onto all pages unless you choose to disable it for certain pages or websites:",
+        "description": "A sentence that is followed by a list of individual permissions and their descriptions. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
+      },
+      "permissionDetailsOrigins": {
+        "message": "“$PERMISSION_NAME$” is used to add the button(s) itself, its logic, and its design properties onto all websites without extra actions from you.",
+        "description": "Name and description of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png",
+        "placeholders": {
+          "permission_name": {
+            "content": "$1",
+            "example": "Read and change all your data on the websites you visit"
+          }
+        }
+      },
+      "permissionNameOriginsChromium": {
+        "message": "Read and change all your data on the websites you visit",
+        "description": "Chromium-based browsers-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
+      },
+      "permissionNameOriginsFirefox": {
+        "message": "Access your data for all websites",
+        "description": "Firefox-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
+      },
+      "permissionDetailsTabs": {
+        "message": "“$PERMISSION_NAME$” is used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) You have the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option.",
+        "description": "Name and description of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png",
+        "placeholders": {
+          "permission_name": {
+            "content": "$1",
+            "example": "Read your browsing history"
+          }
+        }
+      },
+      "permissionNameTabsChromium": {
+        "message": "Read your browsing history",
+        "description": "Chromium-based browsers-specific name of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
+      },
+      "permissionNameTabsFirefox": {
+        "message": "Access browser tabs",
+        "description": "Firefox-specific name of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
+      },
+      "privacyDetails": {
+        "message": "This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.",
+        "description": "Re-affirmation that the extension doesn't steal user's data. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
+      },
+      "openSourceDetails": {
+        "message": "Free open-source extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
+        "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
       },
     "scrollUpSpeed": {
       "message": "Scroll up speed"
@@ -306,6 +446,10 @@
     "message": "If the extension supports the language that is chosen as default in the browser, use that one. Otherwise, use English (United States).",
     "description": "Explanation of the “Automatic (browser default)” language option that should be shown in a tooltip."
   },
+  "language_bg": {
+    "message": "Bulgarian - български",
+    "description": "Language option: bg (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
+  },
   "language_cs": {
     "message": "Czech - čeština",
     "description": "Language option: cs (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
@@ -396,5 +540,10 @@
 
   "referralProgramInfoNotify": {
     "message": "Notify me when I can help through this program"
+  },
+
+  "extensionReloadConfirmationMessage": {
+    "message": "Would you like to restart the extension now to apply the changes?",
+    "description": "If an Options change requires an extension restart, ask user whether he/she wants to do it now."
   }
 }

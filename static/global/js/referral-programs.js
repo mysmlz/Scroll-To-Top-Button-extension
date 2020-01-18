@@ -185,6 +185,7 @@
     const intTabId = objTab.intId;
 
     this.getNotificationSettingsFromStorage( function ( boolIsEnabled ) {
+      // @todo Remove? Amazon doesn't approve the application and this doesn't work in a browser action mode.
       browser.browserAction.setBadgeText( {
         text: boolIsEnabled ?
           poziworldExtension.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
@@ -569,7 +570,13 @@
     strLog = 'poziworldExtension.referralPrograms.getAmazonDomain';
     Log.add( strLog, objTab );
 
-    return objTab.strDomain.split( '.' ).slice( 1 ).join( '.' );
+    const domain = objTab.strDomain;
+
+    if ( poziworldExtension.utils.isNonEmptyString( domain ) ) {
+      return domain.split( '.' ).slice( 1 ).join( '.' );
+    }
+
+    return '';
   };
 
   if ( typeof poziworldExtension === 'undefined' ) {

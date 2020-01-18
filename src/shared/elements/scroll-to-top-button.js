@@ -174,7 +174,7 @@ export class ScrollToTopButton extends HTMLElement {
     this.#imagePath = this.#IMAGE_PATH
       .replace(
         this.#IMAGE_PATH_MODE_DUAL_PLACEHOLDER,
-        ( this.#mode === this.#MODE_DUAL_VALUE ) ?
+        ( this.#isMode( this.#MODE_DUAL_VALUE ) ) ?
           this.#IMAGE_PATH_MODE_DUAL_VALUE :
           this.#IMAGE_PATH_NO_VALUE
       )
@@ -261,7 +261,7 @@ export class ScrollToTopButton extends HTMLElement {
     this.#width = this.#normalizeDimension( this.#width, this.#MIN_WIDTH, this.#MAX_WIDTH, this.#DEFAULT_WIDTH );
     this.#height = this.#normalizeDimension( this.#height, this.#MIN_HEIGHT, this.#MAX_HEIGHT, this.#DEFAULT_HEIGHT );
 
-    if ( this.#mode === 'dual' ) {
+    if ( this.#isMode( this.#MODE_DUAL_VALUE ) ) {
       this.#height = this.#height / 2;
     }
   }
@@ -377,5 +377,16 @@ export class ScrollToTopButton extends HTMLElement {
     else {
       this.append( element );
     }
+  }
+
+  /**
+   * Check whether the mode specified in the Settings is equal to the one being checked.
+   *
+   * @param {string} modeToCheck - The mode to check against.
+   * @returns {boolean}
+   */
+
+  #isMode( modeToCheck ) {
+    return this.#mode.includes( modeToCheck );
   }
 }

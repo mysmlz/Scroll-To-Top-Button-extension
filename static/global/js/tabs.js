@@ -362,14 +362,18 @@
       const intId = objTab.id;
       let strUrl = objTab.url;
       let strDomain;
-      const $a = document.createElement( 'a' );
-      let strDomainTemp;
 
-      $a.href = strUrl;
-      strDomainTemp = $a.hostname;
+      // Not available if the “tabs” permission is not granted
+      if ( poziworldExtension.utils.isNonEmptyString( strUrl ) ) {
+        const $a = document.createElement( 'a' );
+        let strDomainTemp;
 
-      strDomain = punycode.toUnicode( strDomainTemp );
-      strUrl = strUrl.replace( strDomainTemp, strDomain );
+        $a.href = strUrl;
+        strDomainTemp = $a.hostname;
+
+        strDomain = punycode.toUnicode( strDomainTemp );
+        strUrl = strUrl.replace( strDomainTemp, strDomain );
+      }
 
       this.saveActiveTab( {
         intId: intId,

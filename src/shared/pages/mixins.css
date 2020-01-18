@@ -1,3 +1,5 @@
+/* Caption */
+
 @define-mixin caption {
   font-size: 1.9em;
 
@@ -21,6 +23,8 @@
 
   font-size: 1.6em;
 }
+
+/* Text */
 
 @define-mixin text {
   font-size: 1.6em;
@@ -46,10 +50,51 @@
   font-size: 1.4em;
 }
 
+@define-mixin paragraph {
+  @mixin text;
+
+  line-height: 1.2;
+  margin: 0 0 1em;
+}
+
+/* Call-to-action (link, button) */
+
 @define-mixin link {
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+@define-mixin cta {
+  @mixin text;
+
+  font-family: inherit;
+  flex-shrink: 0;
+  line-height: 2.5;
+}
+
+@define-mixin textualCta {
+  @mixin cta;
+  @mixin link;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@define-mixin graphicalCta {
+  margin: 0 0 0 1rem;
+  padding: 0;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    margin: .5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: center / contain no-repeat;
   }
 }

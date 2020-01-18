@@ -22,7 +22,7 @@ export function setUp( resolve, reject ) {
  */
 
 export function init() {
-  if ( ! modes.isKeyboardOnlyMode() ) {
+  if ( ! modes.isBrowserActionTopOnlyMode() && ! modes.isKeyboardOnlyMode() ) {
     elements.createElements();
     listeners.addNonKeyboardOnlyModeListeners();
     visualProperties.switchVisualProperties();

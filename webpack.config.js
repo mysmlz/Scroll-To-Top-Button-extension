@@ -36,6 +36,7 @@ const defaultConfig = Map( {
             plugins: [
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-proposal-private-methods',
+              '@babel/plugin-transform-async-to-generator',
             ],
           },
         },
@@ -73,6 +74,10 @@ const defaultConfig = Map( {
           from: './src/shared/buttons',
           to: './shared/buttons',
         },
+        {
+          from: './src/shared/images',
+          to: './shared/images',
+        },
       ]
     ),
 
@@ -104,7 +109,7 @@ const defaultConfig = Map( {
 const supportedBrowsers = [
   'chromium',
   'firefox',
-  'edge',
+  // 'edge',
 ];
 
 module.exports = supportedBrowsers.map( browserName => {

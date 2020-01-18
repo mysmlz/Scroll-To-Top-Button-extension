@@ -74,7 +74,10 @@
 
         if ( poziworldExtension.utils.isNonEmptyString( strI18 ) ) {
           if ( typeof strI18Parameters === 'string' && strI18Parameters !== '' ) {
-            arrI18Parameters = strI18Parameters.split( '|' );
+            // @todo Move out the callback.
+            arrI18Parameters = strI18Parameters.split( '|' ).map( function ( parameter ) {
+              return poziworldExtension.i18n.getMessage( parameter );
+            } );
           }
 
           strMessage = poziworldExtension.i18n.getMessage( strI18, arrI18Parameters );

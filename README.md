@@ -143,6 +143,8 @@ Credits
 * Original logic partially borrowed from jQuery Plugin: Scroll to Top by Craig Wilson, [Ph.Creative](http://www.ph-creative.com), [MIT License](http://www.opensource.org/licenses/mit-license.php).
 * [Gentleface Mono Icon Set](http://gentleface.com/free_icon_set.html), Gentleface, [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/).
 * “[Language](https://www.iconfinder.com/icons/1608752/language_icon)” icon by Dave Gandy from [Font Awesome](https://fontawesome.com/). [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
+* “Info” icon - [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com). [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+* “[Lock](https://thenounproject.com/search/?q=lock&i=904757)” icon by [Maxim Kulikov](https://thenounproject.com/maxim221). [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 * <sub>All trademarks mentioned belong to their owners, third party brands, product names, trade names, corporate names and company names mentioned may be trademarks of their respective owners or registered trademarks of other companies and are used for purposes of explanation and to the owner's benefit, without implying a violation of copyright law.</sub>
 
 <sup>(back to [table of contents](#table-of-contents))</sup>

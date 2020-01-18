@@ -83,7 +83,9 @@
                 )
             ||  typeof strLatestTrackedVersion === 'undefined'
           ) {
-            var objDetails = {};
+            var objDetails = {
+              previousVersion: strLatestTrackedVersion,
+            };
 
             Background.cleanUp( true, objDetails );
             Background.onUpdatedCallback( logTemp, objDetails );
@@ -103,29 +105,30 @@
     ,
 
     /**
-     * Do stuff when updated
+     * Do stuff when the extension was updated.
      *
-     * @type    method
-     * @param   strLogFromCaller
-     *            strLog
-     * @param   objDetails
-     *            - Optional. Reason - install/update/chrome_update
-     *            - Optional. Previous version
-     * @return  void
+     * @param {string} logFromCaller
+     * @param {object} details
+     * @param {("install"|"update"|"chrome_update")} [details.reason] - The reason that this event is being dispatched.
+     * @param {string} [details.previousVersion] - Indicates the previous version of the extension, which has just been updated. This is present only if 'reason' is 'update'.
      **/
-    onUpdatedCallback : function( strLogFromCaller, objDetails ) {
-      strLog = 'onUpdatedCallback';
 
-      // Save this version number
+    onUpdatedCallback: function ( logFromCaller, details ) {
+      strLog = 'onUpdatedCallback, ' + logFromCaller;
+
+      const versionsToSave = {
+        strLatestTrackedVersion: strConstExtensionVersion,
+      };
+
+      if ( poziworldExtension.utils.isType( details, 'object' ) ) {
+        versionsToSave.previousVersion = details.previousVersion;
+      }
+
       poziworldExtension.utils.setStorageItems(
         StorageLocal,
-        {
-          strLatestTrackedVersion: strConstExtensionVersion
-        },
+        versionsToSave,
         strLog + ', save version'
       );
-
-      objDetails.boolWasUpdated = true;
     }
     ,
 
@@ -430,7 +433,7 @@
       ],
       buttonMode: [
         'stbb',
-        'off',
+        'scrollToTopOnlyBasic',
       ],
       scrollUpSpeed: [
         'scroll_speed',
