@@ -41,6 +41,14 @@ function init() {
   addListeners();
 }
 
+async function reloadExtension() {
+  await poziworldExtension.i18n.init();
+
+  if ( window.confirm( poziworldExtension.i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
+    browser.runtime.reload();
+  }
+}
+
 /**
  * To avoid requesting localization of some status messages multiples times, request once and save.
  */
@@ -480,7 +488,7 @@ function handleSetSettingsSuccess( settings, refreshForm ) {
    */
 
   if ( isLanguageBeingChanged( settings ) ) {
-    browser.runtime.reload();
+    reloadExtension();
     window.close();
   }
 }
