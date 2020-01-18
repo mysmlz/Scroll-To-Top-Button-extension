@@ -6,6 +6,34 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.0.0
+
+### Breaking changes
+
+* When upgrading from version 8 or earlier, an on-demand button mode (see advanced button modes in Options) is enforced.
+
+(_Go to Options to switch back to an always-on button_.)
+
+### New
+
+* No more required permissions upon installation!
+
+  > Based on feedback from a Firefox user.
+
+* Button modes: an on-demand button and an extension icon as a button (see basic button modes in Options).
+
+  > Extension icon as a button idea by [Murat Karayel](https://www.facebook.com/schipht) (via Facebook) and Mike Glenn (via email).
+
+### Improved
+
+* In Options, a confirmation window is now shown before the extension gets reloaded.
+
+### Changed
+
+* In Firefox, the Options page now gets open in a new tab.
+
+---
+
 ## v8.1.4
 
 ### Fixed
