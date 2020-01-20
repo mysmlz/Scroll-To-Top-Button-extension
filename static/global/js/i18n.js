@@ -262,6 +262,9 @@
       else if ( poziworldExtension.utils.isType( language, 'string' ) ) {
         resolve( language );
       }
+      else {
+        reject( language );
+      }
     }
   }
 
