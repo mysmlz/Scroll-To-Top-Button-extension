@@ -153,7 +153,7 @@
         "description": "Message displayed to existing users when their extension gets updated from version 8 to version 9. Context: https://user-images.githubusercontent.com/5961162/72518398-1caab780-380a-11ea-972d-6a88c3b188c7.png"
       },
       "permissionsListExplanation": {
-        "message": "The following permissions are required for the advanced button modes – modes that work by adding the button(s) onto all pages unless you choose to disable it for certain pages or websites:",
+        "message": "The following permissions are required for the expert button modes – modes that work by adding the button(s) onto all pages unless you choose to disable it for certain pages or websites:",
         "description": "A sentence that is followed by a list of individual permissions and their descriptions. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
       },
       "permissionDetailsOrigins": {
