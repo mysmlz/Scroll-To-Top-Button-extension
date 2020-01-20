@@ -119,7 +119,9 @@
       window.poziworldExtension = {};
     }
 
-    poziworldExtension.i18n = new I18n();
+    if ( ! poziworldExtension.i18n ) {
+      poziworldExtension.i18n = new I18n();
+    }
   }
 
   /**
