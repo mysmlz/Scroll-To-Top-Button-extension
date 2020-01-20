@@ -444,9 +444,12 @@
    */
 
   function handleTranslationException() {
-    Log.add( 'poziworldExtension.i18n -> handleTranslationException' );
+    // Message contains “encoded” email – decode it
+    const element = window.document.createElement( 'span' );
 
-    return 'i18n services not initialized.';
+    element.innerHTML = 'Failed to load language file – please notify developer at &#115;&#116;&#116;&#98;&#45;&#105;&#49;&#56;&#110;&#64;&#112;&#111;&#122;&#105;&#119;&#111;&#114;&#108;&#100;&#46;&#99;&#111;&#109;';
+
+    return element.textContent;
   }
 
   /**
