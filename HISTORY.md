@@ -6,6 +6,20 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.0.1
+
+### Fixed
+
+* In Firefox, on the Options page, wouldn't save the button settings if the newly chosen button mode is from another group.
+
+  > [Issue](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/10) reported by [Graham Perrin (grahamperrin)](https://github.com/grahamperrin).
+
+* In Waterfox, on the Options page, would often show “i18n services not initialized” instead of any text.
+
+  > [Issue](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/11) reported by [Graham Perrin (grahamperrin)](https://github.com/grahamperrin).
+
+---
+
 ## v9.0.0
 
 ### Breaking changes
