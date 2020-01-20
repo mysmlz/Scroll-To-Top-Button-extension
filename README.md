@@ -115,6 +115,7 @@ Scroll To Top Button on social networks
 - [Scroll To Top Button on Telegram](https://t.me/s/ScrollToTopButton)
 - [Scroll To Top Button on Twitter](https://twitter.com/ScrollToTopBtn)
 - [Scroll To Top Button on Facebook](https://www.facebook.com/ScrollToTopButton)
+- [Scroll To Top Button on Steemit](https://steemit.com/@scrolltotopbtn)
 - [Scroll To Top Button on VK](https://vk.com/scrolltotopbutton)
 - [Scroll To Top Button on OK](https://ok.ru/group/54802374459420)
 
