@@ -212,22 +212,6 @@ function reloadExtensionOnPermissionChange() {
   }
 }
 
-function reloadExtensionOnGroupChange( event ) {
-  const buttonModeNewValue = event.target.value;
-
-  if ( poziworldExtension.utils.isNonEmptyString( buttonModeNewValue ) && (
-    // @todo Optimize.
-    settings.isBasicButtonMode( buttonModeNewValue ) && ! settings.isBasicButtonMode( buttonModeCachedValue ) ||
-    ! settings.isBasicButtonMode( buttonModeNewValue ) && settings.isBasicButtonMode( buttonModeCachedValue ) ||
-    settings.isAdvancedButtonMode( buttonModeNewValue ) && ! settings.isAdvancedButtonMode( buttonModeCachedValue ) ||
-    ! settings.isAdvancedButtonMode( buttonModeNewValue ) && settings.isAdvancedButtonMode( buttonModeCachedValue ) ||
-    settings.isExpertButtonMode( buttonModeNewValue ) && ! settings.isExpertButtonMode( buttonModeCachedValue ) ||
-    ! settings.isExpertButtonMode( buttonModeNewValue ) && settings.isExpertButtonMode( buttonModeCachedValue )
-  ) ) {
-    reloadExtension();
-  }
-}
-
 async function reloadExtension() {
   await poziworldExtension.i18n.init();
 
@@ -337,12 +321,6 @@ function addListeners() {
   options.forEach( addOptionChangeListener );
 
   buttonMode.addEventListener( 'change', checkMode );
-
-  // @todo Move out.
-  if ( browserTypeIsFirefox ) {
-    buttonMode.addEventListener( 'change', reloadExtensionOnGroupChange );
-  }
-
   document.getElementById( 'restore' ).addEventListener( 'click', restoreDefaultSettings );
   document.getElementById( 'author' ).addEventListener( 'click', setOriginalAuthorSettings );
   document.getElementById( 'save' ).addEventListener( 'click', handleFormSubmit );
@@ -659,7 +637,7 @@ function setSettings( settings, refreshForm ) {
  * @param {boolean} [refreshForm] - If the settings are being changed by a reset, update form values.
  */
 
-function handleSetSettingsSuccess( settings, refreshForm ) {
+async function handleSetSettingsSuccess( settings, refreshForm ) {
   setStatus( statusOptionsSaved );
 
   window.clearTimeout( statusTimeoutId );
@@ -671,12 +649,8 @@ function handleSetSettingsSuccess( settings, refreshForm ) {
     updateSelectedOptions( settings );
   }
 
-  /**
-   * @todo Ask user to confirm before reloading.
-   */
-
-  if ( isLanguageBeingChanged( settings ) ) {
-    reloadExtension();
+  if ( isLanguageBeingChanged( settings ) || isButtonModeGroupBeingChanged( settings ) ) {
+    await reloadExtension();
     window.close();
   }
 }
@@ -903,6 +877,27 @@ function isLanguageBeingChanged( settings ) {
   }
 
   return false;
+}
+
+/**
+ * Check whether the newly chosen button mode is from another group (basic, advanced, expert).
+ *
+ * @param {object} newSettings - Key-value pairs of the main extension settings (the ones set on the Options page).
+ * @returns {boolean}
+ */
+
+function isButtonModeGroupBeingChanged( newSettings ) {
+  const newButtonMode = newSettings.buttonMode;
+
+  return ( poziworldExtension.utils.isNonEmptyString( newButtonMode ) && (
+    // @todo Optimize.
+    settings.isBasicButtonMode( newButtonMode ) && ! settings.isBasicButtonMode( buttonModeCachedValue ) ||
+    ! settings.isBasicButtonMode( newButtonMode ) && settings.isBasicButtonMode( buttonModeCachedValue ) ||
+    settings.isAdvancedButtonMode( newButtonMode ) && ! settings.isAdvancedButtonMode( buttonModeCachedValue ) ||
+    ! settings.isAdvancedButtonMode( newButtonMode ) && settings.isAdvancedButtonMode( buttonModeCachedValue ) ||
+    settings.isExpertButtonMode( newButtonMode ) && ! settings.isExpertButtonMode( buttonModeCachedValue ) ||
+    ! settings.isExpertButtonMode( newButtonMode ) && settings.isExpertButtonMode( buttonModeCachedValue )
+  ) );
 }
 
 /**
