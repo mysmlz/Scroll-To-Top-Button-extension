@@ -95,11 +95,11 @@ export async function setController() {
     browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
     browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_BASIC_TYPE ) );
     browser.browserAction.onClicked.removeListener( injectAllFiles );
-    browser.browserAction.onClicked.addListener( setBrowserActionAsController );
+    browser.browserAction.onClicked.addListener( injectScrollToTopOnlyBasicLogic );
     browser.tabs.onUpdated.removeListener( setContentScriptAsController );
   }
   else {
-    browser.browserAction.onClicked.removeListener( setBrowserActionAsController );
+    browser.browserAction.onClicked.removeListener( injectScrollToTopOnlyBasicLogic );
 
     if ( settings.isAdvancedButtonMode( buttonMode ) ) {
       browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
@@ -128,7 +128,7 @@ export async function setController() {
   controllerIsBeingSet = false;
 }
 
-function setBrowserActionAsController() {
+function injectScrollToTopOnlyBasicLogic() {
   browser.tabs.executeScript( BROWSER_ACTION_SCRIPT )
     .then( handleFileInjectionSuccess, handleFileInjectionFail );
 }
