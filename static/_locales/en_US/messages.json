@@ -400,6 +400,14 @@
       "on": {
         "message": "On"
       },
+      "scrollToTopOnlyBasicContextMenuItemTitle": {
+        "message": "Scroll to top (Basic)",
+        "description": "Title of a context (right-click) menu item, which scrolls page to its top. Name of the button mode and its group (in parentheses). Context: https://user-images.githubusercontent.com/5961162/73048563-6f99f580-3e2e-11ea-9b6a-a2cae9526f1b.png"
+      },
+      "optionsContextMenuItemTitle": {
+        "message": "Options",
+        "description": "Title of a context (right-click) menu item, which the extension Options page. Context: https://user-images.githubusercontent.com/5961162/73048636-ad971980-3e2e-11ea-8531-b3226ec71a44.png"
+      },
 
   "keyboardSettings": {
     "message": "Keyboard settings"

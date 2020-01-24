@@ -73,6 +73,8 @@ function addListeners() {
   if ( onRemoved ) {
     onRemoved.addListener( setController );
   }
+
+  window.addEventListener( 'message', handleMessage );
 }
 
 export async function setController() {
@@ -237,4 +239,14 @@ async function convertExpertModeToAdvanced( mode ) {
     ...await settings.getSettings(),
     [ settings.BUTTON_MODE_KEY ]: settings.getExpertModeReplacement( mode ),
   } );
+}
+
+function handleMessage( { data: { trigger }, target } ) {
+  if ( isInternalMessage( target ) && trigger === settings.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
+    injectScrollToTopOnlyBasicLogic();
+  }
+}
+
+function isInternalMessage( target ) {
+  return target === window;
 }

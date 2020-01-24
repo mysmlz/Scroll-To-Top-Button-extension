@@ -1,6 +1,20 @@
 ( function () {
   'use strict';
 
+  // Context menu items
+  const SCROLL_TO_TOP_ONLY_BASIC_ID = 'scrollToTopOnlyBasic';
+  const SEPARATOR_ID = 'separator';
+  const OPTIONS_ID = 'options';
+
+  /**
+   * @type {string[]}
+   * @see {@link https://developer.chrome.com/extensions/contextMenus#type-ContextType}
+   */
+
+  const contexts = [
+    'all',
+  ];
+
   let _this;
 
   setUp();
@@ -56,7 +70,9 @@
 
     if ( contextMenus ) {
       if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) && settings.contextMenu === 'on' ) {
-        browser.contextMenus.removeAll().then( createContextMenus );
+        browser.contextMenus.removeAll()
+          .then( createContextMenu )
+          .then( addListeners );
       }
       else {
         browser.contextMenus.removeAll();
@@ -64,30 +80,38 @@
     }
   };
 
-  /**
-   * Create a context-menu option allowing to open the Scroll To Top Button Options from any page or image.
-   */
-
-  function createContextMenus() {
-    const contexts = [
-      'page',
-      'image'
+  function createContextMenu() {
+    const items = [
+      {
+        id: SCROLL_TO_TOP_ONLY_BASIC_ID,
+        title: poziworldExtension.i18n.getMessage( 'scrollToTopOnlyBasicContextMenuItemTitle' ),
+      },
+      {
+        id: SEPARATOR_ID,
+        type: 'separator',
+      },
+      {
+        id: OPTIONS_ID,
+        title: poziworldExtension.i18n.getMessage( 'optionsContextMenuItemTitle' ),
+      },
     ];
 
-    while ( contexts.length ) {
-      const context = contexts.shift();
-      const contextMenuProperties = {
-        id: 'sttb_' + context,
-        title: poziworldExtension.i18n.getMessage( 'optionsTitle' ),
-        contexts: [
-          context
-        ]
-      };
-
-      browser.contextMenus.create( contextMenuProperties );
+    while ( items.length ) {
+      createContextMenuItem( items.shift() );
     }
+  }
 
-    addListeners();
+  function createContextMenuItem( properties ) {
+    const mergedProperties = Object.assign( {
+      contexts: contexts,
+    }, properties );
+
+    try {
+      browser.contextMenus.create( mergedProperties );
+    }
+    catch ( error ) {
+      // @todo
+    }
   }
 
   /**
@@ -105,7 +129,30 @@
    */
 
   function handleContextMenuClick( info ) {
-    Global.openOptionsPage( info.menuItemId );
+    const menuItemId = info.menuItemId;
+
+    switch ( menuItemId ) {
+      case SCROLL_TO_TOP_ONLY_BASIC_ID:
+        triggerScrollToTopBasic();
+
+        break;
+      case OPTIONS_ID:
+        Global.openOptionsPage( menuItemId );
+
+        break;
+    }
+  }
+
+  /**
+   * Ask another extension component to scroll the active tab to top.
+   */
+
+  function triggerScrollToTopBasic() {
+    const TARGET_ORIGIN = '*';
+
+    window.postMessage( {
+      trigger: SCROLL_TO_TOP_ONLY_BASIC_ID,
+    }, TARGET_ORIGIN );
   }
 
   /**
