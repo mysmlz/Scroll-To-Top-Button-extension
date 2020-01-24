@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.1.0
+
+### New
+
+* Ability to scroll to top via context (right-click) menu. 🤷
+
+  > Idea by SMTB 1963.
+
+---
+
 ## v9.0.1
 
 ### Fixed
