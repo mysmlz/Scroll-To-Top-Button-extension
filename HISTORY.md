@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.1.1
+
+### Changed
+
+* Updated Microsoft Edge-related URLs.
+
+---
+
 ## v9.1.0
 
 ### New
