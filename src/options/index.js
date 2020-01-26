@@ -2,6 +2,7 @@ import 'dom4';
 
 import './options.css';
 
+import utils from 'Shared/utils';
 import * as permissions from 'Shared/permissions';
 import * as settings from 'Shared/settings';
 
@@ -277,9 +278,8 @@ function setLinks() {
     else if ( typeof InstallTrigger !== 'undefined' ) {
       strRateLink = 'https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/';
     }
-    // Edge
-    else if ( !! window.StyleMedia ) {
-      strRateLink = 'https://www.microsoft.com/store/apps/9NS5KGBDLNGZ';
+    else if ( utils.isEdge() ) {
+      strRateLink = 'https://www.trustpilot.com/review/scroll-to-top-button.com';
     }
 
     document.getElementById( 'rateLink' ).href = strRateLink;
