@@ -1,5 +1,9 @@
 import dompurify from 'dompurify';
 
+export function getSanitizedHtml( htmlString ) {
+  return dompurify.sanitize( htmlString );
+}
+
 /**
  * Sanitize HTML, while preventing XSS attacks, and return a DOM DocumentFragment.
  *
