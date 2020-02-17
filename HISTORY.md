@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.2.0
+
+### Improved
+
+* More user-friendly explanation of different button modes in Options.
+
+---
+
 ## v9.1.1
 
 ### Changed
