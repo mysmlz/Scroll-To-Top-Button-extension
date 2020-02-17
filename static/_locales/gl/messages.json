@@ -407,7 +407,7 @@
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Axudar cas traducións</a>"
   },
   "translatedBy": {
-    "message": "Traducido por <a href=\"https://www.transifex.com/user/profile/antiparvos/\" target=\"_blank\" id=\"translatorLink\">antiparvos</a> e <a href=\"https://www.transifex.com/user/profile/Navhy/\" target=\"_blank\" id=\"translatorLink\">Iván Seoane</a>",
+    "message": "Traducido por <a href=\"https://www.transifex.com/user/profile/antiparvos/\" target=\"_blank\" id=\"translatorLink\">antiparvos</a> e <a href=\"https://www.transifex.com/user/profile/Iv%C3%A1ns/\" target=\"_blank\" id=\"translatorLink\">Iváns</a>",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
   "incentivizeFurtherDevelopment": {

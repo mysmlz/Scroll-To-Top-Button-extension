@@ -200,7 +200,7 @@
 
 * [Scroll To Top Button translated](https://www.transifex.com/poziworld/scroll-to-top-button) into Galician. / [Scroll To Top Button traducido](https://www.transifex.com/poziworld/scroll-to-top-button) ao galego.
 
-  > Thank you, [antiparvos](https://www.transifex.com/user/profile/antiparvos/) and [Navhy (Iván Seoane)](https://www.transifex.com/user/profile/Navhy/)!
+  > Thank you, [antiparvos](https://www.transifex.com/user/profile/antiparvos/) and [Iváns](https://www.transifex.com/user/profile/Iv%C3%A1ns/)!
 
 * Ability to change language in Options.
 
