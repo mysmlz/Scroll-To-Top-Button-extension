@@ -5,6 +5,8 @@ import './options.css';
 import utils from 'Shared/utils';
 import * as permissions from 'Shared/permissions';
 import * as settings from 'Shared/settings';
+import * as pages from 'Shared/pages';
+import * as incentives from 'Shared/incentives';
 
 const browserTypeIsFirefox = window.navigator.userAgent.includes( ' Firefox/' );
 const NOT_READY_CLASS = 'waitingForJs';
@@ -18,10 +20,11 @@ const CUSTOMIZABLE_OPTION_SELECTOR = '[' + CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME + 
 const CUSTOM_OPTION_CLASS = 'custom';
 const CUSTOM_OPTION_SELECTOR = '.' + CUSTOM_OPTION_CLASS;
 const CUSTOM_VALUE_INDICATOR = '-1';
-const buttonMode = document.getElementById( 'buttonMode' );
+const BUTTON_MODE_SELECTOR = '[name="buttonMode"]';
+const BUTTON_MODE_SELECTED_SELECTOR = `${ BUTTON_MODE_SELECTOR }:checked`;
+let buttonMode = document.querySelector( BUTTON_MODE_SELECTED_SELECTOR );
 let buttonModeCachedValue;
-const buttonModeExpertGroup = document.getElementById( 'buttonModeExpertGroup' );
-const enableExpertButtonModesCta = document.getElementById( 'enableExpertButtonModesCta' );
+const PERMISSIONS_REQUIRED_ATTRIBUTE_KEY = 'data-permissions-required';
 const disableExpertButtonModesCta = document.getElementById( 'disableExpertButtonModesCta' );
 const permissionsPrivacyDetailsContainer = document.getElementById( 'permissionsPrivacyDetailsContainer' );
 const distanceType = document.getElementById( 'distanceType' );
@@ -34,6 +37,8 @@ const STATUS_TIMEOUT_DELAY = 3000;
 let originalSettings;
 
 let permissionsGranted;
+let changedElementBeingHandled;
+const ELEMENT_TYPE_RADIO = 'radio';
 
 init();
 
@@ -43,7 +48,7 @@ init();
 
 function init() {
   setBrowserSpecificI18n();
-  poziworldExtension.page.init( 'options' )
+  pages.init( 'options' )
     .then( permissions.hasPermissions )
     .then( cachePermissionsCheckResult )
     .then( getSettings )
@@ -99,65 +104,88 @@ function cachePermissionsCheckResult( granted ) {
 }
 
 async function setUi() {
-  setButtonModesControllingCtasState();
+  setButtonModesControllingCtasState( true );
   await setHadVersion8InstalledBeforeMessageVisibility();
   signalPageReady();
 }
 
-function setButtonModesControllingCtasState() {
-  if ( ! buttonModeExpertGroup || ! enableExpertButtonModesCta || ! disableExpertButtonModesCta ) {
+function setButtonModesControllingCtasState( expertModeShouldBeReplaced ) {
+  if ( ! disableExpertButtonModesCta ) {
     return;
   }
 
   // @todo Optimize.
   if ( permissionsGranted ) {
-    buttonModeExpertGroup.disabled = false;
-    enableExpertButtonModesCta.hidden = true;
-    enableExpertButtonModesCta.removeEventListener( 'click', requestPermissions );
     disableExpertButtonModesCta.hidden = false;
     disableExpertButtonModesCta.addEventListener( 'click', revokePermissions );
   }
   else {
-    buttonModeExpertGroup.disabled = true;
     disableExpertButtonModesCta.hidden = true;
     disableExpertButtonModesCta.removeEventListener( 'click', revokePermissions );
-    enableExpertButtonModesCta.hidden = false;
-    enableExpertButtonModesCta.addEventListener( 'click', requestPermissions );
 
-    const event = new Event( 'change' );
-    const buttonModeValue = buttonMode.value;
+    const buttonModeValue = getButtonModeValue();
 
-    if ( settings.isExpertButtonMode( buttonModeValue ) ) {
-      buttonMode.value = settings.getExpertModeReplacement( buttonModeValue );
-      buttonMode.dispatchEvent( event );
+    if ( expertModeShouldBeReplaced && settings.isExpertButtonMode( buttonModeValue ) ) {
+      const buttonModeNewValue = settings.getExpertModeReplacement( buttonModeValue );
+      // @todo Optimize.
+      const buttonModeNewElement = document.querySelector( `${ BUTTON_MODE_SELECTOR }[value="${ buttonModeNewValue }"` );
+
+      if ( buttonModeNewElement ) {
+        const event = new Event( 'change' );
+
+        buttonMode = buttonModeNewElement;
+
+        buttonMode.checked = true;
+        buttonMode.dispatchEvent( event );
+      }
     }
   }
 }
 
 async function setHadVersion8InstalledBeforeMessageVisibility() {
-  const hadVersion8InstalledBeforeMessage = document.getElementById( 'hadVersion8InstalledBeforeMessage' );
+  const messageContainer = document.getElementById( 'hadVersion8InstalledBeforeMessageContainer' );
 
-  if ( hadVersion8InstalledBeforeMessage ) {
-    hadVersion8InstalledBeforeMessage.hidden = ! await settings.hadVersion8InstalledBefore() || await settings.haveGrantedPermissionsAtLeastOnce();
+  if ( messageContainer ) {
+    const hidden = await settings.haveGrantedPermissionsAtLeastOnce() || await settings.hadAskedToNotShowWarningAgain();
+
+    if ( ! hidden ) {
+      const acknowledgmentCta = document.getElementById( 'hadVersion8InstalledBeforeMessageAcknowledgmentCta' );
+      const removalCta = document.getElementById( 'hadVersion8InstalledBeforeMessageRemovalCta' );
+
+      if ( acknowledgmentCta ) {
+        acknowledgmentCta.addEventListener( 'click', () => toggleTakeover( messageContainer ) );
+      }
+
+      if ( removalCta ) {
+        removalCta.addEventListener( 'click', requestToNeverShowAgain );
+        removalCta.addEventListener( 'click', () => toggleTakeover( messageContainer ) );
+      }
+
+      toggleTakeover( messageContainer );
+    }
   }
 }
 
-async function requestPermissions( event ) {
-  event.preventDefault();
-
+async function requestPermissions() {
   togglePermissionsPrivacyDetails();
 
   const granted = await browser.permissions.request( permissions.ADVANCED_BUTTON_MODES_PERMISSIONS );
 
-  handlePermissionsRequestResult( granted );
+  await handlePermissionsRequestResult( granted );
+
+  return granted;
 }
 
 function togglePermissionsPrivacyDetails() {
-  const hidden = permissionsPrivacyDetailsContainer.hidden;
+  toggleTakeover( permissionsPrivacyDetailsContainer );
+}
+
+function toggleTakeover( element ) {
+  const hidden = element.hidden;
 
   // Always reset the scrolling position of this takeover/modal.
-  permissionsPrivacyDetailsContainer.scrollTop = 0;
-  permissionsPrivacyDetailsContainer.hidden = ! hidden;
+  element.scrollTop = 0;
+  element.hidden = ! hidden;
   document.body.setAttribute( 'data-takeover-active', hidden );
 }
 
@@ -168,7 +196,6 @@ async function handlePermissionsRequestResult( granted ) {
   if ( granted ) {
     await rememberGrantedAtLeastOnce( granted );
     await setHadVersion8InstalledBeforeMessageVisibility();
-    reloadExtensionOnPermissionChange();
   }
 
   togglePermissionsPrivacyDetails();
@@ -185,6 +212,17 @@ async function rememberGrantedAtLeastOnce( granted ) {
   }
 }
 
+async function requestToNeverShowAgain() {
+  try {
+    await browser.storage.local.set( {
+      [ settings.HAD_ASKED_TO_NOT_SHOW_WARNING_AGAIN_KEY ]: true,
+    } );
+  }
+  catch ( error ) {
+    // @todo
+  }
+}
+
 function revokePermissions( event ) {
   event.preventDefault();
 
@@ -194,7 +232,7 @@ function revokePermissions( event ) {
 
 function handlePermissionsRevocationResult( revoked ) {
   cachePermissionsCheckResult( ! revoked );
-  setButtonModesControllingCtasState();
+  setButtonModesControllingCtasState( true );
 
   if ( revoked ) {
     reloadExtensionOnPermissionChange();
@@ -209,15 +247,20 @@ function handlePermissionsRevocationResult( revoked ) {
 
 function reloadExtensionOnPermissionChange() {
   if ( browserTypeIsFirefox ) {
-    reloadExtension();
+    requestToReloadExtension();
   }
 }
 
-async function reloadExtension() {
+async function requestToReloadExtension() {
   await poziworldExtension.i18n.init();
 
   if ( window.confirm( poziworldExtension.i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
     browser.runtime.reload();
+
+    return true;
+  }
+  else {
+    return false;
   }
 }
 
@@ -257,8 +300,8 @@ function setLinks() {
     ]
   ];
 
-  poziworldExtension.page.setLinks( links );
-  poziworldExtension.incentive.setLinks();
+  pages.setLinks( links );
+  incentives.setLinks();
 
   const translatedBy = document.getElementById( 'translatedBy' );
   const rateLink = document.getElementById( 'rateLink' );
@@ -279,7 +322,7 @@ function setLinks() {
       strRateLink = 'https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/';
     }
     else if ( utils.isEdge() ) {
-      strRateLink = 'https://www.trustpilot.com/review/scroll-to-top-button.com';
+      strRateLink = 'https://goo.gl/forms/QMZFZfgKjQHOnRCX2';
     }
 
     document.getElementById( 'rateLink' ).href = strRateLink;
@@ -319,8 +362,6 @@ function sortLanguages() {
 
 function addListeners() {
   options.forEach( addOptionChangeListener );
-
-  buttonMode.addEventListener( 'change', checkMode );
   document.getElementById( 'restore' ).addEventListener( 'click', restoreDefaultSettings );
   document.getElementById( 'author' ).addEventListener( 'click', setOriginalAuthorSettings );
   document.getElementById( 'save' ).addEventListener( 'click', handleFormSubmit );
@@ -334,8 +375,13 @@ function addListeners() {
  */
 
 function addOptionChangeListener( element ) {
+  const type = element.type;
+
   element.addEventListener( 'change', handleOptionChange );
-  element.addEventListener( 'blur', handleOptionChange );
+
+  if ( type !== ELEMENT_TYPE_RADIO ) {
+    element.addEventListener( 'blur', handleOptionChange );
+  }
 }
 
 /**
@@ -458,12 +504,21 @@ function updateSelectedOptions( settings ) {
 
     for ( const settingKey in settings ) {
       if ( settings.hasOwnProperty( settingKey ) ) {
-        const setting = document.getElementById( settingKey );
+        let settingElement = document.getElementById( settingKey );
 
-        if ( setting ) {
-          setting.value = settings[ settingKey ];
+        if ( settingElement ) {
+          settingElement.value = settings[ settingKey ];
 
           updatedSettingsCounter++;
+        }
+        else {
+          settingElement = document.querySelector( `[name="${ settingKey }"][value="${ settings[ settingKey ] }"` );
+
+          if ( settingElement ) {
+            settingElement.checked = true;
+
+            updatedSettingsCounter++;
+          }
         }
       }
     }
@@ -481,17 +536,49 @@ function updateSelectedOptions( settings ) {
  * @param {Event} event
  */
 
-function handleOptionChange( event ) {
+async function handleOptionChange( event ) {
   if ( event ) {
     const element = event.target;
+
+    if ( element.isSameNode( changedElementBeingHandled ) ) {
+      return;
+    }
+
+    // @todo Optimize.
+    changedElementBeingHandled = element;
+
     const customizable = Boolean( Number( element.getAttribute( CUSTOMIZABLE_OPTION_ATTRIBUTE_NAME ) ) );
 
     if ( customizable ) {
       switchCustomOptionVisibility( element );
     }
     else if ( element.classList.contains( CUSTOM_OPTION_CLASS ) && ! checkFormValidity() ) {
+      changedElementBeingHandled = null;
+
       return;
     }
+    else {
+      const permissionsRequiredAttributeValue = element.getAttribute( PERMISSIONS_REQUIRED_ATTRIBUTE_KEY );
+
+      if ( permissionsRequiredAttributeValue ) {
+        const permissionsRequired = window.JSON.parse( permissionsRequiredAttributeValue );
+
+        if ( permissionsRequired ) {
+          const granted = await requestPermissions();
+
+          if ( ! granted ) {
+            // @todo Make dynamic.
+            document.querySelector( `${ BUTTON_MODE_SELECTOR }[value="${ buttonModeCachedValue }"` ).checked = true;
+
+            changedElementBeingHandled = null;
+
+            return;
+          }
+        }
+      }
+    }
+
+    changedElementBeingHandled = null;
 
     handleFormSubmit();
   }
@@ -525,8 +612,8 @@ function switchCustomOptionVisibility( element ) {
  */
 
 function toggleElementActiveState( customOptionNotApplicable, element ) {
-    element.closest( SETTING_CONTAINER_SELECTOR ).hidden = customOptionNotApplicable;
-    element.required = ! customOptionNotApplicable;
+  element.closest( SETTING_CONTAINER_SELECTOR ).hidden = customOptionNotApplicable;
+  element.required = ! customOptionNotApplicable;
 }
 
 /**
@@ -562,7 +649,7 @@ function checkFormValidity() {
  * @param {Event} [event]
  */
 
-function handleFormSubmit( event ) {
+async function handleFormSubmit( event ) {
   if ( event ) {
     event.preventDefault();
   }
@@ -575,13 +662,23 @@ function handleFormSubmit( event ) {
     const id = option.id;
     const value = option.value;
 
-    if ( value !== CUSTOM_VALUE_INDICATOR || hasSetCustomValues( option ) ) {
+    if ( poziworldExtension.utils.isNonEmptyString( id ) && ( value !== CUSTOM_VALUE_INDICATOR || hasSetCustomValues( option ) ) ) {
       settings[ id ] = value;
     }
     else {
-      form.reportValidity();
+      const name = option.name;
 
-      return;
+      if ( poziworldExtension.utils.isNonEmptyString( name ) ) {
+        // Radio buttons
+        if ( option.checked ) {
+          settings[ name ] = value;
+        }
+      }
+      else {
+        form.reportValidity();
+
+        return;
+      }
     }
   }
 
@@ -649,9 +746,15 @@ async function handleSetSettingsSuccess( settings, refreshForm ) {
     updateSelectedOptions( settings );
   }
 
-  if ( isLanguageBeingChanged( settings ) || isButtonModeGroupBeingChanged( settings ) ) {
-    await reloadExtension();
-    window.close();
+  if ( isButtonModeGroupBeingChanged( settings ) ) {
+    await requestToReloadExtension();
+  }
+  if ( isLanguageBeingChanged( settings ) ) {
+    const approved = await requestToReloadExtension();
+
+    if ( approved ) {
+      window.location.reload();
+    }
   }
 }
 
@@ -678,7 +781,7 @@ function clearStatus() {
  */
 
 function checkMode() {
-  const mode = buttonMode.value;
+  const mode = getButtonModeValue();
 
   // @todo Optimize.
   switch ( mode ) {
@@ -689,6 +792,7 @@ function checkMode() {
     {
       switchElements(
         [
+          '#button-settings',
           '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#distanceLength',
@@ -707,6 +811,7 @@ function checkMode() {
       changeDistanceType( 'flipDistance' );
       switchElements(
         [
+          '#button-settings',
           '#distanceLength',
           '.appearance',
           '#scrollDownSpeed',
@@ -729,6 +834,7 @@ function checkMode() {
       );
       switchElements(
         [
+          '#button-settings',
           '.appearance',
           '#scrollUpSpeed',
           '#scrollDownSpeed',
@@ -753,6 +859,7 @@ function checkMode() {
       );
       switchElements(
         [
+          '#button-settings',
           '#scrollDownSpeed',
           '#keyboard-settings',
           '#settingsOverrideCtasContainer',
@@ -767,6 +874,7 @@ function checkMode() {
       changeDistanceType( 'appearDistance' );
       switchElements(
         [
+          '#button-settings',
           '#distanceLength',
           '.appearance',
           '#clickthroughKeys',
@@ -785,6 +893,17 @@ function checkMode() {
       break;
     }
   }
+}
+
+function getButtonModeValue() {
+  buttonMode = document.querySelector( BUTTON_MODE_SELECTED_SELECTOR );
+
+  if ( buttonMode ) {
+    return buttonMode.value;
+  }
+
+  // @todo Localize.
+  throw new Error( 'No selected button mode.' );
 }
 
 /**

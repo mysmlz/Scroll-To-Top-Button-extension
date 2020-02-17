@@ -219,7 +219,7 @@ async function getBrowserActionTitle( mode ) {
 
   let breakingChangesMessage = '';
 
-  if ( await settings.hadVersion8InstalledBefore() && ! await settings.haveGrantedPermissionsAtLeastOnce() ) {
+  if ( await settings.mightHaveHadVersion8InstalledBefore() && ! await settings.haveGrantedPermissionsAtLeastOnce() ) {
     breakingChangesMessage = poziworldExtension.i18n.getMessage( 'breakingChangesUpgradingVersion8Message' );
   }
 

@@ -102,6 +102,7 @@ body {
 }
 
 .pwFormRow .pwFormRow {
+  flex-basis: 100%;
   margin-top: $formRowSpaceFromContent;
   margin-bottom: 0;
 }

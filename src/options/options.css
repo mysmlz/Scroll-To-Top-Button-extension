@@ -1,10 +1,30 @@
 @import "../shared/pages/shared";
 @import "./mixins";
 
+$contentContainerWidthMax: 70rem;
+
+$lightThemeBackgroundColor: #fff;
+
+/* High-priority message that shows up over everything else on the page */
+
+@define-mixin takeoverMessage {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  padding: 4rem 2rem;
+  max-width: $contentContainerWidthMax;
+  background-color: $lightThemeBackgroundColor;
+  overflow: auto;
+}
+
 body {
   margin: 0 auto;
   padding: 0 2rem;
-  max-width: 55rem;
+  max-width: $contentContainerWidthMax;
 }
 
 [data-takeover-active="true"] {
@@ -55,7 +75,38 @@ body {
   height: 3.5rem;
 }
 
-/* General */
+/* Version 9 upgrade message */
+
+#hadVersion8InstalledBeforeMessageContainer {
+  @mixin takeoverMessage;
+}
+
+#hadVersion8InstalledBeforeMessage {
+  @mixin paragraph;
+  margin-top: 1.5rem;
+  white-space: pre-line;
+}
+
+#hadVersion8InstalledBeforeMessage [data-context="expertModes"] {
+  font-weight: 700;
+}
+
+#hadVersion8InstalledBeforeMessage [data-context="otherModes"] {
+  font-style: italic;
+}
+
+#hadVersion8InstalledBeforeMessageAcknowledgmentCta {
+  @mixin cta;
+  margin-top: 3rem;
+}
+
+#hadVersion8InstalledBeforeMessageRemovalCta {
+  @mixin textualCta;
+  font-size: 1.4em;
+  margin-top: 1.5rem;
+}
+
+/* Settings form */
 
 #settingsForm {
   margin: 2rem 0;
@@ -77,40 +128,72 @@ input.optionsChanger {
   border-color: #f00;
 }
 
-/* Specific */
+/* Button mode */
+
+#buttonModeContainer {
+  align-items: flex-start;
+}
+
+#buttonModeGroups {
+  margin: 0;
+  padding-left: 1.5rem;
+}
 
 [for="buttonMode"] {
   display: flex;
   align-items: center;
+  height: 3.5rem;
 }
 
-#buttonModeInfoCta {
-  @mixin graphicalCta;
-  display: flex;
-  align-items: center;
-  margin: 0 -1rem 0 0;
-  cursor: help;
+.buttonModeGroupCaption {
+  font-size: 1.4em;
+  font-weight: 700;
 }
 
-#buttonModeInfoCta::after {
-  background-image: url( /shared/images/info-icon.svg );
-  background-size: 2rem;
+.buttonModeGroup:first-child .buttonModeGroupCaption {
+  margin-top: 0;
 }
 
-#enableExpertButtonModesCta {
-  @mixin cta;
-  margin-top: 1.5rem;
-}
-
-#enableExpertButtonModesCta::before {
-  content: '';
-}
-
-#hadVersion8InstalledBeforeMessage {
-  @mixin paragraph;
-  margin-top: 1.5rem;
+.buttonModeGroupDescription {
+  font-size: 1.4em;
+  margin-bottom: 0;
   white-space: pre-line;
 }
+
+.buttonModeDemoCta {
+  @mixin textualCta;
+  font-size: 1.3em;
+}
+
+.buttonModeGroupItemsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.buttonModeGroupItemLabel {
+  display: flex;
+  align-items: center;
+}
+
+.buttonModeGroupItemsList .optionsChanger {
+  margin-top: 0;
+}
+
+.buttonModeGroupItemText {
+  font-size: 1.4em;
+  margin-left: 1rem;
+  padding: .5rem 0;
+}
+
+#disableExpertButtonModesCta {
+  @mixin textualCta;
+  @mixin link;
+  font-size: 1.4em;
+  color: #15c;
+}
+
+/* Other specific ones */
 
 [data-i18n="uiLanguage"]::before {
   content: '';
@@ -140,30 +223,10 @@ input.optionsChanger {
   margin: 0 0 0 1.5rem;
 }
 
-/* Revoke permissions call-to-action */
-
-#disableExpertButtonModesCta {
-  @mixin graphicalCta;
-}
-
-#disableExpertButtonModesCta::after {
-  background-image: url( /shared/images/lock-icon.svg );
-}
-
 /* Permissions and privacy information */
 
 #permissionsPrivacyDetailsContainer {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  padding: 4rem 2rem;
-  max-width: 55rem;
-  background-color: #fff;
-  overflow: auto;
+  @mixin takeoverMessage;
 }
 
 .permissionsPrivacyDetails {

@@ -17,41 +17,91 @@
       <p class="pwText" data-i18n="ratingHelpsOthers"></p>
     </aside>
     <form id="settingsForm">
+      <fieldset id="button-mode" class="pwFormGroup">
+        <legend class="pwFormGroupCaption">
+          <a href="#button-mode" class="pwFormGroupCaptionLink" data-i18n="buttonMode"></a>
+        </legend>
+        <div id="buttonModeContainer" class="pwFormRow">
+          <ul id="buttonModeGroups">
+            <li class="buttonModeGroup">
+              <p class="buttonModeGroupCaption" data-i18n="buttonModeBasic"></p>
+              <p class="buttonModeGroupDescription" data-i18n="buttonModeBasicDescription"></p>
+              <a href="https://scroll-to-top-button.com/info/settings/button-mode/basic/" class="buttonModeDemoCta" data-i18n="watchDemo"></a>
+              <ul class="buttonModeGroupItemsList">
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="scrollToTopOnlyBasic" class="optionsChanger">
+                    <span class="buttonModeGroupItemText" data-i18n="scrollToTopOnly"></span>
+                  </label>
+                </li>
+              </ul>
+            </li>
+            <li class="buttonModeGroup">
+              <p class="buttonModeGroupCaption" data-i18n="buttonModeAdvanced"></p>
+              <p class="buttonModeGroupDescription" data-i18n="buttonModeAdvancedDescription"></p>
+              <a href="https://scroll-to-top-button.com/info/settings/button-mode/advanced/" class="buttonModeDemoCta" data-i18n="watchDemo"></a>
+              <ul class="buttonModeGroupItemsList">
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="scrollToTopOnlyAdvanced" class="optionsChanger">
+                    <span class="buttonModeGroupItemText" data-i18n="scrollToTopOnly"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="flipBetweenTopBottomAdvanced" class="optionsChanger">
+                    <span class="buttonModeGroupItemText" data-i18n="flipBetweenTopBottom"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="dualArrowsAdvanced" class="optionsChanger">
+                    <span class="buttonModeGroupItemText" data-i18n="dualArrows"></span>
+                  </label>
+                </li>
+              </ul>
+            </li>
+            <li class="buttonModeGroup">
+              <p class="buttonModeGroupCaption" data-i18n="buttonModeExpert"></p>
+              <p class="buttonModeGroupDescription" data-i18n="buttonModeExpertDescription"></p>
+              <a href="https://scroll-to-top-button.com/info/settings/button-mode/expert/" class="buttonModeDemoCta" data-i18n="watchDemo"></a>
+              <ul class="buttonModeGroupItemsList">
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="off" class="optionsChanger" data-permissions-required="true">
+                    <span class="buttonModeGroupItemText" data-i18n="scrollToTopOnly"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="flip" class="optionsChanger" data-permissions-required="true">
+                    <span class="buttonModeGroupItemText" data-i18n="flipBetweenTopBottom"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="dual" class="optionsChanger" data-permissions-required="true">
+                    <span class="buttonModeGroupItemText" data-i18n="dualArrows"></span>
+                  </label>
+                </li>
+                <li>
+                  <label class="buttonModeGroupItemLabel">
+                    <input type="radio" name="buttonMode" value="keys" class="optionsChanger" data-permissions-required="true">
+                    <span class="buttonModeGroupItemText" data-i18n="keyboardOnly"></span>
+                  </label>
+                </li>
+              </ul>
+              <button id="disableExpertButtonModesCta" data-i18n="disableExpertButtonModes"></button>
+            </li>
+          </ul>
+        </div>
+      </fieldset>
       <fieldset id="button-settings" class="pwFormGroup">
         <legend class="pwFormGroupCaption">
           <a href="#button-settings" class="pwFormGroupCaptionLink" data-i18n="buttonSettings"></a>
         </legend>
         <div class="pwFormRow">
-          <label for="buttonMode">
-            <span class="pwFormRowText" data-i18n="buttonMode"></span>
-          </label>
-          <a href="https://scroll-to-top-button.com/info/settings/button-mode/" id="buttonModeInfoCta" class="pwInfoCta" data-i18n data-i18n-tooltip="buttonModeWatchDemo">
-            <span class="pwVisuallyHidden" data-i18n="buttonModeWatchDemo"></span>
-          </a>
-          <select id="buttonMode" class="optionsChanger pwSelect">
-            <optgroup data-i18n="buttonModeBasic">
-              <option value="scrollToTopOnlyBasic" data-i18n="scrollToTopOnly"></option>
-            </optgroup>
-            <optgroup data-i18n="buttonModeAdvanced">
-              <option value="scrollToTopOnlyAdvanced" data-i18n="scrollToTopOnly"></option>
-              <option value="flipBetweenTopBottomAdvanced" data-i18n="flipBetweenTopBottom"></option>
-              <option value="dualArrowsAdvanced" data-i18n="dualArrows"></option>
-            </optgroup>
-            <optgroup id="buttonModeExpertGroup" data-i18n="buttonModeExpert" disabled>
-              <option value="off" data-i18n="scrollToTopOnly"></option>
-              <option value="flip" data-i18n="flipBetweenTopBottom"></option>
-              <option value="dual" data-i18n="dualArrows"></option>
-              <option value="keys" data-i18n="keyboardOnly"></option>
-            </optgroup>
-          </select>
-          <button id="enableExpertButtonModesCta" data-i18n="enableExpertButtonModes"></button>
-          <button id="disableExpertButtonModesCta" data-i18n data-i18n-tooltip="disableExpertButtonModes">
-            <span class="pwVisuallyHidden" data-i18n="disableExpertButtonModes"></span>
-          </button>
-          <p id="hadVersion8InstalledBeforeMessage" data-i18n="hadVersion8InstalledBefore"></p>
-        </div>
-        <div class="pwFormRow">
-          <label>
+          <label class="pwFormRowLabel">
             <span class="pwFormRowText" data-i18n="scrollUpSpeed"></span>
             <select id="scrollUpSpeed" class="optionsChanger pwSelect" data-customizable="1">
               <option value="40000" data-i18n="slowest"></option>
@@ -293,6 +343,12 @@
     <aside class="messageBanner bottom">
       <p id="incentivizeFurtherDevelopment" class="pwText" data-i18n="incentivizeFurtherDevelopment"></p>
     </aside>
+    <aside id="hadVersion8InstalledBeforeMessageContainer" hidden>
+      <p id="hadVersion8InstalledBeforeMessage" data-i18n="hadVersion8InstalledBeforeMessage" data-i18n-parameters="extensionName"></p>
+      <button id="hadVersion8InstalledBeforeMessageAcknowledgmentCta" type="button" data-i18n="hadVersion8InstalledBeforeMessageAcknowledgment"></button>
+      <br>
+      <button id="hadVersion8InstalledBeforeMessageRemovalCta" type="button" data-i18n="hadVersion8InstalledBeforeMessageRemoval"></button>
+    </aside>
     <aside id="permissionsPrivacyDetailsContainer" hidden>
       <p class="permissionsPrivacyDetails" data-i18n="permissionsListExplanation"></p>
       <ul>
@@ -312,9 +368,7 @@
     <script src="/global/js/i18next/i18nextBrowserLanguageDetector.min.js"></script>
     <script src="/global/js/i18next/i18nextXHRBackend.js"></script>
     <script src="/global/js/i18n.js"></script>
-    <script src="/global/js/page-v2.js"></script>
     <script src="/global/js/context-menus.js"></script>
-    <script src="/global/js/incentive.js"></script>
     <script src="../options.js"></script>
   </body>
 </html>

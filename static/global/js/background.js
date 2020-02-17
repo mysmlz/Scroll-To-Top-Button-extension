@@ -121,7 +121,11 @@
       };
 
       if ( poziworldExtension.utils.isType( details, 'object' ) ) {
-        versionsToSave.previousVersion = details.previousVersion;
+        const previousVersion = details.previousVersion;
+
+        versionsToSave.previousVersion = previousVersion;
+        // @todo
+        versionsToSave.previousVersions.push( previousVersion );
       }
 
       poziworldExtension.utils.setStorageItems(

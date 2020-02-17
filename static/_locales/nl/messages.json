@@ -48,10 +48,6 @@
   "buttonMode": {
     "message": "Knop type"
   },
-  "buttonModeAdvanced": {
-    "message": "Basis (geen toestemmingen)",
-    "description": "A group of button modes that don't require any special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
-  },
   "scrollToTopOnly": {
     "message": "Alleen scroll naar boven",
     "description": "Name of a button mode that allows scrolling only to the top of a page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
@@ -67,10 +63,6 @@
   "keyboardOnly": {
     "message": "Alleen toetsenbord",
     "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
-  },
-  "buttonModeWatchDemo": {
-    "message": "Leer meer over de knop types",
-    "description": "Title of a button that allows user to get mode details about the button modes. Context: https://user-images.githubusercontent.com/5961162/71781194-b2c81d80-2f80-11ea-826f-dfabe68ad433.png"
   },
   "disableExpertButtonModes": {
     "message": "Neem toestemmingen terug",

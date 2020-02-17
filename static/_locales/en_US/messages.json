@@ -51,9 +51,13 @@
       "message": "Button mode"
     },
       "buttonModeBasic": {
-        "message": "Basic (no permissions needed)",
-        "description": "A group of button modes that don't require any special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Context: https://user-images.githubusercontent.com/5961162/72518526-6a272480-380a-11ea-829d-606477de168e.png"
+        "message": "No button on page | Basic",
+        "description": "Group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Scrolling is triggered by clicking the extension icon. Context: "
       },
+        "buttonModeBasicDescription": {
+          "message": "To scroll page, click the extension icon next to the address bar.",
+          "description": "Description of a group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Scrolling is triggered by clicking the extension icon. Context: "
+        },
         "buttonModeBasicBrowserActionTitle": {
           "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to scroll*.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$* Might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
           "description": "Tooltip of the extension icon next to the address bar when a basic button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518629-9e024a00-380a-11ea-9d59-90b858f0aa0c.png",
@@ -73,9 +77,13 @@
           }
         },
       "buttonModeAdvanced": {
-        "message": "Advanced (no permissions needed)",
-        "description": "A group of button modes that don't require any special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Context: https://user-images.githubusercontent.com/5961162/72518526-6a272480-380a-11ea-829d-606477de168e.png"
+        "message": "No button on page until click | Advanced",
+        "description": "Group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. User first needs to click the extension icon, which adds the scroll button(s) onto the page. Context: "
       },
+        "buttonModeAdvancedDescription": {
+          "message": "To scroll page, add the button(s) onto page by clicking the extension icon next to the address bar.",
+          "description": "Description of a group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. User first needs to click the extension icon, which adds the scroll button(s) onto the page. Context: "
+        },
         "buttonModeAdvancedBrowserActionTitle": {
           "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to add button(s) to currently active page*.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$* Might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
           "description": "Tooltip of the extension icon next to the address bar when an advanced button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518776-dd309b00-380a-11ea-81d8-e229571b71ba.png",
@@ -95,9 +103,13 @@
           }
         },
       "buttonModeExpert": {
-        "message": "Expert (permissions needed)",
-        "description": "A group of button modes that require special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) during installation and while in use. Since these modes have those permissions, the feature scope is expanded. Context: https://user-images.githubusercontent.com/5961162/72518526-6a272480-380a-11ea-829d-606477de168e.png"
+        "message": "Button always on page + button settings | Expert",
+        "description": "Group of button modes that require special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) to be granted. Allows to have the scroll button(s) always on page. Context: "
       },
+        "buttonModeExpertDescription": {
+          "message": "To scroll page, use the on-page button(s).\nThis mode allows button customizations.\nThis used to be the only option before version 9 released in January 2020.",
+          "description": "Description of a group of button modes that require special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) to be granted. Allows to have the scroll button(s) always on page. Context: "
+        },
         "buttonModeExpertBrowserActionTitle": {
           "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to open active tab settings.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$Extension might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
           "description": "Tooltip of the extension icon next to the address bar when an expert button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518945-40223200-380b-11ea-9856-cbbb78f00edf.png",
@@ -132,14 +144,6 @@
         "message": "Keyboard only",
         "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
       },
-      "buttonModeWatchDemo": {
-        "message": "Learn more about button modes",
-        "description": "Title of a button that allows user to get mode details about the button modes. Context: https://user-images.githubusercontent.com/5961162/71781194-b2c81d80-2f80-11ea-826f-dfabe68ad433.png"
-      },
-      "enableExpertButtonModes": {
-        "message": "Enable expert button modes",
-        "description": "Title of a button that triggers a request for the required permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/72518398-1caab780-380a-11ea-972d-6a88c3b188c7.png"
-      },
       "disableExpertButtonModes": {
         "message": "Revoke permissions",
         "description": "Title of a button that triggers a revocation of the previously granted permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/71878081-aa3a2900-30df-11ea-8be1-393dcf6578d0.png"
@@ -148,10 +152,24 @@
         "message": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n",
         "description": "Message/warning displayed to users who had had version 8 of the extension before. Context: "
       },
-      "hadVersion8InstalledBefore": {
-        "message": "Dear Scroll To Top Button user,\n\nTo give all users a choice of improved security, we made the following changes to the way the extension works:\n\nTo install, it now does not need any permissions.\n\nFor existing users, unfortunately, there was no way for us to keep the permissions you had granted upon the installation.\nTo restore how it used to work, please enable the expert button modes.\n\nOr, you can give a try to the new basic and advanced button modes, which work without any permissions.\n\nWe deeply apologize for the inconvenience.\nYour trust and support have always been paramount to us.\n\nTechnical details of the changes:\nhttps://developer.chrome.com/extensions/activeTab\n\nPoziWorld,\ndeveloper of Scroll To Top Button",
-        "description": "Message displayed to existing users when their extension gets updated from version 8 to version 9. Context: https://user-images.githubusercontent.com/5961162/72518398-1caab780-380a-11ea-972d-6a88c3b188c7.png"
+      "hadVersion8InstalledBeforeMessage": {
+        "message": "Dear $EXTENSION_NAME$ user,\n\n\nTo give all users a choice of improved security, the following changes to the way the extension works were made in version 9 (compared to version 8 and earlier):\n\nTo install, it now does not need any permissions.\n\nFor existing users, unfortunately, there was no way for us to keep the permissions you had granted upon the installation.\n\n\n<span data-context=\"expertModes\">To restore how it used to work, please enable one of the expert button modes.</span>\n\n<span data-context=\"otherModes\">Or, you can give a try to the new basic and advanced button modes, which work without any permissions.</span>\n\n\nWe deeply apologize for the inconvenience.\nYour trust and support have always been paramount to us.\n\nTechnical details of the changes: https://developer.chrome.com/extensions/activeTab.\n\n\nPoziWorld,\ndeveloper of $EXTENSION_NAME$",
+        "description": "Message displayed to existing users when their extension gets updated from version 8 to version 9. Context: ",
+        "placeholders": {
+          "extension_name": {
+            "content": "$1",
+            "example": "Scroll To Top Button"
+          }
+        }
       },
+        "hadVersion8InstalledBeforeMessageAcknowledgment": {
+          "message": "Okay, I will check the expert button modes",
+          "description": "Acknowledgement call-to-action (button) text for the message displayed to existing users when their extension gets updated from version 8 to version 9. Context: "
+        },
+        "hadVersion8InstalledBeforeMessageRemoval": {
+          "message": "Don't show this message again",
+          "description": "Text of a call-to-action (button) that removes the message displayed to existing users when their extension gets updated from version 8 to version 9. Context: "
+        },
       "permissionsListExplanation": {
         "message": "The following permissions are required for the expert button modes – modes that work by adding the button(s) onto all pages unless you choose to disable it for certain pages or websites:",
         "description": "A sentence that is followed by a list of individual permissions and their descriptions. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
@@ -553,5 +571,10 @@
   "extensionReloadConfirmationMessage": {
     "message": "Would you like to restart the extension now to apply the changes?",
     "description": "If an Options change requires an extension restart, ask user whether he/she wants to do it now."
+  },
+
+  "watchDemo": {
+    "message": "Watch demo",
+    "description": "Link/button that opens/triggers a URL/page/modal featuring a demo (video)."
   }
 }
