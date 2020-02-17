@@ -6,6 +6,24 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.3.0
+
+### New
+
+* Added links to the contact form in Options, so users can report issues and get help easier.
+
+  > Based on [feedback](https://www.reddit.com/r/waterfox/comments/e4atfn/scroll_to_top_button_no_longer_working_wfclassic/fecdltf) from [KahRed17](https://www.reddit.com/user/KahRed17/).
+
+### Improved
+
+* Made Active tab settings page responsive, so it's easier to work with in Firefox on Android.
+
+### Changed
+
+* Made context menu setting in Options Expert-only (not shown when a Basic or Advanced button mode is active).
+
+---
+
 ## v9.2.0
 
 ### Improved
