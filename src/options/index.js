@@ -807,6 +807,7 @@ function checkMode() {
           '.appearance',
           '#clickthroughKeys',
           '#keyboard-settings',
+          '#contextMenu',
           '#settingsOverrideCtasContainer',
         ],
         false
@@ -825,6 +826,7 @@ function checkMode() {
           '#scrollDownSpeed',
           '#clickthroughKeys',
           '#keyboard-settings',
+          '#contextMenu',
           '#settingsOverrideCtasContainer',
         ],
         true
@@ -848,6 +850,7 @@ function checkMode() {
           '#scrollDownSpeed',
           '#clickthroughKeys',
           '#keyboard-settings',
+          '#contextMenu',
           '#settingsOverrideCtasContainer',
         ],
         true
@@ -870,6 +873,7 @@ function checkMode() {
           '#button-settings',
           '#scrollDownSpeed',
           '#keyboard-settings',
+          '#contextMenu',
           '#settingsOverrideCtasContainer',
         ],
         true
@@ -887,6 +891,7 @@ function checkMode() {
           '.appearance',
           '#clickthroughKeys',
           '#keyboard-settings',
+          '#contextMenu',
           '#settingsOverrideCtasContainer',
         ],
         true
