@@ -13,8 +13,9 @@
         Loading...
       </p>
     </aside>
-    <aside class="messageBanner top">
-      <p class="pwText" data-i18n="ratingHelpsOthers"></p>
+    <aside id="feedbackCtasContainer">
+      <a href="#" id="rateLink" class="feedbackCta" data-i18n="like" data-i18n-tooltip="askingToRateLinkTooltip"></a>
+      <a href="#" id="issueReportingLink" class="feedbackCta" data-i18n="dislike" data-i18n-tooltip="issueReportingLinkTooltip"></a>
     </aside>
     <form id="settingsForm">
       <fieldset id="button-mode" class="pwFormGroup">
@@ -304,6 +305,9 @@
     </form>
     <aside class="secondaryInfoContainer">
       <ul class="links">
+        <li class="linkWrapper">
+          <a id="genericContactFormLink" href="#" data-i18n="genericContactFormLinkText"></a>
+        </li>
         <li class="linkWrapper" data-i18n="helpTranslate"></li>
         <li class="linkWrapper" id="translatedBy" data-i18n="translatedBy" hidden></li>
         <li class="linkWrapper" data-i18n="releaseNotes"></li>

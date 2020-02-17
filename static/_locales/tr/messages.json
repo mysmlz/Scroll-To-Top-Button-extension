@@ -36,9 +36,6 @@
   "browserActionReloadActiveTab": {
     "message": "Sekmeyi yeniden yükle"
   },
-  "ratingHelpsOthers": {
-    "message": "Eğer beğendiyseniz lütfen <a href=\"#\" target=\"_blank\" id=\"rateLink\">bu uzantıyı değerlendirin</a>!<br>Geribildirim başkalarının bu uzantıyı keşfetmesine yardım eder."
-  },
   "buttonSettings": {
     "message": "Buton ayarları"
   },

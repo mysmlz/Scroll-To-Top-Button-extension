@@ -188,9 +188,6 @@
       }
     }
   },
-  "ratingHelpsOthers": {
-    "message": "Please <a href=\"#\" target=\"_blank\" id=\"rateLink\">rate this extension</a> if you enjoy it!<br>The feedback really helps others find this extension!"
-  },
   "keyboardShortcuts": {
     "message": "Klávesové zkratky "
   },

@@ -36,9 +36,6 @@
   "browserActionReloadActiveTab": {
     "message": "Odśwież kartę"
   },
-  "ratingHelpsOthers": {
-    "message": "Proszę <a href=\"#\" target=\"_blank\" id=\"rateLink\">oceń to rozszerzenie</a> jeśli je lubisz!<br>Opinie naprawdę pomagają innym znaleźć to rozszerzenie!"
-  },
   "buttonSettings": {
     "message": "Ustawienia przycisku"
   },

@@ -287,6 +287,14 @@ function getSettings() {
 function setLinks() {
   const links = [
     [
+      'issueReportingLink',
+      'https://goo.gl/forms/QMZFZfgKjQHOnRCX2'
+    ],
+    [
+      'genericContactFormLink',
+      'https://goo.gl/forms/QMZFZfgKjQHOnRCX2'
+    ],
+    [
       'translateLink',
       'https://www.transifex.com/poziworld/scroll-to-top-button/'
     ],

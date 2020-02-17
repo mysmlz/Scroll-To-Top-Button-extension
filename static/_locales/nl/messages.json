@@ -39,9 +39,6 @@
   "browserActionReloadActiveTab": {
     "message": "Herlaad tab"
   },
-  "ratingHelpsOthers": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"rateLink\">Beoordeel deze extensie</a> alsjeblieft als het je bevalt!<br>De feedback helpt anderen deze extensie te vinden!"
-  },
   "buttonSettings": {
     "message": "Knop instellingen"
   },

@@ -40,8 +40,21 @@
       "message": "Reload tab"
     },
 
-  "ratingHelpsOthers": {
-    "message": "Please <a href=\"#\" target=\"_blank\" id=\"rateLink\">rate this extension</a> if you enjoy it!<br>The feedback really helps others find this extension!"
+  "like": {
+    "message": "\uD83D\uDC4D",
+    "description": "Message (currently, a “thumbs up” emoji) asking user to indicate whether that user is satisfied with the extension."
+  },
+  "dislike": {
+    "message": "\uD83D\uDC4E",
+    "description": "Message (currently, a “thumbs down” emoji) asking user to contact developer if that user is not (completely) satisfied with the extension."
+  },
+  "askingToRateLinkTooltip": {
+    "message": "Do you like this extension?\n\nLet others know what you like the most!\nRate it now",
+    "description": "Message encouraging user to rate the extension."
+  },
+  "issueReportingLinkTooltip": {
+    "message": "Something is not working?\nFound a bug?\nHave a question?\nSomething else?\n\nContact the extension developer now",
+    "description": "Message encouraging user to contact developer."
   },
 
   "buttonSettings": {
@@ -519,6 +532,10 @@
     "message": "Options saved."
   },
 
+  "genericContactFormLinkText": {
+    "message": "Get support / Give feedback",
+    "description": "Text of a link to contact developer about an issue/bug and/or with a suggestion/question/other feedback."
+  },
   "helpTranslate": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"
   },

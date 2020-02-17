@@ -36,9 +36,6 @@
   "browserActionReloadActiveTab": {
     "message": "刷新页面"
   },
-  "ratingHelpsOthers": {
-    "message": "如果你喜欢这个插件！请 <a href=\"#\" target=\"_blank\" id=\"rateLink\">给我好评</a><br>你的反馈会帮助更多人发现这个插件！"
-  },
   "buttonSettings": {
     "message": "按钮设置"
   },

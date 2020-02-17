@@ -39,9 +39,6 @@
   "browserActionReloadActiveTab": {
     "message": "Recargar lapela"
   },
-  "ratingHelpsOthers": {
-    "message": "Por favor, <a href=\"#\" target=\"_blank\" id=\"rateLink\">valore esta extensión</a> se goza dela!<br>As valoracións axudarán a outros a atopar esta extensión!"
-  },
   "buttonSettings": {
     "message": "Axustes dos botóns"
   },

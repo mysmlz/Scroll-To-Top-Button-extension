@@ -36,9 +36,6 @@
   "browserActionReloadActiveTab": {
     "message": "Обновить вкладку"
   },
-  "ratingHelpsOthers": {
-    "message": "Пожалуйста, <a href=\"#\" target=\"_blank\" id=\"rateLink\">оцените это расширение</a>, если оно вам нравится.<br>Отзывы реально помогают другим найти это расширение!"
-  },
   "buttonSettings": {
     "message": "Настройки кнопки"
   },
