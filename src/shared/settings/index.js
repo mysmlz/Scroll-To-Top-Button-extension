@@ -93,7 +93,7 @@ export async function getSettings() {
     throw new TypeError( 'Settings retrieved from the storage appear to be corrupted.' );
   }
   catch ( error ) {
-    // @todo
+    Log.add( 'Failed to retrieve settings', error, true );
   }
 }
 
