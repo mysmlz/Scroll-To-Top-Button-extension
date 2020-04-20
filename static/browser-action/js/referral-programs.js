@@ -248,10 +248,7 @@
    */
 
   ReferralPrograms.prototype.showNotificationSettingsState = function ( objSettings ) {
-    strLog = 'poziworldExtension.referralPrograms.showNotificationSettingsState';
-    Log.add( strLog );
-
-    console.log( objSettings );
+    Log.add( 'poziworldExtension.referralPrograms.showNotificationSettingsState', objSettings, true );
 
     return false;
   };

@@ -16,7 +16,7 @@ function addListeners() {
 }
 
 function warnIfHadVersion8InstalledBefore( details ) {
-  console.log( 'onInstalled', details );
+  Log.add( 'warnIfHadVersion8InstalledBefore', details, true );
 
   if ( details.reason === EXTENSION_UPDATED_REASON ) {
     scheduleWarning();
