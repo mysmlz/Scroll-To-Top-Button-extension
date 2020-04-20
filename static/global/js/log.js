@@ -51,8 +51,10 @@ var
    *
    * @param {string} eventName - Event name/description.
    * @param {*} [details] - Var to output contents of.
-   **/
-  add : function( eventName, details ) {
+   * @param {boolean} [globalVarToBeUpdated] - Whether to update window.strLog.
+   */
+
+  add: function ( eventName, details, globalVarToBeUpdated ) {
     if ( typeof details === 'undefined' ) {
       details = {};
     }
@@ -65,6 +67,10 @@ var
 
     if ( typeof ContentScript === 'undefined' ) {
       console.log( eventName, details );
+    }
+
+    if ( globalVarToBeUpdated ) {
+      window.strLog = eventName;
     }
   }
 };
