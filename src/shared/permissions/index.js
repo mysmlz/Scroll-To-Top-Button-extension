@@ -1,4 +1,4 @@
-export const ADVANCED_BUTTON_MODES_PERMISSIONS = {
+export const EXPERT_BUTTON_MODES_PERMISSIONS = {
   origins: [
     '<all_urls>',
   ],
@@ -15,5 +15,5 @@ export const ADVANCED_BUTTON_MODES_PERMISSIONS = {
 
 export async function hasPermissions() {
   // @todo Figure out why browser.permissions.contains returns false for origins <all_urls>, whereas browser.permissions.getAll lists it. Related: {@link https://bugs.chromium.org/p/chromium/issues/detail?id=931816}
-  return await browser.permissions.contains( ADVANCED_BUTTON_MODES_PERMISSIONS );
+  return browser.permissions.contains( EXPERT_BUTTON_MODES_PERMISSIONS );
 }
