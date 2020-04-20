@@ -65,8 +65,8 @@ var
      * @todo Use appropriate types (log, debug, error).
      */
 
-    if ( typeof ContentScript === 'undefined' ) {
-      console.log( eventName, details );
+    if ( typeof window.ContentScript === 'undefined' ) {
+      window.console.log( strConstExtensionName, strConstExtensionVersion, eventName, details );
     }
 
     if ( globalVarToBeUpdated ) {
