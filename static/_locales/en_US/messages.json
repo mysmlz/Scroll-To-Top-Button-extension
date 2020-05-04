@@ -615,5 +615,16 @@
         "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
       }
     }
+  },
+
+  "containerStyleAttributeRepeatedChangesIssue": {
+    "message": "A website script or another extension (addon) is trying to change the look of Scroll To Top Button.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nTo help resolve the issue sooner, please consider including a list of the installed extensions in your browser.\n\nIf the issue persists, you might see increased CPU usage.\n\n\nPoziWorld,\ndeveloper of Scroll To Top Button extension",
+    "description": "When a third-party script (the current page's or another extension's) is messing with the button's container's style attribute, adding unwanted rules, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that this issue might lead to an increase in CPU usage.",
+    "placeholders": {
+      "debugging_information_confirmation": {
+        "content": "$1",
+        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
+      }
+    }
   }
 }
