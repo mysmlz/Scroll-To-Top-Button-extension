@@ -593,5 +593,16 @@
   "watchDemo": {
     "message": "Watch demo",
     "description": "Link/button that opens/triggers a URL/page/modal featuring a demo (video)."
+  },
+
+  "debuggingInformationConfirmation": {
+    "message": "Press OK to open a form in a new tab to report the issue with the following debugging information included:\n$DEBUGGING_INFORMATION$",
+    "description": "When there is an issue starting the extension in an Expert-type mode user selected in the Options, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that the preferred Expert-type mode can be enabled in the Options again.",
+    "placeholders": {
+      "debugging_information": {
+        "content": "$1",
+        "example": "Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
+      }
+    }
   }
 }
