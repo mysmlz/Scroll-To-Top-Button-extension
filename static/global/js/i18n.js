@@ -172,7 +172,10 @@
    */
 
   I18n.prototype.getMessage = function ( key, substitutions ) {
-    Log.add( 'poziworldExtension.i18n.getMessage', key );
+    Log.add( 'poziworldExtension.i18n.getMessage', {
+      key: key,
+      substitutions: substitutions,
+    } );
 
     const t = getTranslationFunction();
 
