@@ -58,7 +58,7 @@ let controllerSetterRetries = 0;
 init();
 
 function init() {
-  setController();
+  setController( 'init' );
   addListeners();
 }
 
@@ -67,20 +67,20 @@ function addListeners() {
   const onRemoved = browser.permissions.onRemoved;
 
   if ( onAdded ) {
-    onAdded.addListener( setController );
+    onAdded.addListener( () => setController( 'permissionsAdded' ) );
   }
 
   if ( onRemoved ) {
-    onRemoved.addListener( setController );
+    onRemoved.addListener( () => setController( 'permissionsRemoved' ) );
   }
 
   window.addEventListener( 'message', handleMessage );
 }
 
-export async function setController() {
+export async function setController( source, retriesCount ) {
   if ( controllerIsBeingSet ) {
     if ( controllerSetterRetries < CONTROLLER_SETTER_MAX_RETRIES ) {
-      window.setTimeout( setController, CONTROLLER_SETTER_TIMEOUT );
+      window.setTimeout( () => setController ( source, controllerSetterRetries ), CONTROLLER_SETTER_TIMEOUT );
 
       controllerSetterRetries += 1;
     }
@@ -122,7 +122,7 @@ export async function setController() {
 
       controllerIsBeingSet = false;
 
-      await setController();
+      await setController( 'conversion', retriesCount );
     }
   }
 
