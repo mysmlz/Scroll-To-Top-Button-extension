@@ -125,7 +125,7 @@
 
         versionsToSave.previousVersion = previousVersion;
         // @todo
-        versionsToSave.previousVersions.push( previousVersion );
+        // versionsToSave.previousVersions.push( previousVersion );
       }
 
       poziworldExtension.utils.setStorageItems(
