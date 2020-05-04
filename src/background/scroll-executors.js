@@ -2,6 +2,7 @@
  * @file By default, the extension gets installed with the “activeTab” permission, which means there is no way for user to scroll a page until he/she clicks the browser action. To cut down on number of clicks in such case, make the browser action click scroll the page. Once user grants the “tabs” and any-origin permissions, then a more customizable content script will be injected onto pages. This file decides what strategy to use based on granted permissions.
  */
 
+import * as feedback from 'Shared/feedback';
 import * as permissions from 'Shared/permissions';
 import * as settings from 'Shared/settings';
 
@@ -118,6 +119,7 @@ export async function setController( source, retriesCount ) {
     }
     // User who had had version 8 and hasn't granted the permissions again or revoked them. Or, somebody tampered with the settings in the storage
     else {
+      requestToReportIssue( buttonMode, source, retriesCount );
       await convertExpertModeToAdvanced( buttonMode );
 
       controllerIsBeingSet = false;
@@ -249,4 +251,28 @@ function handleMessage( { data: { trigger }, target } ) {
 
 function isInternalMessage( target ) {
   return target === window;
+}
+
+async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
+  const localVariables = await browser.storage.local.get( null );
+  const grantedPermissions = await browser.permissions.getAll();
+
+  Log.add( 'Source', source, true );
+  Log.add( 'Retries', retriesCount, true );
+  Log.add( 'Granted permissions', grantedPermissions, true );
+  Log.add( 'Stored button mode', buttonMode, true );
+  Log.add( 'Local variables', localVariables, true );
+
+  const ISSUE_MESSAGE_JSON_KEY = 'expertModeActivationIssue';
+  // Don't translate, as this gets sent to developer
+  const ISSUE_TITLE = 'Expert mode activation issue';
+  // Don't translate, as this gets sent to developer
+  const debuggingInformation = `
+Source: ${ source }
+Retries: ${ retriesCount }
+Mode: ${ buttonMode }
+Permissions: ${ JSON.stringify( grantedPermissions ) }
+Local: ${ JSON.stringify( localVariables ) }`;
+
+  feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }

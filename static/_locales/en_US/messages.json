@@ -604,5 +604,16 @@
         "example": "Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
       }
     }
+  },
+
+  "expertModeActivationIssue": {
+    "message": "There was an issue activating an Expert mode.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can re-enable an Expert mode in Options.\n\nSorry for the inconvenience.",
+    "description": "When there is an issue starting the extension in an Expert-type mode user selected in the Options, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that the preferred Expert-type mode can be enabled in the Options again.",
+    "placeholders": {
+      "debugging_information_confirmation": {
+        "content": "$1",
+        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
+      }
+    }
   }
 }
