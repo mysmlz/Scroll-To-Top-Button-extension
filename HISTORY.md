@@ -6,6 +6,22 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.0
+
+### New
+
+* Added a self-defense mechanism against website scripts and other extensions (addons) that try to change the look of Scroll To Top Button.
+
+  > Based on feedback from Lucian Andries via the [Support tab](https://chrome.google.com/webstore/detail/pozitone/bdglbogiolkffcmojmmkipgnpkfipijm/support).
+
+### Improved
+
+* Extension will now request to report the issue when it fails to activate an Expert mode by sending over some debugging information to the developer.
+
+  > Based on feedback from phil reilly via the [Support tab](https://chrome.google.com/webstore/detail/pozitone/bdglbogiolkffcmojmmkipgnpkfipijm/support) and Dubravka, Åke Svensson, Willem Dijkstra, and an anonymous user via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+---
+
 ## v9.3.0
 
 ### New
