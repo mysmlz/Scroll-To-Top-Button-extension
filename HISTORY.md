@@ -6,6 +6,18 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.1
+
+### Improved
+
+* Container style attribute change self-defense mechanism will no longer warn about some font-related changes (color, font-family, font-size, font-style, font-weight, text-decoration).
+
+  > Based on feedback from Lucian Andries.
+
+* More extension options and ways to use it are now mentioned in the extension description.
+
+---
+
 ## v9.4.0
 
 ### New
