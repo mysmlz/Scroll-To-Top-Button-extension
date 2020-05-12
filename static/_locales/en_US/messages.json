@@ -4,7 +4,7 @@
     "description": "Please copy and paste the original/source string. Should NOT be translated."
   },
   "extensionDescription": {
-    "message": "Adds a scroll to top or bottom button.",
+    "message": "Scroll to top, bottom, or both. Click extension icon, on-page button, use context menu options, and/or keyboard shortcuts.",
     "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
   },
   "optionsPageTitle": {
