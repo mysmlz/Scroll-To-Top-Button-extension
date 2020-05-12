@@ -2,6 +2,15 @@ import './scroll-to-top-button-container.css';
 
 import * as feedback from 'Shared/feedback';
 
+const TOLERABLE_STYLE_CHANGE_PROPERTIES = [
+  'color',
+  'font-family',
+  'font-size',
+  'font-style',
+  'font-weight',
+  'text-decoration',
+];
+
 /**
  * Scroll To Top Button button container custom element to avoid style collisions.
  *
@@ -38,7 +47,7 @@ export class ScrollToTopButtonContainer extends HTMLElement {
   }
 
   #handleStyleAttributeChanges( mutations ) {
-    if ( this.#isStyleEmpty( mutations ) ) {
+    if ( this.#areStyleChangesTolerable( mutations ) ) {
       return;
     }
 
@@ -46,8 +55,33 @@ export class ScrollToTopButtonContainer extends HTMLElement {
     this.#resetStyle();
   }
 
-  #isStyleEmpty( mutations ) {
-    return ! poziworldExtension.utils.isNonEmptyString( mutations[ 0 ].target.getAttribute( 'style' ) );
+  #areStyleChangesTolerable( mutations ) {
+    const style = mutations[ 0 ].target.getAttribute( 'style' );
+
+    if ( poziworldExtension.utils.isNonEmptyString( style ) ) {
+      const STYLE_PROPERTIES_SEPARATOR = ';';
+      const PROPERTY_KEY_VALUE_SEPARATOR = ':';
+      const properties = style
+        .trim()
+        .split( STYLE_PROPERTIES_SEPARATOR );
+
+      for ( const property of properties ) {
+        if ( ! poziworldExtension.utils.isNonEmptyString( property ) ) {
+          continue;
+        }
+
+        const propertyName = property
+          .split( PROPERTY_KEY_VALUE_SEPARATOR )[ 0 ]
+          .trim()
+          .toLowerCase();
+
+        if ( ! TOLERABLE_STYLE_CHANGE_PROPERTIES.includes( propertyName ) ) {
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 
   /**
