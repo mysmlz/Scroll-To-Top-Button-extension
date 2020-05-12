@@ -42,6 +42,19 @@ export class ScrollToTopButtonContainer extends HTMLElement {
       return;
     }
 
+    this.#stopWatchingIfMaxCount();
+    this.#resetStyle();
+  }
+
+  #isStyleEmpty( mutations ) {
+    return ! poziworldExtension.utils.isNonEmptyString( mutations[ 0 ].target.getAttribute( 'style' ) );
+  }
+
+  /**
+   * In order to not increase the CPU usage, stop fighting the style attribute changes after the threshold number of changes and notify the user.
+   */
+
+  #stopWatchingIfMaxCount() {
     this.#styleChangesDetectedCount += 1;
 
     if ( this.#styleChangesDetectedCount === this.#FIRST_DETECTION_INDEX ) {
@@ -54,6 +67,7 @@ export class ScrollToTopButtonContainer extends HTMLElement {
       // Don't translate, as this gets sent to developer
       const ISSUE_TITLE = 'Repeated style attribute changes issue';
       // Don't translate, as this gets sent to developer
+      // @todo Pass extension version.
       const debuggingInformation = `
 Attempts so far: ${ this.#WARNING_COUNT }
 Milliseconds since first attempt: ${ new Intl.NumberFormat().format( timeFromFirstDetection ) }
@@ -62,12 +76,6 @@ Current URL: ${ window.location.href }`;
       feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
       this.#stopWatchingStyleChanges();
     }
-
-    this.#resetStyle();
-  }
-
-  #isStyleEmpty( mutations ) {
-    return ! poziworldExtension.utils.isNonEmptyString( mutations[ 0 ].target.getAttribute( 'style' ) );
   }
 
   #resetStyle() {
