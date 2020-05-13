@@ -254,6 +254,7 @@ function reloadExtensionOnPermissionChange() {
 
 async function requestToReloadExtension() {
   if ( window.confirm( await i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
+    await letRuntimeFinishAllTasks();
     browser.runtime.reload();
 
     return true;
@@ -261,6 +262,18 @@ async function requestToReloadExtension() {
   else {
     return false;
   }
+}
+
+/**
+ * There is an ongoing issue where some users' installations don't have “<all_urls>” origin permission. Users report that sometimes Expert mode gets reverted to Advanced for an unknown reason. This is an attempt to give some time to the runtime to finish all tasks before the extension restart.
+ *
+ * @returns {Promise<void>}
+ */
+
+async function letRuntimeFinishAllTasks() {
+  const MILLISECONDS_TO_FINISH_ALL_TASKS = 1000;
+
+  await new Promise( ( resolve ) => setTimeout( resolve, MILLISECONDS_TO_FINISH_ALL_TASKS ) );
 }
 
 /**
