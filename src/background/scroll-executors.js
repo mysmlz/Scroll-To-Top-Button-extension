@@ -30,7 +30,7 @@ const CONTENT_SCRIPT_SCRIPT_TEMPLATE = {
   file: '%PLACEHOLDER%',
 };
 const CONTENT_SCRIPT_JAVASCRIPT_FILES = [
-  '/global/js/browser-polyfill.js',
+  '/global/js/browser-polyfill.min.js',
   '/global/js/bowser.js',
   '/global/js/global.js',
   '/global/js/utils.js',

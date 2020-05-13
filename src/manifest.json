@@ -27,7 +27,7 @@
 
   "background": {
     "scripts": [
-      "global/js/browser-polyfill.js",
+      "global/js/browser-polyfill.min.js",
       "global/js/bowser.js",
       "global/js/punycode.min.js",
       "global/js/global.js",
