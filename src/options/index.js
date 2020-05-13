@@ -3,6 +3,7 @@ import 'dom4';
 import './options.css';
 
 import utils from 'Shared/utils';
+import * as i18n from 'Shared/i18n';
 import * as permissions from 'Shared/permissions';
 import * as settings from 'Shared/settings';
 import * as pages from 'Shared/pages';
@@ -252,9 +253,7 @@ function reloadExtensionOnPermissionChange() {
 }
 
 async function requestToReloadExtension() {
-  await poziworldExtension.i18n.init();
-
-  if ( window.confirm( poziworldExtension.i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
+  if ( window.confirm( await i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
     browser.runtime.reload();
 
     return true;
