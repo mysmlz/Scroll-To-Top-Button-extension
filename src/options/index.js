@@ -107,7 +107,7 @@ function cachePermissionsCheckResult( granted ) {
 async function setUi() {
   setButtonModesControllingCtasState( true );
   await setHadVersion8InstalledBeforeMessageVisibility();
-  signalPageReady();
+  togglePageReadyState();
 }
 
 function setButtonModesControllingCtasState( expertModeShouldBeReplaced ) {
@@ -253,6 +253,8 @@ function reloadExtensionOnPermissionChange() {
 }
 
 async function requestToReloadExtension() {
+  togglePageReadyState();
+
   if ( window.confirm( await i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
     await letRuntimeFinishAllTasks();
     browser.runtime.reload();
@@ -260,6 +262,8 @@ async function requestToReloadExtension() {
     return true;
   }
   else {
+    togglePageReadyState();
+
     return false;
   }
 }
@@ -983,8 +987,8 @@ function getSettingContainer( element ) {
  * If page waited for JavaScript to show content, signal it's now ready.
  */
 
-function signalPageReady() {
-  document.body.classList.remove( NOT_READY_CLASS );
+function togglePageReadyState() {
+  document.body.classList.toggle( NOT_READY_CLASS );
 }
 
 /**
