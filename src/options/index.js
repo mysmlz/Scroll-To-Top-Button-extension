@@ -756,6 +756,7 @@ async function handleSetSettingsSuccess( settings, refreshForm ) {
   if ( isButtonModeGroupBeingChanged( settings ) ) {
     await requestToReloadExtension();
   }
+
   if ( isLanguageBeingChanged( settings ) ) {
     const approved = await requestToReloadExtension();
 
