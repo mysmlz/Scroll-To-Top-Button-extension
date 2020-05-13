@@ -263,6 +263,7 @@ async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
   Log.add( 'Stored button mode', buttonMode, true );
   Log.add( 'Local variables', localVariables, true );
 
+  const extensionInfo = await browser.management.getSelf();
   const ISSUE_MESSAGE_JSON_KEY = 'expertModeActivationIssue';
   // Don't translate, as this gets sent to developer
   const ISSUE_TITLE = 'Expert mode activation issue';
@@ -272,7 +273,11 @@ Source: ${ source }
 Retries: ${ retriesCount }
 Mode: ${ buttonMode }
 Permissions: ${ JSON.stringify( grantedPermissions ) }
-Local: ${ JSON.stringify( localVariables ) }`;
+Hosts: ${ JSON.stringify( extensionInfo.hostPermissions ) }
+Permissions: ${ JSON.stringify( extensionInfo.permissions ) }
+Local: ${ JSON.stringify( localVariables ) }
+Version: ${ extensionInfo.version }
+Browser: ${ window.navigator.userAgent }`;
 
   feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }
