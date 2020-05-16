@@ -6,6 +6,20 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.2
+
+### Changed
+
+* When the extension requests to report an Expert mode activation issue, it will now add more debugging information.
+
+* Added a delay before the extension reload on a mode change to give extra time to the extension to finish all the necessary tasks.
+
+* Made a loading indicator screen show up during the extension reload to prevent any changes.
+
+* Upgraded a behind-the-scenes library for the cross-browser extension support.
+
+---
+
 ## v9.4.1
 
 ### Improved
