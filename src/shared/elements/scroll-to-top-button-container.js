@@ -8,6 +8,7 @@ const TOLERABLE_STYLE_CHANGE_PROPERTIES = [
   'font-size',
   'font-style',
   'font-weight',
+  'line-height',
   'text-decoration',
 ];
 
