@@ -51,7 +51,7 @@ export class ScrollToTopButtonContainer extends HTMLElement {
       return;
     }
 
-    this.#stopWatchingIfMaxCount();
+    this.#stopWatchingIfMaxCount( mutations );
     this.#resetStyle();
   }
 
@@ -86,9 +86,11 @@ export class ScrollToTopButtonContainer extends HTMLElement {
 
   /**
    * In order to not increase the CPU usage, stop fighting the style attribute changes after the threshold number of changes and notify the user.
+   *
+   * @param {MutationRecord[]} mutations
    */
 
-  #stopWatchingIfMaxCount() {
+  #stopWatchingIfMaxCount( mutations ) {
     this.#styleChangesDetectedCount += 1;
 
     if ( this.#styleChangesDetectedCount === this.#FIRST_DETECTION_INDEX ) {
@@ -105,7 +107,9 @@ export class ScrollToTopButtonContainer extends HTMLElement {
       const debuggingInformation = `
 Attempts so far: ${ this.#WARNING_COUNT }
 Milliseconds since first attempt: ${ new Intl.NumberFormat().format( timeFromFirstDetection ) }
-Current URL: ${ window.location.href }`;
+Current URL: ${ window.location.href }
+Style: ${ mutations[ 0 ].target.getAttribute( 'style' ) }
+Version: ${ strConstExtensionVersion }`;
 
       feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
       this.#stopWatchingStyleChanges();
