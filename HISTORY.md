@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.4
+
+### Improved
+
+* Container style attribute change self-defense mechanism will no longer warn about some additional font-related changes (line-height).
+
+  > Based on feedback from Lucian Andries.
+
+---
+
 ## v9.4.3
 
 ### Changed
