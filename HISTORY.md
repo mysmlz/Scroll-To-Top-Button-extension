@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.3
+
+### Changed
+
+* When the extension requests to report a style attribute change of the container issue, it will now add more debugging information: the value of the style attribute of the container and the extension version.
+
+  > Based on feedback from Lucian Andries.
+
+---
+
 ## v9.4.2
 
 ### Changed
