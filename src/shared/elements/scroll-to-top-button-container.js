@@ -4,6 +4,7 @@ import * as feedback from 'Shared/feedback';
 
 const TOLERABLE_STYLE_CHANGE_PROPERTIES = [
   'color',
+  'cursor',
   'font-family',
   'font-size',
   'font-style',
