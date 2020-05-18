@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.5
+
+### Improved
+
+* Container style attribute change self-defense mechanism will no longer warn about cursor.
+
+  > Based on anonymous feedback via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+---
+
 ## v9.4.4
 
 ### Improved
