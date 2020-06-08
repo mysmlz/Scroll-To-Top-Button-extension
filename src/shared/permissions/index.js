@@ -1,10 +1,21 @@
 const ORIGINS_KEY = 'origins';
 const ALL_URLS_ORIGIN = '<all_urls>';
+const ALL_URLS_ALTERNATIVE_ORIGIN = '*://*/*';
 const PERMISSIONS_KEY = 'permissions';
 const TABS_PERMISSION = 'tabs';
 export const EXPERT_BUTTON_MODES_PERMISSIONS = {
   [ ORIGINS_KEY ]: [
     ALL_URLS_ORIGIN,
+  ],
+  [ PERMISSIONS_KEY ]: [
+    TABS_PERMISSION,
+  ],
+};
+// Some users experience an issue where after browser restart ALL_URLS_ORIGIN is no longer there for some reason (haven't been able to reproduce to fix it)
+export const EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS = {
+  [ ORIGINS_KEY ]: [
+    ALL_URLS_ORIGIN,
+    ALL_URLS_ALTERNATIVE_ORIGIN,
   ],
   [ PERMISSIONS_KEY ]: [
     TABS_PERMISSION,
@@ -27,7 +38,7 @@ export async function hasPermissions() {
       [ ORIGINS_KEY ]: origins,
       [ PERMISSIONS_KEY ]: permissions,
     } = await browser.permissions.getAll();
-    const originsIncluded = origins.includes( ALL_URLS_ORIGIN );
+    const originsIncluded = origins.includes( ALL_URLS_ORIGIN ) || origins.includes( ALL_URLS_ALTERNATIVE_ORIGIN );
     const permissionsIncluded = permissions.includes( TABS_PERMISSION );
 
     Log.add( 'hasPermissions fallback', {

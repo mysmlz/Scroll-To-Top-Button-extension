@@ -170,7 +170,7 @@ async function setHadVersion8InstalledBeforeMessageVisibility() {
 async function requestPermissions() {
   togglePermissionsPrivacyDetails();
 
-  const granted = await browser.permissions.request( permissions.EXPERT_BUTTON_MODES_PERMISSIONS );
+  const granted = await browser.permissions.request( permissions.EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS );
 
   await handlePermissionsRequestResult( granted );
 
@@ -227,7 +227,7 @@ async function requestToNeverShowAgain() {
 function revokePermissions( event ) {
   event.preventDefault();
 
-  browser.permissions.remove( permissions.EXPERT_BUTTON_MODES_PERMISSIONS )
+  browser.permissions.remove( permissions.EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS )
     .then( handlePermissionsRevocationResult );
 }
 
