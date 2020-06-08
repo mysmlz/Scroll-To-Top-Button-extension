@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v9.4.6
+
+### Attempting to fix
+
+* Some users experience an issue where after browser restart a permission allowing to inject the button(s) on all URLs is no longer there for some reason (haven't been able to reproduce to fix it).
+
+  > Based on feedback via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+---
+
 ## v9.4.5
 
 ### Improved
