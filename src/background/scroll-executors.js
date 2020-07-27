@@ -271,15 +271,13 @@ async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
   const ISSUE_TITLE = 'Expert mode activation issue';
   // Don't translate, as this gets sent to developer
   const debuggingInformation = `
+Version: ${ extensionInfo.version }
 Source: ${ source }
+Permissions: ${ JSON.stringify( grantedPermissions ) }
 Retries: ${ retriesCount }
 Mode: ${ buttonMode }
-Permissions: ${ JSON.stringify( grantedPermissions ) }
-Hosts: ${ JSON.stringify( extensionInfo.hostPermissions ) }
-Permissions: ${ JSON.stringify( extensionInfo.permissions ) }
-Local: ${ JSON.stringify( localVariables ) }
-Version: ${ extensionInfo.version }
 Browser: ${ window.navigator.userAgent }
+Local: ${ JSON.stringify( localVariables ) }
 Anonymous installation ID: ${ installationId }`;
 
   feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
