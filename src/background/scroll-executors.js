@@ -2,6 +2,7 @@
  * @file By default, the extension gets installed with the “activeTab” permission, which means there is no way for user to scroll a page until he/she clicks the browser action. To cut down on number of clicks in such case, make the browser action click scroll the page. Once user grants the “tabs” and any-origin permissions, then a more customizable content script will be injected onto pages. This file decides what strategy to use based on granted permissions.
  */
 
+import utils from 'Shared/utils';
 import * as feedback from 'Shared/feedback';
 import * as permissions from 'Shared/permissions';
 import * as settings from 'Shared/settings';
@@ -264,6 +265,7 @@ async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
   Log.add( 'Local variables', localVariables, true );
 
   const extensionInfo = await browser.management.getSelf();
+  const installationId = await utils.getInstallationId();
   const ISSUE_MESSAGE_JSON_KEY = 'expertModeActivationIssue';
   // Don't translate, as this gets sent to developer
   const ISSUE_TITLE = 'Expert mode activation issue';
@@ -277,7 +279,8 @@ Hosts: ${ JSON.stringify( extensionInfo.hostPermissions ) }
 Permissions: ${ JSON.stringify( extensionInfo.permissions ) }
 Local: ${ JSON.stringify( localVariables ) }
 Version: ${ extensionInfo.version }
-Browser: ${ window.navigator.userAgent }`;
+Browser: ${ window.navigator.userAgent }
+Anonymous installation ID: ${ installationId }`;
 
   feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }
