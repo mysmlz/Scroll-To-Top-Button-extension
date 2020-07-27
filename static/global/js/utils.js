@@ -210,8 +210,12 @@
       strLog,
       {
         param: param,
-        strType: strType
-      }
+        strType: strType,
+      },
+      false,
+      {
+        level: 'debug',
+      },
     );
 
     return Object.prototype.toString.call( param ).slice( 8, -1 ).toLowerCase() === strType;

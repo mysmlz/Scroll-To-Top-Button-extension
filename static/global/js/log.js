@@ -52,9 +52,11 @@ var
    * @param {string} eventName - Event name/description.
    * @param {*} [details] - Var to output contents of.
    * @param {boolean} [globalVarToBeUpdated] - Whether to update window.strLog.
+   * @param {object} [options] - Additional options
+   * @param {string} [options.level] - Requested log level ({@link https://developer.mozilla.org/en-US/docs/Web/API/console#Methods})
    */
 
-  add: function ( eventName, details, globalVarToBeUpdated ) {
+  add: function ( eventName, details, globalVarToBeUpdated, options ) {
     if ( typeof details === 'undefined' ) {
       details = {};
     }
@@ -66,7 +68,18 @@ var
      */
 
     if ( typeof window.ContentScript === 'undefined' ) {
-      window.console.log( strConstExtensionName, strConstExtensionVersion, eventName, details );
+      // @todo Create constants for levels.
+      let level = 'log';
+
+      if ( options ) {
+        const requestedLevel = options.level;
+
+        if ( [ 'debug', 'error', 'info', 'warn' ].includes( requestedLevel ) ) {
+          level = requestedLevel;
+        }
+      }
+
+      window.console[ level ]( strConstExtensionName, strConstExtensionVersion, eventName, details );
     }
 
     if ( globalVarToBeUpdated ) {
