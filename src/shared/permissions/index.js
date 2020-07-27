@@ -1,3 +1,5 @@
+import * as settings from 'Shared/settings';
+
 const ORIGINS_KEY = 'origins';
 const ALL_URLS_ORIGIN = '<all_urls>';
 const ALL_URLS_ALTERNATIVE_ORIGIN = '*://*/*';
@@ -52,4 +54,21 @@ export async function hasPermissions() {
   }
 
   return permissionsGranted;
+}
+
+export async function requestPermissions( fallbackPermissionIncluded ) {
+  return browser.permissions.request( fallbackPermissionIncluded ?
+    EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS :
+    EXPERT_BUTTON_MODES_PERMISSIONS );
+}
+
+export async function rememberGrantedAtLeastOnce( granted ) {
+  try {
+    await browser.storage.local.set( {
+      [ settings.HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY ]: granted,
+    } );
+  }
+  catch ( error ) {
+    // @todo
+  }
 }

@@ -170,7 +170,8 @@ async function setHadVersion8InstalledBeforeMessageVisibility() {
 async function requestPermissions() {
   togglePermissionsPrivacyDetails();
 
-  const granted = await browser.permissions.request( permissions.EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS );
+  const FALLBACK_PERMISSION_INCLUDED = true;
+  const granted = await permissions.requestPermissions( FALLBACK_PERMISSION_INCLUDED );
 
   await handlePermissionsRequestResult( granted );
 
@@ -195,22 +196,11 @@ async function handlePermissionsRequestResult( granted ) {
   setButtonModesControllingCtasState();
 
   if ( granted ) {
-    await rememberGrantedAtLeastOnce( granted );
+    await permissions.rememberGrantedAtLeastOnce( granted );
     await setHadVersion8InstalledBeforeMessageVisibility();
   }
 
   togglePermissionsPrivacyDetails();
-}
-
-async function rememberGrantedAtLeastOnce( granted ) {
-  try {
-    await browser.storage.local.set( {
-      [ settings.HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY ]: granted,
-    } );
-  }
-  catch ( error ) {
-    // @todo
-  }
 }
 
 async function requestToNeverShowAgain() {
