@@ -8,6 +8,7 @@ import * as permissions from 'Shared/permissions';
 import * as settings from 'Shared/settings';
 import * as pages from 'Shared/pages';
 import * as incentives from 'Shared/incentives';
+import * as feedback from 'Shared/feedback';
 
 const browserTypeIsFirefox = window.navigator.userAgent.includes( ' Firefox/' );
 const NOT_READY_CLASS = 'waitingForJs';
@@ -170,12 +171,35 @@ async function setHadVersion8InstalledBeforeMessageVisibility() {
 async function requestPermissions() {
   togglePermissionsPrivacyDetails();
 
-  const FALLBACK_PERMISSION_INCLUDED = true;
-  const granted = await permissions.requestPermissions( FALLBACK_PERMISSION_INCLUDED );
+  try {
+    const FALLBACK_PERMISSION_INCLUDED = true;
+    const granted = await permissions.requestPermissions( FALLBACK_PERMISSION_INCLUDED );
 
-  await handlePermissionsRequestResult( granted );
+    await handlePermissionsRequestResult( granted );
 
-  return granted;
+    return granted;
+  }
+  catch ( error ) {
+    requestToReportPermissionsRequestIssue( error );
+
+    return false;
+  }
+}
+
+async function requestToReportPermissionsRequestIssue( error ) {
+  const installationId = await utils.getInstallationId();
+  const ISSUE_MESSAGE_JSON_KEY = 'permissionsRequestIssue';
+  // Don't translate, as this gets sent to developer
+  const ISSUE_TITLE = 'Permissions request issue';
+  // Don't translate, as this gets sent to developer
+  // @todo Move out generic error report.
+  const debuggingInformation = `
+Version: ${ strConstExtensionVersion }
+Error: ${ JSON.stringify( error ) }
+Browser: ${ window.navigator.userAgent }
+Anonymous installation ID: ${ installationId }`;
+
+  feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }
 
 function togglePermissionsPrivacyDetails() {
@@ -247,7 +271,13 @@ async function requestToReloadExtension() {
 
   if ( window.confirm( await i18n.getMessage( 'extensionReloadConfirmationMessage' ) ) ) {
     await letRuntimeFinishAllTasks();
-    browser.runtime.reload();
+
+    try {
+      browser.runtime.reload();
+    }
+    catch ( error ) {
+      requestToReportExtensionReloadIssue( error );
+    }
 
     return true;
   }
@@ -256,6 +286,22 @@ async function requestToReloadExtension() {
 
     return false;
   }
+}
+
+async function requestToReportExtensionReloadIssue( error ) {
+  const installationId = await utils.getInstallationId();
+  const ISSUE_MESSAGE_JSON_KEY = 'extensionReloadIssue';
+  // Don't translate, as this gets sent to developer
+  const ISSUE_TITLE = 'Extension reload issue';
+  // Don't translate, as this gets sent to developer
+  // @todo Move out generic error report.
+  const debuggingInformation = `
+Version: ${ strConstExtensionVersion }
+Error: ${ JSON.stringify( error ) }
+Browser: ${ window.navigator.userAgent }
+Anonymous installation ID: ${ installationId }`;
+
+  feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }
 
 /**
