@@ -53,6 +53,7 @@ const CONTENT_SCRIPT_CSS_FILES = [
 
 // Helps prevent race condition when setController is called from permissions listener (on revocation) and storage listener at the same time - when permissions are being revoked while button mode is of an expert group, Options changes mode to the corresponding one from the advanced group, if there is one.
 let controllerIsBeingSet = false;
+const controllerSetterLog = [];
 const CONTROLLER_SETTER_TIMEOUT = 100;
 const CONTROLLER_SETTER_MAX_RETRIES = 10;
 let controllerSetterRetriesCount = 0;
@@ -81,6 +82,8 @@ function addListeners() {
 }
 
 export async function setController( source, retriesCount ) {
+  controllerSetterLog.push( [ source, controllerSetterRetriesCount ] );
+
   if ( controllerIsBeingSet ) {
     if ( controllerSetterRetriesCount < CONTROLLER_SETTER_MAX_RETRIES ) {
       controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount ), CONTROLLER_SETTER_TIMEOUT );
@@ -269,6 +272,7 @@ async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
 
   Log.add( 'Source', source, true );
   Log.add( 'Retries', retriesCount, true );
+  Log.add( 'Retries log', controllerSetterLog, true );
   Log.add( 'Granted permissions', grantedPermissions, true );
   Log.add( 'Stored button mode', buttonMode, true );
   Log.add( 'Local variables', localVariables, true );
@@ -283,7 +287,7 @@ async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
 Version: ${ extensionInfo.version }
 Source: ${ source }
 Permissions: ${ JSON.stringify( grantedPermissions ) }
-Retries: ${ retriesCount }
+Retries: ${ retriesCount } | ${ JSON.stringify( controllerSetterLog ) }
 Mode: ${ buttonMode }
 Browser: ${ window.navigator.userAgent }
 Local: ${ JSON.stringify( localVariables ) }
