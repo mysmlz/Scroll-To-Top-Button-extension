@@ -60,8 +60,8 @@ let controllerSetterRetries = 0;
 init();
 
 function init() {
-  setController( 'init' );
   addListeners();
+  setController( 'init' );
 }
 
 function addListeners() {
