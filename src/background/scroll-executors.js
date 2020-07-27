@@ -55,7 +55,8 @@ const CONTENT_SCRIPT_CSS_FILES = [
 let controllerIsBeingSet = false;
 const CONTROLLER_SETTER_TIMEOUT = 100;
 const CONTROLLER_SETTER_MAX_RETRIES = 10;
-let controllerSetterRetries = 0;
+let controllerSetterRetriesCount = 0;
+let controllerSetterTimeoutId;
 
 init();
 
@@ -81,17 +82,16 @@ function addListeners() {
 
 export async function setController( source, retriesCount ) {
   if ( controllerIsBeingSet ) {
-    if ( controllerSetterRetries < CONTROLLER_SETTER_MAX_RETRIES ) {
-      window.setTimeout( () => setController ( source, controllerSetterRetries ), CONTROLLER_SETTER_TIMEOUT );
+    if ( controllerSetterRetriesCount < CONTROLLER_SETTER_MAX_RETRIES ) {
+      controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount ), CONTROLLER_SETTER_TIMEOUT );
 
-      controllerSetterRetries += 1;
+      controllerSetterRetriesCount += 1;
     }
 
     return;
   }
 
   controllerIsBeingSet = true;
-  controllerSetterRetries = 0;
 
   const buttonMode = await settings.getButtonMode();
 
@@ -118,14 +118,23 @@ export async function setController( source, retriesCount ) {
       browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_EXPERT_TYPE ) );
       browser.tabs.onUpdated.addListener( setContentScriptAsController );
     }
-    // User who had had version 8 and hasn't granted the permissions again or revoked them. Or, somebody tampered with the settings in the storage
+    // User who had had version 8 and hasn't granted the permissions again or revoked them. Or, something went wrong with the required permissions. Or, somebody tampered with the settings in the storage.
     else {
-      requestToReportIssue( buttonMode, source, retriesCount );
-      await convertExpertModeToAdvanced( buttonMode );
+      // Maybe, this hiccup will go away while we keep rechecking?
+      // @todo DRY check.
+      if ( controllerSetterRetriesCount < CONTROLLER_SETTER_MAX_RETRIES ) {
+        controllerSetterRetriesCount += 1;
+        controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount ), CONTROLLER_SETTER_TIMEOUT );
+        controllerIsBeingSet = false;
+      }
+      else {
+        await convertExpertModeToAdvanced( buttonMode );
+        requestToReportIssue( buttonMode, source, retriesCount );
 
-      controllerIsBeingSet = false;
+        controllerIsBeingSet = false;
 
-      await setController( 'conversion', retriesCount );
+        await setController( 'conversion', retriesCount );
+      }
     }
   }
 
