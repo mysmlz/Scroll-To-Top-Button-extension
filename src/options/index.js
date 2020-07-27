@@ -172,8 +172,7 @@ async function requestPermissions() {
   togglePermissionsPrivacyDetails();
 
   try {
-    const FALLBACK_PERMISSION_INCLUDED = true;
-    const granted = await permissions.requestPermissions( FALLBACK_PERMISSION_INCLUDED );
+    const granted = await permissions.requestPermissions();
 
     await handlePermissionsRequestResult( granted );
 
@@ -238,11 +237,19 @@ async function requestToNeverShowAgain() {
   }
 }
 
-function revokePermissions( event ) {
+async function revokePermissions( event ) {
   event.preventDefault();
 
-  browser.permissions.remove( permissions.EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS )
-    .then( handlePermissionsRevocationResult );
+  let revoked = false;
+
+  try {
+    revoked = await permissions.revokePermissions();
+  }
+  catch ( error ) {
+    // @todo
+  }
+
+  handlePermissionsRevocationResult( revoked );
 }
 
 function handlePermissionsRevocationResult( revoked ) {

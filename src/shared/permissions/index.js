@@ -18,6 +18,14 @@ export const EXPERT_BUTTON_MODES_PERMISSIONS = {
 // Some users experience an issue where after browser restart ALL_URLS_ORIGIN is no longer there for some reason (haven't been able to reproduce to fix it)
 export const EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS = {
   [ ORIGINS_KEY ]: [
+    ALL_URLS_ALTERNATIVE_ORIGIN,
+  ],
+  [ PERMISSIONS_KEY ]: [
+    TABS_PERMISSION,
+  ],
+};
+export const EXPERT_BUTTON_MODES_COMBINED_PERMISSIONS = {
+  [ ORIGINS_KEY ]: [
     ALL_URLS_ORIGIN,
     ALL_URLS_ALTERNATIVE_ORIGIN,
   ],
@@ -36,7 +44,7 @@ export async function hasPermissions() {
   let permissionsGranted = false;
 
   try {
-    permissionsGranted = await browser.permissions.contains( EXPERT_BUTTON_MODES_PERMISSIONS );
+    permissionsGranted = await browser.permissions.contains( EXPERT_BUTTON_MODES_PERMISSIONS ) || await browser.permissions.contains( EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS );
 
     Log.add( `hasPermissions${ strLogSuccess }`, permissionsGranted, true );
   }
@@ -105,10 +113,13 @@ Anonymous installation ID: ${ installationId }`;
   await feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }
 
-export async function requestPermissions( fallbackPermissionIncluded ) {
-  return browser.permissions.request( fallbackPermissionIncluded ?
-    EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS :
-    EXPERT_BUTTON_MODES_PERMISSIONS );
+export async function requestPermissions() {
+  // Perhaps, there is still ({@link https://bugs.chromium.org/p/chromium/issues/detail?id=310815}) an issue with “<all_urls>”. Request its alternative – “*://*/*”
+  return browser.permissions.request( EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS );
+}
+
+export async function revokePermissions() {
+  return browser.permissions.remove( EXPERT_BUTTON_MODES_COMBINED_PERMISSIONS );
 }
 
 export async function rememberGrantedAtLeastOnce( granted ) {
