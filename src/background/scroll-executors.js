@@ -268,6 +268,7 @@ function isInternalMessage( target ) {
 
 async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
   const localVariables = await browser.storage.local.get( null );
+  const syncableVariables = await browser.storage.sync.get( null );
   const grantedPermissions = await browser.permissions.getAll();
 
   Log.add( 'Source', source, true );
@@ -287,10 +288,9 @@ async function requestToReportIssue( buttonMode, source, retriesCount = -1 ) {
 Version: ${ extensionInfo.version }
 Source: ${ source }
 Permissions: ${ JSON.stringify( grantedPermissions ) }
-Retries: ${ retriesCount } | ${ JSON.stringify( controllerSetterLog ) }
-Mode: ${ buttonMode }
 Browser: ${ window.navigator.userAgent }
 Local: ${ JSON.stringify( localVariables ) }
+Syncable: ${ JSON.stringify( syncableVariables ) }
 Anonymous installation ID: ${ installationId }`;
 
   feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
