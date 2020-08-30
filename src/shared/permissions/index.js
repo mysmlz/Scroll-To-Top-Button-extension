@@ -44,38 +44,26 @@ export async function hasPermissions() {
   let permissionsGranted = false;
 
   try {
-    permissionsGranted = await browser.permissions.contains( EXPERT_BUTTON_MODES_PERMISSIONS ) || await browser.permissions.contains( EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS );
+    // Test a theory that users' strange loss of permissions happens because of browser.permissions.contains() - Rely on .getAll only for now
+    const {
+      [ ORIGINS_KEY ]: origins,
+      [ PERMISSIONS_KEY ]: permissions,
+    } = await browser.permissions.getAll();
+    const originsIncluded = origins.includes( ALL_URLS_ORIGIN ) || origins.includes( ALL_URLS_ALTERNATIVE_ORIGIN );
+    const permissionsIncluded = permissions.includes( TABS_PERMISSION );
 
-    Log.add( `hasPermissions${ strLogSuccess }`, permissionsGranted, true );
+    Log.add( `hasPermissions fallback${ strLogSuccess }`, {
+      origins,
+      originsIncluded,
+      permissions,
+      permissionsIncluded,
+    }, true );
+
+    return ( originsIncluded && permissionsIncluded );
   }
   catch ( error ) {
-    Log.add( `hasPermissions${ strLogError }`, error, true );
+    Log.add( `hasPermissions fallback${ strLogError }`, error, true );
     await requestToReportPermissionsCheckIssue( error );
-  }
-
-  if ( ! permissionsGranted ) {
-    // @todo Figure out why browser.permissions.contains returns false for origins <all_urls>, whereas browser.permissions.getAll lists it. Related: {@link https://bugs.chromium.org/p/chromium/issues/detail?id=931816}
-    try {
-      const {
-        [ ORIGINS_KEY ]: origins,
-        [ PERMISSIONS_KEY ]: permissions,
-      } = await browser.permissions.getAll();
-      const originsIncluded = origins.includes( ALL_URLS_ORIGIN ) || origins.includes( ALL_URLS_ALTERNATIVE_ORIGIN );
-      const permissionsIncluded = permissions.includes( TABS_PERMISSION );
-
-      Log.add( `hasPermissions fallback${ strLogSuccess }`, {
-        origins,
-        originsIncluded,
-        permissions,
-        permissionsIncluded,
-      }, true );
-
-      return ( originsIncluded && permissionsIncluded );
-    }
-    catch ( error ) {
-      Log.add( `hasPermissions fallback${ strLogError }`, error, true );
-      await requestToReportPermissionsFallbackCheckIssue( error );
-    }
   }
 
   return permissionsGranted;
@@ -86,22 +74,6 @@ async function requestToReportPermissionsCheckIssue( error ) {
   const ISSUE_MESSAGE_JSON_KEY = 'permissionsCheckIssue';
   // Don't translate, as this gets sent to developer
   const ISSUE_TITLE = 'Permissions check issue';
-  // Don't translate, as this gets sent to developer
-  // @todo Move out generic error report.
-  const debuggingInformation = `
-Version: ${ strConstExtensionVersion }
-Error: ${ JSON.stringify( error ) }
-Browser: ${ window.navigator.userAgent }
-Anonymous installation ID: ${ installationId }`;
-
-  await feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
-}
-
-async function requestToReportPermissionsFallbackCheckIssue( error ) {
-  const installationId = await utils.getInstallationId();
-  const ISSUE_MESSAGE_JSON_KEY = 'permissionsFallbackCheckIssue';
-  // Don't translate, as this gets sent to developer
-  const ISSUE_TITLE = 'Permissions fallback check issue';
   // Don't translate, as this gets sent to developer
   // @todo Move out generic error report.
   const debuggingInformation = `

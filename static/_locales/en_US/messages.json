@@ -639,17 +639,6 @@
     }
   },
 
-  "permissionsFallbackCheckIssue": {
-    "message": "There was an issue checking (fallback) for the required permissions.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can re-enable an Expert mode in Options, if you had one enabled before.\n\nSorry for the inconvenience.",
-    "description": "When there is an issue fallback-checking for the required permissions, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that the preferred Expert-type mode can be enabled in the Options again.",
-    "placeholders": {
-      "debugging_information_confirmation": {
-        "content": "$1",
-        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
-  },
-
   "permissionsRequestIssue": {
     "message": "There was an issue with your request for the permissions.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can try requesting the permissions again.\n\nSorry for the inconvenience.",
     "description": "When there is an issue with user's request for the permissions, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised to make the request again.",
