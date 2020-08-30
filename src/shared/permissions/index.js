@@ -15,15 +15,6 @@ export const EXPERT_BUTTON_MODES_PERMISSIONS = {
     TABS_PERMISSION,
   ],
 };
-// Some users experience an issue where after browser restart ALL_URLS_ORIGIN is no longer there for some reason (haven't been able to reproduce to fix it)
-export const EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS = {
-  [ ORIGINS_KEY ]: [
-    ALL_URLS_ALTERNATIVE_ORIGIN,
-  ],
-  [ PERMISSIONS_KEY ]: [
-    TABS_PERMISSION,
-  ],
-};
 export const EXPERT_BUTTON_MODES_COMBINED_PERMISSIONS = {
   [ ORIGINS_KEY ]: [
     ALL_URLS_ORIGIN,
@@ -87,7 +78,7 @@ Anonymous installation ID: ${ installationId }`;
 
 export async function requestPermissions() {
   // Perhaps, there is still ({@link https://bugs.chromium.org/p/chromium/issues/detail?id=310815}) an issue with “<all_urls>”. Request its alternative – “*://*/*”
-  return browser.permissions.request( EXPERT_BUTTON_MODES_ALTERNATIVE_PERMISSIONS );
+  return browser.permissions.request( EXPERT_BUTTON_MODES_PERMISSIONS );
 }
 
 export async function revokePermissions() {
