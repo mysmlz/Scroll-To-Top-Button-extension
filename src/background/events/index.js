@@ -1,6 +1,15 @@
 import utils from 'Shared/utils';
 import * as permissions from 'Shared/permissions';
 
+const EVENTS_STORAGE_KEYS = {
+  // Hardcoded so values can be searched for and found
+  onInstalled: 'onInstalledEvents',
+  onStartup: 'onStartupEvents',
+  onSuspend: 'onSuspendEvents',
+  onPermissionsAdded: 'onPermissionsAddedEvents',
+  onPermissionsRemoved: 'onPermissionsRemovedEvents',
+  onSyncStorageChange: 'onSyncStorageChangeEvents',
+};
 const EVENTS_STORAGE_TYPE = utils.NON_SYNCHRONIZABLE_STORAGE_TYPE;
 // Chosen arbitrary. Should be enough
 const LAST_FEW_EVENTS_COUNT = 10;
@@ -12,15 +21,6 @@ function init() {
 }
 
 function addListeners() {
-  const EVENTS_STORAGE_KEYS = {
-    // Hardcoded so values can be searched for and found
-    onInstalled: 'onInstalledEvents',
-    onStartup: 'onStartupEvents',
-    onSuspend: 'onSuspendEvents',
-    onPermissionsAdded: 'onPermissionsAddedEvents',
-    onPermissionsRemoved: 'onPermissionsRemovedEvents',
-  };
-
   /**
    * @typedef {'install'|'update'|'chrome_update'|'shared_module_update'} OnInstalledReason
    */
@@ -61,6 +61,8 @@ function addListeners() {
 
   browser.permissions?.onAdded?.addListener( ( permissions ) => recordEvent( EVENTS_STORAGE_KEYS.onPermissionsAdded, permissions ) );
   browser.permissions?.onRemoved?.addListener( ( permissions ) => recordEvent( EVENTS_STORAGE_KEYS.onPermissionsRemoved, permissions ) );
+
+  browser.storage?.onChanged?.addListener( recordSyncStorageOnChangedEvent );
 }
 
 /**
@@ -146,4 +148,14 @@ async function saveEventsInStorage( storageKey, events ) {
   await utils.saveInStorage( EVENTS_STORAGE_TYPE, {
     [ storageKey ]: events,
   } );
+}
+
+async function recordSyncStorageOnChangedEvent( changes, areaName ) {
+  if ( areaName === utils.SYNCHRONIZABLE_STORAGE_TYPE ) {
+    await recordEvent( EVENTS_STORAGE_KEYS.onSyncStorageChange, {
+      // @todo Don't pass repeated settings, only the ones that actually got changed
+      ...changes,
+      permissionsGranted: await permissions.hasPermissions(),
+    } );
+  }
 }
