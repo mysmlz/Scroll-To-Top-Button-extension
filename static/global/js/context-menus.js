@@ -110,7 +110,19 @@
       browser.contextMenus.create( mergedProperties );
     }
     catch ( error ) {
-      // @todo
+      const GLOBAL_LOG_MESSAGE_UPDATED = false;
+
+      Log.add(
+        'Failed to create context menu item',
+        {
+          error: error,
+          properties: properties,
+        },
+        GLOBAL_LOG_MESSAGE_UPDATED,
+        {
+          level: 'error',
+        }
+      );
     }
   }
 
