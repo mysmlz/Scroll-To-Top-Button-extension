@@ -11,6 +11,7 @@ import * as incentives from 'Shared/incentives';
 import * as feedback from 'Shared/feedback';
 
 import * as browsersHelpers from './browsers';
+import * as i18nModule from './i18n';
 
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
@@ -50,7 +51,7 @@ init();
  */
 
 async function init() {
-  setBrowserSpecificI18n();
+  i18nModule.setBrowserSpecificI18n();
   await pages.init( 'options' );
   cachePermissionsCheckResult( await permissions.hasPermissions() );
   getSettings();
@@ -59,39 +60,6 @@ async function init() {
   sortLanguages();
   setDocumentLanguage();
   addListeners();
-}
-
-/**
- *
- */
-
-function setBrowserSpecificI18n() {
-  const BROWSER_TYPE_PLACEHOLDER = '%BROWSER_TYPE%';
-  const browserType = getPermissionsRelatedBrowserType();
-  const browserSpecificI18nElements = [
-    ...document.querySelectorAll( `[data-i18n-parameters$="${ BROWSER_TYPE_PLACEHOLDER }"]` ),
-  ];
-
-  for ( let element of browserSpecificI18nElements ) {
-    const currentValue = element.getAttribute( 'data-i18n-parameters' );
-    const newValue = currentValue.replace( BROWSER_TYPE_PLACEHOLDER, browserType );
-
-    element.setAttribute( 'data-i18n-parameters', newValue );
-  }
-}
-
-/**
- * Between the supported browsers, all/most Chromium-based ones have the same permission messaging. And Firefox-based one have the same permission messaging.
- *
- * @todo Replace with UA-CH when userAgent can no longer be trusted. {@link https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/-2JIRNMWJ7s/yHe4tQNLCgAJ}
- */
-
-function getPermissionsRelatedBrowserType() {
-  if ( browsersHelpers.isFirefox() ) {
-    return 'Firefox';
-  }
-
-  return 'Chromium';
 }
 
 /**
