@@ -74,7 +74,7 @@ function cachePermissionsCheckResult( granted ) {
 async function setUi() {
   const savedSettings = await settings.getSettings();
 
-  if ( poziworldExtension.utils.isType( savedSettings, 'object' ) && ! Global.isEmpty( savedSettings ) ) {
+  if ( settings.isExpectedFormat( savedSettings ) ) {
     cacheSettings( savedSettings );
     updateSelectedOptions( savedSettings );
   }
@@ -641,20 +641,20 @@ function hasSetCustomValues( element ) {
 /**
  * Save the settings in the Storage.
  *
- * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
+ * @param {Object} newSettings - Key-value pairs of the main extension settings (the ones set on the Options page).
  * @param {boolean} [refreshForm] - If the settings are being changed by a reset, update form values.
  */
 
-function setSettings( settings, refreshForm ) {
-  if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
+function setSettings( newSettings, refreshForm ) {
+  if ( settings.isExpectedFormat( newSettings ) ) {
     poziworldExtension.utils.setSettings(
-      settings,
+      newSettings,
       'setSettings',
-      handleSetSettingsSuccess.bind( null, settings, refreshForm )
+      handleSetSettingsSuccess.bind( null, newSettings, refreshForm )
     );
 
-    if ( poziworldExtension.utils.isType( settings.contextMenu, 'string' ) ) {
-      sttb.contextMenus.toggle( settings );
+    if ( poziworldExtension.utils.isType( newSettings.contextMenu, 'string' ) ) {
+      sttb.contextMenus.toggle( newSettings );
     }
   }
 }

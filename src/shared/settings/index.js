@@ -110,7 +110,7 @@ async function retrieveSettingsFromStorage() {
   return browser.storage.sync.get( SETTINGS_STORAGE_KEY );
 }
 
-function isExpectedFormat( settings ) {
+export function isExpectedFormat( settings ) {
   return poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings );
 }
 
