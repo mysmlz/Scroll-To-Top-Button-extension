@@ -12,6 +12,7 @@ import * as feedback from 'Shared/feedback';
 
 import * as browsersHelpers from './browsers';
 import * as i18nModule from './i18n';
+import * as languagesModule from './languages';
 
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
@@ -32,8 +33,6 @@ const PERMISSIONS_REQUIRED_ATTRIBUTE_KEY = 'data-permissions-required';
 const disableExpertButtonModesCta = document.getElementById( 'disableExpertButtonModesCta' );
 const permissionsPrivacyDetailsContainer = document.getElementById( 'permissionsPrivacyDetailsContainer' );
 const distanceType = document.getElementById( 'distanceType' );
-const UI_LANGUAGE_ID = 'uiLanguage';
-const uiLanguage = document.getElementById( UI_LANGUAGE_ID );
 const status = document.getElementById( 'status' );
 let statusOptionsSaved;
 let statusTimeoutId;
@@ -57,8 +56,8 @@ async function init() {
   getSettings();
   cacheMessages();
   setLinks();
-  sortLanguages();
-  setDocumentLanguage();
+  languagesModule.sortLanguages();
+  languagesModule.setDocumentLanguage();
   addListeners();
 }
 
@@ -360,33 +359,6 @@ function setLinks() {
     }
 
     document.getElementById( 'rateLink' ).href = strRateLink;
-  }
-}
-
-/**
- * In the markup, languages are sorted by language codes.
- * When showing to user, sort by language names in the current language.
- */
-
-function sortLanguages() {
-  if ( uiLanguage ) {
-    const currentLanguage = uiLanguage.value;
-    const languages = Array.from( uiLanguage.children );
-    // Keep “Automatic (browser default)” always first in the sorted list
-    const automaticLanguage = languages.shift();
-
-    languages.sort( sortByTextContent );
-
-    const sortedLanguages = [ automaticLanguage ].concat( languages );
-
-    uiLanguage.innerHTML = '';
-
-    while ( sortedLanguages.length ) {
-      uiLanguage.append( sortedLanguages.shift() );
-    }
-
-    // Once sorted, the last option gets selected, if the language hasn't been previously set
-    uiLanguage.value = currentLanguage;
   }
 }
 
@@ -780,7 +752,7 @@ async function handleSetSettingsSuccess( settings, refreshForm ) {
     updateSelectedOptions( settings );
   }
 
-  if ( isLanguageBeingChanged( settings ) ) {
+  if ( languagesModule.isLanguageBeingChanged( settings, getOriginalSettings() ) ) {
     const approved = await requestToReloadExtension();
 
     if ( approved ) {
@@ -995,63 +967,4 @@ function getSettingContainer( element ) {
 
 function togglePageReadyState() {
   document.body.classList.toggle( NOT_READY_CLASS );
-}
-
-/**
- * Set lang attribute value on <html />.
- */
-
-function setDocumentLanguage() {
-  const i18n = window.i18next;
-
-  if ( i18n ) {
-    const language = i18n.language;
-
-    if ( poziworldExtension.utils.isNonEmptyString( language ) ) {
-      const PLATFORM_LANGUAGE_SEPARATOR = '_';
-      // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax
-      const LANGUAGE_TAG_SEPARATOR = '-';
-
-      document.documentElement.lang = language.replace( PLATFORM_LANGUAGE_SEPARATOR, LANGUAGE_TAG_SEPARATOR );
-    }
-  }
-}
-
-/**
- * Check whether a new language has been chosen.
- *
- * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
- * @return {boolean}
- */
-
-function isLanguageBeingChanged( settings ) {
-  const newUiLanguage = settings.uiLanguage;
-
-  if ( poziworldExtension.utils.isNonEmptyString( newUiLanguage ) ) {
-    return newUiLanguage !== getOriginalSettings().uiLanguage;
-  }
-
-  return false;
-}
-
-/**
- * Sort Nodes by their text content.
- *
- * @param {Node} a
- * @param {Node} b
- * @return {number}
- */
-
-function sortByTextContent( a, b ) {
-  const aTextContent = a.textContent;
-  const bTextContent = b.textContent;
-
-  if ( aTextContent < bTextContent ) {
-    return -1;
-  }
-  else if ( aTextContent > bTextContent ) {
-    return 1;
-  }
-
-  return 0;
 }
