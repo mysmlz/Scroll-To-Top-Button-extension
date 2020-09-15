@@ -10,7 +10,8 @@ import * as pages from 'Shared/pages';
 import * as incentives from 'Shared/incentives';
 import * as feedback from 'Shared/feedback';
 
-const browserTypeIsFirefox = window.navigator.userAgent.includes( ' Firefox/' );
+import * as browsersHelpers from './browsers';
+
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
 const SETTING_SECTION_CONTAINER_SELECTOR = '.pwFormGroup';
@@ -86,7 +87,7 @@ function setBrowserSpecificI18n() {
  */
 
 function getPermissionsRelatedBrowserType() {
-  if ( browserTypeIsFirefox ) {
+  if ( browsersHelpers.isFirefox() ) {
     return 'Firefox';
   }
 
@@ -266,7 +267,7 @@ function handlePermissionsRevocationResult( revoked ) {
  */
 
 function reloadExtensionOnPermissionChange() {
-  if ( browserTypeIsFirefox ) {
+  if ( browsersHelpers.isFirefox() ) {
     requestToReloadExtension();
   }
 }
