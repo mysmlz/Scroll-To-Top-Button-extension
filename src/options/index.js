@@ -48,17 +48,15 @@ init();
  * Initialize all the logic.
  */
 
-function init() {
+async function init() {
   setBrowserSpecificI18n();
-  pages.init( 'options' )
-    .then( permissions.hasPermissions )
-    .then( cachePermissionsCheckResult )
-    .then( getSettings )
-    .then( cacheMessages )
-    .then( setLinks )
-    .then( sortLanguages )
-    .then( setDocumentLanguage );
-
+  await pages.init( 'options' );
+  cachePermissionsCheckResult( await permissions.hasPermissions() );
+  getSettings();
+  cacheMessages();
+  setLinks();
+  sortLanguages();
+  setDocumentLanguage();
   addListeners();
 }
 
