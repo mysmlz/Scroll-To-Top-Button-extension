@@ -413,9 +413,7 @@ function cacheSettings( settings ) {
  */
 
 function setOriginalSettings( settings ) {
-  if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
-    originalSettings = settings;
-  }
+  originalSettings = settings;
 }
 
 /**
@@ -435,34 +433,32 @@ function getOriginalSettings() {
  */
 
 function updateSelectedOptions( settings ) {
-  if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
-    let updatedSettingsCounter = 0;
+  let updatedSettingsCounter = 0;
 
-    for ( const settingKey in settings ) {
-      if ( settings.hasOwnProperty( settingKey ) ) {
-        let settingElement = document.getElementById( settingKey );
+  for ( const settingKey in settings ) {
+    if ( settings.hasOwnProperty( settingKey ) ) {
+      let settingElement = document.getElementById( settingKey );
+
+      if ( settingElement ) {
+        settingElement.value = settings[ settingKey ];
+
+        updatedSettingsCounter++;
+      }
+      else {
+        settingElement = document.querySelector( `[name="${ settingKey }"][value="${ settings[ settingKey ] }"` );
 
         if ( settingElement ) {
-          settingElement.value = settings[ settingKey ];
+          settingElement.checked = true;
 
           updatedSettingsCounter++;
         }
-        else {
-          settingElement = document.querySelector( `[name="${ settingKey }"][value="${ settings[ settingKey ] }"` );
-
-          if ( settingElement ) {
-            settingElement.checked = true;
-
-            updatedSettingsCounter++;
-          }
-        }
       }
     }
+  }
 
-    if ( updatedSettingsCounter ) {
-      checkMode();
-      switchCustomOptionsVisibility();
-    }
+  if ( updatedSettingsCounter ) {
+    checkMode();
+    switchCustomOptionsVisibility();
   }
 }
 
