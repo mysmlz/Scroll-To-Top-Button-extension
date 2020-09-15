@@ -53,7 +53,7 @@ async function init() {
   i18nModule.setBrowserSpecificI18n();
   await pages.init( 'options' );
   cachePermissionsCheckResult( await permissions.hasPermissions() );
-  getSettings();
+  setUi();
   cacheMessages();
   linksModule.setLinks();
   languagesModule.sortLanguages();
@@ -72,6 +72,13 @@ function cachePermissionsCheckResult( granted ) {
 }
 
 async function setUi() {
+  const savedSettings = await settings.getSettings();
+
+  if ( poziworldExtension.utils.isType( savedSettings, 'object' ) && ! Global.isEmpty( savedSettings ) ) {
+    cacheSettings( savedSettings );
+    updateSelectedOptions( savedSettings );
+  }
+
   setButtonModesControllingCtasState( true );
   await setHadVersion8InstalledBeforeMessageVisibility();
   togglePageReadyState();
@@ -298,14 +305,6 @@ function cacheMessages() {
 }
 
 /**
- * Retrieve the settings from the Storage.
- */
-
-function getSettings() {
-  poziworldExtension.utils.getSettings( 'getSettings', handleGotSettings );
-}
-
-/**
  * Add the appropriate event listeners for the form elements.
  */
 
@@ -401,22 +400,10 @@ function setOriginalAuthorSettings( event ) {
   setSettings( settings, true );
 }
 
-/**
- * The settings from the Storage are retrived, proceed.
- *
- * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
- */
-
-function handleGotSettings( settings ) {
-  if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) ) {
-    setOriginalSettings( settings );
-    updateSelectedOptions( settings );
-
-    // @todo Move out.
-    buttonModeCachedValue = settings.buttonMode;
-  }
-
-  setUi();
+function cacheSettings( settings ) {
+  setOriginalSettings( settings );
+  // @todo Move out.
+  buttonModeCachedValue = settings.buttonMode;
 }
 
 /**
