@@ -641,32 +641,45 @@ function hasSetCustomValues( element ) {
 /**
  * Save the settings in the Storage.
  *
- * @param {Object} newSettings - Key-value pairs of the main extension settings (the ones set on the Options page).
+ * @param {object} newSettings - Key-value pairs of the main extension settings (the ones set on the Options page).
  * @param {boolean} [refreshForm] - If the settings are being changed by a reset, update form values.
  */
 
-function setSettings( newSettings, refreshForm ) {
-  if ( settings.isExpectedFormat( newSettings ) ) {
-    poziworldExtension.utils.setSettings(
-      newSettings,
-      'setSettings',
-      handleSetSettingsSuccess.bind( null, newSettings, refreshForm )
-    );
+async function setSettings( newSettings, refreshForm ) {
+  if ( ! settings.isExpectedFormat( newSettings ) ) {
+    return;
+  }
 
-    if ( poziworldExtension.utils.isType( newSettings.contextMenu, 'string' ) ) {
-      sttb.contextMenus.toggle( newSettings );
-    }
+  try {
+    await settings.setSettings( newSettings );
+    applySettings( newSettings, refreshForm );
+  }
+  catch ( error ) {
+    const GLOBAL_LOG_MESSAGE_UPDATED = false;
+
+    Log.add(
+      'Failed to save settings',
+      {
+        error,
+        newSettings,
+        refreshForm,
+      },
+      GLOBAL_LOG_MESSAGE_UPDATED,
+      {
+        level: 'error',
+      },
+    );
   }
 }
 
 /**
  * Let user know the settings have been saved.
  *
- * @param {Object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
+ * @param {object} settings - Key-value pairs of the main extension settings (the ones set on the Options page).
  * @param {boolean} [refreshForm] - If the settings are being changed by a reset, update form values.
  */
 
-async function handleSetSettingsSuccess( settings, refreshForm ) {
+async function applySettings( settings, refreshForm ) {
   setStatus( statusOptionsSaved );
 
   window.clearTimeout( statusTimeoutId );
@@ -676,6 +689,10 @@ async function handleSetSettingsSuccess( settings, refreshForm ) {
 
   if ( refreshForm ) {
     updateSelectedOptions( settings );
+  }
+
+  if ( poziworldExtension.utils.isNonEmptyString( settings.contextMenu ) ) {
+    sttb.contextMenus.toggle( settings );
   }
 
   if ( languagesModule.isLanguageBeingChanged( settings, getOriginalSettings() ) ) {
