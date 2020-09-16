@@ -39,7 +39,7 @@
       "global/js/i18next/i18next.min.js",
       "global/js/i18next/i18nextBrowserLanguageDetector.min.js",
       "global/js/i18next/i18nextXHRBackend.js",
-      "global/js/i18n.js",
+      "shared/legacy/i18n.js",
       "global/js/context-menus.js",
       "global/js/background.js",
       "global/js/tabs.js",

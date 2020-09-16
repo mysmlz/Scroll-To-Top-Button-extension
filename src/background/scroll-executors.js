@@ -41,7 +41,7 @@ const CONTENT_SCRIPT_JAVASCRIPT_FILES = [
   '/global/js/i18next/i18next.min.js',
   '/global/js/i18next/i18nextBrowserLanguageDetector.min.js',
   '/global/js/i18next/i18nextXHRBackend.js',
-  '/global/js/i18n.js',
+  '/shared/legacy/i18n.js',
   '/libraries/jquery.easing.js',
   '/libraries/jQueryRotate.js',
   '/libraries/shortcut.js',
