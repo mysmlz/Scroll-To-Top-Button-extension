@@ -14,6 +14,7 @@ const defaultConfig = Map( {
     'content-scripts': './src/content-scripts/index.js',
     'options': './src/options/index.js',
     'shared/elements/scroll-to-top-button': './src/shared/elements/scroll-to-top-button.css',
+    'shared/legacy/context-menus': './src/shared/context-menus/legacy.js',
     'shared/legacy/i18n': './src/shared/i18n/legacy.js',
   },
   output: Map( {
