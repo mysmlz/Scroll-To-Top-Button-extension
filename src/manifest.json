@@ -41,7 +41,7 @@
       "global/js/i18next/i18nextXHRBackend.js",
       "shared/legacy/i18n.js",
       "shared/legacy/context-menus.js",
-      "global/js/background.js",
+      "shared/legacy/background.js",
       "global/js/tabs.js",
       "global/js/referral-programs.js",
       "background.js"
