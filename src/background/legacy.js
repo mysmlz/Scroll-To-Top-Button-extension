@@ -1,3 +1,5 @@
+import * as settingsHelpers from 'Shared/settings';
+
 /* =============================================================================
 
   Scroll To Top Button
@@ -288,18 +290,21 @@ var Background = {
   /**
    * Set extension defaults in case user hasn't set them yet.
    * v7.0.0 moved settings from localStorage to the {@link https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/storage/sync sync} storage.
-   *
-   * @return {Promise<unknown>}
    */
 
-  checkForLegacySettings: function () {
+  checkForLegacySettings: async function () {
     strLog = 'checkForLegacySettings';
     Log.add( strLog );
 
-    return new Promise( getSettings.bind( null, strLog ) )
-      .catch( moveLegacySettings )
-      .then( moveLegacySettings )
-      .then( initContextMenus );
+    try {
+      const settings = await settingsHelpers.getSettings();
+
+      moveLegacySettings( settings );
+      initContextMenus();
+    }
+    catch ( error ) {
+      moveLegacySettings();
+    }
   }
   ,
 
@@ -395,26 +400,9 @@ var Background = {
 };
 
 /**
- * Retrieve the settings from the Storage.
- *
- * @param {string} logPrefix
- * @param {resolve} resolve
- * @param {reject} reject
- */
-
-function getSettings( logPrefix, resolve, reject ) {
-  poziworldExtension.utils.getSettings(
-    logPrefix,
-    resolve,
-    reject,
-    true
-  );
-}
-
-/**
  * If the settings aren't in the Storage yet.
  *
- * @param {Object} settings - Key-value pairs.
+ * @param {Settings} [settings] - Key-value pairs.
  */
 
 function moveLegacySettings( settings ) {

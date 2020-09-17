@@ -1,3 +1,5 @@
+import * as settingsHelpers from 'Shared/settings';
+
 /**
  * The platform natively supports only a limited set of locales (https://developer.chrome.com/webstore/i18n?csw=1#localeTable).
  * Use a third-party tool to support all locales (languages).
@@ -236,12 +238,15 @@ function setLanguage() {
  * @param {reject} reject
  */
 
-function getLanguagePreferences( resolve, reject ) {
-  poziworldExtension.utils.getSettings(
-    'getLanguagePreferences',
-    getExtensionLanguageSettings.bind( null, resolve, reject ),
-    getBrowserLanguageSettings.bind( null, resolve, reject )
-  );
+async function getLanguagePreferences( resolve, reject ) {
+  try {
+    const settings = await settingsHelpers.getSettings();
+
+    getExtensionLanguageSettings( resolve, reject, settings );
+  }
+  catch ( error ) {
+    getBrowserLanguageSettings( resolve, reject );
+  }
 }
 
 /**

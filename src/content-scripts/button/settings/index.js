@@ -50,26 +50,9 @@ const buttonSettings = {
 export default buttonSettings;
 
 /**
- * Retrieve the settings from the Storage.
- *
- * @param {resolve} resolve
- * @param {reject} reject
- */
-
-export function retrieveSettingsFromStorage( resolve, reject ) {
-  poziworldExtension.utils.getSettings(
-    '',
-    resolve,
-    reject,
-    true,
-  );
-}
-
-/**
  * Make sure the settings from the Storage are in the right format and tweak a few parameters if necessary.
  *
  * @param {Settings} settingsToNormalize - Extension settings.
- * @returns {Settings}
  */
 
 export function normalizeSettings( settingsToNormalize ) {
@@ -109,7 +92,8 @@ export function normalizeSettings( settingsToNormalize ) {
     normalizedSettings.distanceLength = 0;
   }
 
-  return Object.assign( buttonSettings, normalizedSettings );
+  // @todo Make code more clear.
+  Object.assign( buttonSettings, normalizedSettings );
 }
 
 /**

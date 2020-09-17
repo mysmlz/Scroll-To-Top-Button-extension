@@ -1,3 +1,5 @@
+import * as settingsHelpers from 'Shared/settings';
+
 // Context menu items
 const SCROLL_TO_TOP_ONLY_BASIC_ID = 'scrollToTopOnlyBasic';
 const SEPARATOR_ID = 'separator';
@@ -46,13 +48,14 @@ function ContextMenus() {
  * Check settings to find out whether context menus should be created or removed.
  */
 
-ContextMenus.prototype.init = function() {
+ContextMenus.prototype.init = async function() {
   strLog = 'sttb.contextMenus.init';
   Log.add( strLog );
 
   const _this = getInstance();
+  const settings = await settingsHelpers.getSettings();
 
-  poziworldExtension.utils.getSettings( strLog, _this.toggle );
+  _this.toggle( settings );
 };
 
 /**
