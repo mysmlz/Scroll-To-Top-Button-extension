@@ -530,15 +530,12 @@ function moveLegacySettings( settings ) {
     }
 
     if ( ! Global.isEmpty( newSettings ) ) {
-      const storageObject = {
-        settings: newSettings,
-      };
-
-      poziworldExtension.utils.setStorageItems(
-        StorageSync,
-        storageObject,
-        logTemp
-      );
+      try {
+        settingsHelpers.setSettings( newSettings );
+      }
+      catch ( error ) {
+        // @todo Abort everything and notify user?
+      }
 
       if ( localStorageAvailable ) {
         localStorage.removeItem( 'latest' );
