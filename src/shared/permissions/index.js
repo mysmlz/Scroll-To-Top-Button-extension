@@ -1,6 +1,6 @@
 import utils from 'Shared/utils';
 import * as feedback from 'Shared/feedback';
-import * as settings from 'Shared/settings';
+import * as settingsHelpers from 'Shared/settings';
 
 const ORIGINS_KEY = 'origins';
 const ALL_URLS_ORIGIN = '<all_urls>';
@@ -88,7 +88,7 @@ export async function revokePermissions() {
 export async function rememberGrantedAtLeastOnce( granted ) {
   try {
     await browser.storage.local.set( {
-      [ settings.HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY ]: granted,
+      [ settingsHelpers.HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY ]: granted,
     } );
   }
   catch ( error ) {

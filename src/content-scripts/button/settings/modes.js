@@ -1,4 +1,4 @@
-import * as settings from 'Shared/settings';
+import * as settingsHelpers from 'Shared/settings';
 
 import buttonSettings from './';
 
@@ -14,7 +14,7 @@ const MODE_KEYBOARD_ONLY = 'keys';
  */
 
 export function isBrowserActionTopOnlyMode( buttonMode ) {
-  return isMode( buttonMode, settings.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE );
+  return isMode( buttonMode, settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE );
 }
 
 /**

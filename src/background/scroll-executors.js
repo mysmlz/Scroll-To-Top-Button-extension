@@ -5,7 +5,7 @@
 import utils from 'Shared/utils';
 import * as feedback from 'Shared/feedback';
 import * as permissions from 'Shared/permissions';
-import * as settings from 'Shared/settings';
+import * as settingsHelpers from 'Shared/settings';
 
 const BUTTON_MODE_BASIC_TYPE = 'basic';
 const BUTTON_MODE_ADVANCED_TYPE = 'advanced';
@@ -96,9 +96,9 @@ export async function setController( source, retriesCount ) {
 
   controllerIsBeingSet = true;
 
-  const buttonMode = await settings.getButtonMode();
+  const buttonMode = await settingsHelpers.getButtonMode();
 
-  if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) || settings.isBasicButtonMode( buttonMode ) ) {
+  if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
     browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
     browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_BASIC_TYPE ) );
     browser.browserAction.onClicked.removeListener( injectAllFiles );
@@ -108,7 +108,7 @@ export async function setController( source, retriesCount ) {
   else {
     browser.browserAction.onClicked.removeListener( injectScrollToTopOnlyBasicLogic );
 
-    if ( settings.isAdvancedButtonMode( buttonMode ) ) {
+    if ( settingsHelpers.isAdvancedButtonMode( buttonMode ) ) {
       browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
       browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_ADVANCED_TYPE ) );
       // @todo Don't inject the second time.
@@ -234,7 +234,7 @@ async function getBrowserActionTitle( mode ) {
 
   let breakingChangesMessage = '';
 
-  if ( await settings.mightHaveHadVersion8InstalledBefore() && ! await settings.haveGrantedPermissionsAtLeastOnce() ) {
+  if ( await settingsHelpers.mightHaveHadVersion8InstalledBefore() && ! await settingsHelpers.haveGrantedPermissionsAtLeastOnce() ) {
     breakingChangesMessage = poziworldExtension.i18n.getMessage( 'breakingChangesUpgradingVersion8Message' );
   }
 
@@ -250,14 +250,14 @@ async function getBrowserActionTitle( mode ) {
 }
 
 async function convertExpertModeToAdvanced( mode ) {
-  await settings.setSettings( {
-    ...await settings.getSettings(),
-    [ settings.BUTTON_MODE_KEY ]: settings.getExpertModeReplacement( mode ),
+  await settingsHelpers.setSettings( {
+    ...await settingsHelpers.getSettings(),
+    [ settingsHelpers.BUTTON_MODE_KEY ]: settingsHelpers.getExpertModeReplacement( mode ),
   } );
 }
 
 function handleMessage( { data: { trigger }, target } ) {
-  if ( isInternalMessage( target ) && trigger === settings.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
+  if ( isInternalMessage( target ) && trigger === settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
     injectScrollToTopOnlyBasicLogic();
   }
 }

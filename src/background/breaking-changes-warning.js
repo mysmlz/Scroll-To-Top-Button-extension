@@ -1,4 +1,4 @@
-import * as settings from 'Shared/settings';
+import * as settingsHelpers from 'Shared/settings';
 
 const EXTENSION_UPDATED_REASON = 'updated';
 const BACKGROUND_JS_STORAGE_SAVING_DELAY = 1000;
@@ -32,7 +32,7 @@ function scheduleWarning() {
 }
 
 async function warnAboutBreakingChanges() {
-  if ( await settings.mightHaveHadVersion8InstalledBefore() && ! await settings.hadAskedToNotShowWarningAgain() && ! await settings.haveGrantedPermissionsAtLeastOnce() ) {
+  if ( await settingsHelpers.mightHaveHadVersion8InstalledBefore() && ! await settingsHelpers.hadAskedToNotShowWarningAgain() && ! await settingsHelpers.haveGrantedPermissionsAtLeastOnce() ) {
     window.Global.openOptionsPage( 'breaking-changes-warning' );
   }
 }

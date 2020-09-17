@@ -5,7 +5,7 @@ import './options.css';
 import utils from 'Shared/utils';
 import * as i18n from 'Shared/i18n';
 import * as permissions from 'Shared/permissions';
-import * as settings from 'Shared/settings';
+import * as settingsHelpers from 'Shared/settings';
 import * as pages from 'Shared/pages';
 import * as feedback from 'Shared/feedback';
 
@@ -72,9 +72,9 @@ function cachePermissionsCheckResult( granted ) {
 }
 
 async function setUi() {
-  const savedSettings = await settings.getSettings();
+  const savedSettings = await settingsHelpers.getSettings();
 
-  if ( settings.isExpectedFormat( savedSettings ) ) {
+  if ( settingsHelpers.isExpectedFormat( savedSettings ) ) {
     cacheSettings( savedSettings );
     updateSelectedOptions( savedSettings );
   }
@@ -100,8 +100,8 @@ function setButtonModesControllingCtasState( expertModeShouldBeReplaced ) {
 
     const buttonModeValue = getButtonModeValue();
 
-    if ( expertModeShouldBeReplaced && settings.isExpertButtonMode( buttonModeValue ) ) {
-      const buttonModeNewValue = settings.getExpertModeReplacement( buttonModeValue );
+    if ( expertModeShouldBeReplaced && settingsHelpers.isExpertButtonMode( buttonModeValue ) ) {
+      const buttonModeNewValue = settingsHelpers.getExpertModeReplacement( buttonModeValue );
       // @todo Optimize.
       const buttonModeNewElement = document.querySelector( `${ BUTTON_MODE_SELECTOR }[value="${ buttonModeNewValue }"` );
 
@@ -121,7 +121,7 @@ async function setHadVersion8InstalledBeforeMessageVisibility() {
   const messageContainer = document.getElementById( 'hadVersion8InstalledBeforeMessageContainer' );
 
   if ( messageContainer ) {
-    const hidden = await settings.haveGrantedPermissionsAtLeastOnce() || await settings.hadAskedToNotShowWarningAgain();
+    const hidden = await settingsHelpers.haveGrantedPermissionsAtLeastOnce() || await settingsHelpers.hadAskedToNotShowWarningAgain();
 
     if ( ! hidden ) {
       const acknowledgmentCta = document.getElementById( 'hadVersion8InstalledBeforeMessageAcknowledgmentCta' );
@@ -202,7 +202,7 @@ async function handlePermissionsRequestResult( granted ) {
 async function requestToNeverShowAgain() {
   try {
     await browser.storage.local.set( {
-      [ settings.HAD_ASKED_TO_NOT_SHOW_WARNING_AGAIN_KEY ]: true,
+      [ settingsHelpers.HAD_ASKED_TO_NOT_SHOW_WARNING_AGAIN_KEY ]: true,
     } );
   }
   catch ( error ) {
@@ -346,7 +346,7 @@ function restoreDefaultSettings( event ) {
    */
 
   const newSettings = {
-    buttonMode: settings.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE,
+    buttonMode: settingsHelpers.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE,
     scrollUpSpeed: 1000,
     scrollUpSpeedCustom: 1000,
     scrollDownSpeed: 1000,
@@ -378,7 +378,7 @@ function setOriginalAuthorSettings( event ) {
   event.preventDefault();
 
   const newSettings = {
-    buttonMode: settings.DUAL_ARROWS_EXPERT_BUTTON_MODE,
+    buttonMode: settingsHelpers.DUAL_ARROWS_EXPERT_BUTTON_MODE,
     scrollUpSpeed: 1000,
     scrollUpSpeedCustom: 1000,
     scrollDownSpeed: 1000,
@@ -646,12 +646,12 @@ function hasSetCustomValues( element ) {
  */
 
 async function setSettings( newSettings, refreshForm ) {
-  if ( ! settings.isExpectedFormat( newSettings ) ) {
+  if ( ! settingsHelpers.isExpectedFormat( newSettings ) ) {
     return;
   }
 
   try {
-    await settings.setSettings( newSettings );
+    await settingsHelpers.setSettings( newSettings );
     applySettings( newSettings, refreshForm );
   }
   catch ( error ) {
@@ -731,10 +731,10 @@ function checkMode() {
 
   // @todo Optimize.
   switch ( mode ) {
-    case settings.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE:
-    case settings.SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE:
-    case settings.FLIP_ADVANCED_BUTTON_MODE:
-    case settings.DUAL_ARROWS_ADVANCED_BUTTON_MODE:
+    case settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE:
+    case settingsHelpers.SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE:
+    case settingsHelpers.FLIP_ADVANCED_BUTTON_MODE:
+    case settingsHelpers.DUAL_ARROWS_ADVANCED_BUTTON_MODE:
     {
       switchElements(
         [
@@ -754,7 +754,7 @@ function checkMode() {
       break;
     }
 
-    case settings.FLIP_EXPERT_BUTTON_MODE: {
+    case settingsHelpers.FLIP_EXPERT_BUTTON_MODE: {
       changeDistanceType( 'flipDistance' );
       switchElements(
         [
@@ -773,7 +773,7 @@ function checkMode() {
       break;
     }
 
-    case settings.DUAL_ARROWS_EXPERT_BUTTON_MODE: {
+    case settingsHelpers.DUAL_ARROWS_EXPERT_BUTTON_MODE: {
       switchElements(
         [
           '#distanceLength',
@@ -820,7 +820,7 @@ function checkMode() {
       break;
     }
 
-    case settings.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE: {
+    case settingsHelpers.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE: {
       changeDistanceType( 'appearDistance' );
       switchElements(
         [
