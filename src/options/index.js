@@ -345,7 +345,7 @@ function restoreDefaultSettings( event ) {
    * @todo Have one source of truth (make all places reference the same settings object).
    */
 
-  const settings = {
+  const newSettings = {
     buttonMode: settings.SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE,
     scrollUpSpeed: 1000,
     scrollUpSpeedCustom: 1000,
@@ -365,7 +365,7 @@ function restoreDefaultSettings( event ) {
     scroll: 'jswing'
   };
 
-  setSettings( settings, true );
+  setSettings( newSettings, true );
 }
 
 /**
@@ -377,7 +377,7 @@ function restoreDefaultSettings( event ) {
 function setOriginalAuthorSettings( event ) {
   event.preventDefault();
 
-  const settings = {
+  const newSettings = {
     buttonMode: settings.DUAL_ARROWS_EXPERT_BUTTON_MODE,
     scrollUpSpeed: 1000,
     scrollUpSpeedCustom: 1000,
@@ -397,7 +397,7 @@ function setOriginalAuthorSettings( event ) {
     scroll: 'jswing'
   };
 
-  setSettings( settings, true );
+  setSettings( newSettings, true );
 }
 
 function cacheSettings( settings ) {
