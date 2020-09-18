@@ -31,7 +31,7 @@ export async function getFromStorage( storageType, keys ) {
     return await browser.storage[ storageType ].get( keys );
   }
   catch ( error ) {
-    throw new Error( `Issue retrieving storage items: ${ error }` );
+    throw new Error( `Issue retrieving storage ${ storageType } items: ${ error }` );
   }
 }
 
@@ -57,7 +57,7 @@ export async function saveInStorage( storageType, items ) {
     return await browser.storage[ storageType ].set( items );
   }
   catch ( error ) {
-    throw new Error( `Issue saving items in storage: ${ error }` );
+    throw new Error( `Issue saving items in ${ storageType } storage: ${ error }` );
   }
 }
 
