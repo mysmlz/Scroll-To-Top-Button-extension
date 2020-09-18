@@ -85,7 +85,7 @@ export async function getButtonMode() {
 
 export async function getSettings() {
   try {
-    const { [ SETTINGS_STORAGE_KEY ]: settings } = await retrieveSettingsFromStorage();
+    const settings = await retrieveSettingsFromStorage();
 
     if ( isExpectedFormat( settings ) ) {
       return settings;
@@ -114,8 +114,8 @@ export async function setSettings( settings ) {
 }
 
 async function retrieveSettingsFromStorage() {
-  const synchronizedSettings = await utils.getFromStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
-  const nonSynchronizedSettings = await utils.getFromStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
+  const { [ SETTINGS_STORAGE_KEY ]: synchronizedSettings } = await utils.getFromStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
+  const { [ SETTINGS_STORAGE_KEY ]: nonSynchronizedSettings } = await utils.getFromStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
 
   // @todo Allow user to choose which settings should have more priority, as user might want a different set of settings on some computer/browser instance. Example: user might want to use the same set of settings on their desktop and laptop, but a different set on their mobile phone.
   return {
