@@ -1,8 +1,15 @@
-export const NON_SYNCHRONIZABLE_STORAGE_TYPE = 'local';
+/**
+ * @typedef {'sync'} SynchronizableStorageType
+ * @typedef {'local'} NonSynchronizableStorageType
+ * @typedef {SynchronizableStorageType|NonSynchronizableStorageType} StorageType
+ */
+
+/** @type {SynchronizableStorageType} */
 export const SYNCHRONIZABLE_STORAGE_TYPE = 'sync';
+/** @type {NonSynchronizableStorageType} */
+export const NON_SYNCHRONIZABLE_STORAGE_TYPE = 'local';
 
 /**
- * @typedef {'local'|'sync'} StorageType
  */
 
 /**
