@@ -1,3 +1,5 @@
+import utils from 'Shared/utils';
+
 const SETTINGS_STORAGE_KEY = 'settings';
 
 export const BUTTON_MODE_KEY = 'buttonMode';
@@ -98,16 +100,28 @@ export async function getSettings() {
 }
 
 export async function setSettings( settings ) {
-  return browser.storage.sync.set( {
+  const storageDataWrapper = {
     [ SETTINGS_STORAGE_KEY ]: {
       ...await getSettings(),
       ...settings,
     },
-  } );
+  };
+
+  // Saving in local and sync is necessary as buttonMode can't be synchronized, as it depends on permissions, which are not synchronized. Will also allow user to choose whether user wants to synchronize settings
+  await utils.saveInStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE, storageDataWrapper );
+
+  return await utils.saveInStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, storageDataWrapper );
 }
 
 async function retrieveSettingsFromStorage() {
-  return browser.storage.sync.get( SETTINGS_STORAGE_KEY );
+  const synchronizedSettings = await utils.getFromStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
+  const nonSynchronizedSettings = await utils.getFromStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
+
+  // @todo Allow user to choose which settings should have more priority, as user might want a different set of settings on some computer/browser instance. Example: user might want to use the same set of settings on their desktop and laptop, but a different set on their mobile phone.
+  return {
+    ...synchronizedSettings,
+    ...nonSynchronizedSettings,
+  };
 }
 
 export function isExpectedFormat( settings ) {
