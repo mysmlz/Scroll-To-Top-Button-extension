@@ -72,11 +72,18 @@ function cachePermissionsCheckResult( granted ) {
 }
 
 async function setUi() {
-  const savedSettings = await settingsHelpers.getSettings();
+  try {
+    const savedSettings = await settingsHelpers.getSettings();
 
-  if ( settingsHelpers.isExpectedFormat( savedSettings ) ) {
-    cacheSettings( savedSettings );
-    updateSelectedOptions( savedSettings );
+    if ( settingsHelpers.isExpectedFormat( savedSettings ) ) {
+      cacheSettings( savedSettings );
+      updateSelectedOptions( savedSettings );
+    }
+  }
+  catch ( error ) {
+    Log.add( 'Failed to load saved settings', error, false, {
+      level: 'warn',
+    } );
   }
 
   setButtonModesControllingCtasState( true );

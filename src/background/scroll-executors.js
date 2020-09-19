@@ -96,7 +96,18 @@ export async function setController( source, retriesCount ) {
 
   controllerIsBeingSet = true;
 
-  const buttonMode = await settingsHelpers.getButtonMode();
+  let buttonMode;
+
+  try {
+    buttonMode = await settingsHelpers.getButtonMode();
+  }
+  catch ( error ) {
+    Log.add( 'Not ready', error, false, {
+      level: 'error',
+    } );
+
+    return;
+  }
 
   if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
     browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
@@ -131,12 +142,24 @@ export async function setController( source, retriesCount ) {
         controllerIsBeingSet = false;
       }
       else {
-        await convertExpertModeToAdvanced( buttonMode );
-        requestToReportIssue( buttonMode, source, retriesCount );
+        let conversionStatusSource = 'conversion';
+
+        try {
+          await convertExpertModeToAdvanced( buttonMode );
+          requestToReportIssue( buttonMode, source, retriesCount );
+        }
+        catch ( error ) {
+          // @todo Report?
+          Log.add( '', error, false, {
+            level: 'error',
+          } );
+
+          conversionStatusSource = 'failed conversion';
+        }
 
         controllerIsBeingSet = false;
 
-        await setController( 'conversion', retriesCount );
+        await setController( conversionStatusSource, retriesCount );
       }
     }
   }
@@ -250,10 +273,17 @@ async function getBrowserActionTitle( mode ) {
 }
 
 async function convertExpertModeToAdvanced( mode ) {
-  await settingsHelpers.setSettings( {
-    ...await settingsHelpers.getSettings(),
-    [ settingsHelpers.BUTTON_MODE_KEY ]: settingsHelpers.getExpertModeReplacement( mode ),
-  } );
+  try {
+    await settingsHelpers.setSettings( {
+      ...await settingsHelpers.getSettings(),
+      [ settingsHelpers.BUTTON_MODE_KEY ]: settingsHelpers.getExpertModeReplacement( mode ),
+    } );
+  }
+  catch ( error ) {
+    Log.add( 'Failed to convert expert mode to advanced', error, false, {
+      level: 'error',
+    } );
+  }
 }
 
 function handleMessage( { data: { trigger }, target } ) {

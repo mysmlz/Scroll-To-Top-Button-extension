@@ -7,9 +7,16 @@ import * as visualProperties from './visual-properties';
 import * as listeners from '../listeners';
 
 export async function setUp() {
-  const settings = await settingsHelpers.getSettings();
+  try {
+    const settings = await settingsHelpers.getSettings();
 
-  settingsModuleHelpers.normalizeSettings( settings );
+    settingsModuleHelpers.normalizeSettings( settings );
+  }
+  catch ( error ) {
+    Log.add( 'Failed to set up buttons', error, false, {
+      level: 'error',
+    } );
+  }
 }
 
 /**

@@ -53,9 +53,17 @@ ContextMenus.prototype.init = async function() {
   Log.add( strLog );
 
   const _this = getInstance();
-  const settings = await settingsHelpers.getSettings();
 
-  _this.toggle( settings );
+  try {
+    const settings = await settingsHelpers.getSettings();
+
+    _this.toggle( settings );
+  }
+  catch ( error ) {
+    Log.add( 'Failed to initialize context menus', error, false, {
+      level: 'error',
+    } );
+  }
 };
 
 /**

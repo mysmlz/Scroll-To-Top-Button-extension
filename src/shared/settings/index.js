@@ -12,14 +12,18 @@ export const HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY = 'haveGrantedPermission
 export const HAD_ASKED_TO_NOT_SHOW_WARNING_AGAIN_KEY = 'hadAskedToNotShowWarningAgain';
 
 export async function getButtonMode() {
-  const settings = await getSettings();
+  try {
+    const settings = await getSettings();
 
-  if ( settings ) {
-    return buttonModesModule.extractButtonMode( settings );
+    if ( settings ) {
+      return buttonModesModule.extractButtonMode( settings );
+    }
   }
-
-  // @todo Throw?
-  return '';
+  catch ( error ) {
+    Log.add( 'Failed to get button mode', error, false, {
+      level: 'error',
+    } );
+  }
 }
 
 export async function getSettings() {
@@ -38,7 +42,9 @@ export async function getSettings() {
     };
   }
   catch ( error ) {
-    Log.add( 'Failed to get settings', error );
+    Log.add( 'Failed to get settings', error, false, {
+      level: 'error',
+    } );
   }
 
   if ( ! isExpectedFormat( settings ) ) {
@@ -72,11 +78,22 @@ function isUnusableButtonMode( synchronizedSettings, nonSynchronizedSettings ) {
   );
 }
 
-export async function setSettings( settings ) {
+export async function setSettings( newSettings ) {
+  let settings;
+
+  try {
+    settings = await getSettings();
+  }
+  catch ( error ) {
+    Log.add( 'No settings to override', error, false, {
+      level: 'warn',
+    } );
+  }
+
   const storageDataWrapper = {
     [ SETTINGS_STORAGE_KEY ]: {
-      ...await getSettings(),
       ...settings,
+      ...newSettings,
     },
   };
 
@@ -93,7 +110,9 @@ async function retrieveSettingsFromStorage( storageType ) {
     return settings;
   }
   catch ( error ) {
-    Log.add( `Failed to retrieve settings from ${ storageType } storage`, error );
+    Log.add( `Failed to retrieve settings from ${ storageType } storage`, error, false, {
+      level: 'error',
+    } );
   }
 }
 
