@@ -16,6 +16,18 @@ export const SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE = 'off';
 export const FLIP_EXPERT_BUTTON_MODE = 'flip';
 export const DUAL_ARROWS_EXPERT_BUTTON_MODE = 'dual';
 
+const AVAILABLE_BUTTON_MODES = [
+  SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE,
+
+  SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE,
+  FLIP_ADVANCED_BUTTON_MODE,
+  DUAL_ARROWS_ADVANCED_BUTTON_MODE,
+
+  SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE,
+  FLIP_EXPERT_BUTTON_MODE,
+  DUAL_ARROWS_EXPERT_BUTTON_MODE,
+];
+
 const PREVIOUS_VERSION_STORAGE_KEY = 'previousVersion';
 const PREVIOUS_VERSION_8_PREFIX = '8.';
 
@@ -76,7 +88,7 @@ export async function getButtonMode() {
   const settings = await getSettings();
 
   if ( settings ) {
-    return settings[ BUTTON_MODE_KEY ];
+    return extractButtonMode( settings );
   }
 
   // @todo Throw?
@@ -84,19 +96,55 @@ export async function getButtonMode() {
 }
 
 export async function getSettings() {
+  let settings;
+  let synchronizedSettings;
+  let nonSynchronizedSettings;
+
   try {
-    const settings = await retrieveSettingsFromStorage();
+    synchronizedSettings = await retrieveSettingsFromStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE );
+    nonSynchronizedSettings = await retrieveSettingsFromStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE );
 
-    if ( isExpectedFormat( settings ) ) {
-      return settings;
-    }
-
-    // @todo Localize?
-    throw new TypeError( 'Settings retrieved from the storage appear to be corrupted.' );
+    // @todo Allow user to choose which settings should have more priority, as user might want a different set of settings on some computer/browser instance. Example: user might want to use the same set of settings on their desktop and laptop, but a different set on their mobile phone.
+    settings = {
+      ...synchronizedSettings,
+      ...nonSynchronizedSettings,
+    };
   }
   catch ( error ) {
-    Log.add( 'Failed to retrieve settings', error, true );
+    Log.add( 'Failed to get settings', error );
   }
+
+  if ( ! isExpectedFormat( settings ) ) {
+    throw new TypeError( 'Settings appear to be corrupted or not set.' );
+  }
+
+  if ( isUnusableButtonMode( synchronizedSettings, nonSynchronizedSettings ) ) {
+    settings.buttonMode = getExpertModeReplacement( extractButtonMode( synchronizedSettings ) );
+  }
+
+  return settings;
+}
+
+/**
+ * If there is no locally saved button mode or it's corrupted and the synchronized button mode is from the Expert group, such synchronized button mode can't be used, as its required permissions aren't synchronized.
+ *
+ * @param {Settings} synchronizedSettings
+ * @param {Settings} nonSynchronizedSettings
+ * @returns {boolean}
+ */
+
+function isUnusableButtonMode( synchronizedSettings, nonSynchronizedSettings ) {
+  const nonSynchronizedSettingsOfExpectedFormat = isExpectedFormat( nonSynchronizedSettings );
+
+  return (
+    ( nonSynchronizedSettingsOfExpectedFormat && ! AVAILABLE_BUTTON_MODES.includes( extractButtonMode( nonSynchronizedSettings ) ) || ! nonSynchronizedSettingsOfExpectedFormat ) &&
+    isExpectedFormat( synchronizedSettings ) &&
+    isExpertButtonMode( extractButtonMode( synchronizedSettings ) )
+  );
+}
+
+function extractButtonMode( settings ) {
+  return settings[ BUTTON_MODE_KEY ];
 }
 
 export async function setSettings( settings ) {
@@ -113,15 +161,15 @@ export async function setSettings( settings ) {
   return await utils.saveInStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, storageDataWrapper );
 }
 
-async function retrieveSettingsFromStorage() {
-  const { [ SETTINGS_STORAGE_KEY ]: synchronizedSettings } = await utils.getFromStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
-  const { [ SETTINGS_STORAGE_KEY ]: nonSynchronizedSettings } = await utils.getFromStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE, SETTINGS_STORAGE_KEY );
+async function retrieveSettingsFromStorage( storageType ) {
+  try {
+    const { [ SETTINGS_STORAGE_KEY ]: settings } = await utils.getFromStorage( storageType, SETTINGS_STORAGE_KEY );
 
-  // @todo Allow user to choose which settings should have more priority, as user might want a different set of settings on some computer/browser instance. Example: user might want to use the same set of settings on their desktop and laptop, but a different set on their mobile phone.
-  return {
-    ...synchronizedSettings,
-    ...nonSynchronizedSettings,
-  };
+    return settings;
+  }
+  catch ( error ) {
+    Log.add( `Failed to retrieve settings from ${ storageType } storage`, error );
+  }
 }
 
 export function isExpectedFormat( settings ) {
