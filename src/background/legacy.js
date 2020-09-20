@@ -504,8 +504,8 @@ async function moveLegacySettings( settings ) {
       if ( availableSettings.hasOwnProperty( settingName ) ) {
         const setting = availableSettings[ settingName ];
         const DEFAULT_VALUE_INDEX = 1;
-        let oldValue;
-        let value;
+        let oldValue = undefined;
+        let value = undefined;
 
         if ( localStorageAvailable ) {
           const OLD_KEY_INDEX = 0;
