@@ -300,12 +300,13 @@ var Background = {
     try {
       const settings = await settingsHelpers.getSettings();
 
-      moveLegacySettings( settings );
-      initContextMenus();
+      await moveLegacySettings( settings );
     }
     catch ( error ) {
-      moveLegacySettings();
+      await moveLegacySettings();
     }
+
+    initContextMenus();
   }
   ,
 
