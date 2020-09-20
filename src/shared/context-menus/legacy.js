@@ -118,8 +118,6 @@ function createContextMenuItem( properties ) {
     browser.contextMenus.create( mergedProperties );
   }
   catch ( error ) {
-    const GLOBAL_LOG_MESSAGE_UPDATED = false;
-
     Log.add(
       'Failed to create context menu item',
       // @todo Stringify behind the scenes
@@ -127,10 +125,6 @@ function createContextMenuItem( properties ) {
         error: error,
         properties: properties,
       } ),
-      GLOBAL_LOG_MESSAGE_UPDATED,
-      {
-        level: 'error',
-      }
     );
   }
 }
