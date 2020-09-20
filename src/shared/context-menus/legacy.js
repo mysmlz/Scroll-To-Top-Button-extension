@@ -122,10 +122,11 @@ function createContextMenuItem( properties ) {
 
     Log.add(
       'Failed to create context menu item',
-      {
+      // @todo Stringify behind the scenes
+      JSON.stringify( {
         error: error,
         properties: properties,
-      },
+      } ),
       GLOBAL_LOG_MESSAGE_UPDATED,
       {
         level: 'error',
