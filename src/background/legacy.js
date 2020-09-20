@@ -194,6 +194,7 @@ var Background = {
     const boolWasUpdated = objDetails.boolWasUpdated;
 
     if ( typeof boolWasUpdated === 'boolean' && boolWasUpdated ) {
+      // @todo Replace
       poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
 
       function onSettingsRetrieved( objReturn ) {
@@ -251,7 +252,7 @@ var Background = {
 
           function onSettingsRemoved() {
             Log.add( logTemp + strLogDo, arrSettingsToRemove, true );
-
+            // @todo Replace
             poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onUpdatedSettingsRetrieved );
 
             function onUpdatedSettingsRetrieved( objData ) {
@@ -405,7 +406,7 @@ var Background = {
  * @param {Settings} [settings] - Key-value pairs.
  */
 
-function moveLegacySettings( settings ) {
+async function moveLegacySettings( settings ) {
   const logTemp = 'moveLegacySettings';
 
   /**
@@ -531,7 +532,7 @@ function moveLegacySettings( settings ) {
 
     if ( ! Global.isEmpty( newSettings ) ) {
       try {
-        settingsHelpers.setSettings( newSettings );
+        await settingsHelpers.setSettings( newSettings );
       }
       catch ( error ) {
         // @todo Abort everything and notify user?
@@ -635,6 +636,7 @@ function isLocalStorageAvailable() {
 
 browser.runtime.onInstalled.addListener(
   function( objDetails ) {
+    settingsHelpers.signalSettingsNotReady();
     Background.preventCheckForSilentUpdate();
 
     strLog = strConstLogOnInstalled;
@@ -666,6 +668,7 @@ browser.runtime.onInstalled.addListener(
 
 browser.runtime.onStartup && browser.runtime.onStartup.addListener(
   function() {
+    settingsHelpers.signalSettingsNotReady();
     Background.preventCheckForSilentUpdate();
 
     strLog = 'browser.runtime.onStartup';

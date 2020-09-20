@@ -6,7 +6,17 @@ import * as elements from './elements';
 import * as visualProperties from './visual-properties';
 import * as listeners from '../listeners';
 
-export async function setUp() {
+/**
+ * Inject the button(s) (if needed), add listeners.
+ */
+
+export async function init() {
+  if ( ! settingsHelpers.areSettingsReady() ) {
+    settingsHelpers.addSettingsReadyEventListener( init );
+
+    return;
+  }
+
   try {
     const settings = await settingsHelpers.getSettings();
 
@@ -17,13 +27,7 @@ export async function setUp() {
       level: 'error',
     } );
   }
-}
 
-/**
- * Inject the button(s) (if needed), add listeners.
- */
-
-export function init() {
   if ( ! modes.isBrowserActionTopOnlyMode() && ! modes.isKeyboardOnlyMode() ) {
     elements.createElements();
     listeners.addNonKeyboardOnlyModeListeners();

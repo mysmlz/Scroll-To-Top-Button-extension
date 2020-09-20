@@ -73,6 +73,7 @@ function cachePermissionsCheckResult( granted ) {
 
 async function setUi() {
   try {
+    // @todo Offer user to refresh page on settingsReady in case page got opened before settings got set for the first time?
     const savedSettings = await settingsHelpers.getSettings();
 
     if ( settingsHelpers.isExpectedFormat( savedSettings ) ) {

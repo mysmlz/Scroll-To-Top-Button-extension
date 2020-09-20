@@ -82,6 +82,25 @@ function addListeners() {
 }
 
 export async function setController( source, retriesCount ) {
+  Log.add(
+    'setController',
+    {
+      source,
+      retriesCount,
+    },
+    false,
+    {
+      level: 'debug',
+    },
+  );
+
+  if ( ! settingsHelpers.areSettingsReady() ) {
+    // @todo When settings become ready, there could be multiple setControllers waiting - why call all? Adding listener should remove previous ones.
+    settingsHelpers.addSettingsReadyEventListener( () => setController( source, retriesCount ) );
+
+    return;
+  }
+
   controllerSetterLog.push( [ source, controllerSetterRetriesCount ] );
 
   if ( controllerIsBeingSet ) {
@@ -110,6 +129,7 @@ export async function setController( source, retriesCount ) {
   }
 
   if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
+    // @todo Move out
     browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
     browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_BASIC_TYPE ) );
     browser.browserAction.onClicked.removeListener( injectAllFiles );

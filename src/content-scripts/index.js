@@ -1,12 +1,20 @@
 import * as activeTab from './active-tab';
 import * as button from './button';
 
-stubLog();
-// @todo Don't run in browser action (advanced) modes.
-activeTab.runChecks()
-  .then( button.setUp )
-  .then( button.init )
-  .catch( abort );
+init();
+
+async function init() {
+  stubLog();
+
+  try {
+    // @todo Don't run in browser action (advanced) modes.
+    await activeTab.runChecks();
+    await button.init();
+  }
+  catch ( error ) {
+    // @todo
+  }
+}
 
 /**
  * Disable logging to Dev Tools from the content script.
@@ -16,14 +24,4 @@ activeTab.runChecks()
 
 function stubLog() {
   window.ContentScript = {};
-}
-
-/**
- * There is nothing left to do, abort.
- */
-
-function abort() {
-  /**
-   * @todo Anything?
-   */
 }

@@ -239,6 +239,12 @@ function setLanguage() {
  */
 
 async function getLanguagePreferences( resolve, reject ) {
+  if ( ! settingsHelpers.areSettingsReady() ) {
+    settingsHelpers.addSettingsReadyEventListener( () => getLanguagePreferences( resolve, reject ) );
+
+    return;
+  }
+
   try {
     const settings = await settingsHelpers.getSettings();
 

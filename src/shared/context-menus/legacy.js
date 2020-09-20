@@ -54,6 +54,12 @@ ContextMenus.prototype.init = async function() {
 
   const _this = getInstance();
 
+  if ( ! settingsHelpers.areSettingsReady() ) {
+    settingsHelpers.addSettingsReadyEventListener( _this.init );
+
+    return;
+  }
+
   try {
     const settings = await settingsHelpers.getSettings();
 

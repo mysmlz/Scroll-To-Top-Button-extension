@@ -3,6 +3,9 @@ import utils from 'Shared/utils';
 import * as buttonModesModule from './button-modes';
 export * from './button-modes';
 
+import * as eventsModule from './events';
+export * from './events';
+
 const SETTINGS_STORAGE_KEY = 'settings';
 
 const PREVIOUS_VERSION_STORAGE_KEY = 'previousVersion';
@@ -47,8 +50,9 @@ export async function getSettings() {
     } );
   }
 
-  if ( ! isExpectedFormat( settings ) ) {
-    throw new TypeError( 'Settings appear to be corrupted or not set.' );
+  if ( ! isBasicExpectedFormat( settings ) ) {
+    eventsModule.signalSettingsNotReady();
+    throw new TypeError( 'Settings appear to be corrupted.' );
   }
 
   if ( isUnusableButtonMode( synchronizedSettings, nonSynchronizedSettings ) ) {
@@ -99,8 +103,8 @@ export async function setSettings( newSettings ) {
 
   // Saving in local and sync is necessary as buttonMode can't be synchronized, as it depends on permissions, which are not synchronized. Will also allow user to choose whether user wants to synchronize settings
   await utils.saveInStorage( utils.NON_SYNCHRONIZABLE_STORAGE_TYPE, storageDataWrapper );
-
-  return await utils.saveInStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, storageDataWrapper );
+  await utils.saveInStorage( utils.SYNCHRONIZABLE_STORAGE_TYPE, storageDataWrapper );
+  eventsModule.signalSettingsReady();
 }
 
 async function retrieveSettingsFromStorage( storageType ) {
@@ -117,7 +121,18 @@ async function retrieveSettingsFromStorage( storageType ) {
 }
 
 export function isExpectedFormat( settings ) {
-  return poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings );
+  return isBasicExpectedFormat( settings ) && ! Global.isEmpty( settings );
+}
+
+/**
+ * If settings haven't been set yet, the very least to do is check the API doesn't fail - it returns empty object if no result.
+ *
+ * @param {Settings} settings
+ * @returns {boolean}
+ */
+
+export function isBasicExpectedFormat( settings ) {
+  return poziworldExtension.utils.isType( settings, 'object' );
 }
 
 /**
