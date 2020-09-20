@@ -114,15 +114,16 @@ function createContextMenuItem( properties ) {
     contexts: contexts,
   }, properties );
 
-  try {
-    browser.contextMenus.create( mergedProperties );
-  }
-  catch ( error ) {
+  browser.contextMenus.create( mergedProperties, () => handleItemCreationResult( properties ) );
+}
+
+function handleItemCreationResult( properties ) {
+  if ( browser.runtime.lastError ) {
     Log.add(
       'Failed to create context menu item',
       // @todo Stringify behind the scenes
       JSON.stringify( {
-        error: error,
+        error: browser.runtime.lastError,
         properties: properties,
       } ),
     );
