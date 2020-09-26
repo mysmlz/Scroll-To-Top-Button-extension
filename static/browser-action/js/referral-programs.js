@@ -287,42 +287,10 @@
    */
 
   ReferralPrograms.prototype.handleAmazonInfoCtaClick = function () {
-    const strActiveTabDomain = this.getAmazonDomain();
-    let strTag = 'pwsttb10-20';
-
-    switch ( strActiveTabDomain ) {
-      case 'amazon.ca':
-        strTag = 'pwsttbca-20';
-
-        break;
-      case 'amazon.co.uk':
-        strTag = 'pwsttb-21';
-
-        break;
-      case 'amazon.de':
-        strTag = 'pwsttbde-21';
-
-        break;
-      case 'amazon.es':
-        strTag = 'pwsttbes-21';
-
-        break;
-      case 'amazon.fr':
-        strTag = 'pwsttbfr-21';
-
-        break;
-      case 'amazon.in':
-        strTag = 'pwsttbin-21';
-
-        break;
-      case 'amazon.it':
-        strTag = 'pwsttbit-21';
-
-        break;
-    }
+    const AMAZON_TAG = 'pwsttb10-20';
 
     browser.tabs.update( strTabId, {
-      url: this.updateQueryString( 'tag', strTag, strTabUrl )
+      url: this.updateQueryString( 'tag', AMAZON_TAG, strTabUrl )
     } );
   };
 
@@ -351,7 +319,7 @@
   /**
    * Add, remove, or update a query string parameter.
    * https://stackoverflow.com/a/11654596
-   * 
+   *
    * @param {string} strKey - The query string key to add, remove, or update.
    * @param {string} [strValue] - The value for the key.
    * @param {string} [strUrl=window.location.href] - The URL to modify.
@@ -376,7 +344,7 @@
         let strHashValue = strHash[ 1 ];
 
         if ( typeof strHashValue !== 'undefined' && strHashValue !== null ) {
-          strUrl += '#' + strHashValue;            
+          strUrl += '#' + strHashValue;
         }
 
         return strUrl;
