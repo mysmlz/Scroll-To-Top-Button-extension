@@ -60,6 +60,8 @@ Privacy
 
 This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.
 
+Free open-source extension.
+
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
 
