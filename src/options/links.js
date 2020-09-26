@@ -27,7 +27,12 @@ export function setLinks() {
     [
       'officialWebsiteLink',
       'https://scroll-to-top-button.com'
-    ]
+    ],
+    [
+      'shareLink',
+      // @todo Localize?
+      'https://twitter.com/intent/tweet?text=Surf%20web%20easy%20with%20%40ScrollToTopBtn',
+    ],
   ];
 
   pages.setLinks( links );
