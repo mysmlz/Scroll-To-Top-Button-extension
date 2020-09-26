@@ -288,7 +288,7 @@
 
   ReferralPrograms.prototype.handleAmazonInfoCtaClick = function () {
     const strActiveTabDomain = this.getAmazonDomain();
-    let strTag = 'pwsttb-20';
+    let strTag = 'pwsttb10-20';
 
     switch ( strActiveTabDomain ) {
       case 'amazon.ca':
