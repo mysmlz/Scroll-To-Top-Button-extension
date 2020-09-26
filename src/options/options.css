@@ -262,7 +262,8 @@ input.optionsChanger {
 
 /* Secondary information */
 
-#otherProjectsContainer {
+#otherProjectsContainer,
+#waysToSupportDevelopmentContainer {
   margin-bottom: 3rem;
 }
 
@@ -291,6 +292,12 @@ input.optionsChanger {
   margin-top: 4rem;
   margin-bottom: 1rem;
   font-weight: 500;
+}
+
+.linksMessage {
+  @mixin secondaryText;
+  margin-right: 3rem;
+  margin-left: 3rem;
 }
 
 .links {

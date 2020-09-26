@@ -546,6 +546,12 @@
   "incentivizeFurtherDevelopment": {
     "message": "If you like the project and find our work useful, please consider supporting us via <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – your generous contributions help pay for the hosting, tools, and time we need to fix bugs and implement new features."
   },
+  "waysToSupportDevelopmentTitle": {
+    "message": "Ways to support development"
+  },
+  "waysToSupportDevelopmentMessage": {
+    "message": "Follow our referral links if you would like to support Scroll To Top Button development."
+  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Release notes</a>"
   },
