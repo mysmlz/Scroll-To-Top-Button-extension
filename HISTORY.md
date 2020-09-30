@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v10.0.1
+
+### Improved
+
+* Per Mozilla requirement, updated a third-party library that helps sanitize HTML.
+
+---
+
 ## v10.0.0
 
 ### Breaking changes
