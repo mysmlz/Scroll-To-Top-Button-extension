@@ -220,6 +220,7 @@ async function requestToNeverShowAgain() {
 
 async function revokePermissions( event ) {
   event.preventDefault();
+  settingsHelpers.requestToSignalSettingsToBeUpdated();
 
   let revoked = false;
 
@@ -661,6 +662,7 @@ async function setSettings( newSettings, refreshForm ) {
   try {
     await settingsHelpers.setSettings( newSettings );
     applySettings( newSettings, refreshForm );
+    settingsHelpers.requestToSignalSettingsGotUpdated();
   }
   catch ( error ) {
     const GLOBAL_LOG_MESSAGE_UPDATED = false;
