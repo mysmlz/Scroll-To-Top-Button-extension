@@ -1,10 +1,12 @@
+import utils from 'Shared/utils';
+
 import * as scrollExecutors from './scroll-executors';
 
-const EXTENSION_UPDATE_SIMULATION_REQUEST_STORAGE_AREA = 'local';
+const EXTENSION_UPDATE_SIMULATION_REQUEST_STORAGE_AREA = utils.NON_SYNCHRONIZABLE_STORAGE_TYPE;
 const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY = 'requestedToSimulateExtensionUpdate';
 const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE = true;
 
-setUp();
+const CONTROLLER_STORAGE_AREA_OF_INTEREST = utils.SYNCHRONIZABLE_STORAGE_TYPE;
 
 init();
 
@@ -26,7 +28,7 @@ function addListeners() {
 function addOnChangedListener() {
   // @todo Add only when in development mode.
   browser.storage.onChanged.addListener( checkForExtensionUpdateSimulationRequest );
-  browser.storage.onChanged.addListener( ( changes, areaName ) => scrollExecutors.setController( 'storageChanged', null, { changes, areaName } ) );
+  browser.storage.onChanged.addListener( setController );
 }
 
 /**
@@ -43,5 +45,12 @@ function checkForExtensionUpdateSimulationRequest( changes, areaName ) {
     if ( poziworldExtension.utils.isType( requestToSimulateExtensionUpdate, 'object' ) && requestToSimulateExtensionUpdate.newValue === REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE ) {
       poziworldExtension.background.requestToSimulateExtensionUpdate();
     }
+  }
+}
+
+function setController( changes, areaName ) {
+  // Main copy of settings that might affect controller (button mode) are located in 'sync'. No need to watch other areas
+  if ( areaName === CONTROLLER_STORAGE_AREA_OF_INTEREST ) {
+    scrollExecutors.setController( 'storageChanged', null, { changes, areaName } )
   }
 }
