@@ -4,11 +4,22 @@ const SETTINGS_READY_KEY = '__STTB_SETTINGS_READY__';
 const SETTINGS_READY_EVENT = 'settingsReady';
 const SETTINGS_READY_DEFAULT = true;
 
+const callbacks = {};
+
 export function areSettingsReady() {
   return settingsReadyEventFiredOnObject[ SETTINGS_READY_KEY ] ?? SETTINGS_READY_DEFAULT;
 }
 
-export function addSettingsReadyEventListener( callback ) {
+export function addSettingsReadyEventListener( callback, callbackName ) {
+  // Prevent multiple calls of the same callback
+  if ( callbackName ) {
+    if ( callbacks[ callbackName ] ) {
+      return;
+    }
+
+    callbacks[ callbackName ] = true;
+  }
+
   settingsReadyEventFiredOnObject.addEventListener( SETTINGS_READY_EVENT, callback );
   settingsReadyEventFiredOnObject.addEventListener( SETTINGS_READY_EVENT, () => settingsReadyEventFiredOnObject.removeEventListener( SETTINGS_READY_EVENT, callback ) );
 }
