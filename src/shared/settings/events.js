@@ -5,7 +5,7 @@ const SETTINGS_READY_EVENT = 'settingsReady';
 const SETTINGS_READY_DEFAULT = true;
 
 export function areSettingsReady() {
-  return settingsReadyEventFiredOnObject[ SETTINGS_READY_KEY ] || SETTINGS_READY_DEFAULT;
+  return settingsReadyEventFiredOnObject[ SETTINGS_READY_KEY ] ?? SETTINGS_READY_DEFAULT;
 }
 
 export function addSettingsReadyEventListener( callback ) {
