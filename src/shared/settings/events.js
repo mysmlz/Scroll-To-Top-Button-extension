@@ -10,6 +10,7 @@ export function areSettingsReady() {
 
 export function addSettingsReadyEventListener( callback ) {
   settingsReadyEventFiredOnObject.addEventListener( SETTINGS_READY_EVENT, callback );
+  settingsReadyEventFiredOnObject.addEventListener( SETTINGS_READY_EVENT, () => settingsReadyEventFiredOnObject.removeEventListener( SETTINGS_READY_EVENT, callback ) );
 }
 
 export function signalSettingsNotReady() {
