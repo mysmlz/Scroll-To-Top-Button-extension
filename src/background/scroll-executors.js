@@ -67,16 +67,8 @@ function init() {
 }
 
 function addListeners() {
-  const onAdded = browser.permissions.onAdded;
-  const onRemoved = browser.permissions.onRemoved;
-
-  if ( onAdded ) {
-    onAdded.addListener( () => setController( 'permissionsAdded' ) );
-  }
-
-  if ( onRemoved ) {
-    onRemoved.addListener( () => setController( 'permissionsRemoved' ) );
-  }
+  browser.permissions?.onAdded?.addListener( () => setController( 'permissionsAdded' ) );
+  browser.permissions?.onRemoved?.addListener( () => setController( 'permissionsRemoved' ) );
 
   window.addEventListener( 'message', handleMessage );
 }
