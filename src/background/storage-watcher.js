@@ -1,6 +1,6 @@
 import * as scrollExecutors from './scroll-executors';
 
-const TARGET_STORAGE_AREA = 'local';
+const EXTENSION_UPDATE_SIMULATION_REQUEST_STORAGE_AREA = 'local';
 const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY = 'requestedToSimulateExtensionUpdate';
 const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE = true;
 
@@ -43,7 +43,7 @@ function addOnChangedListener() {
  */
 
 function checkForExtensionUpdateSimulationRequest( changes, areaName ) {
-  if ( areaName === TARGET_STORAGE_AREA ) {
+  if ( areaName === EXTENSION_UPDATE_SIMULATION_REQUEST_STORAGE_AREA ) {
     const requestToSimulateExtensionUpdate = changes[ REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY ];
 
     if ( poziworldExtension.utils.isType( requestToSimulateExtensionUpdate, 'object' ) && requestToSimulateExtensionUpdate.newValue === REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE ) {
