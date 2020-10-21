@@ -6,17 +6,11 @@ const REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE = true;
 
 setUp();
 
-/**
- * Module-specific configuration.
- */
+init();
 
-function setUp() {
+function init() {
   addListeners();
 }
-
-/**
- * Add the necessary listeners.
- */
 
 function addListeners() {
   addOnChangedListener();
