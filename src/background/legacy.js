@@ -547,6 +547,8 @@ async function moveLegacySettings( settings ) {
     }
   }
 
+  settingsHelpers.signalSettingsReady();
+
   Log.add( logTemp + strLogDoNot );
 }
 
