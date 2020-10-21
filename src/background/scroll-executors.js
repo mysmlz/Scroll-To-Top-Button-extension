@@ -67,13 +67,13 @@ function init() {
 }
 
 function addListeners() {
-  browser.permissions?.onAdded?.addListener( () => setController( 'permissionsAdded' ) );
-  browser.permissions?.onRemoved?.addListener( () => setController( 'permissionsRemoved' ) );
+  browser.permissions?.onAdded?.addListener( ( permissions ) => setController( 'permissionsAdded', null, { permissions } ) );
+  browser.permissions?.onRemoved?.addListener( ( permissions ) => setController( 'permissionsRemoved', null, { permissions } ) );
 
   window.addEventListener( 'message', handleMessage );
 }
 
-export async function setController( source, retriesCount ) {
+export async function setController( source, retriesCount, metadata ) {
   Log.add(
     'setController',
     {
@@ -87,8 +87,7 @@ export async function setController( source, retriesCount ) {
   );
 
   if ( ! settingsHelpers.areSettingsReady() ) {
-    // @todo When settings become ready, there could be multiple setControllers waiting - why call all? Adding listener should remove previous ones.
-    settingsHelpers.addSettingsReadyEventListener( () => setController( source, retriesCount ) );
+    settingsHelpers.addSettingsReadyEventListener( () => setController( source, retriesCount, metadata ), 'setController' );
 
     return;
   }
@@ -97,7 +96,7 @@ export async function setController( source, retriesCount ) {
 
   if ( controllerIsBeingSet ) {
     if ( controllerSetterRetriesCount < CONTROLLER_SETTER_MAX_RETRIES ) {
-      controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount ), CONTROLLER_SETTER_TIMEOUT );
+      controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount, metadata ), CONTROLLER_SETTER_TIMEOUT );
 
       controllerSetterRetriesCount += 1;
     }
@@ -150,7 +149,7 @@ export async function setController( source, retriesCount ) {
       // @todo DRY check.
       if ( controllerSetterRetriesCount < CONTROLLER_SETTER_MAX_RETRIES ) {
         controllerSetterRetriesCount += 1;
-        controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount ), CONTROLLER_SETTER_TIMEOUT );
+        controllerSetterTimeoutId = window.setTimeout( () => setController( source, controllerSetterRetriesCount, metadata ), CONTROLLER_SETTER_TIMEOUT );
         controllerIsBeingSet = false;
       }
       else {
@@ -171,7 +170,7 @@ export async function setController( source, retriesCount ) {
 
         controllerIsBeingSet = false;
 
-        await setController( conversionStatusSource, retriesCount );
+        await setController( conversionStatusSource, retriesCount, metadata );
       }
     }
   }

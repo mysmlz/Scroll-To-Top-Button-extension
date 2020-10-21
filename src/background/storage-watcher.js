@@ -32,7 +32,7 @@ function addListeners() {
 function addOnChangedListener() {
   // @todo Add only when in development mode.
   browser.storage.onChanged.addListener( checkForExtensionUpdateSimulationRequest );
-  browser.storage.onChanged.addListener( () => scrollExecutors.setController( 'storageChanged' ) );
+  browser.storage.onChanged.addListener( ( changes, areaName ) => scrollExecutors.setController( 'storageChanged', null, { changes, areaName } ) );
 }
 
 /**
