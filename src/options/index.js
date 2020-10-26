@@ -134,6 +134,7 @@ async function setHadVersion8InstalledBeforeMessageVisibility() {
     if ( ! hidden ) {
       const acknowledgmentCta = document.getElementById( 'hadVersion8InstalledBeforeMessageAcknowledgmentCta' );
       const removalCta = document.getElementById( 'hadVersion8InstalledBeforeMessageRemovalCta' );
+      const activeTabInfoUrlPlaceholder = messageContainer.querySelector( '[data-context="activeTabInfoUrlPlaceholder"]' );
 
       if ( acknowledgmentCta ) {
         acknowledgmentCta.addEventListener( 'click', () => toggleTakeover( messageContainer ) );
@@ -142,6 +143,10 @@ async function setHadVersion8InstalledBeforeMessageVisibility() {
       if ( removalCta ) {
         removalCta.addEventListener( 'click', requestToNeverShowAgain );
         removalCta.addEventListener( 'click', () => toggleTakeover( messageContainer ) );
+      }
+
+      if ( activeTabInfoUrlPlaceholder ) {
+        activeTabInfoUrlPlaceholder.textContent = 'https://scroll-to-top-button.com/info/activeTab/';
       }
 
       toggleTakeover( messageContainer );
