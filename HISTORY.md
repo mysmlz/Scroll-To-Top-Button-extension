@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v10.0.2
+
+### Improved
+
+* Extension should no longer show an exception after user clicks “Revoke permissions” in Options.
+
+---
+
 ## v10.0.1
 
 ### Improved
