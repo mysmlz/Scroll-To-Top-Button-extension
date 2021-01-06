@@ -113,7 +113,7 @@ export function isButtonHovered( buttonToCheck ) {
 
   let elementFromPoint = document.elementFromPoint( cursorPosition.x, cursorPosition.y );
 
-  if ( elementFromPoint.localName === sharedElements.CONTAINER_TAG_NAME ) {
+  if ( elementFromPoint && elementFromPoint.localName === sharedElements.CONTAINER_TAG_NAME ) {
     elementFromPoint = elementFromPoint.shadowRoot.elementFromPoint( cursorPosition.x, cursorPosition.y );
   }
 
