@@ -2,7 +2,7 @@ import buttonSettings from '../button/settings';
 import * as modes from '../button/settings/modes';
 import * as elements from '../button/elements';
 import * as visualProperties from '../button/visual-properties';
-import * as utils from './utils';
+import * as listenersUtils from './utils';
 
 const KEYPRESS_THROTTLE_DELAY = 150;
 const CLICKTHROUGH_KEYS_DIVIDER = '|';
@@ -13,8 +13,8 @@ const CLICKTHROUGH_KEYS_DIVIDER = '|';
  */
 
 export function addKeypressListener() {
-  const throttledKeydownHandler = utils.throttle( handleKeydown, KEYPRESS_THROTTLE_DELAY );
-  const throttledKeyupHandler = utils.throttle( handleKeyup, KEYPRESS_THROTTLE_DELAY );
+  const throttledKeydownHandler = listenersUtils.throttle( handleKeydown, KEYPRESS_THROTTLE_DELAY );
+  const throttledKeyupHandler = listenersUtils.throttle( handleKeyup, KEYPRESS_THROTTLE_DELAY );
 
   window.addEventListener( 'keydown', throttledKeydownHandler );
   window.addEventListener( 'keyup', throttledKeyupHandler );

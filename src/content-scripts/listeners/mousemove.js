@@ -1,4 +1,4 @@
-import * as utils from './utils';
+import * as listenersUtils from './utils';
 
 const MOUSEMOVE_DEBOUNCE_DELAY = 200;
 export const cursorPosition = {
@@ -11,7 +11,7 @@ export const cursorPosition = {
  */
 
 export function addMousemoveListener() {
-  const debouncedHandler = utils.debounce( saveCursorPosition, MOUSEMOVE_DEBOUNCE_DELAY );
+  const debouncedHandler = listenersUtils.debounce( saveCursorPosition, MOUSEMOVE_DEBOUNCE_DELAY );
 
   document.addEventListener( 'mousemove', debouncedHandler );
 }
