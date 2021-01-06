@@ -1,5 +1,6 @@
 import * as elements from '../button/elements';
 import * as visualProperties from '../button/visual-properties';
+import * as listenersUtils from './utils';
 
 /**
  * Monitor for the fullscreenchange event to hide the button(s), as it's most likely a video player and it doesn't need the button(s).
@@ -18,8 +19,8 @@ export function addFullscreenchangeListener() {
 
 function handleFullscreenchangeEvent() {
   if ( document.contains( elements.container ) ) {
-    const fullscreen = !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+    const buttonsToBeVisible = ! listenersUtils.isFullscreenActive();
 
-    visualProperties.toggleButtons( ! fullscreen );
+    visualProperties.toggleButtons( buttonsToBeVisible );
   }
 }

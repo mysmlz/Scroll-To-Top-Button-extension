@@ -69,3 +69,11 @@ export function throttle( func, wait, immediate ) {
     }
   };
 }
+
+/**
+ * @returns {boolean}
+ */
+
+export function isFullscreenActive() {
+  return !! ( document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement );
+}
