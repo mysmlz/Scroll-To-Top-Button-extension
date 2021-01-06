@@ -2,12 +2,16 @@ import * as elements from '../button/elements';
 import * as visualProperties from '../button/visual-properties';
 import * as listenersUtils from './utils';
 
+const SCROLL_THROTTLE_DELAY = 250;
+
 /**
  * Might need to toggle button(s) appearance and flip on scroll.
  */
 
 export function addScrollListener() {
-  elements.getScrollableElement().addEventListener( 'scroll', handleScroll );
+  const throttledScrollHandler = listenersUtils.throttle( handleScroll, SCROLL_THROTTLE_DELAY );
+
+  elements.getScrollableElement().addEventListener( 'scroll', throttledScrollHandler );
 }
 
 /**
