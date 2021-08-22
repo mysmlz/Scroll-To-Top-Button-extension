@@ -93,15 +93,15 @@ const defaultConfig = Map( {
       Shared: path.resolve( __dirname, 'src', 'shared' ),
       ContentScripts: path.resolve( __dirname, 'src', 'content-scripts' ),
     },
+    fallback: {
+      fs: false,
+    },
   },
   resolveLoader: {
     modules: [
       path.resolve( __dirname, 'src', 'loaders' ),
       'node_modules',
     ],
-  },
-  node: {
-    fs: 'empty',
   },
   devtool: modeDevelopment ?
     'inline-cheap-module-source-map' :
