@@ -113,13 +113,13 @@ function handleClickthroughKeyEvent( pressed ) {
 export function isClickthroughKeyPressed( event ) {
   const option = buttonSettings.clickthroughKeys;
 
-  if ( poziworldExtension.utils.isNonEmptyString( option ) ) {
+  if ( window.poziworldExtension.utils.isNonEmptyString( option ) ) {
     const keys = option.split( CLICKTHROUGH_KEYS_DIVIDER );
 
     while ( keys.length ) {
       const key = keys.shift();
 
-      if ( poziworldExtension.utils.isNonEmptyString( key ) && event[ `${ key }Key` ] ) {
+      if ( window.poziworldExtension.utils.isNonEmptyString( key ) && event[ `${ key }Key` ] ) {
         return true;
       }
     }

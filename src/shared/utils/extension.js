@@ -23,7 +23,7 @@ export async function getInstallationId() {
   try {
     let { [ INSTALLATION_ID_STORAGE_KEY ]: installationId } = await browser.storage.local.get( INSTALLATION_ID_STORAGE_KEY );
 
-    if ( poziworldExtension.utils.isNonEmptyString( installationId ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( installationId ) ) {
       return installationId;
     }
     else {

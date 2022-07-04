@@ -77,11 +77,11 @@ function addListeners() {
  */
 
 async function recordEvent( storageKey, data ) {
-  if ( ! poziworldExtension.utils.isNonEmptyString( storageKey ) ) {
+  if ( ! window.poziworldExtension.utils.isNonEmptyString( storageKey ) ) {
     throw new Error( 'Invalid storage key provided.' );
   }
 
-  if ( data && ! poziworldExtension.utils.isType( data, 'object' ) ) {
+  if ( data && ! window.poziworldExtension.utils.isType( data, 'object' ) ) {
     throw new TypeError( 'Invalid type of event details provided.' );
   }
 

@@ -42,8 +42,8 @@ function checkForExtensionUpdateSimulationRequest( changes, areaName ) {
   if ( areaName === EXTENSION_UPDATE_SIMULATION_REQUEST_STORAGE_AREA ) {
     const requestToSimulateExtensionUpdate = changes[ REQUEST_TO_SIMULATE_EXTENSION_UPDATE_KEY ];
 
-    if ( poziworldExtension.utils.isType( requestToSimulateExtensionUpdate, 'object' ) && requestToSimulateExtensionUpdate.newValue === REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE ) {
-      poziworldExtension.background.requestToSimulateExtensionUpdate();
+    if ( window.poziworldExtension.utils.isType( requestToSimulateExtensionUpdate, 'object' ) && requestToSimulateExtensionUpdate.newValue === REQUEST_TO_SIMULATE_EXTENSION_UPDATE_VALUE ) {
+      window.poziworldExtension.background.requestToSimulateExtensionUpdate();
     }
   }
 }

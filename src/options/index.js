@@ -315,7 +315,7 @@ async function letRuntimeFinishAllTasks() {
  */
 
 function cacheMessages() {
-  statusOptionsSaved = poziworldExtension.i18n.getMessage( 'optionsSaved' );
+  statusOptionsSaved = window.poziworldExtension.i18n.getMessage( 'optionsSaved' );
 }
 
 /**
@@ -608,13 +608,13 @@ async function handleFormSubmit( event ) {
     const id = option.id;
     const value = option.value;
 
-    if ( poziworldExtension.utils.isNonEmptyString( id ) && ( value !== CUSTOM_VALUE_INDICATOR || hasSetCustomValues( option ) ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( id ) && ( value !== CUSTOM_VALUE_INDICATOR || hasSetCustomValues( option ) ) ) {
       settings[ id ] = value;
     }
     else {
       const name = option.name;
 
-      if ( poziworldExtension.utils.isNonEmptyString( name ) ) {
+      if ( window.poziworldExtension.utils.isNonEmptyString( name ) ) {
         // Radio buttons
         if ( option.checked ) {
           settings[ name ] = value;
@@ -644,7 +644,7 @@ function hasSetCustomValues( element ) {
   while ( customElements.length ) {
     const customElement = customElements.shift();
 
-    if ( ! poziworldExtension.utils.isNonEmptyString( customElement.value ) ) {
+    if ( ! window.poziworldExtension.utils.isNonEmptyString( customElement.value ) ) {
       return false;
     }
   }
@@ -706,7 +706,7 @@ async function applySettings( settings, refreshForm ) {
     updateSelectedOptions( settings );
   }
 
-  if ( poziworldExtension.utils.isNonEmptyString( settings.contextMenu ) ) {
+  if ( window.poziworldExtension.utils.isNonEmptyString( settings.contextMenu ) ) {
     sttb.contextMenus.toggle( settings );
   }
 
@@ -879,7 +879,7 @@ function getButtonModeValue() {
  */
 
 function changeDistanceType( type ) {
-  distanceType.textContent = poziworldExtension.i18n.getMessage( type );
+  distanceType.textContent = window.poziworldExtension.i18n.getMessage( type );
 }
 
 /**

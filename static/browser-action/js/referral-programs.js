@@ -94,7 +94,7 @@
     } ).then( onResponse );
 
     function onResponse( strReferralProgramName ) {
-      if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' && _this.setName( strReferralProgramName ) ) {
+      if ( window.poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' && _this.setName( strReferralProgramName ) ) {
         _this.showInfo();
       }
     }
@@ -126,7 +126,7 @@
     for ( let i = 0, l = arrInfoElements.length; i < l; i++ ) {
       const strInfoElement = arrInfoElements[ i ];
       const $$infoElement = document.getElementById( 'referralProgramInfo' + strInfoElement );
-      const strInfoElementText = poziworldExtension.i18n.getMessage( 'referralProgramInfo' + strInfoElement + '_' + strName );
+      const strInfoElementText = window.poziworldExtension.i18n.getMessage( 'referralProgramInfo' + strInfoElement + '_' + strName );
 
       if ( $$infoElement ) {
         if ( typeof strInfoElementText === 'string' && strInfoElementText !== '' ) {
@@ -138,7 +138,7 @@
           else if ( strInfoElement === 'Link' ) {
             const strHref = objInfoLinks[ strName ];
 
-            if ( poziworldExtension.utils.isType( strHref, 'string' ) && strHref !== '' ) {
+            if ( window.poziworldExtension.utils.isType( strHref, 'string' ) && strHref !== '' ) {
               $$infoElement.href = strHref;
               $$infoElement.addEventListener( 'click', this.onInfoLinkClick.bind( this, strHref ) );
             }
@@ -190,7 +190,7 @@
       } ).then( funcResolve );
     } )
       .then( function ( boolIsEnabled ) {
-        if ( poziworldExtension.utils.isType( boolIsEnabled, 'boolean' ) ) {
+        if ( window.poziworldExtension.utils.isType( boolIsEnabled, 'boolean' ) ) {
           $$checkbox.checked = boolIsEnabled;
           $$checkbox.disabled = false;
 
@@ -369,9 +369,9 @@
     }
   };
 
-  if ( typeof poziworldExtension === 'undefined' ) {
+  if ( typeof window.poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
-  poziworldExtension.referralPrograms = new ReferralPrograms();
+  window.poziworldExtension.referralPrograms = new ReferralPrograms();
 }() );

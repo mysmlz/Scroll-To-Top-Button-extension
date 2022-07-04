@@ -31,11 +31,11 @@
    */
 
   function exposeApi() {
-    if ( typeof poziworldExtension === 'undefined' ) {
+    if ( typeof window.poziworldExtension === 'undefined' ) {
       window.poziworldExtension = {};
     }
 
-    poziworldExtension.page = new Page();
+    window.poziworldExtension.page = new Page();
   }
 
   function Page() {
@@ -72,15 +72,15 @@
         let arrI18Parameters;
         let strMessage;
 
-        if ( poziworldExtension.utils.isNonEmptyString( strI18 ) ) {
+        if ( window.poziworldExtension.utils.isNonEmptyString( strI18 ) ) {
           if ( typeof strI18Parameters === 'string' && strI18Parameters !== '' ) {
             // @todo Move out the callback.
             arrI18Parameters = strI18Parameters.split( '|' ).map( function ( parameter ) {
-              return poziworldExtension.i18n.getMessage( parameter );
+              return window.poziworldExtension.i18n.getMessage( parameter );
             } );
           }
 
-          strMessage = poziworldExtension.i18n.getMessage( strI18, arrI18Parameters );
+          strMessage = window.poziworldExtension.i18n.getMessage( strI18, arrI18Parameters );
 
           if ( $localizableElement.nodeName === 'LABEL' ) {
             $localizableElement.innerHTML = $localizableElement.innerHTML + strMessage;
@@ -91,7 +91,7 @@
             $localizableElement.innerHTML = strMessage;
 
             if ( $localizableElement.href === '' ) {
-              $localizableElement.href = poziworldExtension.i18n.getMessage( strI18 + 'Href' );
+              $localizableElement.href = window.poziworldExtension.i18n.getMessage( strI18 + 'Href' );
             }
           }
           else if ( $localizableElement.nodeName === 'IMG' ) {
@@ -111,14 +111,14 @@
         else {
           const tooltip = $localizableElement.getAttribute( 'data-i18n-tooltip' );
 
-          if ( poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
-            $localizableElement.setAttribute( 'title', poziworldExtension.i18n.getMessage( tooltip ) );
+          if ( window.poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
+            $localizableElement.setAttribute( 'title', window.poziworldExtension.i18n.getMessage( tooltip ) );
           }
         }
     }
 
     if ( ! boolIsCustomSelectorParentPresent && strPageName ) {
-      document.title = poziworldExtension.i18n.getMessage( strPageName + 'Title' );
+      document.title = window.poziworldExtension.i18n.getMessage( strPageName + 'Title' );
     }
   };
 
@@ -149,7 +149,7 @@
    */
 
   function initI18n( pageName, resolve ) {
-    poziworldExtension.i18n.init()
+    window.poziworldExtension.i18n.init()
       .then( resolve )
       .then( this.localize.bind( this, pageName ) );
   }

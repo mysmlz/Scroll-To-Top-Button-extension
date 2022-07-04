@@ -117,7 +117,7 @@ const Global = {
     const openOptionsPage = browser.runtime.openOptionsPage;
 
     // Edge
-    if ( ! poziworldExtension.utils.isType( openOptionsPage, 'function' ) ) {
+    if ( ! window.poziworldExtension.utils.isType( openOptionsPage, 'function' ) ) {
       Global.createTabOrUpdate( browser.runtime.getURL( 'options/index.html' ) );
     }
     else {

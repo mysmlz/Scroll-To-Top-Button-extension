@@ -68,7 +68,7 @@ var Background = {
     const logTemp = strLog = 'checkIfUpdatedSilently';
 
     const funcCheck = function() {
-      poziworldExtension.utils.getStorageItems( StorageLocal, 'strLatestTrackedVersion', logTemp, onLatestTrackedVersionRetrieved );
+      window.poziworldExtension.utils.getStorageItems( StorageLocal, 'strLatestTrackedVersion', logTemp, onLatestTrackedVersionRetrieved );
 
       function onLatestTrackedVersionRetrieved( objReturn ) {
         Log.add( logTemp, {} );
@@ -119,7 +119,7 @@ var Background = {
       strLatestTrackedVersion: strConstExtensionVersion,
     };
 
-    if ( poziworldExtension.utils.isType( details, 'object' ) ) {
+    if ( window.poziworldExtension.utils.isType( details, 'object' ) ) {
       const previousVersion = details.previousVersion;
 
       versionsToSave.previousVersion = previousVersion;
@@ -127,7 +127,7 @@ var Background = {
       // versionsToSave.previousVersions.push( previousVersion );
     }
 
-    poziworldExtension.utils.setStorageItems(
+    window.poziworldExtension.utils.setStorageItems(
       StorageLocal,
       versionsToSave,
       strLog + ', save version'
@@ -174,7 +174,7 @@ var Background = {
         e: e,
       } );
 
-      if ( poziworldExtension.utils.isType( calledFromOnInstalledListener, 'boolean' ) && calledFromOnInstalledListener ) {
+      if ( window.poziworldExtension.utils.isType( calledFromOnInstalledListener, 'boolean' ) && calledFromOnInstalledListener ) {
         Background.removeOldSettings( details );
       }
     }
@@ -195,7 +195,7 @@ var Background = {
 
     if ( typeof boolWasUpdated === 'boolean' && boolWasUpdated ) {
       // @todo Replace
-      poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
+      window.poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onSettingsRetrieved );
 
       function onSettingsRetrieved( objReturn ) {
         var arrSettingsToRemove = []
@@ -253,7 +253,7 @@ var Background = {
           function onSettingsRemoved() {
             Log.add( logTemp + strLogDo, arrSettingsToRemove, true );
             // @todo Replace
-            poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onUpdatedSettingsRetrieved );
+            window.poziworldExtension.utils.getStorageItems( StorageSync, null, logTemp, onUpdatedSettingsRetrieved );
 
             function onUpdatedSettingsRetrieved( objData ) {
               Log.add( logTemp + strLogDone, objData );
@@ -321,7 +321,7 @@ var Background = {
   setDefaults: function ( Storage, objSettings, strLogSuffix ) {
     const logTemp = strLog = 'setDefaults' + ', ' + strLogSuffix;
 
-    return poziworldExtension.utils.getStorageItems( Storage, null, logTemp, onSettingsRetrieved );
+    return window.poziworldExtension.utils.getStorageItems( Storage, null, logTemp, onSettingsRetrieved );
 
     function onSettingsRetrieved( objReturn ) {
       Log.add( logTemp, objReturn );
@@ -381,7 +381,7 @@ var Background = {
       }
 
       if ( ! Global.isEmpty( objTempToSet ) ) {
-        poziworldExtension.utils.setStorageItems( Storage, objTempToSet, logTemp );
+        window.poziworldExtension.utils.setStorageItems( Storage, objTempToSet, logTemp );
       }
       else {
         Log.add( logTemp + strLogDoNot );
@@ -496,7 +496,7 @@ async function moveLegacySettings( settings ) {
     ],
   };
 
-  if ( ! poziworldExtension.utils.isType( settings, 'object' ) || Object.keys( settings ).length !== Object.keys( availableSettings ).length ) {
+  if ( ! window.poziworldExtension.utils.isType( settings, 'object' ) || Object.keys( settings ).length !== Object.keys( availableSettings ).length ) {
     const newSettings = {};
 
     const localStorageAvailable = isLocalStorageAvailable();
@@ -516,14 +516,14 @@ async function moveLegacySettings( settings ) {
           localStorage.removeItem( oldKey );
         }
 
-        if ( ! poziworldExtension.utils.isType( oldValue, 'undefined' ) && oldValue !== null ) {
+        if ( ! window.poziworldExtension.utils.isType( oldValue, 'undefined' ) && oldValue !== null ) {
           value = oldValue;
         }
-        else if ( poziworldExtension.utils.isType( settings, 'object' ) ) {
+        else if ( window.poziworldExtension.utils.isType( settings, 'object' ) ) {
           value = settings[ settingName ];
         }
 
-        if ( poziworldExtension.utils.isType( value, 'undefined' ) ) {
+        if ( window.poziworldExtension.utils.isType( value, 'undefined' ) ) {
           value = setting[ DEFAULT_VALUE_INDEX ];
         }
 
@@ -557,7 +557,7 @@ async function moveLegacySettings( settings ) {
  */
 
 function initContextMenus() {
-  poziworldExtension.i18n.init()
+  window.poziworldExtension.i18n.init()
     .then( sttb.contextMenus.init );
 }
 

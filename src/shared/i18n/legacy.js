@@ -114,12 +114,12 @@ function setUp() {
  */
 
 function exposeApi() {
-  if ( typeof poziworldExtension === 'undefined' ) {
+  if ( typeof window.poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
-  if ( ! poziworldExtension.i18n ) {
-    poziworldExtension.i18n = new I18n();
+  if ( ! window.poziworldExtension.i18n ) {
+    window.poziworldExtension.i18n = new I18n();
   }
 }
 
@@ -264,13 +264,13 @@ async function getLanguagePreferences( resolve, reject ) {
  */
 
 function getExtensionLanguageSettings( resolve, reject, settings ) {
-  if ( poziworldExtension.utils.isType( settings, 'object' ) ) {
+  if ( window.poziworldExtension.utils.isType( settings, 'object' ) ) {
     const language = settings.uiLanguage;
 
     if ( ! language || language === 'browserDefault' ) {
       getBrowserLanguageSettings( resolve, reject );
     }
-    else if ( poziworldExtension.utils.isType( language, 'string' ) ) {
+    else if ( window.poziworldExtension.utils.isType( language, 'string' ) ) {
       resolve( language );
     }
     else {
@@ -551,6 +551,10 @@ function formatLanguageCode( languageCode ) {
 
 function isSupported( languageCode ) {
   return LOCALES.indexOf( languageCode ) > -1;
+}
+
+function sleep( ms ) {
+  return new Promise( resolve => setTimeout( resolve, ms ) );
 }
 
 /**

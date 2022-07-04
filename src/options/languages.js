@@ -60,7 +60,7 @@ export function setDocumentLanguage() {
   if ( i18n ) {
     const language = i18n.language;
 
-    if ( poziworldExtension.utils.isNonEmptyString( language ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( language ) ) {
       const PLATFORM_LANGUAGE_SEPARATOR = '_';
       // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax
       const LANGUAGE_TAG_SEPARATOR = '-';
@@ -81,7 +81,7 @@ export function setDocumentLanguage() {
 export function isLanguageBeingChanged( settings, originalSettings ) {
   const newUiLanguage = settings.uiLanguage;
 
-  if ( poziworldExtension.utils.isNonEmptyString( newUiLanguage ) ) {
+  if ( window.poziworldExtension.utils.isNonEmptyString( newUiLanguage ) ) {
     return newUiLanguage !== originalSettings.uiLanguage;
   }
 

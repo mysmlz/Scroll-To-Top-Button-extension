@@ -132,7 +132,7 @@ export function isExpectedFormat( settings ) {
  */
 
 export function isBasicExpectedFormat( settings ) {
-  return poziworldExtension.utils.isType( settings, 'object' );
+  return window.poziworldExtension.utils.isType( settings, 'object' );
 }
 
 /**
@@ -149,7 +149,7 @@ export async function mightHaveHadVersion8InstalledBefore() {
   try {
     const { [ PREVIOUS_VERSION_STORAGE_KEY ]: previousVersion } = await browser.storage.local.get( PREVIOUS_VERSION_STORAGE_KEY );
 
-    return poziworldExtension.utils.isNonEmptyString( previousVersion ) && previousVersion.startsWith( PREVIOUS_VERSION_8_PREFIX );
+    return window.poziworldExtension.utils.isNonEmptyString( previousVersion ) && previousVersion.startsWith( PREVIOUS_VERSION_8_PREFIX );
   }
   catch ( error ) {
     // @todo
@@ -160,7 +160,7 @@ export async function haveGrantedPermissionsAtLeastOnce() {
   try {
     const { [ HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY ]: granted } = await browser.storage.local.get( HAVE_GRANTED_PERMISSIONS_AT_LEAST_ONCE_KEY );
 
-    return poziworldExtension.utils.isType( granted, 'boolean' ) && granted;
+    return window.poziworldExtension.utils.isType( granted, 'boolean' ) && granted;
   }
   catch ( error ) {
     // @todo
@@ -172,7 +172,7 @@ export async function hadAskedToNotShowWarningAgain() {
   try {
     const { [ HAD_ASKED_TO_NOT_SHOW_WARNING_AGAIN_KEY ]: asked } = await browser.storage.local.get( HAD_ASKED_TO_NOT_SHOW_WARNING_AGAIN_KEY );
 
-    return poziworldExtension.utils.isType( asked, 'boolean' ) && asked;
+    return window.poziworldExtension.utils.isType( asked, 'boolean' ) && asked;
   }
   catch ( error ) {
     // @todo

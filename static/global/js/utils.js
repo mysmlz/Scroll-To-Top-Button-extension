@@ -48,7 +48,7 @@
       const strGetStorageItemsLog = strLog + ', getStorageItems';
       Log.add( strGetStorageItemsLog + strLogDo, keys );
 
-      if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
+      if ( window.poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
         funcSuccessCallback( objReturn );
       }
 
@@ -80,11 +80,11 @@
       const strSetStorageItemsLog = strLog + ', setStorageItems';
       Log.add( strSetStorageItemsLog + strLogDo, objItems );
 
-      if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
+      if ( window.poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
         funcSuccessCallback();
       }
 
-      poziworldExtension.utils.getStorageItems( StorageSync, null, strLog, onUpdatedSettingsRetrieved );
+      window.poziworldExtension.utils.getStorageItems( StorageSync, null, strLog, onUpdatedSettingsRetrieved );
 
       function onUpdatedSettingsRetrieved( objAllItemsAfterUpdate ) {
         Log.add( strSetStorageItemsLog + strLogDone, objAllItemsAfterUpdate );
@@ -135,5 +135,5 @@
     window.poziworldExtension = {};
   }
 
-  poziworldExtension.utils = new Utils();
+  window.poziworldExtension.utils = new Utils();
 }() );

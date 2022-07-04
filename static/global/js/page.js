@@ -76,7 +76,7 @@ var Page = {
         ) {
         var $localizableElement = $allLocalizableElements[ i ]
           , strI18 = $localizableElement.getAttribute( 'i18n-content' )
-          , strMessage = poziworldExtension.i18n.getMessage( strI18 )
+          , strMessage = window.poziworldExtension.i18n.getMessage( strI18 )
           ;
 
         if ( $localizableElement.nodeName === 'LABEL' ) {
@@ -86,7 +86,7 @@ var Page = {
           $localizableElement.innerHTML = strMessage;
 
           if ( $localizableElement.href === '' ) {
-            $localizableElement.href =  poziworldExtension.i18n.getMessage( strI18 + 'Href' );
+            $localizableElement.href =  window.poziworldExtension.i18n.getMessage( strI18 + 'Href' );
           }
         }
         else if ( $localizableElement.nodeName === 'IMG' ) {
@@ -100,8 +100,8 @@ var Page = {
           const strI18nTitle = $localizableElement.getAttribute( 'data-i18n-title' );
           let strTitle = strMessage;
 
-          if ( poziworldExtension.utils.isNonEmptyString( strI18nTitle ) ) {
-            strTitle = poziworldExtension.i18n.getMessage( strI18nTitle );
+          if ( window.poziworldExtension.utils.isNonEmptyString( strI18nTitle ) ) {
+            strTitle = window.poziworldExtension.i18n.getMessage( strI18nTitle );
           }
 
           $localizableElement.setAttribute( 'title', strTitle );
@@ -109,14 +109,14 @@ var Page = {
         else {
           const tooltip = $localizableElement.getAttribute( 'data-i18n-tooltip' );
 
-          if ( poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
-            $localizableElement.setAttribute( 'title', poziworldExtension.i18n.getMessage( tooltip ) );
+          if ( window.poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
+            $localizableElement.setAttribute( 'title', window.poziworldExtension.i18n.getMessage( tooltip ) );
           }
         }
     }
 
     if ( !boolIsCustomSelectorParentPresent ) {
-      document.title = poziworldExtension.i18n.getMessage( strPageName + 'PageTitle' );
+      document.title = window.poziworldExtension.i18n.getMessage( strPageName + 'PageTitle' );
     }
   }
   ,

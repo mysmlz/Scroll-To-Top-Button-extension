@@ -61,7 +61,7 @@ export function isKeyboardOnlyMode( buttonMode ) {
 function isMode( buttonMode, modeToCheck ) {
   let buttonModeTemp = buttonMode;
 
-  if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) ) {
+  if ( ! window.poziworldExtension.utils.isNonEmptyString( buttonMode ) ) {
     buttonModeTemp = buttonSettings.buttonMode;
   }
 

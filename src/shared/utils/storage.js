@@ -23,7 +23,7 @@ export const NON_SYNCHRONIZABLE_STORAGE_TYPE = 'local';
 export async function getFromStorage( storageType, keys ) {
   checkStorageType( storageType );
 
-  if ( ! poziworldExtension.utils.isNonEmptyString( keys ) && ! Array.isArray( keys ) && ! poziworldExtension.utils.isType( keys, 'object' ) && ! poziworldExtension.utils.isType( keys, 'null' ) ) {
+  if ( ! window.poziworldExtension.utils.isNonEmptyString( keys ) && ! Array.isArray( keys ) && ! window.poziworldExtension.utils.isType( keys, 'object' ) && ! window.poziworldExtension.utils.isType( keys, 'null' ) ) {
     throw new TypeError( 'Invalid type of keys provided.' );
   }
 
@@ -45,7 +45,7 @@ Primitive values such as numbers will serialize as expected. Values with a typeo
 export async function saveInStorage( storageType, items ) {
   checkStorageType( storageType );
 
-  if ( ! poziworldExtension.utils.isType( items, 'object' ) ) {
+  if ( ! window.poziworldExtension.utils.isType( items, 'object' ) ) {
     throw new TypeError( 'Invalid type of items provided.' );
   }
 

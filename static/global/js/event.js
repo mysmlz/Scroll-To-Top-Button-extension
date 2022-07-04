@@ -34,7 +34,7 @@
       strLog = 'poziworldExtension.event.addListener';
       Log.add( strLog, callback );
 
-      if ( poziworldExtension.utils.isType( callback, 'function' ) ) {
+      if ( window.poziworldExtension.utils.isType( callback, 'function' ) ) {
         _arrCallbacks.push( callback );
 
         return true;
@@ -57,9 +57,9 @@
     };
   }
 
-  if ( typeof poziworldExtension === 'undefined' ) {
+  if ( typeof window.poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
-  poziworldExtension.event = new Event();
+  window.poziworldExtension.event = new Event();
 }() );

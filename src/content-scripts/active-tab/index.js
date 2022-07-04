@@ -63,7 +63,7 @@ function getActiveTabSettings( resolve, reject ) {
   ];
   const logTemp = 'getActiveTabSettings';
 
-  poziworldExtension.utils.getStorageItems( browser.storage.sync, settingsToGet, logTemp, resolve, reject );
+  window.poziworldExtension.utils.getStorageItems( browser.storage.sync, settingsToGet, logTemp, resolve, reject );
 }
 
 /**

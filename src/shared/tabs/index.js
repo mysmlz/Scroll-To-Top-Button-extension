@@ -1,5 +1,5 @@
 export function createOrUpdate( url ) {
-  if ( ! poziworldExtension.utils.isNonEmptyString( url ) ) {
+  if ( ! window.poziworldExtension.utils.isNonEmptyString( url ) ) {
     return;
   }
 

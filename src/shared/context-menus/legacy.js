@@ -83,7 +83,7 @@ ContextMenus.prototype.toggle = function( settings ) {
   const contextMenus = browser.contextMenus;
 
   if ( contextMenus ) {
-    if ( poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) && settings.contextMenu === 'on' ) {
+    if ( window.poziworldExtension.utils.isType( settings, 'object' ) && ! Global.isEmpty( settings ) && settings.contextMenu === 'on' ) {
       browser.contextMenus.removeAll()
         .then( createContextMenu )
         .then( addListeners );
@@ -98,7 +98,7 @@ function createContextMenu() {
   const items = [
     {
       id: SCROLL_TO_TOP_ONLY_BASIC_ID,
-      title: poziworldExtension.i18n.getMessage( 'scrollToTopOnlyBasicContextMenuItemTitle' ),
+      title: window.poziworldExtension.i18n.getMessage( 'scrollToTopOnlyBasicContextMenuItemTitle' ),
     },
     {
       id: SEPARATOR_ID,
@@ -106,7 +106,7 @@ function createContextMenu() {
     },
     {
       id: OPTIONS_ID,
-      title: poziworldExtension.i18n.getMessage( 'optionsContextMenuItemTitle' ),
+      title: window.poziworldExtension.i18n.getMessage( 'optionsContextMenuItemTitle' ),
     },
   ];
 

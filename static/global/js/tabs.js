@@ -53,10 +53,10 @@
       strLog = 'poziworldExtension.tabs.saveActiveTab';
       Log.add( strLog, objActiveTab );
 
-      if ( poziworldExtension.utils.isType( objActiveTab, 'object' ) && ! Global.isEmpty( objActiveTab ) ) {
+      if ( window.poziworldExtension.utils.isType( objActiveTab, 'object' ) && ! Global.isEmpty( objActiveTab ) ) {
         const intId = objActiveTab.intId;
 
-        if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
+        if ( window.poziworldExtension.utils.isType( intId, 'number' ) ) {
           let intIndex = this.getSavedActiveTabIndex( intId );
 
           if ( intIndex > -1 ) {
@@ -65,7 +65,7 @@
           else {
             const intWindowId = objActiveTab.intWindowId;
 
-            if ( poziworldExtension.utils.isType( intWindowId, 'number' ) ) {
+            if ( window.poziworldExtension.utils.isType( intWindowId, 'number' ) ) {
               intIndex = this.getSavedActiveTabIndex( intWindowId, true );
 
               if ( intIndex > -1 ) {
@@ -80,7 +80,7 @@
             }
           }
 
-          if ( ! poziworldExtension.utils.isType( boolIsUpdate, 'boolean' ) || ! boolIsUpdate ) {
+          if ( ! window.poziworldExtension.utils.isType( boolIsUpdate, 'boolean' ) || ! boolIsUpdate ) {
             this.onActiveTabsChange.dispatch();
           }
 
@@ -102,7 +102,7 @@
       strLog = 'poziworldExtension.tabs.removeActiveTab';
       Log.add( strLog, intId );
 
-      if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
+      if ( window.poziworldExtension.utils.isType( intId, 'number' ) ) {
         const intIndex = this.getSavedActiveTabIndex( intId );
 
         if ( intIndex > -1 ) {
@@ -138,10 +138,10 @@
         }
       );
 
-      boolGetIndex = poziworldExtension.utils.isType( boolGetIndex, 'boolean' ) && boolGetIndex;
+      boolGetIndex = window.poziworldExtension.utils.isType( boolGetIndex, 'boolean' ) && boolGetIndex;
 
-      if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
-        const strParameterToSearchBy = ! poziworldExtension.utils.isType( boolGetByWindowId, 'boolean' ) || ! boolGetByWindowId ?
+      if ( window.poziworldExtension.utils.isType( intId, 'number' ) ) {
+        const strParameterToSearchBy = ! window.poziworldExtension.utils.isType( boolGetByWindowId, 'boolean' ) || ! boolGetByWindowId ?
           'intId' :
           'intWindowId';
 
@@ -202,7 +202,7 @@
    * Whenever there is a change in arrActiveTabs (whether onRemoved, onReplaced, or onUpdated)
    */
 
-  Tabs.prototype.onActiveTabsChange = poziworldExtension.event;
+  Tabs.prototype.onActiveTabsChange = window.poziworldExtension.event;
 
   /**
    * Initialize.
@@ -352,10 +352,10 @@
     strLog = 'poziworldExtension.tabs.processTabInfo';
     Log.add( strLog, objTab );
 
-    if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
+    if ( window.poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
       const boolIsActive = objTab.active;
 
-      if ( ! poziworldExtension.utils.isType( boolIsActive, 'boolean' ) || ! boolIsActive ) {
+      if ( ! window.poziworldExtension.utils.isType( boolIsActive, 'boolean' ) || ! boolIsActive ) {
         return;
       }
 
@@ -364,7 +364,7 @@
       let strDomain;
 
       // Not available if the “tabs” permission is not granted
-      if ( poziworldExtension.utils.isNonEmptyString( strUrl ) ) {
+      if ( window.poziworldExtension.utils.isNonEmptyString( strUrl ) ) {
         const $a = document.createElement( 'a' );
         let strDomainTemp;
 
@@ -384,9 +384,9 @@
     }
   };
 
-  if ( typeof poziworldExtension === 'undefined' ) {
+  if ( typeof window.poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
-  poziworldExtension.tabs = new Tabs();
+  window.poziworldExtension.tabs = new Tabs();
 }() );

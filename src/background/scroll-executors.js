@@ -119,7 +119,7 @@ export async function setController( source, retriesCount, metadata ) {
     return;
   }
 
-  if ( ! poziworldExtension.utils.isNonEmptyString( buttonMode ) || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
+  if ( ! window.poziworldExtension.utils.isNonEmptyString( buttonMode ) || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
     // @todo Move out
     browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
     browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_BASIC_TYPE ) );
@@ -232,10 +232,10 @@ function handleFileInjectionFail( error ) {
   window.strLog = 'scroll-executors, handleFileInjectionFail';
   Log.add( strLog, error );
 
-  if ( poziworldExtension.utils.isType( error, 'object' ) ) {
+  if ( window.poziworldExtension.utils.isType( error, 'object' ) ) {
     const errorMessage = error.message;
 
-    if ( poziworldExtension.utils.isNonEmptyString( errorMessage ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( errorMessage ) ) {
       // @todo Enable only after common non-working protocols (chrome, chrome-extension, edge, etc.) are excluded.
       // window.alert( errorMessage );
     }
@@ -269,12 +269,12 @@ async function getBrowserActionTitle( mode ) {
   let breakingChangesMessage = '';
 
   if ( await settingsHelpers.mightHaveHadVersion8InstalledBefore() && ! await settingsHelpers.haveGrantedPermissionsAtLeastOnce() ) {
-    breakingChangesMessage = poziworldExtension.i18n.getMessage( 'breakingChangesUpgradingVersion8Message' );
+    breakingChangesMessage = window.poziworldExtension.i18n.getMessage( 'breakingChangesUpgradingVersion8Message' );
   }
 
-  await poziworldExtension.i18n.init();
+  await window.poziworldExtension.i18n.init();
 
-  browserActionTitleDetails.title = poziworldExtension.i18n.getMessage( translationKey, [
+  browserActionTitleDetails.title = window.poziworldExtension.i18n.getMessage( translationKey, [
     strConstExtensionName,
     strConstExtensionVersion,
     breakingChangesMessage,

@@ -60,7 +60,7 @@ export class ScrollToTopButtonContainer extends HTMLElement {
   #areStyleChangesTolerable( mutations ) {
     const style = mutations[ 0 ].target.getAttribute( 'style' );
 
-    if ( poziworldExtension.utils.isNonEmptyString( style ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( style ) ) {
       const STYLE_PROPERTIES_SEPARATOR = ';';
       const PROPERTY_KEY_VALUE_SEPARATOR = ':';
       const properties = style
@@ -68,7 +68,7 @@ export class ScrollToTopButtonContainer extends HTMLElement {
         .split( STYLE_PROPERTIES_SEPARATOR );
 
       for ( const property of properties ) {
-        if ( ! poziworldExtension.utils.isNonEmptyString( property ) ) {
+        if ( ! window.poziworldExtension.utils.isNonEmptyString( property ) ) {
           continue;
         }
 

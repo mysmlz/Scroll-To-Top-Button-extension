@@ -1,12 +1,12 @@
 import utils from 'Shared/utils';
 
 export async function init( callerPageName ) {
-  await poziworldExtension.i18n.init();
+  await window.poziworldExtension.i18n.init();
   localize( callerPageName );
 }
 
 export function localize( callerPageName, customParentSelector ) {
-  const customParentToBeUsed = poziworldExtension.utils.isNonEmptyString( customParentSelector );
+  const customParentToBeUsed = window.poziworldExtension.utils.isNonEmptyString( customParentSelector );
   const parentSelector = customParentToBeUsed ? `${ customParentSelector } ` : '';
   const elementsToLocalize = [ ... document.querySelectorAll( `${ parentSelector }[data-i18n]` ) ];
 
@@ -16,16 +16,16 @@ export function localize( callerPageName, customParentSelector ) {
     const nonLocalizedSubstitutionsString = elementToLocalize.getAttribute( 'data-i18n-parameters' );
     let localizedMessage;
 
-    if ( poziworldExtension.utils.isNonEmptyString( localeKey ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( localeKey ) ) {
       let substitutions;
 
-      if ( poziworldExtension.utils.isNonEmptyString( nonLocalizedSubstitutionsString ) ) {
+      if ( window.poziworldExtension.utils.isNonEmptyString( nonLocalizedSubstitutionsString ) ) {
         substitutions = nonLocalizedSubstitutionsString
           .split( '|' )
-          .map( ( substitution ) => poziworldExtension.i18n.getMessage( substitution ) );
+          .map( ( substitution ) => window.poziworldExtension.i18n.getMessage( substitution ) );
       }
 
-      localizedMessage = poziworldExtension.i18n.getMessage( localeKey, substitutions );
+      localizedMessage = window.poziworldExtension.i18n.getMessage( localeKey, substitutions );
 
       if ( elementToLocalize.nodeName === 'LABEL' ) {
         elementToLocalize.innerHTML = utils.getSanitizedHtml( `${ elementToLocalize.innerHTML }${ localizedMessage }` );
@@ -34,7 +34,7 @@ export function localize( callerPageName, customParentSelector ) {
         elementToLocalize.innerHTML = utils.getSanitizedHtml( localizedMessage );
 
         if ( elementToLocalize.href === '' ) {
-          elementToLocalize.href = poziworldExtension.i18n.getMessage( `${ localeKey }Href` );
+          elementToLocalize.href = window.poziworldExtension.i18n.getMessage( `${ localeKey }Href` );
         }
       }
       else if ( elementToLocalize.nodeName === 'IMG' ) {
@@ -54,14 +54,14 @@ export function localize( callerPageName, customParentSelector ) {
     else {
       const tooltip = elementToLocalize.getAttribute( 'data-i18n-tooltip' );
 
-      if ( poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
-        elementToLocalize.title = poziworldExtension.i18n.getMessage( tooltip );
+      if ( window.poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
+        elementToLocalize.title = window.poziworldExtension.i18n.getMessage( tooltip );
       }
     }
   }
 
   if ( ! customParentToBeUsed && callerPageName ) {
-    document.title = poziworldExtension.i18n.getMessage( `${ callerPageName }Title` );
+    document.title = window.poziworldExtension.i18n.getMessage( `${ callerPageName }Title` );
   }
 }
 

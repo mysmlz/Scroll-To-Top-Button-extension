@@ -1,11 +1,11 @@
 ( function() {
   'use strict';
 
-  if ( typeof poziworldExtension === 'undefined' ) {
+  if ( typeof window.poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
-  poziworldExtension.incentive = {
+  window.poziworldExtension.incentive = {
     setLinks: setLinks
   };
 
@@ -29,6 +29,6 @@
       ]
     ];
 
-    poziworldExtension.page.setLinks( links );
+    window.poziworldExtension.page.setLinks( links );
   }
 } )();

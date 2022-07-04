@@ -115,7 +115,7 @@
     strLog = 'poziworldExtension.referralPrograms.init';
     Log.add( strLog );
 
-    poziworldExtension.tabs.onActiveTabsChange.addListener( this.detectActiveTabsReferralPrograms.bind( this ) );
+    window.poziworldExtension.tabs.onActiveTabsChange.addListener( this.detectActiveTabsReferralPrograms.bind( this ) );
     browser.runtime.onMessage.addListener( this.handleMessage.bind( this ) );
   };
 
@@ -127,7 +127,7 @@
     strLog = 'poziworldExtension.referralPrograms.detectActiveTabsReferralPrograms';
     Log.add( strLog );
 
-    const arrActiveTabs = poziworldExtension.tabs.getSavedActiveTabs();
+    const arrActiveTabs = window.poziworldExtension.tabs.getSavedActiveTabs();
 
     if ( Array.isArray( arrActiveTabs ) ) {
       for ( let i = 0, l = arrActiveTabs.length; i < l; i++ ) {
@@ -151,7 +151,7 @@
      * @todo Make the following check a method and return an exception instead.
      */
 
-    if ( ! poziworldExtension.utils.isType( objTab, 'object' ) || Global.isEmpty( objTab ) ) {
+    if ( ! window.poziworldExtension.utils.isType( objTab, 'object' ) || Global.isEmpty( objTab ) ) {
       return false;
     }
 
@@ -164,7 +164,7 @@
     if ( this.setName( strName ) ) {
       objTab.strReferralProgramName = this.getName();
 
-      return poziworldExtension.tabs.saveActiveTab( objTab, true ) && this.notifyUser( objTab );
+      return window.poziworldExtension.tabs.saveActiveTab( objTab, true ) && this.notifyUser( objTab );
     }
 
     return false;
@@ -188,14 +188,14 @@
       // @todo Remove? Amazon doesn't approve the application and this doesn't work in a browser action mode.
       browser.browserAction.setBadgeText( {
         text: boolIsEnabled ?
-          poziworldExtension.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
+          window.poziworldExtension.i18n.getMessage( 'referralProgramInfoShortTitle_' + strName ) :
           '',
         tabId: intTabId
       } );
 
       browser.browserAction.setTitle( {
         title: boolIsEnabled ?
-          poziworldExtension.i18n.getMessage( 'referralProgramInfoTitle_' + strName ) :
+          window.poziworldExtension.i18n.getMessage( 'referralProgramInfoTitle_' + strName ) :
           '',
         tabId: intTabId
       } );
@@ -224,13 +224,13 @@
       }
     );
 
-    if ( poziworldExtension.utils.isType( message, 'object' ) && ! Global.isEmpty( message ) ) {
+    if ( window.poziworldExtension.utils.isType( message, 'object' ) && ! Global.isEmpty( message ) ) {
       const objSttbApiRequest = message.objSttbApiRequest;
 
-      if ( poziworldExtension.utils.isType( objSttbApiRequest, 'object' ) && ! Global.isEmpty( objSttbApiRequest ) ) {
+      if ( window.poziworldExtension.utils.isType( objSttbApiRequest, 'object' ) && ! Global.isEmpty( objSttbApiRequest ) ) {
         const strCall = objSttbApiRequest.strCall;
 
-        if ( poziworldExtension.utils.isType( strCall, 'string' ) && strCall !== '' ) {
+        if ( window.poziworldExtension.utils.isType( strCall, 'string' ) && strCall !== '' ) {
           const arrCall = strCall.split( '/' );
           const strPrimaryCall = arrCall[ 0 ];
 
@@ -270,7 +270,7 @@
     const strMethod = objSttbApiRequest.strMethod;
 
 
-    if ( poziworldExtension.utils.isType( strMethod, 'string' ) && strMethod !== '' ) {
+    if ( window.poziworldExtension.utils.isType( strMethod, 'string' ) && strMethod !== '' ) {
       switch ( strSecondaryCall ) {
         case 'notification-settings':
           switch ( strMethod ) {
@@ -312,16 +312,16 @@
       if ( Array.isArray( arrTabs ) ) {
         const objTab = arrTabs[ 0 ];
 
-        if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
+        if ( window.poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
           const intId = objTab.id;
 
-          if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
-            const objSavedActiveTab = poziworldExtension.tabs.getSavedActiveTab( intId );
+          if ( window.poziworldExtension.utils.isType( intId, 'number' ) ) {
+            const objSavedActiveTab = window.poziworldExtension.tabs.getSavedActiveTab( intId );
 
-            if ( poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
+            if ( window.poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
               const strReferralProgramName = objSavedActiveTab.strReferralProgramName;
 
-              if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
+              if ( window.poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
                 funcSendResponse( strReferralProgramName );
               }
             }
@@ -360,13 +360,13 @@
     const strLogLocal = strLog;
     Log.add( strLog, funcSendResponse );
 
-    if ( ! poziworldExtension.utils.isType( objData, 'object' ) || Global.isEmpty( objData ) ) {
+    if ( ! window.poziworldExtension.utils.isType( objData, 'object' ) || Global.isEmpty( objData ) ) {
       return false;
     }
 
     const boolDisable = objData.boolDisable;
 
-    if ( ! poziworldExtension.utils.isType( boolDisable, 'boolean' ) ) {
+    if ( ! window.poziworldExtension.utils.isType( boolDisable, 'boolean' ) ) {
       return false;
     }
 
@@ -380,7 +380,7 @@
         let arrDisabledNotifications = objSettings[ _this.getNotificationSettingsKey() ];
         const boolFoundDisabledNotifcations = Array.isArray( arrDisabledNotifications );
 
-        if ( boolFoundDisabledNotifcations || poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
+        if ( boolFoundDisabledNotifcations || window.poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
           let intIndex = -1;
           let boolIsDisabled = false;
 
@@ -404,7 +404,7 @@
 
           objSettings[ _this.getNotificationSettingsKey() ] = arrDisabledNotificationsToSet;
 
-          poziworldExtension.utils.setStorageItems(
+          window.poziworldExtension.utils.setStorageItems(
             _this.getNotificationStorageArea(),
             objSettings,
             strLogLocal,
@@ -437,16 +437,16 @@
       if ( Array.isArray( arrTabs ) ) {
         const objTab = arrTabs[ 0 ];
 
-        if ( poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
+        if ( window.poziworldExtension.utils.isType( objTab, 'object' ) && ! Global.isEmpty( objTab ) ) {
           const intId = objTab.id;
 
-          if ( poziworldExtension.utils.isType( intId, 'number' ) ) {
-            const objSavedActiveTab = poziworldExtension.tabs.getSavedActiveTab( intId );
+          if ( window.poziworldExtension.utils.isType( intId, 'number' ) ) {
+            const objSavedActiveTab = window.poziworldExtension.tabs.getSavedActiveTab( intId );
 
-            if ( poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
+            if ( window.poziworldExtension.utils.isType( objSavedActiveTab, 'object' ) && ! Global.isEmpty( objSavedActiveTab ) ) {
               const strReferralProgramName = objSavedActiveTab.strReferralProgramName;
 
-              if ( poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
+              if ( window.poziworldExtension.utils.isType( strReferralProgramName, 'string' ) && strReferralProgramName !== '' ) {
                 funcSendResponse( strReferralProgramName );
               }
             }
@@ -473,7 +473,7 @@
     const _this = this;
 
     return new Promise( function ( funcResolve, funcReject ) {
-      poziworldExtension.utils.getStorageItems(
+      window.poziworldExtension.utils.getStorageItems(
         _this.getNotificationStorageArea(),
         _this.getNotificationSettingsKey(),
         strLog,
@@ -482,11 +482,11 @@
       );
     } )
       .then( function ( objSettings ) {
-        if ( poziworldExtension.utils.isType( objSettings, 'object' ) ) {
+        if ( window.poziworldExtension.utils.isType( objSettings, 'object' ) ) {
           const arrDisabledNotifications = objSettings[ _this.getNotificationSettingsKey() ];
           const boolFoundDisabledNotifcations = Array.isArray( arrDisabledNotifications );
 
-          if ( boolFoundDisabledNotifcations || poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
+          if ( boolFoundDisabledNotifcations || window.poziworldExtension.utils.isType( arrDisabledNotifications, 'undefined' ) ) {
             let boolIsEnabled = true;
 
             if ( boolFoundDisabledNotifcations ) {
@@ -495,8 +495,8 @@
               boolIsEnabled = intIndex === -1;
             }
 
-            if ( poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
-              boolReturnStorageObject = poziworldExtension.utils.isType( boolReturnStorageObject, 'boolean' ) && boolReturnStorageObject;
+            if ( window.poziworldExtension.utils.isType( funcSuccessCallback, 'function' ) ) {
+              boolReturnStorageObject = window.poziworldExtension.utils.isType( boolReturnStorageObject, 'boolean' ) && boolReturnStorageObject;
 
               funcSuccessCallback( boolReturnStorageObject ? objSettings : boolIsEnabled );
 
@@ -572,16 +572,16 @@
 
     const domain = objTab.strDomain;
 
-    if ( poziworldExtension.utils.isNonEmptyString( domain ) ) {
+    if ( window.poziworldExtension.utils.isNonEmptyString( domain ) ) {
       return domain.split( '.' ).slice( 1 ).join( '.' );
     }
 
     return '';
   };
 
-  if ( typeof poziworldExtension === 'undefined' ) {
+  if ( typeof window.poziworldExtension === 'undefined' ) {
     window.poziworldExtension = {};
   }
 
-  poziworldExtension.referralPrograms = new ReferralPrograms();
+  window.poziworldExtension.referralPrograms = new ReferralPrograms();
 }() );

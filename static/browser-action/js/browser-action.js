@@ -76,10 +76,10 @@ var BrowserAction = {
     $reloadActiveTabCta = document.getElementById( strReloadActiveTabCtaId );
 
     Page.hideInOpera();
-    poziworldExtension.i18n.init()
+    window.poziworldExtension.i18n.init()
       .then( Page.localize.bind( null, strPage ) )
-      .then( poziworldExtension.incentive.setLinks );
-    poziworldExtension.page.init( strPage );
+      .then( window.poziworldExtension.incentive.setLinks );
+    window.poziworldExtension.page.init( strPage );
     BrowserAction.addEventListeners();
     BrowserAction.getActiveTabAddress();
   }
@@ -174,7 +174,7 @@ var BrowserAction = {
   getActiveTabSettings: function () {
     const logTemp = 'getActiveTabSettings';
 
-    poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
+    window.poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
 
     function onActiveTabSettingsRetrieved( objReturn ) {
       // Check domain first
@@ -219,7 +219,7 @@ var BrowserAction = {
     const logTemp = strLog = 'changeSttbMode';
     const strChosenModeOptionId = objEvent.target.id;
 
-    poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
+    window.poziworldExtension.utils.getStorageItems( StorageSync, arrSettingsToGet, logTemp, onActiveTabSettingsRetrieved );
 
     function onActiveTabSettingsRetrieved( objReturn ) {
       if ( typeof objReturn === 'object' ) {
@@ -329,7 +329,7 @@ var BrowserAction = {
 
         // Save
         if ( ! Global.isEmpty( objTempToSet ) ) {
-          poziworldExtension.utils.setStorageItems( StorageSync, objTempToSet, strLog );
+          window.poziworldExtension.utils.setStorageItems( StorageSync, objTempToSet, strLog );
         }
 
         // Suggest to reload active tab

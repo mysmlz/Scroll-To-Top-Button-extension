@@ -44,7 +44,7 @@ export function isExpertButtonMode( mode ) {
 }
 
 function isButtonMode( mode, modeIndicator ) {
-  return poziworldExtension.utils.isNonEmptyString( mode ) && mode.includes( modeIndicator );
+  return window.poziworldExtension.utils.isNonEmptyString( mode ) && mode.includes( modeIndicator );
 }
 
 export function getExpertModeReplacement( mode ) {
