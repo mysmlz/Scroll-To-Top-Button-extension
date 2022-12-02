@@ -6,6 +6,16 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v10.0.4
+
+### Fixed
+
+* Changing the button mode to “Keyboard only” in Options wouldn't work.
+
+  > Issue reported by Noah the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+---
+
 ## v10.0.3
 
 ### Fixed
