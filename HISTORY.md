@@ -12,7 +12,7 @@
 
 * Changing the button mode to “Keyboard only” in Options wouldn't work.
 
-  > Issue reported by Noah the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+  > Issue reported by Noah via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
 
 ---
 
