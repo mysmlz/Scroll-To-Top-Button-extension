@@ -60,7 +60,7 @@
     "uuid": "^8.3.2",
     "webpack": "5.75.0",
     "webpack-clean": "^1.2.5",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "5.0.0"
   },
   "dependencies": {
     "core-js": "3.26.1",
