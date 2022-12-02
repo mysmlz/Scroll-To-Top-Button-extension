@@ -56,7 +56,7 @@
     "postcss-mixins": "^6.2.3",
     "precss": "^4.0.0",
     "punycode": "^2.1.1",
-    "regenerator-runtime": "^0.13.9",
+    "regenerator-runtime": "0.13.11",
     "uuid": "^8.3.2",
     "webpack": "^5.51.1",
     "webpack-clean": "^1.2.5",
