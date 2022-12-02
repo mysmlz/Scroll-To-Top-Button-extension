@@ -42,7 +42,7 @@
     "@poziworld/custom-elements": "^1.3.2",
     "@poziworld/cypress-browser-extension-plugin": "^0.2.2",
     "babel-loader": "9.1.0",
-    "clean-webpack-plugin": "^0.1.19",
+    "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^7.0.3",
     "css-loader": "^2.1.1",

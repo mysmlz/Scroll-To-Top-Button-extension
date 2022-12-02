@@ -1,7 +1,7 @@
 const path = require( 'path' );
 const { List, Map } = require( 'immutable' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const WebpackCleanPlugin = require( 'webpack-clean' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
@@ -61,11 +61,7 @@ const defaultConfig = Map( {
     ],
   },
   plugins: List( [
-    new CleanWebpackPlugin(
-      [
-        'dist',
-      ]
-    ),
+    new CleanWebpackPlugin(),
 
     new CopyWebpackPlugin(
       [
