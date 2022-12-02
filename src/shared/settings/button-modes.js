@@ -16,6 +16,7 @@ export const DUAL_ARROWS_ADVANCED_BUTTON_MODE = 'dualArrowsAdvanced';
 export const SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE = 'off';
 export const FLIP_EXPERT_BUTTON_MODE = 'flip';
 export const DUAL_ARROWS_EXPERT_BUTTON_MODE = 'dual';
+export const KEYBOARD_ONLY_EXPERT_BUTTON_MODE = 'keys';
 
 // All button modes
 export const AVAILABLE_BUTTON_MODES = [
@@ -28,6 +29,7 @@ export const AVAILABLE_BUTTON_MODES = [
   SCROLL_TO_TOP_ONLY_EXPERT_BUTTON_MODE,
   FLIP_EXPERT_BUTTON_MODE,
   DUAL_ARROWS_EXPERT_BUTTON_MODE,
+  KEYBOARD_ONLY_EXPERT_BUTTON_MODE,
 ];
 
 export function isBasicButtonMode( mode ) {

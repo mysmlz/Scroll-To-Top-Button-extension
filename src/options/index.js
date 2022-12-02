@@ -812,7 +812,7 @@ function checkMode() {
       break;
     }
 
-    case 'keys': {
+    case settingsHelpers.KEYBOARD_ONLY_EXPERT_BUTTON_MODE: {
       switchElements(
         [
           '#distanceLength',
