@@ -824,6 +824,7 @@ function checkMode() {
       switchElements(
         [
           '#button-settings',
+          '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#keyboard-settings',
           '#contextMenu',
