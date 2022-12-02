@@ -5,6 +5,8 @@ const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const WebpackCleanPlugin = require( 'webpack-clean' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 
+const DIST_FOLDER_PATH = path.resolve( __dirname, 'dist' );
+
 const modeDevelopment = process.env.NODE_ENV === 'development';
 
 const defaultConfig = Map( {
@@ -21,7 +23,7 @@ const defaultConfig = Map( {
   output: Map( {
     filename: '[name].js',
     chunkFilename: '[name].js',
-    path: path.resolve( __dirname, 'dist' ),
+    path: DIST_FOLDER_PATH,
   } ),
   module: {
     rules: [
@@ -61,7 +63,11 @@ const defaultConfig = Map( {
     ],
   },
   plugins: List( [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin( {
+      cleanOnceBeforeBuildPatterns: [
+        DIST_FOLDER_PATH,
+      ]
+    } ),
 
     new CopyWebpackPlugin( {
       patterns: [
@@ -119,7 +125,7 @@ module.exports = supportedBrowsers.map( browserName => {
         'output',
         'path',
       ],
-      () => path.resolve( __dirname, 'dist', browserName ),
+      () => path.resolve( DIST_FOLDER_PATH, browserName ),
     )
     // Remove unused automatically-created JavaScript files post-build
     .updateIn(
@@ -133,7 +139,7 @@ module.exports = supportedBrowsers.map( browserName => {
             'shared/elements/scroll-to-top-button.js',
           ],
           {
-            basePath: path.resolve( __dirname, 'dist', browserName ),
+            basePath: path.resolve( DIST_FOLDER_PATH, browserName ),
           },
         ),
       ),
