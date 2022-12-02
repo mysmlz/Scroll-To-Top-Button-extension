@@ -63,8 +63,8 @@ const defaultConfig = Map( {
   plugins: List( [
     new CleanWebpackPlugin(),
 
-    new CopyWebpackPlugin(
-      [
+    new CopyWebpackPlugin( {
+      patterns: [
         {
           from: './static',
           to: './',
@@ -78,7 +78,7 @@ const defaultConfig = Map( {
           to: './shared/images',
         },
       ]
-    ),
+    } ),
 
     new MiniCssExtractPlugin( {
       filename: '[name].css',
