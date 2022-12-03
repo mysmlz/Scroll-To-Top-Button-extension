@@ -196,21 +196,6 @@ input.pwRadio:checked:before
       border-left: 0;
     }
 
-  @supports ( -ms-ime-align: auto )
-    {
-
-      #becomePatronLink
-        {
-          display: none;
-        }
-    }
-
-  #becomePatronImg
-    {
-      width: 150px;
-      height: 35px;
-    }
-
 /* =============================================================================
 
   Other projects

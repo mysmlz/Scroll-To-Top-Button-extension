@@ -56,25 +56,6 @@ body {
   color: #0c63fb;
 }
 
-/* Patreon */
-
-#becomePatron {
-  @mixin secondaryInfoBlock;
-  margin-top: 1rem;
-}
-
-@supports ( -ms-ime-align: auto ) {
-
-  #becomePatron {
-    display: none;
-  }
-}
-
-#becomePatronImg {
-  width: 15rem;
-  height: 3.5rem;
-}
-
 /* Version 9 upgrade message */
 
 #hadVersion8InstalledBeforeMessageContainer {
