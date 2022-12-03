@@ -43,6 +43,7 @@ Available customizations
 Languages
 --------
 
+- Bulgarian
 - Chinese (China / Simplified)
 - Czech
 - Dutch (Netherlands)
@@ -128,6 +129,7 @@ Gratitudes
 --------
 
 - Translators:
+  - Bulgarian — [ozzy1bg (Валери Владимиров)](https://www.transifex.com/user/profile/ozzy1bg/);
   - Chinese (China) — [Pluwen](https://www.transifex.com/user/profile/pluwen/), [Bright X](https://www.transifex.com/user/profile/whaat7er/);
   - Russian — [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/), [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/);
   - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/);

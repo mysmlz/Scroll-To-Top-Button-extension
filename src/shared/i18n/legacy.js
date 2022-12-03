@@ -17,6 +17,7 @@ const LOCALES = [
   'en_US',
 
   // Added over time
+  'bg',
   'cs',
   'gl',
   'nl',
