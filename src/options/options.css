@@ -23,7 +23,7 @@ $lightThemeBackgroundColor: #fff;
 
 body {
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 2rem 3rem;
   max-width: $contentContainerWidthMax;
 }
 
@@ -268,7 +268,7 @@ input.optionsChanger {
 .links {
   @mixin secondaryInfoBlock;
   line-height: 2rem;
-  padding-left: 1.7rem;
+  padding-left: .5rem;
 }
 
 .linkWrapper {
