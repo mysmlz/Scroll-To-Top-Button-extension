@@ -97,9 +97,11 @@ body {
 
 .feedbackCta {
   @mixin cta;
+  font-size: 2em;
   display: inline-block;
   padding: 1rem;
   text-decoration: none;
+  text-shadow: .1rem .1rem #000;
 
   &:hover {
     transform: scale( 1.2 );
