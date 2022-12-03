@@ -49,6 +49,7 @@ Languages
 - Dutch (Netherlands)
 - English (United States)
 - Galician
+- Japanese
 - Polish
 - Russian
 - Turkish
@@ -135,6 +136,7 @@ Gratitudes
   - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/);
   - Czech — [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/).
   - Galician — [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Iváns](https://www.transifex.com/user/profile/Iváns/).
+  - Japanese — [noby (oshima yoshinobu)](https://www.transifex.com/user/profile/noby/).
   - Polish — [MusicInMe_TH (Ireek)](https://www.transifex.com/user/profile/MusicInMe_TH/).
   - Turkish — [E.Tas (Eren Tas)](https://www.transifex.com/user/profile/E.Tas/).
 

@@ -20,6 +20,7 @@ const LOCALES = [
   'bg',
   'cs',
   'gl',
+  'ja',
   'nl',
   'pl',
   'ru',
