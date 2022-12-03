@@ -324,9 +324,6 @@
     "message": " ",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
-  "incentivizeFurtherDevelopment": {
-    "message": "Projeyi beğendiyseniz ve yararlı buluyorsanız, lütfen bizi <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> ile desteklemeyi düşünün - yardımlarınız hataları düzeltmek ve yeni özellikler uygulamak için ihtiyaç duyduğumuz hosting, araçlar ve sürenin ödemesine yardımcı olur."
-  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Sürüm notları</a>"
   },

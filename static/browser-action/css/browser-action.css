@@ -185,16 +185,6 @@ input.pwRadio:checked:before
     {
       margin-bottom:          1.8rem;
     }
-  #incentivizeFurtherDevelopment
-    {
-      font-size: 1em;
-      margin: 0 -2rem 1rem;
-      padding: 1rem 2rem;
-      background-color: #eee;
-      border: .1rem solid #eee;
-      border-right: 0;
-      border-left: 0;
-    }
 
 /* =============================================================================
 

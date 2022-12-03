@@ -344,9 +344,6 @@
     "message": "简体中文翻译 <a href=\"https://twitter.com/pluwen\" target=\"_blank\" id=\"translatorLink\">Pluwen</a>",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
-  "incentivizeFurtherDevelopment": {
-    "message": "如果你喜欢该项目并发现我们的工作有用，请考虑通过以下方式支持我们： <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>、<a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>、<a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> – 你的慷慨捐助有助于支付我们修复问题，以及实现新功能所需的托管、工具和时间。"
-  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">发行说明</a>"
   },

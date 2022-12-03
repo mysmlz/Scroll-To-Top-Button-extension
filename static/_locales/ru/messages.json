@@ -344,9 +344,6 @@
     "message": "Перевод: <a href=\"https://www.transifex.com/user/profile/reidel/\" target=\"_blank\" id=\"translatorLink\">Пётр Михайлишин</a>, <a href=\"https://www.transifex.com/user/profile/aleev.insmile/\" target=\"_blank\" id=\"translatorLink\">Руслан Алеев</a>",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
-  "incentivizeFurtherDevelopment": {
-    "message": "Если вам нравится наш проект и вы считаете наше произведение труда полезным, пожалуйста, поддержите нас через <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> — ваши щедрые взносы помогают оплачивать хостинг, программные средства и время, необходимое для исправления ошибок и внедрения новых функций."
-  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">История изменений (версий)</a>"
   },

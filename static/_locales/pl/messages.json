@@ -324,9 +324,6 @@
     "message": "Przetłumaczone przez <a href=\"https://www.transifex.com/user/profile/MusicInMe_TH/\" target=\"_blank\" id=\"translatorLink\">Ireek Niwinski aka MusicInMe_TH</a>",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
-  "incentivizeFurtherDevelopment": {
-    "message": "Jeśli podoba Ci się projekt i uważasz, że nasza praca jest przydatna, rozważ wspieranie nas za pośrednictwem <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a> –  twój hojny wkład pomoże opłacić hosting, narzędzia i czas potrzebne nam naprawić błędy i zaimplementować nowe funkcje."
-  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Informacje o wydaniu</a>"
   },

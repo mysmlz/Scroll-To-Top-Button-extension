@@ -410,9 +410,6 @@
     "message": "Traducido por <a href=\"https://www.transifex.com/user/profile/antiparvos/\" target=\"_blank\" id=\"translatorLink\">antiparvos</a> e <a href=\"https://www.transifex.com/user/profile/Iv%C3%A1ns/\" target=\"_blank\" id=\"translatorLink\">Iváns</a>",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
-  "incentivizeFurtherDevelopment": {
-    "message": "Se lle gusta o proxecto e o ve útil, considere axudarnos por <a href=\"#\" target=\"_blank\" id=\"incentivizePaypalLink\">PayPal</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeSquarecashLink\">Square Cash</a>, <a href=\"#\" target=\"_blank\" id=\"incentivizeCoinbaseLink\">Coinbase</a>.  A súa contribución xenerosa axuda a pagar a hospedaxe, ferramentas e tempo necesario para arranxar fallos e implementar novas funcionalidades."
-  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Notas da versión</a>"
   },
