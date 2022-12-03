@@ -48,10 +48,6 @@
     "message": "\uD83D\uDC4E",
     "description": "Message (currently, a “thumbs down” emoji) asking user to contact developer if that user is not (completely) satisfied with the extension."
   },
-  "shareOnSocial": {
-    "message": "\uD83D\uDCAC",
-    "description": "Message (currently, a “speech bubble” emoji) asking user to share the project on social media."
-  },
   "askingToRateLinkTooltip": {
     "message": "Do you like this extension?\n\nLet others know what you like the most!\nRate it now",
     "description": "Message encouraging user to rate the extension."
@@ -59,10 +55,6 @@
   "issueReportingLinkTooltip": {
     "message": "Something is not working?\nFound a bug?\nHave a question?\nSomething else?\n\nContact the extension developer now",
     "description": "Message encouraging user to contact developer."
-  },
-  "shareLinkTooltip": {
-    "message": "Support this extension by sharing it with your followers",
-    "description": "Message encouraging user to share the project."
   },
 
   "buttonSettings": {
