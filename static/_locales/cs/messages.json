@@ -1,160 +1,115 @@
 {
-  "browserActionReloadActiveTab": {
-    "message": "Obnovit kartu"
-  },
-  "black": {
-    "message": "Černá"
-  },
-  "browserActionSttbEnabled": {
-    "message": "Zapnout Scroll To Top Button (STTB)"
-  },
-  "scrollToTopOnly": {
-    "message": "Scroll to top only"
-  },
-  "altTB": {
-    "message": "Alt + T/B"
-  },
-  "contextRightClickMenu": {
-    "message": "Kontextové menu (pravé-tlačitko)"
-  },
-  "medium": {
-    "message": "Středně"
-  },
-  "buttonSettings": {
-    "message": "Nastavení tlačítka"
-  },
-  "browserActionSttbDisabledUrl": {
-    "message": "Vypnout STTB pro tuto URL"
-  },
-  "officialWebsite": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Domovská stránka</a>",
-    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  },
-  "slower": {
-    "message": "Pomalejší"
-  },
-  "faster": {
-    "message": "Rychleji"
-  },
-  "aLot": {
-    "message": "Hodně"
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Please copy and paste the original/source string. Should NOT be translated."
   },
   "extensionDescription": {
-    "message": "Adds a scroll to top or bottom button."
-  },
-  "topCenter": {
-    "message": "Nahoře uprostřed"
-  },
-  "buttonLocation": {
-    "message": "Pozice tlačítka"
-  },
-  "arrowOnly": {
-    "message": "Pouze šipky"
-  },
-  "off": {
-    "message": "Vypnuto"
-  },
-  "authorsSettings": {
-    "message": "Autorské nastavení"
-  },
-  "buttonDesign": {
-    "message": "Design tlačítka"
-  },
-  "otherSettings": {
-    "message": "Jiné nastavení"
-  },
-  "tumblerBlue": {
-    "message": "Tumblr modř"
+    "message": "Přejděte nahoru, dolů nebo obojí. Klikněte na ikonu rozšíření, tlačítko na stránce, použijte možnosti kontextové nabídky/nebo klávesové zkratky.",
+    "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
   },
   "optionsPageTitle": {
-    "message": "Možnosti | Scroll To Top Button"
+    "message": "Možnosti | Scroll To Top Button",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
-  "red": {
-    "message": "Červená"
-  },
-  "fast": {
-    "message": "Rychle"
-  },
-  "browserActionSttbDisabledDomain": {
-    "message": "Vypnout STTB pro tuto doménu"
-  },
-  "blue": {
-    "message": "Modrá"
-  },
-  "flipBetweenTopBottom": {
-    "message": "Přepínat dolů &amp; nahoru"
-  },
-  "bottomLeft": {
-    "message": "Dole vlevo"
-  },
-  "homeEndKeysControlledBy": {
-    "message": "Tlačítka Home &amp; End ovládány"
+  "optionsTitle": {
+    "message": "Scroll To Top Button Možnosti",
+    "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
   },
   "close": {
     "message": "Zavřít"
   },
-  "scrollDownSpeed": {
-    "message": "Rychlost posunu dolů"
+  "browserActionPageTitle": {
+    "message": "Karta aktivního nastavení | Scroll To Top Button"
   },
-  "pixelDesign": {
-    "message": "Pixel design"
+  "browserActionTitle": {
+    "message": "Karta aktivního nastavení"
   },
-  "altUpDownArrows": {
-    "message": "Alt + šipky Nahoru/Dolů"
+  "browserActionSttbEnabled": {
+    "message": "Zapnout Scroll To Top Button (STTB)"
   },
-  "centerRight": {
-    "message": "Uprostřed vpravo"
+  "browserActionSttbDisabledUrl": {
+    "message": "Vypnout STTB pro tuto URL"
   },
-  "appearDistance": {
-    "message": "Appear distance"
+  "browserActionSttbDisabledDomain": {
+    "message": "Vypnout STTB pro tuto doménu"
   },
-  "topRight": {
-    "message": "Nahoře vpravo"
+  "browserActionReloadActiveTab": {
+    "message": "Obnovit kartu"
   },
-  "colors": {
-    "message": "Barvy"
-  },
-  "topLeft": {
-    "message": "Nahoře vlevo"
-  },
-  "barelyAny": {
-    "message": "Barely any"
-  },
-  "on": {
-    "message": "Zapnuto"
-  },
-  "helpTranslate": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Help translate</a>"
-  },
-  "releaseNotes": {
-    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Poznámky k vydaní</a>"
+  "buttonSettings": {
+    "message": "Nastavení tlačítka"
   },
   "buttonMode": {
     "message": "Typ tlačítka"
   },
+  "scrollToTopOnly": {
+    "message": "Pouze nahoru",
+    "description": "Name of a button mode that allows scrolling only to the top of a page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
+  },
+  "flipBetweenTopBottom": {
+    "message": "Přepínat dolů &amp; nahoru",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
+  },
+  "dualArrows": {
+    "message": "Dvojitá šipka",
+    "description": "Name of a button mode that allows scrolling to the top or bottom of a page. Always shows two arrows. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
+  },
+  "keyboardOnly": {
+    "message": "Pouze klávesnice",
+    "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
+  },
+  "scrollUpSpeed": {
+    "message": "Rychlost posunu nahoru"
+  },
+  "scrollDownSpeed": {
+    "message": "Rychlost posunu dolů"
+  },
   "slowest": {
     "message": "Nejpomalejší"
   },
-  "pink": {
-    "message": "Řužová"
+  "slower": {
+    "message": "Pomalejší"
   },
-  "keyboardOnly": {
-    "message": "Pouze klávesnice"
+  "slow": {
+    "message": "Pomalu"
   },
-  "restoreDefaults": {
-    "message": "Obnovit vychozí"
+  "fast": {
+    "message": "Rychle"
   },
-  "browserActionPageTitle": {
-    "message": "Karta aktivního nastavení | Scroll To Top Button"
+  "faster": {
+    "message": "Rychleji"
   },
-  "operatingSystem": {
-    "message": "Operační systém"
+  "fastest": {
+    "message": "Nejrychlejší (okamžitě)"
   },
-  "grey": {
-    "message": "Šedá"
+  "appearDistance": {
+    "message": "Objevit vzdálenost",
+    "description": "In other words, “distance after which the button appears.”"
+  },
+  "flipDistance": {
+    "message": "Přepnout vzdálenost",
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
+  },
+  "barelyAny": {
+    "message": "Skoro každý"
+  },
+  "aLittle": {
+    "message": "Trochu"
+  },
+  "medium": {
+    "message": "Středně"
   },
   "moreThanAverage": {
     "message": "Více než průměr"
+  },
+  "aLot": {
+    "message": "Hodně"
+  },
+  "aTon": {
+    "message": "O tunu"
+  },
+  "buttonSize": {
+    "message": "Velikost tlačitka"
   },
   "buttonSizeInPixels": {
     "message": "$LENGTH$x$WIDTH$ pixelů",
@@ -170,76 +125,26 @@
       }
     }
   },
-  "keyboardShortcuts": {
-    "message": "Klávesové zkratky "
+  "buttonDesign": {
+    "message": "Design tlačítka"
   },
-  "transparent": {
-    "message": "Transparent"
+  "colors": {
+    "message": "Barvy"
   },
-  "keyboardSettings": {
-    "message": "Nastavení klávesnice"
+  "tumblerBlue": {
+    "message": "Tumblr modř"
   },
-  "dualArrows": {
-    "message": "Dvojitá šipka"
+  "grey": {
+    "message": "Šedá"
   },
-  "buttonSize": {
-    "message": "Velikost tlačitka"
+  "black": {
+    "message": "Černá"
   },
-  "aLittle": {
-    "message": "Trochu"
+  "red": {
+    "message": "Červená"
   },
   "orange": {
     "message": "Oranžová"
-  },
-  "aTon": {
-    "message": "A ton"
-  },
-  "bottomRight": {
-    "message": "Dole vpravo"
-  },
-  "bottomCenter": {
-    "message": "Dole uprostřed"
-  },
-  "save": {
-    "message": "Uložit"
-  },
-  "slow": {
-    "message": "Pomalu"
-  },
-  "centerLeft": {
-    "message": "Uprostřed vlevo"
-  },
-  "flipDistance": {
-    "message": "Flip distance"
-  },
-  "notActiveButtonOpacity": {
-    "message": "Průhlednost neaktivního tlačítka"
-  },
-  "optionsSaved": {
-    "message": "Options saved."
-  },
-  "browserActionTitle": {
-    "message": "Karta aktivního nastavení"
-  },
-  "opaque": {
-    "message": "Neprůhledný"
-  },
-  "invisible": {
-    "message": "Neviditelné"
-  },
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Should NOT be translated"
-  },
-  "fastest": {
-    "message": "Nejrychlejší (okamžitě)"
-  },
-  "translatedBy": {
-    "message": " ",
-    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
-  },
-  "alternateDesigns": {
-    "message": "Alternate designs"
   },
   "yellow": {
     "message": "Žlutá"
@@ -247,13 +152,122 @@
   "green": {
     "message": "Zelená"
   },
-  "scrollUpSpeed": {
-    "message": "Rychlost posunu nahoru"
-  },
-  "optionsTitle": {
-    "message": "Scroll To Top Button Možnosti"
+  "blue": {
+    "message": "Modrá"
   },
   "purple": {
     "message": "Fialová"
+  },
+  "pink": {
+    "message": "Řužová"
+  },
+  "arrowOnly": {
+    "message": "Pouze šipky"
+  },
+  "alternateDesigns": {
+    "message": "Alternativní design"
+  },
+  "pixelDesign": {
+    "message": "Pixel design"
+  },
+  "buttonLocation": {
+    "message": "Pozice tlačítka"
+  },
+  "topRight": {
+    "message": "Nahoře vpravo"
+  },
+  "topLeft": {
+    "message": "Nahoře vlevo"
+  },
+  "topCenter": {
+    "message": "Nahoře uprostřed"
+  },
+  "centerRight": {
+    "message": "Uprostřed vpravo"
+  },
+  "centerLeft": {
+    "message": "Uprostřed vlevo"
+  },
+  "bottomRight": {
+    "message": "Dole vpravo"
+  },
+  "bottomLeft": {
+    "message": "Dole vlevo"
+  },
+  "bottomCenter": {
+    "message": "Dole uprostřed"
+  },
+  "notActiveButtonOpacity": {
+    "message": "Průhlednost neaktivního tlačítka",
+    "description": "In other words, “Opacity of inactive button.”"
+  },
+  "invisible": {
+    "message": "Neviditelné"
+  },
+  "transparent": {
+    "message": "Průhlednost"
+  },
+  "opaque": {
+    "message": "Neprůhledný"
+  },
+  "keyboardShortcuts": {
+    "message": "Klávesové zkratky ",
+    "description": "Go to https://support.google.com/chrome/answer/157179?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "altUpDownArrows": {
+    "message": "Alt + šipky Nahoru/Dolů",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en#pageshortcuts. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "altTB": {
+    "message": "Alt + T/B"
+  },
+  "off": {
+    "message": "Vypnuto"
+  },
+  "homeEndKeysControlledBy": {
+    "message": "Tlačítka Home &amp; End ovládány"
+  },
+  "operatingSystem": {
+    "message": "Operační systém",
+    "description": "Go to https://support.google.com/chromebook/answer/177889?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "contextRightClickMenu": {
+    "message": "Kontextové menu (pravé-tlačitko)",
+    "description": "Go to https://support.google.com/chromebook/answer/183101?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
+  },
+  "on": {
+    "message": "Zapnuto"
+  },
+  "keyboardSettings": {
+    "message": "Nastavení klávesnice"
+  },
+  "otherSettings": {
+    "message": "Jiné nastavení"
+  },
+  "restoreDefaults": {
+    "message": "Obnovit vychozí"
+  },
+  "authorsSettings": {
+    "message": "Autorské nastavení"
+  },
+  "save": {
+    "message": "Uložit"
+  },
+  "optionsSaved": {
+    "message": "Options saved."
+  },
+  "helpTranslate": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Pomozte překladat</a>"
+  },
+  "translatedBy": {
+    "message": "Translated by <a href=\"https://www.transifex.com/user/profile/Bedami/\" target=\"_blank\" id=\"translatorLink\">Michal “Bedami” Bedáň</a>",
+    "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
+  },
+  "releaseNotes": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Poznámky k vydaní</a>"
+  },
+  "officialWebsite": {
+    "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Domovská stránka</a>",
+    "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
   }
 }
