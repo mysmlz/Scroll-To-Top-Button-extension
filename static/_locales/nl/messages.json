@@ -416,8 +416,5 @@
   "officialWebsite": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Startpagina</a>",
     "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  },
-  "otherProjects": {
-    "message": "Onze andere projecten:"
   }
 }

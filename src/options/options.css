@@ -243,16 +243,8 @@ input.optionsChanger {
 
 /* Secondary information */
 
-#otherProjectsContainer,
 #waysToSupportDevelopmentContainer {
   margin-bottom: 3rem;
-}
-
-@supports ( -ms-ime-align: auto ) {
-
-  #otherProjectsContainer {
-    display: none;
-  }
 }
 
 .secondaryInfoContainer::before {
@@ -266,14 +258,6 @@ input.optionsChanger {
 }
 
 /* Links */
-
-.linksHeading {
-  @mixin secondaryCaption;
-  @mixin secondaryInfoBlock;
-  margin-top: 4rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
 
 .linksMessage {
   @mixin secondaryText;
@@ -295,8 +279,7 @@ input.optionsChanger {
 
 /* @todo Refactor language files to avoid tag names. */
 
-.linkWrapper a,
-.link {
+.linkWrapper a {
   @mixin link;
   color: #15c;
 }

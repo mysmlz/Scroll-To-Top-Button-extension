@@ -185,31 +185,3 @@ input.pwRadio:checked:before
     {
       margin-bottom:          1.8rem;
     }
-
-/* =============================================================================
-
-  Other projects
-
- ============================================================================ */
-
-#otherProjectsContainer
-  {
-    padding: 1.5rem 0 1rem;
-  }
-@supports ( -ms-ime-align: auto )
-  {
-
-    #otherProjectsContainer
-      {
-        display: none;
-      }
-  }
-#otherProjectsList
-  {
-    margin: .5rem 0 0 2rem;
-    list-style-type: circle;
-  }
-.otherProject
-  {
-    font-size: 1.2em;
-  }
