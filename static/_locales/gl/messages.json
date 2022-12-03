@@ -80,11 +80,11 @@
     }
   },
   "permissionNameOriginsChromium": {
-    "message": "Read and change all your data on the websites you visit",
+    "message": "Ler e cambiar todos os seus datos nos sitios web que visite",
     "description": "Chromium-based browsers-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
   },
   "permissionNameOriginsFirefox": {
-    "message": "Access your data for all websites",
+    "message": "Acceder aos seus datos en todos os sitios web",
     "description": "Firefox-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "permissionDetailsTabs": {
@@ -98,19 +98,19 @@
     }
   },
   "permissionNameTabsChromium": {
-    "message": "Read your browsing history",
+    "message": "Ler o seu historial de navegación",
     "description": "Chromium-based browsers-specific name of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
   },
   "permissionNameTabsFirefox": {
-    "message": "Access browser tabs",
+    "message": "Acceder ás lapelas do navegador",
     "description": "Firefox-specific name of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "privacyDetails": {
-    "message": "This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.",
+    "message": "Esta extensión non le, cambia, garda ou transmite ningún dos seus datos persoais p.e: datos de inicio de sesión, contrasinais, mensaxes, contactos) de ningún sitio web nin no seu computador.",
     "description": "Re-affirmation that the extension doesn't steal user's data. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "openSourceDetails": {
-    "message": "Free open-source extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
+    "message": "Extensión gratuíta de fontes abertas. O código está dispoñíbel en https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
     "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "scrollUpSpeed": {
@@ -358,7 +358,7 @@
     "description": "Explanation of the “Automatic (browser default)” language option that should be shown in a tooltip."
   },
   "language_bg": {
-    "message": "Bulgarian - български",
+    "message": "Búlgaro - български",
     "description": "Language option: bg (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).\n\nIf it doesn't match the current language, then write: *name of this language in the current language* - *native name of this language*.\nIf it does match the current language, then write: *native name of this language*.\n\nExamples:\nIf the current language isn't English (United States) but Russian, this should say: Английский (Соединённые Штаты) - English (United States).\nIf the current language is English (United States), this should match it: English (United States)."
   },
   "language_cs": {
