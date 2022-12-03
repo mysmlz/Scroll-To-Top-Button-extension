@@ -551,12 +551,6 @@
     "message": " ",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
-  "waysToSupportDevelopmentTitle": {
-    "message": "Ways to support development"
-  },
-  "waysToSupportDevelopmentMessage": {
-    "message": "Follow our referral links if you would like to support Scroll To Top Button development."
-  },
   "releaseNotes": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"releaseLink\">Release notes</a>"
   },
