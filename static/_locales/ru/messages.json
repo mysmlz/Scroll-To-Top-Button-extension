@@ -353,31 +353,5 @@
   },
   "otherProjects": {
     "message": "Наши другие проекты:"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Совершаете покупки на Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "Вы можете помочь нам, делая то, что вы уже делаете, не переплатив ни лишней копейки."
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Один щелчок кнопки ниже перед тем, как положить товар в корзину, — это всё, что нужно!*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": "Я хочу помочь"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "Узнайте, как это работает"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* Мы являемся участником партнёрской рекламной программы Amazon Services LLC Associates Program, предназначенной для предоставления нам способов получения комиссионных сборов путём ссылки на Amazon.com и аффилированных сайтов."
-  },
-  "referralProgramInfoNotify": {
-    "message": "Оповещайте меня, когда я могу помочь через эту программу"
   }
 }

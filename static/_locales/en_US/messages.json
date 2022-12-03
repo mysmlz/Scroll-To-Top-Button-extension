@@ -554,34 +554,6 @@
     "message": "Our other projects:"
   },
 
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Shop on Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "You can help us by doing what you already do without spending an extra penny."
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": "I want to help"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "Find out how this works"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
-  },
-
-  "referralProgramInfoNotify": {
-    "message": "Notify me when I can help through this program"
-  },
-
   "extensionReloadConfirmationMessage": {
     "message": "Would you like to restart the extension now to apply the changes?",
     "description": "If an Options change requires an extension restart, ask user whether he/she wants to do it now."

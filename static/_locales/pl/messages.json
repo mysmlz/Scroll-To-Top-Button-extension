@@ -333,31 +333,5 @@
   },
   "otherProjects": {
     "message": "Nasze inne projekty:"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Zakupy?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Zakupy na Amazonie? ",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "Możesz nam pomóc, robiąc to, co już robisz, bez wydawania dodatkowego grosza."
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Jedno kliknięcie poniższego przycisku zanim umieścisz produkt w koszyku, to wszystko, czego potrzeba!*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": " Chcę pomóc"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": " Dowiedz się, jak to działa"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* Jesteśmy uczestnikiem programu Amazon Services LLC Associates, programu reklamowego dla partnerów mającego na celu zapewnienie nam możliwości uzyskania opłat poprzez linkowanie do Amazon.com i witryn powiązanych."
-  },
-  "referralProgramInfoNotify": {
-    "message": "Powiadom mnie, kiedy będzie potrzebna moja pomoc"
   }
 }

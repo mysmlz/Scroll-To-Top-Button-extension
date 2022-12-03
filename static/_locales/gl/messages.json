@@ -419,31 +419,5 @@
   },
   "otherProjects": {
     "message": "Outros proxectos nosos:"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Mercar?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Mercar no Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "Pode axudarnos facendo o que vostede xa fai sen gastar un céntimo de máis."
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Un clic no botón inferior antes de engadir o produto á cesta da compra é o único que ten que facer!*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": "Desexo axudar"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "Averigüe como funciona isto"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* Participamos no Amazon Services LLC Associates Program, un programa de publicidade deseñado para fornecer medios co fin de obter ganancias ligado ó Amazon.com e sitios asociados."
-  },
-  "referralProgramInfoNotify": {
-    "message": "Notificarme cando poida axudar por medio deste programa"
   }
 }

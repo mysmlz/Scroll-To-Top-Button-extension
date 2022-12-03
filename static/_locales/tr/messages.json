@@ -333,31 +333,5 @@
   },
   "otherProjects": {
     "message": "Diğer projelerimiz:"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Shop on Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "You can help us by doing what you already do without spending an extra penny."
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Alışveriş sepetinize bir ürün koymadan önce aşağıdaki butona bir kez tıklamanız yeterli!*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": "Yardım etmek istiyorum"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "Bunun nasıl çalıştığını öğrenin"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
-  },
-  "referralProgramInfoNotify": {
-    "message": "Bu program aracılığıyla ne zaman yardımcı olabileceğimi bildir"
   }
 }

@@ -42,9 +42,6 @@
   "extensionDescription": {
     "message": "Adds a scroll to top or bottom button."
   },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites."
-  },
   "topCenter": {
     "message": "Nahoře uprostřed"
   },
@@ -105,12 +102,6 @@
   "pixelDesign": {
     "message": "Pixel design"
   },
-  "referralProgramInfoCta_amazon": {
-    "message": "I want to help"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "Find out how this works"
-  },
   "altUpDownArrows": {
     "message": "Alt + šipky Nahoru/Dolů"
   },
@@ -164,9 +155,6 @@
   },
   "grey": {
     "message": "Šedá"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "You can help us by doing what you already do without spending an extra penny."
   },
   "moreThanAverage": {
     "message": "Více než průměr"
@@ -224,17 +212,8 @@
   "centerLeft": {
     "message": "Uprostřed vlevo"
   },
-  "referralProgramInfoNotify": {
-    "message": "Notify me when I can help through this program"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Shop on Amazon?"
-  },
   "flipDistance": {
     "message": "Flip distance"
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "One click of the button below before you put a product into your shopping cart is all it takes!*"
   },
   "notActiveButtonOpacity": {
     "message": "Průhlednost neaktivního tlačítka"
@@ -250,9 +229,6 @@
   },
   "invisible": {
     "message": "Neviditelné"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Shop?"
   },
   "extensionName": {
     "message": "Scroll To Top Button",

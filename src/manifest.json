@@ -43,7 +43,6 @@
       "shared/legacy/context-menus.js",
       "shared/legacy/background.js",
       "global/js/tabs.js",
-      "global/js/referral-programs.js",
       "background.js"
     ]
   },

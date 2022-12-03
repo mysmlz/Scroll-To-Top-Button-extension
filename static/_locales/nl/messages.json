@@ -419,31 +419,5 @@
   },
   "otherProjects": {
     "message": "Onze andere projecten:"
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "Winkelen?",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "Winkelen op Amazon?",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "Je kan ons helpen door te doen what je al doet zonder ook maar een cent uit te geven."
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "Je hoeft alleen maar op de knop hieronder te klikken voordat je een product in je mandje doet!*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": "Ik wil helpen"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "Ontdek hoe het werkt"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "* Wij nemen deel in het Amazon Services LLC Associates Program - een filiaal adverteringsprogramma ontworpen om een inkomst voor ons te creëren door naar Amazon.com en geaffilieerde sites te linken."
-  },
-  "referralProgramInfoNotify": {
-    "message": "Stuur mij een notificatie wanneer ik door dit programma kan helpen"
   }
 }

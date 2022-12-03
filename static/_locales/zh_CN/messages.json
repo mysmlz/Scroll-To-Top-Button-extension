@@ -353,31 +353,5 @@
   },
   "otherProjects": {
     "message": "我们的其他项目："
-  },
-  "referralProgramInfoShortTitle_amazon": {
-    "message": "购物？",
-    "description": "Text over the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoTitle_amazon": {
-    "message": "有在亚马逊购物吗？",
-    "description": "Tooltip for the icon when browsing Amazon: http://i.cubeupload.com/thE1gg.png"
-  },
-  "referralProgramInfoText_amazon": {
-    "message": "你可以通过做你已经做过的事情来帮助我们，无需花费额外的一分钱。"
-  },
-  "referralProgramInfoText2_amazon": {
-    "message": "只需点击下面的按钮，然后将产品放入购物车即可！*"
-  },
-  "referralProgramInfoCta_amazon": {
-    "message": "我想帮忙"
-  },
-  "referralProgramInfoLink_amazon": {
-    "message": "了解这是如何工作的"
-  },
-  "referralProgramInfoDisclaimer_amazon": {
-    "message": "*我们是亚马逊服务有限责任公司联盟计划的参与者，该计划是一项联盟广告计划，旨在通过链接到Amazon.com和附属网站为我们提供赚取费用的方式。"
-  },
-  "referralProgramInfoNotify": {
-    "message": "当我可以通过这个程序提供帮助时提醒我"
   }
 }
