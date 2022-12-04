@@ -1,8 +1,4 @@
 {
-  "extensionDescription": {
-    "message": "Добавляет кнопку прокрутки вверх или вниз.",
-    "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
-  },
   "optionsPageTitle": {
     "message": "Параметры |  Scroll To Top Button",
     "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."
