@@ -1,5 +1,11 @@
 import utils from 'Shared/utils';
 
+const MARKDOWN_STYLE_LINK_REGEXP_GROUP_NAME = 'markdownStyleLink';
+const LINK_TEXT_REGEXP_GROUP_NAME = 'linkText';
+const LINK_URL_REGEXP_GROUP_NAME = 'linkUrl';
+// Markdown-style link: [John Doe](https://example.com/John-Doe)
+const markdownStyleLinkRegExp = new RegExp( String.raw`(?<${ MARKDOWN_STYLE_LINK_REGEXP_GROUP_NAME }>(\[)(?<${ LINK_TEXT_REGEXP_GROUP_NAME }>[^\]]+\.?)(\])(\()(?<${ LINK_URL_REGEXP_GROUP_NAME }>http[s]:\/\/(-\.)?([^\s\/?\.\#\-]+\.?)+(\/[^\s]*)?)(\)))`, 'g' );
+
 export async function init( callerPageName ) {
   await window.poziworldExtension.i18n.init();
   localize( callerPageName );
@@ -44,7 +50,15 @@ export function localize( callerPageName, customParentSelector ) {
         elementToLocalize.label = localizedMessage;
       }
       else if ( shouldHaveInnerHtml( elementToLocalize ) ) {
-        elementToLocalize.innerHTML = utils.getSanitizedHtml( localizedMessage );
+        let sanitizedHtml = utils.getSanitizedHtml( localizedMessage );
+        let matchGroups;
+
+        for ( const linkMatch of sanitizedHtml.matchAll( markdownStyleLinkRegExp ) ) {
+          matchGroups = linkMatch.groups;
+          sanitizedHtml = sanitizedHtml.replace( matchGroups[ MARKDOWN_STYLE_LINK_REGEXP_GROUP_NAME ], `<a href="${ matchGroups[ LINK_URL_REGEXP_GROUP_NAME ] }" target="_blank" class="pwLink externalLink">${ matchGroups[ LINK_TEXT_REGEXP_GROUP_NAME ] }</a>` )
+        }
+
+        elementToLocalize.innerHTML = sanitizedHtml;
       }
     }
 

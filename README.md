@@ -18,6 +18,7 @@ ___
   * [Scroll To Top Button on social networks](#scroll-to-top-button-on-social-networks)
   * [Gratitudes](#gratitudes)
   * [Credits](#credits)
+  * [License](#license)
 
 ___
 
@@ -63,7 +64,7 @@ Privacy
 
 This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.
 
-Free open-source extension.
+Free extension. Source code openly available.
 
 <sup>(back to [table of contents](#table-of-contents))</sup>
 
@@ -148,12 +149,20 @@ Gratitudes
 Credits
 --------
 
-* Originally developed in 2011 by [Cody Sherman](https://github.com/codysherman). [Brought back to life](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/commit/b02625e5d448084981ba9921f275138bc63fb4ac) in 2014 and [maintained](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/commits/) since then by [PoziWorld](https://github.com/PoziWorld).
+* Originally developed in 2011 by [Cody Sherman](https://github.com/codysherman), [MIT License](http://www.opensource.org/licenses/mit-license.php). [Brought back to life](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/commit/b02625e5d448084981ba9921f275138bc63fb4ac) in 2014 and [maintained](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/commits/) since then by [PoziWorld](https://github.com/PoziWorld).
 * Original logic partially borrowed from jQuery Plugin: Scroll to Top by Craig Wilson, [Ph.Creative](http://www.ph-creative.com), [MIT License](http://www.opensource.org/licenses/mit-license.php).
 * [Gentleface Mono Icon Set](http://gentleface.com/free_icon_set.html), Gentleface, [CC BY-NC 3.0](http://creativecommons.org/licenses/by-nc/3.0/).
 * “[Language](https://www.iconfinder.com/icons/1608752/language_icon)” icon by Dave Gandy from [Font Awesome](https://fontawesome.com/). [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL).
 * “Info” icon - [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com). [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 * “[Lock](https://thenounproject.com/search/?q=lock&i=904757)” icon by [Maxim Kulikov](https://thenounproject.com/maxim221). [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 * <sub>All trademarks mentioned belong to their owners, third party brands, product names, trade names, corporate names and company names mentioned may be trademarks of their respective owners or registered trademarks of other companies and are used for purposes of explanation and to the owner's benefit, without implying a violation of copyright law.</sub>
+
+<sup>(back to [table of contents](#table-of-contents))</sup>
+
+
+License
+--------
+
+Scroll To Top Button is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](LICENSE.md).
 
 <sup>(back to [table of contents](#table-of-contents))</sup>

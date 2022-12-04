@@ -86,7 +86,9 @@ const i18nextOptions = {
   },
   load: 'currentOnly',
   ns: 'messages',
-  defaultNS: 'messages'
+  defaultNS: 'messages',
+  // Default `nsSeparator` of “:” splits URLs when looking up
+  nsSeparator: ':::',
 };
 
 /**

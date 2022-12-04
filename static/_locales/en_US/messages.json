@@ -227,8 +227,8 @@
         "message": "This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.",
         "description": "Re-affirmation that the extension doesn't steal user's data. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
       },
-      "openSourceDetails": {
-        "message": "Free open-source extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
+      "sourceCodeOpenlyAvailableDetails": {
+        "message": "Free extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
         "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
       },
     "scrollUpSpeed": {
@@ -627,6 +627,29 @@
       "debugging_information_confirmation": {
         "content": "$1",
         "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
+      }
+    }
+  },
+
+  "versionAndLicense": {
+    "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$ is [fair-code]($FAIR_CODE_URL$) distributed under the [Sustainable Use License]($SUSTAINABLE_USE_LICENSE_URL$)</a>",
+    "description": "Shows the extension name, extension version, and license information. “fair-code” and “Sustainable Use License” shouldn't be translated.",
+    "placeholders": {
+      "extension_name": {
+        "content": "$1",
+        "example": "Scroll To Top Button"
+      },
+      "extension_version": {
+        "content": "$2",
+        "example": "11.0.0"
+      },
+      "fair_code_url": {
+        "content": "$3",
+        "example": "https://faircode.io"
+      },
+      "sustainable_use_license_url": {
+        "content": "$4",
+        "example": "https://github.com/PoziWorld/Scroll-To-Top-Button-extension/blob/v11.0.0/LICENSE.md"
       }
     }
   }

@@ -286,6 +286,16 @@ input.optionsChanger {
   color: #15c;
 }
 
+/* Version and license info */
+
+#versionAndLicenseContainer {
+    margin-top: 3rem;
+}
+
+#versionAndLicenseText {
+    font-size: 1.4em;
+}
+
 @media ( max-width: 30em /* Up to 480px */ ) {
 
   /* Settings */

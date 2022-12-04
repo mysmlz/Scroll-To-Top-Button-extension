@@ -77,8 +77,8 @@
     "message": "Esta extensión non le, cambia, garda ou transmite ningún dos seus datos persoais p.e: datos de inicio de sesión, contrasinais, mensaxes, contactos) de ningún sitio web nin no seu computador.",
     "description": "Re-affirmation that the extension doesn't steal user's data. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
-  "openSourceDetails": {
-    "message": "Extensión gratuíta de fontes abertas. O código está dispoñíbel en https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
+  "sourceCodeOpenlyAvailableDetails": {
+    "message": "Extensión gratuíta. O código está dispoñíbel en https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
     "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "scrollUpSpeed": {

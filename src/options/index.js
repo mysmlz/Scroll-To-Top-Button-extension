@@ -51,6 +51,7 @@ init();
 
 async function init() {
   i18nModule.setBrowserSpecificI18n();
+  i18nModule.setVersionAndLicenseI18n();
   await pages.init( 'options' );
   cachePermissionsCheckResult( await permissions.hasPermissions() );
   setUi();

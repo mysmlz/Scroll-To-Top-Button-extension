@@ -199,8 +199,8 @@
     "message": "该拓展程序不会以任何形式，从任何站点或您的计算机中，读取、修改、存储或发送任何您的个人数据（例如登录信息、密码、消息、联系人等）。",
     "description": "Re-affirmation that the extension doesn't steal user's data. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
-  "openSourceDetails": {
-    "message": "免费的开源扩展程序，代码可在 https://github.com/PoziWorld/Scroll-To-Top-Button-extension 查看。",
+  "sourceCodeOpenlyAvailableDetails": {
+    "message": "免费的开扩，代码可在 https://github.com/PoziWorld/Scroll-To-Top-Button-extension 查看。",
     "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "scrollUpSpeed": {
