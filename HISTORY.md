@@ -6,6 +6,40 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v11.0.0
+
+### New
+
+* Scroll To Top Button [translated](https://www.transifex.com/poziworld/scroll-to-top-button "Help translate Scroll To Top Button") into Bulgarian.
+
+  > Thank you, [ozzy1bg (Валери Владимиров)](https://www.transifex.com/user/profile/ozzy1bg/)!
+
+* Scroll To Top Button [translated](https://www.transifex.com/poziworld/scroll-to-top-button "Help translate Scroll To Top Button") into Japanese.
+
+  > Thank you, [noby (oshima yoshinobu)](https://www.transifex.com/user/profile/noby/)!
+
+* Scroll To Top Button partially [translated](https://www.transifex.com/poziworld/scroll-to-top-button "Help translate Scroll To Top Button") into Danish.
+
+  > Thank you, [Roslund (Torben Roslund)](https://www.transifex.com/user/profile/Roslund/)!
+
+### Improved
+
+* Updated Chinese (China), Galician, Czech, and Polish translations.
+
+  > New translators: [LiLuwei (Luwei Li)](https://www.transifex.com/user/profile/LiLuwei/), [Liu.Hao (浩 刘)](https://www.transifex.com/user/profile/Liu.Hao/), [ZDHJ9EZW (Ziyang Liu)](https://www.transifex.com/user/profile/ZDHJ9EZW/), [Vikarna (Nick NY)](https://www.transifex.com/user/profile/Vikarna/).
+
+* Simplified the Options page and the “Active tab settings” page by removing the secondary information.
+
+### Changed
+
+* Removed the Amazon referral program.
+
+* Switched the software model and license.
+
+  > Scroll To Top Button is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](LICENSE.md).
+
+---
+
 ## v10.0.4
 
 ### Fixed
