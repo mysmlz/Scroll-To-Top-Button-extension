@@ -24,13 +24,13 @@
     "message": "Ustawienia aktywnej karty"
   },
   "browserActionSttbEnabled": {
-    "message": " Włącz STTB"
+    "message": "Włącz STTB"
   },
   "browserActionSttbDisabledUrl": {
-    "message": " Wyłącz STTB dla tego adresu URL"
+    "message": "Wyłącz STTB dla tego adresu URL"
   },
   "browserActionSttbDisabledDomain": {
-    "message": " Wyłącz STTB dla tej domeny"
+    "message": "Wyłącz STTB dla tej domeny"
   },
   "browserActionReloadActiveTab": {
     "message": "Odśwież kartę"
@@ -180,15 +180,15 @@
     "message": "Najszybciej (błyskawicznie)"
   },
   "custom": {
-    "message": " Pozwól mi określić...",
+    "message": "Pozwól mi określić...",
     "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
   },
   "appearDistance": {
-    "message": " Odległość pojawienia się",
+    "message": "Odległość pojawienia się",
     "description": "In other words, “distance after which the button appears.”"
   },
   "flipDistance": {
-    "message": " Odległość odwrócenia",
+    "message": "Odległość odwrócenia",
     "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
   },
   "barelyAny": {
