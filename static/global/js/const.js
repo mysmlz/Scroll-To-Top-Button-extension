@@ -1,20 +1,5 @@
 /* =============================================================================
 
-  Product                 :           Scroll To Top Button
-  Authors                 :           Cody Sherman (versions < 6.1.3), PoziWorld
-  Copyright               :           Copyright (c) 2014-2016 PoziWorld
-  File                    :           global/js/const.js
-  Description             :           Constants JavaScript
-
-  Table of Contents:
-
-    Constants
-    Storage
-
- ============================================================================ */
-
-/* =============================================================================
-
   Constants
 
  ============================================================================ */

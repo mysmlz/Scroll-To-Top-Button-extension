@@ -1,28 +1,5 @@
 /* =============================================================================
 
-  Product                 :           Scroll To Top Button
-  Authors                 :           Cody Sherman (versions < 6.1.3), PoziWorld
-  Copyright               :           Copyright (c) 2014-2016 PoziWorld
-  File                    :           browser-action/js/browser-action.js
-  Description             :           Browser Action JavaScript
-
-  Table of Contents:
-
-    Globals
-    BrowserAction
-      init()
-      addEventListeners()
-      getActiveTabAddress()
-      getActiveTabSettings()
-      changeSttbMode()
-      reloadActiveTab()
-    Events
-
- ============================================================================ */
-
-
-/* =============================================================================
-
   Globals
 
  ============================================================================ */

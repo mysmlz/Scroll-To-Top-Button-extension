@@ -1,26 +1,5 @@
 /* =============================================================================
 
-  Product                 :           Scroll To Top Button
-  Authors                 :           Cody Sherman (versions < 6.1.3), PoziWorld
-  Copyright               :           Copyright (c) 2014-2016 PoziWorld
-  File                    :           global/js/page.js
-  Description             :           Page JavaScript
-
-  Table of Contents:
-
-    Globals
-    Page
-      localize()
-      template()
-      showSuccess()
-      toggleElement()
-      hideInOpera()
-
- ============================================================================ */
-
-
-/* =============================================================================
-
   Globals
 
  ============================================================================ */
