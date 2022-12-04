@@ -1,18 +1,3 @@
-/* =============================================================================
-
-  Product: Scroll To Top Button
-  Author: PoziWorld
-  Copyright: (c) 2016 PoziWorld
-  License: pozitone.com/license
-
-  Table of Contents:
-
-    Page
-      init()
-      localize()
-
- ============================================================================ */
-
 ( function() {
   'use strict';
 
