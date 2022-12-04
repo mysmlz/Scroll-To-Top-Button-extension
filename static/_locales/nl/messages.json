@@ -53,10 +53,6 @@
     "message": "Alleen toetsenbord",
     "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
   },
-  "disableExpertButtonModes": {
-    "message": "Neem toestemmingen terug",
-    "description": "Title of a button that triggers a revocation of the previously granted permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/71878081-aa3a2900-30df-11ea-8be1-393dcf6578d0.png"
-  },
   "scrollUpSpeed": {
     "message": "Snelheid naar boven scrollen"
   },
