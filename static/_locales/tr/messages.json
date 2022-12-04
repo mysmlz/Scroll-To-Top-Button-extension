@@ -1,8 +1,4 @@
 {
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Should NOT be translated"
-  },
   "extensionDescription": {
     "message": "Yukarı veya aşağı bir kaydırma butonu ekler.",
     "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"

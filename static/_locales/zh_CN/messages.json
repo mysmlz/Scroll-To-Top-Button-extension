@@ -1,8 +1,4 @@
 {
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Please copy and paste the original/source string. Should NOT be translated."
-  },
   "extensionDescription": {
     "message": "添加一个帮助滚动到页面顶部或底部的按钮。 支持右键菜单及键盘快捷键；可通过单击扩展程序图标或进入选项页进行更多设置。",
     "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"

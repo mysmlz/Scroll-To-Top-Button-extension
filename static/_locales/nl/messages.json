@@ -1,8 +1,4 @@
 {
-  "extensionName": {
-    "message": "Scroll To Top Button",
-    "description": "Please copy and paste the original/source string. Should NOT be translated."
-  },
   "extensionDescription": {
     "message": "Voegt een knop toe waarmee je helemaal naar boven of beneden kan scrollen.",
     "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"
