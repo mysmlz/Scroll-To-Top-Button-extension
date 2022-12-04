@@ -316,7 +316,7 @@
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Çeviriye yardım edin</a>"
   },
   "translatedBy": {
-    "message": " ",
+    "message": "Translated by <a href=\"https://www.transifex.com/user/profile/E.Tas/\" target=\"_blank\" id=\"translatorLink\">Eren Tas</a>",
     "description": "To give translators proper credit, this will be displayed somewhere on the Options page, so that people know who translated it for them. Example: “Translated by <a href=\"https://www.transifex.com/user/profile/johndoesttb/\" target=\"_blank\" id=\"translatorLink\">John Doe aka johndoesttb</a>”"
   },
   "releaseNotes": {
