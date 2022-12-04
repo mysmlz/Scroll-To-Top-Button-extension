@@ -46,6 +46,7 @@ Languages
 - Bulgarian
 - Chinese (China / Simplified)
 - Czech
+- Danish
 - Dutch (Netherlands)
 - English (United States)
 - Galician
@@ -133,6 +134,7 @@ Gratitudes
   - Bulgarian — [ozzy1bg (Валери Владимиров)](https://www.transifex.com/user/profile/ozzy1bg/);
   - Chinese (China) — [Pluwen](https://www.transifex.com/user/profile/pluwen/), [Bright X](https://www.transifex.com/user/profile/whaat7er/), [LiLuwei (Luwei Li)](https://www.transifex.com/user/profile/LiLuwei/), [Liu.Hao (浩 刘)](https://www.transifex.com/user/profile/Liu.Hao/), [ZDHJ9EZW (Ziyang Liu)](https://www.transifex.com/user/profile/ZDHJ9EZW/), [Vikarna (Nick NY)](https://www.transifex.com/user/profile/Vikarna/);
   - Russian — [reidel (Пётр Михайлишин)](https://www.transifex.com/user/profile/reidel/), [aleev.insmile (Руслан Алеев)](https://www.transifex.com/user/profile/aleev.insmile/);
+  - Danish — [Roslund (Torben Roslund)](https://www.transifex.com/user/profile/Roslund/)
   - Dutch (Netherlands) — [Michael Atsma](https://www.transifex.com/user/profile/MichaelAtsma/);
   - Czech — [Michal “Bedami” Bedáň](https://www.transifex.com/user/profile/Bedami/).
   - Galician — [antiparvos](https://www.transifex.com/user/profile/antiparvos/), [Iváns](https://www.transifex.com/user/profile/Iváns/).

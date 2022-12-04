@@ -19,6 +19,7 @@ const LOCALES = [
   // Added over time
   'bg',
   'cs',
+  'da',
   'gl',
   'ja',
   'nl',
