@@ -57,20 +57,6 @@
     "message": "Revogar permisos",
     "description": "Title of a button that triggers a revocation of the previously granted permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/71878081-aa3a2900-30df-11ea-8be1-393dcf6578d0.png"
   },
-  "permissionsListExplanation": {
-    "message": "The following permissions are required for the advanced button modes – modes that work by adding the button(s) onto all pages unless you choose to disable it for certain pages or websites:",
-    "description": "A sentence that is followed by a list of individual permissions and their descriptions. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
-  },
-  "permissionDetailsOrigins": {
-    "message": "“$PERMISSION_NAME$” is used to add the button(s) itself, its logic, and its design properties onto all websites.\nWithout this one, the extension couldn't do anything – it wouldn't work.",
-    "description": "Name and description of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png",
-    "placeholders": {
-      "permission_name": {
-        "content": "$1",
-        "example": "Read and change all your data on the websites you visit"
-      }
-    }
-  },
   "permissionNameOriginsChromium": {
     "message": "Ler e cambiar todos os seus datos nos sitios web que visite",
     "description": "Chromium-based browsers-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
@@ -78,16 +64,6 @@
   "permissionNameOriginsFirefox": {
     "message": "Acceder aos seus datos en todos os sitios web",
     "description": "Firefox-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
-  },
-  "permissionDetailsTabs": {
-    "message": "“$PERMISSION_NAME$” is used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) You have the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option.",
-    "description": "Name and description of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png",
-    "placeholders": {
-      "permission_name": {
-        "content": "$1",
-        "example": "Read your browsing history"
-      }
-    }
   },
   "permissionNameTabsChromium": {
     "message": "Ler o seu historial de navegación",

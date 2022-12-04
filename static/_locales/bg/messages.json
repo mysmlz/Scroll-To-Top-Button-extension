@@ -10,9 +10,6 @@
   "close": {
     "message": "Затвори"
   },
-  "buttonModeBrowserActionButtonTitle": {
-    "message": "Scroll to top of this page"
-  },
   "browserActionPageTitle": {
     "message": "Настройки на активните раздели | Scroll To Top Button"
   },
@@ -31,105 +28,11 @@
   "browserActionReloadActiveTab": {
     "message": "Обнови раздела"
   },
-  "like": {
-    "message": "\uD83D\uDC4D",
-    "description": "Message (currently, a “thumbs up” emoji) asking user to indicate whether that user is satisfied with the extension."
-  },
-  "dislike": {
-    "message": "\uD83D\uDC4E",
-    "description": "Message (currently, a “thumbs down” emoji) asking user to contact developer if that user is not (completely) satisfied with the extension."
-  },
-  "askingToRateLinkTooltip": {
-    "message": "Do you like this extension?\n\nLet others know what you like the most!\nRate it now",
-    "description": "Message encouraging user to rate the extension."
-  },
-  "issueReportingLinkTooltip": {
-    "message": "Something is not working?\nFound a bug?\nHave a question?\nSomething else?\n\nContact the extension developer now",
-    "description": "Message encouraging user to contact developer."
-  },
   "buttonSettings": {
     "message": "Настройки на бутоните"
   },
   "buttonMode": {
     "message": "Режим на бутоните"
-  },
-  "buttonModeBasic": {
-    "message": "No button on page | Basic",
-    "description": "Group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Scrolling is triggered by clicking the extension icon. Context: "
-  },
-  "buttonModeBasicDescription": {
-    "message": "To scroll page, click the extension icon next to the address bar.",
-    "description": "Description of a group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. Scrolling is triggered by clicking the extension icon. Context: "
-  },
-  "buttonModeBasicBrowserActionTitle": {
-    "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to scroll*.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$* Might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
-    "description": "Tooltip of the extension icon next to the address bar when a basic button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518629-9e024a00-380a-11ea-9d59-90b858f0aa0c.png",
-    "placeholders": {
-      "extension_name": {
-        "content": "$1",
-        "example": "Scroll To Top Button"
-      },
-      "extension_version": {
-        "content": "$2",
-        "example": "9.0.0"
-      },
-      "breaking_changes_message": {
-        "content": "$3",
-        "example": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n"
-      }
-    }
-  },
-  "buttonModeAdvanced": {
-    "message": "No button on page until click | Advanced",
-    "description": "Group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. User first needs to click the extension icon, which adds the scroll button(s) onto the page. Context: "
-  },
-  "buttonModeAdvancedDescription": {
-    "message": "To scroll page, add the button(s) onto page by clicking the extension icon next to the address bar.",
-    "description": "Description of a group of button modes that don't require any special permissions during installation or while in use. Since these modes don't have those permissions, the feature scope is limited. User first needs to click the extension icon, which adds the scroll button(s) onto the page. Context: "
-  },
-  "buttonModeAdvancedBrowserActionTitle": {
-    "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to add button(s) to currently active page*.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$* Might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
-    "description": "Tooltip of the extension icon next to the address bar when an advanced button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518776-dd309b00-380a-11ea-81d8-e229571b71ba.png",
-    "placeholders": {
-      "extension_name": {
-        "content": "$1",
-        "example": "Scroll To Top Button"
-      },
-      "extension_version": {
-        "content": "$2",
-        "example": "9.0.0"
-      },
-      "breaking_changes_message": {
-        "content": "$3",
-        "example": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n"
-      }
-    }
-  },
-  "buttonModeExpert": {
-    "message": "Button always on page + button settings | Expert",
-    "description": "Group of button modes that require special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) to be granted. Allows to have the scroll button(s) always on page. Context: "
-  },
-  "buttonModeExpertDescription": {
-    "message": "To scroll page, use the on-page button(s).\nThis mode allows button customizations.\nThis used to be the only option before version 9 released in January 2020.",
-    "description": "Description of a group of button modes that require special permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties) to be granted. Allows to have the scroll button(s) always on page. Context: "
-  },
-  "buttonModeExpertBrowserActionTitle": {
-    "message": "$EXTENSION_NAME$ v$EXTENSION_VERSION$\n\nClick to open active tab settings.\nRight-click (open context menu) to find Options.\n\n\n$BREAKING_CHANGES_MESSAGE$Extension might not work on some pages/websites:\nPlease don't leave a negative review.\nInstead, let us know – we might be able to fix.",
-    "description": "Tooltip of the extension icon next to the address bar when an expert button mode is selected in Options. Context: https://user-images.githubusercontent.com/5961162/72518945-40223200-380b-11ea-9856-cbbb78f00edf.png",
-    "placeholders": {
-      "extension_name": {
-        "content": "$1",
-        "example": "Scroll To Top Button"
-      },
-      "extension_version": {
-        "content": "$2",
-        "example": "9.0.0"
-      },
-      "breaking_changes_message": {
-        "content": "$3",
-        "example": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n"
-      }
-    }
   },
   "scrollToTopOnly": {
     "message": "Превъртане само нагоре",
@@ -146,80 +49,6 @@
   "keyboardOnly": {
     "message": "Само клавиатура",
     "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
-  },
-  "disableExpertButtonModes": {
-    "message": "Revoke permissions",
-    "description": "Title of a button that triggers a revocation of the previously granted permissions (“tabs” - allows disabling the extension on a whole domain or a specific URL; “<all_urls>” for content_scripts - adds a button(s) to the specified location of a page in the specified design, size, and other properties). Context: https://user-images.githubusercontent.com/5961162/71878081-aa3a2900-30df-11ea-8be1-393dcf6578d0.png"
-  },
-  "breakingChangesUpgradingVersion8Message": {
-    "message": "IMPORTANT:\nBreaking changes when upgrading from version 8!\nPlease go to Options for details.\n\n\n",
-    "description": "Message/warning displayed to users who had had version 8 of the extension before. Context: "
-  },
-  "hadVersion8InstalledBeforeMessage": {
-    "message": "Dear $EXTENSION_NAME$ user,\n\n\nTo give all users a choice of improved security, the following changes to the way the extension works were made in version 9 (compared to version 8 and earlier):\n\nTo install, it now does not need any permissions.\n\nFor existing users, unfortunately, there was no way for us to keep the permissions you had granted upon the installation.\n\n\n<span data-context=\"expertModes\">To restore how it used to work, please enable one of the expert button modes.</span>\n\n<span data-context=\"otherModes\">Or, you can give a try to the new basic and advanced button modes, which work without any permissions.</span>\n\n\nWe deeply apologize for the inconvenience.\nYour trust and support have always been paramount to us.\n\nTechnical details of the changes: <span data-context=\"activeTabInfoUrlPlaceholder\"></span>.\n\n\nPoziWorld,\ndeveloper of $EXTENSION_NAME$",
-    "description": "Message displayed to existing users when their extension gets updated from version 8 to version 9. Context: ",
-    "placeholders": {
-      "extension_name": {
-        "content": "$1",
-        "example": "Scroll To Top Button"
-      }
-    }
-  },
-  "hadVersion8InstalledBeforeMessageAcknowledgment": {
-    "message": "Okay, I will check the expert button modes",
-    "description": "Acknowledgement call-to-action (button) text for the message displayed to existing users when their extension gets updated from version 8 to version 9. Context: "
-  },
-  "hadVersion8InstalledBeforeMessageRemoval": {
-    "message": "Don't show this message again",
-    "description": "Text of a call-to-action (button) that removes the message displayed to existing users when their extension gets updated from version 8 to version 9. Context: "
-  },
-  "permissionsListExplanation": {
-    "message": "The following permissions are required for the expert button modes – modes that work by adding the button(s) onto all pages unless you choose to disable it for certain pages or websites:",
-    "description": "A sentence that is followed by a list of individual permissions and their descriptions. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
-  },
-  "permissionDetailsOrigins": {
-    "message": "“$PERMISSION_NAME$” is used to add the button(s) itself, its logic, and its design properties onto all websites without extra actions from you.",
-    "description": "Name and description of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png",
-    "placeholders": {
-      "permission_name": {
-        "content": "$1",
-        "example": "Read and change all your data on the websites you visit"
-      }
-    }
-  },
-  "permissionNameOriginsChromium": {
-    "message": "Read and change all your data on the websites you visit",
-    "description": "Chromium-based browsers-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
-  },
-  "permissionNameOriginsFirefox": {
-    "message": "Access your data for all websites",
-    "description": "Firefox-specific name of the permission used to add the button(s) itself, its logic, and its design properties onto all websites. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
-  },
-  "permissionDetailsTabs": {
-    "message": "“$PERMISSION_NAME$” is used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) You have the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option.",
-    "description": "Name and description of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png",
-    "placeholders": {
-      "permission_name": {
-        "content": "$1",
-        "example": "Read your browsing history"
-      }
-    }
-  },
-  "permissionNameTabsChromium": {
-    "message": "Read your browsing history",
-    "description": "Chromium-based browsers-specific name of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318977-ae6fc480-3652-11ea-8407-96e6b2909ee3.png"
-  },
-  "permissionNameTabsFirefox": {
-    "message": "Access browser tabs",
-    "description": "Firefox-specific name of the permission used to check the URL of a tab:\n1) There are some default websites where the button doesn't get added because it wouldn't work there (for example, Google Docs and Google Sheets).\n2) User has the ability to disable the button(s) on any website (example.org) or URL (example.org/blog?page=1) by clicking the extension icon next to the address bar and selecting the appropriate option. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
-  },
-  "privacyDetails": {
-    "message": "This extension does not read, change, store, or transmit any of your personal data (e.g., logins, passwords, messages, contacts) from any of the sites or your computer in absolutely any form.",
-    "description": "Re-affirmation that the extension doesn't steal user's data. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
-  },
-  "openSourceDetails": {
-    "message": "Free open-source extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
-    "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
   },
   "scrollUpSpeed": {
     "message": "Скорост на превъртане нагоре"
@@ -421,14 +250,6 @@
   "on": {
     "message": "Включено"
   },
-  "scrollToTopOnlyBasicContextMenuItemTitle": {
-    "message": "Scroll to top (Basic)",
-    "description": "Title of a context (right-click) menu item, which scrolls page to its top. Name of the button mode and its group (in parentheses). Context: https://user-images.githubusercontent.com/5961162/73048563-6f99f580-3e2e-11ea-9b6a-a2cae9526f1b.png"
-  },
-  "optionsContextMenuItemTitle": {
-    "message": "Options",
-    "description": "Title of a context (right-click) menu item, which the extension Options page. Context: https://user-images.githubusercontent.com/5961162/73048636-ad971980-3e2e-11ea-8531-b3226ec71a44.png"
-  },
   "keyboardSettings": {
     "message": "Настройки на клавиатурата"
   },
@@ -519,10 +340,6 @@
   "optionsSaved": {
     "message": "Опциите са запазени."
   },
-  "genericContactFormLinkText": {
-    "message": "Get support / Give feedback",
-    "description": "Text of a link to contact developer about an issue/bug and/or with a suggestion/question/other feedback."
-  },
   "helpTranslate": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Помогнете с превода</a>"
   },
@@ -536,73 +353,5 @@
   "officialWebsite": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"officialWebsiteLink\">Домашна страница</a>",
     "description": "It might be called an “official website”, but since it's more of a landing page (for now) than a full website calling it just a “homepage” seems reasonable."
-  },
-  "extensionReloadConfirmationMessage": {
-    "message": "Would you like to restart the extension now to apply the changes?",
-    "description": "If an Options change requires an extension restart, ask user whether he/she wants to do it now."
-  },
-  "watchDemo": {
-    "message": "Watch demo",
-    "description": "Link/button that opens/triggers a URL/page/modal featuring a demo (video)."
-  },
-  "debuggingInformationConfirmation": {
-    "message": "Press OK to report the issue in a new tab with the following debugging information included.\n\nIt will be helpful if you also provide your email, so we can get in touch with you to get more details and/or notify you when the issue is resolved.\n$DEBUGGING_INFORMATION$",
-    "description": "When there is an issue starting the extension in an Expert-type mode user selected in the Options, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that the preferred Expert-type mode can be enabled in the Options again.",
-    "placeholders": {
-      "debugging_information": {
-        "content": "$1",
-        "example": "Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
-  },
-  "expertModeActivationIssue": {
-    "message": "There was an issue activating an Expert mode.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can re-enable an Expert mode in Options.\n\nSorry for the inconvenience.",
-    "description": "When there is an issue starting the extension in an Expert-type mode user selected in the Options, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that the preferred Expert-type mode can be enabled in the Options again.",
-    "placeholders": {
-      "debugging_information_confirmation": {
-        "content": "$1",
-        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
-  },
-  "containerStyleAttributeRepeatedChangesIssue": {
-    "message": "A website script or another extension (addon) is trying to change the look of Scroll To Top Button.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nTo help resolve the issue sooner, please consider including a list of the installed extensions in your browser.\n\nIf the issue persists, you might see increased CPU usage.\n\n\nPoziWorld,\ndeveloper of Scroll To Top Button extension",
-    "description": "When a third-party script (the current page's or another extension's) is messing with the button's container's style attribute, adding unwanted rules, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that this issue might lead to an increase in CPU usage.",
-    "placeholders": {
-      "debugging_information_confirmation": {
-        "content": "$1",
-        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
-  },
-  "permissionsCheckIssue": {
-    "message": "There was an issue checking for the required permissions.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can re-enable an Expert mode in Options, if you had one enabled before.\n\nSorry for the inconvenience.",
-    "description": "When there is an issue checking for the required permissions, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised that the preferred Expert-type mode can be enabled in the Options again.",
-    "placeholders": {
-      "debugging_information_confirmation": {
-        "content": "$1",
-        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
-  },
-  "permissionsRequestIssue": {
-    "message": "There was an issue with your request for the permissions.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can try requesting the permissions again.\n\nSorry for the inconvenience.",
-    "description": "When there is an issue with user's request for the permissions, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised to make the request again.",
-    "placeholders": {
-      "debugging_information_confirmation": {
-        "content": "$1",
-        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
-  },
-  "extensionReloadIssue": {
-    "message": "There was an issue reloading the extension.\n\n$DEBUGGING_INFORMATION_CONFIRMATION$\n\nWhile developer is looking into the issue, you can close your browser and open it again to apply the changes.\n\nSorry for the inconvenience.",
-    "description": "When there is an issue reloading the extension, then user is presented with a dialog asking user to submit an issue report to the developer. User is also advised to close and open the browser again to apply the changes.",
-    "placeholders": {
-      "debugging_information_confirmation": {
-        "content": "$1",
-        "example": "Press OK to send the following: Variable 1 key: variable 1 value\nVariable 2 key: variable 2 value"
-      }
-    }
   }
 }

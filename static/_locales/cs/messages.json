@@ -249,9 +249,6 @@
   "save": {
     "message": "Uložit"
   },
-  "optionsSaved": {
-    "message": "Options saved."
-  },
   "helpTranslate": {
     "message": "<a href=\"#\" target=\"_blank\" id=\"translateLink\">Pomozte překladat</a>"
   },
