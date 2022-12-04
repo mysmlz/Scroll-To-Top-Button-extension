@@ -40,7 +40,7 @@
   },
   "flipBetweenTopBottom": {
     "message": "Переключение между верхом и низом",
-    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
+    "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
   },
   "dualArrows": {
     "message": "Двойные стрелки",
