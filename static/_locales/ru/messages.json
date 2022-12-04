@@ -35,17 +35,20 @@
     "message": "Режим кнопки"
   },
   "scrollToTopOnly": {
-    "message": "Прокрутка только вверх"
+    "message": "Прокрутка только вверх",
+    "description": "Name of a button mode that allows scrolling only to the top of a page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
   },
   "flipBetweenTopBottom": {
     "message": "Переключение между верхом и низом",
     "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom."
   },
   "dualArrows": {
-    "message": "Двойные стрелки"
+    "message": "Двойные стрелки",
+    "description": "Name of a button mode that allows scrolling to the top or bottom of a page. Always shows two arrows. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
   },
   "keyboardOnly": {
-    "message": "Только клавиатура"
+    "message": "Только клавиатура",
+    "description": "Name of a button mode that allows scrolling to the top or bottom of a page only with the help of keyboard shortcuts. No button(s) present on the page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
   },
   "scrollUpSpeed": {
     "message": "Скорость прокрутки вверх"
