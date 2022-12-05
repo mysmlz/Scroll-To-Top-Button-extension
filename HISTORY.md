@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v11.0.1
+
+### Fixed
+
+* Added back a seemingly redundant string to the translation files to comply with the Chrome Web Store and Microsoft Store requirement.
+
+---
+
 ## v11.0.0
 
 ### New
