@@ -1,4 +1,8 @@
 {
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Please copy and paste the original/source string. Should NOT be translated."
+  },
   "optionsPageTitle": {
     "message": "設定",
     "description": "Go to https://support.google.com/chrome/answer/7040464?hl=en. Find text that resembles the source string. Replace “en” in the end of the URL with your language code. And find the translation in the same place."

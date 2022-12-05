@@ -1,4 +1,8 @@
 {
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Please copy and paste the original/source string. Should NOT be translated."
+  },
   "extensionDescription": {
     "message": "Przewiń do góry, do dołu lub obu kierunkach. Kliknij ikonę rozszerzenia, przycisk na stronie, użyj opcji menu kontekstowego i / lub skrótów klawiaturowych.",
     "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"

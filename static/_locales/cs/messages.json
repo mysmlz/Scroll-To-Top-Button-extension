@@ -1,4 +1,8 @@
 {
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Please copy and paste the original/source string. Should NOT be translated."
+  },
   "extensionDescription": {
     "message": "Přejděte nahoru, dolů nebo obojí. Klikněte na ikonu rozšíření, tlačítko na stránce, použijte možnosti kontextové nabídky/nebo klávesové zkratky.",
     "description": "In other words, “Adds a button (that allows) to scroll to top or bottom.”"

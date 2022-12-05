@@ -1,4 +1,8 @@
 {
+  "extensionName": {
+    "message": "Scroll To Top Button",
+    "description": "Please copy and paste the original/source string. Should NOT be translated."
+  },
   "close": {
     "message": "Luk"
   },
