@@ -69,7 +69,10 @@ export function localize( callerPageName, customParentSelector ) {
       const tooltip = elementToLocalize.getAttribute( 'data-i18n-tooltip' );
 
       if ( window.poziworldExtension.utils.isNonEmptyString( tooltip ) ) {
-        elementToLocalize.title = window.poziworldExtension.i18n.getMessage( tooltip );
+        const tooltipText = window.poziworldExtension.i18n.getMessage( tooltip );
+
+        elementToLocalize.title = tooltipText;
+        elementToLocalize.setAttribute( 'aria-label', tooltipText );
       }
     }
   }
