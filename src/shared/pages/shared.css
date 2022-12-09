@@ -71,6 +71,19 @@ body {
   @mixin textualCta;
 }
 
+label[data-i18n-tooltip]::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -2.6rem;
+  margin: auto;
+  width: 2.6rem;
+  height: 100%;
+  background: url( /shared/images/info-icon.svg ) center center / 1.6rem no-repeat;
+}
+
 /* Form */
 
 .pwFormGroup {
