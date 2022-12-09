@@ -6,14 +6,14 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{js,json}]
+[*.{css,js,json}]
 charset = utf-8
 indent_style = space
 indent_size = 2
 indent_brace_style = K&R
 curly_bracket_next_line = false
 
-[*.{js}]
+[*.{css,js}]
 quote_type = single
 spaces_around_operators = true
 spaces_around_brackets = inside
