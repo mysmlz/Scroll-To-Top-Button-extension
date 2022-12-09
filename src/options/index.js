@@ -777,6 +777,7 @@ function checkMode() {
           '#button-settings',
           '#distanceLength',
           '.appearance',
+          '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#clickthroughKeys',
           '#keyboard-settings',
@@ -842,6 +843,7 @@ function checkMode() {
       switchElements(
         [
           '#button-settings',
+          '#scrollUpSpeed',
           '#distanceLength',
           '.appearance',
           '#clickthroughKeys',
