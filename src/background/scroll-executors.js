@@ -334,5 +334,6 @@ Local: ${ JSON.stringify( localVariables ) }
 Syncable: ${ JSON.stringify( syncableVariables ) }
 Anonymous installation ID: ${ installationId }`;
 
-  feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
+  // @todo Uncomment when user is able to decline future requests and user is asked to provide specific additional details that would help debug, such as other extensions that might be changing style attribute
+  // feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
 }
