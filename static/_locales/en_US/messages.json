@@ -267,6 +267,24 @@
         "message": "Let me specify...",
         "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
       },
+    "infiniteScrollDown": {
+      "message": "Infinite scroll down"
+    },
+    "infiniteScrollDownTooltip": {
+      "message": "Some websites, such as Twitter, Instagram, Facebook, and Quora, keep loading more content as you scroll down.\n\nEnabling this setting makes the extension check whether the page height has increased while the scroll was in-progress, which most likely would mean more content got loaded, and if that is the case then the extension can continue scrolling down.\n\nTip: you can stop the in-progress (infinite) scrolling by clicking the “Scroll down” button."
+    },
+    "infiniteScrollDownRecheckDelay": {
+      "message": "Infinite scroll down recheck delay"
+    },
+    "infiniteScrollDownRecheckDelayTooltip": {
+      "message": "If the infinite scrolling enabled website hadn't loaded more content by the time the extension finished scrolling down, the extension will wait the number of milliseconds specified by this setting to check again whether more content will have been loaded."
+    },
+    "infiniteScrollDownRecheckDelayActiveIndicator": {
+      "message": "Infinite scroll down waiting-to-recheck indicator"
+    },
+    "infiniteScrollDownRecheckDelayActiveIndicatorTooltip": {
+      "message": "When the extension is waiting to recheck whether more content will have been loaded, it can show an indicator underneath the “Scroll down” button.\n\nThe indicator should look like the infinity symbol (∞)."
+    },
     "appearDistance": {
       "message": "Appear distance",
       "description": "In other words, “distance after which the button appears.”"

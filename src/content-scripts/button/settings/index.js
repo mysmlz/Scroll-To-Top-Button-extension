@@ -9,6 +9,9 @@ import * as styles from './styles';
  * @property {number} scrollUpSpeedCustom
  * @property {number} scrollDownSpeed
  * @property {number} scrollDownSpeedCustom
+ * @property {string} infiniteScrollDown
+ * @property {number} infiniteScrollDownRecheckDelay
+ * @property {string} infiniteScrollDownRecheckDelayActiveIndicator
  * @property {number} distanceLength
  * @property {number} [flipDistanceLength]
  * @property {string} buttonSize
@@ -32,6 +35,9 @@ const buttonSettings = {
   scrollUpSpeedCustom: 1000,
   scrollDownSpeed: 1000,
   scrollDownSpeedCustom: 1000,
+  infiniteScrollDown: 'off',
+  infiniteScrollDownRecheckDelay: 2000,
+  infiniteScrollDownRecheckDelayActiveIndicator: 'on',
   distanceLength: 400,
   flipDistanceLength: 400,
   buttonSize: '50px',
@@ -62,6 +68,9 @@ export function normalizeSettings( settingsToNormalize ) {
     scrollUpSpeedCustom: parseInt( settingsToNormalize.scrollUpSpeedCustom ),
     scrollDownSpeed: parseInt( settingsToNormalize.scrollDownSpeed ),
     scrollDownSpeedCustom: parseInt( settingsToNormalize.scrollDownSpeedCustom ),
+    infiniteScrollDown: settingsToNormalize.infiniteScrollDown,
+    infiniteScrollDownRecheckDelay: parseInt( settingsToNormalize.infiniteScrollDownRecheckDelay ),
+    infiniteScrollDownRecheckDelayActiveIndicator: settingsToNormalize.infiniteScrollDownRecheckDelayActiveIndicator,
     distanceLength: parseInt( settingsToNormalize.distanceLength ),
     flipDistanceLength: parseInt( settingsToNormalize.distanceLength ),
     buttonSize: settingsToNormalize.buttonSize,

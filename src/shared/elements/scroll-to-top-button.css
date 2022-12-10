@@ -14,6 +14,19 @@ scroll-to-top-button[data-state-disabled] {
   visibility: hidden;
 }
 
+.infinite#scroll-to-top-button-2::after {
+content: '∞';
+  display: block;
+  position: absolute;
+  font-size: 200%;
+  top: -2.5rem; /* #scroll-to-top-button-2 is a rotated #scroll-to-top-button-1 :-) */
+  width: 100%;
+  height: 200%;
+  color: #000;
+  text-align: center;
+  text-shadow: .1rem .1rem #fff;
+}
+
 /**
  * @todo Add accessibility setting in Options that doesn't disable outline.
  */

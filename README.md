@@ -31,6 +31,7 @@ Available customizations
   - Dual arrows
   - Keyboard only
 - Scroll up/down speed
+- Infinite scrolling
 - Appear distance
 - Button size
 - Button design

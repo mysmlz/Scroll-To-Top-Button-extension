@@ -142,6 +142,30 @@
           </div>
         </div>
         <div class="pwFormRow">
+          <label data-i18n data-i18n-tooltip="infiniteScrollDownTooltip">
+            <span class="pwFormRowText" data-i18n="infiniteScrollDown"></span>
+            <select id="infiniteScrollDown" class="optionsChanger pwSelect" data-customizable="1">
+              <option value="-1" data-i18n="on"></option>
+              <option value="off" data-i18n="off"></option>
+            </select>
+          </label>
+          <div class="pwFormRow">
+            <label data-i18n data-i18n-tooltip="infiniteScrollDownRecheckDelayTooltip">
+              <span class="pwFormRowText" data-i18n="infiniteScrollDownRecheckDelay"></span>
+              <input type="number" min="0" step="1" pattern="\d*" placeholder="2000" value="2000" id="infiniteScrollDownRecheckDelay" class="custom optionsChanger pwInput">
+            </label>
+          </div>
+          <div class="pwFormRow">
+            <label data-i18n data-i18n-tooltip="infiniteScrollDownRecheckDelayActiveIndicatorTooltip">
+              <span class="pwFormRowText" data-i18n="infiniteScrollDownRecheckDelayActiveIndicator"></span>
+              <select id="infiniteScrollDownRecheckDelayActiveIndicator" class="custom optionsChanger pwSelect">
+                <option value="on" data-i18n="on"></option>
+                <option value="off" data-i18n="off"></option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="pwFormRow">
           <label>
             <span class="pwFormRowText" id="distanceType" data-i18n="appearDistance"></span>
             <select id="distanceLength" class="optionsChanger pwSelect">

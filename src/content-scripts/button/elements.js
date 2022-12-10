@@ -16,6 +16,7 @@ export const CONTAINER_ATTRIBUTE_STATE_ACTIVE = 'data-state-active';
 
 const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
 const BUTTON_ID = `${ sharedElements.BUTTON_TAG_NAME }-${ BUTTON_NUMBER_PLACEHOLDER }`;
+const INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_CLASS = 'infinite';
 const BUTTON_LABEL = 'Scroll To Top Button';
 export const BUTTON_ATTRIBUTE_STATE_DISABLED = 'data-state-disabled';
 export const BUTTON_HOVERED_SELECTOR = ':hover';
@@ -118,6 +119,43 @@ function createButton() {
   button.setAttribute( 'aria-label', BUTTON_LABEL );
 
   return button;
+}
+
+/**
+ * Some websites, such as Twitter, Instagram, Facebook, and Quora, keep loading more content as user scrolls down.
+ * Show/hide a recheck delay active indicator when the extension is checking for infinite scrolling.
+ *
+ * @param {boolean} toBeShown
+ **/
+
+export function toggleInfiniteScrollDownRecheckDelayActiveIndicator( toBeShown ) {
+  if ( toBeShown && ! isInfiniteScrollDownRecheckDelayActiveIndicatorEnabled() ) {
+    return;
+  }
+
+  button2?.classList?.toggle( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_CLASS, toBeShown );
+}
+
+/**
+ * Some websites, such as Twitter, Instagram, Facebook, and Quora, keep loading more content as user scrolls down.
+ * Check whether the extension is set to show a recheck delay active indicator.
+ *
+ * @returns {boolean}
+ **/
+
+export function isInfiniteScrollDownRecheckDelayActiveIndicatorEnabled() {
+  return buttonSettings.infiniteScrollDownRecheckDelayActiveIndicator === 'on';
+}
+
+/**
+ * Some websites, such as Twitter, Instagram, Facebook, and Quora, keep loading more content as user scrolls down.
+ * Check whether the extension is showing a recheck delay active indicator.
+ *
+ * @returns {boolean}
+ **/
+
+export function isInfiniteScrollDownRecheckDelayActiveIndicatorShown() {
+  return button2?.classList?.contains( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_CLASS );
 }
 
 /**
@@ -225,6 +263,20 @@ export function setScrollableElement( element ) {
 
 export function setScrollCausingElement( element ) {
   scrollCausingElement = element;
+}
+
+/**
+ * Return the height of the scroll-causing (higher than viewport) element, if any, or document.
+ *
+ * @returns {number}
+ */
+
+export function getScrollCausingElementHeight() {
+  return $(
+    scrollCausingElement ?
+      scrollCausingElement :
+      document
+    ).height();
 }
 
 /**
