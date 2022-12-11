@@ -27,12 +27,12 @@
 /* Text */
 
 @define-mixin text {
-  font-size: 1.6em;
+  font-size: 1.4em;
 
   @media ( max-width: 40em /* Up to 640px */ ) {
 
     & {
-      font-size: 1.4em;
+      font-size: 1.3em;
     }
 
     @media ( max-width: 30em /* Up to 480px */ ) {
@@ -46,8 +46,6 @@
 
 @define-mixin secondaryText {
   @mixin text;
-
-  font-size: 1.4em;
 }
 
 @define-mixin paragraph {

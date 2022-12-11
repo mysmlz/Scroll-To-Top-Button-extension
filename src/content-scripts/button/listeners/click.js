@@ -38,8 +38,9 @@ function addButtonClickListener( button, $button, enforcedScrollDirection ) {
  */
 
 function handleButtonClick( $button, enforcedScrollDirection ) {
-  if ( scrollActions.isInProgress() ) {
+  if ( scrollActions.isInProgress() || scrollActions.isInfiniteScrollDownEnabled() && elements.isInfiniteScrollDownRecheckDelayActiveIndicatorShown() ) {
     scrollActions.stopScrolling();
+    elements.toggleInfiniteScrollDownRecheckDelayActiveIndicator( false );
   }
   else {
     const direction = enforcedScrollDirection || scrollDirections.currentDirection;

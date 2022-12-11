@@ -71,15 +71,17 @@ body {
   @mixin textualCta;
 }
 
-label[data-i18n-tooltip]::after {
+label[data-i18n-tooltip]::after,
+.pwFormGroupCaptionLink[data-i18n-tooltip]::after {
+  $TOOLTIP_WIDTH: 3rem;
   content: '';
   display: block;
   position: absolute;
   top: 0;
   bottom: 0;
-  right: -2.6rem;
+  right: -$TOOLTIP_WIDTH;
   margin: auto;
-  width: 2.6rem;
+  width: $TOOLTIP_WIDTH;
   height: 100%;
   background: url( /shared/images/info-icon.svg ) center center / 1.6rem no-repeat;
 }

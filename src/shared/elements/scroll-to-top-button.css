@@ -1,3 +1,5 @@
+$INDICATOR_HEIGHT: 15px;
+
 scroll-to-top-button {
   display: inline-flex;
   pointer-events: all;
@@ -12,6 +14,29 @@ scroll-to-top-button {
 scroll-to-top-button[data-state-disabled] {
   pointer-events: none;
   visibility: hidden;
+}
+
+#scroll-to-top-button-1[data-infinite][data-mode="flip"]::after,
+#scroll-to-top-button-2[data-infinite]::after {
+  content: '∞';
+  display: block;
+  position: absolute;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 30px;
+  line-height: $INDICATOR_HEIGHT;
+  width: 100%;
+  height: $INDICATOR_HEIGHT;
+  color: #000;
+  text-align: center;
+  text-shadow: 1px 1px #fff;
+}
+
+#scroll-to-top-button-1[data-infinite][data-mode="flip"]::after {
+  bottom: -$INDICATOR_HEIGHT;
+}
+
+#scroll-to-top-button-2[data-infinite]::after {
+  top: calc( -1 * ( $INDICATOR_HEIGHT + 5px ) ); /* Button is rotated :-) */
 }
 
 /**

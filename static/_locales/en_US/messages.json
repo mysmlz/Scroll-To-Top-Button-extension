@@ -58,7 +58,8 @@
   },
 
   "buttonSettings": {
-    "message": "Button settings"
+    "message": "Button settings",
+    "description": "(Deprecated: this string is not used at the moment, but might get reused in the future.) Settings of the button(s) that appears on the page when the button mode is set to one from the Advanced or Expert group."
   },
     "buttonMode": {
       "message": "Button mode"
@@ -231,6 +232,14 @@
         "message": "Free extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
         "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
       },
+    "scrollSettings": {
+      "message": "Scroll settings",
+      "description": "Heading for the group of settings related to the scrolling of the page, such as the scrolling speed and when the button should appear when the scrolling starts."
+    },
+    "scrollSettingsTooltip": {
+      "message": "Settings related to the scrolling of the page, such as the scrolling speed and when the button should appear when the scrolling starts.",
+      "description": "Tooltip for the scroll settings."
+    },
     "scrollUpSpeed": {
       "message": "Scroll up speed"
     },
@@ -267,6 +276,24 @@
         "message": "Let me specify...",
         "description": "Shows a number input field that lets user specify scroll up speed value in milliseconds instead of selecting a pre-set one."
       },
+    "infiniteScrollDown": {
+      "message": "Infinite scroll down"
+    },
+    "infiniteScrollDownTooltip": {
+      "message": "Some websites, such as Twitter, Instagram, Facebook, and Quora, keep loading more content as you scroll down.\n\nEnabling this setting makes the extension check whether the page height has increased while the scroll was in-progress, which most likely would mean more content got loaded, and if that is the case then the extension can continue scrolling down.\n\nTip: you can stop the in-progress (infinite) scrolling by clicking the “Scroll down” button."
+    },
+    "infiniteScrollDownRecheckDelay": {
+      "message": "Delay to check for ability to continue scrolling"
+    },
+    "infiniteScrollDownRecheckDelayTooltip": {
+      "message": "If the infinite scrolling enabled website hadn't loaded more content by the time the extension finished scrolling down, the extension will wait the number of milliseconds specified by this setting to check again whether more content will have been loaded, in which case the extension will continue scrolling down."
+    },
+    "infiniteScrollDownRecheckDelayActiveIndicator": {
+      "message": "Indicator when waiting"
+    },
+    "infiniteScrollDownRecheckDelayActiveIndicatorTooltip": {
+      "message": "When the extension is waiting (see the delay setting above) to recheck whether more content will have been loaded, it can show an indicator underneath the button.\n\nThe indicator should look like the infinity symbol (∞)."
+    },
     "appearDistance": {
       "message": "Appear distance",
       "description": "In other words, “distance after which the button appears.”"
@@ -293,6 +320,14 @@
       "aTon": {
         "message": "A ton"
       },
+    "buttonDisplaySettings": {
+      "message": "Button display settings",
+      "description": "Heading for the group of settings related to the look and feel of the button."
+    },
+    "buttonDisplaySettingsTooltip": {
+      "message": "Settings related to the look and feel of the button(s).",
+      "description": "Tooltip for the button display settings."
+    },
     "buttonSize": {
       "message": "Button size"
     },

@@ -435,6 +435,18 @@ async function moveLegacySettings( settings ) {
       undefined,
       1000,
     ],
+    infiniteScrollDown: [
+      undefined,
+      'off',
+    ],
+    infiniteScrollDownRecheckDelay: [
+      undefined,
+      2000,
+    ],
+    infiniteScrollDownRecheckDelayActiveIndicator: [
+      undefined,
+      'on',
+    ],
     distanceLength: [
       'distance_length',
       400,
