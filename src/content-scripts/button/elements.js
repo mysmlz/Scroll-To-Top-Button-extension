@@ -133,6 +133,7 @@ export function toggleInfiniteScrollDownRecheckDelayActiveIndicator( toBeShown )
     return;
   }
 
+  button1?.toggleAttribute( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE, toBeShown );
   button2?.toggleAttribute( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE, toBeShown );
 }
 
@@ -155,7 +156,7 @@ export function isInfiniteScrollDownRecheckDelayActiveIndicatorEnabled() {
  **/
 
 export function isInfiniteScrollDownRecheckDelayActiveIndicatorShown() {
-  return button2?.hasAttribute( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE );
+  return button1?.hasAttribute( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE );
 }
 
 /**

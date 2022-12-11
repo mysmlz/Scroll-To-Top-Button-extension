@@ -16,6 +16,7 @@ scroll-to-top-button[data-state-disabled] {
   visibility: hidden;
 }
 
+#scroll-to-top-button-1[data-infinite][data-mode="flip"]::after,
 #scroll-to-top-button-2[data-infinite]::after {
   content: '∞';
   display: block;
@@ -28,6 +29,10 @@ scroll-to-top-button[data-state-disabled] {
   color: #000;
   text-align: center;
   text-shadow: 1px 1px #fff;
+}
+
+#scroll-to-top-button-1[data-infinite][data-mode="flip"]::after {
+  bottom: -$INDICATOR_HEIGHT;
 }
 
 #scroll-to-top-button-2[data-infinite]::after {
