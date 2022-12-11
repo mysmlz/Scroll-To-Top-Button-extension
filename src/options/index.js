@@ -753,7 +753,7 @@ function clearStatus() {
 function checkMode() {
   const mode = getButtonModeValue();
 
-  // @todo Optimize.
+  // @todo Optimize. Switch to specifying the applicable button modes in data attributes?
   switch ( mode ) {
     case settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE:
     case settingsHelpers.SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE:
@@ -762,12 +762,12 @@ function checkMode() {
     {
       switchElements(
         [
-          '#button-settings',
+          '#scroll-settings',
           '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#infiniteScrollDown',
           '#distanceLength',
-          '.appearance',
+          '#button-display-settings',
           '#clickthroughKeys',
           '#keyboard-settings',
           '#contextMenu',
@@ -783,12 +783,12 @@ function checkMode() {
       changeDistanceType( 'flipDistance' );
       switchElements(
         [
-          '#button-settings',
-          '#distanceLength',
-          '.appearance',
+          '#scroll-settings',
           '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#infiniteScrollDown',
+          '#distanceLength',
+          '#button-display-settings',
           '#clickthroughKeys',
           '#keyboard-settings',
           '#contextMenu',
@@ -809,11 +809,11 @@ function checkMode() {
       );
       switchElements(
         [
-          '#button-settings',
-          '.appearance',
+          '#scroll-settings',
           '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#infiniteScrollDown',
+          '#button-display-settings',
           '#clickthroughKeys',
           '#keyboard-settings',
           '#contextMenu',
@@ -829,14 +829,14 @@ function checkMode() {
       switchElements(
         [
           '#distanceLength',
-          '.appearance',
+          '#button-display-settings',
           '#clickthroughKeys',
         ],
         false
       );
       switchElements(
         [
-          '#button-settings',
+          '#scroll-settings',
           '#scrollUpSpeed',
           '#scrollDownSpeed',
           '#infiniteScrollDown',
@@ -854,10 +854,10 @@ function checkMode() {
       changeDistanceType( 'appearDistance' );
       switchElements(
         [
-          '#button-settings',
+          '#scroll-settings',
           '#scrollUpSpeed',
           '#distanceLength',
-          '.appearance',
+          '#button-display-settings',
           '#clickthroughKeys',
           '#keyboard-settings',
           '#contextMenu',

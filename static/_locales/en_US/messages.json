@@ -58,7 +58,8 @@
   },
 
   "buttonSettings": {
-    "message": "Button settings"
+    "message": "Button settings",
+    "description": "(Deprecated: this string is not used at the moment, but might get reused in the future.) Settings of the button(s) that appears on the page when the button mode is set to one from the Advanced or Expert group."
   },
     "buttonMode": {
       "message": "Button mode"
@@ -231,6 +232,14 @@
         "message": "Free extension. Code available for your review at https://github.com/PoziWorld/Scroll-To-Top-Button-extension",
         "description": "Statement that the extension has nothing to hide. Context: https://user-images.githubusercontent.com/5961162/72318802-2ab5d800-3652-11ea-9181-215d491cf244.png"
       },
+    "scrollSettings": {
+      "message": "Scroll settings",
+      "description": "Heading for the group of settings related to the scrolling of the page, such as the scrolling speed and when the button should appear when the scrolling starts."
+    },
+    "scrollSettingsTooltip": {
+      "message": "Settings related to the scrolling of the page, such as the scrolling speed and when the button should appear when the scrolling starts.",
+      "description": "Tooltip for the scroll settings."
+    },
     "scrollUpSpeed": {
       "message": "Scroll up speed"
     },
@@ -311,6 +320,14 @@
       "aTon": {
         "message": "A ton"
       },
+    "buttonDisplaySettings": {
+      "message": "Button display settings",
+      "description": "Heading for the group of settings related to the look and feel of the button."
+    },
+    "buttonDisplaySettingsTooltip": {
+      "message": "Settings related to the look and feel of the button(s).",
+      "description": "Tooltip for the button display settings."
+    },
     "buttonSize": {
       "message": "Button size"
     },

@@ -97,9 +97,9 @@
           </ul>
         </div>
       </fieldset>
-      <fieldset id="button-settings" class="pwFormGroup">
+      <fieldset id="scroll-settings" class="pwFormGroup">
         <legend class="pwFormGroupCaption">
-          <a href="#button-settings" class="pwFormGroupCaptionLink" data-i18n="buttonSettings"></a>
+          <a href="#scroll-settings" class="pwFormGroupCaptionLink" data-i18n="scrollSettings" data-i18n-tooltip="scrollSettingsTooltip"></a>
         </legend>
         <div class="pwFormRow">
           <label class="pwFormRowLabel">
@@ -178,10 +178,15 @@
             </select>
           </label>
         </div>
+      </fieldset>
+      <fieldset id="button-display-settings" class="pwFormGroup">
+        <legend class="pwFormGroupCaption">
+          <a href="#button-display-settings" class="pwFormGroupCaptionLink" data-i18n="buttonDisplaySettings" data-i18n-tooltip="buttonDisplaySettingsTooltip"></a>
+        </legend>
         <div class="pwFormRow">
           <label>
             <span class="pwFormRowText" data-i18n="buttonSize"></span>
-            <select id="buttonSize" class="appearance optionsChanger pwSelect" data-customizable="1">
+            <select id="buttonSize" class="optionsChanger pwSelect" data-customizable="1">
               <option value="35px" data-i18n="buttonSizeInPixels" data-i18n-parameters="35|35"></option>
               <option value="40px" data-i18n="buttonSizeInPixels" data-i18n-parameters="40|40"></option>
               <option value="45px" data-i18n="buttonSizeInPixels" data-i18n-parameters="45|45"></option>
@@ -205,7 +210,7 @@
         <div class="pwFormRow">
           <label>
             <span class="pwFormRowText" data-i18n="buttonDesign"></span>
-            <select id="buttonDesign" class="appearance optionsChanger pwSelect">
+            <select id="buttonDesign" class="optionsChanger pwSelect">
               <optgroup data-i18n="colors">
                 <option value="arrow_blue" data-i18n="tumblerBlue"></option>
                 <option value="arrow_grey" data-i18n="grey"></option>
@@ -231,7 +236,7 @@
         <div class="pwFormRow">
           <label>
             <span class="pwFormRowText" data-i18n="notActiveButtonOpacity"></span>
-            <select id="notActiveButtonOpacity" class="appearance optionsChanger pwSelect">
+            <select id="notActiveButtonOpacity" class="optionsChanger pwSelect">
               <option value="0.0" data-i18n="invisible"></option>
               <option value="0.5" data-i18n="transparent"></option>
               <option value="1.0" data-i18n="opaque"></option>
@@ -241,7 +246,7 @@
         <div class="pwFormRow">
           <label>
             <span class="pwFormRowText" data-i18n="buttonLocation"></span>
-            <select id="buttonLocation" class="appearance optionsChanger pwSelect">
+            <select id="buttonLocation" class="optionsChanger pwSelect">
               <option value="TR" data-i18n="topRight"></option>
               <option value="TL" data-i18n="topLeft"></option>
               <option value="TC" data-i18n="topCenter"></option>
