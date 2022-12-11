@@ -16,7 +16,7 @@ export const CONTAINER_ATTRIBUTE_STATE_ACTIVE = 'data-state-active';
 
 const BUTTON_NUMBER_PLACEHOLDER = '$NUMBER$';
 const BUTTON_ID = `${ sharedElements.BUTTON_TAG_NAME }-${ BUTTON_NUMBER_PLACEHOLDER }`;
-const INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_CLASS = 'infinite';
+const INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE = 'data-infinite';
 const BUTTON_LABEL = 'Scroll To Top Button';
 export const BUTTON_ATTRIBUTE_STATE_DISABLED = 'data-state-disabled';
 export const BUTTON_HOVERED_SELECTOR = ':hover';
@@ -133,7 +133,7 @@ export function toggleInfiniteScrollDownRecheckDelayActiveIndicator( toBeShown )
     return;
   }
 
-  button2?.classList?.toggle( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_CLASS, toBeShown );
+  button2?.toggleAttribute( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE, toBeShown );
 }
 
 /**
@@ -155,7 +155,7 @@ export function isInfiniteScrollDownRecheckDelayActiveIndicatorEnabled() {
  **/
 
 export function isInfiniteScrollDownRecheckDelayActiveIndicatorShown() {
-  return button2?.classList?.contains( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_CLASS );
+  return button2?.hasAttribute( INFINITE_SCROLL_DOWN_RECHECK_DELAY_ACTIVE_INDICATOR_ATTRIBUTE );
 }
 
 /**
