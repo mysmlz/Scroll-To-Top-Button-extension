@@ -87,7 +87,7 @@ There are a few ways you can help our cause:
   * [Scroll To Top Button for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/)
   * [Scroll To Top Button for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/)
   * [Scroll To Top Button for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz)
-* [Rate Scroll To Top Button](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews "Rate Scroll To Top Button for Chrome") ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/ "Rate Scroll To Top Button for Firefox"), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container "Rate Scroll To Top Button for Opera & Yandex.Browser"), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab "Rate Scroll To Top Button for Edge")) – the feedback really helps others find this extension!
+* [Rate Scroll To Top Button](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj/reviews "Rate Scroll To Top Button for Chrome & Brave") ([for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/ "Rate Scroll To Top Button for Firefox"), [for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/#feedback-container "Rate Scroll To Top Button for Opera & Yandex.Browser"), [for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz?activetab=pivot:reviewstab "Rate Scroll To Top Button for Edge")) – the feedback really helps others find this extension!
 
 ### Translation
 
