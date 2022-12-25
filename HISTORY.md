@@ -6,6 +6,18 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v11.2.0
+
+### New
+
+* Added a new button mode: Scroll to bottom (Basic).
+
+  Find it in the context (right-click) menu, when the menu is enabled in Options.
+
+  > Idea by Y A and Lucian Andries via email, Ilias Karim and anonymous via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+---
+
 ## v11.1.0
 
 ### New
