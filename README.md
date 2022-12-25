@@ -30,7 +30,7 @@ Available customizations
 - Button mode
   - Scroll to top only
   - Flip between top & bottom
-  - Dual arrows
+  - Dual arrows (scroll to top & bottom)
   - Keyboard only
 - Scroll up/down speed
 - Infinite scrolling
