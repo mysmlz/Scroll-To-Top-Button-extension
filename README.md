@@ -34,7 +34,7 @@ Available customizations
   - Keyboard only
 - Scroll up/down speed
 - Infinite scrolling
-- Appear distance
+- Appearance distance
 - Button size
 - Button design
 - Button location
