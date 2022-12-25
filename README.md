@@ -37,6 +37,7 @@ Available customizations
 - Appear distance
 - Button size
 - Button design
+- Button location
 - Not active button opacity
 - Keyboard shortcuts
 - Language
