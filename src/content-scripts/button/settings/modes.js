@@ -7,7 +7,7 @@ const MODE_FLIP = 'flip';
 const MODE_KEYBOARD_ONLY = 'keys';
 
 /**
- * Check whether user chose (or was forced to) to click the browser action to scroll.
+ * Check whether user chose (or was forced to) to click the browser action to scroll to top.
  *
  * @param {string} [buttonMode]
  * @returns {boolean}
@@ -15,6 +15,17 @@ const MODE_KEYBOARD_ONLY = 'keys';
 
 export function isBrowserActionTopOnlyMode( buttonMode ) {
   return isMode( buttonMode, settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE );
+}
+
+/**
+ * Check whether user chose (or was forced to) to click the browser action to scroll to bottom.
+ *
+ * @param {string} [buttonMode]
+ * @returns {boolean}
+ */
+
+export function isBrowserActionBottomOnlyMode( buttonMode ) {
+  return isMode( buttonMode, settingsHelpers.SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE );
 }
 
 /**

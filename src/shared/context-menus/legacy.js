@@ -2,6 +2,7 @@ import * as settingsHelpers from 'Shared/settings';
 
 // Context menu items
 const SCROLL_TO_TOP_ONLY_BASIC_ID = 'scrollToTopOnlyBasic';
+const SCROLL_TO_BOTTOM_ONLY_BASIC_ID = 'scrollToBottomOnlyBasic';
 const SEPARATOR_ID = 'separator';
 const OPTIONS_ID = 'options';
 
@@ -101,6 +102,10 @@ function createContextMenu() {
       title: window.poziworldExtension.i18n.getMessage( 'scrollToTopOnlyBasicContextMenuItemTitle' ),
     },
     {
+      id: SCROLL_TO_BOTTOM_ONLY_BASIC_ID,
+      title: window.poziworldExtension.i18n.getMessage( 'scrollToBottomOnlyBasicContextMenuItemTitle' ),
+    },
+    {
       id: SEPARATOR_ID,
       type: 'separator',
     },
@@ -158,6 +163,10 @@ function handleContextMenuClick( info ) {
       triggerScrollToTopBasic();
 
       break;
+    case SCROLL_TO_BOTTOM_ONLY_BASIC_ID:
+      triggerScrollToBottomBasic();
+
+      break;
     case OPTIONS_ID:
       Global.openOptionsPage( menuItemId );
 
@@ -170,10 +179,28 @@ function handleContextMenuClick( info ) {
  */
 
 function triggerScrollToTopBasic() {
+  triggerBasic( SCROLL_TO_TOP_ONLY_BASIC_ID );
+}
+
+/**
+ * Ask another extension component to scroll the active tab to bottom.
+ */
+
+function triggerScrollToBottomBasic() {
+  triggerBasic( SCROLL_TO_BOTTOM_ONLY_BASIC_ID );
+}
+
+/**
+ * Ask another extension component to scroll the active tab.
+ *
+ * @param {string} id
+ */
+
+function triggerBasic( id ) {
   const TARGET_ORIGIN = '*';
 
   window.postMessage( {
-    trigger: SCROLL_TO_TOP_ONLY_BASIC_ID,
+    trigger: id,
   }, TARGET_ORIGIN );
 }
 

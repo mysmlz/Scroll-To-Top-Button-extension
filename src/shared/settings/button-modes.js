@@ -6,6 +6,7 @@ export const ADVANCED_BUTTON_MODE_INDICATOR = 'Advanced';
 
 // Basic group button modes
 export const SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE = 'scrollToTopOnlyBasic';
+export const SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE = 'scrollToBottomOnlyBasic';
 
 // Advanced group button modes
 export const SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE = 'scrollToTopOnlyAdvanced';
@@ -21,6 +22,7 @@ export const KEYBOARD_ONLY_EXPERT_BUTTON_MODE = 'keys';
 // All button modes
 export const AVAILABLE_BUTTON_MODES = [
   SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE,
+  SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE,
 
   SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE,
   FLIP_ADVANCED_BUTTON_MODE,
