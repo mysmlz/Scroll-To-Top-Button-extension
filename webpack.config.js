@@ -92,6 +92,7 @@ const defaultConfig = Map( {
   ] ),
   resolve: {
     alias: {
+      '@': path.resolve( __dirname, 'src' ),
       Shared: path.resolve( __dirname, 'src', 'shared' ),
       ContentScripts: path.resolve( __dirname, 'src', 'content-scripts' ),
     },

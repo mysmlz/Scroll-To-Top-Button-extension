@@ -7,6 +7,8 @@ import * as feedback from 'Shared/feedback';
 import * as permissions from 'Shared/permissions';
 import * as settingsHelpers from 'Shared/settings';
 
+import manifest from '@/manifest.json';
+
 const BUTTON_MODE_BASIC_TYPE = 'basic';
 const BUTTON_MODE_ADVANCED_TYPE = 'advanced';
 const BUTTON_MODE_EXPERT_TYPE = 'expert';
@@ -22,9 +24,13 @@ const BROWSER_ACTION_TITLE_TEMPLATE = {
   title: '%PLACEHOLDER%',
 };
 
-const BROWSER_ACTION_SCRIPT = {
+const SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE_SCRIPT = {
   // @todo Cover non-scrollable window cases. See v6.5.2 and related.
   code: 'window.scrollTo( 0, 0 )',
+};
+const SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SCRIPT = {
+  // @todo Cover non-scrollable window cases. See v6.5.2 and related.
+  code: 'window.scrollTo( 0, Math.max( document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.documentElement.clientHeight ) )',
 };
 const CONTENT_SCRIPT_SCRIPT_TEMPLATE = {
   allFrames: true,
@@ -119,16 +125,34 @@ export async function setController( source, retriesCount, metadata ) {
     return;
   }
 
-  if ( ! window.poziworldExtension.utils.isNonEmptyString( buttonMode ) || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
+  const buttonModeEmpty = ! window.poziworldExtension.utils.isNonEmptyString( buttonMode );
+  let pointingUp = true;
+
+  if ( buttonModeEmpty || settingsHelpers.isBasicButtonMode( buttonMode ) ) {
     // @todo Move out
     browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
     browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_BASIC_TYPE ) );
     browser.browserAction.onClicked.removeListener( injectAllFiles );
-    browser.browserAction.onClicked.addListener( injectScrollToTopOnlyBasicLogic );
+
+    let browserActionClickHandler;
+
+    if ( buttonModeEmpty || buttonMode === settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
+      browserActionClickHandler = injectScrollToTopOnlyBasicLogic;
+    }
+    else if ( buttonMode === settingsHelpers.SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE ) {
+      browserActionClickHandler = injectScrollToBottomOnlyBasicLogic;
+      pointingUp = false;
+    }
+    else {
+      // @todo Notify user and fail?
+    }
+
+    browser.browserAction.onClicked.addListener( browserActionClickHandler );
     browser.tabs.onUpdated.removeListener( setContentScriptAsController );
   }
   else {
     browser.browserAction.onClicked.removeListener( injectScrollToTopOnlyBasicLogic );
+    browser.browserAction.onClicked.removeListener( injectScrollToBottomOnlyBasicLogic );
 
     if ( settingsHelpers.isAdvancedButtonMode( buttonMode ) ) {
       browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
@@ -175,12 +199,35 @@ export async function setController( source, retriesCount, metadata ) {
     }
   }
 
+  setBrowserActionIcon( pointingUp );
+
   // @todo DRY.
   controllerIsBeingSet = false;
 }
 
+function setBrowserActionIcon( pointingUp ) {
+  browser.browserAction.setIcon( {
+    path: {
+      16: pointingUp ?
+        manifest.icons[ 16 ] :
+        'icons/scroll-to-bottom-16.png',
+      32: pointingUp ?
+        manifest.icons[ 32 ] :
+        'icons/scroll-to-bottom-32.png',
+    },
+  } );
+}
+
 function injectScrollToTopOnlyBasicLogic() {
-  browser.tabs.executeScript( BROWSER_ACTION_SCRIPT )
+  injectBasicLogic( SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE_SCRIPT );
+}
+
+function injectScrollToBottomOnlyBasicLogic() {
+  injectBasicLogic( SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SCRIPT );
+}
+
+function injectBasicLogic( script ) {
+  browser.tabs.executeScript( script )
     .then( handleFileInjectionSuccess, handleFileInjectionFail );
 }
 
@@ -298,8 +345,13 @@ async function convertExpertModeToAdvanced( mode ) {
 }
 
 function handleMessage( { data: { trigger }, target } ) {
-  if ( isInternalMessage( target ) && trigger === settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
-    injectScrollToTopOnlyBasicLogic();
+  if ( isInternalMessage( target ) ) {
+    if ( trigger === settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
+      injectScrollToTopOnlyBasicLogic();
+    }
+    else if ( trigger === settingsHelpers.SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE ) {
+      injectScrollToBottomOnlyBasicLogic();
+    }
   }
 }
 

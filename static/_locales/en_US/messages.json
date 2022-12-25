@@ -146,6 +146,10 @@
         "message": "Scroll to top only",
         "description": "Name of a button mode that allows scrolling only to the top of a page. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
       },
+      "scrollToBottomOnly": {
+        "message": "Scroll to bottom only",
+        "description": "Name of a button mode that allows scrolling only to the bottom of a page."
+      },
       "flipBetweenTopBottom": {
         "message": "Flip between top &amp; bottom",
         "description": "The “flip” is when the button changes the direction: when you scroll down, the arrow points towards the top; when you scroll up, the arrow points towards the bottom. Context: https://user-images.githubusercontent.com/5961162/71781066-3254ed00-2f7f-11ea-8dbf-8d61ed0fc9a2.png"
@@ -469,6 +473,10 @@
       "scrollToTopOnlyBasicContextMenuItemTitle": {
         "message": "Scroll to top (Basic)",
         "description": "Title of a context (right-click) menu item, which scrolls page to its top. Name of the button mode and its group (in parentheses). Context: https://user-images.githubusercontent.com/5961162/73048563-6f99f580-3e2e-11ea-9b6a-a2cae9526f1b.png"
+      },
+      "scrollToBottomOnlyBasicContextMenuItemTitle": {
+        "message": "Scroll to bottom (Basic)",
+        "description": "Title of a context (right-click) menu item, which scrolls page to its bottom. Name of the button mode and its group (in parentheses)."
       },
       "optionsContextMenuItemTitle": {
         "message": "Options",

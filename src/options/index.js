@@ -756,6 +756,7 @@ function checkMode() {
   // @todo Optimize. Switch to specifying the applicable button modes in data attributes?
   switch ( mode ) {
     case settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE:
+    case settingsHelpers.SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE:
     case settingsHelpers.SCROLL_TO_TOP_ONLY_ADVANCED_BUTTON_MODE:
     case settingsHelpers.FLIP_ADVANCED_BUTTON_MODE:
     case settingsHelpers.DUAL_ARROWS_ADVANCED_BUTTON_MODE:

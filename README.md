@@ -29,6 +29,7 @@ Available customizations
 
 - Button mode
   - Scroll to top only
+  - Scroll to bottom only
   - Flip between top & bottom
   - Dual arrows (scroll to top & bottom)
   - Keyboard only
