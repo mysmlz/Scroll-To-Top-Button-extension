@@ -16,7 +16,7 @@
 
   _(Disabled by default.)_
 
-  > [Idea](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/18) by [UNIVAC-Colonel-Panic](https://github.com/UNIVAC-Colonel-Panic), Pradeep Kumar Salwan (via Chrome Web Store), TED T, Hosa.
+  > [Idea](https://github.com/PoziWorld/Scroll-To-Top-Button-extension/issues/18) by [UNIVAC-Colonel-Panic](https://github.com/UNIVAC-Colonel-Panic), Pradeep Kumar Salwan (via Chrome Web Store), Rick (via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2)), TED T, Hosa.
 
 ### Fixed
 
