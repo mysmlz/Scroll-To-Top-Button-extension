@@ -83,7 +83,7 @@ There are a few ways you can help our cause:
 
 * Follow us on [Twitter](https://twitter.com/ScrollToTopBtn "Scroll To Top Button on Twitter").
 * Share the installation link on your social networks and/or blog:
-  * [Scroll To Top Button for Chrome](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj)
+  * [Scroll To Top Button for Chrome & Brave](https://chrome.google.com/webstore/detail/scroll-to-top-button/chinfkfmaefdlchhempbfgbdagheknoj)
   * [Scroll To Top Button for Firefox](https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/)
   * [Scroll To Top Button for Opera & Yandex.Browser](https://addons.opera.com/extensions/details/scroll-to-top-button/)
   * [Scroll To Top Button for Edge](https://www.microsoft.com/p/scroll-to-top-button/9ns5kgbdlngz)
