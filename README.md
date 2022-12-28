@@ -1,4 +1,4 @@
-[Scroll To Top Button <img src="/static/global/img/sttb-icon-38.png" width="38" height="38" alt="Scroll To Top Button">](https://scroll-to-top-button.com)
+[Scroll To Top Button <img src="/static/icons/Icon-32.png" width="32" height="32" alt="Scroll To Top Button">](https://scroll-to-top-button.com)
 =======
 
 Scroll To Top Button is a browser extension (add-on) for the Google Chrome, Mozilla Firefox, Microsoft Edge, Opera, Brave, and some Chromium-based browsers.
