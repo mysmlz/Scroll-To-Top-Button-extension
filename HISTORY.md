@@ -6,6 +6,22 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v12.0.0
+
+### Breaking changes
+
+* The way the on-page button(s) loads some helper files, such as jQuery and jQuery plugins, has been improved to avoid conflicts with page's own jQuery and/or other scripts.
+
+### Fixed
+
+* The button(s) wouldn't work in Firefox on some sites/sometimes.
+
+  > Issue reported by gomers. via email.
+  >
+  > Thank you for recording it on video!
+
+---
+
 ## v11.2.0
 
 ### New
