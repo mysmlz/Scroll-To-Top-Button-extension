@@ -6,6 +6,14 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v12.0.1
+
+### Fixed
+
+* v12.0.0 broke the Advanced button modes.
+
+---
+
 ## v12.0.0
 
 ### Breaking changes
