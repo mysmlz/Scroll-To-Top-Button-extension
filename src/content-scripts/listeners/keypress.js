@@ -88,7 +88,7 @@ function handleClickthroughKeyEvent( pressed ) {
     if ( buttonTemp ) {
       if ( pressed ) {
         if ( visualProperties.isButtonHovered( buttonTemp ) ) {
-          visualProperties.toggleButton( $( buttonTemp ), false );
+          visualProperties.toggleButton( elements.getJqueriedElements( buttonTemp ), false );
 
           // Only one button can be hovered at a time, no need to loop further
           break;
@@ -96,7 +96,7 @@ function handleClickthroughKeyEvent( pressed ) {
       }
       else {
         if ( ! visualProperties.isButtonHovered( buttonTemp ) ) {
-          visualProperties.toggleButton( $( buttonTemp ), true );
+          visualProperties.toggleButton( elements.getJqueriedElements( buttonTemp ), true );
         }
       }
     }

@@ -51,15 +51,21 @@ async function scroll( scrollTop, scrollSpeed, scroll ) {
   startProgress();
   resetInfiniteScrollDownChecker();
 
-  return new Promise( ( resolve, reject ) =>
-    elements.getAnimatableElement().animate(
-      {
-        scrollTop,
-      },
-      scrollSpeed,
-      scroll,
-      resolve,
-    ) );
+  return new Promise( ( resolve, reject ) => {
+    try {
+      elements.getAnimatableElement().animate(
+        {
+          scrollTop,
+        },
+        scrollSpeed,
+        scroll,
+        resolve,
+      );
+    }
+    catch ( error ) {
+      window.console.error( 'Scroll To Top Button is unable to use jQuery for custom speed setting. Try refreshing the page.', error );
+    }
+  } );
 }
 
 /**

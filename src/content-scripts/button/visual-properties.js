@@ -6,6 +6,9 @@ import * as scrollDirections from './scroll-directions';
 import { cursorPosition } from '../listeners/mousemove';
 import * as sharedElements from 'Shared/elements';
 
+// Can't be moved to `./jquery/index.js`, as that would cause a race condition
+import './jquery/jQueryRotate';
+
 /**
  * Show/hide the button and flip it, if necessary.
  */

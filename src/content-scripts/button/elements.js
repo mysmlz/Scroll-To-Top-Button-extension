@@ -1,6 +1,7 @@
 import utils from 'Shared/utils';
 import * as sharedElements from 'Shared/elements';
 
+import { getJquery } from './jquery';
 import buttonSettings from './settings';
 import * as modes from './settings/modes';
 
@@ -80,7 +81,7 @@ function createContainer( buttonLocation ) {
 
 function createButton1() {
   button1 = createButton();
-  $button1 = $( button1 );
+  $button1 = getJqueriedElements( button1 );
 
   containerShadow.append( button1 );
 }
@@ -93,7 +94,7 @@ function createButton1() {
 
 function createButton2() {
   button2 = createButton();
-  $button2 = $( button2 );
+  $button2 = getJqueriedElements( button2 );
 
   containerShadow.append( button2 );
 }
@@ -241,9 +242,22 @@ export function getScrollableElement() {
  **/
 
 export function getAnimatableElement() {
-  return $( scrollableElement ?
-    scrollableElement :
-    'html, body' );
+  try {
+    const $animatableElement = getJqueriedElements( scrollableElement ?
+      scrollableElement :
+      'html, body' );
+
+    return $animatableElement;
+  }
+  catch ( error ) {
+    window.console.error( 'Scroll To Top Button is unable to get an animatable element to scroll. Try refreshing the page.', error );
+
+    return getJqueriedElements( [ document.documentElement, document.body ] );
+  }
+}
+
+export function getJqueriedElements( element ) {
+  return getJquery()( element );
 }
 
 /**
@@ -273,7 +287,7 @@ export function setScrollCausingElement( element ) {
  */
 
 export function getScrollCausingElementHeight() {
-  return $(
+  return getJqueriedElements(
     scrollCausingElement ?
       scrollCausingElement :
       document
