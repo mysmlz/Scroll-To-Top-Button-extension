@@ -231,53 +231,81 @@ function injectBasicLogic( script ) {
     .then( handleFileInjectionSuccess, handleFileInjectionFail );
 }
 
-function setContentScriptAsController( tabId, changeInfo ) {
+async function setContentScriptAsController( tabId, changeInfo ) {
   // @todo Check whether the protocol is supported (not chrome, chrome-extension, browser, etc.).
   if ( isTabReady( changeInfo ) ) {
-    injectJavascriptFiles( tabId );
-    injectCssFiles( tabId );
+    await injectAllFiles( tabId );
   }
 }
 
-function injectAllFiles() {
-  injectJavascriptFiles();
-  injectCssFiles();
+async function injectAllFiles( tabId ) {
+  await injectJavascriptFiles( tabId );
+  await injectCssFiles( tabId );
 }
 
 function isTabReady( info ) {
   return info.status === 'complete';
 }
 
-function injectJavascriptFiles( tabId ) {
-  injectFiles( tabId, CONTENT_SCRIPT_JAVASCRIPT_FILES, true );
+async function injectJavascriptFiles( tabId ) {
+  await injectFiles( tabId, CONTENT_SCRIPT_JAVASCRIPT_FILES, true );
 }
 
-function injectCssFiles( tabId ) {
-  injectFiles( tabId, CONTENT_SCRIPT_CSS_FILES, false );
+async function injectCssFiles( tabId ) {
+  await injectFiles( tabId, CONTENT_SCRIPT_CSS_FILES, false );
 }
 
-function injectFiles( tabId, paths, jsFilePathPassed ) {
-  paths.forEach( ( path ) => injectFile( tabId, path, jsFilePathPassed ) );
+async function injectFiles( tabId, paths, jsFilePathPassed ) {
+  try {
+    for ( const path of paths ) {
+      await injectFile( tabId, path, jsFilePathPassed );
+    }
+  }
+  catch ( error ) {
+    window.strLog = `Scroll To Top Button failed to load one of its components. Try reloading the page. If the issue is still not resolved, please email the developer at ${ window.atob( 'bG9hZGluZy1pc3N1ZUBzY3JvbGwtdG8tdG9wLWJ1dHRvbi5jb20=' ) }`;
+    Log.add( strLog, {
+      error,
+    }, false, {
+      level: 'error',
+    } );
+  }
 }
 
-function injectFile( tabId, path, jsFilePathPassed ) {
+async function injectFile( tabId, path, jsFilePathPassed ) {
   const injectionDetails = {
     ...CONTENT_SCRIPT_SCRIPT_TEMPLATE,
   };
 
   injectionDetails.file = path;
-  browser.tabs[ jsFilePathPassed ? 'executeScript' : 'insertCSS' ]( tabId, injectionDetails )
-    .then( handleFileInjectionSuccess, handleFileInjectionFail );
+
+  try {
+    const result = await browser.tabs[ jsFilePathPassed ? 'executeScript' : 'insertCSS' ]( tabId, injectionDetails );
+
+    handleFileInjectionSuccess( path, result );
+  }
+  catch ( error ) {
+    handleFileInjectionFail( path, error );
+
+    throw new Error( error );
+  }
 }
 
-function handleFileInjectionSuccess( result ) {
+function handleFileInjectionSuccess( path, result ) {
   window.strLog = 'scroll-executors, handleFileInjectionSuccess';
-  Log.add( strLog, result );
+  Log.add( strLog, {
+    path,
+    result,
+  } );
 }
 
-function handleFileInjectionFail( error ) {
+function handleFileInjectionFail( path, error ) {
   window.strLog = 'scroll-executors, handleFileInjectionFail';
-  Log.add( strLog, error );
+  Log.add( strLog, {
+    path,
+    error,
+  }, false, {
+    level: 'error',
+  } );
 
   if ( window.poziworldExtension.utils.isType( error, 'object' ) ) {
     const errorMessage = error.message;
