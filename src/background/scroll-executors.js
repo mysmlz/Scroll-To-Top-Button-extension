@@ -154,7 +154,7 @@ export async function setController( source, retriesCount, metadata ) {
       browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
       browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_ADVANCED_TYPE ) );
       // @todo Don't inject the second time.
-      browser.browserAction.onClicked.addListener( injectAllFiles );
+      browser.browserAction.onClicked.addListener( ( { id: tabId } ) => injectAllFiles( tabId ) );
       browser.tabs.onUpdated.removeListener( setContentScriptAsController );
     }
     // Expert mode & has permissions
