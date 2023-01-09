@@ -1,3 +1,5 @@
+import LanguageDetector from 'i18next-browser-languagedetector';
+
 import * as settingsHelpers from 'Shared/settings';
 
 /**
@@ -67,9 +69,10 @@ const browserExtensionDetector = {
   lookup: getLanguage
 };
 
-const languageDetector = new i18nextBrowserLanguageDetector();
-
-languageDetector.addDetector( browserExtensionDetector );
+let languageDetectorSetAttemptsCounter = 0;
+const LANGUAGE_DETECTOR_SET_ATTEMPTS_MAX_COUNT = 5;
+const LANGUAGE_DETECTOR_SET_ATTEMPTS_DELAY_MS = 500;
+let languageDetector = null;
 
 /**
  * https://www.i18next.com/configuration-options.html
@@ -109,7 +112,11 @@ setUp();
  * Make the logic readily available.
  */
 
-function setUp() {
+async function setUp() {
+  languageDetector = await setLanguageDetector();
+
+  languageDetector.addDetector( browserExtensionDetector );
+
   exposeApi();
   stubLog();
 }
@@ -487,6 +494,23 @@ function getLanguage() {
 
 function getSetLanguage() {
   return i18next.language;
+}
+
+/**
+ * Initialize language detector.
+ *
+ * @returns {i18nextBrowserLanguageDetector}
+ */
+
+async function setLanguageDetector() {
+  if ( ! LanguageDetector && languageDetectorSetAttemptsCounter < LANGUAGE_DETECTOR_SET_ATTEMPTS_MAX_COUNT ) {
+    languageDetectorSetAttemptsCounter += 1;
+    await sleep( LANGUAGE_DETECTOR_SET_ATTEMPTS_DELAY_MS );
+
+    return setLanguageDetector();
+  }
+
+  return new LanguageDetector();
 }
 
 /**
