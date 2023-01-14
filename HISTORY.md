@@ -6,6 +6,28 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v12.1.0
+
+### New
+
+* [Scroll To Top Button](https://scroll-to-top-button.com) now works* on a larger number of websites.
+
+  \* Advanced and Expert button modes only.
+
+  > Based on feedback by abnourmal via Chrome Web Store and anonymous via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+### Fixed
+
+* The on-page button(s) wouldn't work in Gmail.
+
+  > Issue reported by Gábor via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+* v12.0.0 broke the Invisible setting for the “Not active button opacity” option.
+
+  > Issue reported by Fire DX via Chrome Web Store and anonymous via the [feedback form](https://goo.gl/forms/QMZFZfgKjQHOnRCX2).
+
+---
+
 ## v12.0.1
 
 ### Fixed
