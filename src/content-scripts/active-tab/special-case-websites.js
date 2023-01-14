@@ -46,7 +46,7 @@ export function watch( resolve, reject, skippableSpecialCase ) {
  **/
 
 function handleGmail( resolve ) {
-  const scrollableParent = document.querySelector( '.AO' );
+  const scrollableParent = document.querySelector( '.Nr' );
 
   if ( ! scrollableParent ) {
     window.requestAnimationFrame( handleGmail.bind( null, resolve ) );
