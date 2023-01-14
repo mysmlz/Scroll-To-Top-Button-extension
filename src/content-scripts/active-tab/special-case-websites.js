@@ -33,6 +33,10 @@ export function watch( resolve, reject, skippableSpecialCase ) {
   else if ( ! skippableSpecialCase && /^www\.transifex\.com$/.test( host ) ) {
     handleTransifex( resolve, reject );
   }
+  // If the <main> element or one of its parents is scrollable
+  else if ( setScrollableElement() ) {
+    resolve();
+  }
   // All other sites
   else {
     window.addEventListener( 'scroll', handleScroll.bind( null, resolve ) );
@@ -187,6 +191,79 @@ function handleTransifex( resolve, reject ) {
   if ( ! scrollableElement ) {
     watch( resolve, reject, true );
   }
+}
+
+/**
+ * If the <main> element or one of its parents is scrollable, use it.
+ *
+ * @returns {boolean}
+ */
+
+function setScrollableElement() {
+  const mainElement = document.querySelector( 'main' );
+
+  if ( ! mainElement ) {
+    return false;
+  }
+
+  const checkedElements = new Set();
+  let parentElement = mainElement;
+  let childElement;
+
+  while ( ( childElement = parentElement), ( parentElement = parentElement.parentElement ) ) {
+    checkedElements.add( childElement );
+    checkedElements.add( parentElement );
+
+    if ( isScrollable( parentElement ) ) {
+      elements.setScrollableElement( parentElement );
+      elements.setScrollCausingElement( getScrollCausingElement( checkedElements, parentElement ) );
+
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Get the scroll-causing (higher than parent/scrollable) element.
+ *
+ * @param {Set.<HTMLElement>} elements
+ * @param {HTMLElement} scrollableElement
+ * @returns {HTMLElement}
+ */
+
+function getScrollCausingElement( elements, scrollableElement ) {
+  const SCROLLABLE_ELEMENT_HEIGHT = scrollableElement.offsetHeight;
+
+  for ( const element of elements ) {
+    if ( element.offsetHeight > SCROLLABLE_ELEMENT_HEIGHT ) {
+      return element;
+    }
+  }
+
+  return parentElement;
+}
+
+/**
+ * Find out whether the provided element is scrollable.
+ *
+ * @see {@link https://stackoverflow.com/a/57658945}
+ *
+ * @param {HTMLElement} element
+ * @returns {boolean}
+ */
+
+function isScrollable( element ) {
+  if ( element.scrollTopMax !== undefined ) {
+    return element.scrollTopMax > 0;
+  }
+
+  if ( element == document.scrollingElement ) {
+    return element.scrollHeight > element.clientHeight;
+  }
+
+  return element.scrollHeight > element.clientHeight && [ 'scroll', 'auto' ].indexOf( getComputedStyle( element ).overflowY ) >= 0;
 }
 
 /**
