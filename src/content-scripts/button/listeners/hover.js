@@ -85,7 +85,7 @@ function handleInvisibleDualArrowsMouseenter( $thisButton, $otherButton, event )
 
 function handleInvisibleDualArrowsMouseleave( event ) {
   if ( ! isClickthroughKeyPressed( event ) ) {
-    visualProperties.toggleButton( $( event.target ), true );
+    visualProperties.toggleButton( elements.getJqueriedElements( event.target ), true );
   }
 
   if ( visualProperties.isButtonHoverable() ) {
