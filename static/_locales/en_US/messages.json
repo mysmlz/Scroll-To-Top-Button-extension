@@ -578,6 +578,10 @@
   "optionsSaved": {
     "message": "Options saved."
   },
+  "brokenOnUnsupportedSetting": {
+    "message": "'A broken or an unsupported setting (option) detected.'",
+    "description": "Message displayed for a possible error when handling (for example, saving) the settings."
+  },
 
   "genericContactFormLinkText": {
     "message": "Get support / Give feedback",

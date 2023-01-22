@@ -599,7 +599,7 @@ function checkFormValidity() {
 }
 
 /**
- * Get the current values of all the settings.
+ * Process settings changes, if any, and save.
  *
  * @param {Event} [event]
  */
@@ -609,6 +609,24 @@ async function handleFormSubmit( event ) {
     event.preventDefault();
   }
 
+  try {
+    const settings = await gatherSettings();
+
+    setSettings( settings );
+  }
+  catch ( error ) {
+    window.alert( error );
+  }
+}
+
+/**
+ * Get the current values of all the settings.
+ *
+ * @returns {Settings}
+ * @throws {Error}
+ */
+
+async function gatherSettings() {
   const settings = {};
   const optionsTemp = Array.from( options );
 
@@ -632,12 +650,12 @@ async function handleFormSubmit( event ) {
       else {
         form.reportValidity();
 
-        return;
+        throw new Error( await i18n.getMessage( 'brokenOnUnsupportedSetting' ) );
       }
     }
   }
 
-  setSettings( settings );
+  return settings;
 }
 
 /**
