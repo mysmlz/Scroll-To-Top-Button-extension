@@ -36,6 +36,12 @@ const CONTENT_SCRIPT_SCRIPT_TEMPLATE = {
   allFrames: true,
   file: '%PLACEHOLDER%',
 };
+const CONTENT_SCRIPT_UNSUPPORTED_PROTOCOLS = [
+  'chrome:',
+  'chrome-extension:',
+  'browser:',
+  'edge:',
+];
 const CONTENT_SCRIPT_JAVASCRIPT_FILES = [
   '/global/js/browser-polyfill.min.js',
   '/global/js/bowser.js',
@@ -228,15 +234,22 @@ function injectBasicLogic( script ) {
 }
 
 async function setContentScriptAsController( tabId, changeInfo ) {
-  // @todo Check whether the protocol is supported (not chrome, chrome-extension, browser, etc.).
   if ( isTabReady( changeInfo ) ) {
     await injectAllFiles( tabId );
   }
 }
 
 async function injectAllFiles( tabId ) {
+  if ( isUnsupportedProtocol() ) {
+    return;
+  }
+
   await injectJavascriptFiles( tabId );
   await injectCssFiles( tabId );
+}
+
+function isUnsupportedProtocol() {
+  return CONTENT_SCRIPT_UNSUPPORTED_PROTOCOLS.includes( window?.location?.protocol );
 }
 
 function isTabReady( info ) {
