@@ -1,5 +1,6 @@
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+import utils from 'Shared/utils';
 import * as settingsHelpers from 'Shared/settings';
 
 /**
@@ -505,7 +506,7 @@ function getSetLanguage() {
 async function setLanguageDetector() {
   if ( ! LanguageDetector && languageDetectorSetAttemptsCounter < LANGUAGE_DETECTOR_SET_ATTEMPTS_MAX_COUNT ) {
     languageDetectorSetAttemptsCounter += 1;
-    await sleep( LANGUAGE_DETECTOR_SET_ATTEMPTS_DELAY_MS );
+    await utils.sleep( LANGUAGE_DETECTOR_SET_ATTEMPTS_DELAY_MS );
 
     return setLanguageDetector();
   }
@@ -580,10 +581,6 @@ function formatLanguageCode( languageCode ) {
 
 function isSupported( languageCode ) {
   return LOCALES.indexOf( languageCode ) > -1;
-}
-
-function sleep( ms ) {
-  return new Promise( resolve => setTimeout( resolve, ms ) );
 }
 
 /**
