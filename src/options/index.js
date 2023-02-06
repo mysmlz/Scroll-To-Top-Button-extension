@@ -13,6 +13,7 @@ import * as browsersHelpers from './browsers';
 import * as i18nModule from './i18n';
 import * as languagesModule from './languages';
 import * as linksModule from './links';
+import * as statusMessage from './status-message';
 
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
@@ -33,10 +34,6 @@ const PERMISSIONS_REQUIRED_ATTRIBUTE_KEY = 'data-permissions-required';
 const disableExpertButtonModesCta = document.getElementById( 'disableExpertButtonModesCta' );
 const permissionsPrivacyDetailsContainer = document.getElementById( 'permissionsPrivacyDetailsContainer' );
 const distanceType = document.getElementById( 'distanceType' );
-const status = document.getElementById( 'status' );
-let statusOptionsSaved;
-let statusTimeoutId;
-const STATUS_TIMEOUT_DELAY = 3000;
 let originalSettings;
 
 let permissionsGranted;
@@ -55,7 +52,7 @@ async function init() {
   await pages.init( 'options' );
   cachePermissionsCheckResult( await permissions.hasPermissions() );
   setUi();
-  cacheMessages();
+  statusMessage.init( document.getElementById( 'status' ) );
   linksModule.setLinks();
   languagesModule.sortLanguages();
   languagesModule.setDocumentLanguage();
@@ -311,14 +308,6 @@ async function letRuntimeFinishAllTasks() {
   const MILLISECONDS_TO_FINISH_ALL_TASKS = 1000;
 
   await new Promise( ( resolve ) => setTimeout( resolve, MILLISECONDS_TO_FINISH_ALL_TASKS ) );
-}
-
-/**
- * To avoid requesting localization of some status messages multiples times, request once and save.
- */
-
-function cacheMessages() {
-  statusOptionsSaved = window.poziworldExtension.i18n.getMessage( 'optionsSaved' );
 }
 
 /**
@@ -722,11 +711,7 @@ async function setSettings( newSettings, refreshForm ) {
  */
 
 async function applySettings( settings, refreshForm ) {
-  setStatus( statusOptionsSaved );
-
-  window.clearTimeout( statusTimeoutId );
-  statusTimeoutId = window.setTimeout( clearStatus, STATUS_TIMEOUT_DELAY );
-
+  statusMessage.show( 'optionsSaved' );
   checkMode();
 
   if ( refreshForm ) {
