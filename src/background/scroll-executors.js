@@ -32,6 +32,8 @@ const SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SCRIPT = {
   // @todo Cover non-scrollable window cases. See v6.5.2 and related.
   code: 'window.scrollTo( 0, Math.max( document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight, document.documentElement.clientHeight ) )',
 };
+const SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE_SHORT_NAME = 'top';
+const SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SHORT_NAME = 'bottom';
 const CONTENT_SCRIPT_SCRIPT_TEMPLATE = {
   allFrames: true,
   file: '%PLACEHOLDER%',
@@ -220,17 +222,29 @@ function setBrowserActionIcon( pointingUp ) {
   } );
 }
 
-function injectScrollToTopOnlyBasicLogic() {
-  injectBasicLogic( SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE_SCRIPT );
+function injectScrollToTopOnlyBasicLogic( { url } ) {
+  injectBasicLogic( SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE_SCRIPT, SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE_SHORT_NAME, url );
 }
 
-function injectScrollToBottomOnlyBasicLogic() {
-  injectBasicLogic( SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SCRIPT );
+function injectScrollToBottomOnlyBasicLogic( { url } ) {
+  injectBasicLogic( SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SCRIPT, SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE_SHORT_NAME, url );
 }
 
-function injectBasicLogic( script ) {
-  browser.tabs.executeScript( script )
-    .then( handleFileInjectionSuccess, handleFileInjectionFail );
+async function injectBasicLogic( script, shortName, url ) {
+  try {
+    const result = await browser.tabs.executeScript( script );
+
+    handleContentScriptInjectionSuccess( JSON.stringify( script ), result );
+  }
+  catch ( { message } ) {
+    const detailedError = {
+      message,
+      userFriendlyMessage: `Unable to scroll ${ url }`,
+      shortName,
+    };
+
+    handleContentScriptInjectionError( detailedError );
+  }
 }
 
 async function setContentScriptAsController( tabId, changeInfo, tab ) {
@@ -244,8 +258,27 @@ async function injectAllFiles( tabId, url ) {
     return;
   }
 
-  await injectJavascriptFiles( tabId );
-  await injectCssFiles( tabId );
+  try {
+    await injectFiles( {
+      tabId,
+      paths: CONTENT_SCRIPT_JAVASCRIPT_FILES,
+      jsFilePathPassed: true,
+      url,
+    } );
+    await injectFiles( {
+      tabId,
+      paths: CONTENT_SCRIPT_CSS_FILES,
+      jsFilePathPassed: false,
+      url,
+    } );
+  }
+  catch ( error ) {
+    window.strLog = `One of the required components could not be loaded. Please try reloading the page. If the problem persists, please email the following error to ${ window.atob( 'bG9hZGluZy1pc3N1ZUBzY3JvbGwtdG8tdG9wLWJ1dHRvbi5jb20=' ) }`;
+
+    Log.add( strLog, getReadableErrorMessage( error ), false, {
+      level: 'error',
+    } );
+  }
 }
 
 function isUnsupportedProtocol( url ) {
@@ -260,31 +293,20 @@ function isTabReady( info ) {
   return info.status === 'complete';
 }
 
-async function injectJavascriptFiles( tabId ) {
-  await injectFiles( tabId, CONTENT_SCRIPT_JAVASCRIPT_FILES, true );
-}
-
-async function injectCssFiles( tabId ) {
-  await injectFiles( tabId, CONTENT_SCRIPT_CSS_FILES, false );
-}
-
-async function injectFiles( tabId, paths, jsFilePathPassed ) {
+async function injectFiles( { tabId, paths, jsFilePathPassed, url } ) {
   try {
     for ( const path of paths ) {
-      await injectFile( tabId, path, jsFilePathPassed );
+      await injectFile( { tabId, path, jsFilePathPassed, url } );
     }
   }
-  catch ( error ) {
-    window.strLog = `Scroll To Top Button failed to load one of its components. Try reloading the page. If the issue is still not resolved, please email the developer at ${ window.atob( 'bG9hZGluZy1pc3N1ZUBzY3JvbGwtdG8tdG9wLWJ1dHRvbi5jb20=' ) }`;
-    Log.add( strLog, {
-      error,
-    }, false, {
-      level: 'error',
-    } );
+  // Unwrap bubbled-up exception
+  catch ( { message: error } ) {
+    // Pass the exception up the call stack
+    throw new Error( error );
   }
 }
 
-async function injectFile( tabId, path, jsFilePathPassed ) {
+async function injectFile( { tabId, path, jsFilePathPassed, url } ) {
   const injectionDetails = {
     ...CONTENT_SCRIPT_SCRIPT_TEMPLATE,
   };
@@ -294,40 +316,37 @@ async function injectFile( tabId, path, jsFilePathPassed ) {
   try {
     const result = await browser.tabs[ jsFilePathPassed ? 'executeScript' : 'insertCSS' ]( tabId, injectionDetails );
 
-    handleFileInjectionSuccess( path, result );
+    handleContentScriptInjectionSuccess( path, result );
   }
   catch ( error ) {
-    handleFileInjectionFail( path, error );
+    const detailedError = {
+      message: error?.message,
+      component: path,
+      url,
+    };
 
-    throw new Error( error );
+    // Pass the exception up the call stack
+    throw new Error( getReadableErrorMessage( detailedError ) );
   }
 }
 
-function handleFileInjectionSuccess( path, result ) {
-  window.strLog = 'scroll-executors, handleFileInjectionSuccess';
+function handleContentScriptInjectionSuccess( path, result ) {
+  window.strLog = 'Content script injection succeeded.';
   Log.add( strLog, {
     path,
     result,
   } );
 }
 
-function handleFileInjectionFail( path, error ) {
-  window.strLog = 'scroll-executors, handleFileInjectionFail';
-  Log.add( strLog, {
-    path,
-    error,
-  }, false, {
+function handleContentScriptInjectionError( { message, userFriendlyMessage, shortName, url } ) {
+  window.strLog = userFriendlyMessage;
+  Log.add( strLog, JSON.stringify( {
+    message,
+    shortName,
+    url,
+  } ), false, {
     level: 'error',
   } );
-
-  if ( window.poziworldExtension.utils.isType( error, 'object' ) ) {
-    const errorMessage = error.message;
-
-    if ( window.poziworldExtension.utils.isNonEmptyString( errorMessage ) ) {
-      // @todo Enable only after common non-working protocols (chrome, chrome-extension, edge, etc.) are excluded.
-      // window.alert( errorMessage );
-    }
-  }
 }
 
 async function getBrowserActionTitle( mode ) {
@@ -385,13 +404,17 @@ async function convertExpertModeToAdvanced( mode ) {
   }
 }
 
-function handleMessage( { data: { trigger }, target } ) {
+function handleMessage( { data: { trigger, url }, target } ) {
   if ( isInternalMessage( target ) ) {
     if ( trigger === settingsHelpers.SCROLL_TO_TOP_ONLY_BASIC_BUTTON_MODE ) {
-      injectScrollToTopOnlyBasicLogic();
+      injectScrollToTopOnlyBasicLogic( {
+        url,
+      } );
     }
     else if ( trigger === settingsHelpers.SCROLL_TO_BOTTOM_ONLY_BASIC_BUTTON_MODE ) {
-      injectScrollToBottomOnlyBasicLogic();
+      injectScrollToBottomOnlyBasicLogic( {
+        url,
+      } );
     }
   }
 }
@@ -429,4 +452,10 @@ Anonymous installation ID: ${ installationId }`;
 
   // @todo Uncomment when user is able to decline future requests and user is asked to provide specific additional details that would help debug, such as other extensions that might be changing style attribute
   // feedback.requestToReportIssue( ISSUE_MESSAGE_JSON_KEY, ISSUE_TITLE, debuggingInformation );
+}
+
+function getReadableErrorMessage( error ) {
+    return window.poziworldExtension.utils.isType( error, 'object' ) ?
+      JSON.stringify( error ) :
+      error;
 }

@@ -152,19 +152,18 @@ function addListeners() {
 /**
  * Fired when a context menu item is clicked.
  *
- * @param {object} info - Information about the item clicked and the context where the click happened.
+ * @param {object} onClickData
+ * @param {number|string} onClickData.menuItemId - The ID of the menu item that was clicked.
+ * @param {string} [onClickData.pageUrl] - The URL of the page in which the menu item was clicked. This property is not present if the click occurred in a context where there is no current page, such as on a browser action.
+ * @param {object} [tab] - Contains information about a tab. This provides access to information about what content is in the tab, how large the content is, what special states or restrictions are in effect, and so forth.
+ * @param {string} [tab.url] - The URL of the document that the tab is displaying. Only present if the extension has the "tabs" permission or a matching host permissions.
  */
 
-function handleContextMenuClick( info ) {
-  const menuItemId = info.menuItemId;
-
+function handleContextMenuClick( { menuItemId, pageUrl }, { url } ) {
   switch ( menuItemId ) {
     case SCROLL_TO_TOP_ONLY_BASIC_ID:
-      triggerScrollToTopBasic();
-
-      break;
     case SCROLL_TO_BOTTOM_ONLY_BASIC_ID:
-      triggerScrollToBottomBasic();
+      triggerBasic( menuItemId, pageUrl || url );
 
       break;
     case OPTIONS_ID:
@@ -175,32 +174,18 @@ function handleContextMenuClick( info ) {
 }
 
 /**
- * Ask another extension component to scroll the active tab to top.
- */
-
-function triggerScrollToTopBasic() {
-  triggerBasic( SCROLL_TO_TOP_ONLY_BASIC_ID );
-}
-
-/**
- * Ask another extension component to scroll the active tab to bottom.
- */
-
-function triggerScrollToBottomBasic() {
-  triggerBasic( SCROLL_TO_BOTTOM_ONLY_BASIC_ID );
-}
-
-/**
  * Ask another extension component to scroll the active tab.
  *
- * @param {string} id
+ * @param {string} id - The Basic-group button mode ID.
+ * @param {string} [url] - The URL of the page in which the menu item was clicked or the URL of the document that the tab is displaying.
  */
 
-function triggerBasic( id ) {
+function triggerBasic( id, url ) {
   const TARGET_ORIGIN = '*';
 
   window.postMessage( {
     trigger: id,
+    url,
   }, TARGET_ORIGIN );
 }
 
