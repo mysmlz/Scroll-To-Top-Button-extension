@@ -160,7 +160,7 @@ export async function setController( source, retriesCount, metadata ) {
       browser.browserAction.setPopup( BROWSER_ACTION_NO_POPUP );
       browser.browserAction.setTitle( await getBrowserActionTitle( BUTTON_MODE_ADVANCED_TYPE ) );
       // @todo Don't inject the second time.
-      browser.browserAction.onClicked.addListener( ( { id: tabId } ) => injectAllFiles( tabId ) );
+      browser.browserAction.onClicked.addListener( ( { id: tabId, url } ) => injectAllFiles( tabId, url ) );
       browser.tabs.onUpdated.removeListener( setContentScriptAsController );
     }
     // Expert mode & has permissions
@@ -233,14 +233,14 @@ function injectBasicLogic( script ) {
     .then( handleFileInjectionSuccess, handleFileInjectionFail );
 }
 
-async function setContentScriptAsController( tabId, changeInfo ) {
+async function setContentScriptAsController( tabId, changeInfo, tab ) {
   if ( isTabReady( changeInfo ) ) {
-    await injectAllFiles( tabId );
+    await injectAllFiles( tabId, tab?.url );
   }
 }
 
-async function injectAllFiles( tabId ) {
-  if ( isUnsupportedProtocol() ) {
+async function injectAllFiles( tabId, url ) {
+  if ( isUnsupportedProtocol( url ) ) {
     return;
   }
 
@@ -248,8 +248,12 @@ async function injectAllFiles( tabId ) {
   await injectCssFiles( tabId );
 }
 
-function isUnsupportedProtocol() {
-  return CONTENT_SCRIPT_UNSUPPORTED_PROTOCOLS.includes( window?.location?.protocol );
+function isUnsupportedProtocol( url ) {
+  if ( ! url ) {
+    return false;
+  }
+
+  return CONTENT_SCRIPT_UNSUPPORTED_PROTOCOLS.includes( new URL( url )?.protocol );
 }
 
 function isTabReady( info ) {
