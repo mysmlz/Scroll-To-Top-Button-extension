@@ -207,8 +207,8 @@ input.optionsChanger {
   background: url( /options/img/switch-language.svg ) center / contain no-repeat;
 }
 
-#author {
-  margin-left: 1.5rem;
+#settingsOverrideCtasContainer .pwCta {
+  margin-right: 1.5rem;
 }
 
 #settingsForm .pwFormControls {
@@ -305,7 +305,7 @@ input.optionsChanger {
     max-width: 22rem;
   }
 
-  #author {
-    margin-left: .5rem;
+  #settingsOverrideCtasContainer .pwCta {
+    margin-right: .5rem;
   }
 }
