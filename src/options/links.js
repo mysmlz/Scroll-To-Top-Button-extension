@@ -2,6 +2,8 @@ import utils from 'Shared/utils';
 import * as pages from 'Shared/pages';
 import * as incentives from 'Shared/incentives';
 
+const GENERIC_CONTACT_FORM_LINK = 'https://goo.gl/forms/QMZFZfgKjQHOnRCX2';
+
 /**
  * Translations contain <a /> elements, but href attributes aren't specified there.
  */
@@ -10,11 +12,11 @@ export function setLinks() {
   const links = [
     [
       'issueReportingLink',
-      'https://goo.gl/forms/QMZFZfgKjQHOnRCX2'
+      getGenericContactFormLink(),
     ],
     [
       'genericContactFormLink',
-      'https://goo.gl/forms/QMZFZfgKjQHOnRCX2'
+      getGenericContactFormLink(),
     ],
     [
       'translateLink',
@@ -52,9 +54,13 @@ export function setLinks() {
       strRateLink = 'https://addons.mozilla.org/firefox/addon/scroll-to-top-button-extension/';
     }
     else if ( utils.isEdge() ) {
-      strRateLink = 'https://goo.gl/forms/QMZFZfgKjQHOnRCX2';
+      strRateLink = getGenericContactFormLink();
     }
 
     document.getElementById( 'rateLink' ).href = strRateLink;
   }
+}
+
+export function getGenericContactFormLink() {
+  return GENERIC_CONTACT_FORM_LINK;
 }
