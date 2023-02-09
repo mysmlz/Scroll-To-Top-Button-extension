@@ -9,11 +9,11 @@ import * as settingsHelpers from 'Shared/settings';
 import * as pages from 'Shared/pages';
 import * as feedback from 'Shared/feedback';
 
-import * as browsersHelpers from './browsers';
-import * as i18nModule from './i18n';
-import * as languagesModule from './languages';
-import * as linksModule from './links';
-import * as statusMessage from './status-message';
+import * as browsersHelpers from 'Options/browsers';
+import * as i18nModule from 'Options/i18n';
+import * as languagesModule from 'Options/languages';
+import * as linksModule from 'Options/links';
+import * as statusMessage from 'Options/status-message';
 
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );

@@ -95,6 +95,7 @@ const defaultConfig = Map( {
       '@': path.resolve( __dirname, 'src' ),
       Shared: path.resolve( __dirname, 'src', 'shared' ),
       ContentScripts: path.resolve( __dirname, 'src', 'content-scripts' ),
+      Options: path.resolve( __dirname, 'src', 'options' ),
     },
     fallback: {
       fs: false,
