@@ -6,6 +6,24 @@
 
 > [Become a patron](https://www.patreon.com/bePatron?c=1906606)
 
+## v12.2.0
+
+### New
+
+* In Options, added an ability to export the extension settings.
+
+  > No import option yet.
+
+  > Idea by Michael Ji and Dzomba via Chrome Web Store.
+
+### Improved
+
+* On the Extensions page (e.g., `chrome://extensions/`), made error messages more user-friendly.
+
+  > Based on feedback by Phil Reilly via email.
+
+---
+
 ## v12.1.0
 
 ### New
