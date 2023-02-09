@@ -14,6 +14,7 @@ import * as i18nModule from 'Options/i18n';
 import * as languagesModule from 'Options/languages';
 import * as linksModule from 'Options/links';
 import * as statusMessage from 'Options/status-message';
+import * as settingsExport from 'Options/settings-export/';
 
 const NOT_READY_CLASS = 'waitingForJs';
 const form = document.getElementById( 'settingsForm' );
@@ -318,6 +319,7 @@ function addListeners() {
   options.forEach( addOptionChangeListener );
   document.getElementById( 'restore' ).addEventListener( 'click', restoreDefaultSettings );
   document.getElementById( 'author' ).addEventListener( 'click', setOriginalAuthorSettings );
+  document.getElementById( 'export' ).addEventListener( 'click', exportSettings );
   document.getElementById( 'save' ).addEventListener( 'click', handleFormSubmit );
   form.addEventListener( 'submit', handleFormSubmit );
 }
@@ -585,6 +587,26 @@ function checkFormValidity() {
   }
 
   return true;
+}
+
+/**
+ * Prepare settings for the export, show a preview, and give user different saving (exporting) options.
+ *
+ * @param {Event} [event]
+ */
+
+async function exportSettings( event ) {
+  event?.preventDefault();
+
+  try {
+    const settings = await gatherSettings();
+
+    await settingsExport?.init( settings );
+  }
+  catch ( error ) {
+    // Shouldn't happen unless there is a bug?
+    window.alert( error );
+  }
 }
 
 /**

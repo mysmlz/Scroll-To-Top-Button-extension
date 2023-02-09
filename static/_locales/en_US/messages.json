@@ -516,6 +516,54 @@
     "authorsSettings": {
       "message": "Author's settings"
     },
+    "exportSettings": {
+      "message": "Export settings"
+    },
+    "exportedSettingsTitle": {
+      "message": "Exported settings"
+    },
+    "exportedSettingsNotOfExpectedFormat": {
+      "message": "Failed to export settings. Please try reloading the page. If the problem persists, please notify the developer via $ISSUE_REPORTING_LINK$",
+      "description": "When user tries to export the extension settings, the extension first checks whether the format of settings is of an expected format. And, if not, the export process terminates and an error message is shown to the user.",
+      "placeholders": {
+        "issue_reporting_link": {
+          "content": "$1",
+          "example": "https://goo.gl/forms/QMZFZfgKjQHOnRCX2"
+        }
+      }
+    },
+    "exportedSettingsPreviewElementMissing": {
+      "message": "Failed to show a preview of the exported settings. Please try reloading the page. If the problem persists, please notify the developer via $ISSUE_REPORTING_LINK$",
+      "description": "When user tries to export the extension settings, the extension is expected to show a preview of the exported settings in the text format. If the page element for the preview is missing, the export process terminates and an error message is shown to the user.",
+      "placeholders": {
+        "issue_reporting_link": {
+          "content": "$1",
+          "example": "https://goo.gl/forms/QMZFZfgKjQHOnRCX2"
+        }
+      }
+    },
+    "copyToClipboard": {
+      "message": "Copy to clipboard"
+    },
+    "copiedToClipboard": {
+      "message": "Copied to clipboard"
+    },
+    "copyingToClipboardFailed": {
+      "message": "Copying to clipboard failed"
+    },
+    "saveToFile": {
+      "message": "Save to file"
+    },
+    "savedToFile": {
+      "message": "Saved to file"
+    },
+    "savingToFileFailed": {
+      "message": "Saving to file failed"
+    },
+    "closeModal": {
+      "message": "Close",
+      "description": "Text of a button that closes a modal."
+    },
   "uiLanguage": {
     "message": "Language",
     "description": "Setting on the Options page: language of the user interface."

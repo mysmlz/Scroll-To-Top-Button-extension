@@ -334,6 +334,7 @@
         <div id="settingsOverrideCtasContainer" class="pwFormRow">
           <button id="restore" class="pwCta" data-i18n="restoreDefaults"></button>
           <button id="author" class="pwCta" data-i18n="authorsSettings"></button>
+          <button id="export" class="pwCta" data-i18n="exportSettings"></button>
         </div>
       </fieldset>
       <div id="saveSettings" class="pwFormControls">
@@ -370,6 +371,14 @@
     <footer id="versionAndLicenseContainer">
       <p id="versionAndLicenseText" class="pwText" data-i18n="versionAndLicense" data-i18n-parameters="extensionName|%EXTENSION_VERSION%|%FAIR_CODE_URL%|%SUSTAINABLE_USE_LICENSE_URL%"></p>
     </footer>
+    <dialog id="exportedSettingsDialog">
+      <h2 id="exportedSettingsTitle" class="pwText" data-i18n="exportedSettingsTitle"></h2>
+      <textarea id="exportedSettingsPreviewText" class="pwText" wrap="soft" readonly></textarea>
+      <p id="exportedSettingsStatusText" class="pwText"></p>
+      <button id="exportedSettingsCopyToClipboardCta" class="pwCta" data-i18n="copyToClipboard"></button>
+      <button id="exportedSettingsSaveToFileCta" class="pwCta" data-i18n="saveToFile"></button>
+      <button class="pwCta pwCloseModalCta" data-i18n="closeModal"></button>
+    </dialog>
     <script src="/global/js/browser-polyfill.min.js"></script>
     <script src="/global/js/bowser.js"></script>
     <script src="/global/js/global.js"></script>

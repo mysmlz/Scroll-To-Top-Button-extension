@@ -1,0 +1,51 @@
+#exportedSettingsDialog {
+  padding: 3rem;
+  min-width: 40rem;
+  max-width: 60rem;
+}
+
+#exportedSettingsDialog[open] {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+#exportedSettingsDialog::backdrop {
+  background-color: rgba( 0, 0, 0, .5 );
+}
+
+#exportedSettingsTitle {
+  font-size: 1.9em;
+}
+
+#exportedSettingsPreviewText {
+  $MARGIN_INLINE: 0;
+  margin: 0 $MARGIN_INLINE 2rem;
+  $PADDING_INLINE: 1rem;
+  padding: $PADDING_INLINE;
+  $BORDER_WIDTH: .1rem;
+  border-width: $BORDER_WIDTH;
+  width: calc( 100% - 2 * $MARGIN_INLINE - 2 * $PADDING_INLINE - 2 * $BORDER_WIDTH );
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+#exportedSettingsStatusText {
+  margin: 0;
+}
+
+#exportedSettingsDialog .pwCta {
+  margin-top: 2rem;
+}
+
+@media ( max-width: 30em /* Up to 480px */ ) {
+
+  #exportedSettingsTitle {
+    font-size: 1.6em;
+  }
+
+  #exportedSettingsDialog {
+    position: fixed;
+    min-width: 90%;
+  }
+}
