@@ -210,16 +210,40 @@ export async function setController( source, retriesCount, metadata ) {
 }
 
 function setBrowserActionIcon( pointingUp ) {
-  browser.browserAction.setIcon( {
-    path: {
-      16: pointingUp ?
-        manifest.icons[ 16 ] :
-        'icons/scroll-to-bottom-16.png',
-      32: pointingUp ?
-        manifest.icons[ 32 ] :
-        'icons/scroll-to-bottom-32.png',
-    },
-  } );
+  const icon16 = pointingUp ?
+    manifest.icons[ 16 ] :
+    'icons/scroll-to-bottom-16.png';
+  const icon32 = pointingUp ?
+    manifest.icons[ 32 ] :
+    'icons/scroll-to-bottom-32.png';
+
+  /**
+   * Old versions of Chrome used 19px and 38px icons. When Chrome switched to Material (~v50-53), they started using 16px and 32px icons.
+   * `browserAction.setIcon()` wrapped in in try-catch still causes an exception.
+   * Passing 16/32 and 19/38 at the same time doesn't help either.
+   * To avoid issues in old browsers, set 19/38 by default.
+   *
+   * @see {@link https://github.com/dhowe/AdNauseam/issues/822}
+   * @see {@link https://bugs.chromium.org/p/chromium/issues/detail?id=639607}
+   * @see {@link https://groups.google.com/a/chromium.org/g/chromium-extensions/c/nTwUL_WLSFQ}
+   */
+
+  try {
+    browser.browserAction.setIcon( {
+      path: {
+        19: icon16,
+        38: icon32,
+      },
+    } );
+  }
+  catch ( error ) {
+    browser.browserAction.setIcon( {
+      path: {
+        16: icon16,
+        32: icon32,
+      },
+    } );
+  }
 }
 
 function injectScrollToTopOnlyBasicLogic( { url } ) {
