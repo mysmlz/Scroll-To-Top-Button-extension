@@ -114,11 +114,12 @@ setUp();
  */
 
 async function setUp() {
+  exposeApi();
+
   languageDetector = await setLanguageDetector();
 
   languageDetector.addDetector( browserExtensionDetector );
 
-  exposeApi();
   stubLog();
 }
 
