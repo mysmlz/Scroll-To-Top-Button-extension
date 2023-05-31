@@ -108,7 +108,7 @@ const defaultConfig = Map( {
     ],
   },
   devtool: modeDevelopment ?
-    'inline-cheap-module-source-map' :
+    'inline-source-map' :
     false,
   watch: modeDevelopment,
 } );
