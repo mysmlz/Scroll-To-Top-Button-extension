@@ -13,6 +13,20 @@
 ( function () {
   'use strict';
 
+  setUp();
+
+  function setUp() {
+    exposeApi();
+  }
+
+  function exposeApi() {
+    if ( typeof window.poziworldExtension === 'undefined' ) {
+      window.poziworldExtension = {};
+    }
+
+    window.poziworldExtension.utils = new Utils();
+  }
+
   /**
    * @constructor
    */
@@ -122,10 +136,4 @@
   Utils.prototype.isNonEmptyString = function ( value ) {
     return this.isType( value, 'string' ) && value !== '';
   };
-
-  if ( typeof poziworldExtension === 'undefined' ) {
-    window.poziworldExtension = {};
-  }
-
-  window.poziworldExtension.utils = new Utils();
 }() );

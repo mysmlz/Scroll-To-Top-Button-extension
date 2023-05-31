@@ -1,6 +1,20 @@
 ( function () {
   'use strict';
 
+  setUp();
+
+  function setUp() {
+    exposeApi();
+  }
+
+  function exposeApi() {
+    if ( typeof window.poziworldExtension === 'undefined' ) {
+      window.poziworldExtension = {};
+    }
+
+    window.poziworldExtension.event = new Event();
+  }
+
   /**
    * @constructor
    */
@@ -48,10 +62,4 @@
       }
     };
   }
-
-  if ( typeof window.poziworldExtension === 'undefined' ) {
-    window.poziworldExtension = {};
-  }
-
-  window.poziworldExtension.event = new Event();
 }() );

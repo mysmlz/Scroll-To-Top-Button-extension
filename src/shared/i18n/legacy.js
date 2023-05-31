@@ -109,10 +109,6 @@ let translationFunction;
 
 setUp();
 
-/**
- * Make the logic readily available.
- */
-
 async function setUp() {
   exposeApi();
 
@@ -122,10 +118,6 @@ async function setUp() {
 
   stubLog();
 }
-
-/**
- * Create an instance of the i18n API and expose it to other parts of the extension.
- */
 
 function exposeApi() {
   if ( typeof window.poziworldExtension === 'undefined' ) {

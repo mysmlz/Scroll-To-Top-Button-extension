@@ -3,17 +3,9 @@
 
   setUp();
 
-  /**
-   * Make the logic readily available.
-   */
-
   function setUp() {
     exposeApi();
   }
-
-  /**
-   * Create an instance of the page API and expose it to other parts of the extension.
-   */
 
   function exposeApi() {
     if ( typeof window.poziworldExtension === 'undefined' ) {

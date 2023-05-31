@@ -1,13 +1,21 @@
 ( function() {
   'use strict';
 
-  if ( typeof window.poziworldExtension === 'undefined' ) {
-    window.poziworldExtension = {};
+  setUp();
+
+  function setUp() {
+    exposeApi();
   }
 
-  window.poziworldExtension.incentive = {
-    setLinks: setLinks
-  };
+  function exposeApi() {
+    if ( typeof window.poziworldExtension === 'undefined' ) {
+      window.poziworldExtension = {};
+    }
+
+    window.poziworldExtension.incentive = {
+      setLinks: setLinks,
+    };
+  }
 
   /**
    * Translations contain <a /> elements, but href attributes aren't specified there.
