@@ -3,6 +3,7 @@
  */
 
 import utils from 'Shared/utils';
+import * as doubleInjectionProtection from 'Shared/double-injection-protection';
 import * as feedback from 'Shared/feedback';
 import * as permissions from 'Shared/permissions';
 import * as settingsHelpers from 'Shared/settings';
@@ -68,6 +69,8 @@ const CONTROLLER_SETTER_TIMEOUT = 100;
 const CONTROLLER_SETTER_MAX_RETRIES = 10;
 let controllerSetterRetriesCount = 0;
 let controllerSetterTimeoutId;
+
+let tabIdAndUrl = null;
 
 init();
 
@@ -272,15 +275,19 @@ async function injectBasicLogic( script, shortName, url ) {
 }
 
 async function setContentScriptAsController( tabId, changeInfo, tab ) {
-  if ( isTabReady( changeInfo ) ) {
-    await injectAllFiles( tabId, tab?.url );
+  if ( ! isTabReady( changeInfo ) ) {
+    return;
   }
+
+  await injectAllFiles( tabId, tab?.url );
 }
 
 async function injectAllFiles( tabId, url ) {
-  if ( isUnsupportedProtocol( url ) ) {
+  if ( isInjectingFiles( tabId, url ) || await doubleInjectionProtection.isAlreadyInjected( tabId ) || isUnsupportedProtocol( url ) ) {
     return;
   }
+
+  setTabIdAndUrl( tabId, url );
 
   try {
     await injectFiles( {
@@ -303,6 +310,28 @@ async function injectAllFiles( tabId, url ) {
       level: 'error',
     } );
   }
+
+  resetTabIdAndUrl();
+}
+
+function isInjectingFiles( tabId, url ) {
+  return getTabIdAndUrl() === generateTabIdAndUrl( tabId, url );
+}
+
+function setTabIdAndUrl( tabId, url ) {
+  tabIdAndUrl = generateTabIdAndUrl( tabId, url );
+}
+
+function generateTabIdAndUrl( tabId, url ) {
+  return `${ tabId }-${ url }`;
+}
+
+function resetTabIdAndUrl() {
+  tabIdAndUrl = null;
+}
+
+function getTabIdAndUrl() {
+  return tabIdAndUrl;
 }
 
 function isUnsupportedProtocol( url ) {

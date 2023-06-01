@@ -1,3 +1,4 @@
+import * as doubleInjectionProtection from 'Shared/double-injection-protection';
 import * as activeTab from './active-tab';
 import * as button from './button';
 
@@ -5,6 +6,7 @@ init();
 
 async function init() {
   stubLog();
+  doubleInjectionProtection.addMessageListener();
 
   try {
     // @todo Don't run in browser action (advanced) modes.
