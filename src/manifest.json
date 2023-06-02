@@ -41,7 +41,6 @@
       "shared/legacy/i18n.js",
       "shared/legacy/context-menus.js",
       "shared/legacy/background.js",
-      "global/js/tabs.js",
       "background.js"
     ]
   },
