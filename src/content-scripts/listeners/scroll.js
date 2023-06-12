@@ -1,17 +1,30 @@
+import * as eventsHelpers from 'Shared/events';
 import * as elements from '../button/elements';
 import * as visualProperties from '../button/visual-properties';
 import * as listenersUtils from './utils';
 
 const SCROLL_THROTTLE_DELAY = 250;
+const throttledScrollHandler = listenersUtils.throttle( handleScroll, SCROLL_THROTTLE_DELAY );
 
 /**
  * Might need to toggle button(s) appearance and flip on scroll.
  */
 
 export function addScrollListener() {
-  const throttledScrollHandler = listenersUtils.throttle( handleScroll, SCROLL_THROTTLE_DELAY );
+  const scrollableElement = elements.getScrollableElement();
 
-  elements.getScrollableElement().addEventListener( 'scroll', throttledScrollHandler );
+  scrollableElement.addEventListener( 'scroll', throttledScrollHandler, { passive: true } );
+  eventsHelpers.addListener( {
+    name: eventsHelpers.EVENT_NAMES.scrollableElementSet,
+    callback: () => resetScrollListener( scrollableElement ),
+    oneTime: true,
+  } );
+}
+
+function resetScrollListener( previousScrollableElement ) {
+  previousScrollableElement?.removeEventListener( 'scroll', throttledScrollHandler );
+  addScrollListener();
+  visualProperties.switchVisualProperties();
 }
 
 /**

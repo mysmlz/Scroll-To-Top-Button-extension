@@ -1,3 +1,4 @@
+import * as eventsHelpers from 'Shared/events';
 import buttonSettings from './settings';
 import * as modes from './settings/modes';
 import * as styles from './settings/styles';
@@ -8,6 +9,21 @@ import * as sharedElements from 'Shared/elements';
 
 // Can't be moved to `./jquery/index.js`, as that would cause a race condition
 import './jquery/jQueryRotate';
+
+init();
+
+function init() {
+  addListeners();
+}
+
+function addListeners() {
+  const CONTAINER_ACTIVE = false;
+
+  eventsHelpers.addListener( {
+    name: eventsHelpers.EVENT_NAMES.noScrollableElementSet,
+    callback: () => toggleButtons( CONTAINER_ACTIVE ),
+  } );
+}
 
 /**
  * Show/hide the button and flip it, if necessary.
@@ -75,7 +91,7 @@ export function restoreButtonOpacity( $button ) {
  */
 
 export function toggleButtons( visible ) {
-  elements.container.toggleAttribute( elements.CONTAINER_ATTRIBUTE_STATE_ACTIVE, visible );
+  elements.container?.toggleAttribute( elements.CONTAINER_ATTRIBUTE_STATE_ACTIVE, visible );
 }
 
 /**

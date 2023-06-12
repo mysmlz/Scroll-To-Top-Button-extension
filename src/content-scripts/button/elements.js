@@ -1,5 +1,6 @@
 import utils from 'Shared/utils';
 import * as sharedElements from 'Shared/elements';
+import * as eventsHelpers from 'Shared/events';
 
 import { getJquery } from './jquery';
 import buttonSettings from './settings';
@@ -260,6 +261,10 @@ export function getJqueriedElements( element ) {
   return getJquery()( element );
 }
 
+export function setNoScrollableElement() {
+  eventsHelpers.fireEvent( eventsHelpers.EVENT_NAMES.noScrollableElementSet );
+}
+
 /**
  * If there is a scrollable element other than the whole document, set it.
  *
@@ -268,6 +273,8 @@ export function getJqueriedElements( element ) {
 
 export function setScrollableElement( element ) {
   scrollableElement = element;
+
+  eventsHelpers.fireEvent( eventsHelpers.EVENT_NAMES.scrollableElementSet );
 }
 
 /**
