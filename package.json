@@ -69,7 +69,8 @@
     "dom4": "^2.1.6",
     "i18next-browser-languagedetector": "2.2.4",
     "jquery": "3.7.0",
-    "jquery.easing": "1.4.1"
+    "jquery.easing": "1.4.1",
+    "webextension-polyfill": "0.8.0"
   },
   "volta": {
     "node": "18.12.1",

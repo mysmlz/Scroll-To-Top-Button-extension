@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill';
+
 const settingsReadyEventFiredOnObject = globalThis;
 // @todo Is there a better way? Setting local boolean doesn't work, as different modules that include this one save different state
 const SETTINGS_READY_KEY = '__STTB_SETTINGS_READY__';

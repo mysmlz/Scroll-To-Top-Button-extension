@@ -8238,6 +8238,11 @@ watchpack@^2.4.0:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
 
+webextension-polyfill@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/webextension-polyfill/-/webextension-polyfill-0.8.0.tgz#f80e9f4b7f81820c420abd6ffbebfa838c60e041"
+  integrity sha512-a19+DzlT6Kp9/UI+mF9XQopeZ+n2ussjhxHJ4/pmIGge9ijCDz7Gn93mNnjpZAk95T4Tae8iHZ6sSf869txqiQ==
+
 webpack-clean@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/webpack-clean/-/webpack-clean-1.2.5.tgz#350fe56e67e32cd51ff43f953d228bc1802b4edc"
