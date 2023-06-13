@@ -55,6 +55,16 @@ function createContainer( buttonLocation ) {
 
   container = document.createElement( sharedElements.CONTAINER_TAG_NAME );
 
+  /**
+   * The button(s) location shouldn't follow the page-level set direction, as the available setting values in Options specifically say “left” and “right”.
+   *
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir}
+   * @todo Consider making `dir` a setting?
+   */
+
+  const BUTTON_LOCATION_COMPLIANT_DIRECTION = 'ltr';
+
+  container.setAttribute( 'dir', BUTTON_LOCATION_COMPLIANT_DIRECTION );
   container.setAttribute( 'data-position-vertical', position.vertical );
   container.setAttribute( 'data-position-horizontal', position.horizontal );
 
