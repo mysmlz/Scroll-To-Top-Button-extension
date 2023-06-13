@@ -364,6 +364,12 @@ async function injectFile( { tabId, path, jsFilePathPassed, url } ) {
     ...CONTENT_SCRIPT_SCRIPT_TEMPLATE,
   };
 
+  // @todo Consider making this more global, but keep in mind there are sites whose main scrollable element is an iframe
+  // @todo Don't repeat yourself. Same as in `special-case-websites.js`
+  if ( /^mail.google\.[a-z]{2,}$/.test( new URL( url )?.host ) ) {
+    injectionDetails.allFrames = false;
+  }
+
   injectionDetails.file = path;
 
   try {
