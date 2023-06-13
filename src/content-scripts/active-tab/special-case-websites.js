@@ -32,9 +32,9 @@ const SCROLLABLE_ELEMENT_MINIMUM_HEIGHT = 200;
 export function watch( resolve, reject, skippableSpecialCase ) {
   const host = window.location.host;
 
-  // Gmail
-  if ( /^mail.google\.[a-z]{2,}$/.test( host ) ) {
-    handleGmail( { resolve } );
+  // @todo Look into using `handleNonDocumentScrollSite` for all sites by default, remove special cases.
+  if ( /^mail.google\.[a-z]{2,}$/.test( host ) || /^tunein.com$/.test( host ) ) {
+    handleNonDocumentScrollSite( { resolve } );
   }
   // Google News
   if ( /^news.google\.[a-z]{2,}$/.test( host ) ) {
@@ -55,7 +55,7 @@ export function watch( resolve, reject, skippableSpecialCase ) {
 }
 
 /**
- * Gmail's main scrollable area is a div, not the whole document like on most other sites. Thus, it needs a special treatment.
+ * On some sites, like Gmail and TuneIn, the main scrollable area is a div, not the whole document like on most sites. So they need special treatment.
  *
  * @param {object} options
  * @param {resolve} options.resolve
@@ -63,7 +63,7 @@ export function watch( resolve, reject, skippableSpecialCase ) {
  * @param {boolean} options.noScrollableElementFound
  **/
 
-function handleGmail( { resolve, listenerHadBeenSet, noScrollableElementFound } ) {
+function handleNonDocumentScrollSite( { resolve, listenerHadBeenSet, noScrollableElementFound } ) {
   const scrollCausingElement = findScrollCausingElement();
 
   if ( ! scrollCausingElement ) {
@@ -71,7 +71,7 @@ function handleGmail( { resolve, listenerHadBeenSet, noScrollableElementFound } 
       elements.setNoScrollableElement();
     }
 
-    window.requestAnimationFrame( () => handleGmail( { resolve, noScrollableElementFound: true } ) );
+    window.requestAnimationFrame( () => handleNonDocumentScrollSite( { resolve, noScrollableElementFound: true } ) );
   }
   else {
     elements.setScrollableElement( scrollCausingElement.parentElement );
@@ -79,7 +79,7 @@ function handleGmail( { resolve, listenerHadBeenSet, noScrollableElementFound } 
 
     if ( ! listenerHadBeenSet ) {
       // When navigating between different folders, such as Inbox, Sent, Spam, and others, Gmail creates a new email list container, hiding the previously shown one
-      window.addEventListener( 'hashchange', () => handleGmail( { resolve, listenerHadBeenSet: true } ) );
+      window.addEventListener( 'hashchange', () => handleNonDocumentScrollSite( { resolve, listenerHadBeenSet: true } ) );
     }
 
     resolve();
