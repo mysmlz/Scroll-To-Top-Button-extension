@@ -1,6 +1,7 @@
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 import utils from 'Shared/utils';
+import * as eventsHelpers from 'Shared/events';
 import * as settingsHelpers from 'Shared/settings';
 
 /**
@@ -127,6 +128,12 @@ function exposeApi() {
   if ( ! window.poziworldExtension.i18n ) {
     window.poziworldExtension.i18n = new I18n();
   }
+
+  signalApiExposed();
+}
+
+function signalApiExposed() {
+  eventsHelpers.fireEvent( eventsHelpers.EVENT_NAMES.i18nExposed );
 }
 
 /**

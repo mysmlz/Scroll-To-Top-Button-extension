@@ -1,4 +1,5 @@
 export const EVENT_NAMES = {
+  i18nExposed: 'i18nExposed',
   noScrollableElementSet: 'noScrollableElementSet',
   scrollableElementSet: 'scrollableElementSet',
 }
