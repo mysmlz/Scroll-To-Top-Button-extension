@@ -128,6 +128,9 @@ var Backend = function () {
     key: 'readMulti',
     value: function readMulti(languages, namespaces, callback) {
       var loadPath = this.options.loadPath;
+      if (loadPath.indexOf('{{') < 0) {
+        loadPath = loadPath.replace(/%7B/g, '{').replace(/%7D/g, '}')
+      }
       if (typeof this.options.loadPath === 'function') {
         loadPath = this.options.loadPath(languages, namespaces);
       }
